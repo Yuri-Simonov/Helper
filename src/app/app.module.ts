@@ -13,6 +13,7 @@ import { JavascriptModule } from 'src/app/javascript/javascript.module';
 import { AngularModule } from 'src/app/angular/angular.module';
 import { GitModule } from 'src/app/git/git.module';
 import { OthersModule } from 'src/app/others/others.module';
+import { HomeModule } from 'src/app/home/home.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -27,6 +28,7 @@ import { OthersModule } from 'src/app/others/others.module';
         GitModule,
         OthersModule,
         MatSidenavModule,
+        HomeModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
