@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+    <span>Helper</span>
+    <span class="spacer"></span>
+    <button mat-button [matMenuTriggerFor]="afterMenu">
+        <mat-icon>arrow_drop_down</mat-icon>
+        Разделы
+    </button>
+    <mat-menu #afterMenu="matMenu" xPosition="after">
+        <a routerLink="javascript" mat-menu-item>JavaScript</a>
+        <a routerLink="angular" mat-menu-item>Angular</a>
+        <a routerLink="git" mat-menu-item>Git</a>
+        <a routerLink="others" mat-menu-item>Разное</a>
+    </mat-menu>
+</mat-toolbar>

@@ -1,27 +1,13 @@
-# Answers
+# Helper (Помощник)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
+## Сборник вопросов с собеседований и ответов к ним
 
-## Development server
+Проект написан с помощью [Angular](https://angular.io) (v.15.2.4) и вспомогательной библиотеки [Angular Material](https://material.angular.io) (v.15.2.5).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Цель проекта
 
-## Code scaffolding
+Создать коллекцию вопросов и ответов к ним, с целью экономии личного времени людей, ищущих по тем или иным причинам работу, т.к. порой информацию приходится искать по разным источникам, а на это порой уходит немало сил и времени. А в данном проекте предлагается уже выжимка того, с чем искатель может столкнуться.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Дополнительная цель проекта
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Реализовать возможность проходить тесты по теории (аналогично тому, как люди сдают теорию при сдаче экзамена на получение водительских прав).
