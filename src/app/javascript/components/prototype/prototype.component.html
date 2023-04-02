@@ -1,0 +1,40 @@
+<div class="content__item">
+    <mat-accordion>
+        <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+        >
+            <mat-expansion-panel-header>
+                <mat-panel-title> Что такое прототип? </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>
+                Это встроенный в язык объект, который присутствует у других
+                объектов и вызывается по цепочке сверху вниз.
+            </p>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+<div class="content__item">
+    <mat-accordion>
+        <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+        >
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Как добавить свой метод или свойство в прототип?
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>
+                Чтобы добавить свое свойство / метод в глобальный прототип для
+                объектов:
+            </p>
+
+            <pre>
+        Some code
+            </pre>
+
+            <!-- <pre>Object.prototype.sayHello = function(){...}</pre> -->
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

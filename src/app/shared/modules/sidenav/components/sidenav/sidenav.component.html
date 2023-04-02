@@ -1,5 +1,12 @@
 <div class="sidenav">
-    <mat-list>
-        <mat-list-item *ngFor="let item of listProps">{{ item }}</mat-list-item>
-    </mat-list>
+    <mat-nav-list>
+        <a
+            mat-list-item
+            [routerLink]="[item.path]"
+            routerLinkActive="disabled"
+            *ngFor="let item of listProps"
+        >
+            {{ item.name }}
+        </a>
+    </mat-nav-list>
 </div>

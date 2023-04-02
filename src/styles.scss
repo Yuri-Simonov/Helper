@@ -1,4 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+// $primary: #7b1fa2;
+// $secondary: #303030;
 
 html,
 body {
@@ -30,7 +31,7 @@ img {
 
 * {
     // стилизация скролла для Firefox
-    scrollbar-color: #9c27b0 #303030; /* «цвет ползунка» и «цвет полосы скроллбара» */
+    scrollbar-color: #7b1fa2 #303030; /* «цвет ползунка» и «цвет полосы скроллбара» */
     scrollbar-width: thin;
     // стилизация скролла для Chrome
     &::-webkit-scrollbar {
@@ -42,7 +43,7 @@ img {
     }
     &::-webkit-scrollbar-thumb {
         // индикатор прокрутки, перетаскиваемый элемент.
-        background-color: #9c27b0;
+        background-color: #7b1fa2;
         border-radius: 0.5rem;
     }
 }
@@ -51,4 +52,11 @@ img {
     height: 100%;
     display: grid;
     grid-template-columns: 15rem 1fr;
+
+    &__items {
+    }
+
+    &__item + &__item {
+        margin-top: 12px;
+    }
 }
