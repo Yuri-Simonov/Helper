@@ -1,14 +1,29 @@
 <mat-toolbar color="primary" class="header">
-    <span>Helper</span>
+    <a routerLink="/" class="header__logo">Helper</a>
     <span class="header__spacer"></span>
     <button mat-button [matMenuTriggerFor]="afterMenu">
         <mat-icon>arrow_drop_down</mat-icon>
         Разделы
     </button>
     <mat-menu #afterMenu="matMenu" xPosition="after">
-        <a routerLink="javascript" mat-menu-item>JavaScript</a>
-        <a routerLink="angular" mat-menu-item>Angular</a>
-        <a routerLink="git" mat-menu-item>Git</a>
-        <a routerLink="others" mat-menu-item>Разное</a>
+        <a routerLink="javascript" routerLinkActive="disabled" mat-menu-item>
+            JavaScript
+        </a>
+        <a routerLink="angular" routerLinkActive="disabled" mat-menu-item>
+            Angular
+        </a>
+        <a routerLink="git" routerLinkActive="disabled" mat-menu-item>Git</a>
+        <a routerLink="others" routerLinkActive="disabled" mat-menu-item>
+            Разное
+        </a>
     </mat-menu>
+    <a mat-button href="https://github.com/Yuri-Simonov/Helper" target="_blank">
+        <mat-icon>
+            <img
+                src="../../../../../assets/svg/github_logo.svg"
+                alt="github logo"
+            />
+        </mat-icon>
+        GitHub
+    </a>
 </mat-toolbar>

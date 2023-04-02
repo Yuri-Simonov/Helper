@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FooterComponent } from './footer/footer.component';
+import { SidenavComponent } from 'src/app/shared/modules/sidenav/components/sidenav/sidenav.component';
 
 import { MaterialModule } from 'src/app/shared/modules/material/material.module';
 
 @NgModule({
-    declarations: [FooterComponent],
+    declarations: [SidenavComponent],
     imports: [CommonModule, MaterialModule],
-    exports: [FooterComponent],
+    exports: [SidenavComponent],
 })
-export class FooterModule {}
+export class SidenavModule {}

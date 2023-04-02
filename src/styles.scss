@@ -5,6 +5,7 @@ body {
     height: 100%;
 }
 body {
+    color: white;
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
@@ -13,4 +14,41 @@ body > app-root {
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+* {
+    // стилизация скролла для Firefox
+    scrollbar-color: #9c27b0 #303030; /* «цвет ползунка» и «цвет полосы скроллбара» */
+    scrollbar-width: thin;
+    // стилизация скролла для Chrome
+    &::-webkit-scrollbar {
+        // это фон самого скроллбара
+        background-color: #303030;
+        border-radius: 0.5rem;
+        width: 0.5rem;
+        height: 0.5rem;
+    }
+    &::-webkit-scrollbar-thumb {
+        // индикатор прокрутки, перетаскиваемый элемент.
+        background-color: #9c27b0;
+        border-radius: 0.5rem;
+    }
+}
+
+.content {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 15rem 1fr;
 }
