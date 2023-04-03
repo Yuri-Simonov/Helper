@@ -32,7 +32,7 @@ img {
     color: #303030;
 }
 
-.spoiler-name {
+.attention {
     color: #fbec5d;
 }
 
@@ -73,12 +73,19 @@ img {
     }
 }
 
+pre {
+    display: flex;
+    align-items: center;
+}
+
+code {
+    padding: 15px;
+    display: block;
+}
+
 // ==============
 // РАСКРАСКА КОДА
 code {
-    padding: 15px;
-    margin-top: 15px;
-    display: block;
     color: #f5fffa;
     background-color: #282a36;
 }
