@@ -24,6 +24,18 @@ img {
     object-position: center;
 }
 
+.main-color {
+    color: #7b1fa2;
+}
+
+.secondary-color {
+    color: #303030;
+}
+
+.spoiler-name {
+    color: #fbec5d;
+}
+
 .disabled {
     pointer-events: none;
     opacity: 0.5;
@@ -60,3 +72,44 @@ img {
         margin-top: 12px;
     }
 }
+
+// ==============
+// РАСКРАСКА КОДА
+code {
+    padding: 15px;
+    margin-top: 15px;
+    display: block;
+    color: #f5fffa;
+    background-color: #282a36;
+}
+
+.number {
+    color: #deb887;
+}
+
+.punctuation,
+.function-name {
+    color: #fbec5d;
+}
+
+.keyword {
+    color: #50c878;
+}
+
+.object {
+    color: #da70d6;
+}
+
+.comment {
+    color: #116062;
+}
+
+.operator {
+    color: #f53d68;
+}
+
+.key {
+    color: #5ec4cd;
+}
+
+// ==============
