@@ -12,3 +12,12 @@ let b = {
 }
 
 name1(1,2)
+
+function outside() {
+	const age = '26'
+	function inside() {
+		console.log('My age is ', name);
+	}
+	inside();
+}
+outside();
