@@ -13,10 +13,10 @@ let b = {
 
 name1(1,2)
 
-function outside() {
+function outside(name) {
 	const age = '26'
 	function inside() {
-		console.log('My age is ', name);
+		console.log(`My name is ${name} and my age is ${age}`);
 	}
 	inside();
 }

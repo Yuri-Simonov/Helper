@@ -83,6 +83,11 @@ code {
     display: block;
 }
 
+p > code {
+    display: inline-block;
+    padding: 0 2px;
+}
+
 // ==============
 // РАСКРАСКА КОДА
 code {
@@ -91,7 +96,8 @@ code {
     tab-size: 4;
 }
 
-.number {
+.number,
+.string {
     color: #deb887;
 }
 
@@ -118,6 +124,11 @@ code {
 
 .key {
     color: #5ec4cd;
+}
+
+p > code {
+    background-color: initial;
+    color: #d7a4ff;
 }
 
 // ==============
