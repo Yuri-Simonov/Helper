@@ -102,7 +102,8 @@ code {
 }
 
 .punctuation,
-.function-name {
+.function-name,
+.class-name {
     color: #fbec5d;
 }
 
@@ -122,8 +123,13 @@ code {
     color: #f53d68;
 }
 
-.key {
+.key,
+.property {
     color: #5ec4cd;
+}
+
+.export {
+    color: #6666fc;
 }
 
 p > code {
