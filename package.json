@@ -2,10 +2,9 @@
     "name": "answers",
     "version": "0.0.0",
     "scripts": {
-        "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
-        "deploy": "ng deploy --base-href=/answers/",
+        "deploy": "ng deploy --base-href=/answers/ --prod",
         "watch": "ng build --watch --configuration development",
         "test": "ng test"
     },
