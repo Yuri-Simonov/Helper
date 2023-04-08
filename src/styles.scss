@@ -83,7 +83,8 @@ code {
     display: block;
 }
 
-p > code {
+p > code,
+li > code {
     display: inline-block;
     padding: 0 2px;
 }
@@ -116,7 +117,7 @@ code {
 }
 
 .comment {
-    color: #116062;
+    color: #168081;
 }
 
 .operator {
@@ -132,7 +133,8 @@ code {
     color: #6666fc;
 }
 
-p > code {
+p > code,
+li > code {
     background-color: initial;
     color: #d7a4ff;
 }
