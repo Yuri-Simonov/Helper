@@ -380,7 +380,7 @@
                 образом:
             </p>
             <pre><code><span class="tag"><</span><span class="tag">button</span> <span class="punctuation">(</span><span class="keyword">click</span><span class="punctuation">)</span><span class="operator">=</span><span class="punctuation">"</span><span class="function-name">showItems</span><span class="punctuation">()</span><span class="punctuation">"</span><span class="tag">></span>Я кнопка<span class="tag"><</span><span class="tag">/button</span><span class="tag">></span>
-<span class="tag"><</span><span class="tag">button</span> <span class="keyword">on-click</span><span class="operator">=</span><span class="punctuation">"</span><span class="function-name">showItems</span><span class="punctuation">()</span><span class="punctuation">"</span><span class="tag">></span>Я кнопка-близнец<span class="tag"><</span><span class="tag">/button</span><span class="tag">></span></code></pre>
+<span class="tag"><</span><span class="tag">button</span> <span class="keyword">on-click</span><span class="operator">=</span><span class="punctuation">"</span><span class="function-name">showItems</span><span class="punctuation">()</span><span class="punctuation">"</span><span class="tag">></span>Я кнопка-близнец<span class="tag"><</span><span class="tag">/button</span><span class="tag">></span> <span class="comment">// альтернативный вариант записи</span></code></pre>
             <p>
                 В данных примерах при клике на кнопку будет вызвана функция
                 <code>showItems()</code>. Названия событий всегда должны быть
@@ -388,9 +388,9 @@
                 <code>on-</code>.
             </p>
             <p>
-                Если необходимо получить подробную информацию о событии, то оно
+                Если необходимо получить подробную информацию о событии, то она
                 хранится в объекте <code>$event</code>, который передается в
-                функцию в качестве аргумента:
+                функцию в качестве аргумента.
             </p>
             <pre><code><span class="tag"><</span><span class="tag">button</span> <span class="punctuation">(</span><span class="keyword">click</span><span class="punctuation">)</span><span class="operator">=</span><span class="punctuation">"</span><span class="function-name">showItems</span><span class="punctuation">(</span>$event<span class="punctuation">)</span><span class="punctuation">"</span><span class="tag">></span>Я кнопка<span class="tag"><</span><span class="tag">/button</span><span class="tag">></span></code></pre>
             <p>
@@ -401,14 +401,29 @@
             <i class="subtitle">Двустороннее связывание</i>
             <p>
                 Механизм двустороннего связывания (two way binding)
-                используется, когда необходимо отобразить свойство в шаблоне
-                (одностороннее связывание) и обновить его при изменении значения
-                (обработка события) без перезагрузки страницы.
+                используется, когда
+                <span class="attention"
+                    >необходимо отобразить свойство в шаблоне</span
+                >
+                (одностороннее связывание)
+                <span class="attention"
+                    >и обновить его при изменении значения</span
+                >
+                (обработка события)
+                <span class="attention">без перезагрузки страницы</span>.
             </p>
             <p>
                 Синтаксис двустороннего связывания представляет собой слияние
                 одностороннего связывания ("<code>[]</code>") и привязки события
                 ("<code>()</code>").
+            </p>
+            <pre><code><span class="tag"><</span><span class="tag">some-item</span> <span class="punctuation">[(</span><span class="keyword">name</span><span class="punctuation">)]</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">myName</span><span class="punctuation">"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/some-item</span><span class="tag">></span></code></pre>
+            <p>
+                Запись <code>[(name)]="myName"</code> означает, что при
+                изменении <code>name</code> в дочернем компоненте (откуда оно
+                будет получено в измененном виде), измененнное значение будет
+                присвоено свойству <code>myName</code> компонента
+                <code>some-item</code>.
             </p>
         </mat-expansion-panel>
     </mat-accordion>
