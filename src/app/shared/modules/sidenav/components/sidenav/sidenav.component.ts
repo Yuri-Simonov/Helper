@@ -9,4 +9,12 @@ import { IList } from 'src/app/shared/types/list.interface';
 })
 export class SidenavComponent {
     @Input('list') listProps: IList[];
+    @Input('state') stateProps: boolean;
+
+    // @Output() newListState = new EventEmitter<boolean>();
+
+    // changeListState(): void {
+    //     this.listState = !this.listState;
+    //     this.newListState.emit(this.listState);
+    // }
 }

@@ -2,4 +2,14 @@ main {
     height: 100%;
     margin-top: 64px;
     background-color: #303030;
+    flex-grow: 1;
+    display: flex;
+
+    @media (max-width: 599px) {
+        margin-top: 56px;
+    }
+
+    ::ng-deep & > *:not(router-outlet) {
+        flex-grow: 1;
+    }
 }

@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { TitleComponent } from 'src/app/shared/modules/title/components/title/title.component';
 
+import { MaterialModule } from 'src/app/shared/modules/material/material.module';
+
 @NgModule({
     declarations: [TitleComponent],
-    imports: [CommonModule],
+    imports: [CommonModule, MaterialModule],
     exports: [TitleComponent],
 })
 export class TitleModule {}

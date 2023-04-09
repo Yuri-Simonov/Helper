@@ -18,6 +18,11 @@ export class JavascriptComponent {
         { name: 'Разное', path: 'others' },
         { name: 'Функции', path: 'function' },
     ];
+    listState: boolean;
 
     constructor() {}
+
+    setNewListState(event: boolean): void {
+        this.listState = event;
+    }
 }

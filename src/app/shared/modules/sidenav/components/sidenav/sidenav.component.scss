@@ -1,5 +1,41 @@
+:host {
+    @media (max-width: 992px) {
+        position: absolute;
+        z-index: 2;
+        height: calc(100vh - 118px);
+        top: 110px;
+    }
+
+    @media (max-width: 599px), (max-height: 440px) {
+        height: calc(100vh - 110px);
+    }
+}
+
 .sidenav {
     width: 15rem;
     border-right: 1px solid rgba(211, 211, 211, 0.226);
     height: 100%;
+    transition: transform 0.3s;
+    background-color: #303030;
+
+    @media (max-width: 992px) {
+        position: relative;
+        z-index: 2;
+    }
+
+    &_hide {
+        @media (max-width: 992px), (max-height: 440px) {
+            transform: translateX(-100%);
+        }
+    }
+
+    &__overlay {
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(128, 128, 128, 0.342);
+    }
 }

@@ -14,13 +14,14 @@ body {
 body > app-root {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 100%;
 }
 
-img {
+img,
+svg {
     max-width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
 }
 
@@ -64,6 +65,10 @@ img {
     height: 100%;
     display: grid;
     grid-template-columns: 15rem 1fr;
+
+    @media (max-width: 992px), (max-height: 440px) {
+        grid-template-columns: 1fr;
+    }
 
     &__items {
     }

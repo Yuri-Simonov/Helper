@@ -1,1 +1,9 @@
-<h1 class="title">{{ titleProps }}</h1>
+<h1 class="title">
+    <mat-icon
+        class="title__icon"
+        aria-hidden="false"
+        fontIcon="menu"
+        (click)="changeListState()"
+    ></mat-icon>
+    <span class="title__name">{{ titleProps }}</span>
+</h1>

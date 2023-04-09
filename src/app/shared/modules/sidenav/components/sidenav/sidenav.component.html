@@ -1,4 +1,4 @@
-<div class="sidenav">
+<div class="sidenav" [ngClass]="{ sidenav_hide: !stateProps }">
     <mat-nav-list>
         <a
             mat-list-item
@@ -10,3 +10,4 @@
         </a>
     </mat-nav-list>
 </div>
+<div class="sidenav__overlay" *ngIf="stateProps"></div>
