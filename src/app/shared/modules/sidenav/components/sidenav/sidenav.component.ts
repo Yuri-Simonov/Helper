@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { IList } from 'src/app/shared/types/list.interface';
 
@@ -11,10 +11,10 @@ export class SidenavComponent {
     @Input('list') listProps: IList[];
     @Input('state') stateProps: boolean;
 
-    // @Output() newListState = new EventEmitter<boolean>();
+    @Output() stateChange = new EventEmitter<boolean>();
 
-    // changeListState(): void {
-    //     this.listState = !this.listState;
-    //     this.newListState.emit(this.listState);
-    // }
+    changeListState(): void {
+        this.stateProps = false;
+        this.stateChange.emit(this.stateProps);
+    }
 }

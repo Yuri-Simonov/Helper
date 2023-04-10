@@ -62,11 +62,14 @@ svg {
 }
 
 .content {
-    height: 100%;
     display: grid;
     grid-template-columns: 15rem 1fr;
 
     @media (max-width: 992px), (max-height: 440px) {
+        grid-template-columns: 1fr;
+    }
+
+    &_simple {
         grid-template-columns: 1fr;
     }
 
@@ -75,6 +78,26 @@ svg {
 
     &__item + &__item {
         margin-top: 12px;
+
+        @media (max-width: 440px), (max-height: 440px) {
+            margin-top: 6px;
+        }
+    }
+
+    .mat-expansion-panel-header {
+        height: auto;
+        padding: 12px 24px;
+
+        @media (max-width: 440px), (max-height: 440px) {
+            grid-template-columns: 1fr;
+            padding: 12px;
+        }
+    }
+
+    .mat-expansion-panel-body {
+        @media (max-width: 440px), (max-height: 440px) {
+            padding: 12px;
+        }
     }
 }
 
@@ -91,11 +114,22 @@ svg {
 pre {
     display: flex;
     align-items: center;
+    max-width: calc(100vw - 48px);
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    @media (max-width: 440px), (max-height: 440px) {
+        max-width: calc(100vw - 24px);
+    }
 }
 
 code {
-    padding: 15px;
+    padding: 16px;
     display: block;
+
+    @media (max-width: 440px), (max-height: 440px) {
+        padding: 8px;
+    }
 }
 
 p > code,
@@ -110,6 +144,10 @@ code {
     color: #f5fffa;
     background-color: #282a36;
     tab-size: 4;
+
+    @media (max-width: 440px), (max-height: 440px) {
+        tab-size: 2;
+    }
 }
 
 .number,

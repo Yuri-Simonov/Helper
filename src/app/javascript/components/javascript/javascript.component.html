@@ -1,10 +1,12 @@
-<app-title
-    title="JavaScript"
-    (newListState)="setNewListState($event)"
-></app-title>
+<app-title title="JavaScript" [(state)]="listState"></app-title>
 <div class="content">
-    <app-sidenav [list]="list" [state]="listState"></app-sidenav>
+    <app-sidenav
+        [list]="list"
+        [(state)]="listState"
+        [style.left.%]="listState ? 0 : -100"
+    ></app-sidenav>
     <div class="content__items">
         <router-outlet></router-outlet>
+        <app-empty *ngIf="currentPath === '/javascript'"></app-empty>
     </div>
 </div>

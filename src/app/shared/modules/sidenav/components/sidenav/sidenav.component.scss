@@ -4,6 +4,7 @@
         z-index: 2;
         height: calc(100vh - 118px);
         top: 110px;
+        transition: 0.3s;
     }
 
     @media (max-width: 599px), (max-height: 440px) {
@@ -15,7 +16,7 @@
     width: 15rem;
     border-right: 1px solid rgba(211, 211, 211, 0.226);
     height: 100%;
-    transition: transform 0.3s;
+    transition: 0.3s;
     background-color: #303030;
 
     @media (max-width: 992px) {
@@ -25,7 +26,8 @@
 
     &_hide {
         @media (max-width: 992px), (max-height: 440px) {
-            transform: translateX(-100%);
+            z-index: 0;
+            transition: 0.3s;
         }
     }
 

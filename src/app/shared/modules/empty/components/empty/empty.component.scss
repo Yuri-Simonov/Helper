@@ -1,0 +1,28 @@
+.empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    background: linear-gradient(180deg, #7b1fa2 0%, #303030 100%);
+    padding: 24px;
+
+    &__title {
+        text-align: center;
+
+        &_desctop {
+            display: none;
+            margin: 0;
+
+            @media (min-width: 993px) and (min-height: 441px) {
+                display: block;
+            }
+        }
+
+        &_mobile {
+            display: none;
+            @media (max-width: 992px), (max-height: 440px) {
+                display: block;
+            }
+        }
+    }
+}

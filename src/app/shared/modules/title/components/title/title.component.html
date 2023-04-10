@@ -3,6 +3,7 @@
         class="title__icon"
         aria-hidden="false"
         fontIcon="menu"
+        *ngIf="visibleIconProps"
         (click)="changeListState()"
     ></mat-icon>
     <span class="title__name">{{ titleProps }}</span>
