@@ -159,7 +159,7 @@ code {
 
 .punctuation,
 .function-name,
-.class-name {
+.method {
     color: #fbec5d;
 }
 
@@ -175,7 +175,8 @@ code {
     color: #168081;
 }
 
-.operator {
+.operator,
+.class-name {
     color: #f53d68;
 }
 
