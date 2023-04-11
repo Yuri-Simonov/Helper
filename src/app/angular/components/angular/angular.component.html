@@ -198,9 +198,10 @@
                 </mat-expansion-panel-header>
                 <p>
                     <span class="attention">Angular компонент</span> - это часть
-                    интерфейса приложения с собственной логикой. Все компоненты
-                    в совокупности и есть Angular App.
+                    интерфейса приложения с собственными шаблоном, логикой и
+                    стилями. Причем последние два являются необязательными.
                 </p>
+                <p>Все компоненты в совокупности и есть Angular App.</p>
                 <p>
                     За создание компонента отвечает декоратор
                     <code>@Component()</code>.
@@ -486,6 +487,43 @@
                     <code>value</code>. Аналогично и наоборот, если значение
                     придет из компонента, то оно так же подставится в инпут.
                 </p>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+    <div class="content__item">
+        <mat-accordion>
+            <mat-expansion-panel
+                (opened)="panelOpenState = true"
+                (closed)="panelOpenState = false"
+            >
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Какая разница между декораторами "@Input()" и
+                        "@Output()"?
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>
+                    Компоненты Angular могут принимать от родителя данные и так
+                    же их отдавать. За это как раз и отвечают декораторы
+                    <code>@Input()</code> и <code>@Output()</code>, где исходя
+                    из названия становится понятно, что:
+                </p>
+                <ul>
+                    <li>
+                        <code>@Input() </code> -
+                        <span class="attention">
+                            принимает входящие данные
+                        </span>
+                        (пропсы);
+                    </li>
+                    <li>
+                        <code> @Output() </code> -
+                        <span class="attention">
+                            отдает родителю данные при срабатывании какого-то
+                            события.
+                        </span>
+                    </li>
+                </ul>
             </mat-expansion-panel>
         </mat-accordion>
     </div>
