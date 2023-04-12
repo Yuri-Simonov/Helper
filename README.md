@@ -2,7 +2,7 @@
 
 Проект написан с помощью [Angular](https://angular.io) (v.15.2.4) и вспомогательной библиотеки [Angular Material](https://material.angular.io) (v.15.2.5).
 
-Также проект задеплоен на GitHub Pages. Посмотреть можно в соответствующем разделе "Environments" или [по этой ссылке](https://yuri-simonov.github.io/Helper/).
+Также проект задеплоен на GitHub Pages. Посмотреть можно в соответствующем разделе [Environments](https://github.com/Yuri-Simonov/Helper/deployments/activity_log?environment=github-pages) или [по этой ссылке](https://yuri-simonov.github.io/Helper/).
 
 ## Цель проекта
 

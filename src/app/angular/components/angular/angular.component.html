@@ -648,4 +648,86 @@
             </mat-expansion-panel>
         </mat-accordion>
     </div>
+    <div class="content__item">
+        <mat-accordion>
+            <mat-expansion-panel
+                (opened)="panelOpenState = true"
+                (closed)="panelOpenState = false"
+            >
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Какие вы знаете способы взаимодействия между
+                        компонентами?
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>
+                    Чтобы передать данные из одного компонента в другой,
+                    существуют следующие способы:
+                </p>
+                <ul>
+                    <li>
+                        <code>@Input()</code> -
+                        <span class="attention">
+                            позволяет передавать значения дочерним
+                            компонентам</span
+                        >, но только на один уровень иерархии;
+                    </li>
+                    <li>
+                        <code>@Output()</code> -
+                        <span class="attention">
+                            позволяет передавать родителю данные при
+                            срабатывании какого-то события</span
+                        >, но только на один уровень иерархии.
+                    </li>
+                    <li>
+                        <code>@ViewChild()</code> и
+                        <code>@ViewChildren()</code> -
+                        <span class="attention">
+                            получают доступ к прямому одному и ко всем дочерним
+                            компонентам
+                        </span>
+                        (если быть точнее, то к их свойстам)
+                    </li>
+                    <li>
+                        Сервисы - своего рода
+                        <span class="attention">хранилище данных</span>, к
+                        которым могут обращаться компоненты.
+                    </li>
+                </ul>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+    <div class="content__item">
+        <mat-accordion>
+            <mat-expansion-panel
+                (opened)="panelOpenState = true"
+                (closed)="panelOpenState = false"
+            >
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Как можно оптимизировать выполнение цикла "*ngFor"?
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>
+                    <span class="attention">
+                        При изменении массива Angular перерисовывает дерево DOM
+                        полностью</span
+                    >. Но если использовать функцию <code>trackBy</code>, то
+                    Angular будет понимать, какой элемент изменился, а затем
+                    <span class="attention">
+                        внесёт изменения в DOM только для этого конкретного
+                        элемента</span
+                    >.
+                </p>
+                <p>Как это выглядит на практике:</p>
+                <pre><code><span class="comment">// в шаблоне (someItem.component.html)</span>
+<span class="tag"><</span><span class="tag">li</span> <span class="keyword">*ngFor</span><span class="operator">=</span><span class="punctuation">"</span>let item of items; trackBy: trackByFunction<span class="punctuation">"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/li></span>
+<span></span>
+<span class="comment">// в компоненте (someItem.component.ts)</span>
+<span class="function-name">trackByFunction</span><span class="punctuation">(</span>index, item<span class="punctuation">)</span> <span class="punctuation">{{'{'}}</span>
+	<span class="keyword">return</span> item.id<span class="punctuation">;</span> <span class="comment">// уникальный идентификатор, соответствующий элементу</span>
+<span class="punctuation">{{'}'}}</span></code></pre>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
 </div>

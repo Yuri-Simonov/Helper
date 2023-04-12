@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class TitleComponent {
     @Input('title') titleProps: string;
-    @Input('state') stateProps: boolean;
+    @Input('state') stateProps: boolean = false;
     @Input('visibleIcon') visibleIconProps: boolean = true;
 
     @Output() stateChange = new EventEmitter<boolean>();
