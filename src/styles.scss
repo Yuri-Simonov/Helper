@@ -181,7 +181,7 @@ code {
 }
 
 .key,
-.property {
+.type {
     color: #5ec4cd;
 }
 
@@ -190,7 +190,8 @@ code {
     color: #9391ff;
 }
 
-.variable {
+.variable,
+.attribute {
     color: #d7a4ff;
 }
 
