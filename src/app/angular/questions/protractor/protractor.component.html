@@ -1,0 +1,27 @@
+<mat-accordion>
+    <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+    >
+        <mat-expansion-panel-header>
+            <mat-panel-title> Что такое "Protractor"? </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            <span class="attention">Protractor</span> - фреймворк комплексного
+            тестирования, с помощью которого можно тестировать Angular
+            приложение прямо в браузере, имитируя взаимодействия, как c реальным
+            пользователем.
+        </p>
+        <p>По умолчанию с ним в коробке идет 2 фреймворка для тестирования:</p>
+        <ul>
+            <li>Юнит тесты на Jasmine и Karma</li>
+            <li>Комплексные тесты на Protractor</li>
+        </ul>
+        <p>
+            Основное различие - первый используется для тестирования логики
+            компонентов и сервисов, а второй используется для проверки
+            функциональности высокого уровня приложения (в том числе и UI
+            элементы).
+        </p>
+    </mat-expansion-panel>
+</mat-accordion>

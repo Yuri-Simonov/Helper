@@ -1,0 +1,44 @@
+<mat-accordion>
+    <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+    >
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Какие вы знаете способы взаимодействия между компонентами?
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            Чтобы передать данные из одного компонента в другой, существуют
+            следующие способы:
+        </p>
+        <ul>
+            <li>
+                <code>@Input()</code> -
+                <span class="attention">
+                    позволяет передавать значения дочерним компонентам</span
+                >, но только на один уровень иерархии;
+            </li>
+            <li>
+                <code>@Output()</code> -
+                <span class="attention">
+                    позволяет передавать родителю данные при срабатывании
+                    какого-то события</span
+                >, но только на один уровень иерархии.
+            </li>
+            <li>
+                <code>@ViewChild()</code> и <code>@ViewChildren()</code> -
+                <span class="attention">
+                    получают доступ к прямому одному и ко всем дочерним
+                    компонентам
+                </span>
+                (если быть точнее, то к их свойстам)
+            </li>
+            <li>
+                Сервисы - своего рода
+                <span class="attention">хранилище данных</span>, к которым могут
+                обращаться компоненты.
+            </li>
+        </ul>
+    </mat-expansion-panel>
+</mat-accordion>

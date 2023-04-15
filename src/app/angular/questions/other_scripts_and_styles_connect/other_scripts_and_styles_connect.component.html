@@ -1,0 +1,28 @@
+<mat-accordion>
+    <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+    >
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                В каком файле нужно подключать сторонние скрипты и стили и
+                почему?
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            Cторонние скрипты и стили должны подключаться в
+            <span class="attention">angular.json</span>, а не в index.html как
+            это делается в верстке, например.
+        </p>
+        <i class="subtitle"> Почему именно так? </i>
+        <p>
+            Важно, чтобы все настройки были в одном месте, а не размазаны по
+            всему приложению. Причем файл angular.json как раз для этого и
+            предназначен, т.к.
+            <span class="attention">
+                является главным конфигурационным файлом
+            </span>
+            Angular Workspace.
+        </p>
+    </mat-expansion-panel>
+</mat-accordion>
