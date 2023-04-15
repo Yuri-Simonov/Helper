@@ -26,9 +26,12 @@ import { WaysOfInteractionBetweenComponentsComponent } from 'src/app/angular/que
 import { CycleOptimizationNgforComponent } from 'src/app/angular/questions/cycle_optimization_ngfor/cycle_optimization_ngfor.component';
 import { DifferenceBetweenNgcontainerAndNgtemplateComponent } from 'src/app/angular/questions/difference_between_ngcontainer_and_ngtemplate/difference_between_ngcontainer_and_ngtemplate.component';
 import { CustomDirectiveComponent } from 'src/app/angular/questions/custom_directive/custom_directive.component';
+import { PipeInAngularComponent } from 'src/app/angular/questions/pipe_in_angular/pipe_in_angular.component';
+import { CustomPipeComponent } from 'src/app/angular/questions/custom_pipe/custom_pipe.component';
 
 import { MaterialModule } from 'src/app/shared/modules/material/material.module';
 import { TitleModule } from 'src/app/shared/modules/title/title.module';
+import { DifferenceBetweenPureAndImpurePipesComponent } from './questions/difference_between_pure_and_impure_pipes/difference_between_pure_and_impure_pipes.component';
 
 // а б в г д е ё ж з и й к л м н о п р с т у ф х ц ч ш щ ъ ы ь э ю я
 // a b c d e f g h i j k l m n o p q r s t u v w x y z
@@ -64,10 +67,16 @@ const questions = [
     CycleOptimizationNgforComponent,
     DifferenceBetweenNgcontainerAndNgtemplateComponent,
     CustomDirectiveComponent,
+    PipeInAngularComponent,
+    CustomPipeComponent,
 ];
 
 @NgModule({
-    declarations: [AngularComponent, questions],
+    declarations: [
+        AngularComponent,
+        questions,
+        DifferenceBetweenPureAndImpurePipesComponent,
+    ],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
