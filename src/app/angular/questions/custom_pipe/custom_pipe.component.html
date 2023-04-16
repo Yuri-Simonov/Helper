@@ -27,8 +27,8 @@
     <span class="punctuation">{{'}'}}</span>
 <span class="punctuation">{{'}'}}</span></code></pre>
         <p>
-            У декоратора <code>@Pipe</code> существует конфигурационный объект,
-            в котором свойство <code>name</code> является обязательным.
+            У декоратора <code>@Pipe()</code> существует конфигурационный
+            объект, в котором свойство <code>name</code> является обязательным.
             Значением данного свойства будет имя текущего пользовательского
             пайпа, по которому он будет вызываться в HTML-шаблоне или в
             компоненте.
@@ -51,9 +51,9 @@
     <span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">private</span> customPipe: <span class="class-name">CustomPipePipe</span><span class="punctuation">)</span> <span class="punctuation">{{'{'}}</span><span class="punctuation">{{'}'}}</span>
 
     <span class="function-name">ngOnInit</span><span class="punctuation">()</span> <span class="punctuation">{{'{'}}</span>
-        console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'before pipe'</span>, <span class="object">this</span>.text.length<span class="punctuation">)</span>; <span class="comment">// 1000</span>
+        console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'перед customPipe'</span>, <span class="object">this</span>.text.<span class="property">length</span><span class="punctuation">)</span>; <span class="comment">// 1000</span>
         <span class="object">this</span>.text <span class="operator">=</span> <span class="object">this</span>.customPipe.transform<span class="punctuation">(</span><span class="object">this</span>.text<span class="punctuation">)</span>;
-        console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'after pipe'</span>, <span class="object">this</span>.text.length<span class="punctuation">)</span>; <span class="comment">// 203</span>
+        console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'после customPipe'</span>, <span class="object">this</span>.text.<span class="property">length</span><span class="punctuation">)</span>; <span class="comment">// 203</span>
     <span class="punctuation">{{'}'}}</span>
 <span class="punctuation">{{'}'}}</span></code></pre>
         <p>
