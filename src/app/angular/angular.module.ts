@@ -83,5 +83,6 @@ const questions = [
         MaterialModule,
         TitleModule,
     ],
+    providers: [],
 })
 export class AngularModule {}

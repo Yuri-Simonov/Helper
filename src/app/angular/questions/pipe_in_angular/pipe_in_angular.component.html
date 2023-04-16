@@ -20,7 +20,7 @@
         <pre><code><span class="tag"><</span><span class="tag">p</span><span class="tag">></span><span class="punctuation">{{'{'}}{{'{'}}</span> <span class="punctuation">"</span><span class="string">ПРИМЕР</span><span class="punctuation">"</span> <span class="operator">|</span> <span class="keyword">lowercase</span> <span class="punctuation">{{'}}'}}</span><span class="tag"><</span><span class="tag">/p></span> <span class="comment">// пример</span></code></pre>
         <p>
             Как видно из примера, наименование пайпы указывается после символа
-            <code>|</code>, следующим за значением, которое необходимо
+            "<code>|</code>", следующим за значением, которое необходимо
             преобразовать.
         </p>
         <p>
@@ -32,8 +32,8 @@
         <pre><code><span class="tag"><</span><span class="tag">p</span><span class="tag">></span><span class="punctuation">{{'{'}}{{'{'}}</span> <span class="punctuation">"</span><span class="string">какая-то дата</span><span class="punctuation">"</span> <span class="operator">|</span> <span class="keyword">date</span><span class="punctuation">:'</span><span class="string">dd.MM.yyyy</span><span class="punctuation">'</span> <span class="punctuation">{{'}}'}}</span><span class="tag"><</span><span class="tag">/p></span> <span class="comment">// например, 15.04.2023</span></code></pre>
         <p>
             К одному и тому же значению допустимо примененять сразу нескольких
-            пайпов, причем конечный результат будет зависеть от их
-            последовательности применения:
+            пайпов, причем конечный результат будет зависеть от
+            последовательности их применения:
         </p>
         <pre><code><span class="tag"><</span><span class="tag">p</span><span class="tag">></span><span class="punctuation">{{'{'}}{{'{'}}</span> <span class="punctuation">"</span><span class="string">Какие-то данные</span><span class="punctuation">"</span> <span class="operator">|</span> <span class="keyword">pipe1</span> <span class="operator">|</span> <span class="keyword">pipe2</span> <span class="operator">|</span> <span class="keyword">pipe3</span> <span class="punctuation">{{'}}'}}</span><span class="tag"><</span><span class="tag">/p></span></code></pre>
     </mat-expansion-panel>
