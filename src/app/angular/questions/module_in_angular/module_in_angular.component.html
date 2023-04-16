@@ -14,6 +14,7 @@
         </p>
         <pre><code><span class="keyword">@NgModule</span><span class="punctuation">({{'{'}}</span>
 	<span class="key">declarations</span>: [ParentComponent], <span class="comment">// дочерние компоненты, директивы и фильтры</span>
+	<span class="key">entryComponents</span>: [SomeDynamicComponent], <span class="comment">// компоненты, которые будут подгружаться динамически</span>
 	<span class="key">imports</span>: [SomeModule], <span class="comment">// другие модули, используемые в текущем модуле</span>
 	<span class="key">providers</span>: [SomeService], <span class="comment">// импортирование в модуль необходимых сервисов приложения</span>
 	<span class="key">bootstrap</span>: [ParentComponent], <span class="comment">// имя главного компонента модуля</span>
