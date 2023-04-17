@@ -7,17 +7,4 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class FormsInAngularComponent {
     panelOpenState: boolean = false;
-
-    buyTicketForm: FormGroup;
-
-    constructor() {
-        this._createForm();
-    }
-
-    private _createForm() {
-        this.buyTicketForm = new FormGroup({
-            passenger: new FormControl('', Validators.required),
-            passengerAge: new FormControl(null),
-        });
-    }
 }

@@ -30,6 +30,7 @@ import { PipeInAngularComponent } from 'src/app/angular/questions/pipe_in_angula
 import { CustomPipeComponent } from 'src/app/angular/questions/custom_pipe/custom_pipe.component';
 import { DifferenceBetweenPureAndImpurePipesComponent } from 'src/app/angular/questions/difference_between_pure_and_impure_pipes/difference_between_pure_and_impure_pipes.component';
 import { FormsInAngularComponent } from 'src/app/angular/questions/forms_in_angular/forms_in_angular.component';
+import { FormParentClassesComponent } from './questions/form_parent_classes/form_parent_classes.component';
 
 import { MaterialModule } from 'src/app/shared/modules/material/material.module';
 import { TitleModule } from 'src/app/shared/modules/title/title.module';
@@ -73,6 +74,7 @@ const questions = [
     CustomPipeComponent,
     DifferenceBetweenPureAndImpurePipesComponent,
     FormsInAngularComponent,
+    FormParentClassesComponent,
 ];
 
 @NgModule({
