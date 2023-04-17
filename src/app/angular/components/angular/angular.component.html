@@ -1,87 +1,12 @@
 <app-title title="Angular" [visibleIcon]="false"></app-title>
-<div class="content content_simple">
-    <div class="content__item">
-        <app-difference-between-component-and-directive></app-difference-between-component-and-directive>
-    </div>
-    <div class="content__item">
-        <app-service-import></app-service-import>
-    </div>
-    <div class="content__item">
-        <app-renderer></app-renderer>
-    </div>
-    <div class="content__item">
-        <app-protractor></app-protractor>
-    </div>
-    <div class="content__item">
-        <app-other-scripts-and-styles-connect></app-other-scripts-and-styles-connect>
-    </div>
-    <div class="content__item">
-        <app-bootstrap-in-ng-module></app-bootstrap-in-ng-module>
-    </div>
-    <div class="content__item">
-        <app-angular-cli></app-angular-cli>
-    </div>
-    <div class="content__item">
-        <app-module-in-angular></app-module-in-angular>
-    </div>
-    <div class="content__item">
-        <app-component-in-angular></app-component-in-angular>
-    </div>
-    <div class="content__item">
-        <app-service-in-angular></app-service-in-angular>
-    </div>
-    <div class="content__item">
-        <app-directive-in-angular></app-directive-in-angular>
-    </div>
-    <div class="content__item">
-        <app-compilation-mechanisms></app-compilation-mechanisms>
-    </div>
-    <div class="content__item">
-        <app-data-binding-mechanisms></app-data-binding-mechanisms>
-    </div>
-    <div class="content__item">
-        <app-custom-events></app-custom-events>
-    </div>
-    <div class="content__item">
-        <app-two-way-binding-in-forms></app-two-way-binding-in-forms>
-    </div>
-    <div class="content__item">
-        <app-difference-between-input-and-output></app-difference-between-input-and-output>
-    </div>
-    <div class="content__item">
-        <app-component-lifecycle></app-component-lifecycle>
-    </div>
-    <div class="content__item">
-        <app-directive-lifecycle></app-directive-lifecycle>
-    </div>
-    <div class="content__item">
-        <app-service-lifecycle></app-service-lifecycle>
-    </div>
-    <div class="content__item">
-        <app-ways-of-interaction-between-components></app-ways-of-interaction-between-components>
-    </div>
-    <div class="content__item">
-        <app-cycle-optimization-ngfor></app-cycle-optimization-ngfor>
-    </div>
-    <div class="content__item">
-        <app-difference-between-ngcontainer-and-ngtemplate></app-difference-between-ngcontainer-and-ngtemplate>
-    </div>
-    <div class="content__item">
-        <app-custom-directive></app-custom-directive>
-    </div>
-    <div class="content__item">
-        <app-pipe-in-angular></app-pipe-in-angular>
-    </div>
-    <div class="content__item">
-        <app-custom-pipe></app-custom-pipe>
-    </div>
-    <div class="content__item">
-        <app-difference-between-pure-and-impure-pipes></app-difference-between-pure-and-impure-pipes>
-    </div>
-    <div class="content__item">
-        <app-forms-in-angular></app-forms-in-angular>
-    </div>
-    <div class="content__item">
-        <app-form-parent-classes></app-form-parent-classes>
+<div class="content">
+    <app-sidenav
+        [list]="list"
+        [(state)]="listState"
+        [style.left.%]="listState ? 0 : -100"
+    ></app-sidenav>
+    <div class="content__items">
+        <router-outlet></router-outlet>
+        <app-empty *ngIf="currentPath === '/angular'"></app-empty>
     </div>
 </div>

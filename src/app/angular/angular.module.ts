@@ -3,6 +3,15 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AngularComponent } from 'src/app/angular/components/angular/angular.component';
+import { FormComponent } from 'src/app/angular/components/form/form.component';
+import { DirectiveComponent } from 'src/app/angular/components/directive/directive.component';
+import { ComponentComponent } from 'src/app/angular/components/component/component.component';
+import { ServiceComponent } from 'src/app/angular/components/service/service.component';
+import { TestComponent } from 'src/app/angular/components/test/test.component';
+import { DecoratorComponent } from 'src/app/angular/components/decorator/decorator.component';
+import { PipeComponent } from 'src/app/angular/components/pipe/pipe.component';
+import { OthersComponent } from 'src/app/angular/components/others/others.component';
+
 import { DifferenceBetweenComponentAndDirectiveComponent } from 'src/app/angular/questions/difference_between_component_and_directive/difference_between_component_and_directive.component';
 import { ServiceImportComponent } from 'src/app/angular/questions/service_import/service_import.component';
 import { RendererComponent } from 'src/app/angular/questions/renderer/renderer.component';
@@ -30,11 +39,12 @@ import { PipeInAngularComponent } from 'src/app/angular/questions/pipe_in_angula
 import { CustomPipeComponent } from 'src/app/angular/questions/custom_pipe/custom_pipe.component';
 import { DifferenceBetweenPureAndImpurePipesComponent } from 'src/app/angular/questions/difference_between_pure_and_impure_pipes/difference_between_pure_and_impure_pipes.component';
 import { FormsInAngularComponent } from 'src/app/angular/questions/forms_in_angular/forms_in_angular.component';
-import { FormParentClassesComponent } from './questions/form_parent_classes/form_parent_classes.component';
+import { FormParentClassesComponent } from 'src/app/angular/questions/form_parent_classes/form_parent_classes.component';
 
 import { MaterialModule } from 'src/app/shared/modules/material/material.module';
 import { TitleModule } from 'src/app/shared/modules/title/title.module';
-import { FormsModule } from '@angular/forms';
+import { SidenavModule } from 'src/app/shared/modules/sidenav/sidenav.module';
+import { EmptyModule } from 'src/app/shared/modules/empty/empty.module';
 
 // а б в г д е ё ж з и й к л м н о п р с т у ф х ц ч ш щ ъ ы ь э ю я
 // a b c d e f g h i j k l m n o p q r s t u v w x y z
@@ -43,6 +53,16 @@ const routes: Routes = [
     {
         path: 'angular',
         component: AngularComponent,
+        children: [
+            { path: 'form', component: FormComponent },
+            { path: 'directive', component: DirectiveComponent },
+            { path: 'component', component: ComponentComponent },
+            { path: 'service', component: ServiceComponent },
+            { path: 'test', component: TestComponent },
+            { path: 'decorator', component: DecoratorComponent },
+            { path: 'pipe', component: PipeComponent },
+            { path: 'others', component: OthersComponent },
+        ],
     },
 ];
 
@@ -78,13 +98,25 @@ const questions = [
 ];
 
 @NgModule({
-    declarations: [AngularComponent, questions],
+    declarations: [
+        questions,
+        AngularComponent,
+        FormComponent,
+        DirectiveComponent,
+        ComponentComponent,
+        ServiceComponent,
+        TestComponent,
+        DecoratorComponent,
+        OthersComponent,
+        PipeComponent,
+    ],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
         MaterialModule,
         TitleModule,
-        FormsModule, // не забыть удалить
+        SidenavModule,
+        EmptyModule,
     ],
     providers: [],
 })
