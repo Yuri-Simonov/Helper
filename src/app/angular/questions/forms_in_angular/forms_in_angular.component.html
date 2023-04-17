@@ -1,0 +1,82 @@
+<mat-accordion>
+    <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+    >
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Какие существуют виды форм в Angular и какая между ними разница?
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            В Angular различают 2 вида групп:
+            <span class="attention">стандартные</span> (или шаблонные) и
+            <span class="attention">реактивные</span>.
+        </p>
+        <i class="subtitle">Стандартные формы</i>
+        <p>
+            Тут все банально просто. Создаем в компоненте объект формы и
+            подвязываемся к нему с помощью директивы <code>[(NgModel)]</code>,
+            которую указываем в полях формы в HTML-шаблоне:
+        </p>
+        <pre><code><span class="comment">// компонент</span>
+loginForm: <span class="type">any</span> <span class="operator">=</span> <span class="punctuation">{{'{'}}</span>
+	<span class="key">login</span>: <span class="string">''</span>,
+	<span class="key">password</span>: <span class="string">''</span>,
+<span class="punctuation">{{'}'}}</span>
+<span class=""></span>
+<span class="comment">// шаблон</span>
+<span class="tag"><</span><span class="tag">input</span> <span class="keyword">type</span><span class="operator">=</span><span class="punctuation">"</span><span class="string">text</span><span class="punctuation">"</span> <span class="punctuation">[(</span><span class="keyword">ngModel</span><span class="punctuation">)]</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">login</span><span class="punctuation">"</span><span class="tag"> /></span>
+<span class="tag"><</span><span class="tag">input</span> <span class="keyword">type</span><span class="operator">=</span><span class="punctuation">"</span><span class="string">password</span><span class="punctuation">"</span> <span class="punctuation">[(</span><span class="keyword">ngModel</span><span class="punctuation">)]</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">password</span><span class="punctuation">"</span><span class="tag"> /></span>
+</code></pre>
+        <i class="subtitle">Реактивные формы</i>
+        <p>
+            Реактивные формы построены на основе механизма, использующего
+            реактивный подход к программированию.
+        </p>
+        <p>
+            Реактивные формы создаются с помощью определенных объектов, таких
+            как <code>FormGroup</code> и <code>FormControl</code>, где
+            <code>FormGroup</code> - группа полей реактивной формы, а
+            <code>FormControl</code> - само поле.
+        </p>
+        <pre><code><span class="comment">// компонент</span>
+<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">ReactiveFormExampleComponent</span> <span class=""><span class="punctuation">{{'{'}}</span></span>
+	someForm: <span class="interface-name">FormGroup</span>;
+	<span></span>
+	<span class="object">this</span>.someForm <span class="operator">=</span> <span class="keyword">new</span> <span class="interface-name">FormGroup</span><span class="punctuation">{{'({'}}</span>
+		<span class="key">login</span>: <span class="keyword">new</span> <span class="interface-name">FormControl</span><span class="punctuation">('')</span>,
+		<span class="key">password</span>: <span class="keyword">new</span> <span class="interface-name">FormControl</span><span class="punctuation">(</span><span class="punctuation">''</span>, Validators.required<span class="punctuation">)</span>,
+    <span class="punctuation">{{'})'}}</span>
+<span class="punctuation">{{'}'}}</span>
+<span></span>
+<span class="comment">// шаблон</span>
+<span class="tag"><</span><span class="tag">form</span> <span class="punctuation">[</span><span class="keyword">formGroup</span><span class="punctuation">]</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">someForm</span><span class="punctuation">"</span><span class="tag">></span>
+	<span class="tag"><</span><span class="tag">input</span> <span class="keyword">type</span><span class="operator">=</span><span class="punctuation">"</span><span class="string">text</span><span class="punctuation">"</span> <span class="punctuation">[</span><span class="keyword">formControlName</span><span class="punctuation">]</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">login</span><span class="punctuation">"</span><span class="tag"> /></span>
+	<span class="tag"><</span><span class="tag">input</span> <span class="keyword">type</span><span class="operator">=</span><span class="punctuation">"</span><span class="string">password</span><span class="punctuation">"</span> <span class="punctuation">[</span><span class="keyword">formControlName</span><span class="punctuation">]</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">password</span><span class="punctuation">"</span><span class="tag"> /></span>
+<span class="tag"><</span><span class="tag">/form></span>
+</code></pre>
+        <p>
+            В шаблоне главная группа обозначается директивой
+            <code>formGroup</code>, которой передается переменная одноименного
+            типа, содержащая описание модели формы. Вложенные группы
+            обозначаются директивой <code>formGroupName</code>, а поля группы —
+            директивой <code>formControlName</code>.
+        </p>
+        <i class="subtitle"
+            >Так в чем же разница между шаблонными и реактивными формами</i
+        >
+        <p>
+            Шаблонные формы используют модуль — <code>FormsModule</code>, а
+            реактивные — <code>ReactiveFormsModule</code>
+        </p>
+        <p>
+            Шаблонные формы — <span class="attention">асинхронные</span>, в то
+            время как реактивные — <span class="attention">синхронные</span>.
+        </p>
+        <p>
+            Большая часть логики шаблонных форм написала в шаблоне, в то время,
+            как логика реактивных форм прописана в компоненте.
+        </p>
+    </mat-expansion-panel>
+</mat-accordion>

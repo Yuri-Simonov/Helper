@@ -28,10 +28,12 @@ import { DifferenceBetweenNgcontainerAndNgtemplateComponent } from 'src/app/angu
 import { CustomDirectiveComponent } from 'src/app/angular/questions/custom_directive/custom_directive.component';
 import { PipeInAngularComponent } from 'src/app/angular/questions/pipe_in_angular/pipe_in_angular.component';
 import { CustomPipeComponent } from 'src/app/angular/questions/custom_pipe/custom_pipe.component';
+import { DifferenceBetweenPureAndImpurePipesComponent } from 'src/app/angular/questions/difference_between_pure_and_impure_pipes/difference_between_pure_and_impure_pipes.component';
+import { FormsInAngularComponent } from 'src/app/angular/questions/forms_in_angular/forms_in_angular.component';
 
 import { MaterialModule } from 'src/app/shared/modules/material/material.module';
 import { TitleModule } from 'src/app/shared/modules/title/title.module';
-import { DifferenceBetweenPureAndImpurePipesComponent } from './questions/difference_between_pure_and_impure_pipes/difference_between_pure_and_impure_pipes.component';
+import { FormsModule } from '@angular/forms';
 
 // а б в г д е ё ж з и й к л м н о п р с т у ф х ц ч ш щ ъ ы ь э ю я
 // a b c d e f g h i j k l m n o p q r s t u v w x y z
@@ -69,19 +71,18 @@ const questions = [
     CustomDirectiveComponent,
     PipeInAngularComponent,
     CustomPipeComponent,
+    DifferenceBetweenPureAndImpurePipesComponent,
+    FormsInAngularComponent,
 ];
 
 @NgModule({
-    declarations: [
-        AngularComponent,
-        questions,
-        DifferenceBetweenPureAndImpurePipesComponent,
-    ],
+    declarations: [AngularComponent, questions],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
         MaterialModule,
         TitleModule,
+        FormsModule, // не забыть удалить
     ],
     providers: [],
 })
