@@ -1,0 +1,31 @@
+<mat-accordion>
+    <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+    >
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Одна и та же функция была вызвана несколько раз, но в разных
+                местах, какое в итоге будет у нее лексическое окружение?
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            Запомните правило:
+            <span class="attention">
+                Один вызов – одно лексическое окружение.
+            </span>
+        </p>
+        <p>
+            Новое лексическое окружение функции создаётся каждый раз, когда
+            функция выполняется.
+        </p>
+        <p>
+            То есть, если функция вызывается несколько раз, то
+            <span class="attention">
+                для каждого вызова будет создано своё лексическое окружение,
+            </span>
+            со своими локальными переменными и параметрами, зависящими от места
+            вызова функции.
+        </p>
+    </mat-expansion-panel>
+</mat-accordion>

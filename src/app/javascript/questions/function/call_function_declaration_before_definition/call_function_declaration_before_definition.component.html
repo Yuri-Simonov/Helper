@@ -1,0 +1,30 @@
+<mat-accordion>
+    <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+    >
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Почему функции, объявленные через "Function Declaration" можно
+                вызывать перед их определением в коде?
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            Функции, объявленные через <code>Function Declaration</code>, в
+            отличие от переменных, объявленных с помощью <code>let</code> и
+            <code>const</code> (сюда же входит и
+            <code>Function Expresion</code>),
+            <span class="attention">
+                инициализируются, когда создаётся их лексическое окружение,
+            </span>
+            а не когда происходит их вызов в коде.
+        </p>
+        <p>
+            Лексическое окружение верхнеуровневых функций, объявленных через
+            <code>Function Declaration</code>,
+            <span class="attention">
+                создается сразу после начала считывания кода интерпритатором.
+            </span>
+        </p>
+    </mat-expansion-panel>
+</mat-accordion>

@@ -1,112 +1,15 @@
 <div class="content__item">
-    <mat-accordion>
-        <mat-expansion-panel
-            (opened)="panelOpenState = true"
-            (closed)="panelOpenState = false"
-        >
-            <mat-expansion-panel-header>
-                <mat-panel-title> Что такое прототип? </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>
-                <span class="attention">Прототип</span> (prototype) - Это
-                объект-шаблон, который присутствует у любого объекта в
-                JavaScript и от которого объекты наследуют свойства и методы.
-            </p>
-        </mat-expansion-panel>
-    </mat-accordion>
+    <app-prototype-in-js></app-prototype-in-js>
 </div>
 <div class="content__item">
-    <mat-accordion>
-        <mat-expansion-panel
-            (opened)="panelOpenState = true"
-            (closed)="panelOpenState = false"
-        >
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Как работает цепочка прототипов в JavaScript?
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>
-                Каждый объект в JavaScript имеет свой объект-прототип. Но при
-                этом, объект-прототип может иметь свой прототип и наследовать
-                его свойства и методы (и так далее).
-            </p>
-            <p>
-                Иначе говоря, если в родительском объекте не находится нужное
-                свойство или метод, то оно ищется в прототипе данного объекта.
-                Если в прототипе объекта не было найдено искомое свойство или
-                метод и у прототипа объекта есть свой собственный прототип, то
-                свойство или метод будут уже искаться в нем. То есть,
-                <span class="attention">
-                    поиск идет по цепочке прототипов сверху вниз
-                </span>
-                .
-            </p>
-        </mat-expansion-panel>
-    </mat-accordion>
+    <app-prototype-chain></app-prototype-chain>
 </div>
 <div class="content__item">
-    <mat-accordion>
-        <mat-expansion-panel
-            (opened)="panelOpenState = true"
-            (closed)="panelOpenState = false"
-        >
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Как добавить свой метод или свойство в прототип?
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>
-                Чтобы добавить свое свойство / метод в глобальный прототип для
-                объекта, используется следующая запись:
-            </p>
-
-            <pre>
-<code><span class="object">Object</span>.prototype.<span class="function-name">sayHello</span> = <span class="keyword">function</span><span class="punctuation">()</span><span class="punctuation">{{ '{' }}</span>...<span class="punctuation">{{ '}' }}</span><span></span>
-</code>
-</pre>
-            <p>
-                В коде выше представлен
-                <span class="attention">
-                    пример для глобального объекта Object
-                </span>
-                .
-            </p>
-        </mat-expansion-panel>
-    </mat-accordion>
+    <app-own-method-or-property-in-prototype></app-own-method-or-property-in-prototype>
 </div>
 <div class="content__item">
-    <mat-accordion>
-        <mat-expansion-panel
-            (opened)="panelOpenState = true"
-            (closed)="panelOpenState = false"
-        >
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Чем заканчивается цепочка прототипов?
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>
-                Цепочка заканчивается, если
-                <span class="attention">прототип становится равным null</span>.
-            </p>
-        </mat-expansion-panel>
-    </mat-accordion>
+    <app-prototype-chain-end></app-prototype-chain-end>
 </div>
 <div class="content__item">
-    <mat-accordion>
-        <mat-expansion-panel
-            (opened)="panelOpenState = true"
-            (closed)="panelOpenState = false"
-        >
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Как сделать объект "а" прототипом объекта "b"?
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>
-                <i>В разработке...</i>
-            </p>
-        </mat-expansion-panel>
-    </mat-accordion>
+    <app-object-prototype-of-another-object></app-object-prototype-of-another-object>
 </div>
