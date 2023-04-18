@@ -36,6 +36,7 @@ import { CompilationMechanismsComponent } from 'src/app/angular/questions/others
 import { CustomEventsComponent } from 'src/app/angular/questions/others/custom_events/custom_events.component';
 import { CycleOptimizationNgforComponent } from 'src/app/angular/questions/others/cycle_optimization_ngfor/cycle_optimization_ngfor.component';
 import { DataBindingMechanismsComponent } from 'src/app/angular/questions/others/data_binding_mechanisms/data_binding_mechanisms.component';
+import { DependencyInjectionComponent } from 'src/app/angular/questions/others/dependency_injection/dependency_injection.component';
 import { DifferenceBetweenNgcontainerAndNgtemplateComponent } from 'src/app/angular/questions/others/difference_between_ngcontainer_and_ngtemplate/difference_between_ngcontainer_and_ngtemplate.component';
 import { ModuleInAngularComponent } from 'src/app/angular/questions/others/module_in_angular/module_in_angular.component';
 import { OtherScriptsAndStylesConnectComponent } from 'src/app/angular/questions/others/other_scripts_and_styles_connect/other_scripts_and_styles_connect.component';
@@ -108,6 +109,7 @@ const questionsOthers = [
     CustomEventsComponent,
     CycleOptimizationNgforComponent,
     DataBindingMechanismsComponent,
+    DependencyInjectionComponent,
     DifferenceBetweenNgcontainerAndNgtemplateComponent,
     ModuleInAngularComponent,
     OtherScriptsAndStylesConnectComponent,

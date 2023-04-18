@@ -14,14 +14,14 @@ export class AngularComponent {
     panelOpenState: boolean;
 
     list: IList[] = [
-        { name: 'Формы', path: 'form' },
+        { name: 'Декораторы', path: 'decorator' },
         { name: 'Директивы', path: 'directive' },
         { name: 'Компоненты', path: 'component' },
-        { name: 'Сервисы', path: 'service' },
-        { name: 'Тестирование', path: 'test' },
-        { name: 'Декораторы', path: 'decorator' },
         { name: 'Пайпы / Фильтры', path: 'pipe' },
         { name: 'Разное', path: 'others' },
+        { name: 'Сервисы', path: 'service' },
+        { name: 'Тестирование', path: 'test' },
+        { name: 'Формы', path: 'form' },
     ];
     listState: boolean = false;
     currentPath: string;
