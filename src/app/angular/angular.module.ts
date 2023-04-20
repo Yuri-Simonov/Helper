@@ -35,6 +35,7 @@ import { AngularCliComponent } from 'src/app/angular/questions/others/angular_cl
 import { CompilationMechanismsComponent } from 'src/app/angular/questions/others/compilation_mechanisms/compilation_mechanisms.component';
 import { CustomEventsComponent } from 'src/app/angular/questions/others/custom_events/custom_events.component';
 import { ChangeDetectionComponent } from 'src/app/angular/questions/others/change_detection/change_detection.component';
+import { ChangeDetectionRefComponent } from 'src/app/angular/questions/others/change_detection_ref/change_detection_ref.component';
 import { CycleOptimizationNgforComponent } from 'src/app/angular/questions/others/cycle_optimization_ngfor/cycle_optimization_ngfor.component';
 import { DataBindingMechanismsComponent } from 'src/app/angular/questions/others/data_binding_mechanisms/data_binding_mechanisms.component';
 import { DependencyInjectionComponent } from 'src/app/angular/questions/others/dependency_injection/dependency_injection.component';
@@ -109,6 +110,7 @@ const questionsOthers = [
     CompilationMechanismsComponent,
     CustomEventsComponent,
     ChangeDetectionComponent,
+    ChangeDetectionRefComponent,
     CycleOptimizationNgforComponent,
     DataBindingMechanismsComponent,
     DependencyInjectionComponent,
