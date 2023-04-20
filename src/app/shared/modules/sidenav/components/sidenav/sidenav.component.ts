@@ -17,4 +17,6 @@ export class SidenavComponent {
         this.stateProps = false;
         this.stateChange.emit(this.stateProps);
     }
+
+    // Отследить событие скролла
 }
