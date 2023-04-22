@@ -17,6 +17,7 @@ import { TestComponent } from 'src/app/angular/components/test/test.component';
 // Импорты компонентов с вопросами по компонентам
 import { ComponentInAngularComponent } from 'src/app/angular/questions/component/component_in_angular/component_in_angular.component';
 import { ComponentLifecycleComponent } from 'src/app/angular/questions/component/component_lifecycle/component_lifecycle.component';
+import { OndestroyComponent } from 'src/app/angular/questions/component/ondestroy/ondestroy.component';
 import { WaysOfInteractionBetweenComponentsComponent } from 'src/app/angular/questions/component/ways_of_interaction_between_components/ways_of_interaction_between_components.component';
 // Импорты компонентов с вопросами по декораторам
 import { BootstrapInNgModuleComponent } from 'src/app/angular/questions/decorator/bootstrap_in_ng_module/bootstrap_in_ng_module.component';
@@ -84,6 +85,7 @@ const routes: Routes = [
 const questionsComponent = [
     ComponentInAngularComponent,
     ComponentLifecycleComponent,
+    OndestroyComponent,
     WaysOfInteractionBetweenComponentsComponent,
 ];
 // Вопросы по декораторам
