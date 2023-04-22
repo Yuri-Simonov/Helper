@@ -22,6 +22,7 @@ import { WaysOfInteractionBetweenComponentsComponent } from 'src/app/angular/que
 // Импорты компонентов с вопросами по декораторам
 import { BootstrapInNgModuleComponent } from 'src/app/angular/questions/decorator/bootstrap_in_ng_module/bootstrap_in_ng_module.component';
 import { DifferenceBetweenInputAndOutputComponent } from 'src/app/angular/questions/decorator/difference_between_input_and_output/difference_between_input_and_output.component';
+import { ObjectPropsInDecoratorInputComponent } from './questions/decorator/object_props_in_decorator_input/object_props_in_decorator_input.component';
 // Импорты компонентов с вопросами по директивам
 import { CustomDirectiveComponent } from 'src/app/angular/questions/directive/custom_directive/custom_directive.component';
 import { DifferenceBetweenComponentAndDirectiveComponent } from 'src/app/angular/questions/directive/difference_between_component_and_directive/difference_between_component_and_directive.component';
@@ -92,6 +93,7 @@ const questionsComponent = [
 const questionsDecorator = [
     BootstrapInNgModuleComponent,
     DifferenceBetweenInputAndOutputComponent,
+    ObjectPropsInDecoratorInputComponent,
 ];
 // Вопросы по директивам
 const questionsDirective = [
