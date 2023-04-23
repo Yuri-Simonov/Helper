@@ -21,7 +21,7 @@
         </p>
         <p>Как это выглядит на практике:</p>
         <pre><code><span class="comment">// в шаблоне (someItem.component.html)</span>
-<span class="tag"><</span><span class="tag">li</span> <span class="keyword">*ngFor</span><span class="operator">=</span><span class="punctuation">"</span>let item of items; trackBy: trackByFunction<span class="punctuation">"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/li></span>
+<span class="tag"><</span><span class="tag">li</span> <span class="keyword">*ngFor</span><span class="operator">=</span><span class="punctuation">"</span><span class="keyword">let</span> item <span class="keyword">of</span> items; <span class="keyword">trackBy</span>: <span class="function-name">trackByFunction</span><span class="punctuation">"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/li></span>
 <span></span>
 <span class="comment">// в компоненте (someItem.component.ts)</span>
 <span class="function-name">trackByFunction</span><span class="punctuation">(</span>index, item<span class="punctuation">)</span> <span class="punctuation">{{'{'}}</span>

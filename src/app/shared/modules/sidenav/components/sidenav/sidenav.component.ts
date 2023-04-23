@@ -21,9 +21,9 @@ export class SidenavComponent {
     @Output() stateChange = new EventEmitter<boolean>();
 
     changeListState(): void {
-        this.stateProps = !this.stateProps;
+        this.stateProps && this.resetBodyClass();
+        this.stateProps = false;
         this.stateChange.emit(this.stateProps);
-        this.resetBodyClass();
     }
 
     resetBodyClass(): void {

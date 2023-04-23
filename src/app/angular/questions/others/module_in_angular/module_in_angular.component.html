@@ -13,15 +13,15 @@
             фильтров и сервисов.
         </p>
         <pre><code><span class="keyword">@NgModule</span><span class="punctuation">({{'{'}}</span>
-	<span class="key">declarations</span>: [ParentComponent], <span class="comment">// дочерние компоненты, директивы и фильтры</span>
-	<span class="key">entryComponents</span>: [SomeDynamicComponent], <span class="comment">// компоненты, которые будут подгружаться динамически</span>
-	<span class="key">imports</span>: [SomeModule], <span class="comment">// другие модули, используемые в текущем модуле</span>
-	<span class="key">providers</span>: [SomeService], <span class="comment">// импортирование в модуль необходимых сервисов приложения</span>
-	<span class="key">bootstrap</span>: [ParentComponent], <span class="comment">// имя главного компонента модуля</span>
-	<span class="key">exports</span>: [SomeComponent], <span class="comment">// экспортируемые компоненты, директивы и фильтры, которые могут быть использованы другими модулями</span>
+	<span class="key">declarations</span><span class="punctuation">: [</span><span class="class-name">ParentComponent</span><span class="punctuation">]</span>, <span class="comment">// дочерние компоненты, директивы и фильтры</span>
+	<span class="key">entryComponents</span><span class="punctuation">: [</span><span class="class-name">SomeDynamicComponent</span><span class="punctuation">]</span>, <span class="comment">// компоненты, которые будут подгружаться динамически</span>
+	<span class="key">imports</span><span class="punctuation">: [</span><span class="class-name">SomeModule</span><span class="punctuation">]</span>, <span class="comment">// другие модули, используемые в текущем модуле</span>
+	<span class="key">providers</span><span class="punctuation">: [</span><span class="class-name">SomeService</span><span class="punctuation">]</span>, <span class="comment">// импортирование в модуль необходимых сервисов приложения</span>
+	<span class="key">bootstrap</span><span class="punctuation">: [</span><span class="class-name">ParentComponent</span><span class="punctuation">]</span>, <span class="comment">// имя главного компонента модуля</span>
+	<span class="key">exports</span><span class="punctuation">: [</span><span class="class-name">SomeComponent</span><span class="punctuation">]</span>, <span class="comment">// экспортируемые компоненты, директивы и фильтры, которые могут быть использованы другими модулями</span>
 	<span class="punctuation">{{'}'}})</span>
-<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">ParentModule</span> <span class="punctuation">{{'{}'}}</span> <span class="comment">// класс, к которому привязывается декоратор @NgModule()</span>
-	</code>
+	<span></span>
+<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">ParentModule</span> <span class="punctuation">{{'{}'}}</span> <span class="comment">// класс, к которому привязывается декоратор @NgModule()</span></code>
 				</pre>
     </mat-expansion-panel>
 </mat-accordion>
