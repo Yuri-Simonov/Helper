@@ -1,4 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    OnDestroy,
+    OnInit,
+} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IList } from 'src/app/shared/types/list.interface';
@@ -7,6 +12,7 @@ import { IList } from 'src/app/shared/types/list.interface';
     selector: 'app-angular',
     templateUrl: './angular.component.html',
     styleUrls: ['./angular.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 // а б в г д е ё ж з и й к л м н о п р с т у ф х ц ч ш щ ъ ы ь э ю я

@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-opp',
-  templateUrl: './opp.component.html',
-  styleUrls: ['./opp.component.scss']
+    selector: 'app-opp',
+    templateUrl: './opp.component.html',
+    styleUrls: ['./opp.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OppComponent {
-
-}
+export class OppComponent {}

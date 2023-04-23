@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    Output,
+} from '@angular/core';
 
 import { IList } from 'src/app/shared/types/list.interface';
 
@@ -6,6 +12,7 @@ import { IList } from 'src/app/shared/types/list.interface';
     selector: 'app-sidenav',
     templateUrl: './sidenav.component.html',
     styleUrls: ['./sidenav.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidenavComponent {
     @Input('list') listProps: IList[];
