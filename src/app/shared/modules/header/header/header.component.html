@@ -1,21 +1,32 @@
 <mat-toolbar color="primary" class="header">
-    <a routerLink="/" class="header__logo">Helper</a>
+    <a routerLink="/" class="header__logo" (click)="resetBodyClass()">Helper</a>
     <span class="header__spacer"></span>
     <button mat-button [matMenuTriggerFor]="afterMenu">
         <mat-icon>arrow_drop_down</mat-icon>
         Разделы
     </button>
     <mat-menu #afterMenu="matMenu" xPosition="after">
-        <a routerLink="javascript" routerLinkActive="disabled" mat-menu-item>
+        <a
+            routerLink="javascript"
+            routerLinkActive="disabled"
+            mat-menu-item
+            (click)="resetBodyClass()"
+        >
             JavaScript
         </a>
-        <a routerLink="angular" routerLinkActive="disabled" mat-menu-item>
+        <a
+            routerLink="angular"
+            routerLinkActive="disabled"
+            mat-menu-item
+            (click)="resetBodyClass()"
+        >
             Angular
         </a>
         <a
             routerLink="git"
             routerLinkActive="disabled"
             mat-menu-item
+            (click)="resetBodyClass()"
             class="disabled"
         >
             Git
@@ -24,6 +35,7 @@
             routerLink="others"
             routerLinkActive="disabled"
             mat-menu-item
+            (click)="resetBodyClass()"
             class="disabled"
         >
             Разное

@@ -22,5 +22,11 @@ export class TitleComponent {
     changeListState(): void {
         this.stateProps = !this.stateProps;
         this.stateChange.emit(this.stateProps);
+        this.resetBodyClass();
+    }
+
+    resetBodyClass(): void {
+        const body = document.querySelector('body');
+        body?.classList.toggle('lock');
     }
 }

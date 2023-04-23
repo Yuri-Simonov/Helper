@@ -21,9 +21,13 @@ export class SidenavComponent {
     @Output() stateChange = new EventEmitter<boolean>();
 
     changeListState(): void {
-        this.stateProps = false;
+        this.stateProps = !this.stateProps;
         this.stateChange.emit(this.stateProps);
+        this.resetBodyClass();
     }
 
-    // Отследить событие скролла
+    resetBodyClass(): void {
+        const body = document.querySelector('body');
+        body?.classList.toggle('lock');
+    }
 }
