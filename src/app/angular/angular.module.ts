@@ -22,6 +22,8 @@ import { WaysOfInteractionBetweenComponentsComponent } from 'src/app/angular/que
 // Импорты компонентов с вопросами по декораторам
 import { BootstrapInNgModuleComponent } from 'src/app/angular/questions/decorator/bootstrap_in_ng_module/bootstrap_in_ng_module.component';
 import { DecoratorInjectableComponent } from 'src/app/angular/questions/decorator/decorator_injectable/decorator_injectable.component';
+import { DecoratorOptionalComponent } from 'src/app/angular/questions/decorator/decorator_optional/decorator_optional.component';
+import { DecoratorSkipselfComponent } from 'src/app/angular/questions/decorator/decorator_skipself/decorator_skipself.component';
 import { DifferenceBetweenInputAndOutputComponent } from 'src/app/angular/questions/decorator/difference_between_input_and_output/difference_between_input_and_output.component';
 import { ObjectPropsInDecoratorInputComponent } from './questions/decorator/object_props_in_decorator_input/object_props_in_decorator_input.component';
 // Импорты компонентов с вопросами по директивам
@@ -94,6 +96,8 @@ const questionsComponent = [
 const questionsDecorator = [
     BootstrapInNgModuleComponent,
     DecoratorInjectableComponent,
+    DecoratorOptionalComponent,
+    DecoratorSkipselfComponent,
     DifferenceBetweenInputAndOutputComponent,
     ObjectPropsInDecoratorInputComponent,
 ];
