@@ -11,6 +11,7 @@ import { DirectiveComponent } from 'src/app/angular/components/directive/directi
 import { FormComponent } from 'src/app/angular/components/form/form.component';
 import { OthersComponent } from 'src/app/angular/components/others/others.component';
 import { PipeComponent } from 'src/app/angular/components/pipe/pipe.component';
+import { RxjsComponent } from './components/rxjs/rxjs.component';
 import { ServiceComponent } from 'src/app/angular/components/service/service.component';
 import { TestComponent } from 'src/app/angular/components/test/test.component';
 
@@ -52,6 +53,10 @@ import { RendererComponent } from 'src/app/angular/questions/others/renderer/ren
 import { CustomPipeComponent } from 'src/app/angular/questions/pipe/custom_pipe/custom_pipe.component';
 import { DifferenceBetweenPureAndImpurePipesComponent } from 'src/app/angular/questions/pipe/difference_between_pure_and_impure_pipes/difference_between_pure_and_impure_pipes.component';
 import { PipeInAngularComponent } from 'src/app/angular/questions/pipe/pipe_in_angular/pipe_in_angular.component';
+// Импорты компонентов с вопросами по библиотеке RxJs
+import { DifferenceBetweenObservableAndPromiseComponent } from 'src/app/angular/questions/rxjs/difference_between_observable_and_promise/difference_between_observable_and_promise.component';
+import { ObservableInAngularComponent } from 'src/app/angular/questions/rxjs/observable_in_angular/observable_in_angular.component';
+import { RxjsInAngularComponent } from 'src/app/angular/questions/rxjs/rxjs_in_angular/rxjs_in_angular.component';
 // Импорты компонентов с вопросами по сервисам
 import { ServiceImportComponent } from 'src/app/angular/questions/service/service_import/service_import.component';
 import { ServiceInAngularComponent } from 'src/app/angular/questions/service/service_in_angular/service_in_angular.component';
@@ -78,6 +83,7 @@ const routes: Routes = [
             { path: 'form', component: FormComponent },
             { path: 'others', component: OthersComponent },
             { path: 'pipe', component: PipeComponent },
+            { path: 'rxjs', component: RxjsComponent },
             { path: 'service', component: ServiceComponent },
             { path: 'test', component: TestComponent },
             { path: '**', redirectTo: '' },
@@ -135,6 +141,13 @@ const questionsPipe = [
     DifferenceBetweenPureAndImpurePipesComponent,
     PipeInAngularComponent,
 ];
+// Вопросы по библиотеке RxJs
+
+const questionsRxJs = [
+    DifferenceBetweenObservableAndPromiseComponent,
+    ObservableInAngularComponent,
+    RxjsInAngularComponent,
+];
 // Вопросы по сервисам
 const questionsService = [
     ServiceImportComponent,
@@ -152,6 +165,7 @@ const questions = [
     questionsForm,
     questionsOthers,
     questionsPipe,
+    questionsRxJs,
     questionsService,
     questionsTest,
 ];
@@ -166,6 +180,7 @@ const questions = [
         FormComponent,
         OthersComponent,
         PipeComponent,
+        RxjsComponent,
         ServiceComponent,
         TestComponent,
     ],

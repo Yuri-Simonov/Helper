@@ -29,6 +29,7 @@ export class AngularComponent implements OnInit, OnDestroy {
         { name: 'Сервисы', path: 'service' },
         { name: 'Тестирование', path: 'test' },
         { name: 'Формы', path: 'form' },
+        { name: 'RxJs', path: 'rxjs' },
     ];
     listState: boolean = false;
     currentPath: string;
