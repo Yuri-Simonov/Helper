@@ -19,16 +19,16 @@
             источник события получать тот же массив целиком.
         </p>
         <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{{'{'}}</span>
-    numbers: <span class="class-name">Observable</span><span class="type">{{'<'}}{{'number[]>'}}</span> <span class="operator">=</span> <span class="function-name">of</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>; <span class="comment">// (*)</span>
+    numbers$: <span class="class-name">Observable</span><span class="type">{{'<'}}{{'number[]>'}}</span> <span class="operator">=</span> <span class="function-name">of</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>; <span class="comment">// (*)</span>
 
     <span class="function-name">ngOnInit()</span> <span class="punctuation">{{'{'}}</span>
-        <span class="object">this</span>.numbers.<span class="function-name">subscribe</span><span class="punctuation">((</span>data: <span class="type">number[]</span><span class="punctuation">)</span> <span class="punctuation"><span class="operator">=></span></span> <span class="punctuation">{{'{'}}</span>
+        <span class="object">this</span>.numbers$.<span class="function-name">subscribe</span><span class="punctuation">((</span>data: <span class="type">number[]</span><span class="punctuation">)</span> <span class="punctuation"><span class="operator">=></span></span> <span class="punctuation">{{'{'}}</span>
             console.<span class="function-name">log</span>(data); <span class="comment">// [1, 2, 3]</span>
         <span class="punctuation">{{'}'}})</span>;
     <span class="punctuation">{{'}'}}</span>
 <span class="punctuation">{{'}'}}</span></code></pre>
         <p>Строка под "<code>*</code>" равносильна следующей записи:</p>
-        <pre><code>numbers: <span class="class-name">Observable</span><span class="type">{{'<'}}{{'number[]>'}}</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
+        <pre><code>numbers$: <span class="class-name">Observable</span><span class="type">{{'<'}}{{'number[]>'}}</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
 	observer.<span class="function-name">next</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>;
 <span class="punctuation">{{'}'}})</span>;</code></pre>
         <p>
@@ -37,10 +37,10 @@
             <code>from</code>.
         </p>
         <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{{'{'}}</span>
-    numbers: <span class="class-name">Observable</span><span class="type">{{'<'}}{{'number>'}}</span> <span class="operator">=</span> <span class="function-name">from</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>;
+    numbers$: <span class="class-name">Observable</span><span class="type">{{'<'}}{{'number>'}}</span> <span class="operator">=</span> <span class="function-name">from</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>;
 
     <span class="function-name">ngOnInit()</span> <span class="punctuation">{{'{'}}</span>
-        <span class="object">this</span>.numbers.<span class="function-name">subscribe</span><span class="punctuation">((</span>data: <span class="type">number</span><span class="punctuation">)</span> <span class="punctuation"><span class="operator">=></span></span> <span class="punctuation">{{'{'}}</span>
+        <span class="object">this</span>.numbers$.<span class="function-name">subscribe</span><span class="punctuation">((</span>data: <span class="type">number</span><span class="punctuation">)</span> <span class="punctuation"><span class="operator">=></span></span> <span class="punctuation">{{'{'}}</span>
             console.<span class="function-name">log</span>(data); <span class="comment">// 1, 2, 3</span>
         <span class="punctuation">{{'}'}})</span>;
     <span class="punctuation">{{'}'}}</span>

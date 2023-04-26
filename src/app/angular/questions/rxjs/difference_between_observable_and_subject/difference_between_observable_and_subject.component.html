@@ -1,0 +1,50 @@
+<mat-accordion>
+    <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+    >
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                В чем разница между Observable и Subject?
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            Основное отличие этих двух типов объектов:
+            <span class="attention"
+                >объекты Observable предназначены для одноадресной рассылки, а
+                Subject — для многоадресной рассылки.</span
+            >
+        </p>
+        <p>
+            Если рассмотреть более детально, то в потоковом программировании
+            есть два основных интерфейса: Observable (наблюдаемый) и Observer
+            (наблюдатель).
+        </p>
+        <p>
+            Observable предназначен для потребителя, его можно преобразовать и
+            подписаться:
+        </p>
+        <pre><code>observable.map(x => ...).filter(x => ...).subscribe(x => ...)</code></pre>
+        <p>
+            Observer — это интерфейс, который используется для подачи
+            наблюдаемого источника:
+        </p>
+        <pre><code>observer.next(newItem)</code></pre>
+        <p>При этом мы можем создать новый Observable с помощью Observer:</p>
+        <pre><code>let observable$ = Observable.create(observer => {{'{'}} 
+	observer.next('first'); 
+	observer.next('second'); 
+	... 
+{{'}'}});
+
+observable$.pipe(map(x => ...), filter(x => ...)).subscribe(x => ...)</code></pre>
+        <p>
+            Или мы можем использовать Subject, который реализует интерфейсы
+            Observable и Observer:
+        </p>
+        <pre><code>let source$ = new Subject();
+source$.pipe(map(x => ...), filter(x => ...)).subscribe(x => ...)
+source$.next('first')
+source$.next('second')</code></pre>
+    </mat-expansion-panel>
+</mat-accordion>

@@ -19,11 +19,11 @@
             <code>Observable</code> заработал, на него необходимо подписаться с
             помощью метода <code>subscribe</code>.
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">newObs</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
+        <pre><code><span class="keyword">const</span> <span class="variable">newObs$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
 	console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'какой-то наш код внутри Observable'</span><span class="punctuation">)</span>;
 <span class="punctuation">{{'}'}})</span>;
 	<span></span>
-<span class="variable">newObs</span>.<span class="function-name">subscribe()</span>; <span class="comment">// здесь мы подписались на Observable и получили сообщение в консоли</span></code></pre>
+<span class="variable">newObs$</span>.<span class="function-name">subscribe()</span>; <span class="comment">// здесь мы подписались на Observable и получили сообщение в консоли</span></code></pre>
         <p>
             Выше рассмотрен самый простой вариант подписки на источник события.
             Но объект <code>observer</code>, принимаемый callback-функцией
@@ -48,13 +48,13 @@
             Соответственно, в методе <code>subscribe</code> мы также можем
             прописать логику для каждого из перечисленных выше методов объекта:
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">newObs</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
+        <pre><code><span class="keyword">const</span> <span class="variable">newObs$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
 	observer.<span class="function-name">next</span><span class="punctuation">(</span><span class="string">'тут передаем данные'</span><span class="punctuation">)</span>; <span class="comment">переданные данные попадут в data</span>
 	observer.<span class="function-name">error</span><span class="punctuation">(</span><span class="string">'тут передаем ошибки'</span><span class="punctuation">)</span>; <span class="comment">переданные данные попадут в error</span>
 	observer.<span class="function-name">complete()</span>; <span class="comment">// данный метод не принимает параметры</span>
 <span class="punctuation">{{'}'}})</span>
 	<span></span>
-<span class="variable">newObs</span>.<span class="function-name">subscribe</span><span class="punctuation">(</span>
+<span class="variable">newObs$</span>.<span class="function-name">subscribe</span><span class="punctuation">(</span>
 	<span class="punctuation">(</span>data<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
 		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем данные'</span><span class="punctuation">)</span>
 	<span class="punctuation">{{'}'}}</span>,
@@ -66,7 +66,7 @@
 	<span class="punctuation">{{'}'}}</span>,
 <span class="punctuation">)</span>;</code></pre>
         <p>Альтернативная запись для подписки через объект с методами:</p>
-        <pre><code><span class="variable">newObs</span>.<span class="function-name">subscribe</span><span class="punctuation">({{'{'}}</span>
+        <pre><code><span class="variable">newObs$</span>.<span class="function-name">subscribe</span><span class="punctuation">({{'{'}}</span>
 	<span class="key">next</span>: <span class="punctuation">(</span>data<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
 		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем данные'</span><span class="punctuation">)</span>
 	<span class="punctuation">{{'}'}}</span>,
@@ -82,6 +82,6 @@
             нет его обработки в методе <code>subscribe</code>, то не забывайте
             самостоятельно отписываться от таких подписок.
         </p>
-        <pre><code><span class="variable">newObs</span>.<span class="function-name">unsubscribe()</span>; <span class="comment">// не забываем отписаться</span></code></pre>
+        <pre><code><span class="variable">newObs$</span>.<span class="function-name">unsubscribe()</span>; <span class="comment">// не забываем отписаться</span></code></pre>
     </mat-expansion-panel>
 </mat-accordion>

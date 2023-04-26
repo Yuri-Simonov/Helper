@@ -55,6 +55,7 @@ import { DifferenceBetweenPureAndImpurePipesComponent } from 'src/app/angular/qu
 import { PipeInAngularComponent } from 'src/app/angular/questions/pipe/pipe_in_angular/pipe_in_angular.component';
 // Импорты компонентов с вопросами по библиотеке RxJs
 import { DifferenceBetweenObservableAndPromiseComponent } from 'src/app/angular/questions/rxjs/difference_between_observable_and_promise/difference_between_observable_and_promise.component';
+import { DifferenceBetweenObservableAndSubjectComponent } from 'src/app/angular/questions/rxjs/difference_between_observable_and_subject/difference_between_observable_and_subject.component';
 import { FromPrimitiveToObservableComponent } from 'src/app/angular/questions/rxjs/from_primitive_to_observable/from_primitive_to_observable.component';
 import { ObservableInAngularComponent } from 'src/app/angular/questions/rxjs/observable_in_angular/observable_in_angular.component';
 import { RxjsInAngularComponent } from 'src/app/angular/questions/rxjs/rxjs_in_angular/rxjs_in_angular.component';
@@ -146,6 +147,7 @@ const questionsPipe = [
 
 const questionsRxJs = [
     DifferenceBetweenObservableAndPromiseComponent,
+    DifferenceBetweenObservableAndSubjectComponent,
     FromPrimitiveToObservableComponent,
     ObservableInAngularComponent,
     RxjsInAngularComponent,
