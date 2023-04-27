@@ -59,6 +59,7 @@ import { DifferenceBetweenObservableAndSubjectComponent } from 'src/app/angular/
 import { FromPrimitiveToObservableComponent } from 'src/app/angular/questions/rxjs/from_primitive_to_observable/from_primitive_to_observable.component';
 import { ObservableInAngularComponent } from 'src/app/angular/questions/rxjs/observable_in_angular/observable_in_angular.component';
 import { RxjsInAngularComponent } from 'src/app/angular/questions/rxjs/rxjs_in_angular/rxjs_in_angular.component';
+import { SubjectVarietiesComponent } from 'src/app/angular/questions/rxjs/subject_varieties/subject_varieties.component';
 // Импорты компонентов с вопросами по сервисам
 import { ServiceImportComponent } from 'src/app/angular/questions/service/service_import/service_import.component';
 import { ServiceInAngularComponent } from 'src/app/angular/questions/service/service_in_angular/service_in_angular.component';
@@ -151,6 +152,7 @@ const questionsRxJs = [
     FromPrimitiveToObservableComponent,
     ObservableInAngularComponent,
     RxjsInAngularComponent,
+    SubjectVarietiesComponent,
 ];
 // Вопросы по сервисам
 const questionsService = [
