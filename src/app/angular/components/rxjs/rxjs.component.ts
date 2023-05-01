@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-rxjs',
-  templateUrl: './rxjs.component.html',
-  styleUrls: ['./rxjs.component.scss']
+    selector: 'app-rxjs',
+    templateUrl: './rxjs.component.html',
+    styleUrls: ['./rxjs.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RxjsComponent {
-
-}
+export class RxjsComponent {}

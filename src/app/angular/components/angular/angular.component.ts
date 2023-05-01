@@ -24,6 +24,7 @@ export class AngularComponent implements OnInit, OnDestroy {
         { name: 'Декораторы', path: 'decorator' },
         { name: 'Директивы', path: 'directive' },
         { name: 'Компоненты', path: 'component' },
+        { name: 'Маршрутизация', path: 'routing' },
         { name: 'Пайпы / Фильтры', path: 'pipe' },
         { name: 'Разное', path: 'others' },
         { name: 'Сервисы', path: 'service' },

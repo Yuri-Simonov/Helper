@@ -1,0 +1,50 @@
+<mat-accordion>
+    <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+    >
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Важен ли порядок маршрутов при их определении в модуле?
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            <span class="attention"
+                >Порядок маршрутов важен, т.к. маршрутизатор ищет первый
+                подходящий маршрут в порядке их определения</span
+            >.
+        </p>
+        <p>
+            То есть, если вы при перечислении расположите сначала маршрут "**",
+            а затем любой другой маршрут, например, "home", то на "home" вы
+            никогда не попадете, т.к. маршрутизатор найдет совпадение маршрута
+            уже в "**".
+        </p>
+        <pre><code><span class="keyword">const</span> <span class="variable">routes</span>: <span class="type">Routes</span> <span class="operator">=</span> <span class="punctuation">[</span>
+	<span class="punctuation">{{'{'}}</span>
+		<span class="key">path</span>: <span class="string">'**'</span>,
+		<span class="key">component</span>: <span class="class-name">ErrorComponent</span>,
+	<span class="punctuation">{{'}'}}</span>,
+	<span class="punctuation">{{'{'}}</span>
+		<span class="key">path</span>: <span class="string">'home'</span>, <span class="comment">// сюда маршрутизатор не дойдет</span>
+		<span class="key">component</span>: <span class="class-name">HomeComponent</span>,
+	<span class="punctuation">{{'}'}}</span>,
+<span class="punctuation">]</span>
+</code></pre>
+        <p>
+            Поэтому обработка любого URL ('**') всегда должна определяться в
+            самом конце:
+        </p>
+        <pre><code><span class="keyword">const</span> <span class="variable">routes</span>: <span class="type">Routes</span> <span class="operator">=</span> <span class="punctuation">[</span>
+	<span class="punctuation">{{'{'}}</span>
+		<span class="key">path</span>: <span class="string">'home'</span>,
+		<span class="key">component</span>: <span class="class-name">HomeComponent</span>, <span class="comment">// теперь все ок</span>
+	<span class="punctuation">{{'}'}}</span>,
+	<span class="punctuation">{{'{'}}</span>
+		<span class="key">path</span>: <span class="string">'**'</span>,
+		<span class="key">component</span>: <span class="class-name">ErrorComponent</span>,
+	<span class="punctuation">{{'}'}}</span>,
+<span class="punctuation">]</span>
+</code></pre>
+    </mat-expansion-panel>
+</mat-accordion>

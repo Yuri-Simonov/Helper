@@ -1,0 +1,29 @@
+<mat-accordion>
+    <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+    >
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Как обрабатываются несуществующие маршруты?
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            Для обработки несуществующих маршрутов
+            <span class="attention"
+                >необходимо использовать path со значением</span
+            >
+            <code>**</code> (означает любой маршрут). Таким образом, если
+            запрошенный URL не найдет соответствий в списке маршрутов
+            приложения, то маршрутизатор отобразит компонент, указанный для
+            <code>**</code>.
+        </p>
+        <pre><code><span class="keyword">const</span> <span class="variable">routes</span>: <span class="type">Routes</span> <span class="operator">=</span> <span class="punctuation">[</span>
+	<span class="punctuation">{{'{'}}</span>
+		<span class="key">path</span>: <span class="string">'**'</span>,
+		<span class="key">component</span>: <span class="class-name">ErrorComponent</span>,
+	<span class="punctuation">{{'}'}}</span>,
+<span class="punctuation">]</span>
+</code></pre>
+    </mat-expansion-panel>
+</mat-accordion>

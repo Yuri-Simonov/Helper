@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    selector: 'app-getter-and-setter',
-    templateUrl: './getter_and_setter.component.html',
+    selector: 'app-routing-in-angular',
+    templateUrl: './routing_in_angular.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GetterAndSetterComponent {
+export class RoutingInAngularComponent {
     panelOpenState: boolean = false;
 }
