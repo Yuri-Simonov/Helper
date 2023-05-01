@@ -18,6 +18,7 @@ import { TestComponent } from 'src/app/angular/components/test/test.component';
 // Импорты компонентов с вопросами по компонентам
 import { ComponentInAngularComponent } from 'src/app/angular/questions/component/component_in_angular/component_in_angular.component';
 import { ComponentLifecycleComponent } from 'src/app/angular/questions/component/component_lifecycle/component_lifecycle.component';
+import { GetterAndSetterComponent } from 'src/app/angular/questions/component/getter_and_setter/getter_and_setter.component';
 import { OndestroyComponent } from 'src/app/angular/questions/component/ondestroy/ondestroy.component';
 import { WaysOfInteractionBetweenComponentsComponent } from 'src/app/angular/questions/component/ways_of_interaction_between_components/ways_of_interaction_between_components.component';
 // Импорты компонентов с вопросами по декораторам
@@ -98,6 +99,7 @@ const routes: Routes = [
 const questionsComponent = [
     ComponentInAngularComponent,
     ComponentLifecycleComponent,
+    GetterAndSetterComponent,
     OndestroyComponent,
     WaysOfInteractionBetweenComponentsComponent,
 ];

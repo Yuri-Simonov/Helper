@@ -211,7 +211,9 @@ code {
 
 .key,
 .type,
-.boolean {
+.boolean,
+.null,
+.undefined {
     color: #5ec4cd;
 }
 
