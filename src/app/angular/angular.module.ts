@@ -56,6 +56,7 @@ import { CustomPipeComponent } from 'src/app/angular/questions/pipe/custom_pipe/
 import { DifferenceBetweenPureAndImpurePipesComponent } from 'src/app/angular/questions/pipe/difference_between_pure_and_impure_pipes/difference_between_pure_and_impure_pipes.component';
 import { PipeInAngularComponent } from 'src/app/angular/questions/pipe/pipe_in_angular/pipe_in_angular.component';
 // Импорты компонентов с вопросами по маршрутизации
+import { NavigationInAngularComponent } from 'src/app/angular/questions/routing/navigation_in_angular/navigation_in_angular.component';
 import { NonExistentRoutesComponent } from 'src/app/angular/questions/routing/non-existent_routes/non-existent_routes.component';
 import { RouteOrderComponent } from 'src/app/angular/questions/routing/route_order/route_order.component';
 import { RoutingInAngularComponent } from 'src/app/angular/questions/routing/routing_in_angular/routing_in_angular.component';
@@ -154,6 +155,7 @@ const questionsPipe = [
 ];
 // Вопросы по маршрутизации
 const questionsRouting = [
+    NavigationInAngularComponent,
     NonExistentRoutesComponent,
     RouteOrderComponent,
     RoutingInAngularComponent,
