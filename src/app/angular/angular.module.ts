@@ -56,9 +56,11 @@ import { CustomPipeComponent } from 'src/app/angular/questions/pipe/custom_pipe/
 import { DifferenceBetweenPureAndImpurePipesComponent } from 'src/app/angular/questions/pipe/difference_between_pure_and_impure_pipes/difference_between_pure_and_impure_pipes.component';
 import { PipeInAngularComponent } from 'src/app/angular/questions/pipe/pipe_in_angular/pipe_in_angular.component';
 // Импорты компонентов с вопросами по маршрутизации
+import { ManyRouterOutletsComponent } from 'src/app/angular/questions/routing/many_router-outlets/many_router-outlets.component';
 import { NavigationInAngularComponent } from 'src/app/angular/questions/routing/navigation_in_angular/navigation_in_angular.component';
 import { NonExistentRoutesComponent } from 'src/app/angular/questions/routing/non-existent_routes/non-existent_routes.component';
 import { RouteOrderComponent } from 'src/app/angular/questions/routing/route_order/route_order.component';
+import { RoutesWithParamsComponent } from 'src/app/angular/questions/routing/routes_with_params/routes_with_params.component';
 import { RoutingInAngularComponent } from 'src/app/angular/questions/routing/routing_in_angular/routing_in_angular.component';
 // Импорты компонентов с вопросами по библиотеке RxJs
 import { DifferenceBetweenObservableAndPromiseComponent } from 'src/app/angular/questions/rxjs/difference_between_observable_and_promise/difference_between_observable_and_promise.component';
@@ -155,9 +157,11 @@ const questionsPipe = [
 ];
 // Вопросы по маршрутизации
 const questionsRouting = [
+    ManyRouterOutletsComponent,
     NavigationInAngularComponent,
     NonExistentRoutesComponent,
     RouteOrderComponent,
+    RoutesWithParamsComponent,
     RoutingInAngularComponent,
 ];
 // Вопросы по библиотеке RxJs

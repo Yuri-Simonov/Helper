@@ -73,6 +73,21 @@
 <span class="tag"><</span><span class="tag">a</span> <span class="directive">routerLink</span><span class="operator">=</span><span class="string">"home"</span> <span class="directive">routerLinkActive</span><span class="operator">=</span><span class="string">"active"</span><span class="tag">></span>Home<span class="tag"><</span><span class="tag">/a></span> <span class="comment">// (2*) альтернативный вариант</span>
 <span class="tag"><</span><span class="tag">a</span> <span class="directive">routerLink</span><span class="operator">=</span><span class="string">"../home"</span> <span class="directive">routerLinkActive</span><span class="operator">=</span><span class="string">"active"</span><span class="tag">></span>Home<span class="tag"><</span><span class="tag">/a></span> <span class="comment">// (3)</span></code></pre>
         <i class="subtitle">Сервис Router</i>
-        <p><i>В разработке...</i></p>
+        <p>
+            Любое Angular приложение, реализующее внутри себя навигацию, имеет
+            единственный экземпляр сервиса <code>Router</code>, который хранит
+            полную конфигурацию маршрутов и реализует API для работы с
+            навигацией.
+        </p>
+        <p>
+            У данного сервиса есть метод <code>navigate</code>, с помощью
+            которого мы можем изменять текущий URL страницы. В качестве первого
+            параметра он принимает массив, где задается URL, а в качестве
+            второго — объект с дополнительными параметрами запрашиваемого
+            маршрута:
+        </p>
+        <pre><code><span class="object">this</span>.router.<span class="method">navigate</span><span class="punctuation">([</span><span class="string">'profile'</span>, <span class="number">6</span><span class="punctuation">]</span>, <span class="punctuation">{{'{'}}</span>
+	<span class="key">queryParams</span>: <span class="punctuation">{{'{'}}</span> <span class="key">id</span>: <span class="number">6</span> <span class="punctuation">{{'}'}}</span>
+<span class="punctuation">{{'})'}}</span></code></pre>
     </mat-expansion-panel>
 </mat-accordion>
