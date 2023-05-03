@@ -1,0 +1,73 @@
+<mat-accordion>
+    <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+    >
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Какие происходят события маршрутизации при переходе с одного
+                маршрута на другой?
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            В момент перехода с одного адреса на другой, в Angular приложении
+            происходят следующие события:
+        </p>
+        <ul>
+            <li>
+                <span class="attention">NavigationStart</span> - начало
+                навигации;
+            </li>
+            <li>
+                <span class="attention">RoutesRecognized</span> - завершение
+                процесса парсинга URL и распознавания маршрута;
+            </li>
+            <li>
+                <span class="attention">RouteConfigLoadStart</span> -
+                инициируется непосредственно перед асинхронной загрузкой
+                маршрута (для модулей, подгружаемых асинхронно с помощью метода
+                <code>loadChildren</code>);
+            </li>
+            <li>
+                <span class="attention">RouteConfigLoadEnd</span> - инициируется
+                непосредственно после асинхронной загрузки маршрута;
+            </li>
+            <li>
+                <span class="attention">NavigationEnd</span> - завершение
+                навигации;
+            </li>
+            <li>
+                <span class="attention">NavigationCancel</span> - навигация
+                отклонена. Возникает, когда <code>Guard</code> возвращает
+                <code>false</code>;
+            </li>
+            <li>
+                <span class="attention">NavigationError</span> - возникновение
+                непредвиденной ошибки в процессе осуществления навигации.
+            </li>
+        </ul>
+        <p>
+            Перечисленные выше события могут быть обработаны в любом компоненте
+            или сервисе приложения. Чтобы определить для них обработчики,
+            необходимо подписаться на свойство <code>events</code> сервиса
+            <code>Router</code>.
+        </p>
+        <pre><code><span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">private</span> router: <span class="class-name">Router</span><span class="punctuation">) {{'{'}}</span>
+	<span class="object">this</span>.router.events.<span class="method">subscribe</span><span class="punctuation">((</span>event<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
+		<span class="keyword">if</span> <span class="punctuation">(</span>event <span class="keyword">instanceof</span> <span class="class-name">NavigationStart</span><span class="punctuation">) {{'{'}}</span>
+			console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Navigation Start'</span><span class="punctuation">)</span>;
+		<span class="punctuation">{{'}'}}</span>
+	<span class="punctuation">{{'}'}})</span>;
+<span class="punctuation">{{'}'}}</span></code></pre>
+        <p>
+            В примере выше в консоль выведется сообщение в момент начала
+            процесса перехода на другой адрес.
+        </p>
+        <p>
+            <span class="attention"
+                >События маршрутизации часто используются для отображения и
+                скрытия индикатора загрузки страницы.</span
+            >
+        </p>
+    </mat-expansion-panel>
+</mat-accordion>
