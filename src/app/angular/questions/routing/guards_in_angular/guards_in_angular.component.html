@@ -101,9 +101,9 @@
         <p>
             <code>Resolver</code> - это сервис, реализующий интерфейс
             <code>Resolve</code>, а именно метод <code>resolve</code>, который
-            <span class="attention"
-                >обязательно должен возвращать данные типа</span
-            >
+            <span class="attention">
+                обязательно должен возвращать данные типа
+            </span>
             <code>Observable</code>. Указанный для любого маршрута,
             <code>Resolver</code> разрешает переход на него после выполнения
             <code>Observable</code> в <code>resolve</code>.
@@ -113,9 +113,21 @@
         route: <span class="type">ActivatedRouteSnapshot</span>,
         state: <span class="type">RouterStateSnapshot</span>
     <span class="punctuation">)</span>: <span class="type">Observable{{'<'}}boolean></span> <span class="punctuation">{{'{'}}</span>
-        <span class="keyword">return</span> <span class="method">of</span><span class="punctuation">(</span><span class="boolean">true</span><span class="punctuation">)</span>;
+		<span class="keyword">if</span><span class="punctuation">(</span><span class="string">'какое-то условие'</span><span class="punctuation">) {{'{'}}</span>
+			<span class="keyword">return</span> <span class="method">of</span><span class="punctuation">(</span><span class="boolean">true</span><span class="punctuation">)</span>;
+		<span class="punctuation">{{'}'}}</span> <span class="keyword">else</span> <span class="punctuation">{{'{'}}</span>
+			<span class="keyword">return</span> EMPTY; <span class="comment">// обратите внимание на возвращаемое значение в случае ложного условия</span>
+		<span class="punctuation">{{'}'}}</span>
     <span class="punctuation">{{'}'}}</span>
 <span class="punctuation">{{'}'}}</span></code></pre>
+        <p>Как это выглядит в маршрутизаторе:</p>
+        <pre><code><span class="keyword">const</span> <span class="variable">routes</span>: <span class="type">Routes</span> <span class="operator">=</span> <span class="punctuation">[</span>
+	<span class="punctuation">{{'{'}}</span>
+		<span class="key">path</span>: <span class="string">'products'</span>,
+		<span class="key">component</span>: <span class="class-name">ProductsComponent</span>,
+		<span class="key">resolve</span>: <span class="punctuation">{{'{'}}</span> <span class="key">auth</span>: <span class="class-name">AuthResolver</span> <span class="punctuation">{{'}'}}</span>, <span class="comment">// сообщаем о наличии resolver`а</span>
+	<span class="punctuation">{{'}'}}</span>,
+<span class="punctuation">]</span></code></pre>
         <p>
             Выполнение метода <code>resolve</code> (как синхронного, так и
             асинхронного) инициирует событие <code>NavigationEnd</code>, что
