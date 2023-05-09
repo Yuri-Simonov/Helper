@@ -71,6 +71,8 @@ import { FromPrimitiveToObservableComponent } from 'src/app/angular/questions/rx
 import { ObservableInAngularComponent } from 'src/app/angular/questions/rxjs/observable_in_angular/observable_in_angular.component';
 import { RxjsInAngularComponent } from 'src/app/angular/questions/rxjs/rxjs_in_angular/rxjs_in_angular.component';
 import { SubjectVarietiesComponent } from 'src/app/angular/questions/rxjs/subject_varieties/subject_varieties.component';
+import { SubscribeInConstructorComponent } from 'src/app/angular/questions/rxjs/subscribe_in_constructor/subscribe_in_constructor.component';
+import { WaysToUnsubscribeComponent } from 'src/app/angular/questions/rxjs/ways_to_unsubscribe/ways_to_unsubscribe.component';
 // Импорты компонентов с вопросами по сервисам
 import { ServiceImportComponent } from 'src/app/angular/questions/service/service_import/service_import.component';
 import { ServiceInAngularComponent } from 'src/app/angular/questions/service/service_in_angular/service_in_angular.component';
@@ -176,6 +178,8 @@ const questionsRxJs = [
     ObservableInAngularComponent,
     RxjsInAngularComponent,
     SubjectVarietiesComponent,
+    SubscribeInConstructorComponent,
+    WaysToUnsubscribeComponent,
 ];
 // Вопросы по сервисам
 const questionsService = [

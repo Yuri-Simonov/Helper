@@ -16,7 +16,9 @@
         <p>
             Оператор <code>of</code> подходит для случаев, когда необходимо из
             массива данных создать <code>Observable</code> и при подписке на
-            источник события получать тот же массив целиком.
+            источник события получать тот же массив целиком. При этом, оператор
+            <code>of</code> создает поток с одним или несколькими элементами,
+            который завершается сразу после их отправки.
         </p>
         <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{{'{'}}</span>
     numbers$: <span class="class-name">Observable</span><span class="type">{{'<'}}{{'number[]>'}}</span> <span class="operator">=</span> <span class="function-name">of</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>; <span class="comment">// (*)</span>
