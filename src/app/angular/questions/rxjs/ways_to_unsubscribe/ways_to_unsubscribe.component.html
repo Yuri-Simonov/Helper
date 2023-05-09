@@ -28,8 +28,8 @@
             переменную и вызвать у нее метод <code>unsubscribe</code>, когда
             подписка нам уже не нужна:
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">subsTimer</span>: <span class="type">Subscription</span> <span class="operator">=</span> <span class="function-name">timer</span><span class="punctuation">(</span><span class="number">1000</span><span class="punctuation">)</span>.<span class="method">subscribe()</span>;
-<span class="variable">subsTimer</span>.<span class="method">unsubscribe()</span>;</code></pre>
+        <pre><code><span class="keyword">const</span> <span class="variable">timerSub</span>: <span class="type">Subscription</span> <span class="operator">=</span> <span class="function-name">timer</span><span class="punctuation">(</span><span class="number">1000</span><span class="punctuation">)</span>.<span class="method">subscribe()</span>;
+<span class="variable">timerSub</span>.<span class="method">unsubscribe()</span>;</code></pre>
         <p>
             В примере выше нам необходимо следить за каждой подпиской. То есть,
             сохранять ее в переменную и затем где-то вызывать метод
@@ -43,7 +43,7 @@
             использовать <code>ReplaySubject</code> и оператор
             <code>takeUntil</code> для отписки сразу от всех подписок:
         </p>
-        <pre><code>onDestroy: <span class="type">ReplaySubject{{'<'}}any></span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">ReplaySubject</span><span class="type">{{'<'}}any></span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span>;
+        <pre><code>onDestroy$: <span class="type">ReplaySubject{{'<'}}any></span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">ReplaySubject</span><span class="type">{{'<'}}any></span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span>;
 
 <span class="method">ngOninit()</span> <span class="punctuation">{{'{'}}</span>
 	<span class="object">this</span>.control.valueChanges
@@ -52,15 +52,15 @@
 			<span class="comment">// это, кстати, еще один способ отписаться от события</span>
 			<span class="function-name">switchMap((</span>userId<span class="punctuation">)</span> <span class="operator">=></span> <span class="object">this</span>.service.<span class="method">getUser(</span>userId<span class="punctuation">))</span>,
 			<span class="comment">// берем данные пока компонент существует</span>
-			<span class="function-name">takeUntil</span><span class="punctuation">(</span><span class="object">this</span>.onDestroy<span class="punctuation">)</span>
+			<span class="function-name">takeUntil</span><span class="punctuation">(</span><span class="object">this</span>.onDestroy$<span class="punctuation">)</span>
 		<span class="punctuation">)</span>
 		.<span class="method">subscribe()</span>;
 <span class="punctuation">{{'}'}}</span>
 
 <span class="method">ngOnDestroy()</span> <span class="punctuation">{{'{'}}</span>
 	<span class="comment">// в момент уничтожения компонента избавляемся от подписок</span>
-	<span class="object">this</span>.onDestroy.<span class="method">next(</span><span class="null">null</span><span class="punctuation">)</span>;
-	<span class="object">this</span>.onDestroy.<span class="method">complete()</span>;
+	<span class="object">this</span>.onDestroy$.<span class="method">next(</span><span class="null">null</span><span class="punctuation">)</span>;
+	<span class="object">this</span>.onDestroy$.<span class="method">complete()</span>;
 <span class="punctuation">{{'}'}}</span></code></pre>
         <p>
             Вместо <code>ReplaySubject</code> можно использовать и просто

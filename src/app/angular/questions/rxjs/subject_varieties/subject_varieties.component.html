@@ -25,12 +25,12 @@
             <code>Observable</code> осуществляется уникально для каждого его
             вызова.
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">subject</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Subject</span><span class="type">{{'<'}}{{'number>'}}</span><span class="punctuation">()</span>;
+        <pre><code><span class="keyword">const</span> <span class="variable">subject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Subject</span><span class="type">{{'<'}}{{'number>'}}</span><span class="punctuation">()</span>;
 
-<span class="variable">subject</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Первая подписка:'</span>, value<span class="punctuation">))</span>;
-<span class="variable">subject</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">3</span><span class="punctuation">)</span>;
-<span class="variable">subject</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Вторая подписка:'</span>, value<span class="punctuation">))</span>;
-<span class="variable">subject</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">9</span><span class="punctuation">)</span>;
+<span class="variable">subject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Первая подписка:'</span>, value<span class="punctuation">))</span>;
+<span class="variable">subject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">3</span><span class="punctuation">)</span>;
+<span class="variable">subject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Вторая подписка:'</span>, value<span class="punctuation">))</span>;
+<span class="variable">subject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">9</span><span class="punctuation">)</span>;
 
 <span class="comment">// в консоли мы увидем следующее:
 Первая подписка: 3
@@ -45,11 +45,11 @@
                 аргумента принимает начальное значение </span
             >.
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">behaviorSubject</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">BehaviorSubject</span><span class="type">{{'<'}}{{'number>'}}</span><span class="punctuation">(</span><span class="number">5</span><span class="punctuation">)</span>;
+        <pre><code><span class="keyword">const</span> <span class="variable">behaviorSubject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">BehaviorSubject</span><span class="type">{{'<'}}{{'number>'}}</span><span class="punctuation">(</span><span class="number">5</span><span class="punctuation">)</span>;
 
-<span class="variable">behaviorSubject</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Первая подписка:'</span>, value<span class="punctuation">))</span>;
-<span class="variable">behaviorSubject</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Вторая подписка:'</span>, value<span class="punctuation">))</span>;
-<span class="variable">behaviorSubject</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">9</span><span class="punctuation">)</span>;
+<span class="variable">behaviorSubject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Первая подписка:'</span>, value<span class="punctuation">))</span>;
+<span class="variable">behaviorSubject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Вторая подписка:'</span>, value<span class="punctuation">))</span>;
+<span class="variable">behaviorSubject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">9</span><span class="punctuation">)</span>;
 
 <span class="comment">// в консоли мы увидем следующее:
 Первая подписка: 5
@@ -65,13 +65,13 @@
                 параметр — количество предыдущих значений </span
             >.
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">replaySubject</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">ReplaySubject</span><span class="type">{{'<'}}{{'number>'}}</span><span class="punctuation">(</span><span class="number">2</span><span class="punctuation">)</span>;
+        <pre><code><span class="keyword">const</span> <span class="variable">replaySubject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">ReplaySubject</span><span class="type">{{'<'}}{{'number>'}}</span><span class="punctuation">(</span><span class="number">2</span><span class="punctuation">)</span>;
 
-<span class="variable">replaySubject</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">3</span><span class="punctuation">)</span>;
-<span class="variable">replaySubject</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">6</span><span class="punctuation">)</span>;
-<span class="variable">replaySubject</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">9</span><span class="punctuation">)</span>;
+<span class="variable">replaySubject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">3</span><span class="punctuation">)</span>;
+<span class="variable">replaySubject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">6</span><span class="punctuation">)</span>;
+<span class="variable">replaySubject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">9</span><span class="punctuation">)</span>;
 
-<span class="variable">replaySubject</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Результат: '</span>, value<span class="punctuation">))</span>;
+<span class="variable">replaySubject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Результат: '</span>, value<span class="punctuation">))</span>;
 
 <span class="comment">// в консоли мы увидем следующее:
 Результат: 6
@@ -86,15 +86,15 @@
             </span>
             <code>complete</code>.
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">asyncSubject</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">AsyncSubject</span><span class="type">{{'<'}}{{'number>'}}</span><span class="punctuation">()</span>;
+        <pre><code><span class="keyword">const</span> <span class="variable">asyncSubject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">AsyncSubject</span><span class="type">{{'<'}}{{'number>'}}</span><span class="punctuation">()</span>;
 
-<span class="variable">asyncSubject</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Результат: '</span>, value<span class="punctuation">))</span>;
+<span class="variable">asyncSubject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Результат: '</span>, value<span class="punctuation">))</span>;
 
-<span class="variable">asyncSubject</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">3</span><span class="punctuation">)</span>;
-<span class="variable">asyncSubject</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">6</span><span class="punctuation">)</span>;
-<span class="variable">asyncSubject</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">9</span><span class="punctuation">)</span>;
+<span class="variable">asyncSubject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">3</span><span class="punctuation">)</span>;
+<span class="variable">asyncSubject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">6</span><span class="punctuation">)</span>;
+<span class="variable">asyncSubject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">9</span><span class="punctuation">)</span>;
 
-<span class="variable">asyncSubject</span>.<span class="method">complete</span><span class="punctuation">()</span>;
+<span class="variable">asyncSubject$</span>.<span class="method">complete</span><span class="punctuation">()</span>;
 
 <span class="comment">// в консоли мы увидем следующее:
 Результат: 9
