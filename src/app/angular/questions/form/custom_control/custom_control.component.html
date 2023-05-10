@@ -1,0 +1,49 @@
+<mat-accordion>
+    <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+    >
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Как создать пользователький компонент формы (input, textarea и
+                др)?
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            Компоненты, содержащие пользователькие поля формы (Custom Controls),
+            создаются с помощью встроенной директивы
+            <code>ControlValueAccessor</code>, которая отвечает за отслеживание
+            значения поля формы в дочернем компоненте и передачу его обратно в
+            родительскую форму.
+        </p>
+        <p>Для демонстрации необходимо 2 компонента: родитель и ребенок.</p>
+        <p>Родительский компонент:</p>
+        <pre><code><span class="keyword">@Component</span><span class="punctuation">({{'{'}}</span>
+	<span class="key">selector</span>: <span class="string">'parent-component'</span>,
+	<span class="key">template</span>: <span class="string">'{{'<'}}counter-control>{{'<'}}/counter-control>'</span>
+<span class="punctuation">{{'}'}})</span>
+
+<span class="keyword">class</span> <span class="class-name">ParentComponent</span> <span class="punctuation">{{'{}'}}</span></code></pre>
+        <p>Дочерний компонент:</p>
+        <pre><code><span class="keyword">@Component</span><span class="punctuation">({{'{'}}</span>
+	<span class="key">selector</span>: <span class="string">'counter-component'</span>,
+	<span class="key">template</span>: <span class="string">`
+		{{'<'}}button (click)="down()">Down{{'<'}}/button>
+			{{'{'}}{{'{'}}{{'value }}'}}
+		{{'<'}}button (click)="up()">Up{{'<'}}/button>
+		`</span>
+<span class="punctuation">{{'}'}})</span>
+
+<span class="keyword">class</span> <span class="class-name">CounterControlComponent</span> <span class="punctuation">{{'{'}}</span>
+	<span class="keyword">@Input</span><span class="punctuation">(</span><span class="string">'value'</span><span class="punctuation">)</span> valueProps <span class="operator">=</span> <span class="number">0</span>;
+ 
+	<span class="method">up()</span> <span class="punctuation">{{'{'}}</span>
+		<span class="object">this</span>.valueProps<span class="operator">++</span>;
+ 	<span class="punctuation">{{'}'}}</span>
+ 
+	<span class="method">down()</span> <span class="punctuation">{{'{'}}</span>
+ 		<span class="object">this</span>.valueProps<span class="operator">--</span>;
+	<span class="punctuation">{{'}'}}</span>
+<span class="punctuation">{{'}'}}</span></code></pre>
+    </mat-expansion-panel>
+</mat-accordion>

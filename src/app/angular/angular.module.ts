@@ -35,6 +35,7 @@ import { DifferenceBetweenComponentAndDirectiveComponent } from 'src/app/angular
 import { DirectiveInAngularComponent } from 'src/app/angular/questions/directive/directive_in_angular/directive_in_angular.component';
 import { DirectiveLifecycleComponent } from 'src/app/angular/questions/directive/directive_lifecycle/directive_lifecycle.component';
 // Импорты компонентов с вопросами по формам
+import { CustomControlComponent } from 'src/app/angular/questions/form/custom_control/custom_control.component';
 import { FormsInAngularComponent } from 'src/app/angular/questions/form/forms_in_angular/forms_in_angular.component';
 import { FormParentClassesComponent } from 'src/app/angular/questions/form/form_parent_classes/form_parent_classes.component';
 import { TwoWayBindingInFormsComponent } from 'src/app/angular/questions/form/two_way_binding_in_forms/two_way_binding_in_forms.component';
@@ -134,6 +135,7 @@ const questionsDirective = [
 ];
 // Вопросы по формам
 const questionsForm = [
+    CustomControlComponent,
     FormsInAngularComponent,
     FormParentClassesComponent,
     TwoWayBindingInFormsComponent,
