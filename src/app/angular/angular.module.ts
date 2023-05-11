@@ -12,7 +12,7 @@ import { FormComponent } from 'src/app/angular/components/form/form.component';
 import { OthersComponent } from 'src/app/angular/components/others/others.component';
 import { PipeComponent } from 'src/app/angular/components/pipe/pipe.component';
 import { RoutingComponent } from 'src/app/angular/components/routing/routing.component';
-import { RxjsComponent } from './components/rxjs/rxjs.component';
+import { RxjsComponent } from 'src/app/angular/components/rxjs/rxjs.component';
 import { ServiceComponent } from 'src/app/angular/components/service/service.component';
 import { TestComponent } from 'src/app/angular/components/test/test.component';
 
@@ -28,7 +28,7 @@ import { DecoratorInjectableComponent } from 'src/app/angular/questions/decorato
 import { DecoratorOptionalComponent } from 'src/app/angular/questions/decorator/decorator_optional/decorator_optional.component';
 import { DecoratorSkipselfComponent } from 'src/app/angular/questions/decorator/decorator_skipself/decorator_skipself.component';
 import { DifferenceBetweenInputAndOutputComponent } from 'src/app/angular/questions/decorator/difference_between_input_and_output/difference_between_input_and_output.component';
-import { ObjectPropsInDecoratorInputComponent } from './questions/decorator/object_props_in_decorator_input/object_props_in_decorator_input.component';
+import { ObjectPropsInDecoratorInputComponent } from 'src/app/angular/questions/decorator/object_props_in_decorator_input/object_props_in_decorator_input.component';
 // Импорты компонентов с вопросами по директивам
 import { CustomDirectiveComponent } from 'src/app/angular/questions/directive/custom_directive/custom_directive.component';
 import { DifferenceBetweenComponentAndDirectiveComponent } from 'src/app/angular/questions/directive/difference_between_component_and_directive/difference_between_component_and_directive.component';
@@ -57,6 +57,7 @@ import { CustomPipeComponent } from 'src/app/angular/questions/pipe/custom_pipe/
 import { DifferenceBetweenPureAndImpurePipesComponent } from 'src/app/angular/questions/pipe/difference_between_pure_and_impure_pipes/difference_between_pure_and_impure_pipes.component';
 import { PipeInAngularComponent } from 'src/app/angular/questions/pipe/pipe_in_angular/pipe_in_angular.component';
 // Импорты компонентов с вопросами по маршрутизации
+import { AsyncRoutingComponent } from 'src/app/angular/questions/routing/async_routing/async_routing.component';
 import { GuardsInAngularComponent } from 'src/app/angular/questions/routing/guards_in_angular/guards_in_angular.component';
 import { ManyRouterOutletsComponent } from 'src/app/angular/questions/routing/many_router-outlets/many_router-outlets.component';
 import { NavigationInAngularComponent } from 'src/app/angular/questions/routing/navigation_in_angular/navigation_in_angular.component';
@@ -108,7 +109,6 @@ const routes: Routes = [
         ],
     },
 ];
-
 // Вопросы по компонентам
 const questionsComponent = [
     ComponentInAngularComponent,
@@ -163,6 +163,7 @@ const questionsPipe = [
 ];
 // Вопросы по маршрутизации
 const questionsRouting = [
+    AsyncRoutingComponent,
     GuardsInAngularComponent,
     ManyRouterOutletsComponent,
     NavigationInAngularComponent,
