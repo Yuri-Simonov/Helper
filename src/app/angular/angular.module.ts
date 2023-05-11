@@ -39,6 +39,7 @@ import { CustomControlComponent } from 'src/app/angular/questions/form/custom_co
 import { FormsInAngularComponent } from 'src/app/angular/questions/form/forms_in_angular/forms_in_angular.component';
 import { FormParentClassesComponent } from 'src/app/angular/questions/form/form_parent_classes/form_parent_classes.component';
 import { TwoWayBindingInFormsComponent } from 'src/app/angular/questions/form/two_way_binding_in_forms/two_way_binding_in_forms.component';
+import { ValueChangesInFormComponent } from 'src/app/angular/questions/form/value_changes_in_form/value_changes_in_form.component';
 // Импорты компонентов с вопросами по разным вопросам
 import { AngularCliComponent } from 'src/app/angular/questions/others/angular_cli/angular_cli.component';
 import { CompilationMechanismsComponent } from 'src/app/angular/questions/others/compilation_mechanisms/compilation_mechanisms.component';
@@ -139,6 +140,7 @@ const questionsForm = [
     FormsInAngularComponent,
     FormParentClassesComponent,
     TwoWayBindingInFormsComponent,
+    ValueChangesInFormComponent,
 ];
 // Вопросы по разным вопросам
 const questionsOthers = [
