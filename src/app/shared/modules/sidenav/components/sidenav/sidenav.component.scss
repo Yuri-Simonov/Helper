@@ -1,3 +1,5 @@
+@import "src/styles/variable";
+
 :host {
     @media (max-width: 992px) {
         position: absolute;
@@ -18,7 +20,7 @@
     border-right: 1px solid rgba(211, 211, 211, 0.226);
     height: 100%;
     transition: 0.3s;
-    background-color: #303030;
+    background-color: $secondary;
 
     @media (max-width: 992px) {
         position: relative;
@@ -39,7 +41,7 @@
         right: 0;
         bottom: 0;
         left: 0;
-        background-color: rgba(128, 128, 128, 0.342);
+        background-color: $overlay;
     }
 
     mat-nav-list {

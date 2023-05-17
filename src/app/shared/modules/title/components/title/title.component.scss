@@ -1,3 +1,5 @@
+@import "src/styles/variable";
+
 :host {
     position: relative;
     z-index: 3;
@@ -8,7 +10,7 @@
     align-items: center;
     gap: 36px;
     padding: 16px;
-    background-color: #7b1fa2;
+    background-color: $primary;
     margin-bottom: 0;
 
     &__icon {

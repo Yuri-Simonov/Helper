@@ -1,0 +1,75 @@
+@import "src/styles/variable";
+
+pre {
+    background-color: $black;
+}
+
+code {
+    color: $white-dark;
+    tab-size: 4;
+
+    @media (max-width: 440px), (max-height: 440px) {
+        tab-size: 2;
+    }
+}
+
+.number,
+.string,
+.array {
+    color: $orange;
+}
+
+.punctuation,
+.function-name,
+.pipe-name,
+.method,
+.property {
+    color: $yellow;
+}
+
+.keyword {
+    color: $green;
+}
+
+.object {
+    color: $pink;
+}
+
+.comment {
+    color: $teal;
+}
+
+.operator,
+.class-name,
+.interface-name,
+.service-name,
+.module-name {
+    color: $red;
+}
+
+.key,
+.type,
+.boolean,
+.null,
+.undefined {
+    color: $teal-light;
+}
+
+.export,
+.import,
+.tag,
+.return {
+    color: $purple;
+}
+
+.variable,
+.attribute,
+.directive {
+    color: $purple-light;
+}
+
+p > code,
+li > code {
+    background-color: initial;
+    color: $purple-light;
+}

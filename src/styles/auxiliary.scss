@@ -1,0 +1,32 @@
+@import "src/styles/variable";
+
+.lock {
+    overflow: hidden;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.subtitle {
+    font-size: 14px;
+    line-height: 1.3;
+    font-weight: 500;
+    color: $orange;
+    margin: 12px 0;
+    display: block;
+    font-style: normal;
+}
+
+.main-color {
+    color: $primary;
+}
+
+.secondary-color {
+    color: $secondary;
+}
+
+.attention {
+    color: $yellow;
+}
