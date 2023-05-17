@@ -72,6 +72,7 @@ import { DifferenceBetweenObservableAndPromiseComponent } from 'src/app/angular/
 import { DifferenceBetweenObservableAndSubjectComponent } from 'src/app/angular/questions/rxjs/difference_between_observable_and_subject/difference_between_observable_and_subject.component';
 import { FromPrimitiveToObservableComponent } from 'src/app/angular/questions/rxjs/from_primitive_to_observable/from_primitive_to_observable.component';
 import { ObservableInAngularComponent } from 'src/app/angular/questions/rxjs/observable_in_angular/observable_in_angular.component';
+import { PipeInRxjsComponent } from 'src/app/angular/questions/rxjs/pipe-in-rxjs/pipe-in-rxjs.component';
 import { RxjsInAngularComponent } from 'src/app/angular/questions/rxjs/rxjs_in_angular/rxjs_in_angular.component';
 import { SubjectVarietiesComponent } from 'src/app/angular/questions/rxjs/subject_varieties/subject_varieties.component';
 import { SubscribeInConstructorComponent } from 'src/app/angular/questions/rxjs/subscribe_in_constructor/subscribe_in_constructor.component';
@@ -181,6 +182,7 @@ const questionsRxJs = [
     DifferenceBetweenObservableAndSubjectComponent,
     FromPrimitiveToObservableComponent,
     ObservableInAngularComponent,
+    PipeInRxjsComponent,
     RxjsInAngularComponent,
     SubjectVarietiesComponent,
     SubscribeInConstructorComponent,
