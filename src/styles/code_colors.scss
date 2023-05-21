@@ -1,11 +1,9 @@
-@import "src/styles/variable";
-
 pre {
-    background-color: $black;
+    background-color: var(--black);
+    color: var(--white-dark);
 }
 
 code {
-    color: $white-dark;
     tab-size: 4;
 
     @media (max-width: 440px), (max-height: 440px) {
@@ -16,7 +14,7 @@ code {
 .number,
 .string,
 .array {
-    color: $orange;
+    color: var(--orange);
 }
 
 .punctuation,
@@ -24,19 +22,19 @@ code {
 .pipe-name,
 .method,
 .property {
-    color: $yellow;
+    color: var(--yellow);
 }
 
 .keyword {
-    color: $green;
+    color: var(--green);
 }
 
 .object {
-    color: $pink;
+    color: var(--pink);
 }
 
 .comment {
-    color: $teal;
+    color: var(--teal);
 }
 
 .operator,
@@ -44,7 +42,7 @@ code {
 .interface-name,
 .service-name,
 .module-name {
-    color: $red;
+    color: var(--red);
 }
 
 .key,
@@ -52,24 +50,22 @@ code {
 .boolean,
 .null,
 .undefined {
-    color: $teal-light;
+    color: var(--teal-light);
 }
 
 .export,
 .import,
 .tag,
 .return {
-    color: $purple;
+    color: var(--purple);
 }
 
 .variable,
 .attribute,
 .directive {
-    color: $purple-light;
+    color: var(--purple-light);
 }
 
-p > code,
-li > code {
-    background-color: initial;
-    color: $purple-light;
+code {
+    color: var(--purple-light);
 }

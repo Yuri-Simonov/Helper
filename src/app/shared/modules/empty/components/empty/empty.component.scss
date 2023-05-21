@@ -1,11 +1,13 @@
-@import "src/styles/variable";
-
 .empty {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 30vh;
-    background: linear-gradient(180deg, $primary 0%, $secondary 100%);
+    background: linear-gradient(
+        180deg,
+        var(--primary) 0%,
+        var(--secondary) 100%
+    );
     padding: 24px;
 
     &__title {

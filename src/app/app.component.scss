@@ -1,9 +1,7 @@
-@import "src/styles/variable";
-
 main {
     height: 100%;
     margin-top: 64px;
-    background-color: $secondary;
+    background-color: var(--secondary);
     flex-grow: 1;
     display: flex;
 

@@ -1,20 +1,27 @@
-// Цвета темы Material UI
-$primary: #7b1fa2;
-$secondary: #303030;
+:root {
+    // Цвета темы Material UI
+    --primary: #7b1fa2;
+    --secondary: #303030;
 
-// Остальные цвета
-$white: #ffffff;
-$white-dark: #f5fffa;
-$black: #282a36;
-$yellow: #fbec5d;
-$orange: #ffd0a9;
-$red: #f53d68;
-$green: #50c878;
-$pink: #da70d6;
-$teal: #168081;
-$teal-light: #5ec4cd;
-$purple: #9391ff;
-$purple-light: #d7a4ff;
+    // Остальные цвета
+    --white: #ffffff;
+    --white-dark: #f5fffa;
+    --black: #282a36;
+    --yellow: #fbec5d;
+    --orange: #ffd0a9;
+    --red: #f53d68;
+    --green: #50c878;
+    --pink: #da70d6;
+    --teal: #168081;
+    --teal-light: #5ec4cd;
+    --purple: #9391ff;
+    --purple-light: #d7a4ff;
 
-// Различные повторяющиеся вспомогательные цвета
-$overlay: #80808057;
+    // Различные повторяющиеся вспомогательные цвета
+    --overlay: #80808057;
+
+    // CSS-свойства целиком;
+    --border: 1px solid #d3d3d33a;
+    --box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024,
+        0 1px 18px #0000001f;
+}
