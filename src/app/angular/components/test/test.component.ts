@@ -1,3 +1,5 @@
+import { IQuestion } from 'src/app/shared/types/question.interface';
+import { testQuestions } from './../../questions/test';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
@@ -6,4 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrls: ['./test.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TestComponent {}
+export class TestComponent {
+    questions: IQuestion[] = testQuestions;
+}

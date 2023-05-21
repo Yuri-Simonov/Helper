@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { formQuestions } from 'src/app/angular/questions/form';
+import { IQuestion } from 'src/app/shared/types/question.interface';
 
 @Component({
     selector: 'app-form',
@@ -6,4 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrls: ['./form.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormComponent {}
+export class FormComponent {
+    questions: IQuestion[] = formQuestions;
+}

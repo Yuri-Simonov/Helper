@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { serviceQuestions } from 'src/app/angular/questions/service';
+import { IQuestion } from 'src/app/shared/types/question.interface';
 
 @Component({
     selector: 'app-service',
@@ -6,4 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrls: ['./service.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ServiceComponent {}
+export class ServiceComponent {
+    questions: IQuestion[] = serviceQuestions;
+}

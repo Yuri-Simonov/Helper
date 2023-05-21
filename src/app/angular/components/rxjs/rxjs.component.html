@@ -1,25 +1,24 @@
-<div class="content__item"><app-rxjs-in-angular></app-rxjs-in-angular></div>
-<div class="content__item">
-    <app-observable-in-angular></app-observable-in-angular>
+<div class="content__item" *ngFor="let q of questions">
+    <mat-accordion>
+        <mat-expansion-panel
+            (opened)="q.selected = true"
+            (closed)="q.selected = false"
+        >
+            <mat-expansion-panel-header>
+                <mat-panel-title> {{ q.title }} </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div [innerHTML]="q.body"></div>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>
-<div class="content__item">
-    <app-difference-between-observable-and-promise></app-difference-between-observable-and-promise>
-</div>
-<div class="content__item">
-    <app-from-primitive-to-observable></app-from-primitive-to-observable>
-</div>
-<div class="content__item">
-    <app-difference-between-observable-and-subject></app-difference-between-observable-and-subject>
-</div>
-<div class="content__item">
-    <app-subject-varieties></app-subject-varieties>
-</div>
-<div class="content__item">
-    <app-ways-to-unsubscribe></app-ways-to-unsubscribe>
-</div>
-<div class="content__item">
-    <app-subscribe-in-constructor></app-subscribe-in-constructor>
-</div>
-<div class="content__item">
-    <app-pipe-in-rxjs></app-pipe-in-rxjs>
-</div>
+<!-- Шаблон -->
+<!-- <div class="content__item">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title> Заголовок </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>Тело</p>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div> -->

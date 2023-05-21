@@ -1,15 +1,24 @@
-<div class="content__item">
-    <app-component-in-angular></app-component-in-angular>
+<div class="content__item" *ngFor="let q of questions">
+    <mat-accordion>
+        <mat-expansion-panel
+            (opened)="q.selected = true"
+            (closed)="q.selected = false"
+        >
+            <mat-expansion-panel-header>
+                <mat-panel-title> {{ q.title }} </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div [innerHTML]="q.body"></div>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>
-<div class="content__item">
-    <app-component-lifecycle></app-component-lifecycle>
-</div>
-<div class="content__item">
-    <app-ways-of-interaction-between-components></app-ways-of-interaction-between-components>
-</div>
-<div class="content__item">
-    <app-ondestroy></app-ondestroy>
-</div>
-<div class="content__item">
-    <app-getter-and-setter></app-getter-and-setter>
-</div>
+<!-- Шаблон -->
+<!-- <div class="content__item">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title> Заголовок </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>Тело</p>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div> -->

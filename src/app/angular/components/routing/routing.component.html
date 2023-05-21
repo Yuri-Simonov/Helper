@@ -1,27 +1,24 @@
-<div class="content__item">
-    <app-routing-in-angular></app-routing-in-angular>
+<div class="content__item" *ngFor="let q of questions">
+    <mat-accordion>
+        <mat-expansion-panel
+            (opened)="q.selected = true"
+            (closed)="q.selected = false"
+        >
+            <mat-expansion-panel-header>
+                <mat-panel-title> {{ q.title }} </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div [innerHTML]="q.body"></div>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>
-<div class="content__item">
-    <app-non-existent-routes></app-non-existent-routes>
-</div>
-<div class="content__item">
-    <app-route-order></app-route-order>
-</div>
-<div class="content__item">
-    <app-navigation-in-angular></app-navigation-in-angular>
-</div>
-<div class="content__item">
-    <app-routes-with-params></app-routes-with-params>
-</div>
-<div class="content__item">
-    <app-many-router-outlets></app-many-router-outlets>
-</div>
-<div class="content__item">
-    <app-routing-events></app-routing-events>
-</div>
-<div class="content__item">
-    <app-guards-in-angular></app-guards-in-angular>
-</div>
-<div class="content__item">
-    <app-async-routing></app-async-routing>
-</div>
+<!-- Шаблон -->
+<!-- <div class="content__item">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title> Заголовок </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>Тело</p>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div> -->

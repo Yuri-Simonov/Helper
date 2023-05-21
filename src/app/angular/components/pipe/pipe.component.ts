@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { pipeQuestions } from 'src/app/angular/questions/pipe';
+import { IQuestion } from 'src/app/shared/types/question.interface';
 
 @Component({
     selector: 'app-pipe',
@@ -6,4 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrls: ['./pipe.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PipeComponent {}
+export class PipeComponent {
+    questions: IQuestion[] = pipeQuestions;
+}

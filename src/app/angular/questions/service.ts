@@ -1,14 +1,9 @@
-<mat-accordion>
-    <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-    >
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Где можно импортировать сервисы в Angular?
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <p>
+import { IQuestion } from 'src/app/shared/types/question.interface';
+
+export const serviceQuestions: IQuestion[] = [
+    {
+        title: 'Где можно импортировать сервисы в Angular?',
+        body: `<p>
             Angular сервисы
             <span class="attention">
                 могут быть определены на уровне приложения, модуля или
@@ -22,7 +17,7 @@
 <span class="keyword">@Component</span><span class="punctuation">{{'({'}}</span> <span class="comment">// уровень компонента</span>
 	<span class="key">selector</span><span class="punctuation">:</span> <span class="string">'app-some-component'</span>,
 	<span class="key">providers</span><span class="punctuation">: [</span><span class="service-name">SomeHttpService</span><span class="punctuation">]</span>,
-	<span class="key">template</span><span class="punctuation">: `</span><span class="string">{{'<'}}</span><span class="string">{{'div>Какая-то HTML-разметка<'}}</span><span class="string">{{'/div>'}}</span><span class="punctuation">`</span>
+	<span class="key">template</span><span class="punctuation">: '</span><span class="string">{{'<'}}</span><span class="string">{{'div>Какая-то HTML-разметка<'}}</span><span class="string">{{'/div>'}}</span><span class="punctuation">'</span>
 <span class="punctuation">{{'})'}}</span>
 		</code></pre>
         <i class="subtitle">Уровень компонента</i>
@@ -67,6 +62,25 @@
 			<span class="key">providers</span>: <span class="punctuation">[</span><span class="service-name">SomeHttpService</span><span class="punctuation">]</span>, <span class="comment">// сервисы, которые должны быть определены только в глобальном injector-е</span>
 		<span class="punctuation">{{'}'}}</span>
 	<span class="punctuation">{{'}'}}</span>
-<span class="punctuation">{{'}'}}</span></code></pre>
-    </mat-expansion-panel>
-</mat-accordion>
+<span class="punctuation">{{'}'}}</span></code></pre>`,
+        selected: false,
+    },
+    {
+        title: 'Зачем нужны сервисы в Angular?',
+        body: `<p>
+            <span class="attention">Сервисы</span> нужны для предоставления
+            данных компонентам или хранения общего (глобального) состояния
+            приложение.
+        </p>
+        <p>
+            Причем в сервисах мы можем хранить не только запросы к серверу или
+            какие-то общие данные, но и различные преобразования данных.
+        </p>`,
+        selected: false,
+    },
+    {
+        title: 'Расскажите про жизненный цикл сервиса?',
+        body: `<p><i>В разработке...</i></p>`,
+        selected: false,
+    },
+];

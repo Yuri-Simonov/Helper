@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { rxjsQuestions } from 'src/app/angular/questions/rxjs';
+import { IQuestion } from 'src/app/shared/types/question.interface';
 
 @Component({
     selector: 'app-rxjs',
@@ -6,4 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrls: ['./rxjs.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RxjsComponent {}
+export class RxjsComponent {
+    questions: IQuestion[] = rxjsQuestions;
+}

@@ -1,12 +1,9 @@
-<mat-accordion>
-    <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-    >
-        <mat-expansion-panel-header>
-            <mat-panel-title> Что такое "Protractor"? </mat-panel-title>
-        </mat-expansion-panel-header>
-        <p>
+import { IQuestion } from 'src/app/shared/types/question.interface';
+
+export const testQuestions: IQuestion[] = [
+    {
+        title: 'Что такое "Protractor"?',
+        body: `<p>
             <span class="attention">Protractor</span> - фреймворк комплексного
             тестирования, с помощью которого можно тестировать Angular
             приложение прямо в браузере, имитируя взаимодействия, как c реальным
@@ -22,6 +19,7 @@
             компонентов и сервисов, а второй используется для проверки
             функциональности высокого уровня приложения (в том числе и UI
             элементы).
-        </p>
-    </mat-expansion-panel>
-</mat-accordion>
+        </p>`,
+        selected: false,
+    },
+];

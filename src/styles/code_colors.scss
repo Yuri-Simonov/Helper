@@ -1,9 +1,14 @@
 pre {
     background-color: var(--black);
     color: var(--white-dark);
+
+    code {
+        color: inherit;
+    }
 }
 
 code {
+    color: var(--purple-light);
     tab-size: 4;
 
     @media (max-width: 440px), (max-height: 440px) {
@@ -63,9 +68,5 @@ code {
 .variable,
 .attribute,
 .directive {
-    color: var(--purple-light);
-}
-
-code {
     color: var(--purple-light);
 }

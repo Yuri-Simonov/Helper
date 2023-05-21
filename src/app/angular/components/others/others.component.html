@@ -1,36 +1,24 @@
-<div class="content__item">
-    <app-renderer></app-renderer>
+<div class="content__item" *ngFor="let q of questions">
+    <mat-accordion>
+        <mat-expansion-panel
+            (opened)="q.selected = true"
+            (closed)="q.selected = false"
+        >
+            <mat-expansion-panel-header>
+                <mat-panel-title> {{ q.title }} </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div [innerHTML]="q.body"></div>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>
-<div class="content__item">
-    <app-other-scripts-and-styles-connect></app-other-scripts-and-styles-connect>
-</div>
-<div class="content__item">
-    <app-angular-cli></app-angular-cli>
-</div>
-<div class="content__item">
-    <app-module-in-angular></app-module-in-angular>
-</div>
-<div class="content__item">
-    <app-compilation-mechanisms></app-compilation-mechanisms>
-</div>
-<div class="content__item">
-    <app-data-binding-mechanisms></app-data-binding-mechanisms>
-</div>
-<div class="content__item">
-    <app-custom-events></app-custom-events>
-</div>
-<div class="content__item">
-    <app-cycle-optimization-ngfor></app-cycle-optimization-ngfor>
-</div>
-<div class="content__item">
-    <app-difference-between-ngcontainer-and-ngtemplate></app-difference-between-ngcontainer-and-ngtemplate>
-</div>
-<div class="content__item">
-    <app-dependency-injection></app-dependency-injection>
-</div>
-<div class="content__item">
-    <app-change-detection></app-change-detection>
-</div>
-<div class="content__item">
-    <app-change-detection-ref></app-change-detection-ref>
-</div>
+<!-- Шаблон -->
+<!-- <div class="content__item">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title> Заголовок </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>Тело</p>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div> -->

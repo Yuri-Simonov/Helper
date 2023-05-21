@@ -1,9 +1,24 @@
-<div class="content__item">
-    <app-pipe-in-angular></app-pipe-in-angular>
+<div class="content__item" *ngFor="let q of questions">
+    <mat-accordion>
+        <mat-expansion-panel
+            (opened)="q.selected = true"
+            (closed)="q.selected = false"
+        >
+            <mat-expansion-panel-header>
+                <mat-panel-title> {{ q.title }} </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div [innerHTML]="q.body"></div>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>
-<div class="content__item">
-    <app-custom-pipe></app-custom-pipe>
-</div>
-<div class="content__item">
-    <app-difference-between-pure-and-impure-pipes></app-difference-between-pure-and-impure-pipes>
-</div>
+<!-- Шаблон -->
+<!-- <div class="content__item">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title> Заголовок </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>Тело</p>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div> -->

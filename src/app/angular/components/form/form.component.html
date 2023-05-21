@@ -1,15 +1,24 @@
-<div class="content__item">
-    <app-forms-in-angular></app-forms-in-angular>
+<div class="content__item" *ngFor="let q of questions">
+    <mat-accordion>
+        <mat-expansion-panel
+            (opened)="q.selected = true"
+            (closed)="q.selected = false"
+        >
+            <mat-expansion-panel-header>
+                <mat-panel-title> {{ q.title }} </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div [innerHTML]="q.body"></div>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>
-<div class="content__item">
-    <app-form-parent-classes></app-form-parent-classes>
-</div>
-<div class="content__item">
-    <app-two-way-binding-in-forms></app-two-way-binding-in-forms>
-</div>
-<div class="content__item">
-    <app-custom-control></app-custom-control>
-</div>
-<div class="content__item">
-    <app-value-changes-in-form></app-value-changes-in-form>
-</div>
+<!-- Шаблон -->
+<!-- <div class="content__item">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title> Заголовок </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>Тело</p>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div> -->
