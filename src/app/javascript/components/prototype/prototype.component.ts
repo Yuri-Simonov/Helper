@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { prototypeQuestions } from 'src/app/javascript/questions/prototype';
+import { IQuestion } from 'src/app/shared/types/question.interface';
 
 @Component({
     selector: 'app-prototype',
@@ -7,5 +9,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PrototypeComponent {
-    panelOpenState = false;
+    questions: IQuestion[] = prototypeQuestions;
 }

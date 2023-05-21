@@ -31,7 +31,7 @@ export const pipeQuestions: IQuestion[] = [
         <p>Пример использования в HTML-шаблоне:</p>
         <pre><code><span class="comment">// компонент</span>
 <span>someString</span><span>:</span> <span class="type">string</span> <span class="operator">=</span> <span class="string">'какая-то строка на 1000 символов'</span>
-	<span></span>
+	
 <span class="comment">// шаблон</span>
 <span class="tag"><</span><span class="tag">p</span><span class="tag">></span><span class="punctuation">{</span><span class="punctuation">{</span> <span class="variable">someString</span> <span class="operator">|</span> <span class="pipe-name">customPipe</span> <span class="punctuation">}}</span><span class="tag"><</span><span class="tag">/p></span> <span class="comment">// текст обрежется до 200 символов и добавится в конец "..."</span></code></pre>
         <p>

@@ -10,15 +10,15 @@ export const serviceQuestions: IQuestion[] = [
                 компонента.</span
             >
         </p>
-        <pre><code><span class="keyword">@Injectable</span><span class="punctuation">{{'({'}}</span><span class="key">providedIn</span>: <span class="string">'root'</span><span class="punctuation">{{'})'}}</span> <span class="comment">// уровень приложения</span>
-			<span></span>
-<span class="keyword">@Injectable</span><span class="punctuation">{{'({'}}</span><span class="key">providedIn</span><span class="punctuation">:</span> <span class="class-name">SomeModule</span><span class="punctuation">{{'})'}}</span> <span class="comment">// уровень модуля</span>
-			<span></span>
-<span class="keyword">@Component</span><span class="punctuation">{{'({'}}</span> <span class="comment">// уровень компонента</span>
+        <pre><code><span class="keyword">@Injectable</span><span class="punctuation">({</span><span class="key">providedIn</span>: <span class="string">'root'</span><span class="punctuation">})</span> <span class="comment">// уровень приложения</span>
+			
+<span class="keyword">@Injectable</span><span class="punctuation">({</span><span class="key">providedIn</span><span class="punctuation">:</span> <span class="class-name">SomeModule</span><span class="punctuation">})</span> <span class="comment">// уровень модуля</span>
+			
+<span class="keyword">@Component</span><span class="punctuation">({</span> <span class="comment">// уровень компонента</span>
 	<span class="key">selector</span><span class="punctuation">:</span> <span class="string">'app-some-component'</span>,
 	<span class="key">providers</span><span class="punctuation">: [</span><span class="service-name">SomeHttpService</span><span class="punctuation">]</span>,
-	<span class="key">template</span><span class="punctuation">: '</span><span class="string">{{'<'}}</span><span class="string">{{'div>Какая-то HTML-разметка<'}}</span><span class="string">{{'/div>'}}</span><span class="punctuation">'</span>
-<span class="punctuation">{{'})'}}</span>
+	<span class="key">template</span><span class="punctuation">: '</span><span class="string"><</span><span class="string">div>Какая-то HTML-разметка<</span><span class="string">/div></span><span class="punctuation">'</span>
+<span class="punctuation">})</span>
 		</code></pre>
         <i class="subtitle">Уровень компонента</i>
         <p>
@@ -55,14 +55,14 @@ export const serviceQuestions: IQuestion[] = [
             нужно использовать статический метод forRoot(), который определяется
             в классе модуля.
         </p>
-        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="module-name">SomeModule</span> <span class="punctuation">{{'{'}}</span>
-	<span class="keyword">static</span> <span class="method">forRoot</span><span class="punctuation">():</span> <span class="type">ModuleWithProviders</span> <span class="punctuation">{{'{'}}</span>
-		<span class="return">return</span> <span class="punctuation">{{'{'}}</span>
+        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="module-name">SomeModule</span> <span class="punctuation">{</span>
+	<span class="keyword">static</span> <span class="method">forRoot</span><span class="punctuation">():</span> <span class="type">ModuleWithProviders</span> <span class="punctuation">{</span>
+		<span class="return">return</span> <span class="punctuation">{</span>
 			<span class="key">ngModule</span>: <span class="module-name">SomeModule</span>, <span class="comment">// модуль, в котором определяется метод</span>
 			<span class="key">providers</span>: <span class="punctuation">[</span><span class="service-name">SomeHttpService</span><span class="punctuation">]</span>, <span class="comment">// сервисы, которые должны быть определены только в глобальном injector-е</span>
-		<span class="punctuation">{{'}'}}</span>
-	<span class="punctuation">{{'}'}}</span>
-<span class="punctuation">{{'}'}}</span></code></pre>`,
+		<span class="punctuation">}</span>
+	<span class="punctuation">}</span>
+<span class="punctuation">}</span></code></pre>`,
         selected: false,
     },
     {

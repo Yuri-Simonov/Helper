@@ -58,28 +58,28 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
             При этом мы можем создать новый <code>Observable</code> с помощью
             Observer:
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">newObs$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
+        <pre><code><span class="keyword">const</span> <span class="variable">newObs$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
 	observer.<span class="function-name">next</span><span class="punctuation">(</span><span class="string">'тут передаем данные'</span><span class="punctuation">)</span>; <span class="comment">переданные данные попадут в data</span>
 	observer.<span class="function-name">error</span><span class="punctuation">(</span><span class="string">'тут передаем ошибки'</span><span class="punctuation">)</span>; <span class="comment">переданные данные попадут в error</span>
 	observer.<span class="function-name">complete()</span>; <span class="comment">// данный метод не принимает параметры</span>
-<span class="punctuation">{{'}'}})</span>;
+<span class="punctuation">})</span>;
 
 <span class="variable">newObs$</span>.<span class="function-name">subscribe</span><span class="punctuation">(</span>
-	<span class="punctuation">(</span>data<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
+	<span class="punctuation">(</span>data<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
 		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем данные'</span><span class="punctuation">)</span>
-	<span class="punctuation">{{'}'}}</span>,
-	<span class="punctuation">(</span>error<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
+	<span class="punctuation">}</span>,
+	<span class="punctuation">(</span>error<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
 		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем ошибки'</span><span class="punctuation">)</span>
-	<span class="punctuation">{{'}'}}</span>,
-	<span class="punctuation">()</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
+	<span class="punctuation">}</span>,
+	<span class="punctuation">()</span> <span class="operator">=></span> <span class="punctuation">{</span>
 		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем завершение работы Observable'</span><span class="punctuation">)</span>
-	<span class="punctuation">{{'}'}}</span>,
+	<span class="punctuation">}</span>,
 <span class="punctuation">)</span>;</code></pre>
         <p>
             Или мы можем использовать <code>Subject</code>, который реализует
             интерфейсы <code>Observable</code> и <code>Observer</code>:
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">subject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Subject</span><span class="type">{{'<'}}{{'number>'}}</span><span class="punctuation">()</span>;
+        <pre><code><span class="keyword">const</span> <span class="variable">subject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Subject</span><span class="type"><number></span><span class="punctuation">()</span>;
 
 <span class="variable">subject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Первая подписка:'</span>, value<span class="punctuation">))</span>;
 <span class="variable">subject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">3</span><span class="punctuation">)</span>;
@@ -107,33 +107,33 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
             <code>of</code> создает поток с одним или несколькими элементами,
             который завершается сразу после их отправки.
         </p>
-        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{{'{'}}</span>
-    numbers$: <span class="class-name">Observable</span><span class="type">{{'<'}}{{'number[]>'}}</span> <span class="operator">=</span> <span class="function-name">of</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>; <span class="comment">// (*)</span>
+        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
+    numbers$: <span class="class-name">Observable</span><span class="type"><number[]></span> <span class="operator">=</span> <span class="function-name">of</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>; <span class="comment">// (*)</span>
 
-    <span class="function-name">ngOnInit()</span> <span class="punctuation">{{'{'}}</span>
-        <span class="object">this</span>.numbers$.<span class="function-name">subscribe</span><span class="punctuation">((</span>data: <span class="type">number[]</span><span class="punctuation">)</span> <span class="punctuation"><span class="operator">=></span></span> <span class="punctuation">{{'{'}}</span>
+    <span class="function-name">ngOnInit()</span> <span class="punctuation">{</span>
+        <span class="object">this</span>.numbers$.<span class="function-name">subscribe</span><span class="punctuation">((</span>data: <span class="type">number[]</span><span class="punctuation">)</span> <span class="punctuation"><span class="operator">=></span></span> <span class="punctuation">{</span>
             console.<span class="function-name">log</span>(data); <span class="comment">// [1, 2, 3]</span>
-        <span class="punctuation">{{'}'}})</span>;
-    <span class="punctuation">{{'}'}}</span>
-<span class="punctuation">{{'}'}}</span></code></pre>
+        <span class="punctuation">})</span>;
+    <span class="punctuation">}</span>
+<span class="punctuation">}</span></code></pre>
         <p>Строка под "<code>*</code>" равносильна следующей записи:</p>
-        <pre><code>numbers$: <span class="class-name">Observable</span><span class="type">{{'<'}}{{'number[]>'}}</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
+        <pre><code>numbers$: <span class="class-name">Observable</span><span class="type"><number[]></span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
 	observer.<span class="function-name">next</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>;
-<span class="punctuation">{{'}'}})</span>;</code></pre>
+<span class="punctuation">})</span>;</code></pre>
         <p>
             Если необходимо, чтобы обработчик вместо всего массива сразу получал
             каждый его элемент в отдельности, тогда используется оператор
             <code>from</code>.
         </p>
-        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{{'{'}}</span>
-    numbers$: <span class="class-name">Observable</span><span class="type">{{'<'}}{{'number>'}}</span> <span class="operator">=</span> <span class="function-name">from</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>;
+        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
+    numbers$: <span class="class-name">Observable</span><span class="type"><number></span> <span class="operator">=</span> <span class="function-name">from</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>;
 
-    <span class="function-name">ngOnInit()</span> <span class="punctuation">{{'{'}}</span>
-        <span class="object">this</span>.numbers$.<span class="function-name">subscribe</span><span class="punctuation">((</span>data: <span class="type">number</span><span class="punctuation">)</span> <span class="punctuation"><span class="operator">=></span></span> <span class="punctuation">{{'{'}}</span>
+    <span class="function-name">ngOnInit()</span> <span class="punctuation">{</span>
+        <span class="object">this</span>.numbers$.<span class="function-name">subscribe</span><span class="punctuation">((</span>data: <span class="type">number</span><span class="punctuation">)</span> <span class="punctuation"><span class="operator">=></span></span> <span class="punctuation">{</span>
             console.<span class="function-name">log</span><span class="punctuation">(</span>data<span class="punctuation">)</span>; <span class="comment">// 1, 2, 3</span>
-        <span class="punctuation">{{'}'}})</span>;
-    <span class="punctuation">{{'}'}}</span>
-<span class="punctuation">{{'}'}}</span></code></pre>`,
+        <span class="punctuation">})</span>;
+    <span class="punctuation">}</span>
+<span class="punctuation">}</span></code></pre>`,
         selected: false,
     },
     {
@@ -149,10 +149,10 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
             <code>Observable</code> заработал, на него необходимо подписаться с
             помощью метода <code>subscribe</code>.
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">newObs$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
+        <pre><code><span class="keyword">const</span> <span class="variable">newObs$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
 	console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'какой-то наш код внутри Observable'</span><span class="punctuation">)</span>;
-<span class="punctuation">{{'}'}})</span>;
-	<span></span>
+<span class="punctuation">})</span>;
+	
 <span class="variable">newObs$</span>.<span class="function-name">subscribe()</span>; <span class="comment">// здесь мы подписались на Observable и получили сообщение в консоли</span></code></pre>
         <p>
             Выше рассмотрен самый простой вариант подписки на источник события.
@@ -178,35 +178,35 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
             Соответственно, в методе <code>subscribe</code> мы также можем
             прописать логику для каждого из перечисленных выше методов объекта:
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">newObs$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
+        <pre><code><span class="keyword">const</span> <span class="variable">newObs$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
 	observer.<span class="function-name">next</span><span class="punctuation">(</span><span class="string">'тут передаем данные'</span><span class="punctuation">)</span>; <span class="comment">переданные данные попадут в data</span>
 	observer.<span class="function-name">error</span><span class="punctuation">(</span><span class="string">'тут передаем ошибки'</span><span class="punctuation">)</span>; <span class="comment">переданные данные попадут в error</span>
 	observer.<span class="function-name">complete()</span>; <span class="comment">// данный метод не принимает параметры</span>
-<span class="punctuation">{{'}'}})</span>
-	<span></span>
+<span class="punctuation">})</span>
+	
 <span class="variable">newObs$</span>.<span class="function-name">subscribe</span><span class="punctuation">(</span>
-	<span class="punctuation">(</span>data<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
+	<span class="punctuation">(</span>data<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
 		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем данные'</span><span class="punctuation">)</span>
-	<span class="punctuation">{{'}'}}</span>,
-	<span class="punctuation">(</span>error<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
+	<span class="punctuation">}</span>,
+	<span class="punctuation">(</span>error<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
 		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем ошибки'</span><span class="punctuation">)</span>
-	<span class="punctuation">{{'}'}}</span>,
-	<span class="punctuation">()</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
+	<span class="punctuation">}</span>,
+	<span class="punctuation">()</span> <span class="operator">=></span> <span class="punctuation">{</span>
 		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем завершение работы Observable'</span><span class="punctuation">)</span>
-	<span class="punctuation">{{'}'}}</span>,
+	<span class="punctuation">}</span>,
 <span class="punctuation">)</span>;</code></pre>
         <p>Альтернативная запись для подписки через объект с методами:</p>
-        <pre><code><span class="variable">newObs$</span>.<span class="function-name">subscribe</span><span class="punctuation">({{'{'}}</span>
-	<span class="key">next</span>: <span class="punctuation">(</span>data<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
+        <pre><code><span class="variable">newObs$</span>.<span class="function-name">subscribe</span><span class="punctuation">({</span>
+	<span class="key">next</span>: <span class="punctuation">(</span>data<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
 		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем данные'</span><span class="punctuation">)</span>
-	<span class="punctuation">{{'}'}}</span>,
-	<span class="key">error</span>: <span class="punctuation">(</span>error<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
+	<span class="punctuation">}</span>,
+	<span class="key">error</span>: <span class="punctuation">(</span>error<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
 		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем ошибки'</span><span class="punctuation">)</span>
-	<span class="punctuation">{{'}'}}</span>,
-	<span class="key">complete</span>: <span class="punctuation">()</span> <span class="operator">=></span> <span class="punctuation">{{'{'}}</span>
+	<span class="punctuation">}</span>,
+	<span class="key">complete</span>: <span class="punctuation">()</span> <span class="operator">=></span> <span class="punctuation">{</span>
 		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем завершение работы Observable'</span><span class="punctuation">)</span>
-	<span class="punctuation">{{'}'}}</span>,
-<span class="punctuation">{{'}'}})</span>;</code></pre>
+	<span class="punctuation">}</span>,
+<span class="punctuation">})</span>;</code></pre>
         <p>
             Если <code>Observable</code> не имеет метода <code>complete</code> и
             нет его обработки в методе <code>subscribe</code>, то не забывайте
@@ -261,7 +261,7 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
             <code>Observable</code> осуществляется уникально для каждого его
             вызова.
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">subject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Subject</span><span class="type">{{'<'}}{{'number>'}}</span><span class="punctuation">()</span>;
+        <pre><code><span class="keyword">const</span> <span class="variable">subject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Subject</span><span class="type"><number></span><span class="punctuation">()</span>;
 
 <span class="variable">subject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Первая подписка:'</span>, value<span class="punctuation">))</span>;
 <span class="variable">subject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">3</span><span class="punctuation">)</span>;
@@ -281,7 +281,7 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
                 аргумента принимает начальное значение </span
             >.
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">behaviorSubject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">BehaviorSubject</span><span class="type">{{'<'}}{{'number>'}}</span><span class="punctuation">(</span><span class="number">5</span><span class="punctuation">)</span>;
+        <pre><code><span class="keyword">const</span> <span class="variable">behaviorSubject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">BehaviorSubject</span><span class="type"><number></span><span class="punctuation">(</span><span class="number">5</span><span class="punctuation">)</span>;
 
 <span class="variable">behaviorSubject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Первая подписка:'</span>, value<span class="punctuation">))</span>;
 <span class="variable">behaviorSubject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Вторая подписка:'</span>, value<span class="punctuation">))</span>;
@@ -301,7 +301,7 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
                 параметр — количество предыдущих значений </span
             >.
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">replaySubject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">ReplaySubject</span><span class="type">{{'<'}}{{'number>'}}</span><span class="punctuation">(</span><span class="number">2</span><span class="punctuation">)</span>;
+        <pre><code><span class="keyword">const</span> <span class="variable">replaySubject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">ReplaySubject</span><span class="type"><number></span><span class="punctuation">(</span><span class="number">2</span><span class="punctuation">)</span>;
 
 <span class="variable">replaySubject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">3</span><span class="punctuation">)</span>;
 <span class="variable">replaySubject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">6</span><span class="punctuation">)</span>;
@@ -322,7 +322,7 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
             </span>
             <code>complete</code>.
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">asyncSubject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">AsyncSubject</span><span class="type">{{'<'}}{{'number>'}}</span><span class="punctuation">()</span>;
+        <pre><code><span class="keyword">const</span> <span class="variable">asyncSubject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">AsyncSubject</span><span class="type"><number></span><span class="punctuation">()</span>;
 
 <span class="variable">asyncSubject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Результат: '</span>, value<span class="punctuation">))</span>;
 
@@ -366,10 +366,10 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
             какого-либо события в нативном JavaScript:
         </p>
         <pre><code><span class="comment">// создаем функцию, которая будет делать подписку на setTimeout</span>
-<span class="keyword">function</span> <span class="function-name">timer</span><span class="punctuation">(</span>cb, timeout<span class="punctuation">)</span> <span class="punctuation">{{'{'}}</span>
+<span class="keyword">function</span> <span class="function-name">timer</span><span class="punctuation">(</span>cb, timeout<span class="punctuation">)</span> <span class="punctuation">{</span>
     <span class="keyword">const</span> <span class="variable">timeoutId</span> <span class="operator">=</span> <span class="function-name">setTimeout</span><span class="punctuation">(</span>cb, timeout<span class="punctuation">)</span>;
     <span class="keyword">return</span> <span class="punctuation">()</span> <span class="operator">=></span> <span class="function-name">clearInterval</span><span class="punctuation">(</span>timeoutId<span class="punctuation">)</span>;
-<span class="punctuation">{{'}'}}</span>
+<span class="punctuation">}</span>
 <span class="comment">// замыкаем в переменную disposeTimer функцию, которая отменит подписку</span>
 <span class="keyword">const</span> <span class="variable">disposeTimer</span> <span class="operator">=</span> <span class="function-name">timer</span><span class="punctuation">(</span>someFunction, <span class="number">1000</span><span class="punctuation">)</span>;
 <span class="comment">// отменяем подписку</span>
@@ -396,9 +396,9 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
             использовать <code>ReplaySubject</code> и оператор
             <code>takeUntil</code> для отписки сразу от всех подписок:
         </p>
-        <pre><code>onDestroy$: <span class="type">ReplaySubject{{'<'}}any></span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">ReplaySubject</span><span class="type">{{'<'}}any></span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span>;
+        <pre><code>onDestroy$: <span class="type">ReplaySubject<any></span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">ReplaySubject</span><span class="type"><any></span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span>;
 
-<span class="method">ngOninit()</span> <span class="punctuation">{{'{'}}</span>
+<span class="method">ngOninit()</span> <span class="punctuation">{</span>
 	<span class="object">this</span>.control.valueChanges
 		.<span class="method">pipe</span><span class="punctuation">(</span>
 			<span class="comment">// switchMap отписывается от старого Observable и подписывается на новый, который приходит из сервиса</span>
@@ -408,13 +408,13 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
 			<span class="function-name">takeUntil</span><span class="punctuation">(</span><span class="object">this</span>.onDestroy$<span class="punctuation">)</span>
 		<span class="punctuation">)</span>
 		.<span class="method">subscribe()</span>;
-<span class="punctuation">{{'}'}}</span>
+<span class="punctuation">}</span>
 
-<span class="method">ngOnDestroy()</span> <span class="punctuation">{{'{'}}</span>
+<span class="method">ngOnDestroy()</span> <span class="punctuation">{</span>
 	<span class="comment">// в момент уничтожения компонента избавляемся от подписок</span>
 	<span class="object">this</span>.onDestroy$.<span class="method">next(</span><span class="null">null</span><span class="punctuation">)</span>;
 	<span class="object">this</span>.onDestroy$.<span class="method">complete()</span>;
-<span class="punctuation">{{'}'}}</span></code></pre>
+<span class="punctuation">}</span></code></pre>
         <p>
             Вместо <code>ReplaySubject</code> можно использовать и просто
             <code>Subject</code>, но лучше все же использовать именно

@@ -1,12 +1,24 @@
-<div class="content__item">
-    <app-closure-in-js></app-closure-in-js>
+<div class="content__item" *ngFor="let q of questions">
+    <mat-accordion>
+        <mat-expansion-panel
+            (opened)="q.selected = true"
+            (closed)="q.selected = false"
+        >
+            <mat-expansion-panel-header>
+                <mat-panel-title> {{ q.title }} </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div [innerHTML]="q.body"></div>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>
-<div class="content__item">
-    <app-call-function-declaration-before-definition></app-call-function-declaration-before-definition>
-</div>
-<div class="content__item">
-    <app-accessing-global-variables-inside-a-function></app-accessing-global-variables-inside-a-function>
-</div>
-<div class="content__item">
-    <app-one-function-call-one-lexical-environment></app-one-function-call-one-lexical-environment>
-</div>
+<!-- Шаблон -->
+<!-- <div class="content__item">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title> Заголовок </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>Тело</p>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div> -->

@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { functionQuestions } from 'src/app/javascript/questions/function';
+import { IQuestion } from 'src/app/shared/types/question.interface';
 
 @Component({
     selector: 'app-function',
@@ -7,5 +9,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FunctionComponent {
-    panelOpenState: Boolean;
+    questions: IQuestion[] = functionQuestions;
 }

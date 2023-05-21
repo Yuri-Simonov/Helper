@@ -1,15 +1,24 @@
-<div class="content__item">
-    <app-prototype-in-js></app-prototype-in-js>
+<div class="content__item" *ngFor="let q of questions">
+    <mat-accordion>
+        <mat-expansion-panel
+            (opened)="q.selected = true"
+            (closed)="q.selected = false"
+        >
+            <mat-expansion-panel-header>
+                <mat-panel-title> {{ q.title }} </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div [innerHTML]="q.body"></div>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>
-<div class="content__item">
-    <app-prototype-chain></app-prototype-chain>
-</div>
-<div class="content__item">
-    <app-own-method-or-property-in-prototype></app-own-method-or-property-in-prototype>
-</div>
-<div class="content__item">
-    <app-prototype-chain-end></app-prototype-chain-end>
-</div>
-<div class="content__item">
-    <app-object-prototype-of-another-object></app-object-prototype-of-another-object>
-</div>
+<!-- Шаблон -->
+<!-- <div class="content__item">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title> Заголовок </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>Тело</p>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div> -->
