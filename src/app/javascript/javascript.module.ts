@@ -3,14 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-// Импорты компонентов разделов
-import { AsyncComponent } from 'src/app/javascript/components/async/async.component';
-import { ClassComponent } from 'src/app/javascript/components/class/class.component';
-import { FunctionComponent } from 'src/app/javascript/components/function/function.component';
+// Импорт главного компонента
 import { JavascriptComponent } from 'src/app/javascript/components/javascript/javascript.component';
-import { OthersComponent } from 'src/app/javascript/components/others/others.component';
-import { OppComponent } from 'src/app/javascript/components/opp/opp.component';
-import { PrototypeComponent } from 'src/app/javascript/components/prototype/prototype.component';
 
 // Импорты сторонних модулей
 import { EmptyModule } from 'src/app/shared/modules/empty/empty.module';
@@ -25,27 +19,19 @@ const routes: Routes = [
         path: 'javascript',
         component: JavascriptComponent,
         children: [
-            { path: 'async', component: AsyncComponent },
-            { path: 'class', component: ClassComponent },
-            { path: 'function', component: FunctionComponent },
-            { path: 'oop', component: OppComponent },
-            { path: 'others', component: OthersComponent },
-            { path: 'prototype', component: PrototypeComponent },
+            { path: 'async', component: JavascriptComponent },
+            { path: 'class', component: JavascriptComponent },
+            { path: 'function', component: JavascriptComponent },
+            { path: 'oop', component: JavascriptComponent },
+            { path: 'others', component: JavascriptComponent },
+            { path: 'prototype', component: JavascriptComponent },
             { path: '**', redirectTo: '' },
         ],
     },
 ];
 
 @NgModule({
-    declarations: [
-        JavascriptComponent,
-        PrototypeComponent,
-        AsyncComponent,
-        ClassComponent,
-        OthersComponent,
-        OppComponent,
-        FunctionComponent,
-    ],
+    declarations: [JavascriptComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),

@@ -6,6 +6,8 @@ import {
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { functionQuestions } from 'src/app/javascript/questions/function';
+import { prototypeQuestions } from 'src/app/javascript/questions/prototype';
 
 import { IList } from 'src/app/shared/types/list.interface';
 
@@ -20,11 +22,8 @@ import { IList } from 'src/app/shared/types/list.interface';
 // a b c d e f g h i j k l m n o p q r s t u v w x y z
 export class JavascriptComponent implements OnInit, OnDestroy {
     list: IList[] = [
-        // { name: 'Асинхронный код', path: 'async' },
-        // { name: 'Классы', path: 'class' },
-        { name: 'Прототипы', path: 'prototype' },
-        // { name: 'Разное', path: 'others' },
-        { name: 'Функции', path: 'function' },
+        { name: 'Прототипы', path: 'prototype', questions: prototypeQuestions },
+        { name: 'Функции', path: 'function', questions: functionQuestions },
     ];
     listState: boolean = false;
     currentPath: string;
@@ -36,9 +35,10 @@ export class JavascriptComponent implements OnInit, OnDestroy {
         this.currentPath = this.router.url;
         this.currentPathSub = this.router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
-                this.currentPath = event.url;
+                this.currentPath = this.slicePath(event.url);
             }
         });
+        this.currentPath = this.slicePath(this.currentPath);
     }
 
     ngOnDestroy(): void {
@@ -47,5 +47,10 @@ export class JavascriptComponent implements OnInit, OnDestroy {
 
     setNewListState(event: boolean): void {
         this.listState = event;
+    }
+
+    slicePath(fullPath: string): string {
+        const pathsArray = fullPath.split('/');
+        return pathsArray[pathsArray.length - 1];
     }
 }

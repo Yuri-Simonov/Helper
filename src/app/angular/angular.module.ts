@@ -3,18 +3,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-// Импорты компонентов разделов
+// Импорт главного компонента
 import { AngularComponent } from 'src/app/angular/components/angular/angular.component';
-import { ComponentComponent } from 'src/app/angular/components/component/component.component';
-import { DecoratorComponent } from 'src/app/angular/components/decorator/decorator.component';
-import { DirectiveComponent } from 'src/app/angular/components/directive/directive.component';
-import { FormComponent } from 'src/app/angular/components/form/form.component';
-import { OthersComponent } from 'src/app/angular/components/others/others.component';
-import { PipeComponent } from 'src/app/angular/components/pipe/pipe.component';
-import { RoutingComponent } from 'src/app/angular/components/routing/routing.component';
-import { RxjsComponent } from 'src/app/angular/components/rxjs/rxjs.component';
-import { ServiceComponent } from 'src/app/angular/components/service/service.component';
-import { TestComponent } from 'src/app/angular/components/test/test.component';
 
 // Импорты сторонних модулей
 import { EmptyModule } from 'src/app/shared/modules/empty/empty.module';
@@ -29,35 +19,23 @@ const routes: Routes = [
         path: 'angular',
         component: AngularComponent,
         children: [
-            { path: 'component', component: ComponentComponent },
-            { path: 'decorator', component: DecoratorComponent },
-            { path: 'directive', component: DirectiveComponent },
-            { path: 'form', component: FormComponent },
-            { path: 'others', component: OthersComponent },
-            { path: 'pipe', component: PipeComponent },
-            { path: 'routing', component: RoutingComponent },
-            { path: 'rxjs', component: RxjsComponent },
-            { path: 'service', component: ServiceComponent },
-            { path: 'test', component: TestComponent },
+            { path: 'component', component: AngularComponent },
+            { path: 'decorator', component: AngularComponent },
+            { path: 'directive', component: AngularComponent },
+            { path: 'form', component: AngularComponent },
+            { path: 'others', component: AngularComponent },
+            { path: 'pipe', component: AngularComponent },
+            { path: 'routing', component: AngularComponent },
+            { path: 'rxjs', component: AngularComponent },
+            { path: 'service', component: AngularComponent },
+            { path: 'test', component: AngularComponent },
             { path: '**', redirectTo: '' },
         ],
     },
 ];
 
 @NgModule({
-    declarations: [
-        AngularComponent,
-        ComponentComponent,
-        DecoratorComponent,
-        DirectiveComponent,
-        FormComponent,
-        OthersComponent,
-        PipeComponent,
-        RoutingComponent,
-        RxjsComponent,
-        ServiceComponent,
-        TestComponent,
-    ],
+    declarations: [AngularComponent],
     imports: [
         CommonModule,
         EmptyModule,

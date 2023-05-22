@@ -6,6 +6,16 @@ import {
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { componentQuestions } from 'src/app/angular/questions/component';
+import { decoratorQuestions } from 'src/app/angular/questions/decorator';
+import { directiveQuestions } from 'src/app/angular/questions/directive';
+import { formQuestions } from 'src/app/angular/questions/form';
+import { othersQuestions } from 'src/app/angular/questions/others';
+import { pipeQuestions } from 'src/app/angular/questions/pipe';
+import { routingQuestions } from 'src/app/angular/questions/routing';
+import { rxjsQuestions } from 'src/app/angular/questions/rxjs';
+import { serviceQuestions } from 'src/app/angular/questions/service';
+import { testQuestions } from 'src/app/angular/questions/test';
 import { IList } from 'src/app/shared/types/list.interface';
 
 @Component({
@@ -21,16 +31,24 @@ export class AngularComponent implements OnInit, OnDestroy {
     panelOpenState: boolean;
 
     list: IList[] = [
-        { name: 'Декораторы', path: 'decorator' },
-        { name: 'Директивы', path: 'directive' },
-        { name: 'Компоненты', path: 'component' },
-        { name: 'Маршрутизация', path: 'routing' },
-        { name: 'Пайпы / Фильтры', path: 'pipe' },
-        { name: 'Разное', path: 'others' },
-        { name: 'Сервисы', path: 'service' },
-        { name: 'Тестирование', path: 'test' },
-        { name: 'Формы', path: 'form' },
-        { name: 'RxJs', path: 'rxjs' },
+        {
+            name: 'Декораторы',
+            path: 'decorator',
+            questions: decoratorQuestions,
+        },
+        { name: 'Директивы', path: 'directive', questions: directiveQuestions },
+        {
+            name: 'Компоненты',
+            path: 'component',
+            questions: componentQuestions,
+        },
+        { name: 'Маршрутизация', path: 'routing', questions: routingQuestions },
+        { name: 'Пайпы / Фильтры', path: 'pipe', questions: pipeQuestions },
+        { name: 'Разное', path: 'others', questions: othersQuestions },
+        { name: 'Сервисы', path: 'service', questions: serviceQuestions },
+        { name: 'Тестирование', path: 'test', questions: testQuestions },
+        { name: 'Формы', path: 'form', questions: formQuestions },
+        { name: 'RxJs', path: 'rxjs', questions: rxjsQuestions },
     ];
     listState: boolean = false;
     currentPath: string;
@@ -42,9 +60,10 @@ export class AngularComponent implements OnInit, OnDestroy {
         this.currentPath = this.router.url;
         this.currentPathSub = this.router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
-                this.currentPath = event.url;
+                this.currentPath = this.slicePath(event.url);
             }
         });
+        this.currentPath = this.slicePath(this.currentPath);
     }
 
     ngOnDestroy(): void {
@@ -53,5 +72,10 @@ export class AngularComponent implements OnInit, OnDestroy {
 
     setNewListState(event: boolean): void {
         this.listState = event;
+    }
+
+    slicePath(fullPath: string): string {
+        const pathsArray = fullPath.split('/');
+        return pathsArray[pathsArray.length - 1];
     }
 }

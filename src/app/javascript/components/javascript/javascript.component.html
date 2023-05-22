@@ -1,4 +1,4 @@
-<app-title title="JavaScript" [(state)]="listState"></app-title>
+<app-title title="Angular" [(state)]="listState"></app-title>
 <div class="content">
     <app-sidenav
         [list]="list"
@@ -6,7 +6,26 @@
         [style.left.%]="listState ? 0 : -100"
     ></app-sidenav>
     <div class="content__items">
-        <router-outlet></router-outlet>
-        <app-empty *ngIf="currentPath === '/javascript'"></app-empty>
+        <ng-container *ngFor="let item of list">
+            <ng-container *ngIf="item.path === currentPath">
+                <div class="content__item" *ngFor="let q of item.questions">
+                    <mat-accordion>
+                        <mat-expansion-panel
+                            (opened)="q.selected = true"
+                            (closed)="q.selected = false"
+                        >
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{ q.title }}
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div [innerHTML]="q.body"></div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+            </ng-container>
+        </ng-container>
+
+        <app-empty *ngIf="currentPath === 'javascript'"></app-empty>
     </div>
 </div>

@@ -1,3 +1,7 @@
+import { IQuestion } from 'src/app/shared/types/question.interface';
+
 export interface IList {
-    [key: string]: string;
+    name: string;
+    path: string;
+    questions: IQuestion[];
 }
