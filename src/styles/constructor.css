@@ -1,0 +1,171 @@
+:root {
+    --primary: #7b1fa2;
+    --secondary: #303030;
+
+    --white: #ffffff;
+    --white-dark: #f5fffa;
+    --black: #282a36;
+    --yellow: #fbec5d;
+    --orange: #ffd0a9;
+    --red: #f53d68;
+    --green: #50c878;
+    --pink: #da70d6;
+    --teal: #168081;
+    --teal-light: #5ec4cd;
+    --purple: #9391ff;
+    --purple-light: #d7a4ff;
+
+    --overlay: #80808057;
+
+    --border: 1px solid #d3d3d33a;
+    --box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024,
+        0 1px 18px #0000001f;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    overflow-x: hidden;
+}
+body {
+    color: var(--white);
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    line-height: 130%;
+}
+
+body > app-root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+img,
+svg {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #303030;
+}
+
+p + pre {
+    margin-top: 0;
+}
+
+pre {
+    display: inline-flex;
+    align-items: center;
+    max-width: calc(100vw - 241px - 48px);
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+@media (max-width: 992px) {
+    pre {
+        max-width: calc(100vw - 48px);
+    }
+}
+
+@media (max-width: 440px), (max-height: 440px) {
+    pre {
+        display: flex;
+        max-width: calc(100vw);
+        margin: 0 -12px 1em;
+    }
+
+    code {
+        padding: 12px;
+        tab-size: 2;
+    }
+}
+
+code {
+    padding: 16px;
+}
+
+p > code,
+li > code {
+    display: inline-block;
+    padding: 0 2px;
+}
+
+pre {
+    background-color: var(--black);
+    color: var(--white-dark);
+}
+
+pre code {
+    color: inherit;
+}
+
+code {
+    color: var(--purple-light);
+    tab-size: 4;
+}
+
+.number,
+.string,
+.array {
+    color: var(--orange);
+}
+
+.punctuation,
+.function-name,
+.pipe-name,
+.method,
+.property {
+    color: var(--yellow);
+}
+
+.keyword {
+    color: var(--green);
+}
+
+.object {
+    color: var(--pink);
+}
+
+.comment {
+    color: var(--teal);
+}
+
+.operator,
+.class-name,
+.interface-name,
+.service-name,
+.module-name {
+    color: var(--red);
+}
+
+.key,
+.type,
+.boolean,
+.null,
+.undefined {
+    color: var(--teal-light);
+}
+
+.export,
+.import,
+.tag,
+.return {
+    color: var(--purple);
+}
+
+.variable,
+.attribute,
+.directive {
+    color: var(--purple-light);
+}
