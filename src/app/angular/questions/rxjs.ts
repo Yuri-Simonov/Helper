@@ -2,6 +2,22 @@ import { IQuestion } from '@types';
 
 export const rxjsQuestions: IQuestion[] = [
     {
+        title: 'Что такое холодные и горячие Observable и в чем между ними разница?',
+        body: `<p>
+            Холодные создают независимые потоки под каждую подписку.
+        </p>
+		<p>
+            Горячие разделяют поток друг с другом.
+        </p>
+		<p><i>В разработке...</i></p>`,
+        selected: false,
+    },
+    {
+        title: 'Можно ли холодный поток превратить в горячий и наоборот?',
+        body: `<p><i>В разработке...</i></p>`,
+        selected: false,
+    },
+    {
         title: 'В чем разница между Observable и Promise?',
         body: `<p>
             <code>Observable</code> - это

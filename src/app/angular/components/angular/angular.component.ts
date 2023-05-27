@@ -45,7 +45,7 @@ export class AngularComponent implements OnInit, OnDestroy {
             questions: componentQuestions,
         },
         { name: 'Маршрутизация', path: 'routing', questions: routingQuestions },
-        { name: 'Пайпы / Фильтры', path: 'pipe', questions: pipeQuestions },
+        { name: 'Пайпы', path: 'pipe', questions: pipeQuestions },
         { name: 'Разное', path: 'others', questions: othersQuestions },
         { name: 'Сервисы', path: 'service', questions: serviceQuestions },
         { name: 'Тестирование', path: 'test', questions: testQuestions },
