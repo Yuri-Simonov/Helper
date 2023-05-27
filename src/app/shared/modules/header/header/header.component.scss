@@ -1,3 +1,7 @@
+:host {
+    height: var(--header-height);
+}
+
 .header {
     position: fixed;
     top: 0;

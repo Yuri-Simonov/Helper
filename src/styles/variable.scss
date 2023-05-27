@@ -24,4 +24,19 @@
     --border: 1px solid #d3d3d33a;
     --box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024,
         0 1px 18px #0000001f;
+
+    // Размеры основных элементов
+    --header-height: 64px;
+    --footer-height: 64px;
+    --title-height: 58px;
+
+    @media (max-width: 992px), (max-height: 440px) {
+        --title-height: 56px;
+    }
+    @media (max-width: 768px), (max-height: 440px) {
+        --footer-height: 40px;
+    }
+    @media (max-width: 600px), (max-height: 440px) {
+        --header-height: 56px;
+    }
 }

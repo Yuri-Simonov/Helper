@@ -1,22 +1,26 @@
 :host {
+    height: calc(
+        100vh - var(--header-height) - var(--title-height) -
+            var(--footer-height)
+    );
+
     @media (max-width: 992px) {
         position: absolute;
+        top: 0;
         z-index: 2;
-        height: calc(100vh - 118px);
-        top: 110px;
+        height: calc(100vh - var(--header-height) - var(--title-height));
         transition: 0.3s;
+        overflow: auto;
     }
 
     @media (max-width: 599px), (max-height: 440px) {
-        height: calc(100vh - 110px);
-        overflow: auto;
     }
 }
 
 .sidenav {
     width: 15rem;
-    border-right: var(--border);
     height: 100%;
+    border-right: var(--border);
     transition: 0.3s;
     background-color: var(--secondary);
 
@@ -44,7 +48,7 @@
 
     mat-nav-list {
         position: sticky;
-        top: 58px;
+        top: 64px;
         left: 0;
         background-color: inherit;
 

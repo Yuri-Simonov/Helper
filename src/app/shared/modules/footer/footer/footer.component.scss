@@ -1,4 +1,6 @@
 :host {
+    height: var(--footer-height);
+
     mat-toolbar {
         @media (max-width: 768px), (max-height: 440px) {
             height: auto;
