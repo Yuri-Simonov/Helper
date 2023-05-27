@@ -1,4 +1,4 @@
-import { IQuestion } from 'src/app/shared/types/question.interface';
+import { IQuestion } from '@types';
 
 export const oppQuestions: IQuestion[] = [
     {

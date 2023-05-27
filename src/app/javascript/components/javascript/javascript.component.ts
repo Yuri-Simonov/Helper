@@ -6,10 +6,11 @@ import {
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { functionQuestions } from 'src/app/javascript/questions/function';
-import { prototypeQuestions } from 'src/app/javascript/questions/prototype';
 
-import { IList } from 'src/app/shared/types/list.interface';
+import { functionQuestions } from '../../questions/function';
+import { prototypeQuestions } from '../../questions/prototype';
+
+import { IList } from '@types';
 
 @Component({
     selector: 'app-javascript',

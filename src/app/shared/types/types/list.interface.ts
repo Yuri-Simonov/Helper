@@ -1,4 +1,4 @@
-import { IQuestion } from 'src/app/shared/types/question.interface';
+import { IQuestion } from './question.interface';
 
 export interface IList {
     name: string;

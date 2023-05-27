@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { GitComponent } from 'src/app/git/components/git/git.component';
+import { GitComponent } from './components/git/git.component';
 
 const routes: Routes = [
     {

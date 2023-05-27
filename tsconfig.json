@@ -1,4 +1,3 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
     "compileOnSave": false,
     "compilerOptions": {
@@ -20,7 +19,11 @@
         "module": "es2020",
         "lib": ["es2020", "dom"],
         "useDefineForClassFields": false,
-        "strictPropertyInitialization": false
+        "strictPropertyInitialization": false,
+        "paths": {
+            "@modules": ["./src/app/shared/modules"],
+            "@types": ["./src/app/shared/types"]
+        }
     },
     "angularCompilerOptions": {
         "enableI18nLegacyMessageIdFormat": false,

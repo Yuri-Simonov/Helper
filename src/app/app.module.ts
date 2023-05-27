@@ -12,8 +12,7 @@ import { AngularModule } from 'src/app/angular/angular.module';
 import { GitModule } from 'src/app/git/git.module';
 import { OthersModule } from 'src/app/others/others.module';
 import { HomeModule } from 'src/app/home/home.module';
-import { SidenavModule } from 'src/app/shared/modules/sidenav/sidenav.module';
-import { MaterialModule } from 'src/app/shared/modules/material/material.module';
+import { MaterialModule, SidenavModule } from '@modules';
 
 @NgModule({
     declarations: [AppComponent],

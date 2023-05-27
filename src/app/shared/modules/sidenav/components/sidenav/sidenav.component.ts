@@ -6,7 +6,7 @@ import {
     Output,
 } from '@angular/core';
 
-import { IList } from 'src/app/shared/types/list.interface';
+import { IList } from '@types';
 
 @Component({
     selector: 'app-sidenav',

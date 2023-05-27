@@ -6,17 +6,19 @@ import {
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { componentQuestions } from 'src/app/angular/questions/component';
-import { decoratorQuestions } from 'src/app/angular/questions/decorator';
-import { directiveQuestions } from 'src/app/angular/questions/directive';
-import { formQuestions } from 'src/app/angular/questions/form';
-import { othersQuestions } from 'src/app/angular/questions/others';
-import { pipeQuestions } from 'src/app/angular/questions/pipe';
-import { routingQuestions } from 'src/app/angular/questions/routing';
-import { rxjsQuestions } from 'src/app/angular/questions/rxjs';
-import { serviceQuestions } from 'src/app/angular/questions/service';
-import { testQuestions } from 'src/app/angular/questions/test';
-import { IList } from 'src/app/shared/types/list.interface';
+
+import { componentQuestions } from '../../questions/component';
+import { decoratorQuestions } from '../../questions/decorator';
+import { directiveQuestions } from '../../questions/directive';
+import { formQuestions } from '../../questions/form';
+import { othersQuestions } from '../../questions/others';
+import { pipeQuestions } from '../../questions/pipe';
+import { routingQuestions } from '../../questions/routing';
+import { rxjsQuestions } from '../../questions/rxjs';
+import { serviceQuestions } from '../../questions/service';
+import { testQuestions } from '../../questions/test';
+
+import { IList } from '@types';
 
 @Component({
     selector: 'app-angular',

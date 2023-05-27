@@ -2,10 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from 'src/app/home/components/home/home.component';
+import { HomeComponent } from './components/home/home.component';
 
-import { TitleModule } from 'src/app/shared/modules/title/title.module';
-import { MaterialModule } from 'src/app/shared/modules/material/material.module';
+import { MaterialModule, TitleModule } from '@modules';
 
 const routes: Routes = [
     {
