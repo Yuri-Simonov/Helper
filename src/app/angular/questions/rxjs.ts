@@ -20,24 +20,80 @@ export const rxjsQuestions: IQuestion[] = [
     {
         title: 'В чем разница между Observable и Promise?',
         body: `<p>
-            <code>Observable</code> - это
-            <span class="attention">конструктор источника событий</span>, а
-            <code>Promise</code> - это сам
-            <span class="attention">источник событий</span>
-        </p>
-        <p>
-            Чтобы в <code>Observable</code> появилось событие, на него кто-то
-            должен подписаться.
-            <span class="attention">Без подписки это просто набор методов</span
-            >. С промисами же иная ситуация. Если интерпретатор кода доходит до
-            промиса, то он выполняется и ему не нужны никакие подписчики.
-        </p>
-        <p>
-            Еще одно отличие заключается в том, что у промисов, когда мы
-            используем цепочки <code>then</code>, то мы работаем все с тем же
-            промисом. В то время, как у <code>Observable</code> мы подписываемся
-            каждый раз на новое событие.
-        </p>`,
+                <code>Observable</code> - это
+                <span class="attention">конструктор источника событий</span>, а
+                <code>Promise</code> - это сам
+                <span class="attention">источник событий</span>.
+            </p>
+            <p>
+                Чтобы в <code>Observable</code> появилось событие, на него
+                кто-то должен подписаться.
+                <span class="attention"
+                    >Без подписки это просто набор методов</span
+                >. С промисами же иная ситуация. Если интерпретатор кода доходит
+                до промиса, то он выполняется и ему не нужны никакие подписчики.
+            </p>
+            <p>
+                Еще одно отличие заключается в том, что у промисов, когда мы
+                используем цепочки <code>then</code>, то мы работаем все с тем
+                же промисом. В то время, как у <code>Observable</code> мы
+                подписываемся каждый раз на новое событие.
+            </p>
+            <p>Для большего понимания несколько примеров ниже.</p>
+            <i class="subtitle">0 подписчиков у Observable</i>
+            <pre><code>promise <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Promise</span><span class="punctuation">(</span>resolve <span class="operator">=></span> <span class="punctuation">{</span>
+	console.<span class="function-name">log(</span><span class="string">'Promise создан'</span><span class="punctuation">)</span>;
+	<span class="function-name">resolve(</span><span class="string">'результат Promise'</span><span class="punctuation">)</span>
+<span class="punctuation">})</span>;
+
+source <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span>subscriber <span class="operator">=></span> <span class="punctuation">{</span>
+	console.<span class="function-name">log(</span><span class="string">'Observable создан'</span><span class="punctuation">)</span>;
+	subscriber.<span class="function-name">next(</span><span class="string">'результат Observable'</span><span class="punctuation">)</span>;
+<span class="punctuation">})</span>;</code></pre>
+            <p>Результат в консоли:</p>
+            <pre><code><span class="comment">// Promise создан</span></code></pre>
+            <i class="subtitle">1 подписчик у Observable</i>
+            <pre><code>promise <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Promise</span><span class="punctuation">(</span>resolve <span class="operator">=></span> <span class="punctuation">{</span>
+	console.<span class="function-name">log(</span><span class="string">'Promise создан'</span><span class="punctuation">)</span>;
+	<span class="function-name">resolve(</span><span class="string">'результат Promise'</span><span class="punctuation">)</span>
+<span class="punctuation">})</span>;
+
+source <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span>subscriber <span class="operator">=></span> <span class="punctuation">{</span>
+	console.<span class="function-name">log(</span><span class="string">'Observable создан'</span><span class="punctuation">)</span>;
+	subscriber.<span class="function-name">next(</span><span class="string">'результат Observable'</span><span class="punctuation">)</span>;
+<span class="punctuation">})</span>;
+
+promise.<span class="function-name">then(</span>data <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'полученные данные:'</span>, data<span class="punctuation">))</span>;
+source.<span class="function-name">subscribe(</span>val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'полученные данные:'</span>, val<span class="punctuation">))</span>;</code></pre>
+            <p>Результат в консоли:</p>
+            <pre><code><span class="comment">// Promise создан</span>
+<span class="comment">// Observable создан</span>
+<span class="comment">// результат Observable</span>
+<span class="comment">// результат Promise</span></code></pre>
+            <i class="subtitle">2 подписчика у Observable</i>
+            <pre><code>promise <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Promise</span><span class="punctuation">(</span>resolve <span class="operator">=></span> <span class="punctuation">{</span>
+	console.<span class="function-name">log(</span><span class="string">'Promise создан'</span><span class="punctuation">)</span>;
+	<span class="function-name">resolve(</span><span class="string">'результат Promise'</span><span class="punctuation">)</span>
+<span class="punctuation">})</span>;
+
+source <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span>subscriber <span class="operator">=></span> <span class="punctuation">{</span>
+	console.<span class="function-name">log(</span><span class="string">'Observable создан'</span><span class="punctuation">)</span>;
+	subscriber.<span class="function-name">next(</span><span class="string">'результат Observable'</span><span class="punctuation">)</span>;
+<span class="punctuation">})</span>;
+
+promise.<span class="function-name">then(</span>data <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'полученные данные:'</span>, data<span class="punctuation">))</span>;
+source.<span class="function-name">subscribe(</span>val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'полученные данные:'</span>, val<span class="punctuation">))</span>;
+
+promise.<span class="function-name">then(</span>data <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'полученные данные:'</span>, data<span class="punctuation">))</span>;
+source.<span class="function-name">subscribe(</span>val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'полученные данные:'</span>, val<span class="punctuation">))</span>;</code></pre>
+            <p>Результат в консоли:</p>
+            <pre><code><span class="comment">// Promise создан</span>
+<span class="comment">// Observable создан</span>
+<span class="comment">// результат Observable</span>
+<span class="comment">// Observable создан</span>
+<span class="comment">// результат Observable</span>
+<span class="comment">// результат Promise</span>
+<span class="comment">// результат Promise</span></code></pre>`,
         selected: false,
     },
     {
