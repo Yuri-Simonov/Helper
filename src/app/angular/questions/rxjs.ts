@@ -2,6 +2,11 @@ import { IQuestion } from '@types';
 
 export const rxjsQuestions: IQuestion[] = [
     {
+        title: 'Способы обработки ошибок в RxJs',
+        body: ``,
+        selected: false,
+    },
+    {
         title: 'Что такое холодные и горячие Observable и в чем между ними разница?',
         body: `<p>
             Холодные создают независимые потоки под каждую подписку.

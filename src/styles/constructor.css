@@ -39,9 +39,10 @@ body {
     line-height: 130%;
 }
 
-body > app-root {
+body > div {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     min-height: 100%;
 }
 
@@ -168,4 +169,41 @@ code {
 .attribute,
 .directive {
     color: var(--purple-light);
+}
+
+.lock {
+    overflow: hidden;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.subtitle {
+    font-size: 14px;
+    line-height: 1.3;
+    font-weight: 500;
+    color: var(--orange);
+    margin: 12px 0;
+    display: block;
+    font-style: normal;
+}
+
+.main-color {
+    color: var(--primary);
+}
+
+.secondary-color {
+    color: var(--secondary);
+}
+
+.attention {
+    color: var(--yellow);
+}
+
+.attention code {
+    color: var(--purple-light);
+    display: inline-block;
+    padding: 0 2px;
 }

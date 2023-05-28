@@ -9,6 +9,64 @@
     </head>
 
     <body>
-        <div></div>
+        <div>
+            <p>
+                Чтобы ваше приложение "не падало" из-за возможной ошибки
+                (например, сервер не отвечает на ваш запрос), эти самые ошибки
+                можно и нужно обрабатывать. В Angular обрабатывать ошибки можно
+                несколькими способами:
+            </p>
+            <i class="subtitle">Оператор catchError</i>
+            <p>
+                <span class="attention">
+                    Оператор <code>catchError</code> позволяет обработать
+                    возможную ошибку без каких-либо дополнительных побочных
+                    эффектов.
+                </span>
+            </p>
+            <pre><code>source <span class="operator">=</span> <span class="function-name">throwError(</span><span class="string">'какая-то ошибка'</span><span class="punctuation">)</span>; <span class="comment">// имитируем ошибку</span>
+
+subscription <span class="operator">=</span> source.<span class="function-name">pipe(</span>
+		<span class="function-name">catchError(</span>err <span class="operator">=></span> <span class="punctuation">{</span>
+			console.<span class="function-name">log(</span><span class="string">'отловлена ошибка:'</span>, err<span class="punctuation">)</span>;
+			<span class="keyword">return</span> <span class="function-name">of(</span><span class="string">'данные обработки ошибки'</span><span class="punctuation">)</span>; <span class="comment">// обязательно нужно вернуть данные типа Observable</span>
+		<span class="punctuation">})</span>
+  	<span class="punctuation">)</span>
+	.<span class="function-name">subscribe(</span>
+		val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">)</span>,
+		err <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'error:'</span>, err<span class="punctuation">)</span>,
+		<span class="punctuation">()</span> <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'completed:'</span>, <span class="string">'поток завершен'</span><span class="punctuation">)</span>
+	<span class="punctuation">)</span>;</code></pre>
+            <p>
+                В результате выполнения данного кода в консоли мы увидим
+                следующее:
+            </p>
+            <pre><code><span class="comment">// отловлена ошибка: какая-то ошибка</span>
+<span class="comment">// next: данные обработки ошибки</span>
+<span class="comment">// completed: поток завершен</span></code></pre>
+            <i class="subtitle">Оператор retry</i>
+            <p>
+                <span class="attention"
+                    >Оператор <code>retry</code> при возникновении ошибки будет
+                    запрашивать данные повторно.</span
+                >
+                Количество повторных запросов передается параметров в метод:
+            </p>
+            <pre><code>source <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span>subscriber <span class="operator">=></span> <span class="punctuation">{</span>
+  	console.<span class="function-name">log(</span><span class="string">'Следующая попытка'</span><span class="punctuation">)</span>;
+ 	subscriber.<span class="function-name">error(</span><span class="string">'какая-то ошибка'</span><span class="punctuation">)</span>; <span class="comment">// имитируем ошибку</span>
+});
+
+subscription <span class="operator">=</span> source.<span class="function-name">pipe(</span> <span class="function-name">retry(</span><span class="number">2</span><span class="punctuation">) )</span> <span class="comment">// в случае ошибки запрашиваем данные повторно 2 раза</span>
+	.<span class="function-name">subscribe(</span>
+		val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">)</span>,
+		err <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'error:'</span>, err<span class="punctuation">)</span>,
+		<span class="punctuation">()</span> <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'completed:'</span>, <span class="string">'поток завершен'</span><span class="punctuation">)</span>
+	<span class="punctuation">)</span>;</code></pre>
+            <p>
+                В примере выше мы намеренно у <code>source</code> вызываем метод
+                <code>error</code> ...
+            </p>
+        </div>
     </body>
 </html>
