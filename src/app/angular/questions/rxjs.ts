@@ -2,11 +2,6 @@ import { IQuestion } from '@types';
 
 export const rxjsQuestions: IQuestion[] = [
     {
-        title: 'Способы обработки ошибок в RxJs',
-        body: ``,
-        selected: false,
-    },
-    {
         title: 'Что такое холодные и горячие Observable и в чем между ними разница?',
         body: `<p>
             Холодные создают независимые потоки под каждую подписку.
@@ -443,6 +438,142 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
             сообщения на случай, если подписка будет создана после уничтожения
             компонента.
         </p>`,
+        selected: false,
+    },
+    {
+        title: 'Способы обработки ошибок в RxJs',
+        body: `<p>
+                Чтобы ваше приложение "не падало" из-за возможной ошибки
+                (например, сервер не отвечает на ваш запрос), эти самые ошибки
+                можно и нужно обрабатывать.
+            </p>
+            <p>В Angular обрабатывать ошибки можно несколькими способами:</p>
+            <i class="subtitle">Оператор catchError</i>
+            <p>
+                <span class="attention">
+                    Оператор <code>catchError</code> позволяет обработать
+                    возможную ошибку без каких-либо дополнительных побочных
+                    эффектов.
+                </span>
+            </p>
+            <pre><code>source <span class="operator">=</span> <span class="function-name">throwError(</span><span class="string">'какая-то ошибка'</span><span class="punctuation">)</span>; <span class="comment">// имитируем ошибку</span>
+
+subscription <span class="operator">=</span> source.<span class="function-name">pipe(</span>
+		<span class="function-name">catchError(</span>err <span class="operator">=></span> <span class="punctuation">{</span>
+			console.<span class="function-name">log(</span><span class="string">'отловлена ошибка:'</span>, err<span class="punctuation">)</span>;
+			<span class="keyword">return</span> <span class="function-name">of(</span><span class="string">'данные обработки ошибки'</span><span class="punctuation">)</span>; <span class="comment">// обязательно нужно вернуть данные типа Observable</span>
+		<span class="punctuation">})</span>
+  	<span class="punctuation">)</span>
+	.<span class="function-name">subscribe(</span>
+		val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">)</span>,
+		err <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'error:'</span>, err<span class="punctuation">)</span>,
+		<span class="punctuation">()</span> <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'completed:'</span>, <span class="string">'поток завершен'</span><span class="punctuation">)</span>
+	<span class="punctuation">)</span>;</code></pre>
+            <p>
+                В результате выполнения данного кода в консоли мы увидим
+                следующее:
+            </p>
+            <pre><code><span class="comment">// отловлена ошибка: какая-то ошибка</span>
+<span class="comment">// next: данные обработки ошибки</span>
+<span class="comment">// completed: поток завершен</span></code></pre>
+            <i class="subtitle">Оператор retry</i>
+            <p>
+                <span class="attention"
+                    >Оператор <code>retry</code> при возникновении ошибки будет
+                    запрашивать данные повторно.</span
+                >
+                Количество повторных запросов передается параметров в метод:
+            </p>
+            <pre><code>source <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span>subscriber <span class="operator">=></span> <span class="punctuation">{</span>
+  	console.<span class="function-name">log(</span><span class="string">'Следующая попытка'</span><span class="punctuation">)</span>;
+ 	subscriber.<span class="function-name">error(</span><span class="string">'какая-то ошибка'</span><span class="punctuation">)</span>; <span class="comment">// имитируем ошибку</span>
+});
+
+subscription <span class="operator">=</span> source.<span class="function-name">pipe(</span><span class="function-name">retry(</span><span class="number">2</span><span class="punctuation">))</span> <span class="comment">// в случае ошибки запрашиваем данные повторно 2 раза</span>
+	.<span class="function-name">subscribe(</span>
+		val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">)</span>,
+		err <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'error:'</span>, err<span class="punctuation">)</span>,
+		<span class="punctuation">()</span> <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'completed:'</span>, <span class="string">'поток завершен'</span><span class="punctuation">)</span>
+	<span class="punctuation">)</span>;</code></pre>
+            <p>
+                В примере выше мы намеренно у <code>source</code> имитируем
+                ошибку и делаем поочередно еще 2 запроса на получение данных.
+                Если за эти 2 запроса мы не получаем данные, тогда уже у
+                <code>subscription</code> сработает метод <code>error</code>.
+            </p>
+            <pre><code><span class="comment">// Следующая попытка</span>
+<span class="comment">// Следующая попытка</span>
+<span class="comment">// Следующая попытка</span>
+<span class="comment">// error: какая-то ошибка</span></code></pre>
+            <i class="subtitle">Оператор retryWhen</i>
+            <p>
+                Оператор <code>retryWhen</code> своего рода модификация
+                оператора <code>retry</code>.
+                <span class="attention"
+                    >Данный оператор будет вызываться уже по определенному
+                    условию - по результату выполнения другого
+                    <code>Observable</code></span
+                >:
+            </p>
+            <pre><code>flag <span class="operator">=</span> <span class="boolean">true</span>;
+
+source <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span>subscriber <span class="operator">=></span> <span class="punctuation">{</span>
+  console.<span class="function-name">log(</span><span class="string">'имитация обращения к серверу'</span><span class="punctuation">)</span>;
+  <span class="keyword">if</span> <span class="punctuation">(</span>flag<span class="punctuation">) {</span>
+    subscriber.<span class="function-name">error(</span><span class="string">'какая-то ошибка'</span><span class="punctuation">)</span>;
+    flag <span class="operator">=</span> <span class="boolean">false</span>;
+  <span class="punctuation">}</span> <span class="keyword">else</span> <span class="punctuation">{</span>
+    subscriber.<span class="function-name">next(</span><span class="string">'успешный ответ сервера'</span><span class="punctuation">)</span>;
+  <span class="punctuation">}</span>
+<span class="punctuation">})</span>;
+
+obs <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span>subscriber <span class="operator">=></span> <span class="punctuation">{</span>
+  console.<span class="function-name">log(</span><span class="string">'подожди секундочку'</span><span class="punctuation">)</span>;
+  <span class="function-name">setTimeout(()</span> <span class="operator">=></span> subscriber.<span class="function-name">next(</span><span class="string">'какие-то данные'</span><span class="punctuation">)</span>, <span class="number">1000</span><span class="punctuation">)</span>;
+<span class="punctuation">})</span>;
+
+subscription <span class="operator">=</span> source.<span class="function-name">pipe(</span><span class="function-name">retryWhen(</span>err$ <span class="operator">=></span> obs<span class="punctuation">))</span>
+  .<span class="function-name">subscribe(</span> val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">))</span>;</code></pre>
+            <p>
+                В примере выше, когда происходит ошибка, оператор
+                <code>retryWhen</code> возвращает новый <code>Observable</code>,
+                в данном случае это <code>obs</code>. Спустя 1 секунду
+                <code>obs</code>
+                возвращает какие-то данные и в этот момент оператор
+                <code>retryWhen</code> вновь обратится к своему источнику, чтобы
+                попытаться получить данные.
+            </p>
+            <p>Результат выполнения кода из примера выше:</p>
+            <pre><code><span class="comment">// имитация обращения к серверу</span>
+<span class="comment">// подожди секундочку</span>
+<span class="comment">// имитация обращения к серверу</span>
+<span class="comment">// next: успешный ответ сервера</span></code></pre>
+            <i class="subtitle">Оператор onErrorResumeNext</i>
+            <p>
+                Суть данного оператора заключается в том, что
+                <span class="attention"
+                    >когда происходит какая-то ошибка, он переключается на
+                    другой <code>Observable</code></span
+                >
+                (своего рода запасной/страхующий поток).
+            </p>
+            <pre><code>source <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span>subscriber <span class="operator">=></span> <span class="punctuation">{</span>
+	console.<span class="function-name">log(</span><span class="string">'попытка подключения'</span><span class="punctuation">)</span>;
+	subscriber.<span class="function-name">error(</span><span class="string">'ошибка!'</span><span class="punctuation">)</span>;
+<span class="punctuation">})</span>;
+
+planB <span class="operator">=</span> <span class="function-name">of(</span><span class="string">'План "Б" на случай ошибки'</span><span class="punctuation">)</span>;
+
+subscription <span class="operator">=</span> source.<span class="function-name">pipe(</span><span class="function-name">onErrorResumeNext(</span>planB<span class="punctuation">))</span>
+	.<span class="function-name">subscribe(</span>
+		val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">)</span>,
+		err <span class="operator">=></span> console.<span class="function-name">error(</span><span class="string">'error:'</span>, err<span class="punctuation">)</span>,
+		<span class="punctuation">()</span> <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'completed: поток завершен'</span><span class="punctuation">)</span>
+	<span class="punctuation">)</span>;</code></pre>
+            <p>Результат выполнения кода из примера выше:</p>
+            <pre><code><span class="comment">// попытка подключения</span>
+<span class="comment">// ошибка!</span>
+<span class="comment">// completed: поток завершен</span></code></pre>`,
         selected: false,
     },
 ];
