@@ -763,4 +763,231 @@ subscription <span class="operator">=</span> source.<span class="function-name">
 <span class="comment">// completed: поток завершен</span></code></pre>`,
         selected: false,
     },
+    {
+        title: 'Как объединить несколько потоков в 1 и получить общий результат?',
+        body: `<p>
+                В RxJs существуют различные операторы, позволяющие
+                объединять/комбинировать потоки и получать из них данные.
+                Давайте разберем их на примерах.
+            </p>
+            <i class="subtitle">Оператор concat</i>
+            <p>
+                Принцип работы данного оператора схож с его тёской из нативного
+                JavaScript, он просто соединит потоки. Но тут есть тоже свои
+                нюансы:
+            </p>
+            <img
+                src="assets/img/angular/rxjs/concat.png"
+                alt="оператор concat"
+            />
+            <p>
+                Как видно на картинке, события второго потока добавляются после
+                событий первого потока. Причем неважно, что второй поток
+                завершается раньше, оператор <code>concat</code> будет ждать
+                пока завершиться первый поток и только тогда перейдет к
+                следующему. И
+                <span class="attention">
+                    после того, как оператор
+                    <code>concat</code> получает все потоки, он их объединяет в
+                    порядке передачи внутрь оператора и завершается.
+                </span>
+            </p>
+            <p>Теперь как это будет выглядеть в коде:</p>
+            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
+    first <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>subscriber<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
+        <span class="function-name">setTimeout(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
+            subscriber.<span class="function-name">next(</span><span class="string">'500ms'</span><span class="punctuation">)</span>;
+            subscriber.<span class="function-name">complete()</span>;
+        <span class="punctuation">}</span>, <span class="number">500</span><span class="punctuation">)</span>;
+    <span class="punctuation">})</span>;
+
+    second <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>subscriber<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
+        <span class="function-name">setTimeout(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
+            subscriber.<span class="function-name">next(</span><span class="string">'200ms'</span><span class="punctuation">)</span>;
+            subscriber.<span class="function-name">complete()</span>;
+        <span class="punctuation">}</span>, <span class="number">200</span><span class="punctuation">)</span>;
+    <span class="punctuation">})</span>;
+
+    result <span class="operator">=</span> <span class="function-name">concat(</span><span class="object">this</span>.first, <span class="object">this</span>.second<span class="punctuation">)</span>.<span class="function-name">subscribe((</span>val<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
+        console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">)</span>;
+    <span class="punctuation">})</span>;
+<span class="punctuation">}</span></code></pre>
+            <p>Результат выполнения кода в консоли:</p>
+            <pre><code><span class="comment">// next: 500ms</span>
+<span class="comment">// next: 200ms</span></code></pre>
+            <i class="subtitle">Оператор merge</i>
+            <p>
+                <span class="attention">
+                    Данный оператор соединяет события получаемых потоков
+                    параллельно, поэтому тут уже не важна последовательность
+                    передаваемых потоков внутрь оператора.
+                </span>
+            </p>
+            <img
+                src="assets/img/angular/rxjs/merge.png"
+                alt="оператор concat"
+            />
+            <p>Как это будет выглядеть в коде:</p>
+            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
+    first <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>subscriber<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
+        <span class="function-name">setTimeout(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
+            subscriber.<span class="function-name">next(</span><span class="string">'500ms'</span><span class="punctuation">)</span>;
+            subscriber.<span class="function-name">complete()</span>;
+        <span class="punctuation">}</span>, <span class="number">500</span><span class="punctuation">)</span>;
+    <span class="punctuation">})</span>;
+
+    second <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>subscriber<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
+        <span class="function-name">setTimeout(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
+            subscriber.<span class="function-name">next(</span><span class="string">'200ms'</span><span class="punctuation">)</span>;
+            subscriber.<span class="function-name">complete()</span>;
+        <span class="punctuation">}</span>, <span class="number">200</span><span class="punctuation">)</span>;
+    <span class="punctuation">})</span>;
+
+    result <span class="operator">=</span> <span class="function-name">merge(</span><span class="object">this</span>.first, <span class="object">this</span>.second<span class="punctuation">)</span>.<span class="function-name">subscribe((</span>val<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
+        console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">)</span>;
+    <span class="punctuation">})</span>;
+<span class="punctuation">}</span></code></pre>
+            <p>Результат выполнения кода в консоли:</p>
+            <pre><code><span class="comment">// next: 200ms</span>
+<span class="comment">// next: 500ms</span></code></pre>
+            <p>
+                И как видите, теперь учитывается время события, когда оно
+                происходит.
+            </p>
+            <i class="subtitle">Оператор zip</i>
+            <p>
+                <span class="attention"
+                    >Данный оператор объединяет потоки, если в каждом из
+                    переданных потоков есть доступные для создания пары
+                    события.</span
+                >
+            </p>
+            <img src="assets/img/angular/rxjs/zip.png" alt="оператор zip" />
+            <p>
+                На картинке выше есть 2 потока. В первом потоке происходит
+                событие "1", но оно не попадет в объединенный поток, пока в
+                другом потоке не произойдет событие "А", то есть, пока не
+                создаться пара.
+            </p>
+            <p>Как это будет выглядеть в коде:</p>
+            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
+    <span class="function-name">nextFunction(</span>label: <span class="type">string</span>, count: <span class="type">number</span>, interval: <span class="type">number</span><span class="punctuation">) {</span>
+        <span class="keyword">return</span> <span class="punctuation">(</span>subscriber: <span class="type">Subscriber<</span><span class="type">unknown></span><span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
+            <span class="keyword">let</span> i <span class="operator">=</span> <span class="number">0</span>;
+            <span class="function-name">setInterval(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
+                <span class="keyword">if</span> <span class="punctuation">(</span>i <span class="operator"><</span> count<span class="punctuation">) {</span>
+                    subscriber.<span class="function-name">next(</span>label <span class="operator">+</span> <span class="string">':'</span> <span class="operator">+</span> i<span class="punctuation">)</span>;
+                    i<span class="operator">++</span>;
+                <span class="punctuation">}</span> <span class="keyword">else</span> <span class="punctuation">{</span>
+                    subscriber.<span class="function-name">complete()</span>;
+                <span class="punctuation">}</span>
+            <span class="punctuation">}</span>, interval<span class="punctuation">)</span>;
+        <span class="punctuation">}</span>;
+    <span class="punctuation">}</span>
+
+    first <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span><span class="object">this</span>.<span class="function-name">nextFunction(</span><span class="string">'A'</span>, <span class="number">3</span>, <span class="number">500</span><span class="punctuation">))</span>;
+    second <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span><span class="object">this</span>.<span class="function-name">nextFunction(</span><span class="string">'B'</span>, <span class="number">4</span>, <span class="number">200</span><span class="punctuation">))</span>;
+
+    result <span class="operator">=</span> <span class="function-name">zip(</span><span class="object">this</span>.first, <span class="object">this</span>.second<span class="punctuation">)</span>.<span class="function-name">subscribe((</span>val<span class="punctuation">)</span> <span class="operator">=></span>
+        console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">)</span>
+    <span class="punctuation">)</span>;
+<span class="punctuation">}</span></code></pre>
+            <p>Результат выполнения кода в консоли:</p>
+            <pre><code><span class="comment">// next: ['[A]:0', '[B]:0']</span>
+<span class="comment">// next: ['[A]:1', '[B]:1']</span>
+<span class="comment">// next: ['[A]:2', '[B]:2']</span></code></pre>
+            <p>
+                В переменной <code>first</code> мы генерируем 3 события, а в
+                <code>second</code> 4, но в объединенный поток попало в итоге
+                лишь 3 пары, т.к. четвертому событию переменной
+                <code>second</code> не нашлось пары из переменной
+                <code>first</code>.
+            </p>
+            <i class="subtitle">Оператор combineLatest</i>
+            <p>
+                Оператор <code>combineLatest</code> похож по своему функционалу
+                на оператор <code>zip</code>, но
+                <span class="attention"
+                    >в объединенном потоке он создает пару из последних (свежих)
+                    событий, переданных в него потоков, перезатирая старые
+                    события.</span
+                >
+            </p>
+            <img
+                src="assets/img/angular/rxjs/combineLatest.png"
+                alt="оператор combineLatest"
+            />
+            <p>
+                На картинке выше в первом потоке появляется событие "1", затем
+                во втором потоке событие "А", в результате образуется пара "1А",
+                но затем в первом потоке вновь происходит событие и старое
+                событие "1" перезатирается новым событием "2". В результате мы
+                получаем пару "2А" и т.д.
+            </p>
+            <p>Как это будет выглядеть в коде:</p>
+            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
+    <span class="function-name">nextFunction(</span>label: <span class="type">string</span>, count: <span class="type">number</span>, interval: <span class="type">number</span><span class="punctuation">) {</span>
+        <span class="keyword">return</span> <span class="punctuation">(</span>subscriber: <span class="type">Subscriber<</span><span class="type">unknown></span><span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
+            <span class="keyword">let</span> i <span class="operator">=</span> <span class="number">0</span>;
+            <span class="function-name">setInterval(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
+                <span class="keyword">if</span> <span class="punctuation">(</span>i <span class="operator"><</span> count<span class="punctuation">) {</span>
+                    subscriber.<span class="function-name">next(</span>label <span class="operator">+</span> <span class="string">':'</span> <span class="operator">+</span> i<span class="punctuation">)</span>;
+                    i<span class="operator">++</span>;
+                <span class="punctuation">}</span> <span class="keyword">else</span> <span class="punctuation">{</span>
+                    subscriber.<span class="function-name">complete()</span>;
+                <span class="punctuation">}</span>
+            <span class="punctuation">}</span>, interval<span class="punctuation">)</span>;
+        <span class="punctuation">}</span>;
+    <span class="punctuation">}</span>
+
+    first <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span><span class="object">this</span>.<span class="function-name">nextFunction(</span><span class="string">'A'</span>, <span class="number">3</span>, <span class="number">500</span><span class="punctuation">))</span>;
+    second <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span><span class="object">this</span>.<span class="function-name">nextFunction(</span><span class="string">'B'</span>, <span class="number">4</span>, <span class="number">200</span><span class="punctuation">))</span>;
+
+    result <span class="operator">=</span> <span class="function-name">combineLatest(</span><span class="object">this</span>.first, <span class="object">this</span>.second<span class="punctuation">)</span>.<span class="function-name">subscribe((</span>val<span class="punctuation">)</span> <span class="operator">=></span>
+        console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">)</span>
+    <span class="punctuation">)</span>;
+<span class="punctuation">}</span></code></pre>
+            <p>Результат выполнения кода в консоли:</p>
+            <pre><code><span class="comment">// next: ['[A]:0', '[B]:1']</span>
+<span class="comment">// next: ['[A]:0', '[B]:2']</span>
+<span class="comment">// next: ['[A]:0', '[B]:3']</span>
+<span class="comment">// next: ['[A]:1', '[B]:3']</span>
+<span class="comment">// next: ['[A]:2', '[B]:3']</span></code></pre>
+            <i class="subtitle">Оператор forkJoin</i>
+            <p>
+                Данный оператор объединяет потоки и комбинирует их последние
+                значения. Но у него есть ключевая особенность - он срабатывает
+                лишь в момент, когда переданные внутрь него потоки завершены.
+            </p>
+            <img
+                src="assets/img/angular/rxjs/forkJoin.png"
+                alt="оператор forkJoin"
+            />
+            <p>Как это будет выглядеть в коде:</p>
+            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
+    <span class="function-name">nextFunction(</span>label: <span class="type">string</span>, count: <span class="type">number</span>, interval: <span class="type">number</span><span class="punctuation">) {</span>
+        <span class="keyword">return</span> <span class="punctuation">(</span>subscriber: <span class="type">Subscriber<</span><span class="type">unknown></span><span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
+            <span class="keyword">let</span> i <span class="operator">=</span> <span class="number">0</span>;
+            <span class="function-name">setInterval(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
+                <span class="keyword">if</span> <span class="punctuation">(</span>i <span class="operator"><</span> count<span class="punctuation">) {</span>
+                    subscriber.<span class="function-name">next(</span>label <span class="operator">+</span> <span class="string">':'</span> <span class="operator">+</span> i<span class="punctuation">)</span>;
+                    i<span class="operator">++</span>;
+                <span class="punctuation">}</span> <span class="keyword">else</span> <span class="punctuation">{</span>
+                    subscriber.<span class="function-name">complete()</span>;
+                <span class="punctuation">}</span>
+            <span class="punctuation">}</span>, interval<span class="punctuation">)</span>;
+        <span class="punctuation">}</span>;
+    <span class="punctuation">}</span>
+
+    first <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span><span class="object">this</span>.<span class="function-name">nextFunction(</span><span class="string">'A'</span>, <span class="number">3</span>, <span class="number">500</span><span class="punctuation">))</span>;
+    second <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span><span class="object">this</span>.<span class="function-name">nextFunction(</span><span class="string">'B'</span>, <span class="number">4</span>, <span class="number">200</span><span class="punctuation">))</span>;
+
+    result <span class="operator">=</span> <span class="function-name">forkJoin(</span><span class="object">this</span>.first, <span class="object">this</span>.second<span class="punctuation">)</span>.<span class="function-name">subscribe((</span>val<span class="punctuation">)</span> <span class="operator">=></span>
+        console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">)</span>
+    <span class="punctuation">)</span>;
+<span class="punctuation">}</span></code></pre>
+            <p>Результат выполнения кода в консоли:</p>
+            <pre><code><span class="comment">// next: ['[A]:2', '[B]:3']</span></code></pre>`,
+        selected: false,
+    },
 ];
