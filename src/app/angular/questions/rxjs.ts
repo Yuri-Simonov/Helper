@@ -97,6 +97,137 @@ source.<span class="function-name">subscribe(</span>val <span class="operator">=
         selected: false,
     },
     {
+        title: 'В чем разница между операторами внутри pipe Observable и методами Array?',
+        body: `<p>
+                У объектов <code>Observable</code> (конечно же, имеется ввиду
+                операторы метода <code>pipe</code>) и <code>Array</code> есть
+                схожий по названию функционал:
+                <code>map, filter, reduce</code> и т.д. Кроме того,
+                перечисленный функционал этих объектов работает одинаково под
+                капотом. Но все же есть одно но: разный порядок выполнения кода.
+            </p>
+            <p>
+                Чтобы было более понятно о чем идет речь, ниже представлены
+                примеры работы цепочки методов массива и цепочки операторов
+                метода <code>pipe</code>.
+            </p>
+            <i class="subtitle">Array</i>
+            <p>Для начала разберемся как ведут себя методы у массивов:</p>
+            <pre><code>someArray <span class="operator">=</span> <span class="punctuation">[</span><span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span><span class="punctuation">]</span>;
+
+result <span class="operator">=</span> someArray
+	.<span class="function-name">map(</span>item <span class="operator">=></span> <span class="punctuation">{</span>
+		console.<span class="function-name">log(</span><span class="string">'[MAP]'</span>, item<span class="punctuation">)</span>;
+		<span class="keyword">return</span> item <span class="operator">+</span> <span class="number">5</span>;
+	<span class="punctuation">})</span>
+	.<span class="function-name">filter(</span>item <span class="operator">=></span> <span class="punctuation">{</span>
+		console.<span class="function-name">log(</span><span class="string">'[FILTER]'</span>, item<span class="punctuation">)</span>;
+		<span class="keyword">return</span> item <span class="operator">></span> <span class="number">30</span>;
+	<span class="punctuation">})</span>
+	.<span class="function-name">reduce((</span>acc, item<span class="punctuation">)</span> <span class="operator">=></span> acc <span class="operator">+</span> item<span class="punctuation">)</span>;
+
+console.<span class="function-name">log(</span><span class="string">'Результат:'</span>, result<span class="punctuation">)</span>;</code></pre>
+            <p>Результат выполнения кода в консоли:</p>
+            <pre><code><span class="comment">// [MAP] 10</span>
+<span class="comment">// [MAP]: 20</span>
+<span class="comment">// [MAP]: 30</span>
+<span class="comment">// [MAP]: 40</span>
+<span class="comment">// [FILTER]: 15</span>
+<span class="comment">// [FILTER]: 25</span>
+<span class="comment">// [FILTER]: 35</span>
+<span class="comment">// [FILTER]: 45</span>
+<span class="comment">// Результат: 80</span></code></pre>
+            <p>
+                Как видите, сначала массив <code>someArray</code> полностью
+                прошел через метод <code>map</code> и только потом он попал в
+                метод <code>filter</code> и аналогично затем в метод
+                <code>reduce</code>.
+            </p>
+            <i class="subtitle">Observable</i>
+            <p>
+                А теперь проделаем все то же самое, но уже для
+                <code>Observable</code> с тем же массивом данных:
+            </p>
+            <pre><code>someArray <span class="operator">=</span> <span class="punctuation">[</span><span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span><span class="punctuation">]</span>;
+
+<span class="function-name">from(</span>someArray<span class="punctuation">)</span>.<span class="function-name">pipe(</span>
+	<span class="function-name">map(</span>item <span class="operator">=></span> <span class="punctuation">{</span>
+		console.<span class="function-name">log(</span><span class="string">'[MAP]'</span>, item<span class="punctuation">)</span>;
+		<span class="keyword">return</span> item <span class="operator">+</span> <span class="number">5</span>;
+	<span class="punctuation">})</span>
+	.<span class="function-name">filter(</span>item <span class="operator">=></span> <span class="punctuation">{</span>
+		console.<span class="function-name">log(</span><span class="string">'[FILTER]'</span>, item<span class="punctuation">)</span>;
+		<span class="keyword">return</span> item <span class="operator">></span> <span class="number">30</span>;
+	<span class="punctuation">})</span>
+	.<span class="function-name">reduce((</span>acc, item<span class="punctuation">)</span> <span class="operator">=></span> acc <span class="operator">+</span> item<span class="punctuation">)</span>
+)
+.<span class="function-name">subscribe(</span>val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">))</span>;</code></pre>
+            <p>Результат выполнения кода в консоли:</p>
+            <pre><code><span class="comment">// [MAP] 10</span>
+<span class="comment">// [FILTER]: 15</span>
+<span class="comment">// [MAP]: 20</span>
+<span class="comment">// [FILTER]: 25</span>
+<span class="comment">// [MAP]: 30</span>
+<span class="comment">// [FILTER]: 35</span>
+<span class="comment">// [MAP]: 40</span>
+<span class="comment">// [FILTER]: 45</span>
+<span class="comment">// Результат: 80</span></code></pre>
+            <p>
+                Как видите, результат выполнения кода отличается. Теперь каждый
+                элемент массива <code>someArray</code> полностью проходит
+                цепочку операторов, за исключением оператора
+                <code>reduce</code>, т.к. он отрабатывает по завершению потока.
+            </p>
+            <p>
+                Если вам нужен результат после каждого элемента, успешно
+                прошеднего операторы <code>map</code> и <code>filter</code>,
+                воспользуйтесь оператором <code>scan</code>:
+            </p>
+            <pre><code>someArray <span class="operator">=</span> <span class="punctuation">[</span><span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span><span class="punctuation">]</span>;
+
+<span class="function-name">from(</span>someArray<span class="punctuation">)</span>.<span class="function-name">pipe(</span>
+	<span class="function-name">map(</span>item <span class="operator">=></span> <span class="punctuation">{</span>
+		console.<span class="function-name">log(</span><span class="string">'[MAP]'</span>, item<span class="punctuation">)</span>;
+		<span class="keyword">return</span> item <span class="operator">+</span> <span class="number">5</span>;
+	<span class="punctuation">})</span>
+	.<span class="function-name">filter(</span>item <span class="operator">=></span> <span class="punctuation">{</span>
+		console.<span class="function-name">log(</span><span class="string">'[FILTER]'</span>, item<span class="punctuation">)</span>;
+		<span class="keyword">return</span> item <span class="operator">></span> <span class="number">30</span>;
+	<span class="punctuation">})</span>
+	.<span class="function-name">scan((</span>acc, item<span class="punctuation">)</span> <span class="operator">=></span> acc <span class="operator">+</span> item<span class="punctuation">)</span>
+)
+.<span class="function-name">subscribe(</span>val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">))</span>;</code></pre>
+            <p>Результат выполнения кода в консоли:</p>
+            <pre><code><span class="comment">// [MAP] 10</span>
+<span class="comment">// [FILTER]: 15</span>
+<span class="comment">// [MAP]: 20</span>
+<span class="comment">// [FILTER]: 25</span>
+<span class="comment">// [MAP]: 30</span>
+<span class="comment">// [FILTER]: 35</span>
+<span class="comment">// Результат: 35</span>
+<span class="comment">// [MAP]: 40</span>
+<span class="comment">// [FILTER]: 45</span>
+<span class="comment">// Результат: 80</span></code></pre>
+            <p>Итог всего вышесказанного:</p>
+            <ul>
+                <li>
+                    <span class="attention">
+                        Объект типа <code>Array</code> обрабатывает все свои
+                        элементы в одном методе и только после этого переходит к
+                        другому методу</span
+                    >;
+                </li>
+                <li>
+                    <span class="attention">
+                        Объект типа <code>Observable</code> поочередно прогоняет
+                        свои элементы через операторы, указанные в методе
+                        <code>pipe</code>.
+                    </span>
+                </li>
+            </ul>`,
+        selected: false,
+    },
+    {
         title: 'В чем разница между Observable и Subject?',
         body: `<p>
             Основное отличие этих двух типов объектов:
