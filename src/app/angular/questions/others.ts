@@ -175,12 +175,12 @@ export const othersQuestions: IQuestion[] = [
 	value: <span class="type">string</span> <span class="operator">=</span> <span class="string">'Начальное значение'</span>; 
 	
 	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">private</span> <span>changeDetectorRef</span>: <span class="class-name">ChangeDetectorRef</span><span class="punctuation">) {</span>
-		<span class="object">this</span>.changeDetection.<span class="method">detach</span><span class="punctuation">()</span>; <span class="comment">// отключаем механизм ChangeDetection</span>
+		<span class="object">this</span>.changeDetectionRef.<span class="method">detach</span><span class="punctuation">()</span>; <span class="comment">// отключаем механизм ChangeDetection</span>
 		<span class="object">this</span>.value <span class="operator">=</span> <span class="string">'Какие-то изменения'</span>;
 	<span class="punctuation">}</span>
 	
 	<span class="function-name">applyChanges</span><span class="punctuation">():</span> <span class="type">void</span> <span class="punctuation">{</span>
-		<span class="object">this</span>.changeDetection.<span class="method">detectChanges</span><span class="punctuation">()</span>; <span class="comment">// принудительно запускаем механизм ChangeDetection</span>
+		<span class="object">this</span>.changeDetectionRef.<span class="method">detectChanges</span><span class="punctuation">()</span>; <span class="comment">// принудительно запускаем механизм ChangeDetection</span>
 	<span class="punctuation">}</span>
 <span class="punctuation">}</span></code></pre>`,
         selected: false,
