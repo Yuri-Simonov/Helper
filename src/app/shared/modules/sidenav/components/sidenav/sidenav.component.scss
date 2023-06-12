@@ -1,14 +1,9 @@
 :host {
-    height: calc(
-        100vh - var(--header-height) - var(--title-height) -
-            var(--footer-height)
-    );
-
     @media (max-width: 992px) {
         position: absolute;
         top: 0;
         z-index: 2;
-        height: calc(100vh - var(--header-height) - var(--title-height));
+        height: calc(100% + var(--footer-height));
         transition: 0.3s;
         overflow: auto;
     }

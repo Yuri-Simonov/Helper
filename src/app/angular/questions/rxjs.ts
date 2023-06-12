@@ -7,84 +7,135 @@ export const rxjsQuestions: IQuestion[] = [
     //     selected: false,
     // },
     {
-        title: 'Что такое холодные и горячие Observable, в чем между ними разница и можно ли подогреть или остудить Observable?',
-        body: `            <p>
-                Холодные и горячие <code>Observable</code> - это потоки
-                (стримы), имеющие лишь 1 принципиальное отличие:
-                <span class="attention"
-                    >Холодные <code>Observable</code> создают независимые потоки
-                    под каждую подписку, а горячие разделяют поток друг с
-                    другом.</span
-                >
-            </p>
-            <p>
-                Давайте рассмотрим более наглядно на примерах и попутно создамим
-                свой собственный оператор для RxJs.
-            </p>
-            <p>Начнем с холодного <code>Observable</code>:</p>
-            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AppComponent</span> <span class="keyword">implements</span> <span class="interface-name">OnInit</span> <span class="punctuation">{</span>
-    <span class="function-name">ngOnInit()</span>: <span class="type">void</span> <span class="punctuation">{</span>
-        <span class="keyword">const</span> <span class="variable">obs$</span> <span class="operator">=</span> <span class="function-name">fromTimestamp()</span>;
-        <span class="variable">obs$</span>.<span class="function-name">subscribe(</span>console.<span class="function-name">log</span><span class="punctuation">)</span>;
-        <span class="function-name">setTimeout(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
-            <span class="variable">obs$</span>.<span class="function-name">subscribe(</span>console.<span class="function-name">log</span><span class="punctuation">)</span>;
-        <span class="punctuation">}</span>, <span class="number">2000</span><span class="punctuation">)</span>;
-    <span class="punctuation">}</span>
-<span class="punctuation">}</span>
+        title: 'Что такое "RxJs" и зачем это в Angular?',
+        body: `<p>
+            <span class="attention">RxJS</span> — это библиотека, реализующая
+            принципы реактивного программирования для JavaScript. Основанная на
+            объектах типа <code>Observable</code>, она упрощает написание и
+            контроль асинхронного и событийного кода.
+        </p>`,
+        selected: false,
+    },
+    {
+        title: 'Объясните принцип действия Observable в RxJs?',
+        body: `<p>
+            <code>Observable</code> - это
+            <span class="attention">объект-конструктор источника события</span>,
+            который может обрабатывать как синхронный, так и асинхронный код.
+        </p>
+        <p>
+            Сам по себе <code>Observable</code> не будет работать, потому что
+            это лишь объект-конструктор. Чтобы написанный нами код внутри
+            <code>Observable</code> заработал, на него необходимо подписаться с
+            помощью метода <code>subscribe</code>.
+        </p>
+        <pre><code><span class="keyword">const</span> <span class="variable">newObs$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
+	console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'какой-то наш код внутри Observable'</span><span class="punctuation">)</span>;
+<span class="punctuation">})</span>;
+	
+<span class="variable">newObs$</span>.<span class="function-name">subscribe()</span>; <span class="comment">// здесь мы подписались на Observable и получили сообщение в консоли</span></code></pre>
+        <p>
+            Выше рассмотрен самый простой вариант подписки на источник события.
+            Но объект <code>observer</code>, принимаемый callback-функцией
+            внутри класса <code>Observable</code>, под капотом имеет 3
+            необязательных (опциональных) метода:
+        </p>
+        <ul>
+            <li>
+                <span class="attention">next</span> - принимает значение,
+                которое будет возвращено функции-обработчику;
+            </li>
+            <li>
+                <span class="attention">error</span> - принимает значение,
+                возвращаемое функции-обработчику ошибок;
+            </li>
+            <li>
+                <span class="attention">complete</span> - вызывается для
+                уведомления "подписчиков" об окончании рассылки.
+            </li>
+        </ul>
+        <p>
+            Соответственно, в методе <code>subscribe</code> мы также можем
+            прописать логику для каждого из перечисленных выше методов объекта:
+        </p>
+        <pre><code><span class="keyword">const</span> <span class="variable">newObs$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
+	observer.<span class="function-name">next</span><span class="punctuation">(</span><span class="string">'тут передаем данные'</span><span class="punctuation">)</span>; <span class="comment">переданные данные попадут в data</span>
+	observer.<span class="function-name">error</span><span class="punctuation">(</span><span class="string">'тут передаем ошибки'</span><span class="punctuation">)</span>; <span class="comment">переданные данные попадут в error</span>
+	observer.<span class="function-name">complete()</span>; <span class="comment">// данный метод не принимает параметры</span>
+<span class="punctuation">})</span>
+	
+<span class="variable">newObs$</span>.<span class="function-name">subscribe</span><span class="punctuation">(</span>
+	<span class="punctuation">(</span>data<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
+		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем данные'</span><span class="punctuation">)</span>
+	<span class="punctuation">}</span>,
+	<span class="punctuation">(</span>error<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
+		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем ошибки'</span><span class="punctuation">)</span>
+	<span class="punctuation">}</span>,
+	<span class="punctuation">()</span> <span class="operator">=></span> <span class="punctuation">{</span>
+		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем завершение работы Observable'</span><span class="punctuation">)</span>
+	<span class="punctuation">}</span>,
+<span class="punctuation">)</span>;</code></pre>
+        <p>Альтернативная запись для подписки через объект с методами:</p>
+        <pre><code><span class="variable">newObs$</span>.<span class="function-name">subscribe</span><span class="punctuation">({</span>
+	<span class="key">next</span>: <span class="punctuation">(</span>data<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
+		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем данные'</span><span class="punctuation">)</span>
+	<span class="punctuation">}</span>,
+	<span class="key">error</span>: <span class="punctuation">(</span>error<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
+		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем ошибки'</span><span class="punctuation">)</span>
+	<span class="punctuation">}</span>,
+	<span class="key">complete</span>: <span class="punctuation">()</span> <span class="operator">=></span> <span class="punctuation">{</span>
+		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем завершение работы Observable'</span><span class="punctuation">)</span>
+	<span class="punctuation">}</span>,
+<span class="punctuation">})</span>;</code></pre>
+        <p>
+            Если <code>Observable</code> не имеет метода <code>complete</code> и
+            нет его обработки в методе <code>subscribe</code>, то не забывайте
+            самостоятельно отписываться от таких подписок.
+        </p>
+        <pre><code><span class="variable">newObs$</span>.<span class="function-name">unsubscribe()</span>; <span class="comment">// не забываем отписаться</span></code></pre>`,
+        selected: false,
+    },
+    {
+        title: 'Как из примитивного типа данных сделать Observable?',
+        body: `<p>
+            Для преобразования данных из примитов в тип <code>Observable</code>,
+            в RxJs существуют специальные для этого операторы. Например,
+            <code>of</code> и <code>from</code>.
+        </p>
+        <p>
+            Оператор <code>of</code> подходит для случаев, когда необходимо из
+            массива данных создать <code>Observable</code> и при подписке на
+            источник события получать тот же массив целиком. При этом, оператор
+            <code>of</code> создает поток с одним или несколькими элементами,
+            который завершается сразу после их отправки.
+        </p>
+        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
+    numbers$: <span class="class-name">Observable</span><span class="type"><number[]></span> <span class="operator">=</span> <span class="function-name">of</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>; <span class="comment">// (*)</span>
 
-<span class="comment">// имитация собственного оператора RxJs</span>
-<span class="keyword">const</span> <span class="function-name">fromTimestamp</span> <span class="operator">=</span> <span class="punctuation">()</span>: <span class="type">Observable<</span><span class="type">number></span> <span class="operator">=></span> <span class="punctuation">{</span>
-    <span class="keyword">return</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>subscriber<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-        <span class="keyword">const</span> <span class="variable">timestamp</span> <span class="operator">=</span> <span class="class-name">Date</span>.<span class="function-name">now()</span>; <span class="comment">// timestamp создается внутри Observable</span>
-        subscriber.<span class="function-name">next(</span><span class="variable">timestamp</span><span class="punctuation">)</span>;
-    <span class="punctuation">})</span>;
-<span class="punctuation">}</span>;</code></pre>
-            <p>В результате в консоли мы увидим следующее:</p>
-            <pre><code><span class="comment">// 1685375651548</span>
-<span class="comment">// 1685375651561</span></code></pre>
-            <p>Как видите, для каждого потока свое значение.</p>
-            <p>
-                А теперь пример того, как сделать горячий
-                <code>Observable</code>:
-            </p>
-            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AppComponent</span> <span class="keyword">implements</span> <span class="interface-name">OnInit</span> <span class="punctuation">{</span>
-    <span class="function-name">ngOnInit()</span>: <span class="type">void</span> <span class="punctuation">{</span>
-        <span class="keyword">const</span> <span class="variable">obs$</span> <span class="operator">=</span> <span class="function-name">fromTimestamp()</span>;
-        <span class="variable">obs$</span>.<span class="function-name">subscribe(</span>console.<span class="function-name">log</span><span class="punctuation">)</span>;
-        <span class="function-name">setTimeout(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
-            <span class="variable">obs$</span>.<span class="function-name">subscribe(</span>console.<span class="function-name">log</span><span class="punctuation">)</span>;
-        <span class="punctuation">}</span>, <span class="number">2000</span><span class="punctuation">)</span>;
+    <span class="function-name">ngOnInit()</span> <span class="punctuation">{</span>
+        <span class="object">this</span>.numbers$.<span class="function-name">subscribe</span><span class="punctuation">((</span>data: <span class="type">number[]</span><span class="punctuation">)</span> <span class="punctuation"><span class="operator">=></span></span> <span class="punctuation">{</span>
+            console.<span class="function-name">log</span>(data); <span class="comment">// [1, 2, 3]</span>
+        <span class="punctuation">})</span>;
     <span class="punctuation">}</span>
-<span class="punctuation">}</span>
-
-<span class="comment">// имитация собственного оператора RxJs</span>
-<span class="keyword">const</span> <span class="function-name">fromTimestamp</span> <span class="operator">=</span> <span class="punctuation">()</span>: <span class="type">Observable<</span><span class="type">number></span> <span class="operator">=></span> <span class="punctuation">{</span>
-	<span class="keyword">const</span> <span class="variable">timestamp</span> <span class="operator">=</span> <span class="class-name">Date</span>.<span class="function-name">now()</span>; <span class="comment">// timestamp создается снаружи Observable</span>
-    <span class="keyword">return</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>subscriber<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-        subscriber.<span class="function-name">next(</span><span class="variable">timestamp</span><span class="punctuation">)</span>;
-    <span class="punctuation">})</span>;
-<span class="punctuation">}</span>;</code></pre>
-            <p>В результате в консоли мы увидим следующее:</p>
-            <pre><code><span class="comment">// 1685375651588</span>
-<span class="comment">// 1685375651588</span></code></pre>
-            <p>В консоли получаем одинаковое значение, даже не смотря на то, что вторая подписка вызывается через 2 секунды. Это происходит потому, что мы ссылаемся на данные, которые находятся снаружи <code>Observable</code> и в момент инициализации <code>Observable</code> не создаются заново.</p>
-			<i class="subtitle">Как подогреть холодный Observable?</i>
-			<p>Забегая вперед сразу хочется отметить, что перести поток из холодного в горячий можно, а из горячего в холодный - нельзя. Почему - мы разобрали в примерах выше.</p>
-			<p>Теперь давайте разберемся как подогреть поток. Для этого в RxJs есть различные механизмы:
-				<ul>
-					<li>Использовать <code>Subject</code> (или его разновидности) вместо <code>Observable</code>;</li>
-					<li>Использовать оператор <code>shareReplay</code> из библиотеки RxJs (он под капотом использует <code>ReplaySubject</code>);</li>
-					<li>Использовать оператор <code>share</code> или <code>publish</code> из библиотеки RxJs (они под капотом используют <code>Subject</code>);</li>
-					<li>и т.д.</li>
-				</ul>
-			</p>
-			<pre><code><span class="comment">// пример использования оператора shareReplay</span>
-<span class="function-name">ngOnInit()</span>: <span class="type">void</span> <span class="punctuation">{</span>
-	<span class="object">this</span>.data$ = <span class="object">this</span>.http.<span class="function-name">get</span><span class="type"><</span><span class="type">any[]></span><span class="punctuation">(</span><span class="string">'https://...'</span><span class="punctuation">)</span>
-	.<span class="function-name">pipe(shareReplay())</span>
-	.<span class="function-name">subscribe()</span>
 <span class="punctuation">}</span></code></pre>
-<p>И теперь, если у вас где-то в разметке есть пайпы <code>async</code>, которые берут <code>data$</code>, то к серверу будет уходить всего лишь 1 запрос и, соответственно, при ответе сервера данные будут отдаваться всем подписчикам от одной и той же подписки.</p>`,
+        <p>Строка под "<code>*</code>" равносильна следующей записи:</p>
+        <pre><code>numbers$: <span class="class-name">Observable</span><span class="type"><number[]></span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
+	observer.<span class="function-name">next</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>;
+<span class="punctuation">})</span>;</code></pre>
+        <p>
+            Если необходимо, чтобы обработчик вместо всего массива сразу получал
+            каждый его элемент в отдельности, тогда используется оператор
+            <code>from</code>.
+        </p>
+        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
+    numbers$: <span class="class-name">Observable</span><span class="type"><number></span> <span class="operator">=</span> <span class="function-name">from</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>;
+
+    <span class="function-name">ngOnInit()</span> <span class="punctuation">{</span>
+        <span class="object">this</span>.numbers$.<span class="function-name">subscribe</span><span class="punctuation">((</span>data: <span class="type">number</span><span class="punctuation">)</span> <span class="punctuation"><span class="operator">=></span></span> <span class="punctuation">{</span>
+            console.<span class="function-name">log</span><span class="punctuation">(</span>data<span class="punctuation">)</span>; <span class="comment">// 1, 2, 3</span>
+        <span class="punctuation">})</span>;
+    <span class="punctuation">}</span>
+<span class="punctuation">}</span></code></pre>`,
         selected: false,
     },
     {
@@ -167,14 +218,14 @@ source.<span class="function-name">subscribe(</span>val <span class="operator">=
         selected: false,
     },
     {
-        title: 'В чем разница между операторами внутри pipe Observable и методами Array?',
+        title: 'В чем разница между Observable и Array?',
         body: `<p>
                 У объектов <code>Observable</code> (конечно же, имеется ввиду
-                операторы метода <code>pipe</code>) и <code>Array</code> есть
+                операторы метода <code>pipe</code>) и <code>Array</code> (методы массивов) есть
                 схожий по названию функционал:
                 <code>map, filter, reduce</code> и т.д. Кроме того,
                 перечисленный функционал этих объектов работает одинаково под
-                капотом. Но все же есть одно но: разный порядок выполнения кода.
+                капотом. Но все же есть одно но: <span class="attention">разный порядок выполнения кода.</span>
             </p>
             <p>
                 Чтобы было более понятно о чем идет речь, ниже представлены
@@ -367,156 +418,6 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
         selected: false,
     },
     {
-        title: 'Как из примитивного типа данных сделать Observable?',
-        body: `<p>
-            Для преобразования данных из примитов в тип <code>Observable</code>,
-            в RxJs существуют специальные для этого операторы. Например,
-            <code>of</code> и <code>from</code>.
-        </p>
-        <p>
-            Оператор <code>of</code> подходит для случаев, когда необходимо из
-            массива данных создать <code>Observable</code> и при подписке на
-            источник события получать тот же массив целиком. При этом, оператор
-            <code>of</code> создает поток с одним или несколькими элементами,
-            который завершается сразу после их отправки.
-        </p>
-        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
-    numbers$: <span class="class-name">Observable</span><span class="type"><number[]></span> <span class="operator">=</span> <span class="function-name">of</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>; <span class="comment">// (*)</span>
-
-    <span class="function-name">ngOnInit()</span> <span class="punctuation">{</span>
-        <span class="object">this</span>.numbers$.<span class="function-name">subscribe</span><span class="punctuation">((</span>data: <span class="type">number[]</span><span class="punctuation">)</span> <span class="punctuation"><span class="operator">=></span></span> <span class="punctuation">{</span>
-            console.<span class="function-name">log</span>(data); <span class="comment">// [1, 2, 3]</span>
-        <span class="punctuation">})</span>;
-    <span class="punctuation">}</span>
-<span class="punctuation">}</span></code></pre>
-        <p>Строка под "<code>*</code>" равносильна следующей записи:</p>
-        <pre><code>numbers$: <span class="class-name">Observable</span><span class="type"><number[]></span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-	observer.<span class="function-name">next</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>;
-<span class="punctuation">})</span>;</code></pre>
-        <p>
-            Если необходимо, чтобы обработчик вместо всего массива сразу получал
-            каждый его элемент в отдельности, тогда используется оператор
-            <code>from</code>.
-        </p>
-        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
-    numbers$: <span class="class-name">Observable</span><span class="type"><number></span> <span class="operator">=</span> <span class="function-name">from</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>;
-
-    <span class="function-name">ngOnInit()</span> <span class="punctuation">{</span>
-        <span class="object">this</span>.numbers$.<span class="function-name">subscribe</span><span class="punctuation">((</span>data: <span class="type">number</span><span class="punctuation">)</span> <span class="punctuation"><span class="operator">=></span></span> <span class="punctuation">{</span>
-            console.<span class="function-name">log</span><span class="punctuation">(</span>data<span class="punctuation">)</span>; <span class="comment">// 1, 2, 3</span>
-        <span class="punctuation">})</span>;
-    <span class="punctuation">}</span>
-<span class="punctuation">}</span></code></pre>`,
-        selected: false,
-    },
-    {
-        title: 'Объясните принцип действия Observable в RxJs?',
-        body: `<p>
-            <code>Observable</code> - это
-            <span class="attention">объект-конструктор источника события</span>,
-            который может обрабатывать как синхронный, так и асинхронный код.
-        </p>
-        <p>
-            Сам по себе <code>Observable</code> не будет работать, потому что
-            это лишь объект-конструктор. Чтобы написанный нами код внутри
-            <code>Observable</code> заработал, на него необходимо подписаться с
-            помощью метода <code>subscribe</code>.
-        </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">newObs$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-	console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'какой-то наш код внутри Observable'</span><span class="punctuation">)</span>;
-<span class="punctuation">})</span>;
-	
-<span class="variable">newObs$</span>.<span class="function-name">subscribe()</span>; <span class="comment">// здесь мы подписались на Observable и получили сообщение в консоли</span></code></pre>
-        <p>
-            Выше рассмотрен самый простой вариант подписки на источник события.
-            Но объект <code>observer</code>, принимаемый callback-функцией
-            внутри класса <code>Observable</code>, под капотом имеет 3
-            необязательных (опциональных) метода:
-        </p>
-        <ul>
-            <li>
-                <span class="attention">next</span> - принимает значение,
-                которое будет возвращено функции-обработчику;
-            </li>
-            <li>
-                <span class="attention">error</span> - принимает значение,
-                возвращаемое функции-обработчику ошибок;
-            </li>
-            <li>
-                <span class="attention">complete</span> - вызывается для
-                уведомления "подписчиков" об окончании рассылки.
-            </li>
-        </ul>
-        <p>
-            Соответственно, в методе <code>subscribe</code> мы также можем
-            прописать логику для каждого из перечисленных выше методов объекта:
-        </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">newObs$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-	observer.<span class="function-name">next</span><span class="punctuation">(</span><span class="string">'тут передаем данные'</span><span class="punctuation">)</span>; <span class="comment">переданные данные попадут в data</span>
-	observer.<span class="function-name">error</span><span class="punctuation">(</span><span class="string">'тут передаем ошибки'</span><span class="punctuation">)</span>; <span class="comment">переданные данные попадут в error</span>
-	observer.<span class="function-name">complete()</span>; <span class="comment">// данный метод не принимает параметры</span>
-<span class="punctuation">})</span>
-	
-<span class="variable">newObs$</span>.<span class="function-name">subscribe</span><span class="punctuation">(</span>
-	<span class="punctuation">(</span>data<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем данные'</span><span class="punctuation">)</span>
-	<span class="punctuation">}</span>,
-	<span class="punctuation">(</span>error<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем ошибки'</span><span class="punctuation">)</span>
-	<span class="punctuation">}</span>,
-	<span class="punctuation">()</span> <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем завершение работы Observable'</span><span class="punctuation">)</span>
-	<span class="punctuation">}</span>,
-<span class="punctuation">)</span>;</code></pre>
-        <p>Альтернативная запись для подписки через объект с методами:</p>
-        <pre><code><span class="variable">newObs$</span>.<span class="function-name">subscribe</span><span class="punctuation">({</span>
-	<span class="key">next</span>: <span class="punctuation">(</span>data<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем данные'</span><span class="punctuation">)</span>
-	<span class="punctuation">}</span>,
-	<span class="key">error</span>: <span class="punctuation">(</span>error<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем ошибки'</span><span class="punctuation">)</span>
-	<span class="punctuation">}</span>,
-	<span class="key">complete</span>: <span class="punctuation">()</span> <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем завершение работы Observable'</span><span class="punctuation">)</span>
-	<span class="punctuation">}</span>,
-<span class="punctuation">})</span>;</code></pre>
-        <p>
-            Если <code>Observable</code> не имеет метода <code>complete</code> и
-            нет его обработки в методе <code>subscribe</code>, то не забывайте
-            самостоятельно отписываться от таких подписок.
-        </p>
-        <pre><code><span class="variable">newObs$</span>.<span class="function-name">unsubscribe()</span>; <span class="comment">// не забываем отписаться</span></code></pre>`,
-        selected: false,
-    },
-    {
-        title: 'У какого типа данных в Angular можно вызвать метод "pipe"?',
-        body: `<p>
-            <span class="attention">Метод </span> <code>pipe</code>
-            <span class="attention">
-                применяется к данным, имеющих тип данных
-            </span>
-            <code>Observable</code>
-            <span class="attention"> или его разновидности</span> (например,
-            <code>Subject</code>).
-        </p>
-        <p>
-            Причем внутри себя метод <code>pipe</code> принимает только те
-            операторы, которые принимают <code>Observable</code> и возвращают
-            <code>Observable</code>.
-        </p>`,
-        selected: false,
-    },
-    {
-        title: 'Что такое "RxJs" и зачем это в Angular?',
-        body: `<p>
-            <span class="attention">RxJS</span> — это библиотека, реализующая
-            принципы реактивного программирования для JavaScript. Основанная на
-            объектах типа <code>Observable</code>, она упрощает написание и
-            контроль асинхронного и событийного кода.
-        </p>`,
-        selected: false,
-    },
-    {
         title: 'Какие вы знаете разновидности объекта Subject и в чем их отличия?',
         body: `<p>В RxJS имеется несколько разновидностей <code>Subject</code>:</p>
         <ul>
@@ -608,6 +509,24 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
 <span class="comment">// в консоли мы увидем следующее:
 Результат: 9
 </span></code></pre>`,
+        selected: false,
+    },
+    {
+        title: 'У какого типа данных в Angular можно вызвать метод "pipe"?',
+        body: `<p>
+            <span class="attention">Метод </span> <code>pipe</code>
+            <span class="attention">
+                применяется к данным, имеющих тип данных
+            </span>
+            <code>Observable</code>
+            <span class="attention"> или его разновидности</span> (например,
+            <code>Subject</code>).
+        </p>
+        <p>
+            Причем внутри себя метод <code>pipe</code> принимает только те
+            операторы, которые принимают <code>Observable</code> и возвращают
+            <code>Observable</code>.
+        </p>`,
         selected: false,
     },
     {
@@ -831,6 +750,87 @@ subscription <span class="operator">=</span> source.<span class="function-name">
             <pre><code><span class="comment">// попытка подключения</span>
 <span class="comment">// ошибка!</span>
 <span class="comment">// completed: поток завершен</span></code></pre>`,
+        selected: false,
+    },
+    {
+        title: 'Что такое холодные и горячие Observable, в чем между ними разница и можно ли подогреть или остудить Observable?',
+        body: `            <p>
+                Холодные и горячие <code>Observable</code> - это потоки
+                (стримы), имеющие лишь 1 принципиальное отличие:
+                <span class="attention"
+                    >Холодные <code>Observable</code> создают независимые потоки
+                    под каждую подписку, а горячие разделяют поток друг с
+                    другом.</span
+                >
+            </p>
+            <p>
+                Давайте рассмотрим более наглядно на примерах и попутно создамим
+                свой собственный оператор для RxJs.
+            </p>
+            <p>Начнем с холодного <code>Observable</code>:</p>
+            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AppComponent</span> <span class="keyword">implements</span> <span class="interface-name">OnInit</span> <span class="punctuation">{</span>
+    <span class="function-name">ngOnInit()</span>: <span class="type">void</span> <span class="punctuation">{</span>
+        <span class="keyword">const</span> <span class="variable">obs$</span> <span class="operator">=</span> <span class="function-name">fromTimestamp()</span>;
+        <span class="variable">obs$</span>.<span class="function-name">subscribe(</span>console.<span class="function-name">log</span><span class="punctuation">)</span>;
+        <span class="function-name">setTimeout(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
+            <span class="variable">obs$</span>.<span class="function-name">subscribe(</span>console.<span class="function-name">log</span><span class="punctuation">)</span>;
+        <span class="punctuation">}</span>, <span class="number">2000</span><span class="punctuation">)</span>;
+    <span class="punctuation">}</span>
+<span class="punctuation">}</span>
+
+<span class="comment">// имитация собственного оператора RxJs</span>
+<span class="keyword">const</span> <span class="function-name">fromTimestamp</span> <span class="operator">=</span> <span class="punctuation">()</span>: <span class="type">Observable<</span><span class="type">number></span> <span class="operator">=></span> <span class="punctuation">{</span>
+    <span class="keyword">return</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>subscriber<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
+        <span class="keyword">const</span> <span class="variable">timestamp</span> <span class="operator">=</span> <span class="class-name">Date</span>.<span class="function-name">now()</span>; <span class="comment">// timestamp создается внутри Observable</span>
+        subscriber.<span class="function-name">next(</span><span class="variable">timestamp</span><span class="punctuation">)</span>;
+    <span class="punctuation">})</span>;
+<span class="punctuation">}</span>;</code></pre>
+            <p>В результате в консоли мы увидим следующее:</p>
+            <pre><code><span class="comment">// 1685375651548</span>
+<span class="comment">// 1685375651561</span></code></pre>
+            <p>Как видите, для каждого потока свое значение.</p>
+            <p>
+                А теперь пример того, как сделать горячий
+                <code>Observable</code>:
+            </p>
+            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AppComponent</span> <span class="keyword">implements</span> <span class="interface-name">OnInit</span> <span class="punctuation">{</span>
+    <span class="function-name">ngOnInit()</span>: <span class="type">void</span> <span class="punctuation">{</span>
+        <span class="keyword">const</span> <span class="variable">obs$</span> <span class="operator">=</span> <span class="function-name">fromTimestamp()</span>;
+        <span class="variable">obs$</span>.<span class="function-name">subscribe(</span>console.<span class="function-name">log</span><span class="punctuation">)</span>;
+        <span class="function-name">setTimeout(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
+            <span class="variable">obs$</span>.<span class="function-name">subscribe(</span>console.<span class="function-name">log</span><span class="punctuation">)</span>;
+        <span class="punctuation">}</span>, <span class="number">2000</span><span class="punctuation">)</span>;
+    <span class="punctuation">}</span>
+<span class="punctuation">}</span>
+
+<span class="comment">// имитация собственного оператора RxJs</span>
+<span class="keyword">const</span> <span class="function-name">fromTimestamp</span> <span class="operator">=</span> <span class="punctuation">()</span>: <span class="type">Observable<</span><span class="type">number></span> <span class="operator">=></span> <span class="punctuation">{</span>
+	<span class="keyword">const</span> <span class="variable">timestamp</span> <span class="operator">=</span> <span class="class-name">Date</span>.<span class="function-name">now()</span>; <span class="comment">// timestamp создается снаружи Observable</span>
+    <span class="keyword">return</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>subscriber<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
+        subscriber.<span class="function-name">next(</span><span class="variable">timestamp</span><span class="punctuation">)</span>;
+    <span class="punctuation">})</span>;
+<span class="punctuation">}</span>;</code></pre>
+            <p>В результате в консоли мы увидим следующее:</p>
+            <pre><code><span class="comment">// 1685375651588</span>
+<span class="comment">// 1685375651588</span></code></pre>
+            <p>В консоли получаем одинаковое значение, даже не смотря на то, что вторая подписка вызывается через 2 секунды. Это происходит потому, что мы ссылаемся на данные, которые находятся снаружи <code>Observable</code> и в момент инициализации <code>Observable</code> не создаются заново.</p>
+			<i class="subtitle">Как подогреть холодный Observable?</i>
+			<p>Забегая вперед сразу хочется отметить, что перести поток из холодного в горячий можно, а из горячего в холодный - нельзя. Почему - мы разобрали в примерах выше.</p>
+			<p>Теперь давайте разберемся как подогреть поток. Для этого в RxJs есть различные механизмы:
+				<ul>
+					<li>Использовать <code>Subject</code> (или его разновидности) вместо <code>Observable</code>;</li>
+					<li>Использовать оператор <code>shareReplay</code> из библиотеки RxJs (он под капотом использует <code>ReplaySubject</code>);</li>
+					<li>Использовать оператор <code>share</code> или <code>publish</code> из библиотеки RxJs (они под капотом используют <code>Subject</code>);</li>
+					<li>и т.д.</li>
+				</ul>
+			</p>
+			<pre><code><span class="comment">// пример использования оператора shareReplay</span>
+<span class="function-name">ngOnInit()</span>: <span class="type">void</span> <span class="punctuation">{</span>
+	<span class="object">this</span>.data$ = <span class="object">this</span>.http.<span class="function-name">get</span><span class="type"><</span><span class="type">any[]></span><span class="punctuation">(</span><span class="string">'https://...'</span><span class="punctuation">)</span>
+	.<span class="function-name">pipe(shareReplay())</span>
+	.<span class="function-name">subscribe()</span>
+<span class="punctuation">}</span></code></pre>
+<p>И теперь, если у вас где-то в разметке есть пайпы <code>async</code>, которые берут <code>data$</code>, то к серверу будет уходить всего лишь 1 запрос и, соответственно, при ответе сервера данные будут отдаваться всем подписчикам от одной и той же подписки.</p>`,
         selected: false,
     },
     {

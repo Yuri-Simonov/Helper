@@ -98,7 +98,7 @@ export const componentQuestions: IQuestion[] = [
         selected: false,
     },
     {
-        title: 'Зачем нужны Getter и Setter?',
+        title: 'Зачем нужны Getter и Setter внутри компонента?',
         body: `<p>
             Геттерами и сеттерами называются методы Angular компонента, которые
             <span class="attention"

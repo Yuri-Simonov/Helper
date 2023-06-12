@@ -8,12 +8,14 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { componentQuestions } from '../../questions/component';
+import { changeDetectionQuestions } from '../../questions/change_detection';
 import { decoratorQuestions } from '../../questions/decorator';
 import { directiveQuestions } from '../../questions/directive';
 import { formQuestions } from '../../questions/form';
 import { othersQuestions } from '../../questions/others';
 import { pipeQuestions } from '../../questions/pipe';
 import { routingQuestions } from '../../questions/routing';
+import { rxjsOperatorsQuestions } from '../../questions/rxjs_operators';
 import { rxjsQuestions } from '../../questions/rxjs';
 import { serviceQuestions } from '../../questions/service';
 import { testQuestions } from '../../questions/test';
@@ -50,7 +52,17 @@ export class AngularComponent implements OnInit, OnDestroy {
         { name: 'Сервисы', path: 'service', questions: serviceQuestions },
         { name: 'Тестирование', path: 'test', questions: testQuestions },
         { name: 'Формы', path: 'form', questions: formQuestions },
+        {
+            name: 'changeDetection',
+            path: 'changeDetection',
+            questions: changeDetectionQuestions,
+        },
         { name: 'RxJs', path: 'rxjs', questions: rxjsQuestions },
+        {
+            name: 'RxJs ==> Операторы',
+            path: 'rxjs_operators',
+            questions: rxjsOperatorsQuestions,
+        },
     ];
     listState: boolean = false;
     currentPath: string;

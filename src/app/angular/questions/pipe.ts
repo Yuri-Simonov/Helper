@@ -2,7 +2,39 @@ import { IQuestion } from '@types';
 
 export const pipeQuestions: IQuestion[] = [
     {
-        title: 'Как создать пользовательский пайп (pipe / фильтр)?',
+        title: 'Зачем используются pipe в Angular?',
+        body: `<p>
+            <span class="attention">Angular pipe</span>, "пайп" или просто
+            <span class="attention">фильтр</span>, нужен для преобразования
+            данных прямо в HTML-шаблоне.
+        </p>
+        <p>
+            Простой пример использования пайпы, в котором текст приводится в
+            нижний регистр:
+        </p>
+        <pre><code><span class="tag"><</span><span class="tag">p</span><span class="tag">></span><span class="punctuation">{{</span> <span class="punctuation">"</span><span class="string">ПРИМЕР</span><span class="punctuation">"</span> <span class="operator">|</span> <span class="keyword">lowercase</span> <span class="punctuation">}}</span><span class="tag"><</span><span class="tag">/p></span> <span class="comment">// пример</span></code></pre>
+        <p>
+            Как видно из примера, наименование пайпы указывается после символа
+            "<code>|</code>", следующим за значением, которое необходимо
+            преобразовать.
+        </p>
+        <p>
+            Некоторые пайпы, такие как <code>date</code>, принимают параметры,
+            передаваемые после имени фильтра, которые разделяются символом
+            "<code>:</code>". В примере ниже после "<code>:</code>" передается
+            формат отображения даты.
+        </p>
+        <pre><code><span class="tag"><</span><span class="tag">p</span><span class="tag">></span><span class="punctuation">{{</span> <span class="punctuation">"</span><span class="string">какая-то дата</span><span class="punctuation">"</span> <span class="operator">|</span> <span class="keyword">date</span><span class="punctuation">:'</span><span class="string">dd.MM.yyyy</span><span class="punctuation">'</span> <span class="punctuation">}}</span><span class="tag"><</span><span class="tag">/p></span> <span class="comment">// например, 15.04.2023</span></code></pre>
+        <p>
+            К одному и тому же значению допустимо примененять сразу нескольких
+            пайпов, причем конечный результат будет зависеть от
+            последовательности их применения:
+        </p>
+        <pre><code><span class="tag"><</span><span class="tag">p</span><span class="tag">></span><span class="punctuation">{{</span> <span class="punctuation">"</span><span class="string">Какие-то данные</span><span class="punctuation">"</span> <span class="operator">|</span> <span class="keyword">pipe1</span> <span class="operator">|</span> <span class="keyword">pipe2</span> <span class="operator">|</span> <span class="keyword">pipe3</span> <span class="punctuation">}}</span><span class="tag"><</span><span class="tag">/p></span></code></pre>`,
+        selected: false,
+    },
+    {
+        title: 'Как создать пользовательский pipe?',
         body: ` <p>
             <span class="attention">Angular pipe</span> - это класс, который
             предваряется декоратором <code>@Pipe()</code> и реализует интерфейс
@@ -58,7 +90,7 @@ export const pipeQuestions: IQuestion[] = [
         selected: false,
     },
     {
-        title: 'Какая разница между "pure" и "impure" пайпами (pipe / фильтр)?',
+        title: 'Какая разница между "pure" и "impure" pipe?',
         body: `<p>
             <code>Pure</code> и <code>impure</code> пайпы
             <span class="attention"
@@ -93,38 +125,6 @@ export const pipeQuestions: IQuestion[] = [
             Второй тип следует использовать в исключительных случаях, т.к.
             частое обновление значения пайпы требует больших ресурсов.
         </p>`,
-        selected: false,
-    },
-    {
-        title: 'Зачем используются пайпы (pipe / фильтры) в Angular?',
-        body: `<p>
-            <span class="attention">Angular pipe</span>, "пайп" или просто
-            <span class="attention">фильтр</span>, нужен для преобразования
-            данных прямо в HTML-шаблоне.
-        </p>
-        <p>
-            Простой пример использования пайпы, в котором текст приводится в
-            нижний регистр:
-        </p>
-        <pre><code><span class="tag"><</span><span class="tag">p</span><span class="tag">></span><span class="punctuation">{{</span> <span class="punctuation">"</span><span class="string">ПРИМЕР</span><span class="punctuation">"</span> <span class="operator">|</span> <span class="keyword">lowercase</span> <span class="punctuation">}}</span><span class="tag"><</span><span class="tag">/p></span> <span class="comment">// пример</span></code></pre>
-        <p>
-            Как видно из примера, наименование пайпы указывается после символа
-            "<code>|</code>", следующим за значением, которое необходимо
-            преобразовать.
-        </p>
-        <p>
-            Некоторые пайпы, такие как <code>date</code>, принимают параметры,
-            передаваемые после имени фильтра, которые разделяются символом
-            "<code>:</code>". В примере ниже после "<code>:</code>" передается
-            формат отображения даты.
-        </p>
-        <pre><code><span class="tag"><</span><span class="tag">p</span><span class="tag">></span><span class="punctuation">{{</span> <span class="punctuation">"</span><span class="string">какая-то дата</span><span class="punctuation">"</span> <span class="operator">|</span> <span class="keyword">date</span><span class="punctuation">:'</span><span class="string">dd.MM.yyyy</span><span class="punctuation">'</span> <span class="punctuation">}}</span><span class="tag"><</span><span class="tag">/p></span> <span class="comment">// например, 15.04.2023</span></code></pre>
-        <p>
-            К одному и тому же значению допустимо примененять сразу нескольких
-            пайпов, причем конечный результат будет зависеть от
-            последовательности их применения:
-        </p>
-        <pre><code><span class="tag"><</span><span class="tag">p</span><span class="tag">></span><span class="punctuation">{{</span> <span class="punctuation">"</span><span class="string">Какие-то данные</span><span class="punctuation">"</span> <span class="operator">|</span> <span class="keyword">pipe1</span> <span class="operator">|</span> <span class="keyword">pipe2</span> <span class="operator">|</span> <span class="keyword">pipe3</span> <span class="punctuation">}}</span><span class="tag"><</span><span class="tag">/p></span></code></pre>`,
         selected: false,
     },
 ];

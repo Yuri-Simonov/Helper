@@ -2,6 +2,19 @@ import { IQuestion } from '@types';
 
 export const serviceQuestions: IQuestion[] = [
     {
+        title: 'Зачем нужны сервисы в Angular?',
+        body: `<p>
+            <span class="attention">Сервисы</span> нужны для предоставления
+            данных компонентам или хранения общего (глобального) состояния
+            приложение.
+        </p>
+        <p>
+            Причем в сервисах мы можем хранить не только запросы к серверу или
+            какие-то общие данные, но и различные преобразования данных.
+        </p>`,
+        selected: false,
+    },
+    {
         title: 'Где можно импортировать сервисы в Angular?',
         body: `<p>
             Angular сервисы
@@ -63,24 +76,6 @@ export const serviceQuestions: IQuestion[] = [
 		<span class="punctuation">}</span>
 	<span class="punctuation">}</span>
 <span class="punctuation">}</span></code></pre>`,
-        selected: false,
-    },
-    {
-        title: 'Зачем нужны сервисы в Angular?',
-        body: `<p>
-            <span class="attention">Сервисы</span> нужны для предоставления
-            данных компонентам или хранения общего (глобального) состояния
-            приложение.
-        </p>
-        <p>
-            Причем в сервисах мы можем хранить не только запросы к серверу или
-            какие-то общие данные, но и различные преобразования данных.
-        </p>`,
-        selected: false,
-    },
-    {
-        title: 'Расскажите про жизненный цикл сервиса?',
-        body: `<p><i>В разработке...</i></p>`,
         selected: false,
     },
 ];

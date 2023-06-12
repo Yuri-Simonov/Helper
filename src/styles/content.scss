@@ -1,11 +1,10 @@
 .content {
+    flex-grow: 1;
     position: relative;
     display: grid;
     grid-template-columns: 15rem 1fr;
-    min-height: 100%;
     @media (max-width: 992px), (max-height: 440px) {
         grid-template-columns: 1fr;
-        min-height: auto;
     }
 
     &_simple {
@@ -14,6 +13,8 @@
     }
 
     &__items {
+        max-width: 1400px;
+        margin: 0 auto;
     }
 
     &__item + &__item {
