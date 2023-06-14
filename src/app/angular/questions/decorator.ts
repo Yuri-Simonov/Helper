@@ -122,7 +122,7 @@ export const decoratorQuestions: IQuestion[] = [
 <span class="punctuation">})</span>
 
 <span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
-	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">@SkipSelf()</span> <span class="keyword">private</span> someService: <span class="class-name">SomeService</span><span class="punctuation">)</span> <span class="punctuation">{}</span>
+	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">@SkipSelf()</span> <span class="keyword">private</span> someService: <span class="type">SomeService</span><span class="punctuation">)</span> <span class="punctuation">{}</span>
 <span class="punctuation">}</span></code></pre>
         <p>
             Исходя из вышесказанного, можно сделать следующий трюк: если указать

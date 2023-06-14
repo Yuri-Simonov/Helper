@@ -287,7 +287,7 @@ export const routingQuestions: IQuestion[] = [
             можно из сервиса <code>ActivatedRoute</code>.
         </p>
         <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">ProductComponent</span> <span class="punctuation">{</span>
-	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">private</span> route: <span class="service-name">ActivatedRoute</span><span class="punctuation">) {</span>
+	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">private</span> route: <span class="type">ActivatedRoute</span><span class="punctuation">) {</span>
 		console.<span class="method">log</span><span class="punctuation">(</span><span class="object">this</span>.route<span class="punctuation">)</span> <span class="comment">// объект с различной информацией о текущем маршруте </span>
 	<span class="punctuation">}</span>
 <span class="punctuation">}</span></code></pre>
@@ -353,7 +353,7 @@ export const routingQuestions: IQuestion[] = [
             необходимо подписаться на свойство <code>events</code> сервиса
             <code>Router</code>.
         </p>
-        <pre><code><span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">private</span> router: <span class="class-name">Router</span><span class="punctuation">) {</span>
+        <pre><code><span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">private</span> router: <span class="type">Router</span><span class="punctuation">) {</span>
 	<span class="object">this</span>.router.events.<span class="method">subscribe</span><span class="punctuation">((</span>event<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
 		<span class="keyword">if</span> <span class="punctuation">(</span>event <span class="keyword">instanceof</span> <span class="class-name">NavigationStart</span><span class="punctuation">) {</span>
 			console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Navigation Start'</span><span class="punctuation">)</span>;
@@ -398,8 +398,8 @@ export const routingQuestions: IQuestion[] = [
         </p>
         <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AuthGuard</span> <span class="keyword">implements</span> <span class="interface-name">CanActivate</span> <span class="punctuation">{</span>
 	<span class="method">canActivate</span><span class="punctuation">(</span>
-		route: <span class="class-name">ActivatedRouteSnapshot</span>,
-		state: <span class="class-name">RouterStateSnapshot</span><span class="punctuation">)</span>: <span class="type">Observable<</span><span class="type">boolean | UrlTree> | </span><span class="type">Promise<</span><span class="type">boolean | UrlTree> |</span> <span class="type">boolean | UrlTree</span> <span class="punctuation">{</span>
+		route: <span class="type">ActivatedRouteSnapshot</span>,
+		state: <span class="type">RouterStateSnapshot</span><span class="punctuation">)</span>: <span class="type">Observable<</span><span class="type">boolean | UrlTree> | </span><span class="type">Promise<</span><span class="type">boolean | UrlTree> |</span> <span class="type">boolean | UrlTree</span> <span class="punctuation">{</span>
     	<span class="keyword">return</span> <span class="boolean">true</span>;
 	<span class="punctuation">}</span>  
 <span class="punctuation">}</span></code></pre>
@@ -473,11 +473,11 @@ export const routingQuestions: IQuestion[] = [
             <code>Resolver</code> разрешает переход на него после выполнения
             <code>Observable</code> в <code>resolve</code>.
         </p>
-        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AuthResolver</span> <span class="keyword">implements</span> <span class="interface-name">Resolve</span><span class="type">'<'boolean></span> <span class="punctuation">{</span>
+        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AuthResolver</span> <span class="keyword">implements</span> <span class="interface-name">Resolve</span><span class="type"><span><</span><span>boolean></span> <span class="punctuation">{</span>
     <span class="method">resolve</span><span class="punctuation">(</span>
         route: <span class="type">ActivatedRouteSnapshot</span>,
         state: <span class="type">RouterStateSnapshot</span>
-    <span class="punctuation">)</span>: <span class="type">Observable'<'boolean></span> <span class="punctuation">{</span>
+    <span class="punctuation">)</span>: <span class="type">Observable<span><</span><span>boolean></span> <span class="punctuation">{</span>
 		<span class="keyword">if</span><span class="punctuation">(</span><span class="string">'какое-то условие'</span><span class="punctuation">) {</span>
 			<span class="keyword">return</span> <span class="method">of</span><span class="punctuation">(</span><span class="boolean">true</span><span class="punctuation">)</span>;
 		<span class="punctuation">}</span> <span class="keyword">else</span> <span class="punctuation">{</span>
@@ -490,7 +490,7 @@ export const routingQuestions: IQuestion[] = [
 	<span class="punctuation">{</span>
 		<span class="key">path</span>: <span class="string">'products'</span>,
 		<span class="key">component</span>: <span class="class-name">ProductsComponent</span>,
-		<span class="key">resolve</span>: <span class="punctuation">{</span> <span class="key">auth</span>: <span class="class-name">AuthResolver</span> <span class="punctuation">}</span>, <span class="comment">// сообщаем о наличии resolver'а</span>
+		<span class="key">resolve</span>: <span class="punctuation">{</span> <span class="key">auth</span>: <span class="type">AuthResolver</span> <span class="punctuation">}</span>, <span class="comment">// сообщаем о наличии resolver'а</span>
 	<span class="punctuation">}</span>,
 <span class="punctuation">]</span></code></pre>
         <p>
@@ -551,7 +551,7 @@ export const routingQuestions: IQuestion[] = [
         <pre><code><span class="comment">// custom-preloading-strategy.service.ts</span>
 <span class="keyword">@Injectable</span><span class="punctuation">({</span> <span class="key">providedIn</span>: <span class="string">'root'</span> <span class="punctuation">})</span>
 <span class="export">export</span> <span class="keyword">class</span> <span class="class-name">CustomPreloadingStrategyService</span> <span class="keyword">implements</span> <span class="interface-name">PreloadingStrategy</span> <span class="punctuation">{</span>
-	<span class="method">preload(</span>route: <span class="type">Route</span>, load: <span class="type">() => Observable<span>'<'</span>any></span><span class="punctuation">)</span>: <span class="type">Observable<span>'<'</span>any></span> <span class="punctuation">{</span>
+	<span class="method">preload(</span>route: <span class="type">Route</span>, load: <span class="type">() => <span class="type">Observable<span><</span><span>any></span><span class="punctuation">)</span>: <span class="type">Observable<span><</span><span>any></span> <span class="punctuation">{</span>
 		<span class="keyword">const</span> <span class="variable">popularModules</span>: <span class="type">any</span> <span class="operator">=</span>  <span class="punctuation">[</span><span class="string">'contacts'</span>, <span class="string">'products'</span><span class="punctuation">]</span>
 		<span class="keyword">if</span> <span class="punctuation">(</span>popularModules.<span class="method">includes(</span>route.path<span class="punctuation">)) {</span>
 			<span class="return">return</span> <span class="function-name">load()</span>

@@ -70,7 +70,7 @@ export const directiveQuestions: IQuestion[] = [
 	<span class="key">selector</span><span class="punctuation">: '</span><span class="attribute">[someAttr]</span><span class="punctuation">'</span>,
 <span class="punctuation">})</span>
 <span class="export">export</span> <span class="key">class</span> <span class="class-name">SomeDirective</span> <span class="punctuation">{</span>
-  <span class="keyword">constructor </span><span class="punctuation">(</span><span class="keyword">private</span> element: <span class="class-name">ElementRef</span><span class="punctuation">)</span> <span class="punctuation">{</span>
+  <span class="keyword">constructor </span><span class="punctuation">(</span><span class="keyword">private</span> element: <span class="type">ElementRef</span><span class="punctuation">)</span> <span class="punctuation">{</span>
     element.nativeElement.style.fontSize <span class="operator">=</span> <span class="string">'20px'</span>;
   <span class="punctuation">}</span>
 <span class="punctuation">}</span>
@@ -96,7 +96,7 @@ export const directiveQuestions: IQuestion[] = [
 	<span class="key">selector</span><span class="punctuation">: '</span><span class="attribute">[someAttr]</span><span class="punctuation">'</span>,
 <span class="punctuation">})</span>
 <span class="export">export</span> <span class="key">class</span> <span class="class-name">SomeDirective</span> <span class="punctuation">{</span>
-	<span class="keyword">constructor </span><span class="punctuation">(</span><span class="keyword">private</span> element: <span class="class-name">ElementRef</span><span class="punctuation">)</span> <span class="punctuation">{</span>
+	<span class="keyword">constructor </span><span class="punctuation">(</span><span class="keyword">private</span> element: <span class="type">ElementRef</span><span class="punctuation">)</span> <span class="punctuation">{</span>
 	
 	<span class="keyword">@HostListener</span><span class="punctuation">(</span><span class="string">'mouseenter'</span><span class="punctuation">)</span> <span class="function-name">enterMouseEvent</span><span class="punctuation">()</span> <span class="punctuation">{</span>
     	<span class="object">this</span>.<span class="function-name">setNewFontSize</span><span class="punctuation">(</span><span class="number">20</span><span class="punctuation">)</span>; <span class="comment">// при наведении будет устанавливаться размер шрифта равный 20рх</span>
@@ -122,7 +122,7 @@ export const directiveQuestions: IQuestion[] = [
 <span class="export">export</span> <span class="key">class</span> <span class="class-name">SomeDirective</span> <span class="punctuation">{</span>
 	<span class="keyword">@Input</span><span class="punctuation">(</span><span class="string">'someAttr'</span><span class="punctuation">)</span> fontSize;
 	
-	<span class="keyword">constructor </span><span class="punctuation">(</span><span class="keyword">private</span> element: <span class="class-name">ElementRef</span><span class="punctuation">)</span> <span class="punctuation">{</span>
+	<span class="keyword">constructor </span><span class="punctuation">(</span><span class="keyword">private</span> element: <span class="type">ElementRef</span><span class="punctuation">)</span> <span class="punctuation">{</span>
 	
 	<span class="keyword">@HostListener</span><span class="punctuation">(</span><span class="string">'mouseenter'</span><span class="punctuation">)</span> <span class="function-name">enterMouseEvent</span><span class="punctuation">()</span> <span class="punctuation">{</span>
     	<span class="object">this</span>.<span class="function-name">setNewFontSize</span><span class="punctuation">(</span><span class="object">this</span>.fontSize<span class="punctuation">)</span>; <span class="comment">// при наведении будет устанавливаться размер шрифта равный переданному значению из компонента</span>

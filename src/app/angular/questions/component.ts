@@ -157,12 +157,12 @@ export const componentQuestions: IQuestion[] = [
     currentPath: <span class="type">string</span>;
     currentPathSub: <span class="type">Subscription</span>;
 
-    <span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">private</span> router: <span class="class-name">Router</span><span class="punctuation">) {}</span>
+    <span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">private</span> router: <span class="type">Router</span><span class="punctuation">) {}</span>
 
     <span class="function-name">ngOnInit()</span>: <span class="type">void</span> <span class="punctuation">{</span>
         <span class="object">this</span>.currentPath <span class="operator">=</span> <span class="object">this</span>.router.url;
         <span class="object">this</span>.currentPathSub <span class="operator">=</span> <span class="object">this</span>.router.events.<span class="method">subscribe</span><span class="punctuation">((</span>event<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-            <span class="keyword">if</span> (event <span class="keyword">instanceof</span> <span class="class-name">NavigationEnd</span>) <span class="punctuation">{</span>
+            <span class="keyword">if</span> <span class="punctuation">(</span>event <span class="keyword">instanceof</span> <span class="class-name">NavigationEnd</span><span class="punctuation">) {</span>
                 <span class="object">this</span>.currentPath <span class="operator">=</span> event.url;
             <span class="punctuation">}</span>
         <span class="punctuation">});</span>
