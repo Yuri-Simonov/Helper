@@ -15,6 +15,11 @@
     &__items {
         max-width: 1400px;
         margin: 0 auto;
+
+        &_full {
+            max-width: 100%;
+            width: 100%;
+        }
     }
 
     &__item + &__item {
