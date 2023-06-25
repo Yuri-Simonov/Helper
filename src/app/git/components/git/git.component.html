@@ -1,1 +1,34 @@
-<p>git works!</p>
+<app-title title="Git" [(state)]="listState"></app-title>
+<div class="content">
+    <app-sidenav
+        [list]="list"
+        [(state)]="listState"
+        [style.left.%]="listState ? 0 : -100"
+    ></app-sidenav>
+    <div
+        class="content__items"
+        [ngClass]="{ content__items_full: currentPath === 'git' }"
+    >
+        <ng-container *ngFor="let item of list">
+            <ng-container *ngIf="item.path === currentPath">
+                <div class="content__item" *ngFor="let q of item.questions">
+                    <mat-accordion>
+                        <mat-expansion-panel
+                            (opened)="q.selected = true"
+                            (closed)="q.selected = false"
+                        >
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{ q.title }}
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div [innerHTML]="q.body"></div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+            </ng-container>
+        </ng-container>
+
+        <app-empty *ngIf="currentPath === 'git'"></app-empty>
+    </div>
+</div>

@@ -13,12 +13,12 @@
     }
 
     &__items {
+        width: 100%;
         max-width: 1400px;
         margin: 0 auto;
 
         &_full {
             max-width: 100%;
-            width: 100%;
         }
     }
 
