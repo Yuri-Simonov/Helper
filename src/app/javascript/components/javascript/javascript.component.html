@@ -1,11 +1,14 @@
-<app-title title="Angular" [(state)]="listState"></app-title>
+<app-title title="JavaScript" [(state)]="listState"></app-title>
 <div class="content">
     <app-sidenav
         [list]="list"
         [(state)]="listState"
         [style.left.%]="listState ? 0 : -100"
     ></app-sidenav>
-    <div class="content__items">
+    <div
+        class="content__items"
+        [ngClass]="{ content__items_full: currentPath === 'javascript' }"
+    >
         <ng-container *ngFor="let item of list">
             <ng-container *ngIf="item.path === currentPath">
                 <div class="content__item" *ngFor="let q of item.questions">

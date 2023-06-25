@@ -22,4 +22,5 @@
 Теоретические материалы по:
 
 -   JavaScript;
--   Angular.
+-   Angular;
+-   Git.
