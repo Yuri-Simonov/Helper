@@ -99,4 +99,25 @@ git commit --amend</code></pre>
 	<pre><code>git clone <span class="string">url_репозитория</span> --depth=<span class="string">число_последних_коммитов_в_истории</span></code></pre>`,
         selected: false,
     },
+    {
+        title: 'Чистка рабочей директории от ненужных файлов',
+        body: `<p>
+		В момент разработки бывают ситуации, когда вы создали различные
+		файлы и папки и изменили текущие файлы, но вдруг понимаете, что
+		все нужно вернуть в изначальный вид. И вставет резонный вопрос:
+		"а как это сделать?".
+	</p>
+	<p>Варианта "вернуть все как было" как минимум 2.</p>
+	<i class="subtitle">Поэтапный вариант</i>
+	<p>Сначала удаляем все созданные файлы и папки:</p>
+	<pre><code>git clean -r -d <span class="comment">// удаляться и папки, и файлы</span>
+git clean -r <span class="comment">// если не нужно удалять папки, а только файлы</span></code></pre>
+	<p>А теперь и все изменения в файлах:</p>
+	<pre><code>git reset --hard</code></pre>
+	<i class="subtitle">Все сразу</i>
+	<p>Можно удалить все сразу, с помощью 2 команд:</p>
+	<pre><code>git add . <span class="comment">// индексируем все изменения</span>
+git reset --hard <span class="comment">// очищаем все изменения в индексе</span></code></pre>`,
+        selected: false,
+    },
 ];
