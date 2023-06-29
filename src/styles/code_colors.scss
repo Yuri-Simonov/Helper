@@ -71,3 +71,8 @@ code {
 .directive {
     color: var(--purple-light);
 }
+
+.reset {
+    color: var(--red);
+    text-decoration: line-through;
+}

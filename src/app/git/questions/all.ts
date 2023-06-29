@@ -199,4 +199,83 @@ git reset --hard <span class="comment">// очищаем все изменени
 	<pre><code>git stash drop stash@{<span class="string">номер_состояния</span>}</code></pre>`,
         selected: false,
     },
+    {
+        title: 'Отличия флагов soft, mixed и hard в команде "git reset"',
+        body: `<p>
+		Перед отправкой в удаленный репозиторий изменения проходят 3
+		этапа:
+	</p>
+	<ul>
+		<li>
+			Файлы еще не добавлены в индекс
+			<code>git</code> (untracked files);
+		</li>
+		<li>
+			Файлы добавлены в индекс <code>git</code> (например,
+			после команды <code>git add .</code>);
+		</li>
+		<li>
+			Создан коммит (например, после команды
+			<code>git commit -m "название коммита"</code>).
+		</li>
+	</ul>
+	<p>
+		И на примере этих 3 этапов рассмотрим разницу между флагами
+		<code>soft</code>, <code>mixed</code> и <code>hard</code>,
+		только для наглядности объединим их ниже:
+	</p>
+	<pre><code>1) untracked files
+2) git add .
+3) git commit -m "название коммита"</code></pre>
+	<i class="subtitle">Soft</i>
+	<p>
+		При команде с данным флагом мы отменяем 3-ю ступень, где
+		создается коммит, при этом мы не теряем изменения в файлах:
+	</p>
+	<pre><code><span class="comment">// Прописываем команду в терминале:</span>
+git reset --soft
+
+<span class="comment">// Что происходит в git:</span>
+1) untracked files
+2) git add .
+<span class="reset">3) git commit -m "название коммита"</span></code></pre>
+	<i class="subtitle">Mixed</i>
+	<p>
+		Данный флаг используется по умолчанию. Следующие 2 записи
+		одентичны с точки зрения функционала:
+	</p>
+	<pre><code>git reset
+git reset --mixed</code></pre>
+	<p>
+		При команде с данным флагом мы отменяем 2-ю и 3-ю ступени,
+		изменения в самих файлах все так же остаются:
+	</p>
+	<pre><code><span class="comment">// Прописываем команду в терминале:</span>
+git reset --mixed
+
+<span class="comment">// Что происходит в git:</span>
+1) untracked files
+<span class="reset">2) git add .</span>
+<span class="reset">3) git commit -m "название коммита"</span></code></pre>
+	<i class="subtitle">Hard</i>
+	<p>
+		Если же вы не хотите ничего сохранять, то данный флаг вам в
+		помощь:
+	</p>
+	<pre><code><span class="comment">// Прописываем команду в терминале:</span>
+git reset --hard
+
+<span class="comment">// Что происходит в git:</span>
+<span class="reset">1) untracked files</span>
+<span class="reset">2) git add .</span>
+<span class="reset">3) git commit -m "название коммита"</span></code></pre>
+	<i class="subtitle">Откат изменений к определенному коммиту</i>
+	<p>
+		Если есть необходимость откатиться к определенному коммиту, то
+		просто передайте в любую из команд после флага хэш нужного вам
+		коммита:
+	</p>
+	<pre><code>git reset --hard 99fb0814f8cd10eaeda0c5f89373ee2b42d7fde9</code></pre>`,
+        selected: false,
+    },
 ];

@@ -208,3 +208,8 @@ code {
     display: inline-block;
     padding: 0 2px;
 }
+
+.reset {
+    color: var(--red);
+    text-decoration: line-through;
+}
