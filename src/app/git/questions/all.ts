@@ -211,8 +211,8 @@ git reset --hard <span class="comment">// очищаем все изменени
 			<code>git</code> (untracked files);
 		</li>
 		<li>
-			Файлы добавлены в индекс <code>git</code> (например,
-			после команды <code>git add .</code>);
+			Файлы добавлены в индекс <code>git</code> (например, после
+			команды <code>git add .</code>);
 		</li>
 		<li>
 			Создан коммит (например, после команды
@@ -227,13 +227,18 @@ git reset --hard <span class="comment">// очищаем все изменени
 	<pre><code>1) untracked files
 2) git add .
 3) git commit -m "название коммита"</code></pre>
+	<p>
+		Для команд, которые мы рассмотрим ниже, нужен хэш коммита, к
+		которому мы хотим откатиться. Возьмем, например, такой
+		"99fb0814f8cd10eaeda0c5f89373ee2b42d7fde9".
+	</p>
 	<i class="subtitle">Soft</i>
 	<p>
 		При команде с данным флагом мы отменяем 3-ю ступень, где
 		создается коммит, при этом мы не теряем изменения в файлах:
 	</p>
 	<pre><code><span class="comment">// Прописываем команду в терминале:</span>
-git reset --soft
+git reset --soft <span class="string">99fb0814f8cd10eaeda0c5f89373ee2b42d7fde9</span>
 
 <span class="comment">// Что происходит в git:</span>
 1) untracked files
@@ -251,7 +256,7 @@ git reset --mixed</code></pre>
 		изменения в самих файлах все так же остаются:
 	</p>
 	<pre><code><span class="comment">// Прописываем команду в терминале:</span>
-git reset --mixed
+git reset --mixed <span class="string">99fb0814f8cd10eaeda0c5f89373ee2b42d7fde9</span>
 
 <span class="comment">// Что происходит в git:</span>
 1) untracked files
@@ -263,19 +268,18 @@ git reset --mixed
 		помощь:
 	</p>
 	<pre><code><span class="comment">// Прописываем команду в терминале:</span>
-git reset --hard
+git reset --hard <span class="string">99fb0814f8cd10eaeda0c5f89373ee2b42d7fde9</span>
 
 <span class="comment">// Что происходит в git:</span>
 <span class="reset">1) untracked files</span>
 <span class="reset">2) git add .</span>
 <span class="reset">3) git commit -m "название коммита"</span></code></pre>
-	<i class="subtitle">Откат изменений к определенному коммиту</i>
+	<i class="subtitle">Откат изменений в текущей ветке</i>
 	<p>
-		Если есть необходимость откатиться к определенному коммиту, то
-		просто передайте в любую из команд после флага хэш нужного вам
-		коммита:
+		Если вам необходимо откатить все изменения в текущей ветке, то
+		просто не передавайте в команду хэш коммита:
 	</p>
-	<pre><code>git reset --hard 99fb0814f8cd10eaeda0c5f89373ee2b42d7fde9</code></pre>`,
+	<pre><code>git reset --hard</code></pre>`,
         selected: false,
     },
 ];
