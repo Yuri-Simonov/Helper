@@ -337,7 +337,7 @@ git commit -m "<span class="string">название_коммита</span>" <spa
 	<pre><code>git commit -a -m "<span class="string">название_коммита</span>" <span class="comment">// сразу добавили файлы и создали коммит</span></code></pre>
 	<p>
 		Как видите, в команде появился флаг <code>-a</code>, который
-		подразумевает "добавить в коммит все изменные файлы".
+		подразумевает "добавить в коммит все <span class="attention">измененные файлы</span>", именно "измененные". Если вы создали новый какой-то файл(ы), то команда выше <span class="attention">не подхватит его в коммит</span>.
 	</p>`,
         selected: false,
     },
