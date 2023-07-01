@@ -34,3 +34,11 @@ li > code {
     display: inline-block;
     padding: 0 2px;
 }
+
+.comment {
+    margin-left: 12px;
+
+    &_start {
+        margin-left: 0;
+    }
+}
