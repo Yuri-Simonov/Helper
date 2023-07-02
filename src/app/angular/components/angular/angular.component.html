@@ -1,10 +1,6 @@
 <app-title title="Angular" [(state)]="listState"></app-title>
 <div class="content">
-    <app-sidenav
-        [list]="list"
-        [(state)]="listState"
-        [style.left.%]="listState ? 0 : -100"
-    ></app-sidenav>
+    <app-sidenav [list]="list" [(state)]="listState"></app-sidenav>
     <div
         class="content__items"
         [ngClass]="{ content__items_full: currentPath === 'angular' }"

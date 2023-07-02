@@ -9,6 +9,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 export class HeaderComponent {
     resetBodyClass(): void {
         const body = document.querySelector('body');
-        body?.classList.toggle('lock');
+        body?.classList.remove('lock');
     }
 }

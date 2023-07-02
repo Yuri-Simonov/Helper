@@ -10,7 +10,13 @@ export const opacityAnimation = trigger('opacityAnimation', [
     transition('* => *', [
         query(
             ':enter',
-            [style({ opacity: 0, position: 'absolute', width: '100%' })],
+            [
+                style({
+                    opacity: 0,
+                    position: 'absolute',
+                    width: '100%',
+                }),
+            ],
             {
                 optional: true,
             }
