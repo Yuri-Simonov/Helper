@@ -9,14 +9,8 @@ import {
 export const opacityAnimation = trigger('opacityAnimation', [
     transition('* => *', [
         query(
-            ':enter',
-            [
-                style({
-                    opacity: 0,
-                    position: 'absolute',
-                    width: '100%',
-                }),
-            ],
+            ':enter, :leave',
+            style({ position: 'fixed', width: '100%', opacity: 0 }),
             {
                 optional: true,
             }
@@ -27,11 +21,9 @@ export const opacityAnimation = trigger('opacityAnimation', [
             [
                 style({ opacity: 1 }),
                 animate(
-                    '0.1s',
+                    '0.2s',
                     style({
                         opacity: 0,
-                        position: 'absolute',
-                        width: '100%',
                     })
                 ),
             ],
@@ -41,11 +33,8 @@ export const opacityAnimation = trigger('opacityAnimation', [
         query(
             ':enter',
             [
-                style({ opacity: 0 }),
-                animate(
-                    '0.2s',
-                    style({ opacity: 1, position: 'relative', width: '100%' })
-                ),
+                // style({ opacity: 0 }),
+                animate('0.2s', style({ opacity: 1, position: 'relative' })),
             ],
             { optional: true }
         ),

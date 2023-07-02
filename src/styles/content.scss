@@ -3,6 +3,7 @@
     position: relative;
     display: grid;
     grid-template-columns: 15rem 1fr;
+
     @media (max-width: 992px), (max-height: 440px) {
         grid-template-columns: 1fr;
     }
