@@ -1,6 +1,11 @@
 import { IQuestion } from '@types';
 
 export const othersQuestions: IQuestion[] = [
+    // {
+    //     title: '',
+    //     body: ``,
+    //     selected: false,
+    // },
     {
         title: 'Что такое "Angular CLI"?',
         body: `<p>
@@ -300,6 +305,19 @@ export const othersQuestions: IQuestion[] = [
         body: `<p>
             <i>В разработке...</i>
         </p>`,
+        selected: false,
+    },
+    {
+        title: 'Вложенные свойства атрибутов',
+        body: `<p>
+		В ангуляре можно использовать вложенные свойства у атрибутов.
+		Например, вы хотите задать ширину элементу в процентах. Сделать
+		это можно различными способами:
+	</p>
+	<pre><code><span class="tag"><</span><span class="tag">p</span> <span class="attribute">style</span><span class="operator">=</span><span class="string">"width: 50%"</span><span class="tag">></span>Какой-то текст<span class="tag"><</span><span class="tag">/p></span>
+<span class="tag"><</span><span class="tag">p</span> <span class="attribute">[style.width.%]</span><span class="operator">=</span><span class="string">"50"</span><span class="tag">></span>Какой-то текст<span class="tag"><</span><span class="tag">/p></span>
+</code></pre>
+	<p>Обе записи выдадут одинаковый результат.</p>`,
         selected: false,
     },
 ];
