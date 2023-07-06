@@ -1,10 +1,15 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ViewChildren,
+} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { IList } from '@types';
 
 import { allGitQuestions } from './../../questions/all';
+import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
     selector: 'app-git',
@@ -17,6 +22,8 @@ export class GitComponent {
     listState: boolean = false;
     currentPath: string;
     currentPathSub: Subscription;
+
+    @ViewChildren(MatAccordion) accordion: MatAccordion[];
 
     constructor(private router: Router) {}
 

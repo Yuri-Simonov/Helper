@@ -3,6 +3,7 @@ import {
     Component,
     OnDestroy,
     OnInit,
+    ViewChildren,
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -11,6 +12,7 @@ import { functionQuestions } from '../../questions/function';
 import { prototypeQuestions } from '../../questions/prototype';
 
 import { IList } from '@types';
+import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
     selector: 'app-javascript',
@@ -29,6 +31,8 @@ export class JavascriptComponent implements OnInit, OnDestroy {
     listState: boolean = false;
     currentPath: string;
     currentPathSub: Subscription;
+
+    @ViewChildren(MatAccordion) accordion: MatAccordion[];
 
     constructor(private router: Router) {}
 

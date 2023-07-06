@@ -11,6 +11,8 @@ import {
     TitleModule,
 } from '@modules';
 
+import { Directives } from 'src/app/shared/directives/directive.module';
+
 const routes: Routes = [
     {
         path: 'git',
@@ -28,6 +30,7 @@ const routes: Routes = [
         SidenavModule,
         TitleModule,
         EmptyModule,
+        Directives,
     ],
 })
 export class GitModule {}

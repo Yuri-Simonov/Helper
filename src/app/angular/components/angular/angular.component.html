@@ -8,7 +8,7 @@
         <ng-container *ngFor="let item of list">
             <ng-container *ngIf="item.path === currentPath">
                 <div class="content__item" *ngFor="let q of item.questions">
-                    <mat-accordion>
+                    <mat-accordion matAccordion [appEscape]="accordion">
                         <mat-expansion-panel
                             (opened)="q.selected = true"
                             (closed)="q.selected = false"

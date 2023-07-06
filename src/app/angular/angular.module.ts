@@ -1,18 +1,17 @@
-// Импорты библиотек
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-// Импорт главного компонента
 import { AngularComponent } from './components/angular/angular.component';
 
-// Импорты сторонних модулей
 import {
     EmptyModule,
     MaterialModule,
     SidenavModule,
     TitleModule,
 } from '@modules';
+
+import { Directives } from 'src/app/shared/directives/directive.module';
 
 // а б в г д е ё ж з и й к л м н о п р с т у ф х ц ч ш щ ъ ы ь э ю я
 // a b c d e f g h i j k l m n o p q r s t u v w x y z
@@ -45,6 +44,7 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         SidenavModule,
         TitleModule,
+        Directives,
     ],
     providers: [],
 })
