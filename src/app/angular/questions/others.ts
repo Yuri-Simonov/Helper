@@ -320,4 +320,21 @@ export const othersQuestions: IQuestion[] = [
 	<p>Обе записи выдадут одинаковый результат.</p>`,
         selected: false,
     },
+    {
+        title: 'Обработка событий комбинаций клавиш',
+        body: `<p>
+		Очень редко, но бывают ситуации, когда необходимо обработать
+		событие комбинации конкретных клавиш. В Ангуляре это можно
+		сделать следующим образом:
+	</p>
+	<pre><code><span class="tag"><</span><span class="tag">input</span> <span class="attribute">type</span><span class="operator">=</span><span class="string">"text"</span> <span class="attribute">(keydown.control.enter)</span><span class="operator">=</span><span class="string">"</span><span class="function-name">someFunction()</span><span class="string">"</span> <span class="tag">/></span></code></pre>
+	<p>
+		Соответственно, когда инпут будет в фокусе, зажав комбинацию
+		клавиш <code>Ctrl + Enter</code> у вас вызовется функция
+		<code>someFunction</code>, в которую уже вам решать какую логику
+		заложить. 
+	</p>
+	<p>Если нужно обработать еще больше клавиш, то также перечисляете их через точку, как в примере выше.</p>`,
+        selected: false,
+    },
 ];
