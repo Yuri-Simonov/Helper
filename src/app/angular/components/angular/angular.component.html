@@ -19,6 +19,12 @@
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
                             <div [innerHTML]="q.body"></div>
+                            <i
+                                class="content__last-update"
+                                *ngIf="q.lastUpdate"
+                            >
+                                последнее обновление: {{ q.lastUpdate }}
+                            </i>
                         </mat-expansion-panel>
                     </mat-accordion>
                 </div>

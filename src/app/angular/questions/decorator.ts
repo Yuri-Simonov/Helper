@@ -308,6 +308,42 @@ export const decoratorQuestions: IQuestion[] = [
 <span class="keyword">class</span> <span class="class-name">App</span> <span class="punctuation">{}</span></code></pre>`,
         selected: false,
     },
+    {
+        title: 'Объясните принцип работы декоратора "@Attribute()"?',
+        body: `<p>
+		В Ангуляре данные от родителя к дочернему компоненту можно
+		передавать как статически, так и динамически:
+	</p>
+	<pre><code><span class="tag"><</span><span class="tag">app-child</span> <span class="attribute">name</span><span class="operator">=</span><span class="string">"name"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/app-child></span> <span class="comment">// статическая передача данных</span>
+<span class="tag"><</span><span class="tag">app-child</span> <span class="attribute">[name]</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">name</span><span class="punctuation">"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/app-child></span> <span class="comment">// динамическая передача данных</span></code></pre>
+	<p>
+		Декоратор <code>@Input</code> может обрабатывать и тот, и другой
+		варианты. И т.к. данные могут изменяться, механизм
+		<code>ChangeDetection</code> будет его тоже проверять на наличие
+		изменений. Даже если вы передаете статические данные и они никак
+		не изменяются.
+	</p>
+	<p>
+		Чтобы снизить нагрузку на механизм
+		<code>ChangeDetection</code> и не проверять статические данные,
+		используется декоратор <code>@Attribute</code>, который
+		<span class="attention"
+			>помечает входящий параметр как неизменяемый на протяжении
+			всего жизненного цикла приложения</span
+		>.
+	</p>
+	<p>Пример использования:</p>
+	<pre><code><span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">@Attribute</span><span class="punctuation">(</span><span class="string">'name'</span><span class="punctuation">)</span> <span class="keyword">private</span> name: <span class="type">string</span><span class="punctuation">) {}</span></code></pre>
+	<p>
+		Как видите, значение теперь принемается в конструкторе класса, а
+		не в одном из хуков жизненного цикла компонента. Соответственно, если вы
+		захотите передать через декоратор
+		<code>@Attribute</code> динамический параметр, то Ангуляр выдаст
+		вам ошибку.
+	</p>`,
+        selected: false,
+        lastUpdate: '26.07.2023',
+    },
     // {
     //     title: '',
     //     body: ``,

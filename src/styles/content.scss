@@ -54,4 +54,17 @@
             margin-bottom: 0;
         }
     }
+
+    &__last-update {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-left: auto;
+        opacity: 0.5;
+        font-size: 12px;
+
+        @media (max-width: 440px), (max-height: 440px) {
+            font-size: 10px;
+        }
+    }
 }
