@@ -181,4 +181,30 @@ export const directiveQuestions: IQuestion[] = [
         </p>`,
         selected: false,
     },
+    {
+        title: 'В чем отличие жизненного цикла компонента от директивы?',
+        body: `<p>
+		Если заглянуть под капот интерфейса компонента, то можно
+		увидеть, что он наследуются от интерфейса директивы:
+	</p>
+	<pre><code><span class="comment comment_start">// из файла "@angular/core"</span>
+<span class="export">export</span> <span class="keyword">declare</span> <span class="keyword">interface</span> <span class="interface-name">Component</span> <span class="keyword">extends</span> <span class="interface-name">Directive</span> <span class="punctuation">{}</span></code></pre>
+	<p>
+		Поэтому можно сказать, что
+		<span class="attention">
+			компоненты - это те же директивы, но с дополнительными
+			возможностями</span
+		>. Исходя из этого можно сделать вывод от том, что
+		<span class="attention"
+			>директивы имеют аналогичный жизненный цикл, что и
+			компоненты</span>.
+	</p>`,
+        selected: false,
+        lastUpdate: '29.07.2023',
+    },
+    // {
+    //     title: '',
+    //     body: ``,
+    //     selected: false,
+    // },
 ];

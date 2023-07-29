@@ -11,35 +11,92 @@
     <body>
         <div>
             <p>
-                В Ангуляре данные от родителя к дочернему компоненту можно
-                передавать как статически, так и динамически:
-            </p>
-            <pre><code><span class="tag"><</span><span class="tag">app-child</span> <span class="attribute">name</span><span class="operator">=</span><span class="string">"name"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/app-child></span> <span class="comment">// статическая передача данных</span>
-<span class="tag"><</span><span class="tag">app-child</span> <span class="attribute">[name]</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">name</span><span class="punctuation">"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/app-child></span> <span class="comment">// динамическая передача данных</span></code></pre>
-            <p>
-                Декоратор <code>@Input</code> может обрабатывать и тот, и другой
-                варианты. И т.к. данные могут изменяться, механизм
-                <code>ChangeDetection</code> будет его тоже проверять на наличие
-                изменений. Даже если вы передаете статические данные и они никак
-                не изменяются.
+                Каждый компонент имеет свой жизненный цикл, где на каждом этапе
+                цикла вызываются соответствующие методы, так называемые хуки
+                (Angular Hooks).
             </p>
             <p>
-                Чтобы снизить нагрузку на механизм
-                <code>ChangeDetection</code> и не проверять статические данные,
-                используется декоратор <code>@Attribute</code>, который
-                <span class="attention"
-                    >помечает входящий параметр как неизменяемый на протяжении
-                    всего жизненного цикла приложения</span
-                >.
+                Ниже перечислены все методы жизненного цикла компонента в
+                порядке их вызова:
             </p>
-            <p>Пример использования:</p>
-            <pre><code><span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">@Attribute</span><span class="punctuation">(</span><span class="string">'name'</span><span class="punctuation">)</span> <span class="keyword">private</span> name: <span class="type">string</span><span class="punctuation">) {}</span></code></pre>
+            <ul>
+                <li>
+                    <span class="attention">ngOnChanges</span> - вызывается в
+                    момент установки или изменения одного или нескольких
+                    значений входных свойств класса компонента. Метод аргументом
+                    принимает объект <code>SimpleChanges</code>, в котором
+                    хранятся текущее и предыдущее значения свойств. Если у
+                    компонента есть свойства, входящиее извне через декоратор
+                    <code>@Input</code>,
+                    <span class="attention"
+                        >срабатывает перед хуком <code>ngOnInit</code></span
+                    >. Если нет входящих свойств, то данный хук вызываться не
+                    будет;
+                </li>
+                <li>
+                    <span class="attention">ngOnInit</span> - на данном этапе
+                    устанавливаются свойства самого компонента. Вызывается
+                    единожды, после первого вызова <code>ngOnChanges</code>,
+                    если есть входные свойства. Если нет входных свойств,
+                    вызывается первым;
+                </li>
+                <li>
+                    <span class="attention">ngDoCheck</span> - происходит
+                    изменение одного или нескольких свойств или какое-то
+                    событие. Вызывается сразу после <code>ngOnChanges</code> при
+                    каждом запуске обнаружения изменений, и сразу после
+                    <code>ngOnInit</code> при первом запуске;
+                </li>
+                <li>
+                    <span class="attention">ngAfterContentInit</span> - в шаблон
+                    включается контент, заключенный между тегами компонента (в
+                    дочернем компоненте это содержимое подставится вместо
+                    <code>
+                        <span><</span
+                        >ng-content><span><</span>/ng-content> </code
+                    >);
+                </li>
+                <li>
+                    <span class="attention">ngAfterContentChecked</span> -
+                    аналогичен <code>DoCheck()</code>, только используется для
+                    контента, заключенного между тегами компонента (происходит
+                    проверка на изменение содержимого, которое подставляется
+                    вместо
+                    <code>
+                        <span><</span
+                        >ng-content><span><</span>/ng-content> </code
+                    >);
+                </li>
+                <li>
+                    <span class="attention">ngAfterViewInit</span> -
+                    инициализируются дочерние компоненты, указанные в шаблоне
+                    текущего компонента;
+                </li>
+                <li>
+                    <span class="attention">ngAfterViewChecked</span> -
+                    аналогичен <code>DoCheck()</code>, только используется для
+                    отслеживания изменений в дочерних компонентах;
+                </li>
+                <li>
+                    <span class="attention">ngOnDestroy</span> - компонент
+                    удаляется из DOM-дерева.
+                </li>
+            </ul>
             <p>
-                Как видите, значение теперь принемается в конструкторе класса, а
-                не в одном из хуков жизненного цикла. Соответственно, если вы
-                захотите передать через декоратор
-                <code>@Attribute</code> динамический параметр, то Ангуляр выдаст
-                вам ошибку.
+                Angular hooks реализованы в виде интерфейсов, реализующих
+                функции, совпадающие по названию с названием интерфейса +
+                префикс
+                <code>ng</code>:
+            </p>
+            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">ContactsItemComponent</span> <span class="keyword">implements</span> <span class="interface-name">OnInit</span> <span class="punctuation">{</span>
+		<span class="method">ngOnInit()</span> <span class="punctuation">{</span>
+			console.<span class="function-name">log</span><span class="punctuation">('</span><span class="string">OnInit</span><span class="punctuation">')</span> <span class="comment"> // OnInit</span>
+		<span class="punctuation">}</span>
+	<span class="punctuation">}</span></code></pre>
+            <p>
+                Также при написании кода считается хорошим тоном указывать у
+                класса реализацию того или иного метода, используемого в нем. В
+                примере выше это <code>implements OnInit</code>.
             </p>
         </div>
     </body>

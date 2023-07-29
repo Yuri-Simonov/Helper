@@ -96,6 +96,7 @@ export const componentQuestions: IQuestion[] = [
             выше это <code>implements OnInit</code>.
         </p>`,
         selected: false,
+        lastUpdate: '29.07.2023',
     },
     {
         title: 'Зачем нужны Getter и Setter внутри компонента?',
@@ -229,4 +230,9 @@ export const componentQuestions: IQuestion[] = [
         </ul>`,
         selected: false,
     },
+    // {
+    //     title: '',
+    //     body: ``,
+    //     selected: false,
+    // },
 ];
