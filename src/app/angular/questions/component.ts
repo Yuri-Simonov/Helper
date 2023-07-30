@@ -27,76 +27,103 @@ export const componentQuestions: IQuestion[] = [
     {
         title: 'Расскажите про жизненный цикл компонента (Angular hooks)?',
         body: `<p>
-            Каждый компонент имеет свой жизненный цикл, где на каждом этапе
-            цикла вызываются соответствующие методы, так называемые хуки
-            (Angular Hooks).
-        </p>
-        <p>
-            Ниже перечислены все методы жизненного цикла компонента в порядке их
-            вызова:
-        </p>
-        <ul>
-            <li>
-                <span class="attention">OnChanges</span> - устанавливаются или
-                изменяются значения входных свойств класса компонента;
-            </li>
-            <li>
-                <span class="attention">OnInit</span> - устанавливаются свойства
-                самого компонента. Данный метод вызывается единожды вслед за
-                первым вызовом <code>OnChanges()</code>;
-            </li>
-            <li>
-                <span class="attention">DoCheck</span> - происходит изменение
-                свойства или какое-то событие;
-            </li>
-            <li>
-                <span class="attention">AfterContentInit</span> - в шаблон
-                включается контент, заключенный между тегами компонента (в
-                дочернем компоненте это содержимое подставится вместо
-                <code>
-                    <span><</span>ng-content><span><</span>/ng-content> </code
-                >);
-            </li>
-            <li>
-                <span class="attention">AfterContentChecked</span> - аналогичен
-                <code>DoCheck()</code>, только используется для контента,
-                заключенного между тегами компонента (происходит проверка на
-                изменение содержимого, которое подставляется вместо
-                <code>
-                    <span><</span>ng-content><span><</span>/ng-content> </code
-                >);
-            </li>
-            <li>
-                <span class="attention">AfterViewInit</span> - инициализируются
-                дочерние компоненты, указанные в шаблоне текущего компонента;
-            </li>
-            <li>
-                <span class="attention">AfterViewChecked</span> - аналогичен
-                <code>DoCheck()</code>, только используется для отслеживания
-                изменений в дочерних компонентах;
-            </li>
-            <li>
-                <span class="attention">OnDestroy</span> - компонент удаляется
-                из DOM-дерева.
-            </li>
-        </ul>
-        <p>
-            Angular hooks реализованы в виде интерфейсов, реализующих функции,
-            совпадающие по названию с названием интерфейса + префикс
-            <code>ng</code>:
-        </p>
-        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">ContactsItemComponent</span> <span class="keyword">implements</span> <span class="interface-name">OnInit</span> <span class="punctuation">{</span>
-	<span class="method">ngOnInit()</span> <span class="punctuation">{</span>
-		console.<span class="function-name">log</span><span class="punctuation">('</span><span class="string">OnInit</span><span class="punctuation">')</span> <span class="comment"> // OnInit</span>
-	<span class="punctuation">}</span>
+		Каждый компонент имеет свой жизненный цикл, где на каждом этапе
+		цикла вызываются соответствующие методы, так называемые хуки
+		(Angular Hooks).
+	</p>
+	<p>
+		Ниже перечислены все методы жизненного цикла компонента в
+		порядке их вызова:
+	</p>
+	<ul>
+		<li>
+			<span class="attention">ngOnChanges</span> - вызывается в
+			момент установки или изменения одного или нескольких
+			значений входных свойств класса компонента. Метод аргументом
+			принимает объект <code>SimpleChanges</code>, в котором
+			хранятся текущее и предыдущее значения свойств. Если у
+			компонента есть свойства, входящие извне через декоратор
+			<code>@Input</code>,
+			<span class="attention"
+				>срабатывает перед хуком <code>ngOnInit</code></span
+			>. Если нет входящих свойств, то данный хук вызываться не
+			будет;
+		</li>
+		<li>
+			<span class="attention">ngOnInit</span> - на данном этапе
+			устанавливаются свойства самого компонента. Вызывается
+			единожды, после первого вызова <code>ngOnChanges</code>,
+			если есть входные свойства. Если нет входных свойств,
+			вызывается первым;
+		</li>
+		<li>
+			<span class="attention">ngDoCheck</span> - происходит
+			изменение одного или нескольких свойств или какое-то
+			событие. Вызывается сразу после <code>ngOnChanges</code> при
+			каждом запуске обнаружения изменений, и сразу после
+			<code>ngOnInit</code> при первом запуске;
+		</li>
+		<li>
+			<span class="attention">ngAfterContentInit</span> - на
+			данном этапе в шаблон включается контент, заключенный между
+			тегами компонента (в дочернем компоненте это содержимое
+			подставится вместо
+			<code>
+				<span><</span
+				>ng-content><span><</span>/ng-content> </code
+			>). Вызывается один раз после первого вызова метода
+			<code>ngDoCheck</code>;
+		</li>
+		<li>
+			<span class="attention">ngAfterContentChecked</span> - на
+			данном этапе происходит проверка на изменение содержимого,
+			которое подставляется вместо
+			<code>
+				<span><</span
+				>ng-content><span><</span>/ng-content> </code
+			>. Вызывается после метода <code>ngAfterContentInit</code> и
+			каждого последующего вызова метода <code>ngDoCheck</code>
+		</li>
+		<li>
+			<span class="attention">ngAfterViewInit</span> - на данном
+			этапе инициализируются дочерние компоненты, указанные в
+			шаблоне текущего компонента. Вызывается один раз после
+			первого вызова метода <code>ngAfterContentChecked</code>;
+		</li>
+		<li>
+			<span class="attention">ngAfterViewChecked</span> - на
+			данном этапе происходит проверка на изменение содержимого в
+			дочерних компонентах. Вызывается после метода
+			<code>ngAfterViewInit</code> и каждого последующего вызова
+			метода <code>ngAfterContentChecked</code>;
+		</li>
+		<li>
+			<span class="attention">ngOnDestroy</span> - компонент
+			удаляется из DOM-дерева. Вызывается непосредственно перед
+			тем, как Angular уничтожит компонент. На данном этапе
+			следует отписываться от данных типа
+			<code>Observable</code> и обработчиков событий, чтобы
+			избежать утечек памяти.
+		</li>
+	</ul>
+	<p>
+		Angular hooks реализованы в виде интерфейсов, реализующих
+		функции, совпадающие по названию с названием интерфейса +
+		префикс
+		<code>ng</code>:
+	</p>
+	<pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">ContactsItemComponent</span> <span class="keyword">implements</span> <span class="interface-name">OnInit</span> <span class="punctuation">{</span>
+<span class="method">ngOnInit()</span> <span class="punctuation">{</span>
+	console.<span class="function-name">log</span><span class="punctuation">('</span><span class="string">OnInit</span><span class="punctuation">')</span> <span class="comment"> // OnInit</span>
+<span class="punctuation">}</span>
 <span class="punctuation">}</span></code></pre>
-        <p>
-            Также при написании кода считается хорошим тоном указывать у класса
-            реализацию того или иного метода, используемого в нем. В примере
-            выше это <code>implements OnInit</code>.
-        </p>`,
+	<p>
+		Также при написании кода считается хорошим тоном указывать у
+		класса реализацию того или иного метода, используемого в нем. В
+		примере выше это <code>implements OnInit</code>.
+	</p>`,
         selected: false,
-        lastUpdate: '29.07.2023',
+        lastUpdate: '30.07.2023',
     },
     {
         title: 'Зачем нужны Getter и Setter внутри компонента?',
