@@ -1,11 +1,6 @@
 import { IQuestion } from '@types';
 
 export const decoratorQuestions: IQuestion[] = [
-    // {
-    //     title: '',
-    //     body: ``,
-    //     selected: false,
-    // },
     {
         title: 'Что такое декоратор в Angular?',
         body: `<p>
@@ -157,6 +152,7 @@ export const decoratorQuestions: IQuestion[] = [
 	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">@Self()</span> <span class="keyword">private</span> someService: <span class="type">SomeService</span><span class="punctuation">)</span> <span class="punctuation">{}</span>
 <span class="punctuation">}</span></code></pre>`,
         selected: false,
+        lastUpdate: '10.07.2023',
     },
     {
         title: 'Объясните принцип работы декоратора "@SkipSelf()"?',
@@ -307,6 +303,7 @@ export const decoratorQuestions: IQuestion[] = [
 
 <span class="keyword">class</span> <span class="class-name">App</span> <span class="punctuation">{}</span></code></pre>`,
         selected: false,
+        lastUpdate: '10.07.2023',
     },
     {
         title: 'Объясните принцип работы декоратора "@Attribute()"?',
@@ -348,5 +345,6 @@ export const decoratorQuestions: IQuestion[] = [
     //     title: '',
     //     body: ``,
     //     selected: false,
+    // 	lastUpdate: '',
     // },
 ];

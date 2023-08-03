@@ -1,10 +1,6 @@
 <app-title title="Git" [(state)]="listState"></app-title>
 <div class="content">
-    <app-sidenav
-        [list]="list"
-        [(state)]="listState"
-        [style.left.%]="listState ? 0 : -100"
-    ></app-sidenav>
+    <app-sidenav [list]="list" [(state)]="listState"></app-sidenav>
     <div
         class="content__items"
         [ngClass]="{ content__items_full: currentPath === 'git' }"
@@ -23,6 +19,12 @@
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
                             <div [innerHTML]="q.body"></div>
+                            <i
+                                class="content__last-update"
+                                *ngIf="q.lastUpdate"
+                            >
+                                последнее обновление: {{ q.lastUpdate }}
+                            </i>
                         </mat-expansion-panel>
                     </mat-accordion>
                 </div>

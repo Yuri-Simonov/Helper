@@ -319,6 +319,7 @@ export const othersQuestions: IQuestion[] = [
 </code></pre>
 	<p>Обе записи выдадут одинаковый результат.</p>`,
         selected: false,
+        lastUpdate: '05.07.2023',
     },
     {
         title: 'Обработка событий комбинаций клавиш',
@@ -336,5 +337,6 @@ export const othersQuestions: IQuestion[] = [
 	</p>
 	<p>Если нужно обработать еще больше клавиш, то также перечисляете их через точку, как в примере выше.</p>`,
         selected: false,
+        lastUpdate: '06.07.2023',
     },
 ];

@@ -1,11 +1,6 @@
 import { IQuestion } from '@types';
 
 export const allGitQuestions: IQuestion[] = [
-    // {
-    //     title: '',
-    //     body: ``,
-    //     selected: false,
-    // },
     {
         title: 'Как исправить последний коммит в git?',
         body: `<p>
@@ -58,6 +53,7 @@ git commit --amend</code></pre>
 		нужные вам флаги.
 	</p>`,
         selected: false,
+        lastUpdate: '27.06.2023',
     },
     {
         title: 'Как сделать изменения в файле невидимыми для git?',
@@ -83,6 +79,7 @@ git commit --amend</code></pre>
 	<pre><code>git update-index --no-assume-unchanged <span class="string">название_файла_с_учетом_его_расширения</span></code></pre>
 	<p>Далее уже принимаете или отклоняете появившиеся изменения в скрытых до этого файлах.</p>`,
         selected: false,
+        lastUpdate: '27.06.2023',
     },
     {
         title: 'Клонирование репозитория с урезанной историей коммитов',
@@ -98,6 +95,7 @@ git commit --amend</code></pre>
 	</p>
 	<pre><code>git clone <span class="string">url_репозитория</span> --depth=<span class="string">число_последних_коммитов_в_истории</span></code></pre>`,
         selected: false,
+        lastUpdate: '27.06.2023',
     },
     {
         title: 'Чистка рабочей директории от ненужных файлов',
@@ -119,6 +117,7 @@ git clean -r <span class="comment">// если не нужно удалять п
 	<pre><code>git add . <span class="comment">// индексируем все изменения</span>
 git reset --hard <span class="comment">// очищаем все изменения в индексе</span></code></pre>`,
         selected: false,
+        lastUpdate: '28.06.2023',
     },
     {
         title: 'Как временно сохранить изменения в GIT без коммита?',
@@ -198,6 +197,7 @@ git reset --hard <span class="comment">// очищаем все изменени
 	</p>
 	<pre><code>git stash drop stash@{<span class="string">номер_состояния</span>}</code></pre>`,
         selected: false,
+        lastUpdate: '29.06.2023',
     },
     {
         title: 'Отличия флагов soft, mixed и hard в команде "git reset"',
@@ -281,6 +281,7 @@ git reset --hard <span class="string">99fb0814f8cd10eaeda0c5f89373ee2b42d7fde9</
 	</p>
 	<pre><code>git reset --hard</code></pre>`,
         selected: false,
+        lastUpdate: '30.06.2023',
     },
     {
         title: 'Как сбросить изменения в конкретном файле?',
@@ -296,6 +297,7 @@ git checkout <span class="string">readme.md</span> <span class="comment">// пр
             </p>
             <pre><code>git reset --hard</code></pre>`,
         selected: false,
+        lastUpdate: '01.07.2023',
     },
     {
         title: 'Как откатить commit?',
@@ -317,6 +319,7 @@ git revert <span class="string">99fb0814f8cd10eaeda0c5f89373ee2b42d7fde9</span> 
 		мы передали в команде выше.
 	</p>`,
         selected: false,
+        lastUpdate: '01.07.2023',
     },
     {
         title: 'Как добавить в commit все изменные файлы?',
@@ -340,6 +343,7 @@ git commit -m "<span class="string">название_коммита</span>" <spa
 		подразумевает "добавить в коммит все <span class="attention">измененные файлы</span>", именно "измененные". Если вы создали новый какой-то файл(ы), то команда выше <span class="attention">не подхватит его в коммит</span>.
 	</p>`,
         selected: false,
+        lastUpdate: '01.07.2023',
     },
     {
         title: 'Как перенести коммиты в другую ветку?',
@@ -381,5 +385,12 @@ git cherry-pick <span class="string">99fb0814f8cd10eaeda0c5f89373ee2b42d7fde9</s
 		>.
 	</p>`,
         selected: false,
+        lastUpdate: '01.07.2023',
     },
+    // {
+    //     title: '',
+    //     body: ``,
+    //     selected: false,
+    //     lastUpdate: '',
+    // },
 ];

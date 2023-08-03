@@ -113,9 +113,9 @@ export const componentQuestions: IQuestion[] = [
 		<code>ng</code>:
 	</p>
 	<pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">ContactsItemComponent</span> <span class="keyword">implements</span> <span class="interface-name">OnInit</span> <span class="punctuation">{</span>
-<span class="method">ngOnInit()</span> <span class="punctuation">{</span>
-	console.<span class="function-name">log</span><span class="punctuation">('</span><span class="string">OnInit</span><span class="punctuation">')</span> <span class="comment"> // OnInit</span>
-<span class="punctuation">}</span>
+	<span class="method">ngOnInit()</span> <span class="punctuation">{</span>
+		console.<span class="function-name">log</span><span class="punctuation">('</span><span class="string">OnInit</span><span class="punctuation">')</span> <span class="comment"> // OnInit</span>
+	<span class="punctuation">}</span>
 <span class="punctuation">}</span></code></pre>
 	<p>
 		Также при написании кода считается хорошим тоном указывать у
@@ -257,9 +257,84 @@ export const componentQuestions: IQuestion[] = [
         </ul>`,
         selected: false,
     },
+    {
+        title: `Создает ли ng-content новый контент внутри дочернего компонента?`,
+        body: `<p>
+		<span class="attention">
+			Элемент <code>ng-content</code> не создает новый контент, а
+			проецирует уже существующий, который передается между
+			открывающим и закрывающим тегами дочернего компонента</span
+		>. Поэтому
+		<span class="attention">
+			за создание и удаление отвечает компонент, в котором
+			объявлен контент</span
+		>.
+	</p>
+	<p>
+		Для примера воспользуемся структурной директивой
+		<code>*ngIf</code>, которая при смене условия полностью
+		удаляет/создает элемент в DOM-дереве, при этом
+		<code>OnDestroy</code> / <code>OnInit</code> должны срабатывать
+		каждый раз соответствующим образом.
+	</p>
+	<pre><code><span class="comment comment_start">// app.component.ts</span>
+<span class="variable">showChild</span> <span class="operator">=</span> <span class="boolean">false</span>;
+
+<span class="comment comment_start">// app.component.html</span>
+<span class="tag"><</span><span class="tag">button</span> <span class="keyword">(click)</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">showChild</span> <span class="operator">=</span> <span class="operator">!</span><span class="variable">showChild</span><span class="punctuation">"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/button></span>
+<span class="tag"><</span><span class="tag">app-child></span> 
+	<span class="tag"><</span><span class="tag">span</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">showChild</span><span class="punctuation">"</span><span class="tag">></span><span class="string">Какое-то содержимое, которое передается внутрь дочернего компонента</span><span class="tag"><</span><span class="tag">/span></span>
+<span class="tag"><</span><span class="tag">/app-child></span>
+		
+
+<span class="comment comment_start">// child.component.ts</span>
+<span class="method">ngOnInit() {</span>
+	console.<span class="method">log(</span><span class="string">'Сработал метод'</span><span class="punctuation">)</span>; <span class="comment">// сработает только 1 раз, даже если нажимать на кнопку в родителе</span>
+<span class="punctuation">}</span>
+
+<span class="comment comment_start">// child.component.html</span>
+<span class="tag"><</span><span class="tag">ng-content</span><span class="tag">></span><span class="tag"><</span><span class="tag">/ng-content></span>
+		</code></pre>
+	<p>
+		Хоть мы и повесили условие, но хуки жизненного цикла компонента
+		не срабатывают при смене условия. Почему так происходит? Все
+		просто на самом деле.
+		<span class="attention">
+			Если мы делаем по условию лишь содержимое, то сам компонент
+			как инициировался в DOM-дереве, так в нем и остается, даже
+			если мы меняем условие</span
+		>. В этом легко убедиться, открыв разметку в браузере в режиме
+		разработчика.
+	</p>
+	<p>
+		Если необходимо, чтобы содержимое инициировалось и уничтожалось
+		каждый раз при переключении кнопки, условие нужно ставить на сам
+		компонент:
+	</p>
+	<pre><code><span class="comment comment_start">// app.component.ts</span>
+<span class="variable">showChild</span> <span class="operator">=</span> <span class="boolean">false</span>;
+
+<span class="comment comment_start">// app.component.html</span>
+<span class="tag"><</span><span class="tag">button</span> <span class="keyword">(click)</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">showChild</span> <span class="operator">=</span> <span class="operator">!</span><span class="variable">showChild</span><span class="punctuation">"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/button></span>
+<span class="tag"><</span><span class="tag">app-child</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">showChild</span><span class="punctuation">"</span><span class="tag">></span>
+	<span class="tag"><</span><span class="tag">span></span><span class="string">Какое-то содержимое, которое передается внутрь дочернего компонента</span><span class="tag"><</span><span class="tag">/span></span>
+<span class="tag"><</span><span class="tag">/app-child></span>
+		
+
+<span class="comment comment_start">// child.component.ts</span>
+<span class="method">ngOnInit() {</span>
+	console.<span class="method">log(</span><span class="string">'Сработал метод'</span><span class="punctuation">)</span>; <span class="comment">// метод будет срабатывать каждый раз при инициализации компонента</span>
+<span class="punctuation">}</span>
+
+<span class="comment comment_start">// child.component.html</span>
+<span class="tag"><</span><span class="tag">ng-content</span><span class="tag">></span><span class="tag"><</span><span class="tag">/ng-content></span></code></pre>`,
+        selected: false,
+        lastUpdate: '03.08.2023',
+    },
     // {
     //     title: '',
     //     body: ``,
-    //     selected: false,
+    // 	selected: false,
+    // 	lastUpdate: ''
     // },
 ];
