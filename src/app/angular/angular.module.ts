@@ -24,6 +24,7 @@ const routes: Routes = [
             { path: 'decorator', component: AngularComponent },
             { path: 'directive', component: AngularComponent },
             { path: 'form', component: AngularComponent },
+            { path: 'ngrx', component: AngularComponent },
             { path: 'others', component: AngularComponent },
             { path: 'pipe', component: AngularComponent },
             { path: 'routing', component: AngularComponent },

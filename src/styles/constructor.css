@@ -213,3 +213,8 @@ code {
     color: var(--red);
     text-decoration: line-through;
 }
+
+.large-img {
+    max-height: 30vh;
+    width: 100%;
+}

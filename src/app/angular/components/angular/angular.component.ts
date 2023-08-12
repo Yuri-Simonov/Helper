@@ -25,6 +25,7 @@ import { testQuestions } from '../../questions/test';
 
 import { IList, IQuestion } from '@types';
 import { MatAccordion } from '@angular/material/expansion';
+import { ngrxQuestions } from 'src/app/angular/questions/ngrx';
 
 @Component({
     selector: 'app-angular',
@@ -65,6 +66,7 @@ export class AngularComponent implements OnInit, OnDestroy {
             path: 'rxjs_operators',
             questions: rxjsOperatorsQuestions,
         },
+        { name: 'NgRx', path: 'ngrx', questions: ngrxQuestions },
     ];
     listState: boolean = false;
     currentPath: string;

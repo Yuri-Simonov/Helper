@@ -4,6 +4,7 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
     {
         title: '',
         body: ``,
-        selected: false,
+		selected: false,
+		lastUpdate: ''
     },
 ];
