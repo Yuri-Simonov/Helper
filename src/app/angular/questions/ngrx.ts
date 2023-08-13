@@ -69,4 +69,111 @@ export const ngrxQuestions: IQuestion[] = [
         selected: false,
         lastUpdate: '12.08.2023',
     },
+    {
+        title: 'Actions',
+        body: `<p>
+		<code>Actions</code> - это события, которые происходят в
+		приложении. Сюда входят взаимодействие пользователя со
+		страницей, внешнее взаимодействие с сервером через сетевые
+		запросы и т.д.
+	</p>
+	<p>
+		С помощью <code>Actions</code> и только с помощью них, можно
+		передать данные в хранилище (<code>Store</code>).
+	</p>
+	<p>
+		<code>Action</code> в <code>NgRx</code> состоит из простого
+		интерфейса:
+	</p>
+	<pre><code><span class="keyword">interface</span> <span class="interface-name">Action</span> <span class="punctuation">{</span>
+	<span class="key">type</span>: <span class="type">string</span>;
+<span class="punctuation">}</span></code></pre>
+	<p>
+		Как видно из интерфейса, <code>Action</code> имеет единственное
+		свойство <code>type</code>, которое имеет строковый тип данных.
+	</p>
+	<p>
+		Общепринято называть действие в формате
+		<code>[Source] Event</code>. В квадратных скобках указывается
+		категория действия, а после них - событие, которое его вызвало.
+	</p>
+	<pre><code><span class="punctuation">{</span> <span class="key">type</span>: <span class="string">'[Login Page] Login Success'</span> <span class="punctuation">}</span></code></pre>
+	<p>
+		Под категориями обычно подразумеваются действия на одной и той
+		же странице. Или если страница большая, то в отдельные категории
+		можно вынести события, которые как-то взаимосвязаны между собой,
+		например раздел с товарами в одной категории, а раздел с
+		рекомендациями - в другой.
+	</p>
+	<p>
+		Теперь давайте рассмотрим <code>Action</code> на примере запроса
+		авторизации:
+	</p>
+	<pre><code><span class="import">import</span> <span class="punctuation">{</span> createAction, props <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;
+
+<span class="export">export</span> <span class="keyword">const</span> <span class="variable">login</span> <span class="operator">=</span> <span class="function-name">createAction(</span>
+	<span class="string">'[Login Page] Login'</span>,
+	<span class="function-name">props</span><span class="type"><{ username: string; password: string }></span><span class="punctuation">()</span>
+<span class="punctuation">)</span>;</code></pre>
+	<p>
+		В примере выше с помощью функции
+		<code>createAction</code> создается <code>Action</code>, который
+		при вызове возвращает объект в форме интерфейса
+		<code>Action</code>. Метод <code>props</code> используется для
+		передачи любых дополнительных данных (пропсов), необходимых для
+		обработки текущего <code>Action</code>.
+	</p>
+	<p>
+		Выше представлен пример создания <code>Action</code> с помощью
+		функции <code>createAction</code> (новый формат). На старый
+		проектах вы также можете встретить создание
+		<code>Action</code> через классы:
+	</p>
+	<pre><code><span class="import">import</span> <span class="punctuation">{</span> Action <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;
+		
+<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">Login</span> <span class="keyword">implements</span> <span class="interface-name">Action</span> <span class="punctuation">{</span>
+	<span class="keyword">readonly</span> type <span class="operator">=</span> <span class="string">'[Login Page] Login'</span>;
+		
+	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">public</span> payload: <span class="type">{ username: string; password: string }</span><span class="punctuation">)</span> <span class="punctuation">{}</span>
+<span class="punctuation">}</span></code></pre>
+	<p>Оба примера делают одно и то же в итоге.</p>
+	<p>
+		Дополнительные данные можно и не передавать, если они не нужны:
+	</p>
+	<pre><code><span class="import">import</span> <span class="punctuation">{</span> createAction, props <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;
+
+<span class="export">export</span> <span class="keyword">const</span> <span class="variable">login</span> <span class="operator">=</span> <span class="function-name">createAction(</span>
+	<span class="string">'[Login Page] Login'</span>
+<span class="punctuation">)</span>;</code></pre>
+	<p>Или через старый формат записи:</p>
+	<pre><code><span class="import">import</span> <span class="punctuation">{</span> Action <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;
+		
+<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">Login</span> <span class="keyword">implements</span> <span class="interface-name">Action</span> <span class="punctuation">{</span>
+	<span class="keyword">readonly</span> type <span class="operator">=</span> <span class="string">'[Login Page] Login'</span>;
+<span class="punctuation">}</span></code></pre>
+	<p>
+		Для того, чтобы инициировать отправку <code>Action</code> в
+		хранилище, используется специальный метод этого самого хранилища
+		<code>dispatch</code>, внутри которого вызывается нужный
+		<code>Action</code>:
+	</p>
+	<pre><code><span class="method">onSubmit(</span>username: <span class="type">string</span>, password: <span class="type">string</span><span class="punctuation">) {</span>
+	store.<span class="method">dispatch(login(</span><span class="punctuation">{</span> username: <span class="type">username</span>, password: <span class="type">password</span> <span class="punctuation">}))</span>;
+<span class="punctuation">}</span></code></pre>
+	<p>В примере выше, когда сработает метод отправки формы <code>onSubmit</code> произойдет отправка <code>Action</code> в хранилище.</p>`,
+        selected: false,
+        lastUpdate: '13.08.2023',
+    },
+    {
+        title: 'Смешанные типы для Action',
+        body: `<i>В разработке...</i>`,
+        selected: false,
+        lastUpdate: '13.08.2023',
+    },
+    // {
+    //     title: '',
+    //     body: ``,
+    // 	selected: false,
+    // 	lastUpdate: ''
+    // },
 ];

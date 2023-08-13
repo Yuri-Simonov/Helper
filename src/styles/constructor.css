@@ -151,7 +151,6 @@ code {
     color: var(--red);
 }
 
-.key,
 .type,
 .boolean,
 .null,
@@ -217,4 +216,8 @@ code {
 .large-img {
     max-height: 30vh;
     width: 100%;
+}
+
+.key {
+    color: var(--white-dark);
 }
