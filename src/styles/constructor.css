@@ -221,3 +221,7 @@ code {
 .key {
     color: var(--white-dark);
 }
+
+.comment_start {
+    margin-left: 0;
+}
