@@ -43,7 +43,7 @@ export const ngrxQuestions: IQuestion[] = [
 			Изменение состояния осуществляется только через
 			<span class="attention">действия</span>
 			(<code>action</code>), которые обрабатываются
-			<span class="attention">редюсерами</span>
+			<span class="attention">редьюсерами</span>
 			(<code>reducer</code>), представляющими собой чистые
 			функции.
 		</li>
@@ -166,9 +166,155 @@ export const ngrxQuestions: IQuestion[] = [
     },
     {
         title: 'Смешанные типы для Action',
-        body: `<i>В разработке...</i>`,
+        body: `<p>
+                До 7-ой версии <code>NgRx</code>, когда
+                <code>actions</code> создавались через классы, удобно было
+                использовать объединение типов и экспортировать их наружу все
+                сразу, чтобы в <code>reducer</code> писать меньше кода и править
+                только файлы <code>actions</code>. Такое можно встретить и
+                сегодня в старых проектах.
+            </p>
+            <p>Выглядит это следующим образом:</p>
+            <pre><code><span class="export">export</span> <span class="keyword">enum</span> <span class="interface-name">UsersActions</span> <span class="punctuation">{</span>
+    GetUsers <span class="operator">=</span> <span class="string">'[Users Page] GetUsers'</span>,
+    DeleteAllUsers <span class="operator">=</span> <span class="string">'[Users Page] DeleteAllUsers'</span>,
+<span class="punctuation">}</span>
+
+<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">GetUsers</span> <span class="keyword">implements</span> <span class="interface-name">Action</span> <span class="punctuation">{</span>
+    <span class="keyword">readonly</span> type <span class="operator">=</span> UsersActions.GetUsers;
+<span class="punctuation">}</span>
+
+<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">DeleteAllUsers</span> <span class="keyword">implements</span> <span class="interface-name">Action</span> <span class="punctuation">{</span>
+    <span class="keyword">readonly</span> type <span class="operator">=</span> UsersActions.DeleteAllUsers;
+<span class="punctuation">}</span>
+
+<span class="comment comment_start">// Смешанный тип</span>
+<span class="export">export</span> <span class="keyword">type</span> <span class="interface-name">UsersUnion</span> <span class="operator">=</span> <span class="class-name">GetUsers</span> <span class="operator">|</span> <span class="class-name">DeleteAllUsers</span>;
+</code></pre>
+            <p>И как это выглядит в <code>reducer</code>:</p>
+            <pre><code><span class="export">export</span> <span class="keyword">function</span> <span class="function-name">usersReducer(</span>state <span class="operator">=</span> initialState, action: <span class="type">UsersUnion</span><span class="punctuation">){</span>...<span class="punctuation">}</span>
+</code></pre>`,
         selected: false,
-        lastUpdate: '13.08.2023',
+        lastUpdate: '03.09.2023',
+    },
+    {
+        title: 'Reducers',
+        body: `<p>
+                <code>NgRx Reducers</code> являются чистыми функциями и отвечают
+                за смену состояния хранилища в Angular-приложении в ответ на
+                возникновение действия (<code>action</code>), при этом каждый
+                редьюсер может изменять только определенную часть состояния.
+            </p>
+            <p>
+                Они не имеют побочных эффектов и синхронно обрабатывают каждый
+                переход между состояниями. Каждая функция редьюсера принимает
+                последнее отправленное действие и текущее состояние, и
+                определяет, возвращать измененное или исходное состояние.
+            </p>
+            <p>
+                <span class="attention"
+                    >Для применения изменений редьюсер должен вернуть новое
+                    состояние, а не изменять напрямую исходное</span
+                >, то есть,
+                <span class="attention"
+                    >состояние должно быть иммутабельным</span
+                >.
+            </p>
+            <p>
+                Теперь давайте рассмотрим как создаются редьюсеры. Для начала
+                нам нужно создать один или более <code>action</code>:
+            </p>
+            <pre><code><span class="comment comment_start">// counter.actions.ts</span>
+<span class="import">import</span> <span class="punctuation">{</span> createAction, props <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;
+
+<span class="export">export</span> <span class="keyword">const</span> <span class="variable">decrement</span> <span class="operator">=</span> <span class="function-name">createAction(</span><span class="string">'[Counter] Decrement'</span><span class="punctuation">)</span>;
+<span class="export">export</span> <span class="keyword">const</span> <span class="variable">increment</span> <span class="operator">=</span> <span class="function-name">createAction(</span><span class="string">'[Counter] Increment'</span><span class="punctuation">)</span>;</code></pre>
+            <p>Далее необходимо создать интерфейс для нашего состояния:</p>
+            <pre><code><span class="comment comment_start">// counter.reducer.ts</span>
+<span class="import">import</span> <span class="punctuation">{</span> Action, createReducer, on <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;
+<span class="import">import</span> * <span class="keyword">as</span> CounterActions <span class="keyword">from</span> <span class="string">'../actions/counter.actions'</span>;
+
+<span class="export">export</span> <span class="keyword">interface</span> <span class="interface-name">State</span> <span class="punctuation">{</span>
+  	counter: <span class="type">number</span>;
+<span class="punctuation">}</span></code></pre>
+            <p>Зададим начальное состояние:</p>
+            <pre><code><span class="comment comment_start">// counter.reducer.ts</span>
+<span class="export">export</span> <span class="keyword">const</span> <span class="variable">initialState</span>: <span class="type">State</span> <span class="operator">=</span> <span class="punctuation">{</span>
+	<span class="key">counter</span>: <span class="number">0</span>
+<span class="punctuation">}</span>;</code></pre>
+            <p>И теперь осталось лишь создать саму функцию редьюсера:</p>
+            <pre><code><span class="comment comment_start">// counter.reducer.ts</span>
+<span class="export">export</span> <span class="keyword">const</span> <span class="variable">counterReducer</span> <span class="operator">=</span> <span class="function-name">createReducer(</span>
+	<span class="variable">initialState</span>,
+	<span class="function-name">on(</span>CounterActions.decrement, state <span class="operator">=></span> <span class="punctuation">({</span> ...state, counter: state.counter <span class="operator">-</span> <span class="number">1</span> <span class="punctuation">}))</span>,
+	<span class="function-name">on(</span>CounterActions.increment, state <span class="operator">=></span> <span class="punctuation">({</span> ...state, counter: state.counter <span class="operator">+</span> <span class="number">1</span> <span class="punctuation">}))</span>,
+);</code></pre>
+            <p>
+                Также редьюсеры можно писать и через конструкцию
+                <code>switch case</code>, как это делали раньше до появления
+                функции <code>createReducer</code>:
+            </p>
+            <pre><code><span class="comment comment_start">// counter.reducer.ts</span>
+<span class="export">export</span> <span class="keyword">function</span> <span class="function-name">reducer(</span>
+	state <span class="operator">=</span> initialState,
+	action: <span class="type">CounterActions.ActionsUnion</span> <span class="comment">// см. раздел про смешанные типы для Action</span>
+<span class="punctuation">)</span>: <span class="type">State</span> <span class="punctuation">{</span>
+	<span class="keyword">switch</span> <span class="punctuation">(</span>action.type<span class="punctuation">) {</span>
+		<span class="keyword">case</span> CounterActions.ActionTypes.increment: <span class="punctuation">{</span>
+			<span class="keyword">return</span> <span class="punctuation">{</span>
+				<span class="operator">...</span>state,
+				home: state.counter <span class="operator">+</span> <span class="number">1</span>,
+			<span class="punctuation">}</span>;
+		<span class="punctuation">}</span>
+
+		<span class="keyword">case</span> CounterActions.ActionTypes.decrement: <span class="punctuation">{</span>
+			<span class="keyword">return</span> <span class="punctuation">{</span>
+				<span class="operator">...</span>state,
+				away: state.counter <span class="operator">-</span> <span class="number">1</span>,
+			<span class="punctuation">}</span>;
+		<span class="punctuation">}</span>
+
+		<span class="keyword">default</span>: <span class="punctuation">{</span>
+			<span class="keyword">return</span> state;
+		<span class="punctuation">}</span>
+	<span class="punctuation">}</span>
+<span class="punctuation">}</span></code></pre>
+            <p>Оба варианта будут работать одинаково.</p>
+            <p>
+                И напоследок осталось лишь сообщить Angular, что у нас имеется
+                редьюсер, отвечающий за какую-то конкретную часть нашего общего
+                (глобального) состояния:
+            </p>
+            <pre><code><span class="comment comment_start">app.module.ts</span>
+<span class="import">import</span> <span class="punctuation">{</span> NgModule <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@angular/core'</span>;
+<span class="import">import</span> <span class="punctuation">{</span> StoreModule <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;
+<span class="import">import</span> <span class="punctuation">{</span> scoreboardReducer <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'./reducers/counter.reducer'</span>;
+
+<span class="function-name">@NgModule({</span>
+	imports: <span class="punctuation">[</span>
+		StoreModule.<span class="method">forRoot({</span> counter: counterReducer <span class="punctuation">})</span>
+	<span class="punctuation">]</span>,
+<span class="punctuation">})</span>
+<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AppModule</span> <span class="punctuation">{}</span></code></pre>
+            <p>
+                Корневое состояние можно оставить пустым, а редьюсеры подключать
+                уже в тех модулях, где предполягается их использование. Но эти
+                модули, как и все остальные, необходимо импортировать в
+                кореневой модуль.
+            </p>
+            <pre><code><span class="comment comment_start">app.module.ts</span>
+<span class="import">import</span> <span class="punctuation">{</span> NgModule <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@angular/core'</span>;
+<span class="import">import</span> <span class="punctuation">{</span> StoreModule <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;
+<span class="import">import</span> <span class="punctuation">{</span> scoreboardReducer <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'./reducers/counter.reducer'</span>;
+
+<span class="function-name">@NgModule({</span>
+	imports: <span class="punctuation">[</span>
+		StoreModule.<span class="method">forRoot({})</span>
+	<span class="punctuation">]</span>,
+<span class="punctuation">})</span>
+<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AppModule</span> <span class="punctuation">{}</span></code></pre>`,
+        selected: false,
+        lastUpdate: '03.09.2023',
     },
     // {
     //     title: '',
