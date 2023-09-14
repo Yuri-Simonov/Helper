@@ -2,7 +2,7 @@ import { IQuestion } from '@types';
 
 export const decoratorQuestions: IQuestion[] = [
     {
-        title: 'Что такое декоратор в Angular?',
+        title: 'Декораторы в Angular',
         body: `<p>
 		Декораторы - это
 		<span class="attention"
@@ -10,7 +10,7 @@ export const decoratorQuestions: IQuestion[] = [
 			которому они привязаны.</span
 		>
 	</p>
-	<pre><code><span class="keyword">@Component</span><span class="punctuation">({</span>
+	<pre><code><span class="function-name">@Component</span><span class="punctuation">({</span>
 	<span class="key">selector</span>: <span class="string">'app-some-component'</span>,
 	<span class="key">styleUrls</span>: <span class="string">'./some.component.scss'</span>,
 	<span class="key">templateUrl</span>: <span class="string">'./some.component.html'</span>,
@@ -19,13 +19,14 @@ export const decoratorQuestions: IQuestion[] = [
 <span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{}</span></code></pre>
 	<p>
 		В примере выше класс <code>SomeComponent</code> расширяется
-		набором методов и полей от декоратора <code>@Component</code>,
+		набором методов и полей от декоратора <code>@Component()</code>,
 		которые переданы внутри конфигурационного объекта.
 	</p>`,
         selected: false,
+        lastUpdate: '14.09.2023',
     },
     {
-        title: 'Зачем нужно свойство "bootstrap" в декораторе "@NgModule()"?',
+        title: 'Свойство "bootstrap" декоратора "@NgModule()"',
         body: `<p>
             В свойстве <code>bootstrap</code> указывается компонент, который
             <span class="attention">
@@ -34,13 +35,14 @@ export const decoratorQuestions: IQuestion[] = [
         </p>
         <p>
             Причем только корневой модуль может определять свойство
-            <code>bootstrap</code> (а также импортировать
+            <code>bootstrap</code> (а также импортировать модуль, отвечающий за работу приложения в браузере - 
             <code>BrowserModule</code>).
         </p>`,
         selected: false,
+        lastUpdate: '14.09.2023',
     },
     {
-        title: 'Зачем сервису нужен декоратор "@Injectable()" и может ли сервис работать без него?',
+        title: 'Декоратор "@Injectable()". Различия работы сервиса с ним и без него',
         body: `<p>
             Декоратор <code>@Injectable()</code>
             <span class="attention">
@@ -48,70 +50,69 @@ export const decoratorQuestions: IQuestion[] = [
                 другие сервисы.
             </span>
         </p>
-        <pre><code><span class="comment">// пример использования данного декоратора</span>
-<span class="keyword">@Injectable</span><span class="punctuation">({</span><span class="key">providedIn</span>: <span class="string">'root'</span><span class="punctuation">})</span></code></pre>
+        <pre><code><span class="comment comment_start">// пример использования данного декоратора</span>
+<span class="function-name">@Injectable</span><span class="punctuation">({</span><span class="key">providedIn</span>: <span class="string">'root'</span><span class="punctuation">})</span></code></pre>
         <p>
             Иначе говоря, данный декоратор гарантирует, что встроенный механизм
-            внедрения зависимостей (dependency injection) сможет создать объект
-            этого класса и передать в него в качестве зависимости другой объект
-            (другой сервис или компонент, если в этом есть необходимость).
+            внедрения зависимостей (<code>dependency injection</code>) сможет создать объект
+            этого класса и передать в него в качестве зависимости другие объекты
+            (другие сервисы или компоненты, если в этом есть необходимость).
         </p>
         <p>
-            Если серсис не использует никакие другие зависимости, то данный
-            декоратор можно и не указывать. Без него сервис тоже будет работать.
-            Но
-            <span class="attention">
-                среди Angular-разработчиков существует договоренность, что
+            Если сервис не использует никакие другие зависимости, то данный
+            декоратор можно и не указывать. <span class="attention">Без него сервис тоже будет работать</span>.
+            Но среди Angular-разработчиков существует договоренность, что
                 данный декоратор стоит применять к любому классу сервиса.
-            </span>
         </p>`,
         selected: false,
+        lastUpdate: '14.09.2023',
     },
 
     {
-        title: 'Какая разница между декораторами "@Input()" и "@Output()"?',
+        title: 'Разница между декораторами "@Input()" и "@Output()"',
         body: `<p>
-            Компоненты Angular могут принимать от родителя данные и так же их
-            отдавать. За это как раз и отвечают декораторы
-            <code>@Input()</code> и <code>@Output()</code>, где исходя из
-            названия становится понятно, что:
+            Дочерние компоненты Angular могут как принимать данные от родителя, так и
+            отдавать их. За это как раз и отвечают декораторы
+            <code>@Input()</code> и <code>@Output()</code>, где:
         </p>
         <ul>
             <li>
                 <code>@Input() </code> -
                 <span class="attention"> принимает входящие данные </span>
-                (пропсы);
+                (пропсы) от родительского компонента;
             </li>
             <li>
                 <code> @Output() </code> -
                 <span class="attention">
-                    отдает родителю данные при срабатывании какого-то события.
-                </span>
+                    отправляет родителю данные при срабатывании какого-то пользовательского события
+                </span> (с помощью экземпляра класса <code>EventEmitter</code>).
             </li>
         </ul>`,
         selected: false,
+        lastUpdate: '14.09.2023',
     },
     {
-        title: 'Как правильно передавать объект в декоратор "@Input()", чтобы дочерний компонент каждый раз видел изменения в этом объекте?',
+        title: 'Передача объектов через декоратор "@Input()"',
         body: `<p>
             <span class="attention"
                 >В JavaScript объекты передаются по ссылке</span
-            >. Поэтому если сначала передать объект через декоратор
+            >. Поэтому, если сначала передать объект через декоратор
             <code>@Input()</code> в дочерний компонент, а потом поменять в этом
             объекте какое-то значение и попытаться внось передать тот же объект
             с измененным значением в дочерний компонент, то в дочернем
-            компоненте вы не увидите никакой разницы.
+            компоненте вы не увидите никаких изменений.
         </p>
         <p>
             Чтобы решить данную проблему, необходимо каждый раз передавать в
             дочерний компонент новый объект. Ниже приведен один из вариантов
-            решения через spread-оператор.
+            решения через <code>spread-оператор</code>.
         </p>
         <pre><code><span class="object">this</span>.someObject <span class="operator">=</span> <span class="punctuation">{</span> <span class="operator">...</span><span class="object">this</span>.someObject, <span class="key">name</span>: <span class="string">'новое имя'</span> <span class="punctuation">}</span></code></pre>`,
         selected: false,
+        lastUpdate: '14.09.2023',
     },
     {
-        title: 'Объясните принцип работы декоратора "@Self()"?',
+        title: 'Декоратор "@Self()"',
         body: `<p>
 		Сервисы могут быть определены на трех уровнях и, когда компонент
 		запрашивает сервис, то
@@ -137,25 +138,27 @@ export const decoratorQuestions: IQuestion[] = [
 		</li>
 	</ul>
 	<p>
-		Декоратор <code>@Self</code> сообщит <code>DI</code>, что поиск
-		нужно осуществлять лишь только в провайдере текущего компонента.
-		Но также стоит учитывать тот факт, что если <code>DI</code> не
-		найдет сервис в текущем компоненте, будет ошибка.
+		<span class="attention">
+			Декоратор <code>@Self</code> сообщит <code>DI</code>, что поиск
+			нужно осуществлять только лишь в провайдере текущего компонента</span>.
+		Но также стоит учитывать тот факт, что <span class="attention">
+			если <code>DI</code> не
+			найдет сервис в текущем компоненте, будет сгенерирована ошибка</span>.
 	</p>
-	<pre><code><span class="keyword">@Component</span><span class="punctuation">({</span>
+	<pre><code><span class="function-name">@Component</span><span class="punctuation">({</span>
 	<span class="key">selector</span>: <span class="string">'app-some-component'</span>,
 	<span class="key">templateUrl</span>: <span class="string">'./some.component.html'</span>,
 	<span class="key">providers</span>: <span class="punctuation">[</span><span class="service-name">SomeService</span><span class="punctuation">]</span>, <span class="comment">// добавление сервиса на уровне компонента</span>
 <span class="punctuation">})</span>
 
 <span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
-	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">@Self()</span> <span class="keyword">private</span> someService: <span class="type">SomeService</span><span class="punctuation">)</span> <span class="punctuation">{}</span>
+	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="function-name">@Self()</span> <span class="keyword">private</span> someService: <span class="type">SomeService</span><span class="punctuation">)</span> <span class="punctuation">{}</span>
 <span class="punctuation">}</span></code></pre>`,
         selected: false,
-        lastUpdate: '10.07.2023',
+        lastUpdate: '14.09.2023',
     },
     {
-        title: 'Объясните принцип работы декоратора "@SkipSelf()"?',
+        title: 'Декоратор "@SkipSelf()"',
         body: `<p>
             Сервисы могут быть определены на трех уровнях и, когда компонент
             запрашивает сервис, то
@@ -208,9 +211,10 @@ export const decoratorQuestions: IQuestion[] = [
             локальному и глобальному экземплярам одновременно.
         </p>`,
         selected: false,
+        lastUpdate: '14.09.2023',
     },
     {
-        title: 'Объясните принцип работы декоратора "@Optional()"?',
+        title: 'Декоратор "@Optional()"',
         body: `<p>
             Сервисы могут быть определены на трех уровнях и, когда компонент
             запрашивает сервис, то
@@ -241,9 +245,10 @@ export const decoratorQuestions: IQuestion[] = [
             сервиса, просто запишется <code>null</code>.
         </p>`,
         selected: false,
+        lastUpdate: '14.09.2023',
     },
     {
-        title: 'Объясните принцип работы декоратора "@Host()"?',
+        title: 'Декоратор "@Host()"',
         body: `<p>
 		Декоратор <code>@Host</code> сообщает <code>DI</code>
 		<span class="attention"
@@ -303,10 +308,10 @@ export const decoratorQuestions: IQuestion[] = [
 
 <span class="keyword">class</span> <span class="class-name">App</span> <span class="punctuation">{}</span></code></pre>`,
         selected: false,
-        lastUpdate: '10.07.2023',
+        lastUpdate: '14.09.2023',
     },
     {
-        title: 'Объясните принцип работы декоратора "@Attribute()"?',
+        title: 'Декоратор "@Attribute()"',
         body: `<p>
 		В Ангуляре данные от родителя к дочернему компоненту можно
 		передавать как статически, так и динамически:
@@ -339,7 +344,7 @@ export const decoratorQuestions: IQuestion[] = [
 		вам ошибку.
 	</p>`,
         selected: false,
-        lastUpdate: '26.07.2023',
+        lastUpdate: '14.09.2023',
     },
     // {
     //     title: '',
