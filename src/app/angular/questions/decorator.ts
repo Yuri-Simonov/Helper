@@ -139,7 +139,7 @@ export const decoratorQuestions: IQuestion[] = [
 	</ul>
 	<p>
 		<span class="attention">
-			Декоратор <code>@Self</code> сообщит <code>DI</code>, что поиск
+			Декоратор <code>@Self()</code> сообщит <code>DI</code>, что поиск
 			нужно осуществлять только лишь в провайдере текущего компонента</span>.
 		Но также стоит учитывать тот факт, что <span class="attention">
 			если <code>DI</code> не
@@ -155,7 +155,7 @@ export const decoratorQuestions: IQuestion[] = [
 	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="function-name">@Self()</span> <span class="keyword">private</span> someService: <span class="type">SomeService</span><span class="punctuation">)</span> <span class="punctuation">{}</span>
 <span class="punctuation">}</span></code></pre>`,
         selected: false,
-        lastUpdate: '14.09.2023',
+        lastUpdate: '23.09.2023',
     },
     {
         title: 'Декоратор "@SkipSelf()"',
@@ -184,25 +184,18 @@ export const decoratorQuestions: IQuestion[] = [
             </li>
         </ul>
         <p>
-            Допустим, вы определили сервис на уровне компонента, но вам нужен
-            тот же самый сервис, который определен на уровне приложения. В этом
-            вам и поможет декоратор <code>@SkipSelf()</code>.
+            Допустим, вы определили сервис на уровне компонента и на уровне всего приложения. И вам нужен
+            последний. В этом случае
+            вам и поможет декоратор <code>@SkipSelf()</code>, который <span class="attention">исключает поиск сервиса на том уровне, где он указан</span>, то есть, в нашем случае на уровне компонента.
         </p>
-        <p>
-            Иначе говоря, если указать <code>@SkipSelf()</code> в конструкторе
-            перед нужным сервисом, то
-            <span class="attention">
-                поиск сервиса на этом уровне будет исключен из поиска.
-            </span>
-        </p>
-        <pre><code><span class="keyword">@Component</span><span class="punctuation">({</span>
+        <pre><code><span class="function-name">@Component</span><span class="punctuation">({</span>
 	<span class="key">selector</span>: <span class="string">'app-some-component'</span>,
 	<span class="key">templateUrl</span>: <span class="string">'./some.component.html'</span>,
 	<span class="key">providers</span>: <span class="punctuation">[</span><span class="service-name">SomeService</span><span class="punctuation">]</span>, <span class="comment">// добавление сервиса на уровне компонента</span>
 <span class="punctuation">})</span>
 
 <span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
-	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">@SkipSelf()</span> <span class="keyword">private</span> someService: <span class="type">SomeService</span><span class="punctuation">)</span> <span class="punctuation">{}</span>
+	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="function-name">@SkipSelf()</span> <span class="keyword">private</span> someService: <span class="type">SomeService</span><span class="punctuation">)</span> <span class="punctuation">{}</span>
 <span class="punctuation">}</span></code></pre>
         <p>
             Исходя из вышесказанного, можно сделать следующий трюк: если указать
@@ -211,7 +204,7 @@ export const decoratorQuestions: IQuestion[] = [
             локальному и глобальному экземплярам одновременно.
         </p>`,
         selected: false,
-        lastUpdate: '14.09.2023',
+        lastUpdate: '23.09.2023',
     },
     {
         title: 'Декоратор "@Optional()"',
@@ -240,12 +233,12 @@ export const decoratorQuestions: IQuestion[] = [
             </li>
         </ul>
         <p>
-            С помощью декоратора <code>@Optional()</code> мы можем обработать
+            С помощью декоратора <span class="attention"><code>@Optional()</code> мы можем обработать
             эту ошибку. В переменную, которая должна была стать экземпляром
-            сервиса, просто запишется <code>null</code>.
+            сервиса, просто запишется <code>null</code></span>.
         </p>`,
         selected: false,
-        lastUpdate: '14.09.2023',
+        lastUpdate: '23.09.2023',
     },
     {
         title: 'Декоратор "@Host()"',
@@ -268,9 +261,7 @@ export const decoratorQuestions: IQuestion[] = [
 		<li>
 			<span class="attention">Проекция</span>. Когда компонент
 			находится внутри
-			<code>
-				<span><</span>ng-content><span><</span>/ng-content>
-			</code>
+			<code>ng-content</code>
 			другого компонента. Внутренний компонент будет искать
 			зависимости во внешнем компоненте.
 		</li>
@@ -279,36 +270,36 @@ export const decoratorQuestions: IQuestion[] = [
 
 <span class="keyword">class</span> <span class="class-name">HostService</span> <span class="punctuation">{}</span>
 
-<span class="keyword">@Directive</span><span class="punctuation">({</span><span class="key">selector</span>: <span class="string">'child-directive'</span><span class="punctuation">})</span>
+<span class="function-name">@Directive</span><span class="punctuation">({</span><span class="key">selector</span>: <span class="string">'child-directive'</span><span class="punctuation">})</span>
 
 <span class="keyword">class</span> <span class="class-name">ChildDirective</span> <span class="punctuation">{</span>
 	logs: <span class="type">string[]</span> <span class="operator">=</span> <span class="punctuation">[]</span>;
 
-	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">@Optional() @Host()</span> os: <span class="type">OtherService</span>, <span class="keyword">@Optional() @Host()</span> hs: <span class="type">HostService</span><span class="punctuation">) {</span>
-		<span class="comment">// os имеет значение null: true</span>
+	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="function-name">@Optional() @Host()</span> os: <span class="type">OtherService</span>, <span class="function-name">@Optional() @Host()</span> hs: <span class="type">HostService</span><span class="punctuation">) {</span>
+		<span class="comment comment_start">// os имеет значение null: true</span>
 		<span class="object">this</span>.logs.<span class="method">push</span><span class="punctuation">(</span><span class="string">"os is null: "</span> <span class="operator">+</span> <span class="punctuation">(</span>os <span class="operator">===</span> <span class="null">null</span><span class="punctuation">))</span>;
-		<span class="comment">// hs - это экземпляр HostService: true</span>
+		<span class="comment comment_start">// hs - это экземпляр HostService: true</span>
 		<span class="object">this</span>.logs.<span class="method">push</span><span class="punctuation">(</span><span class="string">"hs is an instance of HostService: "</span> <span class="operator">+</span> <span class="punctuation">(</span>hs <span class="keyword">instanceof</span> <span class="class-name">HostService</span><span class="punctuation">))</span>;
 	<span class="punctuation">}</span>
 <span class="punctuation">}</span>
 
-<span class="keyword">@Component</span><span class="punctuation">({</span>
-	<span class="key">selector</span>: <span class="string">'parent-cmp'</span>,
+<span class="function-name">@Component</span><span class="punctuation">({</span>
+	<span class="key">selector</span>: <span class="string">'parent-component'</span>,
 	<span class="key">viewProviders</span>: <span class="punctuation">[</span><span class="class-name">HostService</span><span class="punctuation">]</span>,
 	<span class="key">template</span>: <span class="string">'<span><</span>child-directive><span><</span>/child-directive>'</span>,
 <span class="punctuation">})</span>
 
-<span class="keyword">class</span> <span class="class-name">ParentCmp</span> <span class="punctuation">{}</span>
+<span class="keyword">class</span> <span class="class-name">ParentComponent</span> <span class="punctuation">{}</span>
 
-<span class="keyword">@Component</span><span class="punctuation">({</span>
+<span class="function-name">@Component</span><span class="punctuation">({</span>
 	<span class="key">selector</span>: <span class="string">'app'</span>,
 	<span class="key">viewProviders</span>: <span class="punctuation">[</span><span class="class-name">OtherService</span><span class="punctuation">]</span>,
-	<span class="key">template</span>: <span class="string">'<span><</span>parent-cmp><span><</span>/parent-cmp>'</span>,
+	<span class="key">template</span>: <span class="string">'<span><</span>parent-component><span><</span>/parent-component>'</span>,
 <span class="punctuation">})</span>
 
 <span class="keyword">class</span> <span class="class-name">App</span> <span class="punctuation">{}</span></code></pre>`,
         selected: false,
-        lastUpdate: '14.09.2023',
+        lastUpdate: '23.09.2023',
     },
     {
         title: 'Декоратор "@Attribute()"',
@@ -316,35 +307,35 @@ export const decoratorQuestions: IQuestion[] = [
 		В Ангуляре данные от родителя к дочернему компоненту можно
 		передавать как статически, так и динамически:
 	</p>
-	<pre><code><span class="tag"><</span><span class="tag">app-child</span> <span class="attribute">name</span><span class="operator">=</span><span class="string">"name"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/app-child></span> <span class="comment">// статическая передача данных</span>
-<span class="tag"><</span><span class="tag">app-child</span> <span class="attribute">[name]</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">name</span><span class="punctuation">"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/app-child></span> <span class="comment">// динамическая передача данных</span></code></pre>
+	<pre><code><span class="tag"><</span><span class="tag">app-child</span> <span class="attribute">name</span><span class="operator">=</span><span class="string">"какая-то_строка"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/app-child></span> <span class="comment">// статическая передача данных</span>
+<span class="tag"><</span><span class="tag">app-child</span> <span class="attribute">[name]</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">какая-то_переменная</span><span class="punctuation">"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/app-child></span> <span class="comment">// динамическая передача данных</span></code></pre>
 	<p>
-		Декоратор <code>@Input</code> может обрабатывать и тот, и другой
+		Декоратор <code>@Input()</code> может обрабатывать и тот, и другой
 		варианты. И т.к. данные могут изменяться, механизм
 		<code>ChangeDetection</code> будет его тоже проверять на наличие
-		изменений. Даже если вы передаете статические данные и они никак
+		изменений. Даже если вы каждый раз передаете статические данные и они никак
 		не изменяются.
 	</p>
 	<p>
 		Чтобы снизить нагрузку на механизм
 		<code>ChangeDetection</code> и не проверять статические данные,
-		используется декоратор <code>@Attribute</code>, который
+		используется декоратор <code>@Attribute()</code>, который
 		<span class="attention"
 			>помечает входящий параметр как неизменяемый на протяжении
 			всего жизненного цикла приложения</span
 		>.
 	</p>
 	<p>Пример использования:</p>
-	<pre><code><span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">@Attribute</span><span class="punctuation">(</span><span class="string">'name'</span><span class="punctuation">)</span> <span class="keyword">private</span> name: <span class="type">string</span><span class="punctuation">) {}</span></code></pre>
+	<pre><code><span class="keyword">constructor</span><span class="punctuation">(</span><span class="function-name">@Attribute</span><span class="punctuation">(</span><span class="string">'name'</span><span class="punctuation">)</span> <span class="keyword">private</span> name: <span class="type">string</span><span class="punctuation">) {}</span></code></pre>
 	<p>
-		Как видите, значение теперь принемается в конструкторе класса, а
-		не в одном из хуков жизненного цикла компонента. Соответственно, если вы
+		Как видите, в отличие от декоратора <code>@Input()</code> значение теперь принемается в конструкторе класса, а не в одном из хуков жизненного цикла компонента. А как вы знаете, констурктор вызывается лишь единожды, когда иницируется сам класс, а не компонент, поэтому
+		свойство не может быть динамическим и механизм <code>ChangeDetection</code> его не отслеживает. Соответственно, <span class="attention">если вы
 		захотите передать через декоратор
-		<code>@Attribute</code> динамический параметр, то Ангуляр выдаст
-		вам ошибку.
+		<code>@Attribute()</code> динамический параметр, то Angular выдаст
+		вам ошибку</span>.
 	</p>`,
         selected: false,
-        lastUpdate: '14.09.2023',
+        lastUpdate: '23.09.2023',
     },
     // {
     //     title: '',

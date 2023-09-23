@@ -285,7 +285,7 @@ export const ngrxQuestions: IQuestion[] = [
                 редьюсер, отвечающий за какую-то конкретную часть нашего общего
                 (глобального) состояния:
             </p>
-            <pre><code><span class="comment comment_start">app.module.ts</span>
+            <pre><code><span class="comment comment_start">// app.module.ts</span>
 <span class="import">import</span> <span class="punctuation">{</span> NgModule <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@angular/core'</span>;
 <span class="import">import</span> <span class="punctuation">{</span> StoreModule <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;
 <span class="import">import</span> <span class="punctuation">{</span> scoreboardReducer <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'./reducers/counter.reducer'</span>;
@@ -302,7 +302,7 @@ export const ngrxQuestions: IQuestion[] = [
                 модули, как и все остальные, необходимо импортировать в
                 кореневой модуль.
             </p>
-            <pre><code><span class="comment comment_start">app.module.ts</span>
+            <pre><code><span class="comment comment_start">// app.module.ts</span>
 <span class="import">import</span> <span class="punctuation">{</span> NgModule <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@angular/core'</span>;
 <span class="import">import</span> <span class="punctuation">{</span> StoreModule <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;
 <span class="import">import</span> <span class="punctuation">{</span> scoreboardReducer <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'./reducers/counter.reducer'</span>;
@@ -314,7 +314,7 @@ export const ngrxQuestions: IQuestion[] = [
 <span class="punctuation">})</span>
 <span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AppModule</span> <span class="punctuation">{}</span></code></pre>`,
         selected: false,
-        lastUpdate: '03.09.2023',
+        lastUpdate: '23.09.2023',
     },
     // {
     //     title: '',
