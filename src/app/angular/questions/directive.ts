@@ -2,18 +2,15 @@ import { IQuestion } from '@types';
 
 export const directiveQuestions: IQuestion[] = [
     {
-        title: 'Зачем нужны директивы в Angular?',
+        title: 'Директивы в Angular',
         body: `<p>
-            Предназначение директив -
-            <span class="attention">
-                преобразование DOM-элементов нужным нам образом.
-            </span>
+            Директивы в Angular - это <span class="attention">классы, которые предназначены для задания дополнительных возможностей элементам DOM-дерева</span>.
         </p>
         <p>
-            По своей реализации директивы практически идентичны компонентам,
-            т.к.
+            По своей реализации директивы очень похожи на компоненты,
+            т.к. сами по себе
             <span class="attention">
-                компонент - это директива с HTML-шаблоном.
+                компоненты - это директивы со своим собственным шаблоном.
             </span>
         </p>
         <p>
@@ -28,45 +25,37 @@ export const directiveQuestions: IQuestion[] = [
             </li>
             <li>
                 <span class="attention">Структурные</span> - изменяют структуру
-                DOM-дерева (<code>*ngIf</code>, <code>*ngFor</code> и все
-                другие, которые начинаются со "<code>*</code>");
+                DOM-дерева (<code>*ngIf</code>, <code>*ngFor</code> и <code>*ngSwitch</code>);
             </li>
             <li>
                 <span class="attention">Атрибуты</span> - изменяют внешний вид
-                или поведение по умолчанию элемента DOM-дерева.
+                или поведение по умолчанию элемента DOM-дерева (<code>ngClass</code>, <code>ngStyle</code> и <code>пользовательские директивы</code>).
             </li>
         </ul>`,
         selected: false,
+        lastUpdate: '24.09.2023',
     },
     {
-        title: 'Как создаются пользовательские директивы и зачем это делается?',
+        title: 'Создание пользовательских структурных директив',
+        body: `<p><i>Как создаются - в разработке...</i></p>`,
+        selected: false,
+        lastUpdate: '24.09.2023',
+    },
+    {
+        title: 'Создание пользовательских атрибутивных директив',
         body: `<p>
-            На этом вопросе следует обозначить тип директивы, о которой идет
-            речь. Т.к. мы можем создать
-            <span class="attention">директиву атрибута</span> и
-            <span class="attention">структурную директиву.</span>
-        </p>
-        <i class="subtitle">Директива атрибута</i>
-        <p>
-            Данные директивы<span class="attention">
-                изменяют поведение элемента по умолчанию.</span
-            >
+           <span class="attention">Создание самой простой атрибутивной директивы ограничивается лишь классом, на который ссылается декоратор <code>@Directive()</code></span>. И если нам нужно как-то обратиться к ней в шаблоне компонента, то стоит задать ей поле <code>selector</code> в конфигурационном объекте.
         </p>
         <p>
-            Создание самой простой директивы атрибута ограничивается классом,
-            обернутым декоратором <code>@Directive()</code> с заданием
-            необходимой конфигурации.
+            В примере ниже создается директива, изменяющая размер
+            шрифта у элемента, у которого присутствует эта
+            атрибутивная директива.
         </p>
-        <p>
-            Допустим, мы хотим создать директиву, которая будет изменять размер
-            шрифта у элемента, у которого будет присутствовать такая
-            атрибут-директива.
-        </p>
-        <pre><code><span class="comment">// шаблон</span>
+        <pre><code><span class="comment comment_start">// шаблон</span>
 <span class="tag"><</span><span class="tag">p</span> <span class="attribute">someAttr</span><span class="tag">></span>some text<span class="tag"><</span><span class="tag">/p></span>
 
-<span class="comment">// директива</span>
-<span class="keyword">@Directive</span><span class="punctuation">({</span>
+<span class="comment comment_start">// директива</span>
+<span class="function-name">@Directive</span><span class="punctuation">({</span>
 	<span class="key">selector</span><span class="punctuation">: '</span><span class="attribute">[someAttr]</span><span class="punctuation">'</span>,
 <span class="punctuation">})</span>
 <span class="export">export</span> <span class="key">class</span> <span class="class-name">SomeDirective</span> <span class="punctuation">{</span>
@@ -88,17 +77,17 @@ export const directiveQuestions: IQuestion[] = [
             событий, которые задаются с помощью декоратора
             <code>@HostListener()</code>.
         </p>
-        <pre><code><span class="comment">// шаблон</span>
+        <pre><code><span class="comment comment_start">// шаблон</span>
 <span class="tag"><</span><span class="tag">p</span> <span class="attribute">someAttr</span><span class="tag">></span>some text<span class="tag"><</span><span class="tag">/p></span>
 
-<span class="comment">// директива</span>
-<span class="keyword">@Directive</span><span class="punctuation">({</span>
+<span class="comment comment_start">// директива</span>
+<span class="function-name">@Directive</span><span class="punctuation">({</span>
 	<span class="key">selector</span><span class="punctuation">: '</span><span class="attribute">[someAttr]</span><span class="punctuation">'</span>,
 <span class="punctuation">})</span>
 <span class="export">export</span> <span class="key">class</span> <span class="class-name">SomeDirective</span> <span class="punctuation">{</span>
 	<span class="keyword">constructor </span><span class="punctuation">(</span><span class="keyword">private</span> element: <span class="type">ElementRef</span><span class="punctuation">)</span> <span class="punctuation">{</span>
 	
-	<span class="keyword">@HostListener</span><span class="punctuation">(</span><span class="string">'mouseenter'</span><span class="punctuation">)</span> <span class="function-name">enterMouseEvent</span><span class="punctuation">()</span> <span class="punctuation">{</span>
+	<span class="function-name">@HostListener</span><span class="punctuation">(</span><span class="string">'mouseenter'</span><span class="punctuation">)</span> <span class="function-name">enterMouseEvent</span><span class="punctuation">()</span> <span class="punctuation">{</span>
     	<span class="object">this</span>.<span class="function-name">setNewFontSize</span><span class="punctuation">(</span><span class="number">20</span><span class="punctuation">)</span>; <span class="comment">// при наведении будет устанавливаться размер шрифта равный 20рх</span>
 	<span class="punctuation">}</span>	
 <span class="punctuation">}</span>
@@ -112,11 +101,11 @@ export const directiveQuestions: IQuestion[] = [
             используется, то делается это с помощью другого декоратора -
             <code>@Input()</code>.
         </p>
-        <pre><code><span class="comment">// шаблон</span>
+        <pre><code><span class="comment comment_start">// шаблон</span>
 <span class="tag"><</span><span class="tag">p</span> <span class="attribute">[someAttr]</span><span class="operator">=</span><span class="string">"20"</span><span class="tag">></span>some text<span class="tag"><</span><span class="tag">/p></span> <span class="comment">// вместо "20" может быть также какая-нибудь переменная из компонента</span>
 
-<span class="comment">// директива</span>
-<span class="keyword">@Directive</span><span class="punctuation">({</span>
+<span class="comment comment_start">// директива</span>
+<span class="function-name">@Directive</span><span class="punctuation">({</span>
 	<span class="key">selector</span><span class="punctuation">: '</span><span class="attribute">[someAttr]</span><span class="punctuation">'</span>,
 <span class="punctuation">})</span>
 <span class="export">export</span> <span class="key">class</span> <span class="class-name">SomeDirective</span> <span class="punctuation">{</span>
@@ -124,7 +113,7 @@ export const directiveQuestions: IQuestion[] = [
 	
 	<span class="keyword">constructor </span><span class="punctuation">(</span><span class="keyword">private</span> element: <span class="type">ElementRef</span><span class="punctuation">)</span> <span class="punctuation">{</span>
 	
-	<span class="keyword">@HostListener</span><span class="punctuation">(</span><span class="string">'mouseenter'</span><span class="punctuation">)</span> <span class="function-name">enterMouseEvent</span><span class="punctuation">()</span> <span class="punctuation">{</span>
+	<span class="function-name">@HostListener</span><span class="punctuation">(</span><span class="string">'mouseenter'</span><span class="punctuation">)</span> <span class="function-name">enterMouseEvent</span><span class="punctuation">()</span> <span class="punctuation">{</span>
     	<span class="object">this</span>.<span class="function-name">setNewFontSize</span><span class="punctuation">(</span><span class="object">this</span>.fontSize<span class="punctuation">)</span>; <span class="comment">// при наведении будет устанавливаться размер шрифта равный переданному значению из компонента</span>
 	<span class="punctuation">}</span>	
 <span class="punctuation">}</span>
@@ -132,14 +121,9 @@ export const directiveQuestions: IQuestion[] = [
 <span class="function-name">setNewFontSize</span><span class="punctuation">(</span>value<span class="punctuation">:</span> <span class="type">number</span> <span class="operator">|</span> <span class="type">string</span><span class="punctuation">):</span> <span class="type">void</span> <span class="punctuation">{</span>
     <span class="object">this</span>.element.nativeElement.style.fontSize <span class="operator">=</span> value <span class="operator">+</span> <span class="string">'px'</span>
 <span class="punctuation">}</span>
-</code></pre>
-        <i class="subtitle">Структурная директива</i>
-        <p>
-            Основное отличие структурных директив - они
-            <span class="attention">видоизменяют DOM-дерево страницы.</span>
-        </p>
-        <p><i>Как создаются - в разработке...</i></p>`,
+</code></pre>`,
         selected: false,
+        lastUpdate: '24.09.2023',
     },
     {
         title: 'Разница между директивой и компонентом в Angular?',
@@ -206,5 +190,6 @@ export const directiveQuestions: IQuestion[] = [
     //     title: '',
     //     body: ``,
     //     selected: false,
+    //     lastUpdate: '',
     // },
 ];
