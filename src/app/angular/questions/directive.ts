@@ -37,9 +37,10 @@ export const directiveQuestions: IQuestion[] = [
     },
     {
         title: 'Создание пользовательских структурных директив',
-        body: `<p><i>Как создаются - в разработке...</i></p>`,
+        body: ``,
         selected: false,
-        lastUpdate: '24.09.2023',
+        lastUpdate: '',
+        disabled: true,
     },
     {
         title: 'Создание пользовательских атрибутивных директив',
@@ -175,25 +176,46 @@ export const directiveQuestions: IQuestion[] = [
         lastUpdate: '07.10.2023',
     },
     {
-        title: 'В чем отличие жизненного цикла компонента от директивы?',
+        title: 'Различия между жизненными циклами компонента и директивы',
         body: `<p>
-		Если заглянуть под капот интерфейса компонента, то можно
-		увидеть, что он наследуются от интерфейса директивы:
+		Если заглянуть "под капот" интерфейса декоратора компонента, то можно
+		увидеть, что он наследуются от интерфейса декоратора директивы:
 	</p>
 	<pre><code><span class="comment comment_start">// из файла "@angular/core"</span>
 <span class="export">export</span> <span class="keyword">declare</span> <span class="keyword">interface</span> <span class="interface-name">Component</span> <span class="keyword">extends</span> <span class="interface-name">Directive</span> <span class="punctuation">{}</span></code></pre>
 	<p>
-		Поэтому можно сказать, что
+		Следовательно, 
 		<span class="attention">
 			компоненты - это те же директивы, но с дополнительными
 			возможностями</span
-		>. Исходя из этого можно сделать вывод от том, что
+		>. Поэтому можно сделать вывод от том, что
 		<span class="attention"
 			>директивы имеют аналогичный жизненный цикл, что и
-			компоненты</span>.
+			компоненты</span>, т.е. <span class="attention">различий нет</span>.
 	</p>`,
         selected: false,
-        lastUpdate: '29.07.2023',
+        lastUpdate: '07.10.2023',
+    },
+    {
+        title: 'Структурная директива *ngIf',
+        body: ``,
+        selected: false,
+        lastUpdate: '',
+        disabled: true,
+    },
+    {
+        title: 'Структурная директива *ngFor',
+        body: ``,
+        selected: false,
+        lastUpdate: '',
+        disabled: true,
+    },
+    {
+        title: 'Структурная директива *ngSwitch',
+        body: ``,
+        selected: false,
+        lastUpdate: '',
+        disabled: true,
     },
     // {
     //     title: '',

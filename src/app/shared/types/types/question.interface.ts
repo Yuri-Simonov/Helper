@@ -3,4 +3,5 @@ export interface IQuestion {
     body: string;
     selected: boolean;
     lastUpdate?: string;
+    disabled?: boolean;
 }

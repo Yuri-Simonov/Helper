@@ -60,9 +60,9 @@ export const prototypeQuestions: IQuestion[] = [
     },
     {
         title: 'Как сделать объект "а" прототипом объекта "b"?',
-        body: `<p>
-            <i>В разработке...</i>
-        </p>`,
+        body: ``,
         selected: false,
+        lastUpdate: '',
+        disabled: true,
     },
 ];

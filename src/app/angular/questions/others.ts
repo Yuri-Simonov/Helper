@@ -54,10 +54,10 @@ export const othersQuestions: IQuestion[] = [
     },
     {
         title: 'Как создаются пользовательские события?',
-        body: `<p>
-            <i>В разработке...</i>
-        </p>`,
+        body: ``,
         selected: false,
+        lastUpdate: '',
+        disabled: true,
     },
     {
         title: 'Как можно оптимизировать выполнение цикла "*ngFor"?',
@@ -254,13 +254,6 @@ export const othersQuestions: IQuestion[] = [
         selected: false,
     },
     {
-        title: 'В чем заключается отличие "ng-container" от "ng-template"?',
-        body: `<p>
-            <i>В разработке...</i>
-        </p>`,
-        selected: false,
-    },
-    {
         title: 'Что такое модуль в Angular?',
         body: `<p>
             <span class="attention">Angular модуль</span> - это класс c
@@ -302,10 +295,10 @@ export const othersQuestions: IQuestion[] = [
     },
     {
         title: 'Что такое "Renderer 2" и зачем он в Angular?',
-        body: `<p>
-            <i>В разработке...</i>
-        </p>`,
+        body: ``,
         selected: false,
+        lastUpdate: '',
+        disabled: true,
     },
     {
         title: 'Вложенные свойства атрибутов',
