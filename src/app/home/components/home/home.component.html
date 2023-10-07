@@ -11,69 +11,30 @@
         </p>
     </div>
     <div class="home__body">
-        <article class="home__chapter">
-            <h2 class="home__subtitle title">Теоретические материалы</h2>
-            <a mat-raised-button color="primary" routerLink="javascript">
-                JavaScript
-            </a>
-            <a mat-raised-button color="primary" routerLink="angular">
-                Angular
-            </a>
-            <a mat-raised-button color="primary" routerLink="git"> Git </a>
-            <a
-                mat-raised-button
-                color="primary"
-                routerLink="others"
-                class="disabled"
-            >
-                Разное
-            </a>
-        </article>
-        <article class="home__chapter">
-            <h2 class="home__subtitle title">Задачи</h2>
-            <a
-                mat-raised-button
-                color="primary"
-                routerLink="#"
-                class="disabled"
-            >
-                JavaScript
-            </a>
-        </article>
-        <article class="home__chapter">
-            <h2 class="home__subtitle title">Тесты</h2>
-            <a
-                mat-raised-button
-                color="primary"
-                routerLink="#"
-                class="disabled"
-            >
-                JavaScript
-            </a>
-            <a
-                mat-raised-button
-                color="primary"
-                routerLink="#"
-                class="disabled"
-            >
-                Angular
-            </a>
-            <a
-                mat-raised-button
-                color="primary"
-                routerLink="#"
-                class="disabled"
-            >
-                Git
-            </a>
-            <a
-                mat-raised-button
-                color="primary"
-                routerLink="#"
-                class="disabled"
-            >
-                Разное
-            </a>
+        <article class="home__chapter" *ngFor="let chapter of chapters">
+            <h2 class="home__subtitle title">{{ chapter.title }}</h2>
+            <ng-container *ngFor="let link of chapter.links">
+                <a
+                    *ngIf="link.route"
+                    mat-raised-button
+                    color="primary"
+                    [routerLink]="link.route"
+                    [href]="link.href"
+                    [ngClass]="{ disabled: link.disabled }"
+                >
+                    {{ link.name }}
+                </a>
+                <a
+                    *ngIf="link.href"
+                    mat-raised-button
+                    color="primary"
+                    [href]="link.href"
+                    target="_blank"
+                    [ngClass]="{ disabled: link.disabled }"
+                >
+                    {{ link.name }}
+                </a>
+            </ng-container>
         </article>
     </div>
 </section>
