@@ -211,6 +211,29 @@ export const directiveQuestions: IQuestion[] = [
         disabled: true,
     },
     {
+        title: 'Как можно оптимизировать выполнение цикла "*ngFor"?',
+        body: `<p>
+            <span class="attention">
+                При изменении массива Angular перерисовывает DOM-дерево
+                полностью</span
+            >. Но если использовать функцию <code>trackBy</code>, то Angular
+            будет понимать, какой элемент изменился, а затем
+            <span class="attention">
+                внесёт изменения в DOM только для этого конкретного
+                элемента</span
+            >.
+        </p>
+        <p>Как это выглядит на практике:</p>
+        <pre><code><span class="comment">// в шаблоне (someItem.component.html)</span>
+<span class="tag"><</span><span class="tag">li</span> <span class="keyword">*ngFor</span><span class="operator">=</span><span class="punctuation">"</span><span class="keyword">let</span> item <span class="keyword">of</span> items; <span class="keyword">trackBy</span>: <span class="function-name">trackByFunction</span><span class="punctuation">"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/li></span>
+
+<span class="comment">// в компоненте (someItem.component.ts)</span>
+<span class="function-name">trackByFunction</span><span class="punctuation">(</span>index, item<span class="punctuation">)</span> <span class="punctuation">{</span>
+	<span class="keyword">return</span> item.id<span class="punctuation">;</span> <span class="comment">// уникальный идентификатор, соответствующий элементу</span>
+<span class="punctuation">}</span></code></pre>`,
+        selected: false,
+    },
+    {
         title: 'Структурная директива *ngSwitch',
         body: ``,
         selected: false,
