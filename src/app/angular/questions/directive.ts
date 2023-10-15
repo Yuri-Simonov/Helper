@@ -232,7 +232,7 @@ toggler: <span class="type">boolean</span> <span class="operator">=</span> <span
                 (<code>*</code>) перед названием директивы. Без звездочки самый
                 первый пример выглядел бы следующим образом:
             </p>
-            <pre><code><span class="comment comment_start">// в классе компонента</span>
+            <pre><code><span class="comment comment_start">// в шаблоне компонента</span>
 <span class="tag"><</span><span class="tag">ng-template</span> <span class="keyword">[ngIf]</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">"</span><span class="tag">></span>
 	<span class="tag"><</span><span class="tag">div</span><span class="tag">></span><span class="string">Какой-то текст</span><span class="tag"><</><span class="tag">/div></span>
 <span class="tag"><</><span class="tag">/ng-template></span></code></pre>
@@ -278,10 +278,85 @@ toggler: <span class="type">boolean</span> <span class="operator">=</span> <span
     },
     {
         title: 'Структурная директива *ngFor',
-        body: ``,
+        body: `<p>
+                <span class="attention"
+                    >Структурная директива *ngFor позволяет создавать разметку в
+                    шаблоне для каждого элемента переданного в нее
+                    массива.</span
+                >
+            </p>
+            <pre><code><span class="comment comment_start">// в классе компонента</span>
+arr: <span class="type">number[]</span> <span class="operator">=</span> <span class="punctuation">[</span><span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span><span class="punctuation">]</span>;
+
+<span class="comment comment_start">// в шаблоне компонента</span>
+<span class='tag'>&lt;div></span> <span class="keyword">*ngFor</span><span class="operator">=</span><span class="punctuation">"</span><span class="keyword">let</span> <span class="variable">item</span> <span class="keyword">of</span> arr<span class="punctuation">"</span><span class='tag'>></span>
+    <span class='tag'>&lt;span></span><span class="punctuation">&#123;&#123;</span> <span class="variable">item</span> <span class="punctuation">&#125;&#125;</span><span class='tag'>&lt;/span></span>
+<span class='tag'>&lt;/div></span></code></pre>
+            <p>
+                В примере выше на <code>div</code> добавляется структурная
+                директива <code>*ngFor</code>, которая имеет следующий
+                синтаксис: сначала пишем ключевое слово <code>let</code>, тем
+                самым объявляя локальную переменную внутри данного блока
+                разметки, на который вешается данная директива. Название может
+                быть любое. Затем пишем ключевое слово <code>of</code> и после
+                него указываем переменную, из которой мы будем брать данные.
+            </p>
+            <p>
+                Переменная, используемая в качестве поставщика данных,
+                <span class="attention">
+                    должна быть массивом каких-либо данных, либо
+                    <code>null</code>, либо <code>undefined</code></span
+                >. В противном же случае будет ошибка типизации.
+            </p>
+            <p>
+                При использовании данной директивы также доступен различный
+                вспомогательный функционал:
+            </p>
+            <ul>
+                <li>
+                    <span class="attention">index</span>:
+                    <span class="type">number</span> - текущий индекс элемента в
+                    итерации;
+                </li>
+                <li>
+                    <span class="attention">count</span>:
+                    <span class="type">number</span> - количество итераций;
+                </li>
+                <li>
+                    <span class="attention">first</span>:
+                    <span class="type">boolean</span> - первый элементы в
+                    итерации;
+                </li>
+                <li>
+                    <span class="attention">last</span>:
+                    <span class="type">boolean</span> - последний элементы в
+                    итерации;
+                </li>
+                <li>
+                    <span class="attention">even</span>:
+                    <span class="type">boolean</span> - четные элементы в
+                    итерации;
+                </li>
+                <li>
+                    <span class="attention">odd</span>:
+                    <span class="type">boolean</span> - нечетные элементы в
+                    итерации.
+                </li>
+            </ul>
+            <p>
+                Пример использования четности итерации и текущий индекс элемента
+                в итерации:
+            </p>
+            <pre><code><span class="comment comment_start">// в классе компонента</span>
+arr: <span class="type">number[]</span> <span class="operator">=</span> <span class="punctuation">[</span><span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span><span class="punctuation">]</span>;
+
+<span class="comment comment_start">// в шаблоне компонента</span>
+<span class='tag'>&lt;div></span> <span class="keyword">*ngFor</span><span class="operator">=</span><span class="punctuation">"</span><span class="keyword">let</span> <span class="variable">item</span> <span class="keyword">of</span> arr<span class="punctuation">;</span> <span class="keyword">let</span> <span class="variable">currentIndex</span> <span class="operator">=</span> index<span class="punctuation">;</span> <span class="keyword">let</span> <span class="variable">evenItem</span> <span class="operator">=</span> even<span class="punctuation">"</span><span class='tag'>></span>
+	<span class='tag'>&lt;span</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">evenItem</span><span class="punctuation">"</span><span class='tag'>></span> <span class="punctuation">&#123;&#123;</span> <span class="variable">item</span> <span class="punctuation">&#125;&#125;</span><span class='tag'>&lt;/span></span>
+	<span class='tag'>&lt;span></span> <span class="punctuation">&#123;&#123;</span> <span class="variable">currentIndex</span> <span class="punctuation">&#125;&#125;</span><span class='tag'>&lt;/span></span>
+<span class='tag'>&lt;/div></span></code></pre>`,
         selected: false,
-        lastUpdate: '',
-        disabled: true,
+        lastUpdate: '15.10.2023',
     },
     {
         title: 'Оптимизация выполнение цикла "*ngFor"',
