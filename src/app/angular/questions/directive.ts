@@ -383,10 +383,51 @@ arr: <span class="type">number[]</span> <span class="operator">=</span> <span cl
     },
     {
         title: 'Структурная директива *ngSwitch',
-        body: ``,
+        body: `<p>
+                <span class="attention"
+                    >Структурная директива <code>*ngSwitchCase</code> позволяет
+                    выводить разметку в шаблоне компонента через конструкцию
+                    <code>switch/case</code>, где в зависимости от ее результата
+                    будет показываться соответствующий элемент разметки.</span
+                >
+            </p>
+            <pre><code><span class='tag'>&lt;div></span> <span class="keyword">[ngSwitch]</span><span class="operator">=</span><span class="string">"Какие-то данные, передаваемые внутрь конструкции"</span><span class="tag">></span>
+   <span class='tag'>&lt;span</span> <span class="keyword">*ngSwitchCase</span><span class="operator">=</span><span class="punctuation">"</span>значение_1<span class="punctuation">"</span><span class="tag">></span><span class="string">Первый элемент</span><span class='tag'>&lt;/span></span>
+   <span class='tag'>&lt;span</span> <span class="keyword">*ngSwitchCase</span><span class="operator">=</span><span class="punctuation">"</span>значение_2<span class="punctuation">"</span><span class="tag">></span><span class="string">Второй элемент</span><span class='tag'>&lt;/span></span>
+	...
+   <span class='tag'>&lt;span</span> <span class="keyword">*ngSwitchDefault</span><span class="tag">></span><span class="string">Элемент по умолчанию</span><span class='tag'>&lt;/span></span>
+<span class='tag'>&lt;/div></span></code></pre>
+            <p>
+                С помощью атрибутивной директивы <code>ngSwitch</code> внутрь
+                родительского элемента <code>div</code> передаются какие-либо
+                данные, которые проверяются на совпадения в структурных
+                директивах <code>*ngSwitchCase</code>. Если происходит полное
+                совпадение, значит условие выполняется и элемент попадает в
+                DOM-дерево.
+            </p>
+            <p>
+                Если не находится ни одного совпадения со значениями, указанными
+                в структурных директивах <code>*ngSwitchCase</code>, тогда
+                отображаются данные, на которых указана другая структурная
+                директива <code>*ngSwitchDefault</code>, если она указана в
+                конструкции. Эти данные еще называют "данными по умолчанию".
+            </p>
+            <p>
+                Пример использования структурной директивы
+                <code>*ngSwitchCase</code> внутри структурной директивы
+                <code>*ngFor</code>:
+            </p>
+            <pre><code><span class="comment comment_start">// в классе компонента</span>
+arr: <span class="type">number[]</span> <span class="operator">=</span> <span class="punctuation">[</span><span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span><span class="punctuation">]</span>;
+
+<span class="comment comment_start">// в шаблоне компонента</span>
+<span class='tag'>&lt;div</span> <span class="keyword">*ngFor</span><span class="operator">=</span><span class="punctuation">"</span><span class="keyword">let</span> <span class="variable">item</span> <span class="keyword">of</span> arr<span class="punctuation">"</span> <span class="keyword">[ngSwitch]</span><span class="operator">=</span><span class="variable">item</span><span class="tag">></span>
+   <span class='tag'>&lt;span</span> <span class="keyword">*ngSwitchCase</span><span class="operator">=</span><span class="punctuation">"</span>1<span class="punctuation">"</span><span class="tag">></span><span class="string">Появлюсь, если item будет равен 1</span><span class='tag'>&lt;/span></span>
+   <span class='tag'>&lt;span</span> <span class="keyword">*ngSwitchCase</span><span class="operator">=</span><span class="punctuation">"</span>2<span class="punctuation">"</span><span class="tag">></span><span class="string">Появлюсь, если item будет равен 2</span><span class='tag'>&lt;/span></span>
+   <span class='tag'>&lt;span</span> <span class="keyword">*ngSwitchDefault</span><span class="tag">></span><span class="string">Появлюсь, если не найдутся совпадения в *ngSwitchCase</span><span class='tag'>&lt;/span></span>
+<span class='tag'>&lt;/div></span></code></pre>`,
         selected: false,
-        lastUpdate: '',
-        disabled: true,
+        lastUpdate: '15.10.2023',
     },
     // {
     //     title: '',
