@@ -1,10 +1,8 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     OnDestroy,
     OnInit,
-    ViewChild,
     ViewChildren,
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
@@ -23,7 +21,7 @@ import { rxjsQuestions } from '../../questions/rxjs';
 import { serviceQuestions } from '../../questions/service';
 import { testQuestions } from '../../questions/test';
 
-import { IList, IQuestion } from '@types';
+import { IList } from '@types';
 import { MatAccordion } from '@angular/material/expansion';
 import { ngrxQuestions } from 'src/app/angular/questions/ngrx';
 

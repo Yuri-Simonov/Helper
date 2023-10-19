@@ -2,133 +2,139 @@ import { IQuestion } from '@types';
 
 export const componentQuestions: IQuestion[] = [
     {
-        title: 'Что такое компонент в Angular?',
+        title: 'Компоненты в Angular',
         body: `<p>
-            <span class="attention">Angular компонент</span> - это часть
-            интерфейса приложения с собственными шаблоном, логикой и стилями.
-            Причем последние два являются необязательными.
-        </p>
-        <p>Все компоненты в совокупности и есть Angular App.</p>
-        <p>
-            За создание компонента отвечает декоратор
-            <code>@Component()</code>.
-        </p>
-        <pre><code><span class="keyword">@Component</span><span class="punctuation">({</span>
+                <span class="attention">Angular компонент</span> - это часть
+                интерфейса приложения с собственными шаблоном, логикой и
+                стилями.
+            </p>
+            <p>Все компоненты в совокупности и есть приложение Angular.</p>
+            <p>
+                За создание компонента отвечает декоратор
+                <code>@Component()</code>.
+            </p>
+            <pre><code><span class="function-name">@Component</span><span class="punctuation">({</span>
 	<span class="key">selector</span>: <span class="string">'app-root'</span>, <span class="comment">// название компонента</span>
-	<span class="key">templateUrl</span>: <span class="string">'./app.component.html'</span>, <span class="comment">// путь к HTML-файлу. Является обязательным свойством</span>
-	<span class="key">styleUrls</span>: <span class="punctuation">[</span><span class="string">'./app.component.scss'</span><span class="punctuation">]</span>, <span class="comment">// массив путей к SCSS-файлам</span>
-	<span class="key">providers</span>: <span class="punctuation">[</span><span class="service-name">SomeHttpService</span><span class="punctuation">]</span>, <span class="comment">// если добавляются непосредственно в компонент какие-то зависимости</span>
+	<span class="key">templateUrl</span>: <span class="string">'./app.component.html'</span>, <span
+		class="comment">// путь к HTML-файлу. Является обязательным свойством</span>
+	<span class="key">styleUrls</span>: <span class="punctuation">[</span><span
+		class="string">'./app.component.scss'</span><span class="punctuation">]</span>, <span class="comment">// массив путей к SCSS-файлам</span>
+	<span class="key">providers</span>: <span class="punctuation">[</span><span
+		class="service-name">SomeService</span><span class="punctuation">]</span>, <span class="comment">// если добавляются непосредственно в компонент какие-то зависимости</span>
 	<span class="key">changeDetection</span>: <span>ChangeDetectionStrategy.OnPush</span>, <span class="comment">// явное определение стратегии ChangeDetection</span>
 <span class="punctuation">})</span>
 
-<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AppComponent</span> <span class="punctuation">{}</span> <span class="comment">// класс, к которому привязывается декоратор @Component()</span></code></pre>`,
+<span class="export">export</span> <span class="keyword">class</span> <span
+	class="class-name">AppComponent</span> <span class="punctuation">{}</span> <span class="comment">// класс, к которому привязывается декоратор @Component()</span></code></pre>`,
         selected: false,
+        lastUpdate: '19.10.2023',
     },
     {
-        title: 'Расскажите про жизненный цикл компонента (Angular hooks)?',
+        title: 'Жизненный цикл компонента (Angular hooks)',
         body: `<p>
-		Каждый компонент имеет свой жизненный цикл, где на каждом этапе
-		цикла вызываются соответствующие методы, так называемые хуки
-		(Angular Hooks).
-	</p>
-	<p>
-		Ниже перечислены все методы жизненного цикла компонента в
-		порядке их вызова:
-	</p>
-	<ul>
-		<li>
-			<span class="attention">ngOnChanges</span> - вызывается в
-			момент установки или изменения одного или нескольких
-			значений входных свойств класса компонента. Метод аргументом
-			принимает объект <code>SimpleChanges</code>, в котором
-			хранятся текущее и предыдущее значения свойств. Если у
-			компонента есть свойства, входящие извне через декоратор
-			<code>@Input</code>,
-			<span class="attention"
-				>срабатывает перед хуком <code>ngOnInit</code></span
-			>. Если нет входящих свойств, то данный хук вызываться не
-			будет;
-		</li>
-		<li>
-			<span class="attention">ngOnInit</span> - на данном этапе
-			устанавливаются свойства самого компонента. Вызывается
-			единожды, после первого вызова <code>ngOnChanges</code>,
-			если есть входные свойства. Если нет входных свойств,
-			вызывается первым;
-		</li>
-		<li>
-			<span class="attention">ngDoCheck</span> - происходит
-			изменение одного или нескольких свойств или какое-то
-			событие. Вызывается сразу после <code>ngOnChanges</code> при
-			каждом запуске обнаружения изменений, и сразу после
-			<code>ngOnInit</code> при первом запуске;
-		</li>
-		<li>
-			<span class="attention">ngAfterContentInit</span> - на
-			данном этапе в шаблон включается контент, заключенный между
-			тегами компонента (в дочернем компоненте это содержимое
-			подставится вместо
-			<code>
-				<span><</span
-				>ng-content><span><</span>/ng-content> </code
-			>). Вызывается один раз после первого вызова метода
-			<code>ngDoCheck</code>;
-		</li>
-		<li>
-			<span class="attention">ngAfterContentChecked</span> - на
-			данном этапе происходит проверка на изменение содержимого,
-			которое подставляется вместо
-			<code>
-				<span><</span
-				>ng-content><span><</span>/ng-content> </code
-			>. Вызывается после метода <code>ngAfterContentInit</code> и
-			каждого последующего вызова метода <code>ngDoCheck</code>
-		</li>
-		<li>
-			<span class="attention">ngAfterViewInit</span> - на данном
-			этапе инициализируются дочерние компоненты, указанные в
-			шаблоне текущего компонента. Вызывается один раз после
-			первого вызова метода <code>ngAfterContentChecked</code>;
-		</li>
-		<li>
-			<span class="attention">ngAfterViewChecked</span> - на
-			данном этапе происходит проверка на изменение содержимого в
-			дочерних компонентах. Вызывается после метода
-			<code>ngAfterViewInit</code> и каждого последующего вызова
-			метода <code>ngAfterContentChecked</code>;
-		</li>
-		<li>
-			<span class="attention">ngOnDestroy</span> - компонент
-			удаляется из DOM-дерева. Вызывается непосредственно перед
-			тем, как Angular уничтожит компонент. На данном этапе
-			следует отписываться от данных типа
-			<code>Observable</code> и обработчиков событий, чтобы
-			избежать утечек памяти.
-		</li>
-	</ul>
-	<p>
-		Angular hooks реализованы в виде интерфейсов, реализующих
-		функции, совпадающие по названию с названием интерфейса +
-		префикс
-		<code>ng</code>:
-	</p>
-	<pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">ContactsItemComponent</span> <span class="keyword">implements</span> <span class="interface-name">OnInit</span> <span class="punctuation">{</span>
+                Каждый компонент имеет свой жизненный цикл, где на каждом этапе
+                цикла вызываются соответствующие методы, так называемые хуки
+                (Angular Hooks).
+            </p>
+            <p>
+                Также стоит помнить, что
+                <span class="attention">
+                    сначала инициализируется конструктор класса</span
+                >, и только после него компонент начинает свой жизненный цикл.
+            </p>
+            <p>
+                Ниже перечислены все методы жизненного цикла компонента в
+                порядке их вызова.
+            </p>
+            <ul>
+                <li>
+                    <span class="attention">ngOnChanges</span> - вызывается в
+                    момент установки или изменения одного или нескольких
+                    значений входных свойств класса компонента. Метод аргументом
+                    принимает объект <code>SimpleChanges</code>, в котором
+                    хранятся текущее и предыдущее значения свойств. Если у
+                    компонента есть свойства, входящие извне через декоратор
+                    <code>@Input</code>,
+                    <span class="attention"
+                        >срабатывает перед хуком <code>ngOnInit</code></span
+                    >. Если нет входящих свойств, то данный хук вызываться не
+                    будет;
+                </li>
+                <li>
+                    <span class="attention">ngOnInit</span> - на данном этапе
+                    устанавливаются свойства самого компонента.
+                    <span class="attention">Вызывается единожды</span>, после
+                    первого вызова <code>ngOnChanges</code>, если есть входные
+                    свойства. Если нет входных свойств, вызывается первым;
+                </li>
+                <li>
+                    <span class="attention">ngDoCheck</span> - происходит
+                    изменение одного или нескольких свойств или какое-то
+                    событие. Вызывается сразу после <code>ngOnChanges</code> при
+                    каждом запуске обнаружения изменений, и сразу после
+                    <code>ngOnInit</code> при первом запуске;
+                </li>
+                <li>
+                    <span class="attention">ngAfterContentInit</span> - на
+                    данном этапе в шаблон включается контент, заключенный между
+                    тегами компонента (в дочернем компоненте это содержимое
+                    подставится вместо
+                    <code> &ltng-content>&lt/ng-content> </code>). Вызывается
+                    один раз после первого вызова метода <code>ngDoCheck</code>;
+                </li>
+                <li>
+                    <span class="attention">ngAfterContentChecked</span> - на
+                    данном этапе происходит проверка на изменение содержимого,
+                    которое подставляется вместо
+                    <code>&ltng-content>&lt/ng-content></code>. Вызывается после
+                    метода <code>ngAfterContentInit</code> и каждого
+                    последующего вызова метода <code>ngDoCheck</code>
+                </li>
+                <li>
+                    <span class="attention">ngAfterViewInit</span> - на данном
+                    этапе инициализируются дочерние компоненты, указанные в
+                    шаблоне текущего компонента. Вызывается один раз после
+                    первого вызова метода <code>ngAfterContentChecked</code>;
+                </li>
+                <li>
+                    <span class="attention">ngAfterViewChecked</span> - на
+                    данном этапе происходит проверка на изменение содержимого в
+                    дочерних компонентах. Вызывается после метода
+                    <code>ngAfterViewInit</code> и каждого последующего вызова
+                    метода <code>ngAfterContentChecked</code>;
+                </li>
+                <li>
+                    <span class="attention">ngOnDestroy</span> - компонент
+                    удаляется из DOM-дерева. Вызывается непосредственно перед
+                    тем, как Angular уничтожит компонент. На данном этапе
+                    следует отписываться от данных типа
+                    <code>Observable</code> и обработчиков событий, чтобы
+                    избежать утечек памяти.
+                </li>
+            </ul>
+            <p>
+                Методы жизненного цикла компонента реализованы в виде
+                интерфейсов, реализующих функции, совпадающие по названию с
+                названием интерфейса + префикс
+                <code>ng</code>:
+            </p>
+            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">ContactsItemComponent</span> <span class="keyword">implements</span> <span class="interface-name">OnInit</span> <span class="punctuation">{</span>
 	<span class="method">ngOnInit()</span> <span class="punctuation">{</span>
 		console.<span class="function-name">log</span><span class="punctuation">('</span><span class="string">OnInit</span><span class="punctuation">')</span> <span class="comment"> // OnInit</span>
 	<span class="punctuation">}</span>
 <span class="punctuation">}</span></code></pre>
-	<p>
-		Также при написании кода считается хорошим тоном указывать у
-		класса реализацию того или иного метода, используемого в нем. В
-		примере выше это <code>implements OnInit</code>.
-	</p>`,
+            <p>
+                Также при написании кода считается хорошим тоном указывать у
+                класса реализацию того или иного метода, используемого в нем. В
+                примере выше это <code>implements OnInit</code>.
+            </p>`,
         selected: false,
-        lastUpdate: '30.07.2023',
+        lastUpdate: '19.10.2023',
     },
     {
-        title: 'Зачем нужны Getter и Setter внутри компонента?',
+        title: 'Использование Getter и Setter внутри компонента',
         body: `<p>
-            Геттерами и сеттерами называются методы Angular компонента, которые
+            Геттерами (Getter) и сеттерами (Setter) называются методы Angular-компонента, которые
             <span class="attention"
                 >используются для получения и модификации значений его
                 свойств</span
@@ -144,11 +150,11 @@ export const componentQuestions: IQuestion[] = [
             Для создания геттера и сеттера используются соответствующие ключевые
             слова - <code>get</code> и <code>set</code>:
         </p>
-        <pre><code><span class="comment">// компонент</span>
+        <pre><code><span class="comment comment_start">// класс компонента</span>
 <span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
 	_name: <span class="type">string</span> <span class="operator">=</span> <span class="null">null</span>; <span class="comment">// приватная переменная</span>
 
-	<span class="keyword">@Input()</span> <span class="keyword">set</span> <span class="method">name</span><span class="punctuation">(</span>value: <span class="type">string</span><span class="punctuation">)</span> <span class="punctuation">{</span>
+	<span class="function-name">@Input()</span> <span class="keyword">set</span> <span class="method">name</span><span class="punctuation">(</span>value: <span class="type">string</span><span class="punctuation">)</span> <span class="punctuation">{</span>
 		<span class="object">this</span>._name <span class="operator">=</span> value <span class="operator">+</span> <span class="string">'*'</span>;
 	<span class="punctuation">}</span>
 
@@ -157,7 +163,7 @@ export const componentQuestions: IQuestion[] = [
 	<span class="punctuation">}</span>
 <span class="punctuation">}</span>
 
-<span class="comment">// шаблон</span>
+<span class="comment comment_start">// шаблон компонента</span>
 <span class="tag"><</span><span class="tag">p></span><span class="punctuation">{{</span><span class="variable">name</span><span class="punctuation">}}</span><span class="tag"><</span><span class="tag">/p></span></code></pre>
         <p>
             В классах JavaScript мы также можем создавать приватные переменные,
@@ -166,6 +172,7 @@ export const componentQuestions: IQuestion[] = [
             переменная <code>_name</code>.
         </p>`,
         selected: false,
+        lastUpdate: '19.10.2023',
     },
     {
         title: 'Зачем используется OnDestroy?',
@@ -465,6 +472,20 @@ export const componentQuestions: IQuestion[] = [
 	<p>Если нужно обработать еще больше клавиш, то также перечисляете их через точку, как в примере выше.</p>`,
         selected: false,
         lastUpdate: '06.07.2023',
+    },
+    {
+        title: 'Элемент ng-template',
+        body: ``,
+        selected: false,
+        lastUpdate: '',
+        disabled: true,
+    },
+    {
+        title: 'Элемент ng-container',
+        body: ``,
+        selected: false,
+        lastUpdate: '',
+        disabled: true,
     },
     // {
     //     title: '',
