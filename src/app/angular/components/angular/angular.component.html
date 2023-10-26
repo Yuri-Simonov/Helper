@@ -18,9 +18,9 @@
                             (closed)="q.selected = false"
                         >
                             <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                    {{ q.title }}
-                                </mat-panel-title>
+                                <mat-panel-title
+                                    [innerHTML]="q.title"
+                                ></mat-panel-title>
                             </mat-expansion-panel-header>
                             <div [innerHTML]="q.body"></div>
                             <i

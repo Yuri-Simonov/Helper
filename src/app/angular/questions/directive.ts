@@ -197,7 +197,7 @@ export const directiveQuestions: IQuestion[] = [
         lastUpdate: '07.10.2023',
     },
     {
-        title: 'Структурная директива *ngIf',
+        title: 'Структурная директива <span class="variable">*ngIf</span>',
         body: `<p>
                 <span class="attention"
                     >Структурная директива *ngIf позволяет скрывать или
@@ -277,7 +277,7 @@ toggler: <span class="type">boolean</span> <span class="operator">=</span> <span
         lastUpdate: '15.10.2023',
     },
     {
-        title: 'Структурная директива *ngFor',
+        title: 'Структурная директива <span class="variable">*ngFor</span>',
         body: `<p>
                 <span class="attention"
                     >Структурная директива *ngFor позволяет создавать разметку в
@@ -359,30 +359,77 @@ arr: <span class="type">number[]</span> <span class="operator">=</span> <span cl
         lastUpdate: '15.10.2023',
     },
     {
-        title: 'Оптимизация выполнение цикла "*ngFor"',
+        title: 'Оптимизация структурной директивы <span class="variable">*ngFor</span>',
         body: `<p>
-            <span class="attention">
-                При изменении массива Angular перерисовывает DOM-дерево
-                полностью</span
-            >. Но если использовать функцию <code>trackBy</code>, то Angular
-            будет понимать, какой именно элемент изменился, а затем
-            <span class="attention">
-                внесёт изменения в DOM-дереве только для этого конкретного
-                элемента</span
-            >.
-        </p>
-        <pre><code><span class="comment comment_start">// в шаблоне компонента (someItem.component.html)</span>
-<span class="tag"><</span><span class="tag">li</span> <span class="keyword">*ngFor</span><span class="operator">=</span><span class="punctuation">"</span><span class="keyword">let</span> item <span class="keyword">of</span> items; <span class="keyword">trackBy</span>: <span class="function-name">trackByFunction</span><span class="punctuation">"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/li></span>
+                Элементы DOM-дерева, отрисованные с помощью структурной
+                директивы <code>*ngFor</code>, очень часто подвергаются
+                изменениям, например, происходит их сортировка или фильтрация в
+                зависимости от каких-либо условий. И на каждое подобного рода
+                действие
+                <span class="attention"
+                    >Angular перерисовывает весь список этих элементов</span
+                >, вместо того, чтобы делать это только для тех элементов,
+                которые подверглись изменениям.
+            </p>
+            <p>
+                Чтобы Angular мог понимать, какие элементы изменились, а какие
+                нет, у структурной директивы <code>*ngFor</code> есть встроенный
+                метод, который называется <code>trackBy</code>.
+                <span class="attention"
+                    >Суть его заключается в том, что он идентифицирует каждый
+                    элемент цикла <code>for</code> по указанному нами ему
+                    уникальному параметру</span
+                >.
+            </p>
+            <p>
+                И когда будет происходить какое-либо изменение списка, Angular
+                быстрее выполнит эту операцию, т.к.
+                <span class="attention">
+                    будет знать какие элементы списка изменились и внесет
+                    изменения только в них</span
+                >, остальные пропустит, оставив без изменений.
+            </p>
+            <p>
+                Если верить официальной документации, существенная оптимизация
+                возникает при больших списках элементов.
+            </p>
+            <pre><code><span class="comment comment_start">// в шаблоне компонента (someItem.component.html)</span>
+<span class="tag">&ltli</span> <span class="keyword">*ngFor</span><span
+	class="operator">=</span><span class="punctuation">"</span><span class="keyword">let</span> item <span class="keyword">of</span> items; <span class="keyword">trackBy</span>: <span
+	class="function-name">trackByFunction</span><span class="punctuation">"</span><span
+	class="tag">></span>&#123;&#123;item&#125;&#125;<span class="tag">&lt/li></span>
 
 <span class="comment comment_start">// в классе компонента (someItem.component.ts)</span>
-<span class="function-name">trackByFunction</span><span class="punctuation">(</span>index, item<span class="punctuation">)</span> <span class="punctuation">{</span>
-	<span class="keyword">return</span> item.id<span class="punctuation">;</span> <span class="comment">// уникальный идентификатор, соответствующий элементу</span>
-<span class="punctuation">}</span></code></pre>`,
+arr: <span class="type">number[]</span> <span class="operator">=</span> <span
+	class="punctuation">[</span><span class="number">1</span>, <span class="number">2</span>, <span
+	class="number">3</span><span class="punctuation">]</span>;
+
+<span class="function-name">trackByFunction</span><span class="punctuation">(</span>index, item<span
+	class="punctuation">)</span> <span class="punctuation">{</span>
+	<span class="keyword">return</span> item<span class="punctuation">;</span> <span class="comment">//	уникальный параметр</span>
+<span class="punctuation">}</span></code></pre>
+            <p>
+                Функция, используемая в качестве значения для метода<code
+                    >trackBy</code
+                >
+                принимает 2 параметра: индекс текущего элемента массива и сам
+                элемент массива.
+            </p>
+            <p>
+                Также эта
+                <span class="attention"
+                    >функция должна возвращать уникальный идентификатор</span
+                >, с помощью которого Angular будет понимать что к чему
+                относится в списке элементов DOM-дерева. Обычно возвращают
+                <code>id</code>, (например, <code>item.id</code>), но в примере
+                выше и так все элементы массива уникальные, поэтому возвращается
+                сам элемент массива.
+            </p>`,
         selected: false,
-        lastUpdate: '08.10.2023',
+        lastUpdate: '26.10.2023',
     },
     {
-        title: 'Структурная директива *ngSwitch',
+        title: 'Структурная директива <span class="variable">*ngSwitch</span>',
         body: `<p>
                 <span class="attention"
                     >Структурная директива <code>*ngSwitchCase</code> позволяет
