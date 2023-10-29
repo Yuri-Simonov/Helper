@@ -10,8 +10,15 @@
                 <div class="content__item" *ngFor="let q of item.questions">
                     <mat-accordion matAccordion [appEscape]="accordion">
                         <mat-expansion-panel
-                            (opened)="q.selected = true"
+                            (opened)="
+                                q.selected = true;
+                                firstMatAccordionOpening = false
+                            "
                             (closed)="q.selected = false"
+                            [ngClass]="{
+                                'first-mat-accordion-opening':
+                                    firstMatAccordionOpening
+                            }"
                         >
                             <mat-expansion-panel-header>
                                 <mat-panel-title>

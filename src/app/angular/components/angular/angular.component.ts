@@ -69,6 +69,7 @@ export class AngularComponent implements OnInit, OnDestroy {
     listState: boolean = false;
     currentPath: string;
     currentPathSub: Subscription;
+    firstMatAccordionOpening: boolean = true;
 
     @ViewChildren(MatAccordion) accordion: MatAccordion[];
 

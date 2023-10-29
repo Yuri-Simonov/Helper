@@ -55,6 +55,10 @@
         }
     }
 
+    .first-mat-accordion-opening .mat-expansion-panel-content {
+        display: none;
+    }
+
     &__last-update {
         display: flex;
         justify-content: flex-end;

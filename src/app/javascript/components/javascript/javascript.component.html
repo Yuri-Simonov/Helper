@@ -14,8 +14,15 @@
                         [ngClass]="{ disabled: q.disabled }"
                     >
                         <mat-expansion-panel
-                            (opened)="q.selected = true"
+                            (opened)="
+                                q.selected = true;
+                                firstMatAccordionOpening = false
+                            "
                             (closed)="q.selected = false"
+                            [ngClass]="{
+                                'first-mat-accordion-opening':
+                                    firstMatAccordionOpening
+                            }"
                         >
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
