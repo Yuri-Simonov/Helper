@@ -26,7 +26,7 @@ export const decoratorQuestions: IQuestion[] = [
         lastUpdate: '14.09.2023',
     },
     {
-        title: 'Свойство "bootstrap" декоратора "@NgModule()"',
+        title: 'Свойство <span class="variable">bootstrap</span> декоратора <span class="variable">@NgModule()</span>',
         body: `<p>
             В свойстве <code>bootstrap</code> указывается компонент, который
             <span class="attention">
@@ -42,7 +42,7 @@ export const decoratorQuestions: IQuestion[] = [
         lastUpdate: '14.09.2023',
     },
     {
-        title: 'Декоратор "@Injectable()". Различия работы сервиса с ним и без него',
+        title: 'Декоратор <span class="variable">@Injectable()</span>',
         body: `<p>
             Декоратор <code>@Injectable()</code>
             <span class="attention">
@@ -69,7 +69,7 @@ export const decoratorQuestions: IQuestion[] = [
     },
 
     {
-        title: 'Разница между декораторами "@Input()" и "@Output()"',
+        title: 'Разница между декораторами <span class="variable">@Input()</span> и <span class="variable">@Output()</span>',
         body: `<p>
             Дочерние компоненты Angular могут как принимать данные от родителя, так и
             отдавать их. За это как раз и отвечают декораторы
@@ -92,7 +92,7 @@ export const decoratorQuestions: IQuestion[] = [
         lastUpdate: '14.09.2023',
     },
     {
-        title: 'Передача объектов через декоратор "@Input()"',
+        title: 'Передача объектов через декоратор <span class="variable">@Input()</span>',
         body: `<p>
             <span class="attention"
                 >В JavaScript объекты передаются по ссылке</span
@@ -112,7 +112,7 @@ export const decoratorQuestions: IQuestion[] = [
         lastUpdate: '14.09.2023',
     },
     {
-        title: 'Декоратор "@Self()"',
+        title: 'Декоратор <span class="variable">@Self()</span>',
         body: `<p>
 		Сервисы могут быть определены на трех уровнях и, когда компонент
 		запрашивает сервис, то
@@ -158,7 +158,7 @@ export const decoratorQuestions: IQuestion[] = [
         lastUpdate: '23.09.2023',
     },
     {
-        title: 'Декоратор "@SkipSelf()"',
+        title: 'Декоратор <span class="variable">@SkipSelf()</span>',
         body: `<p>
             Сервисы могут быть определены на трех уровнях и, когда компонент
             запрашивает сервис, то
@@ -207,7 +207,7 @@ export const decoratorQuestions: IQuestion[] = [
         lastUpdate: '23.09.2023',
     },
     {
-        title: 'Декоратор "@Optional()"',
+        title: 'Декоратор <span class="variable">@Optional()</span>',
         body: `<p>
             Сервисы могут быть определены на трех уровнях и, когда компонент
             запрашивает сервис, то
@@ -241,7 +241,7 @@ export const decoratorQuestions: IQuestion[] = [
         lastUpdate: '23.09.2023',
     },
     {
-        title: 'Декоратор "@Host()"',
+        title: 'Декоратор <span class="variable">@Host()</span>',
         body: `<p>
 		Декоратор <code>@Host</code> сообщает <code>DI</code>
 		<span class="attention"
@@ -302,7 +302,7 @@ export const decoratorQuestions: IQuestion[] = [
         lastUpdate: '23.09.2023',
     },
     {
-        title: 'Декоратор "@Attribute()"',
+        title: 'Декоратор <span class="variable">@Attribute()</span>',
         body: `<p>
 		В Ангуляре данные от родителя к дочернему компоненту можно
 		передавать как статически, так и динамически:

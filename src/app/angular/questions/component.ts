@@ -107,9 +107,9 @@ export const componentQuestions: IQuestion[] = [
                     <span class="attention">ngOnDestroy</span> - компонент
                     удаляется из DOM-дерева. Вызывается непосредственно перед
                     тем, как Angular уничтожит компонент. На данном этапе
-                    следует отписываться от данных типа
+                    <span class="attention">следует отписываться от данных типа
                     <code>Observable</code> и обработчиков событий, чтобы
-                    избежать утечек памяти.
+                    избежать утечек памяти</span>.
                 </li>
             </ul>
             <p>
@@ -132,7 +132,7 @@ export const componentQuestions: IQuestion[] = [
         lastUpdate: '19.10.2023',
     },
     {
-        title: 'Использование Getter и Setter внутри компонента',
+        title: 'Использование <span class="variable">Getter</span> и <span class="variable">Setter</span> внутри компонента',
         body: `<p>
             Геттерами (Getter) и сеттерами (Setter) называются методы Angular-компонента, которые
             <span class="attention"
@@ -175,7 +175,7 @@ export const componentQuestions: IQuestion[] = [
         lastUpdate: '19.10.2023',
     },
     {
-        title: 'Зачем используется OnDestroy?',
+        title: 'Важность отписывания от подписок в хуке <span class="variable">OnDestroy</span>',
         body: `<p>
             Данный этап жизненного цикла в основном
             <span class="attention"
@@ -207,12 +207,11 @@ export const componentQuestions: IQuestion[] = [
         <span class="object">this</span>.currentPathSub.<span class="function-name">unsubscribe()</span>; <span class="comment">// не забываем отписаться</span>
     <span class="punctuation">}</span>
 <span class="punctuation">}</span></code></pre>
-        <i class="subtitle">Зачем нужно отписываться от подписок?</i>
         <p>
             Если мы не будем отписываться, но при этом удалять компонент,
             например, при переходе на другую страницу, а потом вернемся на
             страницу, где опять стаработает подписка, то количество подписчиков
-            уже будет 2, а не 1. Сделаем тоже самое, будет 3 подписки и тд.
+            уже будет 2, а не 1. Сделаем еще раз тоже самое, будет 3 подписки и тд.
             Следовательно,
             <span class="attention">
                 будут лишние действия при работе кода, что явно плохо скажется
@@ -224,9 +223,10 @@ export const componentQuestions: IQuestion[] = [
             какое-то событие внутри функции <code>setInterval</code> и вы не
             отписываетесь каждый раз при срабатывании кода. Рано или поздно
             происзойдет утечка памяти и страничка в браузере "умрет" или ваше
-            приложение попросту "зависнет".
+            приложение попросту зависнет.
         </p>`,
         selected: false,
+        lastUpdate: '04.11.2023',
     },
     {
         title: 'Какие вы знаете способы взаимодействия между компонентами?',
