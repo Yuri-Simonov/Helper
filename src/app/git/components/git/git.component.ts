@@ -1,15 +1,8 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ViewChildren,
-} from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { IList } from '@types';
 
 import { allGitQuestions } from './../../questions/all';
-import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
     selector: 'app-git',
@@ -19,35 +12,19 @@ import { MatAccordion } from '@angular/material/expansion';
 })
 export class GitComponent {
     list: IList[] = [{ name: 'Все', path: 'all', questions: allGitQuestions }];
-    listState: boolean = false;
-    currentPath: string;
-    currentPathSub: Subscription;
-    firstMatAccordionOpening: boolean = true;
+    sidebarState: boolean = false;
 
-    @ViewChildren(MatAccordion) accordion: MatAccordion[];
-
-    constructor(private router: Router) {}
-
-    ngOnInit(): void {
-        this.currentPath = this.router.url;
-        this.currentPathSub = this.router.events.subscribe((event) => {
-            if (event instanceof NavigationEnd) {
-                this.currentPath = this.slicePath(event.url);
-            }
-        });
-        this.currentPath = this.slicePath(this.currentPath);
+    setNewSidebarState(event: boolean): void {
+        this.sidebarState = event;
     }
 
-    ngOnDestroy(): void {
-        this.currentPathSub.unsubscribe();
+    changeListState(): void {
+        this.sidebarState = !this.sidebarState;
+        this.resetBodyClass();
     }
 
-    setNewListState(event: boolean): void {
-        this.listState = event;
-    }
-
-    slicePath(fullPath: string): string {
-        const pathsArray = fullPath.split('/');
-        return pathsArray[pathsArray.length - 1];
+    resetBodyClass(): void {
+        const body = document.querySelector('body');
+        body?.classList.toggle('lock');
     }
 }

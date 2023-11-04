@@ -5,14 +5,9 @@
             [routerLink]="[item.path]"
             routerLinkActive="disabled"
             *ngFor="let item of listProps"
-            (click)="changeListState()"
         >
             {{ item.name }}
         </a>
     </mat-nav-list>
 </div>
-<div
-    class="sidenav__overlay"
-    *ngIf="stateProps"
-    (click)="changeListState()"
-></div>
+<div class="sidenav__overlay" *ngIf="stateProps"></div>

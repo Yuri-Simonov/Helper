@@ -1,47 +1,11 @@
-<app-title title="Angular" [(state)]="listState"></app-title>
-<div class="content">
-    <app-sidenav [list]="list" [(state)]="listState"></app-sidenav>
-    <div
-        class="content__items"
-        [ngClass]="{ content__items_full: currentPath === 'angular' }"
-    >
-        <ng-container *ngFor="let item of list">
-            <ng-container *ngIf="item.path === currentPath">
-                <div class="content__item" *ngFor="let q of item.questions">
-                    <mat-accordion
-                        matAccordion
-                        [appEscape]="accordion"
-                        [ngClass]="{ disabled: q.disabled }"
-                    >
-                        <mat-expansion-panel
-                            (opened)="
-                                q.selected = true;
-                                firstMatAccordionOpening = false
-                            "
-                            (closed)="q.selected = false"
-                            [ngClass]="{
-                                'first-mat-accordion-opening':
-                                    firstMatAccordionOpening
-                            }"
-                        >
-                            <mat-expansion-panel-header>
-                                <mat-panel-title
-                                    [innerHTML]="q.title"
-                                ></mat-panel-title>
-                            </mat-expansion-panel-header>
-                            <div [innerHTML]="q.body"></div>
-                            <i
-                                class="content__last-update"
-                                *ngIf="q.lastUpdate"
-                            >
-                                последнее обновление: {{ q.lastUpdate }}
-                            </i>
-                        </mat-expansion-panel>
-                    </mat-accordion>
-                </div>
-            </ng-container>
-        </ng-container>
-
-        <app-empty *ngIf="currentPath === 'angular'"></app-empty>
-    </div>
-</div>
+<app-title
+    title="Angular"
+    [sidebarState]="sidebarState"
+    (sidebarStateChange)="setNewSidebarState($event)"
+></app-title>
+<app-spoilers
+    emptyPath="angular"
+    [list]="list"
+    [sidebarState]="sidebarState"
+    (sidebarStateChange)="setNewSidebarState($event)"
+></app-spoilers>

@@ -1,43 +1,11 @@
-<app-title title="Git" [(state)]="listState"></app-title>
-<div class="content">
-    <app-sidenav [list]="list" [(state)]="listState"></app-sidenav>
-    <div
-        class="content__items"
-        [ngClass]="{ content__items_full: currentPath === 'git' }"
-    >
-        <ng-container *ngFor="let item of list">
-            <ng-container *ngIf="item.path === currentPath">
-                <div class="content__item" *ngFor="let q of item.questions">
-                    <mat-accordion matAccordion [appEscape]="accordion">
-                        <mat-expansion-panel
-                            (opened)="
-                                q.selected = true;
-                                firstMatAccordionOpening = false
-                            "
-                            (closed)="q.selected = false"
-                            [ngClass]="{
-                                'first-mat-accordion-opening':
-                                    firstMatAccordionOpening
-                            }"
-                        >
-                            <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                    {{ q.title }}
-                                </mat-panel-title>
-                            </mat-expansion-panel-header>
-                            <div [innerHTML]="q.body"></div>
-                            <i
-                                class="content__last-update"
-                                *ngIf="q.lastUpdate"
-                            >
-                                последнее обновление: {{ q.lastUpdate }}
-                            </i>
-                        </mat-expansion-panel>
-                    </mat-accordion>
-                </div>
-            </ng-container>
-        </ng-container>
-
-        <app-empty *ngIf="currentPath === 'git'"></app-empty>
-    </div>
-</div>
+<app-title
+    title="Git"
+    [sidebarState]="sidebarState"
+    (sidebarStateChange)="setNewSidebarState($event)"
+></app-title>
+<app-spoilers
+    emptyPath="git"
+    [list]="list"
+    [sidebarState]="sidebarState"
+    (sidebarStateChange)="setNewSidebarState($event)"
+></app-spoilers>

@@ -1,10 +1,10 @@
 <h1 class="title">
     <mat-icon
-        class="title__icon"
+        class="title__burger"
         aria-hidden="false"
         fontIcon="menu"
         *ngIf="visibleIconProps"
-        (click)="changeListState()"
+        (click)="changeSidebarState()"
     ></mat-icon>
     <span class="title__name">{{ titleProps }}</span>
 </h1>

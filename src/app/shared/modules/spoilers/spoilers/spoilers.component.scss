@@ -1,4 +1,9 @@
-.content {
+:host {
+    flex-grow: 1;
+    display: flex;
+}
+
+::ng-deep .spoilers {
     flex-grow: 1;
     position: relative;
     display: grid;

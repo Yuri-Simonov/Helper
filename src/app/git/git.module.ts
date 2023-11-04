@@ -8,10 +8,9 @@ import {
     EmptyModule,
     MaterialModule,
     SidenavModule,
+    SpoilersModule,
     TitleModule,
 } from '@modules';
-
-import { Directives } from 'src/app/shared/directives/directive.module';
 
 const routes: Routes = [
     {
@@ -30,7 +29,7 @@ const routes: Routes = [
         SidenavModule,
         TitleModule,
         EmptyModule,
-        Directives,
+        SpoilersModule,
     ],
 })
 export class GitModule {}

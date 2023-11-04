@@ -1,10 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    Input,
-    Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { IList } from '@types';
 
@@ -17,17 +11,4 @@ import { IList } from '@types';
 export class SidenavComponent {
     @Input('list') listProps: IList[];
     @Input('state') stateProps: boolean;
-
-    @Output() stateChange = new EventEmitter<boolean>();
-
-    changeListState(): void {
-        this.stateProps && this.resetBodyClass();
-        this.stateProps = false;
-        this.stateChange.emit(this.stateProps);
-    }
-
-    resetBodyClass(): void {
-        const body = document.querySelector('body');
-        body?.classList.toggle('lock');
-    }
 }

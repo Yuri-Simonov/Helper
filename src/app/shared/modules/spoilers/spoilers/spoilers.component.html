@@ -1,0 +1,50 @@
+<div class="spoilers" [ngClass]="{ spoilers_simple: withoutSidebarProps }">
+    <app-sidenav
+        [list]="listProps"
+        [state]="sidebarStateProps"
+        (click)="changeSidebarState()"
+    ></app-sidenav>
+    <div
+        class="spoilers__items"
+        [ngClass]="{ spoilers__items_full: currentPath === 'angular' }"
+    >
+        <ng-container *ngFor="let item of listProps">
+            <ng-container *ngIf="item.path === currentPath">
+                <div class="spoilers__item" *ngFor="let q of item.questions">
+                    <mat-accordion
+                        matAccordion
+                        [appEscape]="accordion"
+                        [ngClass]="{ disabled: q.disabled }"
+                    >
+                        <mat-expansion-panel
+                            (opened)="
+                                q.selected = true;
+                                firstMatAccordionOpening = false
+                            "
+                            (closed)="q.selected = false"
+                            [ngClass]="{
+                                'first-mat-accordion-opening':
+                                    firstMatAccordionOpening
+                            }"
+                        >
+                            <mat-expansion-panel-header>
+                                <mat-panel-title
+                                    [innerHTML]="q.title"
+                                ></mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div [innerHTML]="q.body"></div>
+                            <i
+                                class="spoilers__last-update"
+                                *ngIf="q.lastUpdate"
+                            >
+                                последнее обновление: {{ q.lastUpdate }}
+                            </i>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+            </ng-container>
+        </ng-container>
+
+        <app-empty *ngIf="currentPath === emptyPathProps"></app-empty>
+    </div>
+</div>

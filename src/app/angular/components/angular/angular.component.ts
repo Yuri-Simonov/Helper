@@ -1,12 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    OnDestroy,
-    OnInit,
-    ViewChildren,
-} from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { componentQuestions } from '../../questions/component';
 import { changeDetectionQuestions } from '../../questions/change_detection';
@@ -22,7 +14,6 @@ import { serviceQuestions } from '../../questions/service';
 import { testQuestions } from '../../questions/test';
 
 import { IList } from '@types';
-import { MatAccordion } from '@angular/material/expansion';
 import { ngrxQuestions } from 'src/app/angular/questions/ngrx';
 
 @Component({
@@ -34,7 +25,7 @@ import { ngrxQuestions } from 'src/app/angular/questions/ngrx';
 
 // а б в г д е ё ж з и й к л м н о п р с т у ф х ц ч ш щ ъ ы ь э ю я
 // a b c d e f g h i j k l m n o p q r s t u v w x y z
-export class AngularComponent implements OnInit, OnDestroy {
+export class AngularComponent {
     list: IList[] = [
         {
             name: 'Декораторы',
@@ -66,35 +57,15 @@ export class AngularComponent implements OnInit, OnDestroy {
         },
         { name: 'NgRx', path: 'ngrx', questions: ngrxQuestions },
     ];
-    listState: boolean = false;
-    currentPath: string;
-    currentPathSub: Subscription;
-    firstMatAccordionOpening: boolean = true;
+    sidebarState: boolean = false;
 
-    @ViewChildren(MatAccordion) accordion: MatAccordion[];
-
-    constructor(private router: Router) {}
-
-    ngOnInit(): void {
-        this.currentPath = this.router.url;
-        this.currentPathSub = this.router.events.subscribe((event) => {
-            if (event instanceof NavigationEnd) {
-                this.currentPath = this.slicePath(event.url);
-            }
-        });
-        this.currentPath = this.slicePath(this.currentPath);
+    setNewSidebarState(event: boolean): void {
+        this.sidebarState = event;
+        this.resetBodyClass();
     }
 
-    ngOnDestroy(): void {
-        this.currentPathSub.unsubscribe();
-    }
-
-    setNewListState(event: boolean): void {
-        this.listState = event;
-    }
-
-    slicePath(fullPath: string): string {
-        const pathsArray = fullPath.split('/');
-        return pathsArray[pathsArray.length - 1];
+    resetBodyClass(): void {
+        const body = document.querySelector('body');
+        body?.classList.toggle('lock');
     }
 }

@@ -14,19 +14,13 @@ import {
 })
 export class TitleComponent {
     @Input('title') titleProps: string;
-    @Input('state') stateProps: boolean = false;
+    @Input('sidebarState') sidebarStateProps: boolean = false;
     @Input('visibleIcon') visibleIconProps: boolean = true;
 
-    @Output() stateChange = new EventEmitter<boolean>();
+    @Output() sidebarStateChange = new EventEmitter<boolean>();
 
-    changeListState(): void {
-        this.stateProps = !this.stateProps;
-        this.stateChange.emit(this.stateProps);
-        this.resetBodyClass();
-    }
-
-    resetBodyClass(): void {
-        const body = document.querySelector('body');
-        body?.classList.toggle('lock');
+    changeSidebarState(): void {
+        this.sidebarStateProps = !this.sidebarStateProps;
+        this.sidebarStateChange.emit(this.sidebarStateProps);
     }
 }
