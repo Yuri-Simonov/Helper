@@ -25,6 +25,6 @@ export class GitComponent {
 
     resetBodyClass(): void {
         const body = document.querySelector('body');
-        body?.classList.toggle('lock');
+        body?.classList.toggle('sidebar-lock');
     }
 }

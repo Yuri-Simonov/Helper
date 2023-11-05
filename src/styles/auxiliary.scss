@@ -2,6 +2,12 @@
     overflow: hidden;
 }
 
+.sidebar-lock {
+    @media (max-width: 992px), (max-height: 440px) {
+        overflow: hidden;
+    }
+}
+
 .disabled {
     pointer-events: none;
     opacity: 0.5;
