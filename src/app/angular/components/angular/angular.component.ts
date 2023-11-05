@@ -50,11 +50,11 @@ export class AngularComponent {
             questions: changeDetectionQuestions,
         },
         { name: 'RxJs', path: 'rxjs', questions: rxjsQuestions },
-        {
-            name: 'RxJs ==> Операторы',
-            path: 'rxjs_operators',
-            questions: rxjsOperatorsQuestions,
-        },
+        // {
+        //     name: 'RxJs ==> Операторы',
+        //     path: 'rxjs_operators',
+        //     questions: rxjsOperatorsQuestions,
+        // },
         { name: 'NgRx', path: 'ngrx', questions: ngrxQuestions },
     ];
     sidebarState: boolean = false;

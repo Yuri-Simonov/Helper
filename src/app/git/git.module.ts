@@ -4,19 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { GitComponent } from './components/git/git.component';
 
-import {
-    EmptyModule,
-    MaterialModule,
-    SidenavModule,
-    SpoilersModule,
-    TitleModule,
-} from '@modules';
+import { SpoilersModule, TitleModule } from '@modules';
 
 const routes: Routes = [
     {
-        path: 'git',
+        path: 'git/all',
         component: GitComponent,
-        children: [{ path: 'all', component: GitComponent }],
+        // children: [{ path: 'all', component: GitComponent }],
     },
 ];
 
@@ -25,10 +19,7 @@ const routes: Routes = [
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
-        MaterialModule,
-        SidenavModule,
         TitleModule,
-        EmptyModule,
         SpoilersModule,
     ],
 })

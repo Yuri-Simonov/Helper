@@ -1,4 +1,5 @@
 import {
+    ChangeDetectionStrategy,
     Component,
     EventEmitter,
     Input,
@@ -9,12 +10,13 @@ import { MatAccordion } from '@angular/material/expansion';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { IList } from '../../../types';
+import { IList, IQuestion } from '../../../types';
 
 @Component({
     selector: 'app-spoilers',
     templateUrl: './spoilers.component.html',
     styleUrls: ['./spoilers.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpoilersComponent {
     currentPath: string;
@@ -60,5 +62,13 @@ export class SpoilersComponent {
     resetBodyClass(): void {
         const body = document.querySelector('body');
         body?.classList.toggle('lock');
+    }
+
+    trackByFn(index: number, item: IList | IQuestion): string {
+        if ('path' in item) {
+            return item.path;
+        } else {
+            return item.title;
+        }
     }
 }

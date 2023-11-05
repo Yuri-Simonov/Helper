@@ -15,7 +15,7 @@ export class HomeComponent {
             links: [
                 { route: 'javascript', name: 'JavaScript' },
                 { route: 'angular', name: 'Angular' },
-                { route: 'git', name: 'Git' },
+                { route: 'git/all', name: 'Git' },
                 { route: 'others', name: 'Разное', disabled: true },
             ],
         },

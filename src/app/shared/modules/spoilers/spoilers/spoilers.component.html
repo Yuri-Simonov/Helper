@@ -1,16 +1,20 @@
 <div class="spoilers" [ngClass]="{ spoilers_simple: withoutSidebarProps }">
     <app-sidenav
+        *ngIf="!withoutSidebarProps"
         [list]="listProps"
         [state]="sidebarStateProps"
         (click)="changeSidebarState()"
     ></app-sidenav>
     <div
         class="spoilers__items"
-        [ngClass]="{ spoilers__items_full: currentPath === 'angular' }"
+        [ngClass]="{ spoilers__items_full: currentPath === emptyPathProps }"
     >
         <ng-container *ngFor="let item of listProps">
             <ng-container *ngIf="item.path === currentPath">
-                <div class="spoilers__item" *ngFor="let q of item.questions">
+                <div
+                    class="spoilers__item"
+                    *ngFor="let q of item.questions; trackBy: trackByFn"
+                >
                     <mat-accordion
                         matAccordion
                         [appEscape]="accordion"
