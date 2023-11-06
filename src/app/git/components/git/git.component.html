@@ -1,12 +1,6 @@
-<app-title
-    title="Git"
-    [sidebarState]="sidebarState"
-    (sidebarStateChange)="setNewSidebarState($event)"
-></app-title>
+<app-title title="Git" [visibleIcon]="false"></app-title>
 <app-spoilers
     emptyPath="git"
     [list]="list"
-    [sidebarState]="sidebarState"
-    (sidebarStateChange)="setNewSidebarState($event)"
     [withoutSidebar]="true"
 ></app-spoilers>

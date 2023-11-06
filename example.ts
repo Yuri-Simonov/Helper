@@ -1,5 +1,5 @@
-import { Observable, timer, Subscription } from 'rxjs';
+// import { Observable, timer, Subscription } from 'rxjs';
 
-const subs: Subscription = timer(1000).subscribe();
+// const subs: Subscription = timer(1000).subscribe();
 
-subs.unsubscribe();
+// subs.unsubscribe();

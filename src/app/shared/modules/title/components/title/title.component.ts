@@ -1,10 +1,12 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    EventEmitter,
     Input,
-    Output,
+    OnDestroy,
+    OnInit,
 } from '@angular/core';
+import { SidenavService } from '../../../../services/sidenav.service';
+import { ReplaySubject, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-title',
@@ -12,15 +14,27 @@ import {
     styleUrls: ['./title.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TitleComponent {
+export class TitleComponent implements OnInit, OnDestroy {
+    onDestroy$ = new ReplaySubject<number>(1);
+    sidenavState: boolean;
+
     @Input('title') titleProps: string;
-    @Input('sidebarState') sidebarStateProps: boolean = false;
     @Input('visibleIcon') visibleIconProps: boolean = true;
 
-    @Output() sidebarStateChange = new EventEmitter<boolean>();
+    constructor(private sidenavService: SidenavService) {}
 
-    changeSidebarState(): void {
-        this.sidebarStateProps = !this.sidebarStateProps;
-        this.sidebarStateChange.emit(this.sidebarStateProps);
+    ngOnInit() {
+        this.sidenavService.sidebarState
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe((newState) => (this.sidenavState = newState));
+    }
+
+    ngOnDestroy() {
+        this.onDestroy$.next(0);
+        this.onDestroy$.complete();
+    }
+
+    changeSidenavState(state: boolean): void {
+        this.sidenavService.setNewSidebarState(state);
     }
 }

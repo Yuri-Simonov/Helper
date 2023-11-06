@@ -1,10 +1,5 @@
 <div class="spoilers" [ngClass]="{ spoilers_simple: withoutSidebarProps }">
-    <app-sidenav
-        *ngIf="!withoutSidebarProps"
-        [list]="listProps"
-        [state]="sidebarStateProps"
-        (click)="changeSidebarState()"
-    ></app-sidenav>
+    <app-sidenav *ngIf="!withoutSidebarProps" [list]="listProps"></app-sidenav>
     <div
         class="spoilers__items"
         [ngClass]="{ spoilers__items_full: currentPath === emptyPathProps }"

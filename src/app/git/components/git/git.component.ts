@@ -1,8 +1,16 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    OnDestroy,
+    OnInit,
+} from '@angular/core';
 
 import { IList } from '@types';
 
 import { allGitQuestions } from './../../questions/all';
+
+import { SidenavService } from '../../../shared/services/sidenav.service';
+import { ReplaySubject, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-git',
@@ -10,21 +18,25 @@ import { allGitQuestions } from './../../questions/all';
     styleUrls: ['./git.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GitComponent {
+export class GitComponent implements OnInit, OnDestroy {
+    onDestroy$ = new ReplaySubject<number>(1);
     list: IList[] = [{ name: 'Все', path: 'all', questions: allGitQuestions }];
-    sidebarState: boolean = false;
+    sidenavState: boolean;
 
-    setNewSidebarState(event: boolean): void {
-        this.sidebarState = event;
+    constructor(private sidenavService: SidenavService) {}
+
+    ngOnInit() {
+        this.sidenavService.sidebarState
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe((newState) => (this.sidenavState = newState));
     }
 
-    changeListState(): void {
-        this.sidebarState = !this.sidebarState;
-        this.resetBodyClass();
+    ngOnDestroy() {
+        this.onDestroy$.next(0);
+        this.onDestroy$.complete();
     }
 
-    resetBodyClass(): void {
-        const body = document.querySelector('body');
-        body?.classList.toggle('sidebar-lock');
+    changeSidenavState(state: boolean): void {
+        this.sidenavService.setNewSidebarState(state);
     }
 }

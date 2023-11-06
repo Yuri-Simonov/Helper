@@ -1,16 +1,17 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    EventEmitter,
     Input,
-    Output,
+    OnDestroy,
+    OnInit,
     ViewChildren,
 } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ReplaySubject, takeUntil } from 'rxjs';
 
 import { IList, IQuestion } from '../../../types';
+import { SidenavService } from '../../../services/sidenav.service';
 
 @Component({
     selector: 'app-spoilers',
@@ -18,34 +19,42 @@ import { IList, IQuestion } from '../../../types';
     styleUrls: ['./spoilers.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SpoilersComponent {
+export class SpoilersComponent implements OnInit, OnDestroy {
+    onDestroy$ = new ReplaySubject<number>(1);
     currentPath: string;
-    currentPathSub: Subscription;
     firstMatAccordionOpening: boolean = true;
+    sidenavState: boolean;
 
     @Input('emptyPath') emptyPathProps: string;
     @Input('list') listProps: IList[];
     @Input('withoutSidebar') withoutSidebarProps: boolean = false;
-    @Input('sidebarState') sidebarStateProps: boolean = false;
-
-    @Output() sidebarStateChange = new EventEmitter<boolean>();
 
     @ViewChildren(MatAccordion) accordion: MatAccordion[];
 
-    constructor(private router: Router) {}
+    constructor(
+        private router: Router,
+        private sidenavService: SidenavService
+    ) {}
 
     ngOnInit(): void {
         this.currentPath = this.router.url;
-        this.currentPathSub = this.router.events.subscribe((event) => {
-            if (event instanceof NavigationEnd) {
-                this.currentPath = this.slicePath(event.url);
-            }
-        });
+        this.router.events
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe((event) => {
+                if (event instanceof NavigationEnd) {
+                    this.currentPath = this.slicePath(event.url);
+                }
+            });
         this.currentPath = this.slicePath(this.currentPath);
+
+        this.sidenavService.sidebarState
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe((newState) => (this.sidenavState = newState));
     }
 
-    ngOnDestroy(): void {
-        this.currentPathSub.unsubscribe();
+    ngOnDestroy() {
+        this.onDestroy$.next(0);
+        this.onDestroy$.complete();
     }
 
     slicePath(fullPath: string): string {
@@ -53,15 +62,8 @@ export class SpoilersComponent {
         return pathsArray[pathsArray.length - 1];
     }
 
-    changeSidebarState(): void {
-        this.sidebarStateProps = !this.sidebarStateProps;
-        this.sidebarStateChange.emit(this.sidebarStateProps);
-        this.resetBodyClass();
-    }
-
-    resetBodyClass(): void {
-        const body = document.querySelector('body');
-        body?.classList.toggle('sidebar-lock');
+    changeSidenavState(state: boolean): void {
+        this.sidenavService.setNewSidebarState(state);
     }
 
     trackByFn(index: number, item: IList | IQuestion): string {

@@ -1,5 +1,7 @@
 <mat-toolbar color="primary" class="header">
-    <a routerLink="/" class="header__logo" (click)="resetBodyClass()">Helper</a>
+    <a routerLink="/" class="header__logo" (click)="changeSidenavState(false)">
+        Helper
+    </a>
     <span class="header__spacer"></span>
     <button mat-button [matMenuTriggerFor]="afterMenu">
         <mat-icon>arrow_drop_down</mat-icon>
@@ -7,37 +9,14 @@
     </button>
     <mat-menu #afterMenu="matMenu" xPosition="after">
         <a
-            routerLink="javascript"
+            [routerLink]="chapter.path"
             routerLinkActive="disabled"
             mat-menu-item
-            (click)="resetBodyClass()"
+            (click)="changeSidenavState(false)"
+            *ngFor="let chapter of chapters"
+            [ngClass]="{ disabled: chapter.disabled }"
         >
-            JavaScript
-        </a>
-        <a
-            routerLink="angular"
-            routerLinkActive="disabled"
-            mat-menu-item
-            (click)="resetBodyClass()"
-        >
-            Angular
-        </a>
-        <a
-            routerLink="git/all"
-            routerLinkActive="disabled"
-            mat-menu-item
-            (click)="resetBodyClass()"
-        >
-            Git
-        </a>
-        <a
-            routerLink="others"
-            routerLinkActive="disabled"
-            mat-menu-item
-            (click)="resetBodyClass()"
-            class="disabled"
-        >
-            Разное
+            {{ chapter.name }}
         </a>
     </mat-menu>
     <a mat-button href="https://github.com/Yuri-Simonov/Helper" target="_blank">

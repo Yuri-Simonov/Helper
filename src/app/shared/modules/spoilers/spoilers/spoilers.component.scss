@@ -79,7 +79,15 @@
     }
 
     mat-panel-title span {
-        margin: 0 6px 0 6px;
         color: var(--purple-light);
+    }
+
+    .mat-expansion-panel-header-title,
+    .mat-expansion-panel-header-description {
+        gap: 6px;
+
+        @media (max-width: 992px), (max-height: 440px) {
+            display: block;
+        }
     }
 }

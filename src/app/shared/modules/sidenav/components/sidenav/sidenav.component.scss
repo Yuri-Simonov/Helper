@@ -6,9 +6,6 @@
         height: calc(100% + var(--footer-height));
         overflow: auto;
     }
-
-    @media (max-width: 599px), (max-height: 440px) {
-    }
 }
 
 .sidenav {

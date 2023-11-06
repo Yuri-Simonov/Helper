@@ -4,7 +4,7 @@
         aria-hidden="false"
         fontIcon="menu"
         *ngIf="visibleIconProps"
-        (click)="changeSidebarState()"
+        (click)="changeSidenavState(!sidenavState)"
     ></mat-icon>
     <span class="title__name">{{ titleProps }}</span>
 </h1>

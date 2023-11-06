@@ -57,15 +57,4 @@ export class AngularComponent {
         // },
         { name: 'NgRx', path: 'ngrx', questions: ngrxQuestions },
     ];
-    sidebarState: boolean = false;
-
-    setNewSidebarState(event: boolean): void {
-        this.sidebarState = event;
-        this.resetBodyClass();
-    }
-
-    resetBodyClass(): void {
-        const body = document.querySelector('body');
-        body?.classList.toggle('sidebar-lock');
-    }
 }
