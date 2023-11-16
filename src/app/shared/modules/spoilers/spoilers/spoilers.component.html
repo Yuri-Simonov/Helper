@@ -1,49 +1,44 @@
 <div class="spoilers" [ngClass]="{ spoilers_simple: withoutSidebarProps }">
-    <app-sidenav *ngIf="!withoutSidebarProps" [list]="listProps"></app-sidenav>
-    <div
-        class="spoilers__items"
-        [ngClass]="{ spoilers__items_full: currentPath === emptyPathProps }"
-    >
-        <ng-container *ngFor="let item of listProps">
-            <ng-container *ngIf="item.path === currentPath">
-                <div
-                    class="spoilers__item"
-                    *ngFor="let q of item.questions; trackBy: trackByFn"
-                >
-                    <mat-accordion
-                        matAccordion
-                        [appEscape]="accordion"
-                        [ngClass]="{ disabled: q.disabled }"
-                    >
-                        <mat-expansion-panel
-                            (opened)="
-                                q.selected = true;
-                                firstMatAccordionOpening = false
-                            "
-                            (closed)="q.selected = false"
-                            [ngClass]="{
-                                'first-mat-accordion-opening':
-                                    firstMatAccordionOpening
-                            }"
-                        >
-                            <mat-expansion-panel-header>
-                                <mat-panel-title
-                                    [innerHTML]="q.title"
-                                ></mat-panel-title>
-                            </mat-expansion-panel-header>
-                            <div [innerHTML]="q.body"></div>
-                            <i
-                                class="spoilers__last-update"
-                                *ngIf="q.lastUpdate"
-                            >
-                                последнее обновление: {{ q.lastUpdate }}
-                            </i>
-                        </mat-expansion-panel>
-                    </mat-accordion>
-                </div>
-            </ng-container>
-        </ng-container>
-
-        <app-empty *ngIf="currentPath === emptyPathProps"></app-empty>
-    </div>
+    @if (!withoutSidebarProps) {
+		<app-sidenav [list]="listProps"></app-sidenav>
+		<div
+			class="spoilers__items"
+			[ngClass]="{ spoilers__items_full: currentPath === emptyPathProps }"
+		>
+			@for (item of listProps; track item.path) { 
+				@if (item.path === currentPath) { 
+					@for (q of item.questions; track q.title) {
+						<div class="spoilers__item">
+							<mat-accordion
+								matAccordion
+								[appEscape]="accordion"
+								[ngClass]="{ disabled: q.disabled }"
+							>
+								<mat-expansion-panel
+									(opened)="
+										q.selected = true; firstMatAccordionOpening = false
+									"
+									(closed)="q.selected = false"
+									[ngClass]="{
+										'first-mat-accordion-opening': firstMatAccordionOpening
+									}"
+								>
+									<mat-expansion-panel-header>
+										<mat-panel-title
+											[innerHTML]="q.title"
+										></mat-panel-title>
+									</mat-expansion-panel-header>
+									<div [innerHTML]="q.body"></div>
+									<i class="spoilers__last-update" *ngIf="q.lastUpdate">
+										последнее обновление: {{ q.lastUpdate }}
+									</i>
+								</mat-expansion-panel>
+							</mat-accordion>
+						</div>
+					}
+				}
+			}
+			@if (currentPath === emptyPathProps) { <app-empty></app-empty> }
+		</div>
+    }
 </div>

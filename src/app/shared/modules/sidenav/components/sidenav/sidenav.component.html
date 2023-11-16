@@ -1,18 +1,17 @@
 <div class="sidenav" [ngClass]="{ sidenav_hide: !sidenavState }">
     <mat-nav-list>
-        <a
-            mat-list-item
-            [routerLink]="[item.path]"
-            routerLinkActive="disabled"
-            *ngFor="let item of listProps"
-            (click)="changeSidenavState(!sidenavState)"
-        >
-            {{ item.name }}
-        </a>
+        @for (item of listProps; track $index) {
+			<a
+				mat-list-item
+				[routerLink]="[item.path]"
+				routerLinkActive="disabled"
+				(click)="changeSidenavState(!sidenavState)"
+			>
+				{{ item.name }}
+			</a>
+        }
     </mat-nav-list>
 </div>
-<div
-    class="sidenav__overlay"
-    *ngIf="sidenavState"
-    (click)="changeSidenavState(!sidenavState)"
-></div>
+@if (sidenavState) {
+	<div class="sidenav__overlay" (click)="changeSidenavState(!sidenavState)"></div>
+}

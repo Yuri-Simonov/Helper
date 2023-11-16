@@ -8,16 +8,17 @@
         Разделы
     </button>
     <mat-menu #afterMenu="matMenu" xPosition="after">
-        <a
-            [routerLink]="chapter.path"
-            routerLinkActive="disabled"
-            mat-menu-item
-            (click)="changeSidenavState(false)"
-            *ngFor="let chapter of chapters"
-            [ngClass]="{ disabled: chapter.disabled }"
-        >
-            {{ chapter.name }}
-        </a>
+        @for (chapter of chapters; track $index) {
+			<a
+				[routerLink]="chapter.path"
+				routerLinkActive="disabled"
+				mat-menu-item
+				(click)="changeSidenavState(false)"
+				[ngClass]="{ disabled: chapter.disabled }"
+			>
+				{{ chapter.name }}
+			</a>
+        }
     </mat-menu>
     <a mat-button href="https://github.com/Yuri-Simonov/Helper" target="_blank">
         <mat-icon>

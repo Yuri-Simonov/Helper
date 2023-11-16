@@ -11,30 +11,33 @@
         </p>
     </div>
     <div class="home__body">
-        <article class="home__chapter" *ngFor="let chapter of chapters">
-            <h2 class="home__subtitle title">{{ chapter.title }}</h2>
-            <ng-container *ngFor="let link of chapter.links">
-                <a
-                    *ngIf="link.route"
-                    mat-raised-button
-                    color="primary"
-                    [routerLink]="link.route"
-                    [href]="link.href"
-                    [ngClass]="{ disabled: link.disabled }"
-                >
-                    {{ link.name }}
-                </a>
-                <a
-                    *ngIf="link.href"
-                    mat-raised-button
-                    color="primary"
-                    [href]="link.href"
-                    target="_blank"
-                    [ngClass]="{ disabled: link.disabled }"
-                >
-                    {{ link.name }}
-                </a>
-            </ng-container>
-        </article>
+        @for (chapter of chapters; track $index) {
+			<article class="home__chapter">
+				<h2 class="home__subtitle title">{{ chapter.title }}</h2>
+				@for (link of chapter.links; track $index) { 
+					@if (link?.route) {
+						<a
+							mat-raised-button
+							color="primary"
+							[routerLink]="link.route"
+							[ngClass]="{ disabled: link.disabled }"
+						>
+							{{ link.name }} 
+						</a>
+					} 
+					@if (link?.href) {
+						<a
+							mat-raised-button
+							color="primary"
+							[href]="link.href"
+							target="_blank"
+							[ngClass]="{ disabled: link.disabled }"
+						>
+							{{ link.name }} 
+						</a>
+					}
+				}
+			</article>
+        }
     </div>
 </section>
