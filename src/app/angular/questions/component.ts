@@ -482,10 +482,40 @@ export const componentQuestions: IQuestion[] = [
     },
     {
         title: 'Элемент ng-container',
-        body: ``,
+        body: `<p>
+                Элемент <code>ng-container</code> - это
+                <span class="attention">
+                    специальный элемент, который может содержать структурные
+                    директивы без добавления новых элементов в DOM-дерево</span
+                >.
+            </p>
+            <p>
+                Допустим, в редакторе кода у нас имеется следующий код,
+                содержащий внутри себя 2 элемента <code>ng-container</code>, на
+                каждом из которых весит структурная директива
+                <code>*ngIf</code>:
+            </p>
+            <pre><code><span class="tag">&lt;div></span>
+	<span class="tag">&lt;ng-container</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span><span class="boolean">true</span><span class="punctuation">"</span><span class="tag">></span>
+		<span class="tag">&lt;p></span>Первый текст<span class="tag">&lt;/p></span>
+	<span class="tag">&lt;/ng-container></span>
+	<span class="tag">&lt;ng-container</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span><span class="boolean">false</span><span class="punctuation">"</span><span class="tag">></span>
+		<span class="tag">&lt;p></span>Второй текст<span class="tag">&lt;/p></span>
+	<span class="tag">&lt;/ng-container></span>
+<span class="tag">&lt;/div></span></code></pre>
+            <p>
+                В итоге, в браузере данный участок кода будет выглядеть
+                следующим образом:
+            </p>
+            <pre><code><span class="tag">&lt;div></span>
+	<span class="tag">&lt;p></span>Первый текст<span class="tag">&lt;/p></span>
+<span class="tag">&lt;/div></span></code></pre>
+            <p>
+                Как видно из примера, элемент <code>ng-container</code> не
+                добавляет новые элементы в DOM-дерево.
+            </p>`,
         selected: false,
-        lastUpdate: '',
-        disabled: true,
+        lastUpdate: '19.11.2023',
     },
     // {
     //     title: '',
