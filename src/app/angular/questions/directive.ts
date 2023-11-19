@@ -268,7 +268,7 @@ arr: <span class="type">number[]</span> <span class="operator">=</span> <span
         lastUpdate: '26.10.2023',
     },
     {
-        title: 'Структурная директива <span class="variable">*ngSwitch</span>',
+        title: 'Структурная директива <span class="variable">*ngSwitchCase</span>',
         body: `<p>
                 <span class="attention"
                     >Структурная директива <code>*ngSwitchCase</code> позволяет
@@ -314,6 +314,60 @@ arr: <span class="type">number[]</span> <span class="operator">=</span> <span cl
 <span class='tag'>&lt;/div></span></code></pre>`,
         selected: false,
         lastUpdate: '15.10.2023',
+    },
+    {
+        title: 'Использование двух или более структурных директив на одном элементе DOM-дерева',
+        body: `<p>
+                В реальной разработке очень часто возникают ситуации, когда
+                нужно использовать 2 или более структурных директив на одном и
+                том же элементе DOM-дерева, но
+                <span class="attention">этого делать нельзя</span>, т.к. в этом
+                случае возникает конфликт и элемент <code>ng-template</code> не
+                понимает, к какой из структурных директив он должен привязаться.
+            </p>
+            <p>
+                Казалось бы патовая ситуация, но
+                <span class="attention">
+                    решение данной проблемы есть - использование элемента
+                    <code>ng-container</code></span
+                >. То есть, мы можем оставить одну из структурных директив на
+                элементе DOM-дерева, а вторую повесить на элемент
+                <code>ng-container</code>. Только имейте ввиду, что
+                <span class="attention"
+                    >элемент <code>ng-container</code> так же может содержать
+                    только одну структурную директиву</span
+                >
+                (это на случай, если суммарное количество структурных директив
+                больше двух).
+            </p>
+            <p>
+                Так же не забывайте учитывать порядок выполнения структурных
+                директив, т.к. расположение структурной директивы
+                <code>*ngIf</code> до или после после той же
+                <code>*ngFor</code> будут иметь разные итоговые результаты.
+            </p>
+            <pre><code><span class="comment comment_start">// первый пример</span>
+<span class='tag'>&lt;ng-container</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span>condition<span class="punctuation">"</span><span class='tag'>></span>
+	<span class='tag'>&lt;div></span> <span class="keyword">*ngFor</span><span class="operator">=</span><span class="punctuation">"</span><span class="keyword">let</span> <span class="variable">item</span> <span class="keyword">of</span> arr<span class="punctuation">"</span><span class='tag'>></span>
+  		<span class='tag'>&lt;span></span><span class="punctuation">&#123;&#123;</span> <span class="variable">item</span> <span class="punctuation">&#125;&#125;</span><span class='tag'>&lt;/span></span>
+	<span class='tag'>&lt;/div></span>
+<span class='tag'>&lt;/ng-container></span>
+
+<span class="comment comment_start">// второй пример</span>
+<span class='tag'>&lt;ng-container></span> <span class="keyword">*ngFor</span><span class="operator">=</span><span class="punctuation">"</span><span class="keyword">let</span> <span class="variable">item</span> <span class="keyword">of</span> arr<span class="punctuation">"</span><span class='tag'>></span>
+	<span class='tag'>&lt;div</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span>condition<span class="punctuation">"</span><span class='tag'>></span>
+  		<span class='tag'>&lt;span></span><span class="punctuation">&#123;&#123;</span> <span class="variable">item</span> <span class="punctuation">&#125;&#125;</span><span class='tag'>&lt;/span></span>
+	<span class='tag'>&lt;/div></span>
+<span class='tag'>&lt;/ng-container></span></code></pre>
+            <p>
+                Если сравнить два примера выше, то в зависимости от результата
+                условия структурной директивы <code>*ngIf</code> в первом
+                примере либо будут все элементы массива в итоговой разметке,
+                либо их не будет вовсе. А вот во втором примере какие-то
+                элементы попадут в итоговую разметку, а какие-то нет.
+            </p>`,
+        selected: false,
+        lastUpdate: '19.11.2023',
     },
     {
         title: 'Атрибутивная директива <span class="variable">ngClass</span>',
