@@ -1,6 +1,7 @@
 < - &lt;
 { - &#123;
 } - &#125;
+@ - &#64;
 
 <span class="variable"></span>
 <span class="tag">&lt;</span>

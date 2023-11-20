@@ -36,12 +36,17 @@ export const directiveQuestions: IQuestion[] = [
         lastUpdate: '24.09.2023',
     },
     {
-        title: 'Структурная директива <span class="variable">*ngIf</span>',
+        title: 'Структурная директива <span class="variable">@If</span> / <span class="variable">*ngIf</span>',
         body: `<p>
+                Ниже будут представлены примеры с новым синтаксисом
+                (<code>&#64;if</code>) и старым (<code>*ngIf</code>)
+            </p>
+			<p>
                 <span class="attention"
-                    >Структурная директива *ngIf позволяет скрывать или
-                    отображать элемент в DOM-дереве в зависимости от переданного
-                    в нее условия</span
+                    >Структурная директива <code>&#64;if</code> /
+                    <code>*ngIf</code> позволяет скрывать или отображать элемент
+                    в DOM-дереве в зависимости от переданного в нее
+                    условия</span
                 >.
             </p>
             <p>
@@ -50,42 +55,50 @@ export const directiveQuestions: IQuestion[] = [
                 <span class="attention"> будет приведено к булевому типу</span>,
                 и всё.
             </p>
-            <pre><code><span class="comment comment_start">// в шаблоне компонента</span>
-toggler: <span class="type">boolean</span> <span class="operator">=</span> <span class="boolean">true</span>;
-
-<span class="comment comment_start">// в классе компонента</span>
-<span class="tag"><</span><span class="tag">div</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">"</span><span class="tag">></span><span class="string">Какой-то текст</span><span class="tag"><</><span class="tag">/div></span></code></pre>
+            <pre><code><span class="comment comment_start">// новый синтаксис</span>
+<span class="keyword">@if</span><span class="punctuation">(</span><span class="boolean">true</span><span class="punctuation">) {</span>
+	<span class="tag">&lt;div></span>Какой-то текст<span class="tag">&lt;/div></span>
+<span class="punctuation">}</span>
+				
+<span class="comment comment_start">// старый синтаксис</span>
+<span class="tag">&lt;div</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span><span class="boolean">true</span><span class="punctuation">"</span><span class="tag">></span>Какой-то текст<span class="tag">&lt;/div></span></code></pre>
             <p>
-                Т.к. условие выше возвращает <code>true</code>, следовательно,
-                параграф будет показан на странице в браузере.
+                Т.к. оба условия выше возвращают <code>true</code>,
+                следовательно, оба параграфа будут показан на странице в
+                браузере.
             </p>
             <p>
                 Чтобы сделать логическое отрицание в условии, достаточно перед
                 условием добавить восклицательный знак (<code>!</code>):
             </p>
-            <pre><code><span class="comment comment_start">// в шаблоне компонента</span>
-<span class="tag"><</span><span class="tag">div</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span><span class="operator">!</span>toggler<span class="punctuation">"</span><span class="tag">></span><span class="string">Какой-то текст</span><span class="tag"><</><span class="tag">/div></span></code></pre>
+            <pre><code><span class="comment comment_start">// новый синтаксис</span>
+<span class="keyword">@if</span><span class="punctuation">(</span><span class="operator">!</span><span class="boolean">true</span><span class="punctuation">) {</span>
+	<span class="tag">&lt;div></span>Какой-то текст<span class="tag">&lt;/div></span>
+<span class="punctuation">}</span>
+				
+<span class="comment comment_start">// старый синтаксис</span>
+<span class="tag">&lt;div</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span><span class="operator">!</span><span class="boolean">true</span><span class="punctuation">"</span><span class="tag">></span>Какой-то текст<span class="tag">&lt;/div></span></code></pre>
             <p>
-                Выше представлены примеры с сокращенной записью директивы,
-                которая осуществляется за счет указания звёздочки
-                (<code>*</code>) перед названием директивы. Без звездочки самый
-                первый пример выглядел бы следующим образом:
+                Выше в примерах со старым синтаксисом используется сокращенная
+                запись директивы, которая осуществляется за счет указания
+                звёздочки (<code>*</code>) перед названием директивы. Без
+                звездочки самый первый пример со старым синтаксисом выглядел бы
+                следующим образом:
             </p>
-            <pre><code><span class="comment comment_start">// в шаблоне компонента</span>
-<span class="tag"><</span><span class="tag">ng-template</span> <span class="keyword">[ngIf]</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">"</span><span class="tag">></span>
-	<span class="tag"><</span><span class="tag">div</span><span class="tag">></span><span class="string">Какой-то текст</span><span class="tag"><</><span class="tag">/div></span>
-<span class="tag"><</><span class="tag">/ng-template></span></code></pre>
+            <pre><code><span class="tag">&lt;ng-template</span> <span class="keyword">[ngIf]</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">"</span><span class="tag">></span>
+	<span class="tag">&lt;div</span><span class="tag">></span>Какой-то текст<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/ng-template></span></code></pre>
             <p>
                 У данной директивы также присутствует условное ветвление
-                <code>else</code>, в которое
+                <code>else</code>, в которое при использовании старого
+                синтаксиса
                 <span class="attention"
                     >можно передавать только шаблонные переменные из элементов
                     <code>ng-template</code></span
                 >, иначе будет ошибка компиляции TypeScript:
             </p>
-            <pre><code><span class="comment comment_start">// в шаблоне компонента</span>
-<span class="tag"><</span><span class="tag">div</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">;</span> <span class="keyword">else</span> constFromNgTemplate<span class="punctuation">"</span><span class="tag">></span><span class="string">Какой-то текст</span><span class="tag"><</><span class="tag">/div></span>
-<span class="tag"><</span><span class="tag">ng-template</span> <span class="keyword">#constFromNgTemplate</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">"</span><span class="tag">></span><span class="string">Текст из элемента ng-template</span><span class="tag"><</><span class="tag">/ng-template></span></code></pre>
+            <pre><code><span class="tag">&lt;div</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">;</span> <span class="keyword">else</span> constFromNgTemplate<span class="punctuation">"</span><span class="tag">></span>Какой-то текст<span class="tag">&lt;/div></span>
+<span class="tag">&lt;ng-template</span> <span class="keyword">#constFromNgTemplate</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">"</span><span class="tag">></span>Текст из элемента ng-template<span class="tag">&lt;/ng-template></span></code></pre>
             <p>
                 В примере выше, если условие будет истинно, отобразится текст
                 "<i>Какой-то текст</i>", в противном же случае, текст возьмется
@@ -93,6 +106,15 @@ toggler: <span class="type">boolean</span> <span class="operator">=</span> <span
                     >Текст из элемента ng-template</i
                 >".
             </p>
+            <p>
+                Но в новом синтаксисе теперь в ветвление <code>else</code> можно
+                передавать и просто разметку:
+            </p>
+            <pre><code><span class="keyword">@if</span><span class="punctuation">(</span><span class="boolean">true</span><span class="punctuation">) {</span>
+	<span class="tag">&lt;p></span>Какой-то текст<span class="tag">&lt;/p></span>
+<span class="punctuation">}</span> <span class="keyword">@else</span> <span class="punctuation">{</span>
+	<span class="tag">&lt;p></span>Другой текст<span class="tag">&lt;/p></span>
+<span class="punctuation">}</span></code></pre>
             <p>
                 Бывают также случаи, когда необходимо отобразить либо один, либо
                 другой элемент <code>ng-template</code> в зависимости от условия
@@ -104,16 +126,16 @@ toggler: <span class="type">boolean</span> <span class="operator">=</span> <span
                 >:
             </p>
             <pre><code><span class="comment comment_start">// в шаблоне компонента</span>
-<span class="tag"><</span><span class="tag">div</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">;</span> <span class="keyword">then</span> firstNgTemplate; <span class="keyword">else</span> secondNgTemplate<span class="punctuation">"</span><span class="tag">></span><span class="string">Этот текст будет удален</span><span class="tag"><</><span class="tag">/div></span>
-<span class="tag"><</span><span class="tag">ng-template</span> <span class="keyword">#firstNgTemplate</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">"</span><span class="tag">></span><span class="string">Текст из firstNgTemplate</span><span class="tag"><</><span class="tag">/ng-template></span>
-<span class="tag"><</span><span class="tag">ng-template</span> <span class="keyword">#secondNgTemplate</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">"</span><span class="tag">></span><span class="string">Текст из secondNgTemplate</span><span class="tag"><</><span class="tag">/ng-template></span></code></pre>
+<span class="tag">&lt;div</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">;</span> <span class="keyword">then</span> firstNgTemplate; <span class="keyword">else</span> secondNgTemplate<span class="punctuation">"</span><span class="tag">></span>Этот текст будет удален<span class="tag">&lt;/div></span>
+<span class="tag">&lt;ng-template</span> <span class="keyword">#firstNgTemplate</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">"</span><span class="tag">></span>Текст из firstNgTemplate<span class="tag">&lt;/ng-template></span>
+<span class="tag">&lt;ng-template</span> <span class="keyword">#secondNgTemplate</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">"</span><span class="tag">></span>Текст из secondNgTemplate<span class="tag">&lt;/ng-template></span></code></pre>
             <p>
                 Соответственно, если условие истинно, отрисуется
                 <code>firstNgTemplate</code>, иначе -
                 <code>secondNgTemplate</code>.
             </p>`,
         selected: false,
-        lastUpdate: '15.10.2023',
+        lastUpdate: '20.11.2023',
     },
     {
         title: 'Структурная директива <span class="variable">*ngFor</span>',
