@@ -1,29 +1,6 @@
-@use "@angular/material" as mat;
-
 @import "./styles/variables";
 @import "./styles/root";
+@import "./styles/themes/themes";
 @import "./styles/auxiliary";
 @import "./styles/code_settings";
 @import "./styles/code_colors";
-
-@include mat.core();
-
-$my-primary: mat.define-palette(mat.$pink-palette, 500);
-$my-accent: mat.define-palette(mat.$blue-palette, A200, A100, A400);
-
-// The "warn" palette is optional and defaults to red if not specified.
-// $my-warn: mat.define-palette(mat.$red-palette);
-
-$my-theme: mat.define-light-theme(
-    (
-        color: (
-            primary: $my-primary,
-            accent: $my-accent,
-            // warn: $my-warn,
-        ),
-    )
-);
-
-@include mat.all-component-themes($my-theme);
-// @include mat.core-theme($my-theme);
-// @include mat.toolbar-theme($my-theme);

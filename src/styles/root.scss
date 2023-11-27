@@ -30,18 +30,18 @@ svg {
 
 * {
     // стилизация скролла для Firefox
-    scrollbar-color: var(--primary) var(--secondary); /* «цвет ползунка» и «цвет полосы скроллбара» */
+    scrollbar-color: var(--primary-color) var(--secondary-color); /* «цвет ползунка» и «цвет полосы скроллбара» */
     scrollbar-width: thin;
     // стилизация скролла для Chrome
     &::-webkit-scrollbar {
         // это фон самого скроллбара
-        background-color: var(--secondary);
+        background-color: var(--secondary-color);
         width: 6px;
         height: 6px;
     }
     &::-webkit-scrollbar-thumb {
         // индикатор прокрутки, перетаскиваемый элемент.
-        background-color: var(--primary);
+        background-color: var(--primary-color);
         border-radius: 6px;
     }
 }

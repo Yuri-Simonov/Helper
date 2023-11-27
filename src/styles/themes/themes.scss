@@ -1,0 +1,48 @@
+@use "@angular/material" as mat;
+@include mat.core();
+
+$primary-color: mat.define-palette(mat.$orange-palette, 500);
+$accent-color: mat.define-palette(mat.$blue-palette, A200, A100, A400);
+
+$primary-theme-color: mat.define-light-theme(
+    (
+        color: (
+            primary: $primary-color,
+            accent: $accent-color,
+            // warn: $warn-color,
+        ),
+    )
+);
+
+@mixin theme-colors($primary, $accent) {
+    // The "warn" palette is optional and defaults to red if not specified.
+    // $warn-color: mat.define-palette(mat.$red-palette);
+
+    $_primary: map-get($primary-theme-color, primary);
+
+    --primary-color: #{mat.get-color-from-palette($_primary)};
+    --secondary-color: #{map-get($_primary, "500-contrast")};
+
+    $primary-color: mat.define-palette($primary, 500);
+    $accent-color: mat.define-palette($accent, A200, A100, A400);
+
+    $primary-theme-color: mat.define-light-theme(
+        (
+            color: (
+                primary: $primary-color,
+                accent: $accent-color,
+                // warn: $warn-color,
+            ),
+        )
+    );
+
+    @include mat.all-component-colors($primary-theme-color);
+}
+
+.light-theme {
+    @include theme-colors(mat.$orange-palette, mat.$blue-palette);
+}
+
+.dark-theme {
+    @include theme-colors(mat.$blue-palette, mat.$blue-palette);
+}
