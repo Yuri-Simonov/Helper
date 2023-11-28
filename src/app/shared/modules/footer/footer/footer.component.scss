@@ -2,6 +2,9 @@
     height: var(--footer-height);
 
     mat-toolbar {
+        background: var(--secondary-color);
+        color: var(--text-color);
+
         @media (max-width: 768px), (max-height: 440px) {
             height: auto;
             padding: 4px 12px;
@@ -10,6 +13,7 @@
 }
 
 .footer {
+    opacity: 0.5;
     display: flex;
     justify-content: center;
     align-items: center;

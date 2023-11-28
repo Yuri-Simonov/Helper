@@ -1,5 +1,10 @@
 :host {
     height: var(--header-height);
+
+    .mat-toolbar {
+        background: var(--secondary-color);
+        color: var(--text-color);
+    }
 }
 
 .header {
@@ -11,8 +16,13 @@
     box-shadow: var(--box-shadow);
 
     &__logo {
-        color: var(--white);
+        color: var(--text-color);
         text-decoration: none;
+
+        transition: 0.3s;
+        &:hover {
+            color: var(--primary-color);
+        }
     }
 
     &__spacer {
@@ -20,6 +30,11 @@
     }
 
     & > a {
+        transition: 0.3s;
+        &:hover {
+            color: var(--primary-color);
+        }
+
         @media (max-width: 768px) {
             min-width: auto;
 
@@ -38,5 +53,25 @@
     &.mat-toolbar-row,
     &.mat-toolbar-single-row {
         height: inherit;
+    }
+}
+
+::ng-deep body .mat-mdc-menu-panel {
+    border-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+
+    .mat-mdc-menu-content {
+        background-color: var(--secondary-color);
+    }
+
+    .mat-mdc-menu-item,
+    .mat-mdc-menu-item:visited,
+    .mat-mdc-menu-item:link {
+        color: var(--text-color);
+
+        transition: 0.3s;
+        &:hover {
+            color: var(--primary-color);
+        }
     }
 }
