@@ -3,7 +3,6 @@
         position: absolute;
         top: 0;
         left: 0;
-        height: calc(100% + var(--footer-height));
         overflow: auto;
     }
 }
@@ -12,7 +11,9 @@
     width: 15rem;
     height: 100%;
     border-right: var(--border);
-    background-color: var(--secondary);
+    background-color: var(--mdc-filled-text-field-input-text-placeholder-color);
+    display: flex;
+    flex-direction: column;
 
     @media (max-width: 992px) {
         position: relative;
@@ -47,7 +48,6 @@
         position: sticky;
         top: 64px;
         left: 0;
-        background-color: inherit;
 
         @media (max-width: 992px) {
             top: 0;
@@ -64,5 +64,24 @@
         @media (max-width: 992px), (max-height: 440px) {
             padding: 8px 0;
         }
+    }
+
+    & ::ng-deep a {
+        &:hover {
+            .mdc-list-item__primary-text {
+                color: var(--primary-color);
+            }
+        }
+
+        .mdc-list-item__primary-text {
+            transition: 0.3s;
+            color: var(--text-color);
+        }
+    }
+    & ::ng-deep .mdc-list-item__primary-text {
+    }
+
+    app-footer {
+        margin-top: auto;
     }
 }

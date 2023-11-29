@@ -2,42 +2,40 @@
     <div class="home__header">
         <h1 class="home__title">Добро пожаловать в Helper</h1>
         <p class="home__text">
-            Ниже представлены разделы, в которых вы сможете найти много полезной
-            теоретической и практической информации.
+            Ниже представлены разделы, в которых вы сможете найти много полезной теоретической и практической
+            информации.
         </p>
-        <p class="home__text">
-            Выберите любой интересующий вас раздел для более подробного
-            ознакомления
-        </p>
+        <p class="home__text">Выберите любой интересующий вас раздел для более подробного ознакомления</p>
     </div>
     <div class="home__body">
         @for (chapter of chapters; track $index) {
-			<article class="home__chapter">
-				<h2 class="home__subtitle title">{{ chapter.title }}</h2>
-				@for (link of chapter.links; track $index) { 
-					@if (link?.route) {
-						<a
-							mat-raised-button
-							color="primary"
-							[routerLink]="link.route"
-							[ngClass]="{ disabled: link.disabled }"
-						>
-							{{ link.name }} 
-						</a>
-					} 
-					@if (link?.href) {
-						<a
-							mat-raised-button
-							color="primary"
-							[href]="link.href"
-							target="_blank"
-							[ngClass]="{ disabled: link.disabled }"
-						>
-							{{ link.name }} 
-						</a>
-					}
-				}
-			</article>
+            <article class="home__chapter">
+                <h2 class="home__subtitle title">{{ chapter.title }}</h2>
+                @for (link of chapter.links; track $index) {
+                    @if (link?.route) {
+                        <a
+                            mat-raised-button
+                            color="primary"
+                            [routerLink]="link.route"
+                            [ngClass]="{ disabled: link.disabled }"
+                        >
+                            {{ link.name }}
+                        </a>
+                    }
+                    @if (link?.href) {
+                        <a
+                            mat-raised-button
+                            color="primary"
+                            [href]="link.href"
+                            target="_blank"
+                            [ngClass]="{ disabled: link.disabled }"
+                        >
+                            {{ link.name }}
+                        </a>
+                    }
+                }
+            </article>
         }
     </div>
 </section>
+<app-footer></app-footer>

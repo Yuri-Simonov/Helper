@@ -9,8 +9,13 @@ body {
 }
 body {
     color: var(--text-color);
+    background: linear-gradient(var(--primary-color), var(--secondary-color));
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+
+    @media (max-width: 440px), (max-height: 440px) {
+        background: linear-gradient(180deg, var(--primary-color) 0%, transparent 40%);
+    }
 }
 
 body > app-root {

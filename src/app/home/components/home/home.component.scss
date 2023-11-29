@@ -1,10 +1,5 @@
 .home {
-    background: linear-gradient(var(--primary-color), transparent);
     padding: 0 15px;
-
-    @media (max-width: 440px), (max-height: 440px) {
-        background: linear-gradient(180deg, var(--primary-color) 0%, transparent 40%);
-    }
 
     &__header {
         display: flex;

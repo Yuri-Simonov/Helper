@@ -2,7 +2,7 @@
     height: var(--header-height);
 
     .mat-toolbar {
-        background: var(--secondary-color);
+        background: transparent;
         color: var(--text-color);
     }
 }
@@ -21,7 +21,7 @@
 
         transition: 0.3s;
         &:hover {
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
     }
 
@@ -32,7 +32,7 @@
     & > a {
         transition: 0.3s;
         &:hover {
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
 
         @media (max-width: 768px) {

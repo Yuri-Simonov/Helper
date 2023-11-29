@@ -2,7 +2,7 @@
     height: var(--footer-height);
 
     mat-toolbar {
-        background: var(--secondary-color);
+        background: transparent;
         color: var(--text-color);
 
         @media (max-width: 768px), (max-height: 440px) {
