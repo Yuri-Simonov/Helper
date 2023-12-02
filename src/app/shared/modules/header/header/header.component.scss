@@ -2,7 +2,7 @@
     height: var(--header-height);
 
     .mat-toolbar {
-        background: transparent;
+        background: var(--primary-color);
         color: var(--text-color);
     }
 }

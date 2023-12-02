@@ -9,6 +9,7 @@ pre {
     max-width: calc(100vw - 241px - 48px);
     overflow-x: auto;
     overflow-y: hidden;
+    border-radius: 4px;
 
     @media (max-width: 992px) {
         max-width: calc(100vw - 48px);
