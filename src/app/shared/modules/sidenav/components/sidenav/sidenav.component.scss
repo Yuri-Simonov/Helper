@@ -12,8 +12,6 @@
     height: 100%;
     border-right: var(--border);
     background-color: var(--mdc-filled-text-field-input-text-placeholder-color);
-    display: flex;
-    flex-direction: column;
 
     @media (max-width: 992px) {
         position: relative;
@@ -79,9 +77,5 @@
         }
     }
     & ::ng-deep .mdc-list-item__primary-text {
-    }
-
-    app-footer {
-        margin-top: auto;
     }
 }

@@ -6,4 +6,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrls: ['./footer.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FooterComponent {}
+export class FooterComponent {
+    // currentYear: number;
+    // constructor() {
+    //     this.currentYear = new Date().getFullYear();
+    // }
+}

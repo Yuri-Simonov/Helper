@@ -5,11 +5,10 @@ import { SidenavComponent } from 'src/app/shared/modules/sidenav/components/side
 
 import { MaterialModule } from 'src/app/shared/modules/material/material.module';
 import { RouterModule } from '@angular/router';
-import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
     declarations: [SidenavComponent],
-    imports: [CommonModule, MaterialModule, RouterModule, FooterModule],
+    imports: [CommonModule, MaterialModule, RouterModule],
     exports: [SidenavComponent],
 })
 export class SidenavModule {}

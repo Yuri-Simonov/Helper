@@ -25,7 +25,7 @@ export class HomeComponent {
             links: [
                 {
                     href: 'https://www.youtube.com/playlist?list=PL2bJ6t_D6_KSSiM2Y8T32-5KgaNzzS4R6',
-                    name: 'Angular 16 (2023)',
+                    name: 'Angular',
                 },
             ],
         },
