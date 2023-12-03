@@ -5,60 +5,61 @@
         background: var(--primary-color);
         color: var(--text-color);
     }
-}
 
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 4;
-    box-shadow: var(--box-shadow);
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 4;
+        box-shadow: var(--box-shadow);
 
-    &__logo {
-        color: var(--text-color);
-        text-decoration: none;
+        &__logo {
+            color: var(--text-color);
+            text-decoration: none;
 
-        transition: 0.3s;
-        &:hover {
-            color: var(--secondary-color);
-        }
-    }
-
-    &__spacer {
-        flex: 1 1 auto;
-    }
-
-    & > a {
-        transition: 0.3s;
-        &:hover {
-            color: var(--secondary-color);
-        }
-
-        @media (max-width: 768px) {
-            min-width: auto;
-
-            span {
-                display: none;
+            transition: 0.3s;
+            &:hover {
+                color: var(--secondary-color);
             }
         }
 
-        @media (max-width: 768px) {
-            mat-icon {
-                margin: 0;
+        &__spacer {
+            flex: 1 1 auto;
+        }
+
+        & > a {
+            transition: 0.3s;
+            &:hover {
+                color: var(--secondary-color);
+            }
+
+            @media (max-width: 768px) {
+                min-width: auto;
+
+                span {
+                    display: none;
+                }
+            }
+
+            @media (max-width: 768px) {
+                mat-icon {
+                    margin: 0;
+                }
             }
         }
-    }
 
-    &.mat-toolbar-row,
-    &.mat-toolbar-single-row {
-        height: inherit;
+        &.mat-toolbar-row,
+        &.mat-toolbar-single-row {
+            height: inherit;
+        }
     }
 }
 
 ::ng-deep body .mat-mdc-menu-panel {
     border-color: var(--primary-color);
     border: 2px solid var(--primary-color);
+    max-width: 100%;
 
     .mat-mdc-menu-content {
         background-color: var(--secondary-color);
@@ -73,5 +74,13 @@
         &:hover {
             color: var(--primary-color);
         }
+    }
+
+    .mat-icon {
+        color: inherit;
+    }
+
+    .active-theme {
+        color: var(--primary-color);
     }
 }

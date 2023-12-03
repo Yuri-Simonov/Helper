@@ -1,11 +1,10 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    OnDestroy,
-    OnInit,
-} from '@angular/core';
-import { SidenavService } from '../../../services/sidenav.service';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { ReplaySubject, takeUntil } from 'rxjs';
+
+import { ThemeToggleService } from './../../../services/theme-toggle.service';
+import { SidenavService } from '../../../services/sidenav.service';
+
+import { ITheme } from '../../../types';
 
 interface IHeaderChapters {
     path: string;
@@ -27,11 +26,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
         { path: 'git', name: 'Git', disabled: false },
         { path: 'others', name: 'Разное', disabled: true },
     ];
+    themes: ITheme[];
+    currentTheme: ITheme;
     sidenavState: boolean;
 
-    constructor(private sidenavService: SidenavService) {}
+    constructor(
+        private sidenavService: SidenavService,
+        private themeToggleService: ThemeToggleService,
+    ) {}
 
     ngOnInit() {
+        this.themes = this.themeToggleService.themes;
+        this.setTheme(this.themeToggleService.currentTheme);
+
         this.sidenavService.sidebarState
             .pipe(takeUntil(this.onDestroy$))
             .subscribe((newState) => (this.sidenavState = newState));
@@ -44,5 +51,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     changeSidenavState(state: boolean): void {
         this.sidenavService.setNewSidebarState(state);
+    }
+
+    changeTheme(newTheme: ITheme) {
+        this.themeToggleService.changeCurrentTheme(newTheme);
+        this.setTheme(newTheme);
+    }
+
+    setTheme(theme: ITheme) {
+        this.currentTheme = theme;
     }
 }

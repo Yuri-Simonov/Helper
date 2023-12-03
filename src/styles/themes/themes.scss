@@ -1,17 +1,7 @@
 @use "@angular/material" as mat;
 @include mat.core();
 
-$orange-theme: mat.define-light-theme(
-    (
-        color: (
-            primary: mat.define-palette(mat.$orange-palette),
-            accent: mat.define-palette(mat.$blue-palette),
-            warn: mat.define-palette(mat.$red-palette),
-        ),
-    )
-);
-
-$pink-theme: mat.define-light-theme(
+$pink-black-theme: mat.define-light-theme(
     (
         color: (
             primary: mat.define-palette(mat.$pink-palette),
@@ -20,8 +10,26 @@ $pink-theme: mat.define-light-theme(
         ),
     )
 );
+$orange-black-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$orange-palette),
+            accent: mat.define-palette(mat.$blue-palette),
+            warn: mat.define-palette(mat.$red-palette),
+        ),
+    )
+);
+$teal-black-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$teal-palette),
+            accent: mat.define-palette(mat.$orange-palette),
+            warn: mat.define-palette(mat.$red-palette),
+        ),
+    )
+);
 
-@mixin theme-colors($theme) {
+@mixin theme-light-colors($theme) {
     $_primary: map-get($theme, primary);
 
     --primary-color: #{mat.get-color-from-palette($_primary)};
@@ -32,10 +40,12 @@ $pink-theme: mat.define-light-theme(
     @include mat.all-component-colors($theme);
 }
 
-.orange-theme {
-    @include theme-colors($orange-theme);
+.pink-black-theme {
+    @include theme-light-colors($pink-black-theme);
 }
-
-.pink-theme {
-    @include theme-colors($pink-theme);
+.orange-black-theme {
+    @include theme-light-colors($orange-black-theme);
+}
+.teal-black-theme {
+    @include theme-light-colors($teal-black-theme);
 }

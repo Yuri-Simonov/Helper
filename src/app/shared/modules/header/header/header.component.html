@@ -1,11 +1,31 @@
 <mat-toolbar class="header">
     <a routerLink="/" class="header__logo" (click)="changeSidenavState(false)"> Helper </a>
     <span class="header__spacer"></span>
-    <button mat-button [matMenuTriggerFor]="afterMenu">
+    <button mat-button [matMenuTriggerFor]="themeMenu">
+        <mat-icon>arrow_drop_down</mat-icon>
+        Тема
+    </button>
+    <mat-menu #themeMenu="matMenu" xPosition="after">
+        @for (theme of themes; track $index) {
+            <button
+                mat-menu-item
+                (click)="changeTheme(theme)"
+                [ngClass]="{ 'active-theme': theme.code === currentTheme.code }"
+            >
+                <mat-icon
+                    aria-hidden="false"
+                    aria-label="radio_button_checked"
+                    [fontIcon]="theme.code === currentTheme.code ? 'radio_button_checked' : 'radio_button_unchecked'"
+                ></mat-icon>
+                <span> {{ theme.name }}</span>
+            </button>
+        }
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="chapterMenu">
         <mat-icon>arrow_drop_down</mat-icon>
         Разделы
     </button>
-    <mat-menu #afterMenu="matMenu" xPosition="after">
+    <mat-menu #chapterMenu="matMenu" xPosition="after">
         @for (chapter of chapters; track $index) {
             <a
                 [routerLink]="chapter.path"
