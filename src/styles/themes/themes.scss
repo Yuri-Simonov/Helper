@@ -1,30 +1,155 @@
 @use "@angular/material" as mat;
 @include mat.core();
 
-$pink-black-theme: mat.define-light-theme(
+$red-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$red-palette),
+            accent: mat.define-palette(mat.$blue-palette),
+        ),
+    )
+);
+$pink-theme: mat.define-light-theme(
     (
         color: (
             primary: mat.define-palette(mat.$pink-palette),
             accent: mat.define-palette(mat.$blue-palette),
-            warn: mat.define-palette(mat.$red-palette),
         ),
     )
 );
-$orange-black-theme: mat.define-light-theme(
+$purple-theme: mat.define-light-theme(
     (
         color: (
-            primary: mat.define-palette(mat.$orange-palette),
+            primary: mat.define-palette(mat.$purple-palette),
             accent: mat.define-palette(mat.$blue-palette),
-            warn: mat.define-palette(mat.$red-palette),
         ),
     )
 );
-$teal-black-theme: mat.define-light-theme(
+$deep-purple-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$deep-purple-palette),
+            accent: mat.define-palette(mat.$blue-palette),
+        ),
+    )
+);
+$indigo-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$indigo-palette),
+            accent: mat.define-palette(mat.$blue-palette),
+        ),
+    )
+);
+$blue-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$blue-palette),
+            accent: mat.define-palette(mat.$blue-palette),
+        ),
+    )
+);
+$light-blue-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$light-blue-palette),
+            accent: mat.define-palette(mat.$blue-palette),
+        ),
+    )
+);
+$cyan-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$cyan-palette),
+            accent: mat.define-palette(mat.$blue-palette),
+        ),
+    )
+);
+$teal-theme: mat.define-light-theme(
     (
         color: (
             primary: mat.define-palette(mat.$teal-palette),
             accent: mat.define-palette(mat.$orange-palette),
-            warn: mat.define-palette(mat.$red-palette),
+        ),
+    )
+);
+$green-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$green-palette),
+            accent: mat.define-palette(mat.$blue-palette),
+        ),
+    )
+);
+$light-green-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$light-green-palette),
+            accent: mat.define-palette(mat.$blue-palette),
+        ),
+    )
+);
+$lime-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$lime-palette),
+            accent: mat.define-palette(mat.$blue-palette),
+        ),
+    )
+);
+$yellow-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$yellow-palette),
+            accent: mat.define-palette(mat.$blue-palette),
+        ),
+    )
+);
+$amber-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$amber-palette),
+            accent: mat.define-palette(mat.$blue-palette),
+        ),
+    )
+);
+$orange-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$orange-palette),
+            accent: mat.define-palette(mat.$blue-palette),
+        ),
+    )
+);
+$deep-orange-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$deep-orange-palette),
+            accent: mat.define-palette(mat.$blue-palette),
+        ),
+    )
+);
+$brown-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$brown-palette),
+            accent: mat.define-palette(mat.$blue-palette),
+        ),
+    )
+);
+$gray-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$gray-palette),
+            accent: mat.define-palette(mat.$blue-palette),
+        ),
+    )
+);
+$blue-gray-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$blue-gray-palette),
+            accent: mat.define-palette(mat.$blue-palette),
         ),
     )
 );
@@ -34,18 +159,66 @@ $teal-black-theme: mat.define-light-theme(
 
     --primary-color: #{mat.get-color-from-palette($_primary)};
     --secondary-color: #{mat.get-color-from-palette($_primary, "A100-contrast")};
-    --text-color: #{mat.get-color-from-palette($_primary, 50)};
-    --text-contrast-color: #{mat.get-color-from-palette($_primary, "50-contrast")};
+    --text-color: #{mat.get-color-from-palette($_primary, "A400-contrast")};
+    --white-text: white;
 
     @include mat.all-component-colors($theme);
 }
 
-.pink-black-theme {
-    @include theme-light-colors($pink-black-theme);
+.red-theme {
+    @include theme-light-colors($red-theme);
 }
-.orange-black-theme {
-    @include theme-light-colors($orange-black-theme);
+.pink-theme {
+    @include theme-light-colors($pink-theme);
 }
-.teal-black-theme {
-    @include theme-light-colors($teal-black-theme);
+.purple-theme {
+    @include theme-light-colors($purple-theme);
+}
+.deep-purple-theme {
+    @include theme-light-colors($deep-purple-theme);
+}
+.indigo-theme {
+    @include theme-light-colors($indigo-theme);
+}
+.blue-theme {
+    @include theme-light-colors($blue-theme);
+}
+.light-blue-theme {
+    @include theme-light-colors($light-blue-theme);
+}
+.cyan-theme {
+    @include theme-light-colors($cyan-theme);
+}
+.teal-theme {
+    @include theme-light-colors($teal-theme);
+}
+.green-theme {
+    @include theme-light-colors($green-theme);
+}
+.light-green-theme {
+    @include theme-light-colors($light-green-theme);
+}
+.lime-theme {
+    @include theme-light-colors($lime-theme);
+}
+.yellow-theme {
+    @include theme-light-colors($yellow-theme);
+}
+.amber-theme {
+    @include theme-light-colors($amber-theme);
+}
+.orange-theme {
+    @include theme-light-colors($orange-theme);
+}
+.deep-orange-theme {
+    @include theme-light-colors($deep-orange-theme);
+}
+.brown-theme {
+    @include theme-light-colors($brown-theme);
+}
+.gray-theme {
+    @include theme-light-colors($gray-theme);
+}
+.blue-gray-theme {
+    @include theme-light-colors($blue-gray-theme);
 }

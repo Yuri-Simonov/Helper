@@ -42,7 +42,7 @@
     }
 
     .mat-expansion-panel {
-        color: var(--text-color);
+        color: var(--white-text);
         background-color: var(--mdc-filled-text-field-input-text-placeholder-color);
 
         &:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled="true"]):hover {
@@ -101,7 +101,7 @@
 
     .mat-expansion-panel-header-title,
     .mat-expansion-panel-header-description {
-        color: var(--text-color);
+        color: var(--white-text);
         gap: 6px;
 
         @media (max-width: 992px), (max-height: 440px) {
@@ -114,6 +114,6 @@
     }
 
     .mat-expansion-indicator::after {
-        color: inherit;
+        color: var(--white-text);
     }
 }

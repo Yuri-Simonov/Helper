@@ -3,7 +3,7 @@
 
     mat-toolbar {
         background: transparent;
-        color: var(--text-color);
+        color: var(--primary-color);
 
         @media (max-width: 768px), (max-height: 440px) {
             height: auto;

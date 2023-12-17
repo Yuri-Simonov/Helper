@@ -15,23 +15,15 @@
         box-shadow: var(--box-shadow);
 
         &__logo {
+            font-size: inherit;
+            font-family: inherit;
+            font-weight: inherit;
             color: var(--text-color);
             text-decoration: none;
 
             transition: 0.3s;
             &:hover {
-                color: var(--secondary-color);
-            }
-        }
-
-        &__spacer {
-            flex: 1 1 auto;
-        }
-
-        & > a {
-            transition: 0.3s;
-            &:hover {
-                color: var(--secondary-color);
+                opacity: 0.5;
             }
 
             @media (max-width: 768px) {
@@ -47,6 +39,10 @@
                     margin: 0;
                 }
             }
+        }
+
+        &__spacer {
+            flex: 1 1 auto;
         }
 
         &.mat-toolbar-row,
@@ -68,7 +64,7 @@
     .mat-mdc-menu-item,
     .mat-mdc-menu-item:visited,
     .mat-mdc-menu-item:link {
-        color: var(--text-color);
+        color: var(--white-text);
 
         transition: 0.3s;
         &:hover {
