@@ -42,7 +42,7 @@
     }
 
     .mat-expansion-panel {
-        color: var(--white-text);
+        color: var(--text-color);
         background-color: var(--mdc-filled-text-field-input-text-placeholder-color);
 
         &:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled="true"]):hover {
@@ -101,7 +101,7 @@
 
     .mat-expansion-panel-header-title,
     .mat-expansion-panel-header-description {
-        color: var(--white-text);
+        color: var(--text-color);
         gap: 6px;
 
         @media (max-width: 992px), (max-height: 440px) {
@@ -114,6 +114,6 @@
     }
 
     .mat-expansion-indicator::after {
-        color: var(--white-text);
+        color: var(--text-color);
     }
 }

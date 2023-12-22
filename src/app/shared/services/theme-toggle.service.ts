@@ -17,18 +17,8 @@ export class ThemeToggleService {
         { name: 'Фиолетовая (Насыщенная)', code: 'deep-purple-theme' },
         { name: 'Индиго', code: 'indigo-theme' },
         { name: 'Синяя', code: 'blue-theme' },
-        { name: 'Светло-синяя', code: 'light-blue-theme' },
-        { name: 'Циановая', code: 'cyan-theme' },
         { name: 'Аквамариновая', code: 'teal-theme' },
-        { name: 'Зеленая', code: 'green-theme' },
-        { name: 'Светло-зеленая', code: 'light-green-theme' },
-        { name: 'Лаймовая', code: 'lime-theme' },
-        { name: 'Желтая', code: 'yellow-theme' },
-        { name: 'Амбер', code: 'amber-theme' },
-        { name: 'Оранжевая', code: 'orange-theme' },
-        { name: 'Оранжевая (Насыщенная)', code: 'deep-orange-theme' },
         { name: 'Коричневая', code: 'brown-theme' },
-        { name: 'Серая', code: 'gray-theme' },
         { name: 'Серо-голубая', code: 'blue-gray-theme' },
     ];
     currentTheme: ITheme = this.themes[0];
