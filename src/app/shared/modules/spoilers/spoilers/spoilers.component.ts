@@ -1,11 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    Input,
-    OnDestroy,
-    OnInit,
-    ViewChildren,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit, ViewChildren } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { NavigationEnd, Router } from '@angular/router';
 import { ReplaySubject, takeUntil } from 'rxjs';
@@ -33,18 +26,16 @@ export class SpoilersComponent implements OnInit, OnDestroy {
 
     constructor(
         private router: Router,
-        private sidenavService: SidenavService
+        private sidenavService: SidenavService,
     ) {}
 
     ngOnInit(): void {
         this.currentPath = this.router.url;
-        this.router.events
-            .pipe(takeUntil(this.onDestroy$))
-            .subscribe((event) => {
-                if (event instanceof NavigationEnd) {
-                    this.currentPath = this.slicePath(event.url);
-                }
-            });
+        this.router.events.pipe(takeUntil(this.onDestroy$)).subscribe((event) => {
+            if (event instanceof NavigationEnd) {
+                this.currentPath = this.slicePath(event.url);
+            }
+        });
         this.currentPath = this.slicePath(this.currentPath);
 
         this.sidenavService.sidebarState

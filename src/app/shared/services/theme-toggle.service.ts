@@ -21,7 +21,7 @@ export class ThemeToggleService {
         { name: 'Коричневая', code: 'brown-theme' },
         { name: 'Серо-голубая', code: 'blue-gray-theme' },
     ];
-    currentTheme: ITheme = this.themes[0];
+    currentTheme: ITheme = this.themes[2];
 
     constructor(private localStorageService: LocalStorageService) {
         this.html = document.querySelector('html');

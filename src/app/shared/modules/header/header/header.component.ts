@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     chapters: IHeaderChapters[] = [
         { path: 'javascript', name: 'Javascript', disabled: false },
         { path: 'angular', name: 'Angular', disabled: false },
-        { path: 'git', name: 'Git', disabled: false },
+        { path: 'git/all', name: 'Git', disabled: false },
         { path: 'others', name: 'Разное', disabled: true },
     ];
     themes: ITheme[];
