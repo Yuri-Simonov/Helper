@@ -19,8 +19,7 @@
     --overlay: #80808057;
 
     --border: 1px solid #d3d3d33a;
-    --box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024,
-        0 1px 18px #0000001f;
+    --box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024, 0 1px 18px #0000001f;
 }
 
 * {
@@ -102,6 +101,18 @@ p > code,
 li > code {
     display: inline-block;
     padding: 0 2px;
+}
+
+li > p {
+    margin: 0;
+}
+
+li img {
+    margin: 6px;
+}
+
+li + li {
+    margin-top: 8px;
 }
 
 pre {

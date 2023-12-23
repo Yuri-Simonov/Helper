@@ -2,6 +2,8 @@
 { - &#123;
 } - &#125;
 @ - &#64;
+( - &#40;
+) - &#41;
 
 <span class="variable"></span>
-<span class="tag">&lt;</span>
+<span class="tag">&lt;></span>

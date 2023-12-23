@@ -36,6 +36,22 @@ li > code {
     padding: 0 2px;
 }
 
+li > p {
+    margin: 0;
+}
+
+li img {
+    margin: 6px;
+}
+
+li + li {
+    margin-top: 8px;
+
+    @media (max-width: 440px), (max-height: 440px) {
+        padding: 4px;
+    }
+}
+
 .comment {
     margin-left: 12px;
 
