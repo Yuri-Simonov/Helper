@@ -242,6 +242,35 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
         lastUpdate: '24.12.2023',
     },
     {
+        title: 'Имплементация методов жизненного цикла',
+        body: ` <p>
+                Для класса компонента следует указывать реализацию встроенных интерфейсов, которые содержат внутри себя
+                функции, совпадающие по названию с названием интерфейса + префикс
+                <code>ng</code>.
+            </p>
+            <p>
+                Например, метод жизненного цикла <code>ngOnInit</code> реализует интерфейс <code>OnInit</code>,
+                прибавляем префикс <code>ng</code> и получаем сам метод <code>ngOnInit</code>:
+            </p>
+            <pre><code><span class="comment comment_start">// Как выглядит встроенный интерфейс OnInit под капотом</span>
+<span class="export">export</span> <span class="keyword">declare interface</span> <span class="interface-name">OnInit</span> <span class="punctuation">{</span>
+    <span class="method">ngOnInit()</span>: <span class="type">void</span>;
+<span class="punctuation">}</span></code></pre>
+            <p>Как это выглядит в компоненте:</p>
+            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">ContactsItemComponent</span> <span class="keyword">implements</span> <span class="interface-name">OnInit</span> <span class="punctuation">{</span>
+	<span class="method">ngOnInit()</span> <span class="punctuation">{</span>
+		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'OnInit'</span><span class="punctuation">)</span> <span class="comment"> // OnInit</span>
+	<span class="punctuation">}</span>
+<span class="punctuation">}</span></code></pre>
+            <p>
+                В примере выше, после ключевого слова <code>implements</code>, указывается реализация интерфейсов,
+                соответствующих методам жизненного цикла, которые задействованы в текущем компоненте. В данном случае
+                это <code>OnInit</code>. Если нужна реализация более одного интерфейса, они перечисляются через запятую.
+            </p>`,
+        selected: false,
+        lastUpdate: '24.12.2023',
+    },
+    {
         title: 'Использование <span class="variable">Getter</span> и <span class="variable">Setter</span> внутри компонента',
         body: `<p>
             Геттерами (Getter) и сеттерами (Setter) называются методы Angular-компонента, которые
