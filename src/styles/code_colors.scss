@@ -3,12 +3,14 @@ pre {
     color: var(--white-dark);
 
     code {
-        color: inherit;
+        color: var(--text-color);
+        filter: none;
     }
 }
 
 code {
-    color: var(--purple-light);
+    color: var(--primary-color);
+    filter: var(--hue-120-deg);
     tab-size: 4;
 
     @media (max-width: 440px), (max-height: 440px) {

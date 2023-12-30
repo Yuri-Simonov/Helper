@@ -32,10 +32,11 @@
 }
 
 .attention {
-    color: var(--yellow);
+    color: var(--primary-color);
+    filter: var(--hue-240-deg);
 
     code {
-        color: var(--purple-light);
+        filter: var(--hue-minus-120-deg);
         display: inline-block;
         padding: 0 2px;
     }

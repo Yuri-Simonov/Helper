@@ -90,7 +90,7 @@ $blue-gray-theme: mat.define-light-theme(
     // --07-text: #{mat.get-color-from-palette($_primary, "A600-contrast")};
     // --08-text: #{mat.get-color-from-palette($_primary, "A700-contrast")};
     // --09-text: #{mat.get-color-from-palette($_primary, "A800-contrast")};
-    // --09-text: #{mat.get-color-from-palette($_primary, "A900-contrast")};
+    // --091-text: #{mat.get-color-from-palette($_primary, "A900-contrast")};
     // --11-text: #{mat.get-color-from-palette($_primary, 50)};
     // --12-text: #{mat.get-color-from-palette($_primary, 100)};
     // --13-text: #{mat.get-color-from-palette($_primary, 200)};
@@ -100,7 +100,7 @@ $blue-gray-theme: mat.define-light-theme(
     // --17-text: #{mat.get-color-from-palette($_primary, 600)};
     // --18-text: #{mat.get-color-from-palette($_primary, 700)};
     // --19-text: #{mat.get-color-from-palette($_primary, 800)};
-    // --19-text: #{mat.get-color-from-palette($_primary, 900)};
+    // --191-text: #{mat.get-color-from-palette($_primary, 900)};
     // --21-text: #{mat.get-color-from-palette($_primary, "50-contrast")};
     // --22-text: #{mat.get-color-from-palette($_primary, "100-contrast")};
     // --23-text: #{mat.get-color-from-palette($_primary, "200-contrast")};
@@ -110,7 +110,7 @@ $blue-gray-theme: mat.define-light-theme(
     // --27-text: #{mat.get-color-from-palette($_primary, "600-contrast")};
     // --28-text: #{mat.get-color-from-palette($_primary, "700-contrast")};
     // --29-text: #{mat.get-color-from-palette($_primary, "800-contrast")};
-    // --29-text: #{mat.get-color-from-palette($_primary, "900-contrast")};
+    // --291-text: #{mat.get-color-from-palette($_primary, "900-contrast")};
 
     @include mat.all-component-colors($theme);
 }
@@ -141,4 +141,8 @@ $blue-gray-theme: mat.define-light-theme(
 }
 .blue-gray-theme {
     @include theme-light-colors($blue-gray-theme);
+
+    --hue-120-deg: hue-rotate(120deg) brightness(1.5) saturate(3.5);
+    --hue-minus-120-deg: hue-rotate(240deg) saturate(4);
+    --hue-240-deg: hue-rotate(-152deg) brightness(2.2) saturate(4);
 }

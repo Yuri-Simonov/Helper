@@ -116,4 +116,8 @@
     .mat-expansion-indicator::after {
         color: var(--text-color);
     }
+
+    .variable:not(pre > code) {
+        filter: var(--hue-120-deg);
+    }
 }

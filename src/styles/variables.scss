@@ -17,6 +17,9 @@
 
     // Различные повторяющиеся вспомогательные цвета
     --overlay: #80808057;
+    --hue-120-deg: hue-rotate(120deg) brightness(2) saturate(3.5);
+    --hue-minus-120-deg: hue-rotate(-120deg) brightness(2) saturate(3.5);
+    --hue-240-deg: hue-rotate(240deg) brightness(2.5) saturate(3);
 
     // CSS-свойства целиком;
     --border: 1px solid #d3d3d33a;
