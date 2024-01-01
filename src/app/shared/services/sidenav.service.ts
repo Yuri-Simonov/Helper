@@ -11,11 +11,11 @@ export class SidenavService {
 
     setNewSidebarState(event: boolean): void {
         this.sidebarState.next(event);
-        this.resetBodyClass();
+        this.resetBodyClass(event);
     }
 
-    resetBodyClass(): void {
+    resetBodyClass(event: boolean): void {
         const body = document.querySelector('body');
-        body?.classList.toggle('sidebar-lock');
+        event ? body?.classList.add('sidebar-lock') : body?.classList.remove('sidebar-lock');
     }
 }
