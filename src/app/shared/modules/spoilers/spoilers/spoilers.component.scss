@@ -8,13 +8,14 @@
     position: relative;
     display: grid;
     grid-template-columns: 15rem 1fr;
+    max-width: 100%;
 
     @media (max-width: 992px), (max-height: 440px) {
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%;
     }
 
     &_simple {
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%;
         grid-auto-rows: max-content;
     }
 

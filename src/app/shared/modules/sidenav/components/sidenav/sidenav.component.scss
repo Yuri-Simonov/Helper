@@ -3,6 +3,7 @@
         position: absolute;
         top: 0;
         left: 0;
+        bottom: 0;
         overflow: auto;
     }
 }
@@ -19,6 +20,10 @@
         left: 0;
         z-index: 2;
         transition: 0.3s;
+    }
+
+    @media (max-width: 440px), (max-height: 440px) {
+        background-color: var(--sidenav-mobile-background);
     }
 
     &_hide {
