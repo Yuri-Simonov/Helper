@@ -49,6 +49,24 @@
         &.mat-toolbar-single-row {
             height: inherit;
         }
+
+        &__link {
+            @media (max-width: 440px), (max-height: 440px) {
+                min-width: auto;
+
+                &:last-child {
+                    margin-right: -8px;
+                }
+
+                span {
+                    display: none;
+                }
+
+                .mat-icon {
+                    margin: 0;
+                }
+            }
+        }
     }
 }
 
