@@ -6,6 +6,7 @@
 @ - &#64;
 ( - &#40;
 ) - &#41;
+  - &nbsp; (символ пробела)
 
 <span class="variable"></span>
 <span class="tag">&lt;></span>
