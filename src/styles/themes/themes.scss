@@ -139,11 +139,13 @@ $blue-gray-theme: mat.define-light-theme(
 }
 .brown-theme {
     @include theme-light-colors($brown-theme);
+
+    --hue-240-deg: hue-rotate(240deg) brightness(2.2) saturate(7);
 }
 .blue-gray-theme {
     @include theme-light-colors($blue-gray-theme);
 
     --hue-120-deg: hue-rotate(120deg) brightness(1.5) saturate(3.5);
-    --hue-minus-120-deg: hue-rotate(240deg) saturate(4);
-    --hue-240-deg: hue-rotate(-152deg) brightness(2.2) saturate(4);
+    --hue-minus-120-deg: hue-rotate(240deg) saturate(2) brightness(0.85);
+    --hue-240-deg: hue-rotate(-120deg) brightness(2.2) saturate(4);
 }

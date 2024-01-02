@@ -7,8 +7,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {
-    // currentYear: number;
-    // constructor() {
-    //     this.currentYear = new Date().getFullYear();
-    // }
+    currentYear: number;
+    constructor() {
+        this.currentYear = new Date().getFullYear();
+    }
 }
