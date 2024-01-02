@@ -136,6 +136,20 @@ export const directiveQuestions: IQuestion[] = [
             </p>`,
         selected: false,
         lastUpdate: '20.11.2023',
+        footerLinks: [
+            {
+                title: 'новый синтаксис',
+                path: 'https://youtu.be/8Mv-kj9XWCs?t=54',
+            },
+            {
+                title: 'старый синтаксис',
+                path: 'https://youtu.be/vLlO-FDSyts?t=175',
+            },
+            {
+                title: 'особенности использования',
+                path: 'https://www.youtube.com/watch?v=Ag4bCejYr-U',
+            },
+        ],
     },
     {
         title: 'Структурная директива <span class="variable">*ngFor</span>',
@@ -218,6 +232,16 @@ arr: <span class="type">number[]</span> <span class="operator">=</span> <span cl
 <span class='tag'>&lt;/div></span></code></pre>`,
         selected: false,
         lastUpdate: '15.10.2023',
+        footerLinks: [
+            {
+                title: 'старый синтаксис',
+                path: 'https://youtu.be/vLlO-FDSyts?t=487',
+            },
+            {
+                title: 'особенности использования',
+                path: 'https://www.youtube.com/watch?v=Ag4bCejYr-U',
+            },
+        ],
     },
     {
         title: 'Оптимизация структурной директивы <span class="variable">*ngFor</span>',
@@ -288,6 +312,11 @@ arr: <span class="type">number[]</span> <span class="operator">=</span> <span
             </p>`,
         selected: false,
         lastUpdate: '26.10.2023',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/Ag4bCejYr-U?t=691',
+            },
+        ],
     },
     {
         title: 'Структурная директива <span class="variable">*ngSwitchCase</span>',
@@ -336,6 +365,16 @@ arr: <span class="type">number[]</span> <span class="operator">=</span> <span cl
 <span class='tag'>&lt;/div></span></code></pre>`,
         selected: false,
         lastUpdate: '15.10.2023',
+        footerLinks: [
+            {
+                title: 'старый синтаксис',
+                path: 'https://youtu.be/vLlO-FDSyts?t=690',
+            },
+            {
+                title: 'особенности использования',
+                path: 'https://www.youtube.com/watch?v=Ag4bCejYr-U',
+            },
+        ],
     },
     {
         title: 'Использование двух или более структурных директив на одном элементе DOM-дерева',

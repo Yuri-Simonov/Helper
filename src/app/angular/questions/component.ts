@@ -240,6 +240,11 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
             </ul>`,
         selected: false,
         lastUpdate: '24.12.2023',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/Nnf6gtAY0vc',
+            },
+        ],
     },
     {
         title: 'Имплементация методов жизненного цикла',
@@ -579,6 +584,17 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
             <code>myName</code> компонента <code>some-item</code>.
         </p>`,
         selected: false,
+        lastUpdate: '',
+        footerLinks: [
+            {
+                title: 'Интерполяция',
+                path: 'https://youtu.be/YJEnopFp8Ak?t=67',
+            },
+            {
+                title: 'Одностороннее связывание',
+                path: 'https://youtu.be/YJEnopFp8Ak?t=179',
+            },
+        ],
     },
     {
         title: 'Вложенные свойства атрибутов',

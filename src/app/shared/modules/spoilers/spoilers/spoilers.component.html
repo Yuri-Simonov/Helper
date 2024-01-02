@@ -19,9 +19,43 @@
                                     <mat-panel-title [innerHTML]="q.title"></mat-panel-title>
                                 </mat-expansion-panel-header>
                                 <div [innerHTML]="q.body"></div>
-                                <i class="spoilers__last-update" *ngIf="q.lastUpdate">
-                                    последнее обновление: {{ q.lastUpdate }}
-                                </i>
+                                <div class="spoilers__footer">
+                                    @if (q?.footerLinks?.length) {
+                                        <div class="spoilers__links">
+                                            @if (q.footerLinks?.length === 1) {
+                                                @if (q.footerLinks?.[0]?.title) {
+                                                    <span>{{ "Видеообъяснение:&nbsp;" }}</span>
+                                                } @else {
+                                                    <a
+                                                        class="spoilers__link"
+                                                        target="_blank"
+                                                        [href]="q.footerLinks?.[0]?.path"
+                                                    >
+                                                        {{ "Видеообъяснение" }}
+                                                    </a>
+                                                }
+                                            } @else {
+                                                <span>{{ "Видеообъяснения:&nbsp;" }}</span>
+                                            }
+                                            @for (link of q.footerLinks; track $index) {
+                                                <span style="display: flex">
+                                                    <a class="spoilers__link" target="_blank" [href]="link.path">
+                                                        {{ link.title | lowercase }}
+                                                    </a>
+                                                    @if (q.footerLinks?.length !== 1 && !$last) {
+                                                        <span>,&nbsp;</span>
+                                                    }
+                                                </span>
+                                            }
+                                        </div>
+                                    }
+                                    @if (q?.lastUpdate) {
+                                        <i class="spoilers__last-update">
+                                            <span>последнее обновление: </span>
+                                            <span>{{ q.lastUpdate }}</span>
+                                        </i>
+                                    }
+                                </div>
                             </mat-expansion-panel>
                         </mat-accordion>
                     </div>

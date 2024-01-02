@@ -22,7 +22,7 @@
         transition: 0.3s;
     }
 
-    @media (max-width: 440px), (max-height: 440px) {
+    @media (max-width: 1400px), (max-height: 992px) {
         background-color: var(--sidenav-mobile-background);
     }
 
