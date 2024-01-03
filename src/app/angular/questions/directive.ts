@@ -480,6 +480,11 @@ arr: <span class="type">number[]</span> <span class="operator">=</span> <span cl
             </p>`,
         selected: false,
         lastUpdate: '12.11.2023',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/qNUp8t5QOxs?t=12',
+            },
+        ],
     },
     {
         title: 'Атрибутивная директива <span class="variable">ngStyle</span>',
@@ -515,6 +520,11 @@ cssProperties <span class="operator">=</span> <span class="punctuation">{</span>
             <pre><code><span class="tag">&lt;some-element</span> <span class="keyword">[ngStyle]</span><span class="operator">=</span><span class="string">"{'font-size.px': 20}"</span><span class="tag">></span>...<span class="tag">&lt;some-element></span></code></pre>`,
         selected: false,
         lastUpdate: '12.11.2023',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/qNUp8t5QOxs?t=290',
+            },
+        ],
     },
     {
         title: 'Создание пользовательских атрибутивных директив',

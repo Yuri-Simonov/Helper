@@ -407,6 +407,16 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
             </li>
         </ul>`,
         selected: false,
+        footerLinks: [
+            {
+                title: '@Input()',
+                path: 'https://youtu.be/VUgOLgnBPcs?t=149',
+            },
+            {
+                title: '@Output()',
+                path: 'https://youtu.be/VUgOLgnBPcs?t=400',
+            },
+        ],
     },
     {
         title: `Создает ли ng-content новый контент внутри дочернего компонента?`,
@@ -587,12 +597,20 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
         lastUpdate: '',
         footerLinks: [
             {
-                title: 'Интерполяция',
+                title: 'интерполяция',
                 path: 'https://youtu.be/YJEnopFp8Ak?t=67',
             },
             {
-                title: 'Одностороннее связывание',
+                title: 'одностороннее связывание',
                 path: 'https://youtu.be/YJEnopFp8Ak?t=179',
+            },
+            {
+                title: 'обработка событий',
+                path: 'https://www.youtube.com/watch?v=hQ5hIFalxJE',
+            },
+            {
+                title: 'двустороннее связывание',
+                path: 'https://youtu.be/VUgOLgnBPcs?t=570',
             },
         ],
     },
@@ -633,6 +651,11 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
         body: ``,
         selected: false,
         lastUpdate: '',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/vMxJPxWS0aI?t=12',
+            },
+        ],
         disabled: true,
     },
     {
@@ -671,6 +694,11 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
             </p>`,
         selected: false,
         lastUpdate: '19.11.2023',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/vMxJPxWS0aI?t=146',
+            },
+        ],
     },
     // {
     //     title: '',
