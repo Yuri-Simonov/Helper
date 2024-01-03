@@ -35,6 +35,11 @@ export const pipeQuestions: IQuestion[] = [
             <pre><code><span class="tag">&lt;p</span><span class="tag">></span><span class="punctuation">&#123;&#123;</span> <span class="punctuation">"</span><span class="string">Какие-то данные</span><span class="punctuation">"</span> <span class="operator">|</span> <span class="function-name">pipe1</span> <span class="operator">|</span> <span class="function-name">pipe2</span> <span class="operator">|</span> <span class="function-name">pipe3</span> <span class="punctuation">&#125;&#125;</span><span class="tag">&lt;/p></span></code></pre>`,
         selected: false,
         lastUpdate: '05.11.2023',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/uH8GFf68n3Y',
+            },
+        ],
     },
     {
         title: 'Разница между <span class="variable">pure</span> и <span class="variable">impure</span> pipes',
@@ -78,6 +83,11 @@ export const pipeQuestions: IQuestion[] = [
             </p>`,
         selected: false,
         lastUpdate: '05.11.2023',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/QSxMaa9YCgI',
+            },
+        ],
     },
     {
         title: 'Создание пользовательских pipe',
@@ -132,5 +142,10 @@ export const pipeQuestions: IQuestion[] = [
             </p>`,
         selected: false,
         lastUpdate: '05.11.2023',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/aaBSCHwsYiw',
+            },
+        ],
     },
 ];
