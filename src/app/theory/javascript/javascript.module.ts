@@ -26,11 +26,6 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [JavascriptComponent],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        TitleModule,
-        SpoilersModule,
-    ],
+    imports: [CommonModule, RouterModule.forChild(routes), TitleModule, SpoilersModule],
 })
 export class JavascriptModule {}

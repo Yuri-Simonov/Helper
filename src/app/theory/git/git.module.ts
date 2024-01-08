@@ -16,11 +16,6 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [GitComponent],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        TitleModule,
-        SpoilersModule,
-    ],
+    imports: [CommonModule, RouterModule.forChild(routes), TitleModule, SpoilersModule],
 })
 export class GitModule {}

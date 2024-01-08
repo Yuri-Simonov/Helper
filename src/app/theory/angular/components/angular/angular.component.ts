@@ -14,7 +14,7 @@ import { serviceQuestions } from '../../questions/service';
 import { testQuestions } from '../../questions/test';
 
 import { IList } from '@types';
-import { ngrxQuestions } from 'src/app/angular/questions/ngrx';
+import { ngrxQuestions } from 'src/app/theory/angular/questions/ngrx';
 
 @Component({
     selector: 'app-angular',

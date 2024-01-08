@@ -31,12 +31,7 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [AngularComponent],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        SpoilersModule,
-        TitleModule,
-    ],
+    imports: [CommonModule, RouterModule.forChild(routes), SpoilersModule, TitleModule],
     providers: [],
 })
 export class AngularModule {}
