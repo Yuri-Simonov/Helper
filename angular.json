@@ -48,7 +48,7 @@
                                 }
                             ],
                             "outputHashing": "all",
-                            "baseHref": "yuri-simonov.github.io/Helper/"
+                            "baseHref": "/"
                         },
                         "development": {
                             "buildOptimizer": false,
