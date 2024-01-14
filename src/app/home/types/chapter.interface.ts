@@ -6,7 +6,7 @@ export interface IChapter {
 
 interface IChapterLinkItem {
     name: string;
-    route?: string;
+    path?: string;
     href?: string;
     disabled?: boolean;
 }

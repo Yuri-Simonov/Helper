@@ -8,7 +8,7 @@ import { SpoilersModule, TitleModule } from '@modules';
 
 const routes: Routes = [
     {
-        path: 'git/all',
+        path: 'theory/git/all',
         component: GitComponent,
         // children: [{ path: 'all', component: GitComponent }],
     },

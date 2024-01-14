@@ -10,6 +10,9 @@ import { FooterModule } from 'src/app/shared/modules/footer/footer.module';
 import { HomeModule } from 'src/app/home/home.module';
 import { TheoryModule } from './theory/theory.module';
 import { MaterialModule, SidenavModule } from '@modules';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [{ path: '**', redirectTo: '' }];
 
 @NgModule({
     declarations: [AppComponent],
@@ -23,6 +26,7 @@ import { MaterialModule, SidenavModule } from '@modules';
         HomeModule,
         SidenavModule,
         TheoryModule,
+        RouterModule.forRoot(routes),
     ],
     providers: [],
     bootstrap: [AppComponent],
