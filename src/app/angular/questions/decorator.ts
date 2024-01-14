@@ -42,33 +42,6 @@ export const decoratorQuestions: IQuestion[] = [
         lastUpdate: '14.09.2023',
     },
     {
-        title: 'Декоратор <span class="variable">@Injectable()</span>',
-        body: `<p>
-            Декоратор <code>@Injectable()</code>
-            <span class="attention">
-                нужен для явного указания того, что сервис может использовать
-                другие сервисы.
-            </span>
-        </p>
-        <pre><code><span class="comment comment_start">// пример использования данного декоратора</span>
-<span class="function-name">@Injectable</span><span class="punctuation">({</span><span class="key">providedIn</span>: <span class="string">'root'</span><span class="punctuation">})</span></code></pre>
-        <p>
-            Иначе говоря, данный декоратор гарантирует, что встроенный механизм
-            внедрения зависимостей (<code>dependency injection</code>) сможет создать объект
-            этого класса и передать в него в качестве зависимости другие объекты
-            (другие сервисы или компоненты, если в этом есть необходимость).
-        </p>
-        <p>
-            Если сервис не использует никакие другие зависимости, то данный
-            декоратор можно и не указывать. <span class="attention">Без него сервис тоже будет работать</span>.
-            Но среди Angular-разработчиков существует договоренность, что
-                данный декоратор стоит применять к любому классу сервиса.
-        </p>`,
-        selected: false,
-        lastUpdate: '14.09.2023',
-    },
-
-    {
         title: 'Разница между декораторами <span class="variable">@Input()</span> и <span class="variable">@Output()</span>',
         body: `<p>
             Дочерние компоненты Angular могут как принимать данные от родителя, так и
@@ -108,6 +81,394 @@ export const decoratorQuestions: IQuestion[] = [
             решения через <code>spread-оператор</code>.
         </p>
         <pre><code><span class="object">this</span>.someObject <span class="operator">=</span> <span class="punctuation">{</span> <span class="operator">...</span><span class="object">this</span>.someObject, <span class="key">name</span>: <span class="string">'новое имя'</span> <span class="punctuation">}</span></code></pre>`,
+        selected: false,
+        lastUpdate: '14.09.2023',
+    },
+    {
+        title: 'Декоратор <span class="variable">@ViewChild()</span>',
+        body: `<p>
+                <span class="attention"
+                    >Декоратор <code>@ViewChild&#40;&#41;</code> позволяет в классе компонента получать доступ к
+                    содержимому шаблона того же компонента, в котором он используются</span
+                >.
+            </p>
+            <p>Он имеет следующий синтаксис:</p>
+            <pre><code><span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'селектор'</span><span class="punctuation">)</span> имя_свойства: <span class="type">тип_данных</span>;</code></pre>
+            <p>
+                В примере ниже в классе компонента предоставляется доступ к элементу разметки из шаблона по указанному
+                селектору в декораторе
+                <code>@ViewChild&#40;&#41;</code>. В данном случае это шаблонная переменная <code>paragrath</code>.
+                Важно еще отметить, что декоратор <code>@ViewChild&#40;&#41;</code>
+                <span class="attention">
+                    находит первое совпадение с указанным в нем селектором и на этом дальнейший поиск совпадений по
+                    селектору в шаблоне прекращается</span
+                >.
+            </p>
+            <pre><code><span class="comment comment_start">// шаблон компонента</span>
+<span class="tag">&lt;p</span> <span class="attribute">#paragrath</span><span class="tag">></span>Простой параграф<span class="tag">&lt;/p></span>
+		
+<span class="comment comment_start">// класс компонента</span>
+<span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'paragrath'</span><span class="punctuation">)</span> paragrath: <span class="type">ElementRef&lt;HTMLParagraphElement></span>;</code></pre>
+
+            <p>
+                В качестве селектора в основном используют следующие варианты (есть и другие, но они используются
+                гораздо реже):
+            </p>
+            <ul>
+                <li>
+                    <span class="attention">Шаблонные переменные</span> - поиск в шаблоне будет осуществляться по
+                    шаблонным переменным;
+                </li>
+                <li>
+                    <span class="attention">TemplateRef</span> - поиск в шаблоне будет осуществляться по элементам
+                    <code>ng-template</code>;
+                </li>
+                <li>
+                    <span class="attention">Название класса компонента или директивы</span> - поиск в шаблоне будет
+                    осуществляться по компонентам или директивам.
+                </li>
+            </ul>
+            <p>Ниже представлены примеры для каждого из этих случаев:</p>
+            <pre><code><span class="comment comment_start">// шаблон компонента</span>
+<span class="tag">&lt;p</span> <span class="attribute">#paragrath</span><span class="tag">></span>Простой параграф<span class="tag">&lt;/p></span> <span class="comment">(1)</span>
+
+<span class="tag">&lt;ng-template</span> <span class="attribute">#template</span><span class="tag">></span>Параграф внутри элемента ng-template<span class="tag">&lt;/ng-template></span> <span class="comment">(2)</span>
+<span class="tag">&lt;ng-template></span>Параграф внутри элемента ng-template<span class="tag">&lt;/ng-template></span> <span class="comment">(2*)</span>
+
+<span class="tag">&lt;app-child</span> <span class="attribute">#component</span><span class="tag">></span><span class="tag">&lt;/app-child></span> <span class="comment">(3)</span>
+<span class="tag">&lt;app-child></span><span class="tag">&lt;/app-child></span> <span class="comment">(3*)</span>
+		
+<span class="comment comment_start">// класс компонента</span>
+<span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'paragrath'</span><span class="punctuation">)</span> paragrath: <span class="type">ElementRef&lt;HTMLParagraphElement></span>; <span class="comment">(1)</span>
+
+<span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'template'</span><span class="punctuation">)</span> template: <span class="type">TemplateRef&lt;HTMLParagraphElement></span>; <span class="comment">(2)</span>
+<span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="class-name">TemplateRef</span><span class="punctuation">)</span> template: <span class="type">TemplateRef&lt;HTMLParagraphElement></span>; <span class="comment">(2*)</span>
+
+<span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'component'</span><span class="punctuation">)</span> component: <span class="type">ChildComponent</span>; <span class="comment">(3)</span>
+<span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="class-name">ChildComponent</span><span class="punctuation">)</span> component: <span class="type">ChildComponent</span>; <span class="comment">(3*)</span>
+</code></pre>
+            <p>
+                В примерах выше со звоздочкой показано как использовать декоратор
+                <code>@ViewChild&#40;&#41;</code> без использования шаблонных переменных в разметке.
+            </p>
+            <p>Можно так же указывать и мультиселекторы, делается это через запятую в формате строки:</p>
+            <pre><code><span class="comment comment_start">// шаблон компонента</span>
+<span class="tag">&lt;app-child></span><span class="tag">&lt;/app-child></span>
+<span class="tag">&lt;p</span> <span class="attribute">#paragrath</span><span class="tag">></span>Простой параграф<span class="tag">&lt;/p></span>
+		
+<span class="comment comment_start">// класс компонента</span>
+<span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'paragrath, ChildComponent'</span><span class="punctuation">)</span> paragrath: <span class="type">ElementRef&lt;HTMLParagraphElement | ChildComponent></span>;</code></pre>
+            <p>
+                В примере выше под условие селектора попадают оба элемента разметки, но т.к. дочерний компонент в
+                разметке стоит раньше параграфа, поэтому именно его данные декоратор
+                <code>@ViewChild&#40;&#41;</code> запишет в свойство <code>paragrath</code>.
+            </p>`,
+        selected: false,
+        lastUpdate: '14.01.2024',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/R3kexfhgU4Q?t=60',
+            },
+        ],
+    },
+    {
+        title: 'Параметр <span class="variable">static</span> декоратора <span class="variable">@ViewChild()</span>',
+        body: `<p>
+                У декоратора <code>@ViewChild&#40;&#41;</code> есть также и дополнительные параметры. Одним из них
+                является булевый параметр <code>static</code>. По умолчанию он имеет значение <code>false</code>. Это
+                означает, что доступ к шаблону компонента декоратор <code>@ViewChild&#40;&#41;</code> получает после
+                того, как было инициализировано представление компонента. Поэтому данные и появляются начиная с метода
+                <code>ngAfterViewInit</code>.
+            </p>
+            <pre><code><span class="comment comment_start">// Обе записи равносильны</span>
+<span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'paragrath'</span><span class="punctuation">)</span> paragrath: <span class="type">ElementRef&lt;HTMLParagraphElement></span>;
+<span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'paragrath'</span>, <span class="punctuation">&#123;</span> static: <span class="type">false</span> <span class="punctuation">&#125;)</span> paragrath: <span class="type">ElementRef&lt;HTMLParagraphElement></span>;</code></pre>
+            <p>
+                Это сценарий работы директивы <code>@ViewChild&#40;&#41;</code> по умолчанию. Но его можно изменить,
+                установив значение параметра <code>static</code> в значение <code>true</code>.
+            </p>
+            <pre><code><span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'paragrath'</span>, <span class="punctuation">&#123;</span> static: <span class="type">true</span> <span class="punctuation">&#125;)</span> paragrath: <span class="type">ElementRef&lt;HTMLParagraphElement></span>;</code></pre>
+            <p>
+                В этом случае декоратор <code>@ViewChild&#40;&#41;</code> получает доступ к шаблону компонента еще до
+                того, как он прошел все проверки и был полностью инициализирован. Такой вариант использования декоратора
+                может быть полезно в случаях, когда нужно получить доступ к элементам DOM-дерева или данным дочернего
+                компонента до того, как он будет полностью инициализирован.
+            </p>
+            <p>
+                Тут также важно, чтобы на таком элементе не висела структурная директива
+                <code>@if</code> (<code>*if</code>) и не изменялось в дальнейшем содержимое этого элемента. Декоратор
+                <code>@ViewChild&#40;&#41;</code> не увидит изменения. Тут нужны уже различные дополнительные решения
+                для такого сценария работы приложения.
+            </p>
+            <p>
+                То есть, иначе говоря, когда параметр <code>static</code> имеет значение <code>true</code>, это влияет
+                на то, в какой момент жизненного цикла мы получаем данные в свойство, которое использует декоратор
+                <code>@ViewChild&#40;&#41;</code> с этим параметром. При этом значении данные будут доступны уже в
+                методе <code>ngOnInit</code>.
+            </p>
+            <p>
+                Но это не является хорошей практикой. Все же
+                <span class="attention"
+                    >рекомендуется позволять Angular самому управлять жизненными цикломами всех компонентов</span
+                >
+                и получать доступ к их информации в соответствующие этапы жизненного цикла. Использование параметра
+                <code>static</code> со значением <code>true</code> следует рассматривать как обходное решение для
+                конкретных проблем, а не как общую практику.
+            </p>`,
+        selected: false,
+        lastUpdate: '14.01.2024',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/R3kexfhgU4Q?t=555',
+            },
+        ],
+    },
+    {
+        title: 'Метод жизненного цикла, начиная с которого доступна информация в декораторах <span class="variable">@ViewChild()</span> и <span class="variable">@ViewChildren()</span>',
+        body: `<p>
+                Т.к. декораторы свойств <code>@ViewChild&#40;&#41;</code> и <code>@ViewChildren&#40;&#41;</code> следят
+                за шаблоном текущего компонента, а его представление (представление - шаблон текущего компонента +
+                шаблоны дочерних компонентов, которые в нем присутствуют) инициализуруется перед вызовом метода
+                <code>ngAfterViewInit</code>, следовательно, первые данные появятся именно в этом методе. До него будет
+                <code>undefined</code>.
+            </p>`,
+        selected: false,
+        lastUpdate: '14.01.2024',
+    },
+    {
+        title: 'Декоратор <span class="variable">@ViewChildren()</span>',
+        body: `<p>
+                <span class="attention"
+                    >Декоратор <code>@ViewChildren&#40;&#41;</code> позволяет в классе компонента получать доступ к
+                    содержимому шаблона того же компонента, в котором он используются</span
+                >.
+            </p>
+            <p>Он имеет следующий синтаксис:</p>
+            <pre><code><span class="function-name">@ViewChildren</span><span class="punctuation">(</span><span class="string">'селектор'</span><span class="punctuation">)</span> имя_свойства: <span class="type">тип_данных</span>;</code></pre>
+            <p>
+                В отличие от декоратора <code>@ViewChild&#40;&#41;</code>, который находит первое совпадение по
+                селектору и прекращает дальнейший поиск, декоратор <code>@ViewChildren&#40;&#41;</code>
+                <span class="attention"
+                    >будет искать все совпадения с указанным в нем селектором и складывать их в объект
+                    <code>QueryList</code></span
+                >.
+            </p>
+            <p>
+                В примере ниже в классе компонента предоставляется доступ к элементам разметки из шаблона по указанному
+                селектору в декораторе
+                <code>@ViewChildren&#40;&#41;</code>. В данном случае это элементы с шаблонной переменной
+                <code>paragrath</code>.
+            </p>
+            <pre><code><span class="comment comment_start">// шаблон компонента</span>
+<span class="tag">&lt;p</span> <span class="attribute">#paragrath</span><span class="tag">></span>Простой параграф<span class="tag">&lt;/p></span>
+<span class="tag">&lt;p</span> <span class="attribute">#paragrath</span><span class="tag">></span>Еще один простой параграф<span class="tag">&lt;/p></span>
+		
+<span class="comment comment_start">// класс компонента</span>
+<span class="function-name">@ViewChildren</span><span class="punctuation">(</span><span class="string">'paragrath'</span><span class="punctuation">)</span> paragrath: <span class="type">QueryList&lt;ElementRef&lt;HTMLParagraphElement>></span>;</code></pre>
+
+            <p>
+                В качестве селектора в основном используют следующие варианты (есть и другие, но они используются
+                гораздо реже):
+            </p>
+            <ul>
+                <li>
+                    <span class="attention">Шаблонные переменные</span> - поиск в шаблоне будет осуществляться по
+                    шаблонным переменным;
+                </li>
+                <li>
+                    <span class="attention">TemplateRef</span> - поиск в шаблоне будет осуществляться по элементам
+                    <code>ng-template</code>;
+                </li>
+                <li>
+                    <span class="attention">Название класса компонента или директивы</span> - поиск в шаблоне будет
+                    осуществляться по компонентам или директивам.
+                </li>
+            </ul>
+            <p>Ниже представлены примеры для каждого из этих случаев:</p>
+            <pre><code><span class="comment comment_start">// шаблон компонента</span>
+<span class="tag">&lt;p</span> <span class="attribute">#paragrath</span><span class="tag">></span>Простой параграф<span class="tag">&lt;/p></span> <span class="comment">(1)</span>
+
+<span class="tag">&lt;ng-template</span> <span class="attribute">#template</span><span class="tag">></span>Параграф внутри элемента ng-template<span class="tag">&lt;/ng-template></span> <span class="comment">(2)</span>
+<span class="tag">&lt;ng-template></span>Параграф внутри элемента ng-template<span class="tag">&lt;/ng-template></span> <span class="comment">(2*)</span>
+
+<span class="tag">&lt;app-child</span> <span class="attribute">#component</span><span class="tag">></span><span class="tag">&lt;/app-child></span> <span class="comment">(3)</span>
+<span class="tag">&lt;app-child></span><span class="tag">&lt;/app-child></span> <span class="comment">(3*)</span>
+		
+<span class="comment comment_start">// класс компонента</span>
+<span class="function-name">@ViewChildren</span><span class="punctuation">(</span><span class="string">'paragrath'</span><span class="punctuation">)</span> paragrath: <span class="type">QueryList&lt;ElementRef&lt;HTMLParagraphElement>></span>; <span class="comment">(1)</span>
+
+<span class="function-name">@ViewChildren</span><span class="punctuation">(</span><span class="string">'template'</span><span class="punctuation">)</span> template: <span class="type">QueryList&lt;TemplateRef&lt;HTMLParagraphElement>></span>; <span class="comment">(2)</span>
+<span class="function-name">@ViewChildren</span><span class="punctuation">(</span><span class="class-name">TemplateRef</span><span class="punctuation">)</span> template: <span class="type">QueryList&lt;TemplateRef&lt;HTMLParagraphElement>></span>; <span class="comment">(2*)</span>
+
+<span class="function-name">@ViewChildren</span><span class="punctuation">(</span><span class="string">'component'</span><span class="punctuation">)</span> component: <span class="type">QueryList&lt;ChildComponent></span>; <span class="comment">(3)</span>
+<span class="function-name">@ViewChildren</span><span class="punctuation">(</span><span class="class-name">ChildComponent</span><span class="punctuation">)</span> component: <span class="type">QueryList&lt;ChildComponent></span>; <span class="comment">(3*)</span>
+
+<span class="comment comment_start">Немного пояснения по коду выше:</span>
+<span class="comment comment_start">(1) - найдется лишь один параграф</span>
+<span class="comment comment_start">(2) - найдется лишь элемент ng-template, у которого есть шаблонная переменная template</span>
+<span class="comment comment_start">(2*) - найдутся оба элемента ng-template</span>
+<span class="comment comment_start">(3) - найдется лишь компонент app-child, у которого есть шаблонная переменная component</span>
+<span class="comment comment_start">(3*) - найдутся оба компонента</span>
+</code></pre>
+            <p>
+                В примерах выше со звоздочкой показао как использовать декоратор
+                <code>@ViewChildren&#40;&#41;</code> без использования шаблонных переменных в разметке.
+            </p>
+            <p>Можно так же указывать и мультиселекторы, делается это через запятую в формате строки:</p>
+            <pre><code><span class="comment comment_start">// шаблон компонента</span>
+<span class="tag">&lt;app-child></span><span class="tag">&lt;/app-child></span>
+<span class="tag">&lt;p</span> <span class="attribute">#paragrath</span><span class="tag">></span>Простой параграф<span class="tag">&lt;/p></span>
+		
+<span class="comment comment_start">// класс компонента</span>
+<span class="function-name">@ViewChildren</span><span class="punctuation">(</span><span class="string">'paragrath, ChildComponent'</span><span class="punctuation">)</span> paragrath: <span class="type">ElementRef&lt;HTMLParagraphElement | ChildComponent></span>;</code></pre>
+            <p>
+                В примере выше под условие селектора попадают оба элемента разметки, поэтому декоратор
+                <code>@ViewChildren&#40;&#41;</code> добавит их оба в свойство <code>paragrath</code>.
+            </p>
+            <i class="subtitle">Класс QueryList</i>
+            <p>
+                <code>QueryList</code> - это ангуляровский класс, который
+                <span class="attention"
+                    >является неизменяемым списком элементов, то есть, доступен только для получения информации</span
+                >.
+            </p>
+            <p>
+                Его нужно указывать в качестве типа для свойства, которое указано после декоратора
+                <code>@ViewChildren&#40;&#41;</code>. Причем у него необходимо обязательно указывать дженерик,
+                сообщающий TypeScript, с какими данными он должен работать.
+            </p>
+            <p>
+                Если у элемента указать тип данных <code>QueryList</code>, то это будет объект с определенным набором
+                свойств, в котором из общедоступных свойств нет массива со списком элементов, которые в него попали. Но
+                у класса <code>QueryList</code> помимо свойств есть также и различные методы, по наименованию и
+                функционалу повторяющие методы массивов из нативного JavaScript.
+            </p>
+            <pre><code><span class="comment comment_start">// шаблон компонента</span>
+<span class="tag">&lt;app-child</span> <span class="attribute">#component</span><span class="tag">></span><span class="tag">&lt;/app-child></span>
+<span class="tag">&lt;app-child></span><span class="tag">&lt;/app-child></span>
+
+<span class="comment comment_start">// класс компонента</span>
+<span class="function-name">@ViewChildren</span><span class="punctuation">(</span><span class="class-name">ChildComponent</span><span class="punctuation">)</span> component: <span class="type">QueryList&lt;ChildComponent></span>;
+
+<span class="method">ngAfterViewInit</span><span class="punctuation">() &#123;</span>
+	<span class="object">this</span>.component.<span class="method">forEach</span><span class="punctuation">((</span>item<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'item'</span>, item<span class="punctuation">))</span>;
+<span class="punctuation">&#125;</span></code></pre>
+            <p>
+                В примере выше в консоли браузера выведется каждый найденный дочерний компонент в отдельной строке со
+                всем своим содержимым.
+            </p>`,
+        selected: false,
+        lastUpdate: '14.01.2024',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/R3kexfhgU4Q?t=767',
+            },
+        ],
+    },
+    {
+        title: 'Параметр <span class="variable">read</span> декораторов <span class="variable">@ViewChild()</span> и <span class="variable">@ViewChildren()</span>',
+        body: ` <p>
+                У декораторов <code>@ViewChild&#40;&#41;</code> и <code>@ViewChildren&#40;&#41;</code> есть параметр
+                <code>read</code>, который служит, своего рода, фильтром получаемых данных по указанному селектору.
+            </p>
+            <p>
+                В качестве значения для параметра <code>read</code> в основном используют следующие варианты (есть и
+                другие, но они используются гораздо реже):
+            </p>
+            <ul>
+                <li>
+                    <span class="attention">ElementRef</span>, если мы ожидаем получение данных только через шаблонную
+                    переменную;
+                </li>
+                <li>
+                    <span class="attention">TemplateRef</span>, если мы ожидаем получение только элементов
+                    <code>ng-template</code>;
+                </li>
+                <li>
+                    <span class="attention">Название класса компонента или директивы</span>, если мы ожидаем получение
+                    только компонентов или директив соответственно.
+                </li>
+            </ul>
+            <p>
+                Допустим, в шаблоне имеются параграф и дочерний компонент с одинаковым названием шаблонной переменной,
+                причем дочерний компонент идет после параграфа, что важно, например, для декоратора
+                <code>@ViewChild&#40;&#41;</code>:
+            </p>
+            <pre><code><span class="tag">&lt;p</span> <span class="attribute">#element</span><span class="tag">></span>Простой параграф<span class="tag">&lt;/p></span>
+<span class="tag">&lt;app-child</span> <span class="attribute">#element</span><span class="tag">></span><span class="tag">&lt;/app-child></span></code></pre>
+            <p>
+                Однако, с помощью параметра <code>read</code> мы можем не учитывать параграфы и фильтровать их, оставляя
+                лишь найденные дочерние компоненты:
+            </p>
+            <pre><code><span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'element'</span>, <span class="punctuation">&#123;</span> read: <span class="type">ChildComponent</span> <span class="punctuation">&#125;)</span> element: <span class="type">ElementRef&lt;ChildComponent></span>;</code></pre>
+            <p>В итоге, в свойстве <code>element</code> будут лишь данные дочернего компонента.</p>`,
+        selected: false,
+        lastUpdate: '14.01.2024',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/R3kexfhgU4Q?t=654',
+            },
+        ],
+    },
+    {
+        title: 'Декоратор <span class="variable">@Attribute()</span>',
+        body: `<p>
+		В Ангуляре данные от родителя к дочернему компоненту можно
+		передавать как статически, так и динамически:
+	</p>
+	<pre><code><span class="tag"><</span><span class="tag">app-child</span> <span class="attribute">name</span><span class="operator">=</span><span class="string">"какая-то_строка"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/app-child></span> <span class="comment">// статическая передача данных</span>
+<span class="tag"><</span><span class="tag">app-child</span> <span class="attribute">[name]</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">какая-то_переменная</span><span class="punctuation">"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/app-child></span> <span class="comment">// динамическая передача данных</span></code></pre>
+	<p>
+		Декоратор <code>@Input()</code> может обрабатывать и тот, и другой
+		варианты. И т.к. данные могут изменяться, механизм
+		<code>ChangeDetection</code> будет его тоже проверять на наличие
+		изменений. Даже если вы каждый раз передаете статические данные и они никак
+		не изменяются.
+	</p>
+	<p>
+		Чтобы снизить нагрузку на механизм
+		<code>ChangeDetection</code> и не проверять статические данные,
+		используется декоратор <code>@Attribute()</code>, который
+		<span class="attention"
+			>помечает входящий параметр как неизменяемый на протяжении
+			всего жизненного цикла приложения</span
+		>.
+	</p>
+	<p>Пример использования:</p>
+	<pre><code><span class="keyword">constructor</span><span class="punctuation">(</span><span class="function-name">@Attribute</span><span class="punctuation">(</span><span class="string">'name'</span><span class="punctuation">)</span> <span class="keyword">private</span> name: <span class="type">string</span><span class="punctuation">) {}</span></code></pre>
+	<p>
+		Как видите, в отличие от декоратора <code>@Input()</code> значение теперь принемается в конструкторе класса, а не в одном из хуков жизненного цикла компонента. А как вы знаете, констурктор вызывается лишь единожды, когда иницируется сам класс, а не компонент, поэтому
+		свойство не может быть динамическим и механизм <code>ChangeDetection</code> его не отслеживает. Соответственно, <span class="attention">если вы
+		захотите передать через декоратор
+		<code>@Attribute()</code> динамический параметр, то Angular выдаст
+		вам ошибку</span>.
+	</p>`,
+        selected: false,
+        lastUpdate: '23.09.2023',
+    },
+    {
+        title: 'Декоратор <span class="variable">@Injectable()</span>',
+        body: `<p>
+            Декоратор <code>@Injectable()</code>
+            <span class="attention">
+                нужен для явного указания того, что сервис может использовать
+                другие сервисы.
+            </span>
+        </p>
+        <pre><code><span class="comment comment_start">// пример использования данного декоратора</span>
+<span class="function-name">@Injectable</span><span class="punctuation">({</span><span class="key">providedIn</span>: <span class="string">'root'</span><span class="punctuation">})</span></code></pre>
+        <p>
+            Иначе говоря, данный декоратор гарантирует, что встроенный механизм
+            внедрения зависимостей (<code>dependency injection</code>) сможет создать объект
+            этого класса и передать в него в качестве зависимости другие объекты
+            (другие сервисы или компоненты, если в этом есть необходимость).
+        </p>
+        <p>
+            Если сервис не использует никакие другие зависимости, то данный
+            декоратор можно и не указывать. <span class="attention">Без него сервис тоже будет работать</span>.
+            Но среди Angular-разработчиков существует договоренность, что
+                данный декоратор стоит применять к любому классу сервиса.
+        </p>`,
         selected: false,
         lastUpdate: '14.09.2023',
     },
@@ -298,42 +659,6 @@ export const decoratorQuestions: IQuestion[] = [
 <span class="punctuation">})</span>
 
 <span class="keyword">class</span> <span class="class-name">App</span> <span class="punctuation">{}</span></code></pre>`,
-        selected: false,
-        lastUpdate: '23.09.2023',
-    },
-    {
-        title: 'Декоратор <span class="variable">@Attribute()</span>',
-        body: `<p>
-		В Ангуляре данные от родителя к дочернему компоненту можно
-		передавать как статически, так и динамически:
-	</p>
-	<pre><code><span class="tag"><</span><span class="tag">app-child</span> <span class="attribute">name</span><span class="operator">=</span><span class="string">"какая-то_строка"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/app-child></span> <span class="comment">// статическая передача данных</span>
-<span class="tag"><</span><span class="tag">app-child</span> <span class="attribute">[name]</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">какая-то_переменная</span><span class="punctuation">"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/app-child></span> <span class="comment">// динамическая передача данных</span></code></pre>
-	<p>
-		Декоратор <code>@Input()</code> может обрабатывать и тот, и другой
-		варианты. И т.к. данные могут изменяться, механизм
-		<code>ChangeDetection</code> будет его тоже проверять на наличие
-		изменений. Даже если вы каждый раз передаете статические данные и они никак
-		не изменяются.
-	</p>
-	<p>
-		Чтобы снизить нагрузку на механизм
-		<code>ChangeDetection</code> и не проверять статические данные,
-		используется декоратор <code>@Attribute()</code>, который
-		<span class="attention"
-			>помечает входящий параметр как неизменяемый на протяжении
-			всего жизненного цикла приложения</span
-		>.
-	</p>
-	<p>Пример использования:</p>
-	<pre><code><span class="keyword">constructor</span><span class="punctuation">(</span><span class="function-name">@Attribute</span><span class="punctuation">(</span><span class="string">'name'</span><span class="punctuation">)</span> <span class="keyword">private</span> name: <span class="type">string</span><span class="punctuation">) {}</span></code></pre>
-	<p>
-		Как видите, в отличие от декоратора <code>@Input()</code> значение теперь принемается в конструкторе класса, а не в одном из хуков жизненного цикла компонента. А как вы знаете, констурктор вызывается лишь единожды, когда иницируется сам класс, а не компонент, поэтому
-		свойство не может быть динамическим и механизм <code>ChangeDetection</code> его не отслеживает. Соответственно, <span class="attention">если вы
-		захотите передать через декоратор
-		<code>@Attribute()</code> динамический параметр, то Angular выдаст
-		вам ошибку</span>.
-	</p>`,
         selected: false,
         lastUpdate: '23.09.2023',
     },
