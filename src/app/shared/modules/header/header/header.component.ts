@@ -21,10 +21,10 @@ interface IHeaderChapters {
 export class HeaderComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);
     chapters: IHeaderChapters[] = [
-        { path: 'javascript', name: 'Javascript', disabled: false },
-        { path: 'angular', name: 'Angular', disabled: false },
-        { path: 'git/all', name: 'Git', disabled: false },
-        { path: 'others', name: 'Разное', disabled: true },
+        { path: 'theory/javascript', name: 'Javascript', disabled: false },
+        { path: 'theory/angular', name: 'Angular', disabled: false },
+        { path: 'theory/git/all', name: 'Git', disabled: false },
+        { path: 'theory/others', name: 'Разное', disabled: true },
     ];
     themes: ITheme[];
     currentTheme: ITheme;

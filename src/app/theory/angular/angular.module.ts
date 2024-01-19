@@ -10,7 +10,7 @@ import { SpoilersModule, TitleModule } from '@modules';
 // a b c d e f g h i j k l m n o p q r s t u v w x y z
 const routes: Routes = [
     {
-        path: 'angular',
+        path: 'theory/angular',
         component: AngularComponent,
         children: [
             { path: 'component', component: AngularComponent },
@@ -31,12 +31,7 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [AngularComponent],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        SpoilersModule,
-        TitleModule,
-    ],
+    imports: [CommonModule, RouterModule.forChild(routes), SpoilersModule, TitleModule],
     providers: [],
 })
 export class AngularModule {}

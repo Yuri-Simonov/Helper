@@ -12,11 +12,11 @@
             <article class="home__chapter">
                 <h2 class="home__subtitle title">{{ chapter.title }}</h2>
                 @for (link of chapter.links; track $index) {
-                    @if (link?.route) {
+                    @if (link?.path) {
                         <a
                             mat-raised-button
                             color="primary"
-                            [routerLink]="link.route"
+                            [routerLink]="link.path"
                             [ngClass]="{ disabled: link.disabled }"
                         >
                             {{ link.name }}

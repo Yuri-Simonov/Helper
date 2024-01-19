@@ -13,10 +13,10 @@ export class HomeComponent {
             id: 'theory',
             title: 'Теоретические материалы',
             links: [
-                { route: 'javascript', name: 'JavaScript' },
-                { route: 'angular', name: 'Angular' },
-                { route: 'git/all', name: 'Git' },
-                { route: 'others', name: 'Разное', disabled: true },
+                { path: 'theory/javascript', name: 'JavaScript' },
+                { path: 'theory/angular', name: 'Angular' },
+                { path: 'theory/git/all', name: 'Git' },
+                { path: 'theory/others', name: 'Разное', disabled: true },
             ],
         },
         {
@@ -32,16 +32,16 @@ export class HomeComponent {
         {
             id: 'tasks',
             title: 'Задачи',
-            links: [{ route: '#', name: 'JavaScript', disabled: true }],
+            links: [{ path: '#', name: 'JavaScript', disabled: true }],
         },
         {
             id: 'tests',
             title: 'Тесты',
             links: [
-                { route: '#', name: 'JavaScript', disabled: true },
-                { route: '#', name: 'Angular', disabled: true },
-                { route: '#', name: 'Git', disabled: true },
-                { route: '#', name: 'Разное', disabled: true },
+                { path: '#', name: 'JavaScript', disabled: true },
+                { path: '#', name: 'Angular', disabled: true },
+                { path: '#', name: 'Git', disabled: true },
+                { path: '#', name: 'Разное', disabled: true },
             ],
         },
     ];

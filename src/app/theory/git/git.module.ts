@@ -8,7 +8,7 @@ import { SpoilersModule, TitleModule } from '@modules';
 
 const routes: Routes = [
     {
-        path: 'git/all',
+        path: 'theory/git/all',
         component: GitComponent,
         // children: [{ path: 'all', component: GitComponent }],
     },
@@ -16,11 +16,6 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [GitComponent],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        TitleModule,
-        SpoilersModule,
-    ],
+    imports: [CommonModule, RouterModule.forChild(routes), TitleModule, SpoilersModule],
 })
 export class GitModule {}

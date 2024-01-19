@@ -10,7 +10,7 @@ import { SpoilersModule, TitleModule } from '@modules';
 // a b c d e f g h i j k l m n o p q r s t u v w x y z
 const routes: Routes = [
     {
-        path: 'javascript',
+        path: 'theory/javascript',
         component: JavascriptComponent,
         children: [
             { path: 'async', component: JavascriptComponent },
@@ -26,11 +26,6 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [JavascriptComponent],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        TitleModule,
-        SpoilersModule,
-    ],
+    imports: [CommonModule, RouterModule.forChild(routes), TitleModule, SpoilersModule],
 })
 export class JavascriptModule {}
