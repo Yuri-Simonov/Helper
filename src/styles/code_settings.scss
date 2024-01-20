@@ -4,7 +4,7 @@ i + pre {
 }
 
 pre {
-    display: inline-flex;
+    // display: inline-flex;
     align-items: center;
     max-width: calc(100vw - 241px - 48px);
     overflow-x: auto;
@@ -24,6 +24,7 @@ pre {
 
 code {
     padding: 16px;
+    background: none !important;
 
     @media (max-width: 440px), (max-height: 440px) {
         padding: 12px;

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
+import { HighlightJsModule } from 'ngx-highlight-js';
 
 import { AppComponent } from './app.component';
 
@@ -10,7 +12,6 @@ import { FooterModule } from 'src/app/shared/modules/footer/footer.module';
 import { HomeModule } from 'src/app/home/home.module';
 import { TheoryModule } from './theory/theory.module';
 import { MaterialModule, SidenavModule } from '@modules';
-import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [{ path: '**', redirectTo: '' }];
 
@@ -21,6 +22,7 @@ const routes: Routes = [{ path: '**', redirectTo: '' }];
         AppRoutingModule,
         BrowserAnimationsModule,
         HeaderModule,
+        HighlightJsModule,
         FooterModule,
         MaterialModule,
         HomeModule,

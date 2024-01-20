@@ -22,4 +22,47 @@ export const testQuestions: IQuestion[] = [
         </p>`,
         selected: false,
     },
+    {
+        title: 'test',
+        body: `
+		<p>this is an example</p>
+<pre>
+  <code>
+function myFunction() {
+  document.getElementById("demo1").innerHTML = "Hello there!";
+  document.getElementById("demo2").innerHTML = "How are you?";
+}
+  </code>
+</pre>
+
+<pre>
+  <code class="language-css">
+p .pre,
+i + pre {
+    margin-top: 0;
+}
+  </code>
+</pre>
+
+<pre>
+  <code class="language-typescript">
+export class HomeComponent {
+    chapters: IChapter[] = [
+        {
+            id: 'theory',
+            title: 'Теоретические материалы',
+            links: [
+                { path: 'theory/javascript', name: 'JavaScript' },
+                { path: 'theory/angular', name: 'Angular' },
+                { path: 'theory/git/all', name: 'Git' },
+                { path: 'theory/others', name: 'Разное', disabled: true },
+            ],
+        }
+    ];
+}
+  </code>
+</pre>	
+		`,
+        selected: false,
+    },
 ];
