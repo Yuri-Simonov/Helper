@@ -7,18 +7,19 @@ export const othersQuestions: IQuestion[] = [
     //     selected: false,
     // },
     {
-        title: 'Что такое "Angular CLI"?',
+        title: '<span class="variable">Angular CLI</span>. Определение',
         body: `<p>
             <span class="attention">Angular CLI</span> - это npm-модуль,
             реализующий интерфейс командной строки для создания, разработки и
-            поддержки Angular приложений. В системе он должен быть установлен
+            поддержки Angular-приложений. В системе желательно его устанавливать
             глобально.
         </p>`,
         selected: false,
+        lastUpdate: '05.02.2024',
     },
 
     {
-        title: 'Какие существуют механизмы компиляции приложения в Angular?',
+        title: 'Механизмы компиляции Angular-приложения',
         body: `<p>
             Начиная с 9-ой версии Angular, механизм
             <code>Angular compile</code> реализован в двух режимах:
@@ -51,9 +52,10 @@ export const othersQuestions: IQuestion[] = [
             <code>--prod</code> AOT-компиляция используется по умолчанию.
         </p>`,
         selected: false,
+        lastUpdate: '05.02.2024',
     },
     {
-        title: 'Объясните принцип работы "Dependency injection"?',
+        title: 'Принцип работы механизма <span class="variable">Dependency injection</span>',
         body: `<p>
             <code>Dependency injection</code> (или сокращенно "DI") - это
             механизм, который позволяет, например, классу "А" просить объекты
@@ -71,7 +73,7 @@ export const othersQuestions: IQuestion[] = [
             >.
         </p>
         <p>Пример использования "DI":</p>
-        <pre><code><span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">private</span> httpClient: <span class="interface-name">HttpClient</span><span class="punctuation">)</span> <span class="punctuation">{}</span></code></pre>
+        <pre><code class="language-typescript">constructor(private httpClient: HttpClient) {}</code></pre>
         <p>
             В каком-то классе запрашивается модуль <code>HttpClient</code> и
             записывается в приватную переменную <code>httpClient</code>.
@@ -89,9 +91,9 @@ export const othersQuestions: IQuestion[] = [
             инструкция того, как создать объект, который запрашивается в
             конструкторе примера выше.
         </p>
-        <pre><code><span class="keyword">@NgModule</span><span class="punctuation">({</span>
-	<span class="key">imports</span><span class="punctuation">: [</span><span class="module-name">HttpClientModule</span><span class="punctuation">]</span>
-<span class="punctuation">})</span></code></pre>
+        <pre><code class="language-typescript">@NgModule({
+	imports: [HttpClientModule]
+})</code></pre>
         <i class="subtitle">Зачем так все усложнять?</i>
         <p>
             На самом деле это наоборот упрощает нам разработку. Потому что, если
@@ -100,9 +102,9 @@ export const othersQuestions: IQuestion[] = [
             потому что сам модуль <code>HttpClient</code> зависит от другого
             класса - <code>HttpHandler</code>.
         </p>
-        <pre><code><span class="export">export</span> <span class="keyword">declare</span> <span class="keyword">class</span> <span class="class-name">HttpClient</span> <span class="punctuation">{</span>
-	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">private</span> handler: <span class="interface-name">HttpHandler</span><span class="punctuation">)</span>;
-<span class="punctuation">}</span></code></pre>
+<pre><code class="language-typescript">export declare class HttpClient {
+	constructor(private handler: HttpHandler);
+}</code></pre>
         <p>
             Модуль <code>HttpHandler</code> уже ни от кого не зависит, поэтому в
             нем уже будет создаваться новый объект через ключевое слово
@@ -126,49 +128,48 @@ export const othersQuestions: IQuestion[] = [
             >.
         </p>`,
         selected: false,
+        lastUpdate: '05.02.2024',
     },
     {
-        title: 'Что такое модуль в Angular?',
+        title: 'Модуль в Angular. Определение',
         body: `<p>
             <span class="attention">Angular модуль</span> - это класс c
             декоратором <code>@NgModule()</code>, который служит изолирующей
             логической объединяющей структурой для компонентов, директив,
             фильтров и сервисов.
         </p>
-        <pre><code><span class="keyword">@NgModule</span><span class="punctuation">({</span>
-	<span class="key">declarations</span><span class="punctuation">: [</span><span class="class-name">ParentComponent</span><span class="punctuation">]</span>, <span class="comment">// дочерние компоненты, директивы и фильтры</span>
-	<span class="key">entryComponents</span><span class="punctuation">: [</span><span class="class-name">SomeDynamicComponent</span><span class="punctuation">]</span>, <span class="comment">// компоненты, которые будут подгружаться динамически</span>
-	<span class="key">imports</span><span class="punctuation">: [</span><span class="class-name">SomeModule</span><span class="punctuation">]</span>, <span class="comment">// другие модули, используемые в текущем модуле</span>
-	<span class="key">providers</span><span class="punctuation">: [</span><span class="class-name">SomeService</span><span class="punctuation">]</span>, <span class="comment">// импортирование в модуль необходимых сервисов приложения</span>
-	<span class="key">bootstrap</span><span class="punctuation">: [</span><span class="class-name">ParentComponent</span><span class="punctuation">]</span>, <span class="comment">// имя главного компонента модуля</span>
-	<span class="key">exports</span><span class="punctuation">: [</span><span class="class-name">SomeComponent</span><span class="punctuation">]</span>, <span class="comment">// экспортируемые компоненты, директивы и фильтры, которые могут быть использованы другими модулями</span>
-<span class="punctuation">})</span>
+        <pre><code class="language-typescript">@NgModule({
+	declarations: [ParentComponent], // дочерние компоненты, директивы и фильтры
+	entryComponents: [SomeDynamicComponent], // компоненты, которые будут подгружаться динамически
+	imports: [SomeModule], // другие модули, используемые в текущем модуле
+	providers: [SomeService], // импортирование в модуль необходимых сервисов приложения
+	bootstrap: [ParentComponent], // имя главного компонента модуля
+	exports: [SomeComponent], // экспортируемые компоненты, директивы и фильтры, которые могут быть использованы другими модулями
+})
 	
-<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">ParentModule</span> <span class="punctuation">{}</span> <span class="comment">// класс, к которому привязывается декоратор @NgModule()</span></code>
-				</pre>`,
+export class ParentModule {} // класс, к которому привязывается декоратор @NgModule()</code></pre>`,
         selected: false,
+        lastUpdate: '05.02.2024',
     },
     {
-        title: 'В каком файле нужно подключать сторонние скрипты и стили и почему?',
+        title: 'Подключение сторонних скриптов и стилей',
         body: `<p>
-            Cторонние скрипты и стили должны подключаться в
-            <span class="attention">angular.json</span>, а не в index.html как
+            Cторонние скрипты и стили должны подключаться в файле
+            <span class="attention">angular.json</span>, а не в <span class="attention">index.html</span> как
             это делается в верстке, например.
         </p>
         <i class="subtitle"> Почему именно так? </i>
         <p>
             Важно, чтобы все настройки были в одном месте, а не размазаны по
-            всему приложению. Причем файл angular.json как раз для этого и
+            всему приложению. Причем файл <span class="attention">angular.json</span> как раз для этого и
             предназначен, т.к.
-            <span class="attention">
-                является главным конфигурационным файлом
-            </span>
-            Angular Workspace.
+            <span class="attention">является главным конфигурационным файлом рабочего пространства Angular</span>.
         </p>`,
         selected: false,
+        lastUpdate: '05.02.2024',
     },
     {
-        title: 'Что такое "Renderer 2" и зачем он в Angular?',
+        title: '<span class="variable">Renderer 2</span>',
         body: ``,
         selected: false,
         lastUpdate: '',

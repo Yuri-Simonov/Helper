@@ -2,16 +2,15 @@ import { IQuestion } from '@types';
 
 export const testQuestions: IQuestion[] = [
     {
-        title: 'Что такое "Protractor"?',
+        title: '<span class="variable">Protractor</span>. Определение',
         body: `<p>
             <span class="attention">Protractor</span> - фреймворк комплексного
-            тестирования, с помощью которого можно тестировать Angular
-            приложение прямо в браузере, имитируя взаимодействия, как c реальным
+            тестирования, с помощью которого можно тестировать Angular-приложение прямо в браузере, имитируя взаимодействия, как c реальным
             пользователем.
         </p>
         <p>По умолчанию с ним в коробке идет 2 фреймворка для тестирования:</p>
         <ul>
-            <li>Юнит тесты на Jasmine и Karma</li>
+            <li>Юнит-тесты на Jasmine и Karma</li>
             <li>Комплексные тесты на Protractor</li>
         </ul>
         <p>
@@ -21,48 +20,12 @@ export const testQuestions: IQuestion[] = [
             элементы).
         </p>`,
         selected: false,
+        lastUpdate: '05.02.2024',
     },
-    {
-        title: 'test',
-        body: `
-		<p>this is an example</p>
-<pre>
-  <code>
-function myFunction() {
-  document.getElementById("demo1").innerHTML = "Hello there!";
-  document.getElementById("demo2").innerHTML = "How are you?";
-}
-  </code>
-</pre>
-
-<pre>
-  <code class="language-css">
-p .pre,
-i + pre {
-    margin-top: 0;
-}
-  </code>
-</pre>
-
-<pre>
-  <code class="language-typescript">
-export class HomeComponent {
-    chapters: IChapter[] = [
-        {
-            id: 'theory',
-            title: 'Теоретические материалы',
-            links: [
-                { path: 'theory/javascript', name: 'JavaScript' },
-                { path: 'theory/angular', name: 'Angular' },
-                { path: 'theory/git/all', name: 'Git' },
-                { path: 'theory/others', name: 'Разное', disabled: true },
-            ],
-        }
-    ];
-}
-  </code>
-</pre>	
-		`,
-        selected: false,
-    },
+    // {
+    //     title: '',
+    //     body: ``,
+    //     selected: false,
+    // 	lastUpdate: '',
+    // },
 ];

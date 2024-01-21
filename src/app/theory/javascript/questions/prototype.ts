@@ -2,25 +2,22 @@ import { IQuestion } from '@types';
 
 export const prototypeQuestions: IQuestion[] = [
     {
-        title: 'Что такое прототип?',
+        title: 'Прототип. Определение',
         body: `<p>
             <span class="attention">Прототип</span> (prototype) - Это
             объект-шаблон, который присутствует у любого объекта в JavaScript и
             от которого объекты наследуют свойства и методы.
         </p>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'Как добавить свой метод или свойство в прототип?',
+        title: 'Добавление собственного метода или свойства в прототип',
         body: `<p>
             Чтобы добавить свое свойство / метод в глобальный прототип для
             объекта, используется следующая запись:
         </p>
-
-        <pre>
-<code><span class="object">Object</span>.prototype.<span class="function-name">sayHello</span> = <span class="keyword">function</span><span class="punctuation">()</span><span class="punctuation">{</span>...<span class="punctuation">}</span>
-</code>
-</pre>
+<pre><code class="language-javascript">Object.prototype.sayHello = function() {...}</code></pre>
         <p>
             В коде выше представлен
             <span class="attention">
@@ -29,9 +26,10 @@ export const prototypeQuestions: IQuestion[] = [
             .
         </p>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'Как работает цепочка прототипов в JavaScript?',
+        title: 'Принцип работы цепочки прототипов в <span class="variable">JavaScript</span>',
         body: `<p>
             Каждый объект в JavaScript имеет свой объект-прототип. Но при этом,
             объект-прототип может иметь свой прототип и наследовать его свойства
@@ -49,20 +47,22 @@ export const prototypeQuestions: IQuestion[] = [
             .
         </p>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'Чем заканчивается цепочка прототипов?',
+        title: 'Конец цепочки прототипов',
         body: `<p>
             Цепочка заканчивается, если
             <span class="attention">прототип становится равным <code>null</code></span>.
         </p>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'Как сделать объект "а" прототипом объекта "b"?',
+        title: 'Назначение объекта <span class="variable">a</span> прототипом объекта <span class="variable">b</span>',
         body: ``,
         selected: false,
-        lastUpdate: '',
+        lastUpdate: '09.02.2024',
         disabled: true,
     },
 ];

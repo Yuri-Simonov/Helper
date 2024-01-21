@@ -13,21 +13,17 @@ export const componentQuestions: IQuestion[] = [
                 За создание компонента отвечает декоратор
                 <code>@Component()</code>.
             </p>
-            <pre><code><span class="function-name">@Component</span><span class="punctuation">({</span>
-	<span class="key">selector</span>: <span class="string">'app-root'</span>, <span class="comment">// название компонента</span>
-	<span class="key">templateUrl</span>: <span class="string">'./app.component.html'</span>, <span
-		class="comment">// путь к HTML-файлу. Является обязательным свойством</span>
-	<span class="key">styleUrls</span>: <span class="punctuation">[</span><span
-		class="string">'./app.component.scss'</span><span class="punctuation">]</span>, <span class="comment">// массив путей к SCSS-файлам</span>
-	<span class="key">providers</span>: <span class="punctuation">[</span><span
-		class="service-name">SomeService</span><span class="punctuation">]</span>, <span class="comment">// если добавляются непосредственно в компонент какие-то зависимости</span>
-	<span class="key">changeDetection</span>: <span>ChangeDetectionStrategy.OnPush</span>, <span class="comment">// явное определение стратегии ChangeDetection</span>
-<span class="punctuation">})</span>
+	<pre><code class="language-typescript">@Component({
+	selector: 'app-root', // название компонента
+	templateUrl: './app.component.html', // путь к HTML-файлу. Является обязательным свойством
+	styleUrls: ['./app.component.scss'], // массив путей к SCSS-файлам
+	providers: [SomeService], // если добавляются непосредственно в компонент какие-то зависимости
+	changeDetection: ChangeDetectionStrategy.OnPush, // явное определение стратегии ChangeDetection
+})
 
-<span class="export">export</span> <span class="keyword">class</span> <span
-	class="class-name">AppComponent</span> <span class="punctuation">{}</span> <span class="comment">// класс, к которому привязывается декоратор @Component()</span></code></pre>`,
+export class AppComponent {} // класс, к которому привязывается декоратор @Component()</code></pre>`,
         selected: false,
-        lastUpdate: '19.10.2023',
+        lastUpdate: '08.02.2024',
     },
     {
         title: 'Жизненный цикл компонента (Angular hooks)',
@@ -59,13 +55,13 @@ export const componentQuestions: IQuestion[] = [
                         <code>@Input&#40;&#41;</code>.
                     </p>
                     <p>Пример такого объекта, когда от родителя мы получаем свойство <code>title</code>:</p>
-                    <pre><code><span class="punctuation">{</span>
-	title <span class="punctuation">{</span>
-		currentValue: <span class="string">'Какое-то текущее значение свойства title'</span>,
-		firstChange: <span class="boolean">true</span>, <span class="comment">// если это первое значение поля title, будет true, иначе false</span>
-		previousValue: <span class="undefined">undefined</span> <span class="comment">// если это первое значение поля title, то предыдущего еще не было</span>
-	<span class="punctuation">}</span>
-<span class="punctuation">}</span></code></pre>
+<pre><code class="language-typescript">{
+	title {
+		currentValue: 'Какое-то текущее значение свойства title',
+		firstChange: true, // если это первое значение поля title, будет true, иначе false
+		previousValue: undefined // если это первое значение поля title, то предыдущего еще не было
+	}
+}</code></pre>
                     <p>
                         Стоит также иметь ввиду, что метод <code>ngOnChanges</code> вызывается
                         <span class="attention">
@@ -81,12 +77,10 @@ export const componentQuestions: IQuestion[] = [
                         текущего компонента.
                     </p>
                     <p>Пример свойства компонента, связанного с данными:</p>
-                    <pre><code><span class="comment comment_start">// в классе компонента</span>
-title: <span class="type">string</span> <span class="operator">=</span> <span class="string">'Какой-то заголовок'</span>;
-
-<span class="comment comment_start">// в шаблоне компонента</span>
-<span class="tag">&lt;p></span>&#123;&#123; title &#125;&#125;<span class="tag">&lt;/p></span>
-</code></pre>
+<pre><code class="language-typescript">// класс компонента
+title: string = 'Какой-то заголовок';</code></pre>
+<pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;p>{{ title }}&lt;/p></code></pre>
                     <p>
                         Вот как только Angular проверит в данном случае это свойство, вот тогда и будет вызван метод
                         <code>ngOnInit</code>.
@@ -168,12 +162,10 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
                         Допустим у нас есть родительский и дочерний компоненты (app.component.ts и child.component.ts
                         соответственно):
                     </p>
-                    <pre><code><span class="comment comment_start">// шаблон app.component.ts</span>
-<span class="tag">&lt;app-child></span><span class="tag">&lt;/app-child></span>
-
-<span class="comment comment_start">// шаблон child.component.ts</span>
-<span class="tag">&lt;p></span>Простой шаблон без использования других компонентов в нем<span class="tag">&lt;/p></span>
-</code></pre>
+<pre><code class="language-html">&lt;!-- шаблон app.component.ts -->
+&lt;app-child>&lt;/app-child></code></pre>
+<pre><code class="language-html">&lt;!-- шаблон child.component.ts -->
+&lt;p>Простой шаблон без использования других компонентов в нем&lt;/p></code></pre>
                     <p>
                         При таком сценарии, в момент инициализации компонента, консоль браузера будет выглядеть
                         следующим образом:
@@ -239,7 +231,7 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
                 </li>
             </ul>`,
         selected: false,
-        lastUpdate: '24.12.2023',
+        lastUpdate: '08.02.2024',
         footerLinks: [
             {
                 path: 'https://youtu.be/Nnf6gtAY0vc',
@@ -257,23 +249,23 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
                 Например, метод жизненного цикла <code>ngOnInit</code> реализует интерфейс <code>OnInit</code>,
                 прибавляем префикс <code>ng</code> и получаем сам метод <code>ngOnInit</code>:
             </p>
-            <pre><code><span class="comment comment_start">// Как выглядит встроенный интерфейс OnInit под капотом</span>
-<span class="export">export</span> <span class="keyword">declare interface</span> <span class="interface-name">OnInit</span> <span class="punctuation">{</span>
-    <span class="method">ngOnInit()</span>: <span class="type">void</span>;
-<span class="punctuation">}</span></code></pre>
+<pre><code class="language-typescript">// Как выглядит встроенный интерфейс OnInit под капотом
+export declare interface OnInit {
+    ngOnInit(): void;
+}</code></pre>
             <p>Как это выглядит в компоненте:</p>
-            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">ContactsItemComponent</span> <span class="keyword">implements</span> <span class="interface-name">OnInit</span> <span class="punctuation">{</span>
-	<span class="method">ngOnInit()</span> <span class="punctuation">{</span>
-		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'OnInit'</span><span class="punctuation">)</span> <span class="comment"> // OnInit</span>
-	<span class="punctuation">}</span>
-<span class="punctuation">}</span></code></pre>
+<pre><code class="language-typescript">export class ContactsItemComponent implements OnInit {
+	ngOnInit() {
+		console.log('OnInit')  // OnInit
+	}
+}</code></pre>
             <p>
                 В примере выше, после ключевого слова <code>implements</code>, указывается реализация интерфейсов,
                 соответствующих методам жизненного цикла, которые задействованы в текущем компоненте. В данном случае
                 это <code>OnInit</code>. Если нужна реализация более одного интерфейса, они перечисляются через запятую.
             </p>`,
         selected: false,
-        lastUpdate: '24.12.2023',
+        lastUpdate: '08.02.2024',
     },
     {
         title: 'Использование <span class="variable">Getter</span> и <span class="variable">Setter</span> внутри компонента',
@@ -294,21 +286,21 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
             Для создания геттера и сеттера используются соответствующие ключевые
             слова - <code>get</code> и <code>set</code>:
         </p>
-        <pre><code><span class="comment comment_start">// класс компонента</span>
-<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
-	_name: <span class="type">string</span> <span class="operator">=</span> <span class="null">null</span>; <span class="comment">// приватная переменная</span>
+<pre><code class="language-typescript">// класс компонента
+export class SomeComponent {
+	_name: string = null; // приватная переменная
 
-	<span class="function-name">@Input()</span> <span class="keyword">set</span> <span class="method">name</span><span class="punctuation">(</span>value: <span class="type">string</span><span class="punctuation">)</span> <span class="punctuation">{</span>
-		<span class="object">this</span>._name <span class="operator">=</span> value <span class="operator">+</span> <span class="string">'*'</span>;
-	<span class="punctuation">}</span>
+	@Input() set name(value: string) {
+		this._name = value + '*';
+	}
 
-	<span class="keyword">get</span> <span class="method">name()</span>: <span class="type">string</span> <span class="punctuation">{</span>
-		<span class="keyword">return</span> <span class="object">this</span>._name <span class="operator">||</span> <span class="string">'Аноним'</span>;
-	<span class="punctuation">}</span>
-<span class="punctuation">}</span>
+	get name(): string {
+		return this._name || 'Аноним';
+	}
+}</code></pre>
+<pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;p>{{name}}&lt;/p></code></pre>
 
-<span class="comment comment_start">// шаблон компонента</span>
-<span class="tag"><</span><span class="tag">p></span><span class="punctuation">{{</span><span class="variable">name</span><span class="punctuation">}}</span><span class="tag"><</span><span class="tag">/p></span></code></pre>
         <p>
             В классах JavaScript мы также можем создавать приватные переменные,
             к которым можно получить доступ с помощью геттеров и сеттеров (их
@@ -316,7 +308,7 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
             переменная <code>_name</code>.
         </p>`,
         selected: false,
-        lastUpdate: '19.10.2023',
+        lastUpdate: '08.02.2024',
     },
     {
         title: 'Важность отписывания от подписок в хуке <span class="variable">OnDestroy</span>',
@@ -332,25 +324,25 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
             событие маршрутизации. И в конце жизненного цикла данного компонента
             мы отменяем подписку на это же событие.
         </p>
-        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AngularComponent</span> <span class="keyword">implements</span> <span class="interface-name">OnInit</span>, <span class="interface-name">OnDestroy</span> <span class="punctuation">{</span>
-    currentPath: <span class="type">string</span>;
-    currentPathSub: <span class="type">Subscription</span>;
+<pre><code class="language-typescript">export class AngularComponent implements OnInit, OnDestroy {
+    currentPath: string;
+    currentPathSub: Subscription;
 
-    <span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">private</span> router: <span class="type">Router</span><span class="punctuation">) {}</span>
+    constructor(private router: Router) {}
 
-    <span class="function-name">ngOnInit()</span>: <span class="type">void</span> <span class="punctuation">{</span>
-        <span class="object">this</span>.currentPath <span class="operator">=</span> <span class="object">this</span>.router.url;
-        <span class="object">this</span>.currentPathSub <span class="operator">=</span> <span class="object">this</span>.router.events.<span class="method">subscribe</span><span class="punctuation">((</span>event<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-            <span class="keyword">if</span> <span class="punctuation">(</span>event <span class="keyword">instanceof</span> <span class="class-name">NavigationEnd</span><span class="punctuation">) {</span>
-                <span class="object">this</span>.currentPath <span class="operator">=</span> event.url;
-            <span class="punctuation">}</span>
-        <span class="punctuation">});</span>
-	<span class="punctuation">}</span>
+    ngOnInit(): void {
+        this.currentPath = this.router.url;
+        this.currentPathSub = this.router.events.subscribe((event) => {
+            if (event instanceof NavigationEnd) {
+                this.currentPath = event.url;
+            }
+        });
+	}
 	
-    <span class="function-name">ngOnDestroy()</span>: <span class="type">void</span> <span class="punctuation">{</span>
-        <span class="object">this</span>.currentPathSub.<span class="function-name">unsubscribe()</span>; <span class="comment">// не забываем отписаться</span>
-    <span class="punctuation">}</span>
-<span class="punctuation">}</span></code></pre>
+    ngOnDestroy(): void {
+        this.currentPathSub.unsubscribe(); // не забываем отписаться
+    }
+}</code></pre>
         <p>
             Если мы не будем отписываться, но при этом удалять компонент,
             например, при переходе на другую страницу, а потом вернемся на
@@ -370,10 +362,10 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
             приложение попросту зависнет.
         </p>`,
         selected: false,
-        lastUpdate: '04.11.2023',
+        lastUpdate: '08.02.2024',
     },
     {
-        title: 'Какие вы знаете способы взаимодействия между компонентами?',
+        title: 'Способы взаимодействия между компонентами',
         body: `<p>
             Чтобы передать данные из одного компонента в другой, существуют
             следующие способы:
@@ -395,18 +387,23 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
             <li>
                 <code>@ViewChild()</code> и <code>@ViewChildren()</code> -
                 <span class="attention">
-                    получают доступ к прямому одному и ко всем дочерним
-                    компонентам
-                </span>
-                (если быть точнее, то к их свойстам)
+                    получают доступ к одному и ко всем дочерним
+                    компонентам, удовлетворяющих условию селектора внутри декоратора</span>. С помощью данных декораторов можно получить и изменить (последнее не рекомендуется делать) информацию о свойствах и методах дочерних компонентов.
+            </li>
+            <li>
+                <code>@ContentChild()</code> и <code>@ContentChildren()</code> -
+                <span class="attention">
+                    получают доступ к содержимому одного и всех дочерних
+                    компонентов, удовлетворяющих условию селектора внутри декоратора</span>.
             </li>
             <li>
                 Сервисы - своего рода
-                <span class="attention">хранилище данных</span>, к которым могут
-                обращаться компоненты.
+                <span class="attention">хранилища данных</span>, к которым могут
+                обращаться компоненты, директивы и тд.
             </li>
         </ul>`,
         selected: false,
+        lastUpdate: '08.02.2024',
         footerLinks: [
             {
                 title: '@Input()',
@@ -419,7 +416,7 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
         ],
     },
     {
-        title: `Создает ли ng-content новый контент внутри дочернего компонента?`,
+        title: `Объяснение, почему элемент <span class="variable">ng-content</span> не создает новый контент внутри дочернего компонента`,
         body: `<p>
 		<span class="attention">
 			Элемент <code>ng-content</code> не создает новый контент, а
@@ -438,24 +435,20 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
 		<code>OnDestroy</code> / <code>OnInit</code> должны срабатывать
 		каждый раз соответствующим образом.
 	</p>
-	<pre><code><span class="comment comment_start">// app.component.ts</span>
-<span class="variable">showChild</span> <span class="operator">=</span> <span class="boolean">false</span>;
-
-<span class="comment comment_start">// app.component.html</span>
-<span class="tag"><</span><span class="tag">button</span> <span class="keyword">(click)</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">showChild</span> <span class="operator">=</span> <span class="operator">!</span><span class="variable">showChild</span><span class="punctuation">"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/button></span>
-<span class="tag"><</span><span class="tag">app-child></span> 
-	<span class="tag"><</span><span class="tag">span</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">showChild</span><span class="punctuation">"</span><span class="tag">></span><span class="string">Какое-то содержимое, которое передается внутрь дочернего компонента</span><span class="tag"><</span><span class="tag">/span></span>
-<span class="tag"><</span><span class="tag">/app-child></span>
-		
-
-<span class="comment comment_start">// child.component.ts</span>
-<span class="method">ngOnInit() {</span>
-	console.<span class="method">log(</span><span class="string">'Сработал метод'</span><span class="punctuation">)</span>; <span class="comment">// сработает только 1 раз, даже если нажимать на кнопку в родителе</span>
-<span class="punctuation">}</span>
-
-<span class="comment comment_start">// child.component.html</span>
-<span class="tag"><</span><span class="tag">ng-content</span><span class="tag">></span><span class="tag"><</span><span class="tag">/ng-content></span>
-		</code></pre>
+		<pre><code class="language-typescript">// app.component.ts
+showChild = false;
+</code></pre>
+<pre><code class="language-html">&lt;!-- app.component.html -->
+&lt;button (click)="showChild = !showChild">&lt;/button>
+&lt;app-child> 
+	&lt;span *ngIf="showChild">Какое-то содержимое, которое передается внутрь дочернего компонента&lt;/span>
+&lt;/app-child></code></pre>
+		<pre><code class="language-typescript">// child.component.ts
+ngOnInit() {
+	console.log('Сработал метод'); // сработает только 1 раз, даже если нажимать на кнопку в родителе
+}</code></pre>
+<pre><code class="language-html">&lt;!-- child.component.html -->
+&lt;ng-content>&lt;/ng-content></code></pre>
 	<p>
 		Хоть мы и повесили условие, но хуки жизненного цикла компонента
 		не срабатывают при смене условия. Почему так происходит? Все
@@ -472,35 +465,32 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
 		каждый раз при переключении кнопки, условие нужно ставить на сам
 		компонент:
 	</p>
-	<pre><code><span class="comment comment_start">// app.component.ts</span>
-<span class="variable">showChild</span> <span class="operator">=</span> <span class="boolean">false</span>;
-
-<span class="comment comment_start">// app.component.html</span>
-<span class="tag"><</span><span class="tag">button</span> <span class="keyword">(click)</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">showChild</span> <span class="operator">=</span> <span class="operator">!</span><span class="variable">showChild</span><span class="punctuation">"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/button></span>
-<span class="tag"><</span><span class="tag">app-child</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">showChild</span><span class="punctuation">"</span><span class="tag">></span>
-	<span class="tag"><</span><span class="tag">span></span><span class="string">Какое-то содержимое, которое передается внутрь дочернего компонента</span><span class="tag"><</span><span class="tag">/span></span>
-<span class="tag"><</span><span class="tag">/app-child></span>
-		
-
-<span class="comment comment_start">// child.component.ts</span>
-<span class="method">ngOnInit() {</span>
-	console.<span class="method">log(</span><span class="string">'Сработал метод'</span><span class="punctuation">)</span>; <span class="comment">// метод будет срабатывать каждый раз при инициализации компонента</span>
-<span class="punctuation">}</span>
-
-<span class="comment comment_start">// child.component.html</span>
-<span class="tag"><</span><span class="tag">ng-content</span><span class="tag">></span><span class="tag"><</span><span class="tag">/ng-content></span></code></pre>`,
+		<pre><code class="language-typescript">// app.component.ts
+showChild = false;
+</code></pre>
+<pre><code class="language-html">&lt;!-- app.component.html -->
+&lt;button (click)="showChild = !showChild">&lt;/button>
+&lt;app-child *ngIf="showChild"> 
+	&lt;span>Какое-то содержимое, которое передается внутрь дочернего компонента&lt;/span>
+&lt;/app-child></code></pre>
+		<pre><code class="language-typescript">// child.component.ts
+ngOnInit() {
+	console.log('Сработал метод'); // теперь метод будет срабатывать каждый, когда условие выше будет true
+}</code></pre>
+<pre><code class="language-html">&lt;!-- child.component.html -->
+&lt;ng-content>&lt;/ng-content></code></pre>`,
         selected: false,
-        lastUpdate: '03.08.2023',
+        lastUpdate: '08.02.2024',
     },
     {
-        title: 'Как создаются пользовательские события?',
+        title: 'Создание пользовательских событий',
         body: ``,
         selected: false,
         lastUpdate: '',
         disabled: true,
     },
     {
-        title: 'Какие существуют механизмы привязки данных?',
+        title: 'Механизмы привязки данных',
         body: `<p>В Angular существует 4 способа привязки данных:</p>
         <ul>
             <li>
@@ -523,8 +513,8 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
         </ul>
         <i class="subtitle">Интерполяция</i>
         <p>Примеры интерполяции:</p>
-        <pre><code><span class="tag"><</span><span class="tag">p</span><span class="tag">></span>Hello, <span class="punctuation">{{</span><span class="variable">name</span><span class="punctuation">}}</span><span class="tag"><</span><span class="tag">/p</span><span class="tag">></span> <span class="comment">// (1) Основной способ использования интерполяции</span>
-<span class="tag"><</span><span class="tag">input</span> <span class="keyword">type</span><span class="operator">=</span><span class="string">"text"</span> <span class="keyword">name</span><span class="operator">=</span><span class="punctuation">{{</span><span class="variable">name</span><span class="punctuation">}}</span><span class="tag">></span> <span class="comment">// (2) Так тоже будет работать, но такая запись редко встречается</span></code></pre>
+<pre><code class="language-html">&lt;p>Hello, {{name}}&lt;/p> &lt;!-- (1) Основной способ использования интерполяции -->
+&lt;input type="text" name={{name}}> &lt;!-- (2) Так тоже будет работать, но такая запись редко встречается --></code></pre>
         <p>
             При использовании интерполяции данные для переменной
             <code>name</code> берутся из того же самого компонента, к которому
@@ -540,8 +530,8 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
             <span class="attention">одностороннее связывание</span>. Но суть та
             же:
         </p>
-        <pre><code><span class="tag"><</span><span class="tag">input</span> <span class="keyword">type</span><span class="operator">=</span><span class="string">"text"</span> <span class="keyword"><span class="punctuation">[</span><span class="keyword">name</span><span class="punctuation">]</span></span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">name</span><span class="punctuation">"</span><span class="tag">></span> <span class="comment">// (2*) запись второго примера из интерполяции через одностороннее связывание</span>
-<span class="tag"><</span><span class="tag">input</span> <span class="keyword">type</span><span class="operator">=</span><span class="string">"text"</span> <span class="keyword"><span class="keyword">bind-name</span></span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">name</span><span class="punctuation">"</span><span class="tag">></span> <span class="comment">// (2**) Альтернативная запись. Встречается реже</span></code></pre>
+<pre><code class="language-html">&lt;input type="text" [name]="name"> &lt;!-- (2*) запись второго примера из интерполяции через одностороннее связывание -->
+&lt;input type="text" bind-name="name"> &lt;!-- (2**) Альтернативная запись. Встречается реже --></code></pre>
         <i class="subtitle">Обработка событий</i>
         <p>
             Что касается событий, то в Angular
@@ -550,8 +540,8 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
             >, привязав к ним вызов метода класса. Делается это следующим
             образом:
         </p>
-        <pre><code><span class="tag"><</span><span class="tag">button</span> <span class="punctuation">(</span><span class="keyword">click</span><span class="punctuation">)</span><span class="operator">=</span><span class="punctuation">"</span><span class="function-name">showItems</span><span class="punctuation">()</span><span class="punctuation">"</span><span class="tag">></span>Я кнопка<span class="tag"><</span><span class="tag">/button</span><span class="tag">></span>
-<span class="tag"><</span><span class="tag">button</span> <span class="keyword">on-click</span><span class="operator">=</span><span class="punctuation">"</span><span class="function-name">showItems</span><span class="punctuation">()</span><span class="punctuation">"</span><span class="tag">></span>Я кнопка-близнец<span class="tag"><</span><span class="tag">/button</span><span class="tag">></span> <span class="comment">// альтернативный вариант записи</span></code></pre>
+<pre><code class="language-html">&lt;button (click)="showItems()">Я кнопка&lt;/button>
+&lt;button on-click="showItems()">Я кнопка-близнец&lt;/button> &lt;!-- альтернативный вариант записи --></code></pre>
         <p>
             В данных примерах при клике на кнопку будет вызвана функция
             <code>showItems()</code>. Названия событий всегда должны быть
@@ -563,7 +553,7 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
             хранится в объекте <code>$event</code>, который передается в функцию
             в качестве аргумента.
         </p>
-        <pre><code><span class="tag"><</span><span class="tag">button</span> <span class="punctuation">(</span><span class="keyword">click</span><span class="punctuation">)</span><span class="operator">=</span><span class="punctuation">"</span><span class="function-name">showItems</span><span class="punctuation">(</span>$event<span class="punctuation">)</span><span class="punctuation">"</span><span class="tag">></span>Я кнопка<span class="tag"><</span><span class="tag">/button</span><span class="tag">></span></code></pre>
+<pre><code class="language-html">&lt;button (click)="showItems($event)">Я кнопка&lt;/button></code></pre>
         <p>
             Помимо встроенных событий можно создавать также и свои -
             <span class="attention">пользовательские события</span>. За этот
@@ -586,7 +576,7 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
             одностороннего связывания ("<code>[]</code>") и привязки события
             ("<code>()</code>").
         </p>
-        <pre><code><span class="tag"><</span><span class="tag">some-item</span> <span class="punctuation">[(</span><span class="keyword">name</span><span class="punctuation">)]</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">myName</span><span class="punctuation">"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/some-item</span><span class="tag">></span></code></pre>
+		<pre><code class="language-html">&lt;some-item [(name)]="myName">&lt;/some-item></code></pre>
         <p>
             Запись <code>[(name)]="myName"</code> означает, что при изменении
             <code>name</code> в дочернем компоненте (откуда оно будет получено в
@@ -594,7 +584,7 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
             <code>myName</code> компонента <code>some-item</code>.
         </p>`,
         selected: false,
-        lastUpdate: '',
+        lastUpdate: '08.02.2024',
         footerLinks: [
             {
                 title: 'интерполяция',
@@ -621,12 +611,11 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
 		Например, вы хотите задать ширину элементу в процентах. Сделать
 		это можно различными способами:
 	</p>
-	<pre><code><span class="tag"><</span><span class="tag">p</span> <span class="attribute">style</span><span class="operator">=</span><span class="string">"width: 50%"</span><span class="tag">></span>Какой-то текст<span class="tag"><</span><span class="tag">/p></span>
-<span class="tag"><</span><span class="tag">p</span> <span class="attribute">[style.width.%]</span><span class="operator">=</span><span class="string">"50"</span><span class="tag">></span>Какой-то текст<span class="tag"><</span><span class="tag">/p></span>
-</code></pre>
+<pre><code class="language-html">&lt;p style="width: 50%">Какой-то текст&lt;/p>
+&lt;p [style.width.%]="50">Какой-то текст&lt;/p></code></pre>
 	<p>Обе записи выдадут одинаковый результат.</p>`,
         selected: false,
-        lastUpdate: '05.07.2023',
+        lastUpdate: '08.02.2024',
     },
     {
         title: 'Обработка событий комбинаций клавиш',
@@ -635,7 +624,7 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
 		событие комбинации конкретных клавиш. В Ангуляре это можно
 		сделать следующим образом:
 	</p>
-	<pre><code><span class="tag"><</span><span class="tag">input</span> <span class="attribute">type</span><span class="operator">=</span><span class="string">"text"</span> <span class="attribute">(keydown.control.enter)</span><span class="operator">=</span><span class="string">"</span><span class="function-name">someFunction()</span><span class="string">"</span> <span class="tag">/></span></code></pre>
+	<pre><code class="language-html">&lt;input type="text" (keydown.control.enter)="someFunction()" /></code></pre>
 	<p>
 		Соответственно, когда инпут будет в фокусе, зажав комбинацию
 		клавиш <code>Ctrl + Enter</code> у вас вызовется функция
@@ -644,7 +633,7 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
 	</p>
 	<p>Если нужно обработать еще больше клавиш, то также перечисляете их через точку, как в примере выше.</p>`,
         selected: false,
-        lastUpdate: '06.07.2023',
+        lastUpdate: '08.02.2024',
     },
     {
         title: 'Элемент ng-template',
@@ -673,27 +662,27 @@ title: <span class="type">string</span> <span class="operator">=</span> <span cl
                 каждом из которых весит структурная директива
                 <code>*ngIf</code>:
             </p>
-            <pre><code><span class="tag">&lt;div></span>
-	<span class="tag">&lt;ng-container</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span><span class="boolean">true</span><span class="punctuation">"</span><span class="tag">></span>
-		<span class="tag">&lt;p></span>Первый текст<span class="tag">&lt;/p></span>
-	<span class="tag">&lt;/ng-container></span>
-	<span class="tag">&lt;ng-container</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span><span class="boolean">false</span><span class="punctuation">"</span><span class="tag">></span>
-		<span class="tag">&lt;p></span>Второй текст<span class="tag">&lt;/p></span>
-	<span class="tag">&lt;/ng-container></span>
-<span class="tag">&lt;/div></span></code></pre>
+<pre><code class="language-html">&lt;div>
+	&lt;ng-container *ngIf="true">
+		&lt;p>Первый текст&lt;/p>
+	&lt;/ng-container>
+	&lt;ng-container *ngIf="false">
+		&lt;p>Второй текст&lt;/p>
+	&lt;/ng-container>
+&lt;/div></code></pre>
             <p>
                 В итоге, в браузере данный участок кода будет выглядеть
                 следующим образом:
             </p>
-            <pre><code><span class="tag">&lt;div></span>
-	<span class="tag">&lt;p></span>Первый текст<span class="tag">&lt;/p></span>
-<span class="tag">&lt;/div></span></code></pre>
+<pre><code class="language-html">&lt;div>
+	&lt;p>Первый текст&lt;/p>
+&lt;/div></code></pre>
             <p>
                 Как видно из примера, элемент <code>ng-container</code> не
                 добавляет новые элементы в DOM-дерево.
             </p>`,
         selected: false,
-        lastUpdate: '19.11.2023',
+        lastUpdate: '08.02.2024',
         footerLinks: [
             {
                 path: 'https://youtu.be/vMxJPxWS0aI?t=146',

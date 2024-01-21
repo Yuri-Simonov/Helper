@@ -14,6 +14,7 @@ const routes: Routes = [
         component: AngularComponent,
         children: [
             { path: 'component', component: AngularComponent },
+            { path: 'changeDetection', component: AngularComponent },
             { path: 'decorator', component: AngularComponent },
             { path: 'directive', component: AngularComponent },
             { path: 'form', component: AngularComponent },
