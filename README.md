@@ -2,6 +2,10 @@
 
 Текущие версии основных зависимостей на проекте: [Angular](https://angular.io) (v.17.0.2) и библиотеки компонентов [Angular Material](https://material.angular.io) (v.17.0.0).
 
+Из второстепенных библиотек, в проекте используются:
+
+-   [ngx-highlight-js](https://www.npmjs.com/package/ngx-highlight-js) (17.0.0)
+
 Также проект задеплоен на GitHub Pages. Посмотреть можно в соответствующем разделе [Environments](https://github.com/Yuri-Simonov/Helper/deployments/activity_log?environment=github-pages) или [по этой ссылке](https://yuri-simonov.github.io/Helper/).
 
 ## Цель проекта
