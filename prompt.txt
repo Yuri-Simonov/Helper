@@ -17,3 +17,23 @@
 - цветовые палитры Angular Material UI
 https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
 ================================================
+
+class="language-html"
+class="language-scss"
+class="language-typescript"
+
+<pre><code></code></pre>
+<pre><code class="language-html"></code></pre>
+<pre><code class="language-javascript"></code></pre>
+<pre><code class="language-typescript"></code></pre>
+<pre><code class="language-scss"></code></pre>
+
+&lt;!--  -->
+
+			
+
+			
+lastUpdate: '09.02.2024',
+
+<p>В консоли мы увидим следующее:</p>
+<pre><code class="language-typescript"></code></pre>

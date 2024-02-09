@@ -2,7 +2,7 @@ import { IQuestion } from '@types';
 
 export const functionQuestions: IQuestion[] = [
     {
-        title: 'Почему внутри функций мы имеем доступ к глобальным переменным?',
+        title: 'Доступ к глобальным переменным внутри функций',
         body: `<p>
             Когда код хочет получить доступ к переменной,
             <span class="attention">
@@ -12,9 +12,10 @@ export const functionQuestions: IQuestion[] = [
             <span class="attention">пока не дойдет до глобального</span>.
         </p>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'Почему функции, объявленные через "Function Declaration" можно вызывать перед их определением в коде?',
+        title: 'Объяснение, почему функции, объявленные через <span class="variable">Function Declaration</span> можно вызывать перед их определением в коде',
         body: `<p>
             Функции, объявленные через <code>Function Declaration</code>, в
             отличие от переменных, объявленных с помощью <code>let</code> и
@@ -33,9 +34,10 @@ export const functionQuestions: IQuestion[] = [
             </span>
         </p>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'Что такое замыкания?',
+        title: 'Замыкание. Определение',
         body: `<p>
             Если отвечать очень примитивным языком, то замыкание - это
             <span class="attention">функция внутри другой функции</span>. Но при
@@ -45,17 +47,14 @@ export const functionQuestions: IQuestion[] = [
                 инициализирована внешняя функция.
             </span>
         </p>
-        <pre>
-<code><span class="keyword">function</span> <span class="function-name">outside</span><span class="punctuation">(</span>name<span class="punctuation">)</span> <span class="punctuation">{</span>
-	<span class="keyword">const</span> age <span class="operator">=</span> <span class="number">26</span>;
-	<span class="keyword">function</span> <span class="function-name">inside</span><span class="punctuation">(</span><span class="punctuation">)</span> <span class="punctuation">{</span>
-		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'Меня зовут '</span> <span class="operator">+</span> name <span class="operator">+</span> <span class="string">'и мне '</span> <span class="operator">+</span> age <span class="operator">+</span> <span class="string">' лет'</span><span class="punctuation">')</span>;
-	<span class="punctuation">}</span>
-	<span class="function-name">inside</span><span class="punctuation">()</span>;
-<span class="punctuation">}</span>
-<span class="function-name">outside</span><span class="punctuation">('</span><span class="string">Юрий</span><span class="punctuation">')</span>; <span class="comment">// Меня зовут Юрий и мне 26 лет</span>
-</code>
-</pre>
+        <pre><code class="language-javascript">function outside(name) {
+	const age = 26;
+	function inside() {
+		console.log('Меня зовут ' + name + 'и мне ' + age + ' лет'');
+	}
+	inside();
+}
+outside('Юрий'); // Меня зовут Юрий и мне 26 лет</code></pre>
         <p>
             Например, во внешнюю функцию <code>outside</code> были передан
             параметр <code>name</code> с определенным значением. Когда мы
@@ -77,9 +76,10 @@ export const functionQuestions: IQuestion[] = [
             мне 26 лет".
         </p>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'Одна и та же функция была вызвана несколько раз, но в разных местах, какое в итоге будет у нее лексическое окружение?',
+        title: 'Зависимость лексического окружения функции от места ее вызова в коде',
         body: `<p>
             Запомните правило:
             <span class="attention">
@@ -99,5 +99,6 @@ export const functionQuestions: IQuestion[] = [
             вызова функции.
         </p>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
 ];

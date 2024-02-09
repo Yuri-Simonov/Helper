@@ -18,7 +18,7 @@
                                 <mat-expansion-panel-header>
                                     <mat-panel-title [innerHTML]="q.title"></mat-panel-title>
                                 </mat-expansion-panel-header>
-                                <div [innerHTML]="q.body"></div>
+                                <div highlight-js mode="default" [innerHTML]="q.body"></div>
                                 <div class="spoilers__footer">
                                     @if (q?.footerLinks?.length) {
                                         <div class="spoilers__links">

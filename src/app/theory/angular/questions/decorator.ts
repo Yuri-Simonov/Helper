@@ -10,13 +10,13 @@ export const decoratorQuestions: IQuestion[] = [
 			которому они привязаны.</span
 		>
 	</p>
-	<pre><code><span class="function-name">@Component</span><span class="punctuation">({</span>
-	<span class="key">selector</span>: <span class="string">'app-some-component'</span>,
-	<span class="key">styleUrls</span>: <span class="string">'./some.component.scss'</span>,
-	<span class="key">templateUrl</span>: <span class="string">'./some.component.html'</span>,
-<span class="punctuation">})</span>
+	<pre><code class="language-typescript">@Component({
+	selector: 'app-some-component',
+	styleUrls: './some.component.scss',
+	templateUrl: './some.component.html',
+})
 
-<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{}</span></code></pre>
+export class SomeComponent {}</code></pre>
 	<p>
 		В примере выше класс <code>SomeComponent</code> расширяется
 		набором методов и полей от декоратора <code>@Component()</code>,
@@ -80,7 +80,7 @@ export const decoratorQuestions: IQuestion[] = [
             дочерний компонент новый объект. Ниже приведен один из вариантов
             решения через <code>spread-оператор</code>.
         </p>
-        <pre><code><span class="object">this</span>.someObject <span class="operator">=</span> <span class="punctuation">{</span> <span class="operator">...</span><span class="object">this</span>.someObject, <span class="key">name</span>: <span class="string">'новое имя'</span> <span class="punctuation">}</span></code></pre>`,
+        <pre><code class="language-typescript">this.someObject = { ...this.someObject, name: 'новое имя' }</code></pre>`,
         selected: false,
         lastUpdate: '14.09.2023',
     },
@@ -93,7 +93,7 @@ export const decoratorQuestions: IQuestion[] = [
                 >.
             </p>
             <p>Он имеет следующий синтаксис:</p>
-            <pre><code><span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'селектор'</span><span class="punctuation">)</span> имя_свойства: <span class="type">тип_данных</span>;</code></pre>
+            <pre><code class="language-typescript">@ViewChild('selector') propertyName: dataType;</code></pre>
             <p>
                 В примере ниже в классе компонента предоставляется доступ к элементу разметки из шаблона по указанному
                 селектору в декораторе
@@ -104,11 +104,10 @@ export const decoratorQuestions: IQuestion[] = [
                     селектору в шаблоне прекращается</span
                 >.
             </p>
-            <pre><code><span class="comment comment_start">// шаблон компонента</span>
-<span class="tag">&lt;p</span> <span class="attribute">#paragrath</span><span class="tag">></span>Простой параграф<span class="tag">&lt;/p></span>
-		
-<span class="comment comment_start">// класс компонента</span>
-<span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'paragrath'</span><span class="punctuation">)</span> paragrath: <span class="type">ElementRef&lt;HTMLParagraphElement></span>;</code></pre>
+            <pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;p #paragrath>Простой параграф&lt;/p></code></pre>
+<pre><code class="language-typescript">// класс компонента
+@ViewChild('paragrath') paragrath: ElementRef<HTMLParagraphElement>;</code></pre>
 
             <p>
                 В качестве селектора в основном используют следующие варианты (есть и другие, но они используются
@@ -129,35 +128,31 @@ export const decoratorQuestions: IQuestion[] = [
                 </li>
             </ul>
             <p>Ниже представлены примеры для каждого из этих случаев:</p>
-            <pre><code><span class="comment comment_start">// шаблон компонента</span>
-<span class="tag">&lt;p</span> <span class="attribute">#paragrath</span><span class="tag">></span>Простой параграф<span class="tag">&lt;/p></span> <span class="comment">(1)</span>
+            <pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;p #paragrath>Простой параграф&lt;/p> (1)
 
-<span class="tag">&lt;ng-template</span> <span class="attribute">#template</span><span class="tag">></span>Параграф внутри элемента ng-template<span class="tag">&lt;/ng-template></span> <span class="comment">(2)</span>
-<span class="tag">&lt;ng-template></span>Параграф внутри элемента ng-template<span class="tag">&lt;/ng-template></span> <span class="comment">(2*)</span>
+&lt;ng-template #template>Параграф внутри элемента ng-template&lt;/ng-template> (2)
+&lt;ng-template>Параграф внутри элемента ng-template&lt;/ng-template> (2*)
 
-<span class="tag">&lt;app-child</span> <span class="attribute">#component</span><span class="tag">></span><span class="tag">&lt;/app-child></span> <span class="comment">(3)</span>
-<span class="tag">&lt;app-child></span><span class="tag">&lt;/app-child></span> <span class="comment">(3*)</span>
-		
-<span class="comment comment_start">// класс компонента</span>
-<span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'paragrath'</span><span class="punctuation">)</span> paragrath: <span class="type">ElementRef&lt;HTMLParagraphElement></span>; <span class="comment">(1)</span>
+&lt;app-child #component>&lt;/app-child> (3)
+&lt;app-child>&lt;/app-child> (3*)</code></pre>
+            <pre><code class="language-typescript">// класс компонента
+@ViewChild('paragrath') paragrath: ElementRef<HTMLParagraphElement>; (1)
 
-<span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'template'</span><span class="punctuation">)</span> template: <span class="type">TemplateRef&lt;HTMLParagraphElement></span>; <span class="comment">(2)</span>
-<span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="class-name">TemplateRef</span><span class="punctuation">)</span> template: <span class="type">TemplateRef&lt;HTMLParagraphElement></span>; <span class="comment">(2*)</span>
+@ViewChild('template') template: TemplateRef<HTMLParagraphElement>; (2)
+@ViewChild(TemplateRef) template: TemplateRef<HTMLParagraphElement>; (2*)
 
-<span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'component'</span><span class="punctuation">)</span> component: <span class="type">ChildComponent</span>; <span class="comment">(3)</span>
-<span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="class-name">ChildComponent</span><span class="punctuation">)</span> component: <span class="type">ChildComponent</span>; <span class="comment">(3*)</span>
-</code></pre>
+@ViewChild('component') component: ChildComponent; (3)
+@ViewChild(ChildComponent) component: ChildComponent; (3*)</code></pre>
             <p>
                 В примерах выше со звоздочкой показано как использовать декоратор
                 <code>@ViewChild&#40;&#41;</code> без использования шаблонных переменных в разметке.
             </p>
             <p>Можно так же указывать и мультиселекторы, делается это через запятую в формате строки:</p>
-            <pre><code><span class="comment comment_start">// шаблон компонента</span>
-<span class="tag">&lt;app-child></span><span class="tag">&lt;/app-child></span>
-<span class="tag">&lt;p</span> <span class="attribute">#paragrath</span><span class="tag">></span>Простой параграф<span class="tag">&lt;/p></span>
-		
-<span class="comment comment_start">// класс компонента</span>
-<span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'paragrath, ChildComponent'</span><span class="punctuation">)</span> paragrath: <span class="type">ElementRef&lt;HTMLParagraphElement | ChildComponent></span>;</code></pre>
+			<pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;p #paragrath>Простой параграф&lt;/p></code></pre>
+			<pre><code class="language-typescript">// класс компонента
+@ViewChild('paragrath, ChildComponent') paragrath: ElementRef&lt;HTMLParagraphElement | ChildComponent>;</code></pre>
             <p>
                 В примере выше под условие селектора попадают оба элемента разметки, но т.к. дочерний компонент в
                 разметке стоит раньше параграфа, поэтому именно его данные декоратор
@@ -180,14 +175,14 @@ export const decoratorQuestions: IQuestion[] = [
                 того, как было инициализировано представление компонента. Поэтому данные и появляются начиная с метода
                 <code>ngAfterViewInit</code>.
             </p>
-            <pre><code><span class="comment comment_start">// Обе записи равносильны</span>
-<span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'paragrath'</span><span class="punctuation">)</span> paragrath: <span class="type">ElementRef&lt;HTMLParagraphElement></span>;
-<span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'paragrath'</span>, <span class="punctuation">&#123;</span> static: <span class="type">false</span> <span class="punctuation">&#125;)</span> paragrath: <span class="type">ElementRef&lt;HTMLParagraphElement></span>;</code></pre>
+            <pre><code class="language-typescript">// Обе записи равносильны
+@ViewChild('paragrath') paragrath: ElementRef&lt;HTMLParagraphElement>;
+@ViewChild('paragrath', { static: false }) paragrath: ElementRef&lt;HTMLParagraphElement>;</code></pre>
             <p>
                 Это сценарий работы директивы <code>@ViewChild&#40;&#41;</code> по умолчанию. Но его можно изменить,
                 установив значение параметра <code>static</code> в значение <code>true</code>.
             </p>
-            <pre><code><span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'paragrath'</span>, <span class="punctuation">&#123;</span> static: <span class="type">true</span> <span class="punctuation">&#125;)</span> paragrath: <span class="type">ElementRef&lt;HTMLParagraphElement></span>;</code></pre>
+            <pre><code class="language-typescript">@ViewChild('paragrath', { static: true }) paragrath: ElementRef&lt;HTMLParagraphElement>;</code></pre>
             <p>
                 В этом случае декоратор <code>@ViewChild&#40;&#41;</code> получает доступ к шаблону компонента еще до
                 того, как он прошел все проверки и был полностью инициализирован. Такой вариант использования декоратора
@@ -244,7 +239,7 @@ export const decoratorQuestions: IQuestion[] = [
                 >.
             </p>
             <p>Он имеет следующий синтаксис:</p>
-            <pre><code><span class="function-name">@ViewChildren</span><span class="punctuation">(</span><span class="string">'селектор'</span><span class="punctuation">)</span> имя_свойства: <span class="type">тип_данных</span>;</code></pre>
+			<pre><code class="language-typescript">@ViewChildren('selector') propertyName: dataType;</code></pre>
             <p>
                 В отличие от декоратора <code>@ViewChild&#40;&#41;</code>, который находит первое совпадение по
                 селектору и прекращает дальнейший поиск, декоратор <code>@ViewChildren&#40;&#41;</code>
@@ -259,13 +254,11 @@ export const decoratorQuestions: IQuestion[] = [
                 <code>@ViewChildren&#40;&#41;</code>. В данном случае это элементы с шаблонной переменной
                 <code>paragrath</code>.
             </p>
-            <pre><code><span class="comment comment_start">// шаблон компонента</span>
-<span class="tag">&lt;p</span> <span class="attribute">#paragrath</span><span class="tag">></span>Простой параграф<span class="tag">&lt;/p></span>
-<span class="tag">&lt;p</span> <span class="attribute">#paragrath</span><span class="tag">></span>Еще один простой параграф<span class="tag">&lt;/p></span>
-		
-<span class="comment comment_start">// класс компонента</span>
-<span class="function-name">@ViewChildren</span><span class="punctuation">(</span><span class="string">'paragrath'</span><span class="punctuation">)</span> paragrath: <span class="type">QueryList&lt;ElementRef&lt;HTMLParagraphElement>></span>;</code></pre>
-
+            <pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;p #paragrath>Простой параграф&lt;/p>
+&lt;p #paragrath>Еще один простой параграф&lt;/p></code></pre>
+            <pre><code class="language-typescript">// класс компонента
+@ViewChildren('paragrath') paragrath: QueryList&lt;ElementRef&lt;HTMLParagraphElement>>;</code></pre>
             <p>
                 В качестве селектора в основном используют следующие варианты (есть и другие, но они используются
                 гораздо реже):
@@ -285,42 +278,40 @@ export const decoratorQuestions: IQuestion[] = [
                 </li>
             </ul>
             <p>Ниже представлены примеры для каждого из этих случаев:</p>
-            <pre><code><span class="comment comment_start">// шаблон компонента</span>
-<span class="tag">&lt;p</span> <span class="attribute">#paragrath</span><span class="tag">></span>Простой параграф<span class="tag">&lt;/p></span> <span class="comment">(1)</span>
+<pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;p #paragrath>Простой параграф&lt;/p> (1)
 
-<span class="tag">&lt;ng-template</span> <span class="attribute">#template</span><span class="tag">></span>Параграф внутри элемента ng-template<span class="tag">&lt;/ng-template></span> <span class="comment">(2)</span>
-<span class="tag">&lt;ng-template></span>Параграф внутри элемента ng-template<span class="tag">&lt;/ng-template></span> <span class="comment">(2*)</span>
+&lt;ng-template #template>Параграф внутри элемента ng-template&lt;/ng-template> (2)
+&lt;ng-template>Параграф внутри элемента ng-template&lt;/ng-template> (2*)
 
-<span class="tag">&lt;app-child</span> <span class="attribute">#component</span><span class="tag">></span><span class="tag">&lt;/app-child></span> <span class="comment">(3)</span>
-<span class="tag">&lt;app-child></span><span class="tag">&lt;/app-child></span> <span class="comment">(3*)</span>
-		
-<span class="comment comment_start">// класс компонента</span>
-<span class="function-name">@ViewChildren</span><span class="punctuation">(</span><span class="string">'paragrath'</span><span class="punctuation">)</span> paragrath: <span class="type">QueryList&lt;ElementRef&lt;HTMLParagraphElement>></span>; <span class="comment">(1)</span>
+&lt;app-child #component>&lt;/app-child> (3)
+&lt;app-child>&lt;/app-child> (3*)</code></pre>
+<pre><code class="language-typescript">// класс компонента
+@ViewChildren('paragrath') paragrath: QueryList&lt;ElementRef&lt;HTMLParagraphElement>>; (1)
 
-<span class="function-name">@ViewChildren</span><span class="punctuation">(</span><span class="string">'template'</span><span class="punctuation">)</span> template: <span class="type">QueryList&lt;TemplateRef&lt;HTMLParagraphElement>></span>; <span class="comment">(2)</span>
-<span class="function-name">@ViewChildren</span><span class="punctuation">(</span><span class="class-name">TemplateRef</span><span class="punctuation">)</span> template: <span class="type">QueryList&lt;TemplateRef&lt;HTMLParagraphElement>></span>; <span class="comment">(2*)</span>
+@ViewChildren('template') template: QueryList&lt;TemplateRef&lt;HTMLParagraphElement>>; (2)
+@ViewChildren(TemplateRef) template: QueryList&lt;TemplateRef&lt;HTMLParagraphElement>>; (2*)
 
-<span class="function-name">@ViewChildren</span><span class="punctuation">(</span><span class="string">'component'</span><span class="punctuation">)</span> component: <span class="type">QueryList&lt;ChildComponent></span>; <span class="comment">(3)</span>
-<span class="function-name">@ViewChildren</span><span class="punctuation">(</span><span class="class-name">ChildComponent</span><span class="punctuation">)</span> component: <span class="type">QueryList&lt;ChildComponent></span>; <span class="comment">(3*)</span>
+@ViewChildren('component') component: QueryList&lt;ChildComponent>; (3)
+@ViewChildren(ChildComponent) component: QueryList&lt;ChildComponent>; (3*)
 
-<span class="comment comment_start">Немного пояснения по коду выше:</span>
-<span class="comment comment_start">(1) - найдется лишь один параграф</span>
-<span class="comment comment_start">(2) - найдется лишь элемент ng-template, у которого есть шаблонная переменная template</span>
-<span class="comment comment_start">(2*) - найдутся оба элемента ng-template</span>
-<span class="comment comment_start">(3) - найдется лишь компонент app-child, у которого есть шаблонная переменная component</span>
-<span class="comment comment_start">(3*) - найдутся оба компонента</span>
+Немного пояснения по коду выше:
+(1) - найдется лишь один параграф
+(2) - найдется лишь элемент ng-template, у которого есть шаблонная переменная template
+(2*) - найдутся оба элемента ng-template
+(3) - найдется лишь компонент app-child, у которого есть шаблонная переменная component
+(3*) - найдутся оба компонента
 </code></pre>
             <p>
                 В примерах выше со звоздочкой показао как использовать декоратор
                 <code>@ViewChildren&#40;&#41;</code> без использования шаблонных переменных в разметке.
             </p>
             <p>Можно так же указывать и мультиселекторы, делается это через запятую в формате строки:</p>
-            <pre><code><span class="comment comment_start">// шаблон компонента</span>
-<span class="tag">&lt;app-child></span><span class="tag">&lt;/app-child></span>
-<span class="tag">&lt;p</span> <span class="attribute">#paragrath</span><span class="tag">></span>Простой параграф<span class="tag">&lt;/p></span>
-		
-<span class="comment comment_start">// класс компонента</span>
-<span class="function-name">@ViewChildren</span><span class="punctuation">(</span><span class="string">'paragrath, ChildComponent'</span><span class="punctuation">)</span> paragrath: <span class="type">ElementRef&lt;HTMLParagraphElement | ChildComponent></span>;</code></pre>
+<pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;app-child>&lt;/app-child>
+&lt;p #paragrath>Простой параграф&lt;/p></code></pre>
+<pre><code class="language-typescript">// класс компонента
+@ViewChildren('paragrath, ChildComponent') paragrath: ElementRef&lt;HTMLParagraphElement | ChildComponent>;</code></pre>
             <p>
                 В примере выше под условие селектора попадают оба элемента разметки, поэтому декоратор
                 <code>@ViewChildren&#40;&#41;</code> добавит их оба в свойство <code>paragrath</code>.
@@ -343,16 +334,15 @@ export const decoratorQuestions: IQuestion[] = [
                 у класса <code>QueryList</code> помимо свойств есть также и различные методы, по наименованию и
                 функционалу повторяющие методы массивов из нативного JavaScript.
             </p>
-            <pre><code><span class="comment comment_start">// шаблон компонента</span>
-<span class="tag">&lt;app-child</span> <span class="attribute">#component</span><span class="tag">></span><span class="tag">&lt;/app-child></span>
-<span class="tag">&lt;app-child></span><span class="tag">&lt;/app-child></span>
+<pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;app-child #component>&lt;/app-child>
+&lt;app-child>&lt;/app-child></code></pre>
+<pre><code class="language-typescript">// класс компонента
+@ViewChildren(ChildComponent) component: QueryList&lt;ChildComponent>;
 
-<span class="comment comment_start">// класс компонента</span>
-<span class="function-name">@ViewChildren</span><span class="punctuation">(</span><span class="class-name">ChildComponent</span><span class="punctuation">)</span> component: <span class="type">QueryList&lt;ChildComponent></span>;
-
-<span class="method">ngAfterViewInit</span><span class="punctuation">() &#123;</span>
-	<span class="object">this</span>.component.<span class="method">forEach</span><span class="punctuation">((</span>item<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'item'</span>, item<span class="punctuation">))</span>;
-<span class="punctuation">&#125;</span></code></pre>
+ngAfterViewInit() {
+	this.component.forEach((item) => console.log('item', item));
+}</code></pre>
             <p>
                 В примере выше в консоли браузера выведется каждый найденный дочерний компонент в отдельной строке со
                 всем своим содержимым.
@@ -394,13 +384,13 @@ export const decoratorQuestions: IQuestion[] = [
                 причем дочерний компонент идет после параграфа, что важно, например, для декоратора
                 <code>@ViewChild&#40;&#41;</code>:
             </p>
-            <pre><code><span class="tag">&lt;p</span> <span class="attribute">#element</span><span class="tag">></span>Простой параграф<span class="tag">&lt;/p></span>
-<span class="tag">&lt;app-child</span> <span class="attribute">#element</span><span class="tag">></span><span class="tag">&lt;/app-child></span></code></pre>
+			<pre><code class="language-html">&lt;p #element>Простой параграф&lt;/p>
+&lt;app-child #element>&lt;/app-child></code></pre>
             <p>
                 Однако, с помощью параметра <code>read</code> мы можем не учитывать параграфы и фильтровать их, оставляя
                 лишь найденные дочерние компоненты:
             </p>
-            <pre><code><span class="function-name">@ViewChild</span><span class="punctuation">(</span><span class="string">'element'</span>, <span class="punctuation">&#123;</span> read: <span class="type">ChildComponent</span> <span class="punctuation">&#125;)</span> element: <span class="type">ElementRef&lt;ChildComponent></span>;</code></pre>
+			<pre><code class="language-typescript">@ViewChild('element', { read: ChildComponent }) element: ElementRef&lt;ChildComponent>;</code></pre>
             <p>В итоге, в свойстве <code>element</code> будут лишь данные дочернего компонента.</p>`,
         selected: false,
         lastUpdate: '14.01.2024',
@@ -416,8 +406,8 @@ export const decoratorQuestions: IQuestion[] = [
 		В Ангуляре данные от родителя к дочернему компоненту можно
 		передавать как статически, так и динамически:
 	</p>
-	<pre><code><span class="tag"><</span><span class="tag">app-child</span> <span class="attribute">name</span><span class="operator">=</span><span class="string">"какая-то_строка"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/app-child></span> <span class="comment">// статическая передача данных</span>
-<span class="tag"><</span><span class="tag">app-child</span> <span class="attribute">[name]</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">какая-то_переменная</span><span class="punctuation">"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/app-child></span> <span class="comment">// динамическая передача данных</span></code></pre>
+	<pre><code class="language-html">&lt;app-child name="какая-то_строка">&lt;/app-child> &lt;!-- статическая передача данных -->
+&lt;app-child [name]="какая-то_переменная">&lt;/app-child> &lt;!-- динамическая передача данных --></code></pre>
 	<p>
 		Декоратор <code>@Input()</code> может обрабатывать и тот, и другой
 		варианты. И т.к. данные могут изменяться, механизм
@@ -435,7 +425,7 @@ export const decoratorQuestions: IQuestion[] = [
 		>.
 	</p>
 	<p>Пример использования:</p>
-	<pre><code><span class="keyword">constructor</span><span class="punctuation">(</span><span class="function-name">@Attribute</span><span class="punctuation">(</span><span class="string">'name'</span><span class="punctuation">)</span> <span class="keyword">private</span> name: <span class="type">string</span><span class="punctuation">) {}</span></code></pre>
+	<pre><code class="language-typescript">constructor(@Attribute('name') private name: string) {}</code></pre>
 	<p>
 		Как видите, в отличие от декоратора <code>@Input()</code> значение теперь принемается в конструкторе класса, а не в одном из хуков жизненного цикла компонента. А как вы знаете, констурктор вызывается лишь единожды, когда иницируется сам класс, а не компонент, поэтому
 		свойство не может быть динамическим и механизм <code>ChangeDetection</code> его не отслеживает. Соответственно, <span class="attention">если вы
@@ -455,8 +445,8 @@ export const decoratorQuestions: IQuestion[] = [
                 другие сервисы.
             </span>
         </p>
-        <pre><code><span class="comment comment_start">// пример использования данного декоратора</span>
-<span class="function-name">@Injectable</span><span class="punctuation">({</span><span class="key">providedIn</span>: <span class="string">'root'</span><span class="punctuation">})</span></code></pre>
+        <pre><code class="language-typescript">// пример использования данного декоратора
+@Injectable({providedIn: 'root'})</code></pre>
         <p>
             Иначе говоря, данный декоратор гарантирует, что встроенный механизм
             внедрения зависимостей (<code>dependency injection</code>) сможет создать объект
@@ -506,15 +496,15 @@ export const decoratorQuestions: IQuestion[] = [
 			если <code>DI</code> не
 			найдет сервис в текущем компоненте, будет сгенерирована ошибка</span>.
 	</p>
-	<pre><code><span class="function-name">@Component</span><span class="punctuation">({</span>
-	<span class="key">selector</span>: <span class="string">'app-some-component'</span>,
-	<span class="key">templateUrl</span>: <span class="string">'./some.component.html'</span>,
-	<span class="key">providers</span>: <span class="punctuation">[</span><span class="service-name">SomeService</span><span class="punctuation">]</span>, <span class="comment">// добавление сервиса на уровне компонента</span>
-<span class="punctuation">})</span>
+	<pre><code class="language-typescript">@Component({
+	selector: 'app-some-component',
+	templateUrl: './some.component.html',
+	providers: [SomeService], // добавление сервиса на уровне компонента
+})
 
-<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
-	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="function-name">@Self()</span> <span class="keyword">private</span> someService: <span class="type">SomeService</span><span class="punctuation">)</span> <span class="punctuation">{}</span>
-<span class="punctuation">}</span></code></pre>`,
+export class SomeComponent {
+	constructor(@Self() private someService: SomeService) {}
+}</code></pre>`,
         selected: false,
         lastUpdate: '23.09.2023',
     },
@@ -549,15 +539,15 @@ export const decoratorQuestions: IQuestion[] = [
             последний. В этом случае
             вам и поможет декоратор <code>@SkipSelf()</code>, который <span class="attention">исключает поиск сервиса на том уровне, где он указан</span>, то есть, в нашем случае на уровне компонента.
         </p>
-        <pre><code><span class="function-name">@Component</span><span class="punctuation">({</span>
-	<span class="key">selector</span>: <span class="string">'app-some-component'</span>,
-	<span class="key">templateUrl</span>: <span class="string">'./some.component.html'</span>,
-	<span class="key">providers</span>: <span class="punctuation">[</span><span class="service-name">SomeService</span><span class="punctuation">]</span>, <span class="comment">// добавление сервиса на уровне компонента</span>
-<span class="punctuation">})</span>
+        <pre><code class="language-typescript">@Component({
+	selector: 'app-some-component',
+	templateUrl: './some.component.html',
+	providers: [SomeService], // добавление сервиса на уровне компонента
+})
 
-<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
-	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="function-name">@SkipSelf()</span> <span class="keyword">private</span> someService: <span class="type">SomeService</span><span class="punctuation">)</span> <span class="punctuation">{}</span>
-<span class="punctuation">}</span></code></pre>
+export class SomeComponent {
+	constructor(@SkipSelf() private someService: SomeService) {}
+}</code></pre>
         <p>
             Исходя из вышесказанного, можно сделать следующий трюк: если указать
             два одинаковых сервиса в одном компоненте, но перед одним из них
@@ -597,9 +587,18 @@ export const decoratorQuestions: IQuestion[] = [
             С помощью декоратора <span class="attention"><code>@Optional()</code> мы можем обработать
             эту ошибку. В переменную, которая должна была стать экземпляром
             сервиса, просто запишется <code>null</code></span>.
-        </p>`,
+        </p>
+		<pre><code class="language-typescript">@Component({
+	selector: 'app-some-component',
+	templateUrl: './some.component.html',
+	providers: [SomeService], // добавление сервиса на уровне компонента
+})
+
+export class SomeComponent {
+	constructor(@Optional() private someService: SomeService) {}
+}</code></pre>`,
         selected: false,
-        lastUpdate: '23.09.2023',
+        lastUpdate: '03.02.2024',
     },
     {
         title: 'Декоратор <span class="variable">@Host()</span>',
@@ -627,38 +626,38 @@ export const decoratorQuestions: IQuestion[] = [
 			зависимости во внешнем компоненте.
 		</li>
 	</ul>
-	<pre><code><span class="keyword">class</span> <span class="class-name">OtherService</span> <span class="punctuation">{}</span>
+	<pre><code class="language-typescript">class OtherService {}
 
-<span class="keyword">class</span> <span class="class-name">HostService</span> <span class="punctuation">{}</span>
+class HostService {}
 
-<span class="function-name">@Directive</span><span class="punctuation">({</span><span class="key">selector</span>: <span class="string">'child-directive'</span><span class="punctuation">})</span>
+@Directive({selector: 'child-directive'})
 
-<span class="keyword">class</span> <span class="class-name">ChildDirective</span> <span class="punctuation">{</span>
-	logs: <span class="type">string[]</span> <span class="operator">=</span> <span class="punctuation">[]</span>;
+class ChildDirective {
+	logs: string[] = [];
 
-	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="function-name">@Optional() @Host()</span> os: <span class="type">OtherService</span>, <span class="function-name">@Optional() @Host()</span> hs: <span class="type">HostService</span><span class="punctuation">) {</span>
-		<span class="comment comment_start">// os имеет значение null: true</span>
-		<span class="object">this</span>.logs.<span class="method">push</span><span class="punctuation">(</span><span class="string">"os is null: "</span> <span class="operator">+</span> <span class="punctuation">(</span>os <span class="operator">===</span> <span class="null">null</span><span class="punctuation">))</span>;
-		<span class="comment comment_start">// hs - это экземпляр HostService: true</span>
-		<span class="object">this</span>.logs.<span class="method">push</span><span class="punctuation">(</span><span class="string">"hs is an instance of HostService: "</span> <span class="operator">+</span> <span class="punctuation">(</span>hs <span class="keyword">instanceof</span> <span class="class-name">HostService</span><span class="punctuation">))</span>;
-	<span class="punctuation">}</span>
-<span class="punctuation">}</span>
+	constructor(@Optional() @Host() os: OtherService, @Optional() @Host() hs: HostService) {
+		// os имеет значение null: true
+		this.logs.push("os is null: " + (os === null));
+		// hs - это экземпляр HostService: true
+		this.logs.push("hs is an instance of HostService: " + (hs instanceof HostService));
+	}
+}
 
-<span class="function-name">@Component</span><span class="punctuation">({</span>
-	<span class="key">selector</span>: <span class="string">'parent-component'</span>,
-	<span class="key">viewProviders</span>: <span class="punctuation">[</span><span class="class-name">HostService</span><span class="punctuation">]</span>,
-	<span class="key">template</span>: <span class="string">'<span><</span>child-directive><span><</span>/child-directive>'</span>,
-<span class="punctuation">})</span>
+@Component({
+	selector: 'parent-component',
+	viewProviders: [HostService],
+	template: '&lt;child-directive>&lt;/child-directive>',
+})
 
-<span class="keyword">class</span> <span class="class-name">ParentComponent</span> <span class="punctuation">{}</span>
+class ParentComponent {}
 
-<span class="function-name">@Component</span><span class="punctuation">({</span>
-	<span class="key">selector</span>: <span class="string">'app'</span>,
-	<span class="key">viewProviders</span>: <span class="punctuation">[</span><span class="class-name">OtherService</span><span class="punctuation">]</span>,
-	<span class="key">template</span>: <span class="string">'<span><</span>parent-component><span><</span>/parent-component>'</span>,
-<span class="punctuation">})</span>
+@Component({
+	selector: 'app',
+	viewProviders: [OtherService],
+	template: '&lt;parent-component>&lt;/parent-component>',
+})
 
-<span class="keyword">class</span> <span class="class-name">App</span> <span class="punctuation">{}</span></code></pre>`,
+class App {}</code></pre>`,
         selected: false,
         lastUpdate: '23.09.2023',
     },

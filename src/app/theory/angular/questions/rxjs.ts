@@ -7,7 +7,7 @@ export const rxjsQuestions: IQuestion[] = [
     //     selected: false,
     // },
     {
-        title: 'Что такое "RxJs" и зачем это в Angular?',
+        title: 'Библиотека <span class="variable">RxJs</span>',
         body: `<p>
             <span class="attention">RxJS</span> — это библиотека, реализующая
             принципы реактивного программирования для JavaScript. Основанная на
@@ -15,9 +15,10 @@ export const rxjsQuestions: IQuestion[] = [
             контроль асинхронного и событийного кода.
         </p>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'Объясните принцип действия Observable в RxJs?',
+        title: 'Принцип работы <span class="variable">Observable</span> в <span class="variable">RxJs</span>',
         body: `<p>
             <code>Observable</code> - это
             <span class="attention">объект-конструктор источника события</span>,
@@ -29,11 +30,11 @@ export const rxjsQuestions: IQuestion[] = [
             <code>Observable</code> заработал, на него необходимо подписаться с
             помощью метода <code>subscribe</code>.
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">newObs$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-	console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'какой-то наш код внутри Observable'</span><span class="punctuation">)</span>;
-<span class="punctuation">})</span>;
+<pre><code class="language-typescript">const newObs$ = new Observable((observer) => {
+	console.log('какой-то наш код внутри Observable');
+});
 	
-<span class="variable">newObs$</span>.<span class="function-name">subscribe()</span>; <span class="comment">// здесь мы подписались на Observable и получили сообщение в консоли</span></code></pre>
+newObs$.subscribe(); // здесь мы подписались на Observable и получили сообщение в консоли</code></pre>
         <p>
             Выше рассмотрен самый простой вариант подписки на источник события.
             Но объект <code>observer</code>, принимаемый callback-функцией
@@ -58,45 +59,46 @@ export const rxjsQuestions: IQuestion[] = [
             Соответственно, в методе <code>subscribe</code> мы также можем
             прописать логику для каждого из перечисленных выше методов объекта:
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">newObs$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-	observer.<span class="function-name">next</span><span class="punctuation">(</span><span class="string">'тут передаем данные'</span><span class="punctuation">)</span>; <span class="comment">переданные данные попадут в data</span>
-	observer.<span class="function-name">error</span><span class="punctuation">(</span><span class="string">'тут передаем ошибки'</span><span class="punctuation">)</span>; <span class="comment">переданные данные попадут в error</span>
-	observer.<span class="function-name">complete()</span>; <span class="comment">// данный метод не принимает параметры</span>
-<span class="punctuation">})</span>
+<pre><code class="language-typescript">const newObs$ = new Observable((observer) => {
+	observer.next('тут передаем данные'); переданные данные попадут в data
+	observer.error('тут передаем ошибки'); переданные данные попадут в error
+	observer.complete(); // данный метод не принимает параметры
+})
 	
-<span class="variable">newObs$</span>.<span class="function-name">subscribe</span><span class="punctuation">(</span>
-	<span class="punctuation">(</span>data<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем данные'</span><span class="punctuation">)</span>
-	<span class="punctuation">}</span>,
-	<span class="punctuation">(</span>error<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем ошибки'</span><span class="punctuation">)</span>
-	<span class="punctuation">}</span>,
-	<span class="punctuation">()</span> <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем завершение работы Observable'</span><span class="punctuation">)</span>
-	<span class="punctuation">}</span>,
-<span class="punctuation">)</span>;</code></pre>
+newObs$.subscribe(
+	(data) => {
+		console.log('тут обрабатываем данные')
+	},
+	(error) => {
+		console.log('тут обрабатываем ошибки')
+	},
+	() => {
+		console.log('тут обрабатываем завершение работы Observable')
+	},
+);</code></pre>
         <p>Альтернативная запись для подписки через объект с методами:</p>
-        <pre><code><span class="variable">newObs$</span>.<span class="function-name">subscribe</span><span class="punctuation">({</span>
-	<span class="key">next</span>: <span class="punctuation">(</span>data<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем данные'</span><span class="punctuation">)</span>
-	<span class="punctuation">}</span>,
-	<span class="key">error</span>: <span class="punctuation">(</span>error<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем ошибки'</span><span class="punctuation">)</span>
-	<span class="punctuation">}</span>,
-	<span class="key">complete</span>: <span class="punctuation">()</span> <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем завершение работы Observable'</span><span class="punctuation">)</span>
-	<span class="punctuation">}</span>,
-<span class="punctuation">})</span>;</code></pre>
+<pre><code class="language-typescript">newObs$.subscribe({
+	next: (data) => {
+		console.log('тут обрабатываем данные')
+	},
+	error: (error) => {
+		console.log('тут обрабатываем ошибки')
+	},
+	complete: () => {
+		console.log('тут обрабатываем завершение работы Observable')
+	},
+});</code></pre>
         <p>
             Если <code>Observable</code> не имеет метода <code>complete</code> и
             нет его обработки в методе <code>subscribe</code>, то не забывайте
             самостоятельно отписываться от таких подписок.
         </p>
-        <pre><code><span class="variable">newObs$</span>.<span class="function-name">unsubscribe()</span>; <span class="comment">// не забываем отписаться</span></code></pre>`,
+		<pre><code class="language-typescript">newObs$.unsubscribe(); // не забываем отписаться</code></pre>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'Как из примитивного типа данных сделать Observable?',
+        title: 'Преобразование примитивного типа данных в тип <span class="variable">Observable</span>',
         body: `<p>
             Для преобразования данных из примитов в тип <code>Observable</code>,
             в RxJs существуют специальные для этого операторы. Например,
@@ -109,37 +111,38 @@ export const rxjsQuestions: IQuestion[] = [
             <code>of</code> создает поток с одним или несколькими элементами,
             который завершается сразу после их отправки.
         </p>
-        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
-    numbers$: <span class="class-name">Observable</span><span class="type"><number[]></span> <span class="operator">=</span> <span class="function-name">of</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>; <span class="comment">// (*)</span>
+<pre><code class="language-typescript">export class SomeComponent {
+    numbers$: Observable = of([1, 2, 3]); // (*)
 
-    <span class="function-name">ngOnInit()</span> <span class="punctuation">{</span>
-        <span class="object">this</span>.numbers$.<span class="function-name">subscribe</span><span class="punctuation">((</span>data: <span class="type">number[]</span><span class="punctuation">)</span> <span class="punctuation"><span class="operator">=></span></span> <span class="punctuation">{</span>
-            console.<span class="function-name">log</span>(data); <span class="comment">// [1, 2, 3]</span>
-        <span class="punctuation">})</span>;
-    <span class="punctuation">}</span>
-<span class="punctuation">}</span></code></pre>
+    ngOnInit() {
+        this.numbers$.subscribe((data: number[]) => {
+            console.log(data); // [1, 2, 3]
+        });
+    }
+}</code></pre>
         <p>Строка под "<code>*</code>" равносильна следующей записи:</p>
-        <pre><code>numbers$: <span class="class-name">Observable</span><span class="type"><number[]></span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-	observer.<span class="function-name">next</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>;
-<span class="punctuation">})</span>;</code></pre>
+<pre><code class="language-typescript">numbers$: Observable = new Observable((observer) => {
+	observer.next([1, 2, 3]);
+});</code></pre>
         <p>
             Если необходимо, чтобы обработчик вместо всего массива сразу получал
             каждый его элемент в отдельности, тогда используется оператор
             <code>from</code>.
         </p>
-        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
-    numbers$: <span class="class-name">Observable</span><span class="type"><number></span> <span class="operator">=</span> <span class="function-name">from</span><span class="punctuation">(</span><span class="array">[1, 2, 3]</span><span class="punctuation">)</span>;
+<pre><code class="language-typescript">export class SomeComponent {
+    numbers$: Observable = from([1, 2, 3]);
 
-    <span class="function-name">ngOnInit()</span> <span class="punctuation">{</span>
-        <span class="object">this</span>.numbers$.<span class="function-name">subscribe</span><span class="punctuation">((</span>data: <span class="type">number</span><span class="punctuation">)</span> <span class="punctuation"><span class="operator">=></span></span> <span class="punctuation">{</span>
-            console.<span class="function-name">log</span><span class="punctuation">(</span>data<span class="punctuation">)</span>; <span class="comment">// 1, 2, 3</span>
-        <span class="punctuation">})</span>;
-    <span class="punctuation">}</span>
-<span class="punctuation">}</span></code></pre>`,
+    ngOnInit() {
+        this.numbers$.subscribe((data: number) => {
+            console.log(data); // 1, 2, 3
+        });
+    }
+}</code></pre>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'В чем разница между Observable и Promise?',
+        title: 'Разница между <span class="variable">Observable</span> и <span class="variable">Promise</span>',
         body: `<p>
                 <code>Observable</code> - это
                 <span class="attention">конструктор источника событий</span>, а
@@ -162,63 +165,64 @@ export const rxjsQuestions: IQuestion[] = [
             </p>
             <p>Для большего понимания несколько примеров ниже.</p>
             <i class="subtitle">0 подписчиков у Observable</i>
-            <pre><code>promise <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Promise</span><span class="punctuation">(</span>resolve <span class="operator">=></span> <span class="punctuation">{</span>
-	console.<span class="function-name">log(</span><span class="string">'Promise создан'</span><span class="punctuation">)</span>;
-	<span class="function-name">resolve(</span><span class="string">'результат Promise'</span><span class="punctuation">)</span>
-<span class="punctuation">})</span>;
+<pre><code class="language-typescript">promise = new Promise(resolve => {
+	console.log('Promise создан');
+	resolve('результат Promise')
+});
 
-source <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span>subscriber <span class="operator">=></span> <span class="punctuation">{</span>
-	console.<span class="function-name">log(</span><span class="string">'Observable создан'</span><span class="punctuation">)</span>;
-	subscriber.<span class="function-name">next(</span><span class="string">'результат Observable'</span><span class="punctuation">)</span>;
-<span class="punctuation">})</span>;</code></pre>
+source = new Observable(subscriber => {
+	console.log('Observable создан');
+	subscriber.next('результат Observable');
+});</code></pre>
             <p>Результат в консоли:</p>
-            <pre><code><span class="comment">// Promise создан</span></code></pre>
+			<pre><code class="language-typescript">// Promise создан</code></pre>
             <i class="subtitle">1 подписчик у Observable</i>
-            <pre><code>promise <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Promise</span><span class="punctuation">(</span>resolve <span class="operator">=></span> <span class="punctuation">{</span>
-	console.<span class="function-name">log(</span><span class="string">'Promise создан'</span><span class="punctuation">)</span>;
-	<span class="function-name">resolve(</span><span class="string">'результат Promise'</span><span class="punctuation">)</span>
-<span class="punctuation">})</span>;
+<pre><code class="language-typescript">promise = new Promise(resolve => {
+	console.log('Promise создан');
+	resolve('результат Promise')
+});
 
-source <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span>subscriber <span class="operator">=></span> <span class="punctuation">{</span>
-	console.<span class="function-name">log(</span><span class="string">'Observable создан'</span><span class="punctuation">)</span>;
-	subscriber.<span class="function-name">next(</span><span class="string">'результат Observable'</span><span class="punctuation">)</span>;
-<span class="punctuation">})</span>;
+source = new Observable(subscriber => {
+	console.log('Observable создан');
+	subscriber.next('результат Observable');
+});
 
-promise.<span class="function-name">then(</span>data <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'полученные данные:'</span>, data<span class="punctuation">))</span>;
-source.<span class="function-name">subscribe(</span>val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'полученные данные:'</span>, val<span class="punctuation">))</span>;</code></pre>
+promise.then(data => console.log('полученные данные:', data));
+source.subscribe(val => console.log('полученные данные:', val));</code></pre>
             <p>Результат в консоли:</p>
-            <pre><code><span class="comment">// Promise создан</span>
-<span class="comment">// Observable создан</span>
-<span class="comment">// результат Observable</span>
-<span class="comment">// результат Promise</span></code></pre>
+<pre><code class="language-typescript">// Promise создан
+// Observable создан
+// результат Observable
+// результат Promise</code></pre>
             <i class="subtitle">2 подписчика у Observable</i>
-            <pre><code>promise <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Promise</span><span class="punctuation">(</span>resolve <span class="operator">=></span> <span class="punctuation">{</span>
-	console.<span class="function-name">log(</span><span class="string">'Promise создан'</span><span class="punctuation">)</span>;
-	<span class="function-name">resolve(</span><span class="string">'результат Promise'</span><span class="punctuation">)</span>
-<span class="punctuation">})</span>;
+<pre><code class="language-typescript">promise = new Promise(resolve => {
+	console.log('Promise создан');
+	resolve('результат Promise')
+});
 
-source <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span>subscriber <span class="operator">=></span> <span class="punctuation">{</span>
-	console.<span class="function-name">log(</span><span class="string">'Observable создан'</span><span class="punctuation">)</span>;
-	subscriber.<span class="function-name">next(</span><span class="string">'результат Observable'</span><span class="punctuation">)</span>;
-<span class="punctuation">})</span>;
+source = new Observable(subscriber => {
+	console.log('Observable создан');
+	subscriber.next('результат Observable');
+});
 
-promise.<span class="function-name">then(</span>data <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'полученные данные:'</span>, data<span class="punctuation">))</span>;
-source.<span class="function-name">subscribe(</span>val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'полученные данные:'</span>, val<span class="punctuation">))</span>;
+promise.then(data => console.log('полученные данные:', data));
+source.subscribe(val => console.log('полученные данные:', val));
 
-promise.<span class="function-name">then(</span>data <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'полученные данные:'</span>, data<span class="punctuation">))</span>;
-source.<span class="function-name">subscribe(</span>val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'полученные данные:'</span>, val<span class="punctuation">))</span>;</code></pre>
+promise.then(data => console.log('полученные данные:', data));
+source.subscribe(val => console.log('полученные данные:', val));</code></pre>
             <p>Результат в консоли:</p>
-            <pre><code><span class="comment">// Promise создан</span>
-<span class="comment">// Observable создан</span>
-<span class="comment">// результат Observable</span>
-<span class="comment">// Observable создан</span>
-<span class="comment">// результат Observable</span>
-<span class="comment">// результат Promise</span>
-<span class="comment">// результат Promise</span></code></pre>`,
+<pre><code class="language-typescript">// Promise создан
+// Observable создан
+// результат Observable
+// Observable создан
+// результат Observable
+// результат Promise
+// результат Promise</code></pre>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'В чем разница между Observable и Array?',
+        title: 'Разница между <span class="variable">Observable</span> и <span class="variable">Array</span>',
         body: `<p>
                 У объектов <code>Observable</code> (конечно же, имеется ввиду
                 операторы метода <code>pipe</code>) и <code>Array</code> (методы массивов) есть
@@ -234,30 +238,30 @@ source.<span class="function-name">subscribe(</span>val <span class="operator">=
             </p>
             <i class="subtitle">Array</i>
             <p>Для начала разберемся как ведут себя методы у массивов:</p>
-            <pre><code>someArray <span class="operator">=</span> <span class="punctuation">[</span><span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span><span class="punctuation">]</span>;
+			<pre><code class="language-typescript">someArray = [10, 20, 30, 40];
 
-result <span class="operator">=</span> someArray
-	.<span class="function-name">map(</span>item <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log(</span><span class="string">'[MAP]'</span>, item<span class="punctuation">)</span>;
-		<span class="keyword">return</span> item <span class="operator">+</span> <span class="number">5</span>;
-	<span class="punctuation">})</span>
-	.<span class="function-name">filter(</span>item <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log(</span><span class="string">'[FILTER]'</span>, item<span class="punctuation">)</span>;
-		<span class="keyword">return</span> item <span class="operator">></span> <span class="number">30</span>;
-	<span class="punctuation">})</span>
-	.<span class="function-name">reduce((</span>acc, item<span class="punctuation">)</span> <span class="operator">=></span> acc <span class="operator">+</span> item<span class="punctuation">)</span>;
+result = someArray
+	.map(item => {
+		console.log('[MAP]', item);
+		return item + 5;
+	})
+	.filter(item => {
+		console.log('[FILTER]', item);
+		return item > 30;
+	})
+	.reduce((acc, item) => acc + item);
 
-console.<span class="function-name">log(</span><span class="string">'Результат:'</span>, result<span class="punctuation">)</span>;</code></pre>
+console.log('Результат:', result);</code></pre>
             <p>Результат выполнения кода в консоли:</p>
-            <pre><code><span class="comment">// [MAP] 10</span>
-<span class="comment">// [MAP]: 20</span>
-<span class="comment">// [MAP]: 30</span>
-<span class="comment">// [MAP]: 40</span>
-<span class="comment">// [FILTER]: 15</span>
-<span class="comment">// [FILTER]: 25</span>
-<span class="comment">// [FILTER]: 35</span>
-<span class="comment">// [FILTER]: 45</span>
-<span class="comment">// Результат: 80</span></code></pre>
+<pre><code class="language-typescript">// [MAP] 10
+// [MAP]: 20
+// [MAP]: 30
+// [MAP]: 40
+// [FILTER]: 15
+// [FILTER]: 25
+// [FILTER]: 35
+// [FILTER]: 45
+// Результат: 80</code></pre>
             <p>
                 Как видите, сначала массив <code>someArray</code> полностью
                 прошел через метод <code>map</code> и только потом он попал в
@@ -269,30 +273,30 @@ console.<span class="function-name">log(</span><span class="string">'Резул�
                 А теперь проделаем все то же самое, но уже для
                 <code>Observable</code> с тем же массивом данных:
             </p>
-            <pre><code>someArray <span class="operator">=</span> <span class="punctuation">[</span><span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span><span class="punctuation">]</span>;
+<pre><code class="language-typescript">someArray = [10, 20, 30, 40];
 
-<span class="function-name">from(</span>someArray<span class="punctuation">)</span>.<span class="function-name">pipe(</span>
-	<span class="function-name">map(</span>item <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log(</span><span class="string">'[MAP]'</span>, item<span class="punctuation">)</span>;
-		<span class="keyword">return</span> item <span class="operator">+</span> <span class="number">5</span>;
-	<span class="punctuation">})</span>
-	.<span class="function-name">filter(</span>item <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log(</span><span class="string">'[FILTER]'</span>, item<span class="punctuation">)</span>;
-		<span class="keyword">return</span> item <span class="operator">></span> <span class="number">30</span>;
-	<span class="punctuation">})</span>
-	.<span class="function-name">reduce((</span>acc, item<span class="punctuation">)</span> <span class="operator">=></span> acc <span class="operator">+</span> item<span class="punctuation">)</span>
+from(someArray).pipe(
+	map(item => {
+		console.log('[MAP]', item);
+		return item + 5;
+	})
+	.filter(item => {
+		console.log('[FILTER]', item);
+		return item > 30;
+	})
+	.reduce((acc, item) => acc + item)
 )
-.<span class="function-name">subscribe(</span>val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">))</span>;</code></pre>
+.subscribe(val => console.log('next:', val));</code></pre>
             <p>Результат выполнения кода в консоли:</p>
-            <pre><code><span class="comment">// [MAP] 10</span>
-<span class="comment">// [FILTER]: 15</span>
-<span class="comment">// [MAP]: 20</span>
-<span class="comment">// [FILTER]: 25</span>
-<span class="comment">// [MAP]: 30</span>
-<span class="comment">// [FILTER]: 35</span>
-<span class="comment">// [MAP]: 40</span>
-<span class="comment">// [FILTER]: 45</span>
-<span class="comment">// Результат: 80</span></code></pre>
+<pre><code class="language-typescript">// [MAP] 10
+// [FILTER]: 15
+// [MAP]: 20
+// [FILTER]: 25
+// [MAP]: 30
+// [FILTER]: 35
+// [MAP]: 40
+// [FILTER]: 45
+// Результат: 80</code></pre>
             <p>
                 Как видите, результат выполнения кода отличается. Теперь каждый
                 элемент массива <code>someArray</code> полностью проходит
@@ -304,31 +308,31 @@ console.<span class="function-name">log(</span><span class="string">'Резул�
                 прошеднего операторы <code>map</code> и <code>filter</code>,
                 воспользуйтесь оператором <code>scan</code>:
             </p>
-            <pre><code>someArray <span class="operator">=</span> <span class="punctuation">[</span><span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span><span class="punctuation">]</span>;
+<pre><code class="language-typescript">someArray = [10, 20, 30, 40];
 
-<span class="function-name">from(</span>someArray<span class="punctuation">)</span>.<span class="function-name">pipe(</span>
-	<span class="function-name">map(</span>item <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log(</span><span class="string">'[MAP]'</span>, item<span class="punctuation">)</span>;
-		<span class="keyword">return</span> item <span class="operator">+</span> <span class="number">5</span>;
-	<span class="punctuation">})</span>
-	.<span class="function-name">filter(</span>item <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log(</span><span class="string">'[FILTER]'</span>, item<span class="punctuation">)</span>;
-		<span class="keyword">return</span> item <span class="operator">></span> <span class="number">30</span>;
-	<span class="punctuation">})</span>
-	.<span class="function-name">scan((</span>acc, item<span class="punctuation">)</span> <span class="operator">=></span> acc <span class="operator">+</span> item<span class="punctuation">)</span>
+from(someArray).pipe(
+	map(item => {
+		console.log('[MAP]', item);
+		return item + 5;
+	})
+	.filter(item => {
+		console.log('[FILTER]', item);
+		return item > 30;
+	})
+	.scan((acc, item) => acc + item)
 )
-.<span class="function-name">subscribe(</span>val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">))</span>;</code></pre>
+.subscribe(val => console.log('next:', val));</code></pre>
             <p>Результат выполнения кода в консоли:</p>
-            <pre><code><span class="comment">// [MAP] 10</span>
-<span class="comment">// [FILTER]: 15</span>
-<span class="comment">// [MAP]: 20</span>
-<span class="comment">// [FILTER]: 25</span>
-<span class="comment">// [MAP]: 30</span>
-<span class="comment">// [FILTER]: 35</span>
-<span class="comment">// Результат: 35</span>
-<span class="comment">// [MAP]: 40</span>
-<span class="comment">// [FILTER]: 45</span>
-<span class="comment">// Результат: 80</span></code></pre>
+<pre><code class="language-typescript">// [MAP] 10
+// [FILTER]: 15
+// [MAP]: 20
+// [FILTER]: 25
+// [MAP]: 30
+// [FILTER]: 35
+// Результат: 35
+// [MAP]: 40
+// [FILTER]: 45
+// Результат: 80</code></pre>
             <p>Итог всего вышесказанного:</p>
             <ul>
                 <li>
@@ -347,9 +351,10 @@ console.<span class="function-name">log(</span><span class="string">'Резул�
                 </li>
             </ul>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'В чем разница между Observable и Subject?',
+        title: 'Разница между <span class="variable">Observable</span> и <span class="variable">Subject</span>',
         body: `<p>
             Основное отличие этих двух типов объектов:
             <span class="attention">объекты </span> <code>Observable</code>
@@ -369,56 +374,55 @@ console.<span class="function-name">log(</span><span class="string">'Резул�
             <code>Observable</code> предназначен для потребителя, его можно
             преобразовать и подписаться:
         </p>
-        <pre><code>observable$.<span class="method">pipe</span><span class="punctuation">(</span><span class="method">map</span><span class="punctuation">(</span>x <span class="operator">=></span> ...<span class="punctuation">)</span>, <span class="method">filter</span><span class="punctuation">(</span>x <span class="operator">=></span> ...<span class="punctuation">))</span>.<span class="method">subscribe</span><span class="punctuation">(</span>x <span class="operator">=></span> ...<span class="punctuation">)</span></code></pre>
+        <pre><code class="language-typescript">observable$.pipe(map(x => ...), filter(x => ...)).subscribe(x => ...)</code></pre>
         <p>
             <code>Observer</code> — это интерфейс, который используется для
             подачи наблюдаемого источника, будь то какие-то данные, ошибка или
             завершение наблюдения:
         </p>
-        <pre><code>observer.<span class="method">next</span><span class="punctuation">(</span>newItem<span class="punctuation">)</span>
-observer.<span class="method">error</span><span class="punctuation">(</span>error<span class="punctuation">)</span>
-observer.<span class="method">complete</span><span class="punctuation">()</span></code></pre>
+        <pre><code class="language-typescript">observer.next(newItem)
+observer.error(error)
+observer.complete()</code></pre>
         <p>
             При этом мы можем создать новый <code>Observable</code> с помощью
             Observer:
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">newObs$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>observer<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-	observer.<span class="function-name">next</span><span class="punctuation">(</span><span class="string">'тут передаем данные'</span><span class="punctuation">)</span>; <span class="comment">переданные данные попадут в data</span>
-	observer.<span class="function-name">error</span><span class="punctuation">(</span><span class="string">'тут передаем ошибки'</span><span class="punctuation">)</span>; <span class="comment">переданные данные попадут в error</span>
-	observer.<span class="function-name">complete()</span>; <span class="comment">// данный метод не принимает параметры</span>
-<span class="punctuation">})</span>;
+        <pre><code class="language-typescript">const newObs$ = new Observable((observer) => {
+	observer.next('тут передаем данные'); переданные данные попадут в data
+	observer.error('тут передаем ошибки'); переданные данные попадут в error
+	observer.complete(); // данный метод не принимает параметры
+});
 
-<span class="variable">newObs$</span>.<span class="function-name">subscribe</span><span class="punctuation">(</span>
-	<span class="punctuation">(</span>data<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем данные'</span><span class="punctuation">)</span>
-	<span class="punctuation">}</span>,
-	<span class="punctuation">(</span>error<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем ошибки'</span><span class="punctuation">)</span>
-	<span class="punctuation">}</span>,
-	<span class="punctuation">()</span> <span class="operator">=></span> <span class="punctuation">{</span>
-		console.<span class="function-name">log</span><span class="punctuation">(</span><span class="string">'тут обрабатываем завершение работы Observable'</span><span class="punctuation">)</span>
-	<span class="punctuation">}</span>,
-<span class="punctuation">)</span>;</code></pre>
+newObs$.subscribe(
+	(data) => {
+		console.log('тут обрабатываем данные')
+	},
+	(error) => {
+		console.log('тут обрабатываем ошибки')
+	},
+	() => {
+		console.log('тут обрабатываем завершение работы Observable')
+	},
+);</code></pre>
         <p>
             Или мы можем использовать <code>Subject</code>, который реализует
             интерфейсы <code>Observable</code> и <code>Observer</code>:
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">subject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Subject</span><span class="type"><number></span><span class="punctuation">()</span>;
+        <pre><code class="language-typescript">const subject$ = new Subject();
 
-<span class="variable">subject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Первая подписка:'</span>, value<span class="punctuation">))</span>;
-<span class="variable">subject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">3</span><span class="punctuation">)</span>;
-<span class="variable">subject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Вторая подписка:'</span>, value<span class="punctuation">))</span>;
-<span class="variable">subject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">9</span><span class="punctuation">)</span>;
-
-<span class="comment">// в консоли мы увидем следующее:
-Первая подписка: 3
+subject$.subscribe((value) => console.log('Первая подписка:', value));
+subject$.next(3);
+subject$.subscribe((value) => console.log('Вторая подписка:', value));
+subject$.next(9);</code></pre>
+<p>Тогда в консоли мы увидим следующее:</p>
+<pre><code class="language-typescript">Первая подписка: 3
 Первая подписка: 9
-Вторая подписка: 9
-</span></code></pre>`,
+Вторая подписка: 9</code></pre>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'Какие вы знаете разновидности объекта Subject и в чем их отличия?',
+        title: 'Разновидности типа <span class="variable">Subject</span> и их различия',
         body: `<p>В RxJS имеется несколько разновидностей <code>Subject</code>:</p>
         <ul>
             <li><span class="attention">BehaviorSubject</span></li>
@@ -435,18 +439,16 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
             <code>Observable</code> осуществляется уникально для каждого его
             вызова.
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">subject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Subject</span><span class="type"><number></span><span class="punctuation">()</span>;
+        <pre><code class="language-typescript">const subject$ = new Subject();
 
-<span class="variable">subject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Первая подписка:'</span>, value<span class="punctuation">))</span>;
-<span class="variable">subject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">3</span><span class="punctuation">)</span>;
-<span class="variable">subject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Вторая подписка:'</span>, value<span class="punctuation">))</span>;
-<span class="variable">subject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">9</span><span class="punctuation">)</span>;
-
-<span class="comment">// в консоли мы увидем следующее:
-Первая подписка: 3
+subject$.subscribe((value) => console.log('Первая подписка:', value));
+subject$.next(3);
+subject$.subscribe((value) => console.log('Вторая подписка:', value));
+subject$.next(9);</code></pre>
+<p>В консоли мы увидим следующее:</p>
+<pre><code class="language-typescript">Первая подписка: 3
 Первая подписка: 9
-Вторая подписка: 9
-</span></code></pre>
+Вторая подписка: 9</code></pre>
         <i class="subtitle">BehaviorSubject</i>
         <p>
             <code>BehaviorSubject</code> —
@@ -455,18 +457,16 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
                 аргумента принимает начальное значение </span
             >.
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">behaviorSubject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">BehaviorSubject</span><span class="type"><number></span><span class="punctuation">(</span><span class="number">5</span><span class="punctuation">)</span>;
+        <pre><code class="language-typescript">const behaviorSubject$ = new BehaviorSubject(5);
 
-<span class="variable">behaviorSubject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Первая подписка:'</span>, value<span class="punctuation">))</span>;
-<span class="variable">behaviorSubject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Вторая подписка:'</span>, value<span class="punctuation">))</span>;
-<span class="variable">behaviorSubject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">9</span><span class="punctuation">)</span>;
-
-<span class="comment">// в консоли мы увидем следующее:
-Первая подписка: 5
+behaviorSubject$.subscribe((value) => console.log('Первая подписка:', value));
+behaviorSubject$.subscribe((value) => console.log('Вторая подписка:', value));
+behaviorSubject$.next(9);</code></pre>
+<p>В консоли мы увидим следующее:</p>
+<pre><code class="language-typescript">Первая подписка: 5
 Вторая подписка: 5
 Первая подписка: 9
-Вторая подписка: 9
-</span></code></pre>
+Вторая подписка: 9</code></pre>
         <i class="subtitle">ReplaySubject</i>
         <p>
             <code>ReplaySubject</code> —
@@ -475,18 +475,16 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
                 параметр — количество предыдущих значений </span
             >.
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">replaySubject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">ReplaySubject</span><span class="type"><number></span><span class="punctuation">(</span><span class="number">2</span><span class="punctuation">)</span>;
+        <pre><code class="language-typescript">const replaySubject$ = new ReplaySubject(2);
 
-<span class="variable">replaySubject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">3</span><span class="punctuation">)</span>;
-<span class="variable">replaySubject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">6</span><span class="punctuation">)</span>;
-<span class="variable">replaySubject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">9</span><span class="punctuation">)</span>;
+replaySubject$.next(3);
+replaySubject$.next(6);
+replaySubject$.next(9);
 
-<span class="variable">replaySubject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Результат: '</span>, value<span class="punctuation">))</span>;
-
-<span class="comment">// в консоли мы увидем следующее:
-Результат: 6
-Результат: 9
-</span></code></pre>
+replaySubject$.subscribe((value) => console.log('Результат: ', value));</code></pre>
+<p>В консоли мы увидим следующее:</p>
+<pre><code class="language-typescript">Результат: 6
+Результат: 9</code></pre>
         <i class="subtitle">AsyncSubject</i>
         <p>
             <code>AsyncSubject</code> —
@@ -496,23 +494,22 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
             </span>
             <code>complete</code>.
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">asyncSubject$</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">AsyncSubject</span><span class="type"><number></span><span class="punctuation">()</span>;
+       <pre><code class="language-typescript">const asyncSubject$ = new AsyncSubject();
 
-<span class="variable">asyncSubject$</span>.<span class="method">subscribe</span><span class="punctuation">((</span>value<span class="punctuation">)</span> <span class="operator">=></span> console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Результат: '</span>, value<span class="punctuation">))</span>;
+asyncSubject$.subscribe((value) => console.log('Результат: ', value));
 
-<span class="variable">asyncSubject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">3</span><span class="punctuation">)</span>;
-<span class="variable">asyncSubject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">6</span><span class="punctuation">)</span>;
-<span class="variable">asyncSubject$</span>.<span class="method">next</span><span class="punctuation">(</span><span class="number">9</span><span class="punctuation">)</span>;
+asyncSubject$.next(3);
+asyncSubject$.next(6);
+asyncSubject$.next(9);
 
-<span class="variable">asyncSubject$</span>.<span class="method">complete</span><span class="punctuation">()</span>;
-
-<span class="comment">// в консоли мы увидем следующее:
-Результат: 9
-</span></code></pre>`,
+asyncSubject$.complete();</code></pre>
+<p>В консоли мы увидим следующее:</p>
+<pre><code class="language-typescript">Результат: 9</code></pre>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'У какого типа данных в Angular можно вызвать метод "pipe"?',
+        title: 'Тип данных, у которого можно вызвать метод <span class="variable">pipe</span>',
         body: `<p>
             <span class="attention">Метод </span> <code>pipe</code>
             <span class="attention">
@@ -528,9 +525,10 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
             <code>Observable</code>.
         </p>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'Можно ли подписываться на события в конструкторе класса компонента?',
+        title: 'Подписка на события в конструкторе класса компонента',
         body: `<p>
             <span class="attention">
                 В конструкторе класса не стоит делать какие-либо подписки на
@@ -550,22 +548,23 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
             утечкой памяти.
         </p>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'Какие существуют способы отписки от "subscribe"?',
+        title: 'Способы отписаться от подписки <span class="variable">subscribe</span>',
         body: `<p>
             Небольшой вступительный пример того, как делаются отписки от
             какого-либо события в нативном JavaScript:
         </p>
-        <pre><code><span class="comment">// создаем функцию, которая будет делать подписку на setTimeout</span>
-<span class="keyword">function</span> <span class="function-name">timer</span><span class="punctuation">(</span>cb, timeout<span class="punctuation">)</span> <span class="punctuation">{</span>
-    <span class="keyword">const</span> <span class="variable">timeoutId</span> <span class="operator">=</span> <span class="function-name">setTimeout</span><span class="punctuation">(</span>cb, timeout<span class="punctuation">)</span>;
-    <span class="keyword">return</span> <span class="punctuation">()</span> <span class="operator">=></span> <span class="function-name">clearInterval</span><span class="punctuation">(</span>timeoutId<span class="punctuation">)</span>;
-<span class="punctuation">}</span>
-<span class="comment">// замыкаем в переменную disposeTimer функцию, которая отменит подписку</span>
-<span class="keyword">const</span> <span class="variable">disposeTimer</span> <span class="operator">=</span> <span class="function-name">timer</span><span class="punctuation">(</span>someFunction, <span class="number">1000</span><span class="punctuation">)</span>;
-<span class="comment">// отменяем подписку</span>
-<span class="function-name">disposeTimer()</span>;</code></pre>
+        <pre><code class="language-typescript">// создаем функцию, которая будет делать подписку на setTimeout
+function timer(cb, timeout) {
+    const timeoutId = setTimeout(cb, timeout);
+    return () => clearInterval(timeoutId);
+}
+// замыкаем в переменную disposeTimer функцию, которая отменит подписку
+const disposeTimer = timer(someFunction, 1000);
+// отменяем подписку
+disposeTimer();</code></pre>
         <p>Перейдем теперь непосредственно к RxJs.</p>
         <i class="subtitle">Сохранить подписку в переменную</i>
         <p>
@@ -573,8 +572,8 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
             переменную и вызвать у нее метод <code>unsubscribe</code>, когда
             подписка нам уже не нужна:
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">timerSub</span>: <span class="type">Subscription</span> <span class="operator">=</span> <span class="function-name">timer</span><span class="punctuation">(</span><span class="number">1000</span><span class="punctuation">)</span>.<span class="method">subscribe()</span>;
-<span class="variable">timerSub</span>.<span class="method">unsubscribe()</span>;</code></pre>
+        <pre><code class="language-typescript">const timerSub: Subscription = timer(1000).subscribe();
+timerSub.unsubscribe();</code></pre>
         <p>
             В примере выше нам необходимо следить за каждой подпиской. То есть,
             сохранять ее в переменную и затем где-то вызывать метод
@@ -588,25 +587,25 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
             использовать <code>ReplaySubject</code> и оператор
             <code>takeUntil</code> для отписки сразу от всех подписок:
         </p>
-        <pre><code>onDestroy$: <span class="type">ReplaySubject<any></span> <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">ReplaySubject</span><span class="type"><any></span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span>;
+        <pre><code class="language-typescript">onDestroy$: ReplaySubject = new ReplaySubject(1);
 
-<span class="method">ngOninit()</span> <span class="punctuation">{</span>
-	<span class="object">this</span>.control.valueChanges
-		.<span class="method">pipe</span><span class="punctuation">(</span>
-			<span class="comment">// switchMap отписывается от старого Observable и подписывается на новый, который приходит из сервиса</span>
-			<span class="comment">// это, кстати, еще один способ отписаться от события</span>
-			<span class="function-name">switchMap((</span>userId<span class="punctuation">)</span> <span class="operator">=></span> <span class="object">this</span>.service.<span class="method">getUser(</span>userId<span class="punctuation">))</span>,
-			<span class="comment">// берем данные пока компонент существует</span>
-			<span class="function-name">takeUntil</span><span class="punctuation">(</span><span class="object">this</span>.onDestroy$<span class="punctuation">)</span>
-		<span class="punctuation">)</span>
-		.<span class="method">subscribe()</span>;
-<span class="punctuation">}</span>
+ngOninit() {
+	this.control.valueChanges
+		.pipe(
+			// switchMap отписывается от старого Observable и подписывается на новый, который приходит из сервиса
+			// это, кстати, еще один способ отписаться от события
+			switchMap((userId) => this.service.getUser(userId)),
+			// берем данные пока компонент существует
+			takeUntil(this.onDestroy$)
+		)
+		.subscribe();
+}
 
-<span class="method">ngOnDestroy()</span> <span class="punctuation">{</span>
-	<span class="comment">// в момент уничтожения компонента избавляемся от подписок</span>
-	<span class="object">this</span>.onDestroy$.<span class="method">next(</span><span class="null">null</span><span class="punctuation">)</span>;
-	<span class="object">this</span>.onDestroy$.<span class="method">complete()</span>;
-<span class="punctuation">}</span></code></pre>
+ngOnDestroy() {
+	// в момент уничтожения компонента избавляемся от подписок
+	this.onDestroy$.next(null);
+	this.onDestroy$.complete();
+}</code></pre>
         <p>
             Вместо <code>ReplaySubject</code> можно использовать и просто
             <code>Subject</code>, но лучше все же использовать именно
@@ -615,9 +614,10 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
             компонента.
         </p>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'Способы обработки ошибок в RxJs',
+        title: 'Способы обработки ошибок в <span class="variable">RxJs</span>',
         body: `<p>
                 Чтобы ваше приложение "не падало" из-за возможной ошибки
                 (например, сервер не отвечает на ваш запрос), эти самые ошибки
@@ -632,26 +632,26 @@ observer.<span class="method">complete</span><span class="punctuation">()</span>
                     эффектов.
                 </span>
             </p>
-            <pre><code>source <span class="operator">=</span> <span class="function-name">throwError(</span><span class="string">'какая-то ошибка'</span><span class="punctuation">)</span>; <span class="comment">// имитируем ошибку</span>
+            <pre><code class="language-typescript">source = throwError('какая-то ошибка'); // имитируем ошибку
 
-subscription <span class="operator">=</span> source.<span class="function-name">pipe(</span>
-		<span class="function-name">catchError(</span>err <span class="operator">=></span> <span class="punctuation">{</span>
-			console.<span class="function-name">log(</span><span class="string">'отловлена ошибка:'</span>, err<span class="punctuation">)</span>;
-			<span class="keyword">return</span> <span class="function-name">of(</span><span class="string">'данные обработки ошибки'</span><span class="punctuation">)</span>; <span class="comment">// обязательно нужно вернуть данные типа Observable</span>
-		<span class="punctuation">})</span>
-  	<span class="punctuation">)</span>
-	.<span class="function-name">subscribe(</span>
-		val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">)</span>,
-		err <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'error:'</span>, err<span class="punctuation">)</span>,
-		<span class="punctuation">()</span> <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'completed:'</span>, <span class="string">'поток завершен'</span><span class="punctuation">)</span>
-	<span class="punctuation">)</span>;</code></pre>
+subscription = source.pipe(
+		catchError(err => {
+			console.log('отловлена ошибка:', err);
+			return of('данные обработки ошибки'); // обязательно нужно вернуть данные типа Observable
+		})
+  	)
+	.subscribe(
+		val => console.log('next:', val),
+		err => console.log('error:', err),
+		() => console.log('completed:', 'поток завершен')
+	);</code></pre>
             <p>
                 В результате выполнения данного кода в консоли мы увидим
                 следующее:
             </p>
-            <pre><code><span class="comment">// отловлена ошибка: какая-то ошибка</span>
-<span class="comment">// next: данные обработки ошибки</span>
-<span class="comment">// completed: поток завершен</span></code></pre>
+            <pre><code class="language-typescript">// отловлена ошибка: какая-то ошибка
+// next: данные обработки ошибки
+// completed: поток завершен</code></pre>
             <i class="subtitle">Оператор retry</i>
             <p>
                 <span class="attention"
@@ -660,27 +660,27 @@ subscription <span class="operator">=</span> source.<span class="function-name">
                 >
                 Количество повторных запросов передается параметров в метод:
             </p>
-            <pre><code>source <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span>subscriber <span class="operator">=></span> <span class="punctuation">{</span>
-  	console.<span class="function-name">log(</span><span class="string">'Следующая попытка'</span><span class="punctuation">)</span>;
- 	subscriber.<span class="function-name">error(</span><span class="string">'какая-то ошибка'</span><span class="punctuation">)</span>; <span class="comment">// имитируем ошибку</span>
+            <pre><code class="language-typescript">source = new Observable(subscriber => {
+  	console.log('Следующая попытка');
+ 	subscriber.error('какая-то ошибка'); // имитируем ошибку
 });
 
-subscription <span class="operator">=</span> source.<span class="function-name">pipe(</span><span class="function-name">retry(</span><span class="number">2</span><span class="punctuation">))</span> <span class="comment">// в случае ошибки запрашиваем данные повторно 2 раза</span>
-	.<span class="function-name">subscribe(</span>
-		val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">)</span>,
-		err <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'error:'</span>, err<span class="punctuation">)</span>,
-		<span class="punctuation">()</span> <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'completed:'</span>, <span class="string">'поток завершен'</span><span class="punctuation">)</span>
-	<span class="punctuation">)</span>;</code></pre>
+subscription = source.pipe(retry(2)) // в случае ошибки запрашиваем данные повторно 2 раза
+	.subscribe(
+		val => console.log('next:', val),
+		err => console.log('error:', err),
+		() => console.log('completed:', 'поток завершен')
+	);</code></pre>
             <p>
                 В примере выше мы намеренно у <code>source</code> имитируем
                 ошибку и делаем поочередно еще 2 запроса на получение данных.
                 Если за эти 2 запроса мы не получаем данные, тогда уже у
                 <code>subscription</code> сработает метод <code>error</code>.
             </p>
-            <pre><code><span class="comment">// Следующая попытка</span>
-<span class="comment">// Следующая попытка</span>
-<span class="comment">// Следующая попытка</span>
-<span class="comment">// error: какая-то ошибка</span></code></pre>
+            <pre><code class="language-typescript">// Следующая попытка
+// Следующая попытка
+// Следующая попытка
+// error: какая-то ошибка</code></pre>
             <i class="subtitle">Оператор retryWhen</i>
             <p>
                 Оператор <code>retryWhen</code> своего рода модификация
@@ -691,25 +691,25 @@ subscription <span class="operator">=</span> source.<span class="function-name">
                     <code>Observable</code></span
                 >:
             </p>
-            <pre><code>flag <span class="operator">=</span> <span class="boolean">true</span>;
+            <pre><code class="language-typescript">flag = true;
 
-source <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span>subscriber <span class="operator">=></span> <span class="punctuation">{</span>
-  console.<span class="function-name">log(</span><span class="string">'имитация обращения к серверу'</span><span class="punctuation">)</span>;
-  <span class="keyword">if</span> <span class="punctuation">(</span>flag<span class="punctuation">) {</span>
-    subscriber.<span class="function-name">error(</span><span class="string">'какая-то ошибка'</span><span class="punctuation">)</span>;
-    flag <span class="operator">=</span> <span class="boolean">false</span>;
-  <span class="punctuation">}</span> <span class="keyword">else</span> <span class="punctuation">{</span>
-    subscriber.<span class="function-name">next(</span><span class="string">'успешный ответ сервера'</span><span class="punctuation">)</span>;
-  <span class="punctuation">}</span>
-<span class="punctuation">})</span>;
+source = new Observable(subscriber => {
+  console.log('имитация обращения к серверу');
+  if (flag) {
+    subscriber.error('какая-то ошибка');
+    flag = false;
+  } else {
+    subscriber.next('успешный ответ сервера');
+  }
+});
 
-obs <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span>subscriber <span class="operator">=></span> <span class="punctuation">{</span>
-  console.<span class="function-name">log(</span><span class="string">'подожди секундочку'</span><span class="punctuation">)</span>;
-  <span class="function-name">setTimeout(()</span> <span class="operator">=></span> subscriber.<span class="function-name">next(</span><span class="string">'какие-то данные'</span><span class="punctuation">)</span>, <span class="number">1000</span><span class="punctuation">)</span>;
-<span class="punctuation">})</span>;
+obs = new Observable(subscriber => {
+  console.log('подожди секундочку');
+  setTimeout(() => subscriber.next('какие-то данные'), 1000);
+});
 
-subscription <span class="operator">=</span> source.<span class="function-name">pipe(</span><span class="function-name">retryWhen(</span>err$ <span class="operator">=></span> obs<span class="punctuation">))</span>
-  .<span class="function-name">subscribe(</span> val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">))</span>;</code></pre>
+subscription = source.pipe(retryWhen(err$ => obs))
+  .subscribe( val => console.log('next:', val));</code></pre>
             <p>
                 В примере выше, когда происходит ошибка, оператор
                 <code>retryWhen</code> возвращает новый <code>Observable</code>,
@@ -720,10 +720,10 @@ subscription <span class="operator">=</span> source.<span class="function-name">
                 попытаться получить данные.
             </p>
             <p>Результат выполнения кода из примера выше:</p>
-            <pre><code><span class="comment">// имитация обращения к серверу</span>
-<span class="comment">// подожди секундочку</span>
-<span class="comment">// имитация обращения к серверу</span>
-<span class="comment">// next: успешный ответ сервера</span></code></pre>
+            <pre><code class="language-typescript">// имитация обращения к серверу
+// подожди секундочку
+// имитация обращения к серверу
+// next: успешный ответ сервера</code></pre>
             <i class="subtitle">Оператор onErrorResumeNext</i>
             <p>
                 Суть данного оператора заключается в том, что
@@ -733,27 +733,28 @@ subscription <span class="operator">=</span> source.<span class="function-name">
                 >
                 (своего рода запасной/страхующий поток).
             </p>
-            <pre><code>source <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span>subscriber <span class="operator">=></span> <span class="punctuation">{</span>
-	console.<span class="function-name">log(</span><span class="string">'попытка подключения'</span><span class="punctuation">)</span>;
-	subscriber.<span class="function-name">error(</span><span class="string">'ошибка!'</span><span class="punctuation">)</span>;
-<span class="punctuation">})</span>;
+            <pre><code class="language-typescript">source = new Observable(subscriber => {
+	console.log('попытка подключения');
+	subscriber.error('ошибка!');
+});
 
-planB <span class="operator">=</span> <span class="function-name">of(</span><span class="string">'План "Б" на случай ошибки'</span><span class="punctuation">)</span>;
+planB = of('План "Б" на случай ошибки');
 
-subscription <span class="operator">=</span> source.<span class="function-name">pipe(</span><span class="function-name">onErrorResumeNext(</span>planB<span class="punctuation">))</span>
-	.<span class="function-name">subscribe(</span>
-		val <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">)</span>,
-		err <span class="operator">=></span> console.<span class="function-name">error(</span><span class="string">'error:'</span>, err<span class="punctuation">)</span>,
-		<span class="punctuation">()</span> <span class="operator">=></span> console.<span class="function-name">log(</span><span class="string">'completed: поток завершен'</span><span class="punctuation">)</span>
-	<span class="punctuation">)</span>;</code></pre>
+subscription = source.pipe(onErrorResumeNext(planB))
+	.subscribe(
+		val => console.log('next:', val),
+		err => console.error('error:', err),
+		() => console.log('completed: поток завершен')
+	);</code></pre>
             <p>Результат выполнения кода из примера выше:</p>
-            <pre><code><span class="comment">// попытка подключения</span>
-<span class="comment">// ошибка!</span>
-<span class="comment">// completed: поток завершен</span></code></pre>`,
+            <pre><code class="language-typescript">// попытка подключения
+// ошибка!
+// completed: поток завершен</code></pre>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'Что такое холодные и горячие Observable, в чем между ними разница и можно ли подогреть или остудить Observable?',
+        title: 'Холодные и горячие <span class="variable">Observable</span>. Разница между ними. Подогрев и остужение <span class="variable">Observable</span>',
         body: `            <p>
                 Холодные и горячие <code>Observable</code> - это потоки
                 (стримы), имеющие лишь 1 принципиальное отличие:
@@ -768,51 +769,51 @@ subscription <span class="operator">=</span> source.<span class="function-name">
                 свой собственный оператор для RxJs.
             </p>
             <p>Начнем с холодного <code>Observable</code>:</p>
-            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AppComponent</span> <span class="keyword">implements</span> <span class="interface-name">OnInit</span> <span class="punctuation">{</span>
-    <span class="function-name">ngOnInit()</span>: <span class="type">void</span> <span class="punctuation">{</span>
-        <span class="keyword">const</span> <span class="variable">obs$</span> <span class="operator">=</span> <span class="function-name">fromTimestamp()</span>;
-        <span class="variable">obs$</span>.<span class="function-name">subscribe(</span>console.<span class="function-name">log</span><span class="punctuation">)</span>;
-        <span class="function-name">setTimeout(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
-            <span class="variable">obs$</span>.<span class="function-name">subscribe(</span>console.<span class="function-name">log</span><span class="punctuation">)</span>;
-        <span class="punctuation">}</span>, <span class="number">2000</span><span class="punctuation">)</span>;
-    <span class="punctuation">}</span>
-<span class="punctuation">}</span>
+            <pre><code class="language-typescript">export class AppComponent implements OnInit {
+    ngOnInit(): void {
+        const obs$ = fromTimestamp();
+        obs$.subscribe(console.log);
+        setTimeout(() => {
+            obs$.subscribe(console.log);
+        }, 2000);
+    }
+}
 
-<span class="comment">// имитация собственного оператора RxJs</span>
-<span class="keyword">const</span> <span class="function-name">fromTimestamp</span> <span class="operator">=</span> <span class="punctuation">()</span>: <span class="type">Observable<</span><span class="type">number></span> <span class="operator">=></span> <span class="punctuation">{</span>
-    <span class="keyword">return</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>subscriber<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-        <span class="keyword">const</span> <span class="variable">timestamp</span> <span class="operator">=</span> <span class="class-name">Date</span>.<span class="function-name">now()</span>; <span class="comment">// timestamp создается внутри Observable</span>
-        subscriber.<span class="function-name">next(</span><span class="variable">timestamp</span><span class="punctuation">)</span>;
-    <span class="punctuation">})</span>;
-<span class="punctuation">}</span>;</code></pre>
+// имитация собственного оператора RxJs
+const fromTimestamp = (): Observable<number> => {
+    return new Observable((subscriber) => {
+        const timestamp = Date.now(); // timestamp создается внутри Observable
+        subscriber.next(timestamp);
+    });
+};</code></pre>
             <p>В результате в консоли мы увидим следующее:</p>
-            <pre><code><span class="comment">// 1685375651548</span>
-<span class="comment">// 1685375651561</span></code></pre>
+            <pre><code class="language-typescript">// 1685375651548
+// 1685375651561</code></pre>
             <p>Как видите, для каждого потока свое значение.</p>
             <p>
                 А теперь пример того, как сделать горячий
                 <code>Observable</code>:
             </p>
-            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AppComponent</span> <span class="keyword">implements</span> <span class="interface-name">OnInit</span> <span class="punctuation">{</span>
-    <span class="function-name">ngOnInit()</span>: <span class="type">void</span> <span class="punctuation">{</span>
-        <span class="keyword">const</span> <span class="variable">obs$</span> <span class="operator">=</span> <span class="function-name">fromTimestamp()</span>;
-        <span class="variable">obs$</span>.<span class="function-name">subscribe(</span>console.<span class="function-name">log</span><span class="punctuation">)</span>;
-        <span class="function-name">setTimeout(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
-            <span class="variable">obs$</span>.<span class="function-name">subscribe(</span>console.<span class="function-name">log</span><span class="punctuation">)</span>;
-        <span class="punctuation">}</span>, <span class="number">2000</span><span class="punctuation">)</span>;
-    <span class="punctuation">}</span>
-<span class="punctuation">}</span>
+            <pre><code class="language-typescript">export class AppComponent implements OnInit {
+    ngOnInit(): void {
+        const obs$ = fromTimestamp();
+        obs$.subscribe(console.log);
+        setTimeout(() => {
+            obs$.subscribe(console.log);
+        }, 2000);
+    }
+}
 
-<span class="comment">// имитация собственного оператора RxJs</span>
-<span class="keyword">const</span> <span class="function-name">fromTimestamp</span> <span class="operator">=</span> <span class="punctuation">()</span>: <span class="type">Observable<</span><span class="type">number></span> <span class="operator">=></span> <span class="punctuation">{</span>
-	<span class="keyword">const</span> <span class="variable">timestamp</span> <span class="operator">=</span> <span class="class-name">Date</span>.<span class="function-name">now()</span>; <span class="comment">// timestamp создается снаружи Observable</span>
-    <span class="keyword">return</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>subscriber<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-        subscriber.<span class="function-name">next(</span><span class="variable">timestamp</span><span class="punctuation">)</span>;
-    <span class="punctuation">})</span>;
-<span class="punctuation">}</span>;</code></pre>
+// имитация собственного оператора RxJs
+const fromTimestamp = (): Observable<number> => {
+	const timestamp = Date.now(); // timestamp создается снаружи Observable
+    return new Observable((subscriber) => {
+        subscriber.next(timestamp);
+    });
+};</code></pre>
             <p>В результате в консоли мы увидим следующее:</p>
-            <pre><code><span class="comment">// 1685375651588</span>
-<span class="comment">// 1685375651588</span></code></pre>
+            <pre><code class="language-typescript">// 1685375651588
+// 1685375651588</code></pre>
             <p>В консоли получаем одинаковое значение, даже не смотря на то, что вторая подписка вызывается через 2 секунды. Это происходит потому, что мы ссылаемся на данные, которые находятся снаружи <code>Observable</code> и в момент инициализации <code>Observable</code> не создаются заново.</p>
 			<i class="subtitle">Как подогреть холодный Observable?</i>
 			<p>Забегая вперед сразу хочется отметить, что перести поток из холодного в горячий можно, а из горячего в холодный - нельзя. Почему - мы разобрали в примерах выше.</p>
@@ -824,17 +825,18 @@ subscription <span class="operator">=</span> source.<span class="function-name">
 					<li>и т.д.</li>
 				</ul>
 			</p>
-			<pre><code><span class="comment">// пример использования оператора shareReplay</span>
-<span class="function-name">ngOnInit()</span>: <span class="type">void</span> <span class="punctuation">{</span>
-	<span class="object">this</span>.data$ = <span class="object">this</span>.http.<span class="function-name">get</span><span class="type"><</span><span class="type">any[]></span><span class="punctuation">(</span><span class="string">'https://...'</span><span class="punctuation">)</span>
-	.<span class="function-name">pipe(shareReplay())</span>
-	.<span class="function-name">subscribe()</span>
-<span class="punctuation">}</span></code></pre>
+			<pre><code class="language-typescript">// пример использования оператора shareReplay
+ngOnInit(): void {
+	this.data$ = this.http.get<any[]>('https://...')
+	.pipe(shareReplay())
+	.subscribe()
+}</code></pre>
 <p>И теперь, если у вас где-то в разметке есть пайпы <code>async</code>, которые берут <code>data$</code>, то к серверу будет уходить всего лишь 1 запрос и, соответственно, при ответе сервера данные будут отдаваться всем подписчикам от одной и той же подписки.</p>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'Как объединить несколько потоков в 1 и получить общий результат?',
+        title: 'Объединение несколько потоков в 1 и получение общего результата',
         body: `<p>
                 В RxJs существуют различные операторы, позволяющие
                 объединять/комбинировать потоки и получать из них данные.
@@ -863,28 +865,28 @@ subscription <span class="operator">=</span> source.<span class="function-name">
                 </span>
             </p>
             <p>Теперь как это будет выглядеть в коде:</p>
-            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
-    first <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>subscriber<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-        <span class="function-name">setTimeout(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
-            subscriber.<span class="function-name">next(</span><span class="string">'500ms'</span><span class="punctuation">)</span>;
-            subscriber.<span class="function-name">complete()</span>;
-        <span class="punctuation">}</span>, <span class="number">500</span><span class="punctuation">)</span>;
-    <span class="punctuation">})</span>;
+            <pre><code class="language-typescript">export class SomeComponent {
+    first = new Observable((subscriber) => {
+        setTimeout(() => {
+            subscriber.next('500ms');
+            subscriber.complete();
+        }, 500);
+    });
 
-    second <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>subscriber<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-        <span class="function-name">setTimeout(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
-            subscriber.<span class="function-name">next(</span><span class="string">'200ms'</span><span class="punctuation">)</span>;
-            subscriber.<span class="function-name">complete()</span>;
-        <span class="punctuation">}</span>, <span class="number">200</span><span class="punctuation">)</span>;
-    <span class="punctuation">})</span>;
+    second = new Observable((subscriber) => {
+        setTimeout(() => {
+            subscriber.next('200ms');
+            subscriber.complete();
+        }, 200);
+    });
 
-    result <span class="operator">=</span> <span class="function-name">concat(</span><span class="object">this</span>.first, <span class="object">this</span>.second<span class="punctuation">)</span>.<span class="function-name">subscribe((</span>val<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-        console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">)</span>;
-    <span class="punctuation">})</span>;
-<span class="punctuation">}</span></code></pre>
+    result = concat(this.first, this.second).subscribe((val) => {
+        console.log('next:', val);
+    });
+}</code></pre>
             <p>Результат выполнения кода в консоли:</p>
-            <pre><code><span class="comment">// next: 500ms</span>
-<span class="comment">// next: 200ms</span></code></pre>
+            <pre><code class="language-typescript">// next: 500ms
+// next: 200ms</code></pre>
             <i class="subtitle">Оператор merge</i>
             <p>
                 <span class="attention">
@@ -898,28 +900,28 @@ subscription <span class="operator">=</span> source.<span class="function-name">
                 alt="оператор concat"
             />
             <p>Как это будет выглядеть в коде:</p>
-            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
-    first <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>subscriber<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-        <span class="function-name">setTimeout(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
-            subscriber.<span class="function-name">next(</span><span class="string">'500ms'</span><span class="punctuation">)</span>;
-            subscriber.<span class="function-name">complete()</span>;
-        <span class="punctuation">}</span>, <span class="number">500</span><span class="punctuation">)</span>;
-    <span class="punctuation">})</span>;
+            <pre><code class="language-typescript">export class SomeComponent {
+    first = new Observable((subscriber) => {
+        setTimeout(() => {
+            subscriber.next('500ms');
+            subscriber.complete();
+        }, 500);
+    });
 
-    second <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">((</span>subscriber<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-        <span class="function-name">setTimeout(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
-            subscriber.<span class="function-name">next(</span><span class="string">'200ms'</span><span class="punctuation">)</span>;
-            subscriber.<span class="function-name">complete()</span>;
-        <span class="punctuation">}</span>, <span class="number">200</span><span class="punctuation">)</span>;
-    <span class="punctuation">})</span>;
+    second = new Observable((subscriber) => {
+        setTimeout(() => {
+            subscriber.next('200ms');
+            subscriber.complete();
+        }, 200);
+    });
 
-    result <span class="operator">=</span> <span class="function-name">merge(</span><span class="object">this</span>.first, <span class="object">this</span>.second<span class="punctuation">)</span>.<span class="function-name">subscribe((</span>val<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-        console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">)</span>;
-    <span class="punctuation">})</span>;
-<span class="punctuation">}</span></code></pre>
+    result = merge(this.first, this.second).subscribe((val) => {
+        console.log('next:', val);
+    });
+}</code></pre>
             <p>Результат выполнения кода в консоли:</p>
-            <pre><code><span class="comment">// next: 200ms</span>
-<span class="comment">// next: 500ms</span></code></pre>
+            <pre><code class="language-typescript">// next: 200ms
+// next: 500ms</code></pre>
             <p>
                 И как видите, теперь учитывается время события, когда оно
                 происходит.
@@ -940,32 +942,32 @@ subscription <span class="operator">=</span> source.<span class="function-name">
                 создаться пара.
             </p>
             <p>Как это будет выглядеть в коде:</p>
-            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
-    <span class="function-name">nextFunction(</span>label: <span class="type">string</span>, count: <span class="type">number</span>, interval: <span class="type">number</span><span class="punctuation">) {</span>
-        <span class="keyword">return</span> <span class="punctuation">(</span>subscriber: <span class="type">Subscriber<</span><span class="type">unknown></span><span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-            <span class="keyword">let</span> i <span class="operator">=</span> <span class="number">0</span>;
-            <span class="function-name">setInterval(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
-                <span class="keyword">if</span> <span class="punctuation">(</span>i <span class="operator"><</span> count<span class="punctuation">) {</span>
-                    subscriber.<span class="function-name">next(</span>label <span class="operator">+</span> <span class="string">':'</span> <span class="operator">+</span> i<span class="punctuation">)</span>;
-                    i<span class="operator">++</span>;
-                <span class="punctuation">}</span> <span class="keyword">else</span> <span class="punctuation">{</span>
-                    subscriber.<span class="function-name">complete()</span>;
-                <span class="punctuation">}</span>
-            <span class="punctuation">}</span>, interval<span class="punctuation">)</span>;
-        <span class="punctuation">}</span>;
-    <span class="punctuation">}</span>
+            <pre><code class="language-typescript">export class SomeComponent {
+    nextFunction(label: string, count: number, interval: number) {
+        return (subscriber: Subscriber<unknown>) => {
+            let i = 0;
+            setInterval(() => {
+                if (i < count) {
+                    subscriber.next(label + ':' + i);
+                    i++;
+                } else {
+                    subscriber.complete();
+                }
+            }, interval);
+        };
+    }
 
-    first <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span><span class="object">this</span>.<span class="function-name">nextFunction(</span><span class="string">'A'</span>, <span class="number">3</span>, <span class="number">500</span><span class="punctuation">))</span>;
-    second <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span><span class="object">this</span>.<span class="function-name">nextFunction(</span><span class="string">'B'</span>, <span class="number">4</span>, <span class="number">200</span><span class="punctuation">))</span>;
+    first = new Observable(this.nextFunction('A', 3, 500));
+    second = new Observable(this.nextFunction('B', 4, 200));
 
-    result <span class="operator">=</span> <span class="function-name">zip(</span><span class="object">this</span>.first, <span class="object">this</span>.second<span class="punctuation">)</span>.<span class="function-name">subscribe((</span>val<span class="punctuation">)</span> <span class="operator">=></span>
-        console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">)</span>
-    <span class="punctuation">)</span>;
-<span class="punctuation">}</span></code></pre>
+    result = zip(this.first, this.second).subscribe((val) =>
+        console.log('next:', val)
+    );
+}</code></pre>
             <p>Результат выполнения кода в консоли:</p>
-            <pre><code><span class="comment">// next: ['[A]:0', '[B]:0']</span>
-<span class="comment">// next: ['[A]:1', '[B]:1']</span>
-<span class="comment">// next: ['[A]:2', '[B]:2']</span></code></pre>
+            <pre><code class="language-typescript">// next: ['[A]:0', '[B]:0']
+// next: ['[A]:1', '[B]:1']
+// next: ['[A]:2', '[B]:2']</code></pre>
             <p>
                 В переменной <code>first</code> мы генерируем 3 события, а в
                 <code>second</code> 4, но в объединенный поток попало в итоге
@@ -995,34 +997,34 @@ subscription <span class="operator">=</span> source.<span class="function-name">
                 получаем пару "2А" и т.д.
             </p>
             <p>Как это будет выглядеть в коде:</p>
-            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
-    <span class="function-name">nextFunction(</span>label: <span class="type">string</span>, count: <span class="type">number</span>, interval: <span class="type">number</span><span class="punctuation">) {</span>
-        <span class="keyword">return</span> <span class="punctuation">(</span>subscriber: <span class="type">Subscriber<</span><span class="type">unknown></span><span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-            <span class="keyword">let</span> i <span class="operator">=</span> <span class="number">0</span>;
-            <span class="function-name">setInterval(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
-                <span class="keyword">if</span> <span class="punctuation">(</span>i <span class="operator"><</span> count<span class="punctuation">) {</span>
-                    subscriber.<span class="function-name">next(</span>label <span class="operator">+</span> <span class="string">':'</span> <span class="operator">+</span> i<span class="punctuation">)</span>;
-                    i<span class="operator">++</span>;
-                <span class="punctuation">}</span> <span class="keyword">else</span> <span class="punctuation">{</span>
-                    subscriber.<span class="function-name">complete()</span>;
-                <span class="punctuation">}</span>
-            <span class="punctuation">}</span>, interval<span class="punctuation">)</span>;
-        <span class="punctuation">}</span>;
-    <span class="punctuation">}</span>
+            <pre><code class="language-typescript">export class SomeComponent {
+    nextFunction(label: string, count: number, interval: number) {
+        return (subscriber: Subscriber<unknown>) => {
+            let i = 0;
+            setInterval(() => {
+                if (i < count) {
+                    subscriber.next(label + ':' + i);
+                    i++;
+                } else {
+                    subscriber.complete();
+                }
+            }, interval);
+        };
+    }
 
-    first <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span><span class="object">this</span>.<span class="function-name">nextFunction(</span><span class="string">'A'</span>, <span class="number">3</span>, <span class="number">500</span><span class="punctuation">))</span>;
-    second <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span><span class="object">this</span>.<span class="function-name">nextFunction(</span><span class="string">'B'</span>, <span class="number">4</span>, <span class="number">200</span><span class="punctuation">))</span>;
+    first = new Observable(this.nextFunction('A', 3, 500));
+    second = new Observable(this.nextFunction('B', 4, 200));
 
-    result <span class="operator">=</span> <span class="function-name">combineLatest(</span><span class="object">this</span>.first, <span class="object">this</span>.second<span class="punctuation">)</span>.<span class="function-name">subscribe((</span>val<span class="punctuation">)</span> <span class="operator">=></span>
-        console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">)</span>
-    <span class="punctuation">)</span>;
-<span class="punctuation">}</span></code></pre>
+    result = combineLatest(this.first, this.second).subscribe((val) =>
+        console.log('next:', val)
+    );
+}</code></pre>
             <p>Результат выполнения кода в консоли:</p>
-            <pre><code><span class="comment">// next: ['[A]:0', '[B]:1']</span>
-<span class="comment">// next: ['[A]:0', '[B]:2']</span>
-<span class="comment">// next: ['[A]:0', '[B]:3']</span>
-<span class="comment">// next: ['[A]:1', '[B]:3']</span>
-<span class="comment">// next: ['[A]:2', '[B]:3']</span></code></pre>
+            <pre><code class="language-typescript">// next: ['[A]:0', '[B]:1']
+// next: ['[A]:0', '[B]:2']
+// next: ['[A]:0', '[B]:3']
+// next: ['[A]:1', '[B]:3']
+// next: ['[A]:2', '[B]:3']</code></pre>
             <i class="subtitle">Оператор forkJoin</i>
             <p>
                 Данный оператор объединяет потоки и комбинирует их последние
@@ -1034,30 +1036,31 @@ subscription <span class="operator">=</span> source.<span class="function-name">
                 alt="оператор forkJoin"
             />
             <p>Как это будет выглядеть в коде:</p>
-            <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">SomeComponent</span> <span class="punctuation">{</span>
-    <span class="function-name">nextFunction(</span>label: <span class="type">string</span>, count: <span class="type">number</span>, interval: <span class="type">number</span><span class="punctuation">) {</span>
-        <span class="keyword">return</span> <span class="punctuation">(</span>subscriber: <span class="type">Subscriber<</span><span class="type">unknown></span><span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-            <span class="keyword">let</span> i <span class="operator">=</span> <span class="number">0</span>;
-            <span class="function-name">setInterval(()</span> <span class="operator">=></span> <span class="punctuation">{</span>
-                <span class="keyword">if</span> <span class="punctuation">(</span>i <span class="operator"><</span> count<span class="punctuation">) {</span>
-                    subscriber.<span class="function-name">next(</span>label <span class="operator">+</span> <span class="string">':'</span> <span class="operator">+</span> i<span class="punctuation">)</span>;
-                    i<span class="operator">++</span>;
-                <span class="punctuation">}</span> <span class="keyword">else</span> <span class="punctuation">{</span>
-                    subscriber.<span class="function-name">complete()</span>;
-                <span class="punctuation">}</span>
-            <span class="punctuation">}</span>, interval<span class="punctuation">)</span>;
-        <span class="punctuation">}</span>;
-    <span class="punctuation">}</span>
+            <pre><code class="language-typescript">export class SomeComponent {
+    nextFunction(label: string, count: number, interval: number) {
+        return (subscriber: Subscriber<unknown>) => {
+            let i = 0;
+            setInterval(() => {
+                if (i < count) {
+                    subscriber.next(label + ':' + i);
+                    i++;
+                } else {
+                    subscriber.complete();
+                }
+            }, interval);
+        };
+    }
 
-    first <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span><span class="object">this</span>.<span class="function-name">nextFunction(</span><span class="string">'A'</span>, <span class="number">3</span>, <span class="number">500</span><span class="punctuation">))</span>;
-    second <span class="operator">=</span> <span class="keyword">new</span> <span class="class-name">Observable</span><span class="punctuation">(</span><span class="object">this</span>.<span class="function-name">nextFunction(</span><span class="string">'B'</span>, <span class="number">4</span>, <span class="number">200</span><span class="punctuation">))</span>;
+    first = new Observable(this.nextFunction('A', 3, 500));
+    second = new Observable(this.nextFunction('B', 4, 200));
 
-    result <span class="operator">=</span> <span class="function-name">forkJoin(</span><span class="object">this</span>.first, <span class="object">this</span>.second<span class="punctuation">)</span>.<span class="function-name">subscribe((</span>val<span class="punctuation">)</span> <span class="operator">=></span>
-        console.<span class="function-name">log(</span><span class="string">'next:'</span>, val<span class="punctuation">)</span>
-    <span class="punctuation">)</span>;
-<span class="punctuation">}</span></code></pre>
+    result = forkJoin(this.first, this.second).subscribe((val) =>
+        console.log('next:', val)
+    );
+}</code></pre>
             <p>Результат выполнения кода в консоли:</p>
-            <pre><code><span class="comment">// next: ['[A]:2', '[B]:3']</span></code></pre>`,
+            <pre><code class="language-typescript">// next: ['[A]:2', '[B]:3']</code></pre>`,
         selected: false,
+        lastUpdate: '09.02.2024',
     },
 ];

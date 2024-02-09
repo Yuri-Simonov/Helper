@@ -2,7 +2,7 @@ import { IQuestion } from '@types';
 
 export const ngrxQuestions: IQuestion[] = [
     {
-        title: 'О библиотеке NgRx и ее ключевые концепции',
+        title: 'О библиотеке <span class="variable">NgRx</span> и ее ключевые концепции',
         body: `<p>
 		Библиотека <code>NgRx</code> реализует принцип работы
 		<code>Redux</code> для Angular приложений. Главная цель
@@ -70,7 +70,7 @@ export const ngrxQuestions: IQuestion[] = [
         lastUpdate: '12.08.2023',
     },
     {
-        title: 'Actions',
+        title: '<span class="variable">Actions</span>',
         body: `<p>
 		<code>Actions</code> - это события, которые происходят в
 		приложении. Сюда входят взаимодействие пользователя со
@@ -85,9 +85,9 @@ export const ngrxQuestions: IQuestion[] = [
 		<code>Action</code> в <code>NgRx</code> состоит из простого
 		интерфейса:
 	</p>
-	<pre><code><span class="keyword">interface</span> <span class="interface-name">Action</span> <span class="punctuation">{</span>
-	<span class="key">type</span>: <span class="type">string</span>;
-<span class="punctuation">}</span></code></pre>
+<pre><code class="language-typescript">interface Action {
+	type: string;
+}</code></pre>
 	<p>
 		Как видно из интерфейса, <code>Action</code> имеет единственное
 		свойство <code>type</code>, которое имеет строковый тип данных.
@@ -97,7 +97,7 @@ export const ngrxQuestions: IQuestion[] = [
 		<code>[Source] Event</code>. В квадратных скобках указывается
 		категория действия, а после них - событие, которое его вызвало.
 	</p>
-	<pre><code><span class="punctuation">{</span> <span class="key">type</span>: <span class="string">'[Login Page] Login Success'</span> <span class="punctuation">}</span></code></pre>
+	<pre><code class="language-typescript">{ type: '[Login Page] Login Success' }</code></pre>
 	<p>
 		Под категориями обычно подразумеваются действия на одной и той
 		же странице. Или если страница большая, то в отдельные категории
@@ -109,12 +109,12 @@ export const ngrxQuestions: IQuestion[] = [
 		Теперь давайте рассмотрим <code>Action</code> на примере запроса
 		авторизации:
 	</p>
-	<pre><code><span class="import">import</span> <span class="punctuation">{</span> createAction, props <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;
-
-<span class="export">export</span> <span class="keyword">const</span> <span class="variable">login</span> <span class="operator">=</span> <span class="function-name">createAction(</span>
-	<span class="string">'[Login Page] Login'</span>,
-	<span class="function-name">props</span><span class="type"><{ username: string; password: string }></span><span class="punctuation">()</span>
-<span class="punctuation">)</span>;</code></pre>
+	<pre><code class="language-typescript">import { createAction, props } from '@ngrx/store';
+	
+export const login = createAction(
+	'[Login Page] Login',
+	props<{ username: string; password: string }>()
+);</code></pre>
 	<p>
 		В примере выше с помощью функции
 		<code>createAction</code> создается <code>Action</code>, который
@@ -129,43 +129,43 @@ export const ngrxQuestions: IQuestion[] = [
 		проектах вы также можете встретить создание
 		<code>Action</code> через классы:
 	</p>
-	<pre><code><span class="import">import</span> <span class="punctuation">{</span> Action <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;
+	<pre><code class="language-typescript">import { Action } from '@ngrx/store';
 		
-<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">Login</span> <span class="keyword">implements</span> <span class="interface-name">Action</span> <span class="punctuation">{</span>
-	<span class="keyword">readonly</span> type <span class="operator">=</span> <span class="string">'[Login Page] Login'</span>;
+export class Login implements Action {
+	readonly type = '[Login Page] Login';
 		
-	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">public</span> payload: <span class="type">{ username: string; password: string }</span><span class="punctuation">)</span> <span class="punctuation">{}</span>
-<span class="punctuation">}</span></code></pre>
+	constructor(public payload: { username: string; password: string }) {}
+}</code></pre>
 	<p>Оба примера делают одно и то же в итоге.</p>
 	<p>
 		Дополнительные данные можно и не передавать, если они не нужны:
 	</p>
-	<pre><code><span class="import">import</span> <span class="punctuation">{</span> createAction, props <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;
+<pre><code class="language-typescript">import { createAction, props } from '@ngrx/store';
 
-<span class="export">export</span> <span class="keyword">const</span> <span class="variable">login</span> <span class="operator">=</span> <span class="function-name">createAction(</span>
-	<span class="string">'[Login Page] Login'</span>
-<span class="punctuation">)</span>;</code></pre>
+export const login = createAction(
+	'[Login Page] Login'
+);</code></pre>
 	<p>Или через старый формат записи:</p>
-	<pre><code><span class="import">import</span> <span class="punctuation">{</span> Action <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;
+	<pre><code class="language-typescript">import { Action } from '@ngrx/store';
 		
-<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">Login</span> <span class="keyword">implements</span> <span class="interface-name">Action</span> <span class="punctuation">{</span>
-	<span class="keyword">readonly</span> type <span class="operator">=</span> <span class="string">'[Login Page] Login'</span>;
-<span class="punctuation">}</span></code></pre>
+export class Login implements Action {
+	readonly type = '[Login Page] Login';
+}</code></pre>
 	<p>
 		Для того, чтобы инициировать отправку <code>Action</code> в
 		хранилище, используется специальный метод этого самого хранилища
 		<code>dispatch</code>, внутри которого вызывается нужный
 		<code>Action</code>:
 	</p>
-	<pre><code><span class="method">onSubmit(</span>username: <span class="type">string</span>, password: <span class="type">string</span><span class="punctuation">) {</span>
-	store.<span class="method">dispatch(login(</span><span class="punctuation">{</span> username: <span class="type">username</span>, password: <span class="type">password</span> <span class="punctuation">}))</span>;
-<span class="punctuation">}</span></code></pre>
-	<p>В примере выше, когда сработает метод отправки формы <code>onSubmit</code> произойдет отправка <code>Action</code> в хранилище.</p>`,
+<pre><code class="language-typescript">onSubmit(username: string, password: string) {
+	store.dispatch(login({ username: username, password: password }));
+}</code></pre>
+	<p>В примере выше, когда сработает метод отправки формы <code>onSubmit</code> произойдет отправка <code>Action</code> в хранилище (<code>Store</code>).</p>`,
         selected: false,
-        lastUpdate: '13.08.2023',
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'Смешанные типы для Action',
+        title: 'Смешанные типы для <span class="variable">Action</span>',
         body: `<p>
                 До 7-ой версии <code>NgRx</code>, когда
                 <code>actions</code> создавались через классы, удобно было
@@ -175,30 +175,29 @@ export const ngrxQuestions: IQuestion[] = [
                 сегодня в старых проектах.
             </p>
             <p>Выглядит это следующим образом:</p>
-            <pre><code><span class="export">export</span> <span class="keyword">enum</span> <span class="interface-name">UsersActions</span> <span class="punctuation">{</span>
-    GetUsers <span class="operator">=</span> <span class="string">'[Users Page] GetUsers'</span>,
-    DeleteAllUsers <span class="operator">=</span> <span class="string">'[Users Page] DeleteAllUsers'</span>,
-<span class="punctuation">}</span>
+<pre><code class="language-typescript">export enum UsersActions {
+    GetUsers = '[Users Page] GetUsers',
+    DeleteAllUsers = '[Users Page] DeleteAllUsers',
+}
 
-<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">GetUsers</span> <span class="keyword">implements</span> <span class="interface-name">Action</span> <span class="punctuation">{</span>
-    <span class="keyword">readonly</span> type <span class="operator">=</span> UsersActions.GetUsers;
-<span class="punctuation">}</span>
+export class GetUsers implements Action {
+    readonly type = UsersActions.GetUsers;
+}
 
-<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">DeleteAllUsers</span> <span class="keyword">implements</span> <span class="interface-name">Action</span> <span class="punctuation">{</span>
-    <span class="keyword">readonly</span> type <span class="operator">=</span> UsersActions.DeleteAllUsers;
-<span class="punctuation">}</span>
+export class DeleteAllUsers implements Action {
+    readonly type = UsersActions.DeleteAllUsers;
+}
 
-<span class="comment comment_start">// Смешанный тип</span>
-<span class="export">export</span> <span class="keyword">type</span> <span class="interface-name">UsersUnion</span> <span class="operator">=</span> <span class="class-name">GetUsers</span> <span class="operator">|</span> <span class="class-name">DeleteAllUsers</span>;
-</code></pre>
+// Смешанный тип
+export type UsersUnion = GetUsers | DeleteAllUsers;</code></pre>
             <p>И как это выглядит в <code>reducer</code>:</p>
-            <pre><code><span class="export">export</span> <span class="keyword">function</span> <span class="function-name">usersReducer(</span>state <span class="operator">=</span> initialState, action: <span class="type">UsersUnion</span><span class="punctuation">){</span>...<span class="punctuation">}</span>
-</code></pre>`,
+
+<pre><code class="language-typescript">export function usersReducer(state = initialState, action: UsersUnion) {...}</code></pre>`,
         selected: false,
-        lastUpdate: '03.09.2023',
+        lastUpdate: '09.02.2024',
     },
     {
-        title: 'Reducers',
+        title: '<span class="variable">Reducers</span>',
         body: `<p>
                 <code>NgRx Reducers</code> являются чистыми функциями и отвечают
                 за смену состояния хранилища в Angular-приложении в ответ на
@@ -224,97 +223,97 @@ export const ngrxQuestions: IQuestion[] = [
                 Теперь давайте рассмотрим как создаются редьюсеры. Для начала
                 нам нужно создать один или более <code>action</code>:
             </p>
-            <pre><code><span class="comment comment_start">// counter.actions.ts</span>
-<span class="import">import</span> <span class="punctuation">{</span> createAction, props <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;
+<pre><code class="language-typescript">// counter.actions.ts
+import { createAction, props } from '@ngrx/store';
 
-<span class="export">export</span> <span class="keyword">const</span> <span class="variable">decrement</span> <span class="operator">=</span> <span class="function-name">createAction(</span><span class="string">'[Counter] Decrement'</span><span class="punctuation">)</span>;
-<span class="export">export</span> <span class="keyword">const</span> <span class="variable">increment</span> <span class="operator">=</span> <span class="function-name">createAction(</span><span class="string">'[Counter] Increment'</span><span class="punctuation">)</span>;</code></pre>
+export const decrement = createAction('[Counter] Decrement');
+export const increment = createAction('[Counter] Increment');</code></pre>
             <p>Далее необходимо создать интерфейс для нашего состояния:</p>
-            <pre><code><span class="comment comment_start">// counter.reducer.ts</span>
-<span class="import">import</span> <span class="punctuation">{</span> Action, createReducer, on <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;
-<span class="import">import</span> * <span class="keyword">as</span> CounterActions <span class="keyword">from</span> <span class="string">'../actions/counter.actions'</span>;
+<pre><code class="language-typescript">// counter.reducer.ts
+import { Action, createReducer, on } from '@ngrx/store';
+import * as CounterActions from '../actions/counter.actions';
 
-<span class="export">export</span> <span class="keyword">interface</span> <span class="interface-name">State</span> <span class="punctuation">{</span>
-  	counter: <span class="type">number</span>;
-<span class="punctuation">}</span></code></pre>
+export interface State {
+  	counter: number;
+}</code></pre>
             <p>Зададим начальное состояние:</p>
-            <pre><code><span class="comment comment_start">// counter.reducer.ts</span>
-<span class="export">export</span> <span class="keyword">const</span> <span class="variable">initialState</span>: <span class="type">State</span> <span class="operator">=</span> <span class="punctuation">{</span>
-	<span class="key">counter</span>: <span class="number">0</span>
-<span class="punctuation">}</span>;</code></pre>
+<pre><code class="language-typescript">// counter.reducer.ts
+export const initialState: State = {
+	counter: 0
+};</code></pre>
             <p>И теперь осталось лишь создать саму функцию редьюсера:</p>
-            <pre><code><span class="comment comment_start">// counter.reducer.ts</span>
-<span class="export">export</span> <span class="keyword">const</span> <span class="variable">counterReducer</span> <span class="operator">=</span> <span class="function-name">createReducer(</span>
-	<span class="variable">initialState</span>,
-	<span class="function-name">on(</span>CounterActions.decrement, state <span class="operator">=></span> <span class="punctuation">({</span> ...state, counter: state.counter <span class="operator">-</span> <span class="number">1</span> <span class="punctuation">}))</span>,
-	<span class="function-name">on(</span>CounterActions.increment, state <span class="operator">=></span> <span class="punctuation">({</span> ...state, counter: state.counter <span class="operator">+</span> <span class="number">1</span> <span class="punctuation">}))</span>,
+<pre><code class="language-typescript">// counter.reducer.ts
+export const counterReducer = createReducer(
+	initialState,
+	on(CounterActions.decrement, state => ({ ...state, counter: state.counter - 1 })),
+	on(CounterActions.increment, state => ({ ...state, counter: state.counter + 1 })),
 );</code></pre>
             <p>
                 Также редьюсеры можно писать и через конструкцию
                 <code>switch case</code>, как это делали раньше до появления
                 функции <code>createReducer</code>:
             </p>
-            <pre><code><span class="comment comment_start">// counter.reducer.ts</span>
-<span class="export">export</span> <span class="keyword">function</span> <span class="function-name">reducer(</span>
-	state <span class="operator">=</span> initialState,
-	action: <span class="type">CounterActions.ActionsUnion</span> <span class="comment">// см. раздел про смешанные типы для Action</span>
-<span class="punctuation">)</span>: <span class="type">State</span> <span class="punctuation">{</span>
-	<span class="keyword">switch</span> <span class="punctuation">(</span>action.type<span class="punctuation">) {</span>
-		<span class="keyword">case</span> CounterActions.ActionTypes.increment: <span class="punctuation">{</span>
-			<span class="keyword">return</span> <span class="punctuation">{</span>
-				<span class="operator">...</span>state,
-				home: state.counter <span class="operator">+</span> <span class="number">1</span>,
-			<span class="punctuation">}</span>;
-		<span class="punctuation">}</span>
+<pre><code class="language-typescript">// counter.reducer.ts
+export function reducer(
+	state = initialState,
+	action: CounterActions.ActionsUnion // см. раздел про смешанные типы для Action
+): State {
+	switch (action.type) {
+		case CounterActions.ActionTypes.increment: {
+			return {
+				...state,
+				home: state.counter + 1,
+			};
+		}
 
-		<span class="keyword">case</span> CounterActions.ActionTypes.decrement: <span class="punctuation">{</span>
-			<span class="keyword">return</span> <span class="punctuation">{</span>
-				<span class="operator">...</span>state,
-				away: state.counter <span class="operator">-</span> <span class="number">1</span>,
-			<span class="punctuation">}</span>;
-		<span class="punctuation">}</span>
+		case CounterActions.ActionTypes.decrement: {
+			return {
+				...state,
+				away: state.counter - 1,
+			};
+		}
 
-		<span class="keyword">default</span>: <span class="punctuation">{</span>
-			<span class="keyword">return</span> state;
-		<span class="punctuation">}</span>
-	<span class="punctuation">}</span>
-<span class="punctuation">}</span></code></pre>
+		default: {
+			return state;
+		}
+	}
+}</code></pre>
             <p>Оба варианта будут работать одинаково.</p>
             <p>
                 И напоследок осталось лишь сообщить Angular, что у нас имеется
                 редьюсер, отвечающий за какую-то конкретную часть нашего общего
                 (глобального) состояния:
             </p>
-            <pre><code><span class="comment comment_start">// app.module.ts</span>
-<span class="import">import</span> <span class="punctuation">{</span> NgModule <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@angular/core'</span>;
-<span class="import">import</span> <span class="punctuation">{</span> StoreModule <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;
-<span class="import">import</span> <span class="punctuation">{</span> scoreboardReducer <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'./reducers/counter.reducer'</span>;
+<pre><code class="language-typescript">// app.module.ts
+import { NgModule } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
+import { scoreboardReducer } from './reducers/counter.reducer';
 
-<span class="function-name">@NgModule({</span>
-	imports: <span class="punctuation">[</span>
-		StoreModule.<span class="method">forRoot({</span> counter: counterReducer <span class="punctuation">})</span>
-	<span class="punctuation">]</span>,
-<span class="punctuation">})</span>
-<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AppModule</span> <span class="punctuation">{}</span></code></pre>
+@NgModule({
+	imports: [
+		StoreModule.forRoot({ counter: counterReducer })
+	],
+})
+export class AppModule {}</code></pre>
             <p>
                 Корневое состояние можно оставить пустым, а редьюсеры подключать
                 уже в тех модулях, где предполягается их использование. Но эти
                 модули, как и все остальные, необходимо импортировать в
                 кореневой модуль.
             </p>
-            <pre><code><span class="comment comment_start">// app.module.ts</span>
-<span class="import">import</span> <span class="punctuation">{</span> NgModule <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@angular/core'</span>;
-<span class="import">import</span> <span class="punctuation">{</span> StoreModule <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;
-<span class="import">import</span> <span class="punctuation">{</span> scoreboardReducer <span class="punctuation">}</span> <span class="keyword">from</span> <span class="string">'./reducers/counter.reducer'</span>;
+<pre><code class="language-typescript">// app.module.ts
+import { NgModule } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
+import { scoreboardReducer } from './reducers/counter.reducer';
 
-<span class="function-name">@NgModule({</span>
-	imports: <span class="punctuation">[</span>
-		StoreModule.<span class="method">forRoot({})</span>
-	<span class="punctuation">]</span>,
-<span class="punctuation">})</span>
-<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AppModule</span> <span class="punctuation">{}</span></code></pre>`,
+@NgModule({
+	imports: [
+		StoreModule.forRoot({})
+	],
+})
+export class AppModule {}</code></pre>`,
         selected: false,
-        lastUpdate: '23.09.2023',
+        lastUpdate: '09.02.2024',
     },
     // {
     //     title: '',

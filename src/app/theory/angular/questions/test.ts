@@ -2,16 +2,15 @@ import { IQuestion } from '@types';
 
 export const testQuestions: IQuestion[] = [
     {
-        title: 'Что такое "Protractor"?',
+        title: '<span class="variable">Protractor</span>. Определение',
         body: `<p>
             <span class="attention">Protractor</span> - фреймворк комплексного
-            тестирования, с помощью которого можно тестировать Angular
-            приложение прямо в браузере, имитируя взаимодействия, как c реальным
+            тестирования, с помощью которого можно тестировать Angular-приложение прямо в браузере, имитируя взаимодействия, как c реальным
             пользователем.
         </p>
         <p>По умолчанию с ним в коробке идет 2 фреймворка для тестирования:</p>
         <ul>
-            <li>Юнит тесты на Jasmine и Karma</li>
+            <li>Юнит-тесты на Jasmine и Karma</li>
             <li>Комплексные тесты на Protractor</li>
         </ul>
         <p>
@@ -21,5 +20,12 @@ export const testQuestions: IQuestion[] = [
             элементы).
         </p>`,
         selected: false,
+        lastUpdate: '05.02.2024',
     },
+    // {
+    //     title: '',
+    //     body: ``,
+    //     selected: false,
+    // 	lastUpdate: '',
+    // },
 ];

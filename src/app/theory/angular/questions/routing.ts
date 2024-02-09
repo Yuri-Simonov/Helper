@@ -2,7 +2,7 @@ import { IQuestion } from '@types';
 
 export const routingQuestions: IQuestion[] = [
     {
-        title: 'Что представляет из себя маршрутизация в Angular?',
+        title: 'Маршрутизация в Angular',
         body: `<p>
             В Angular маршрутизация представляет собой
             <span class="attention"> переход от одного представления </span>
@@ -40,33 +40,33 @@ export const routingQuestions: IQuestion[] = [
                 <code>redirectTo</code>.
             </li>
         </ul>
-        <pre><code><span class="keyword">const</span> <span class="variable">routes</span>: <span class="type">Routes</span> <span class="operator">=</span> <span class="punctuation">[</span>
-	<span class="punctuation">{</span>
-		<span class="key">path</span>: <span class="string">'home'</span>,
-		<span class="key">component</span>: <span class="class-name">HomeRouteComponent</span>,
-		<span class="key">children</span>: <span class="punctuation">[{</span> <span class="key">path</span>: <span class="string">'profile'</span>,  <span class="key">component</span>: <span class="class-name">ProfileRouteComponent</span> <span class="punctuation">}]</span>,
-	<span class="punctuation">}</span>,
-	<span class="punctuation">{</span>
-    	<span class="key">path</span>: <span class="string">'contacts'</span>,
-	    <span class="key">redirectTo</span>: <span class="string">'/home'</span>,
-    	<span class="key">pathMatch</span>: <span class="string">'full'</span>,
-	<span class="punctuation">}</span>,
-<span class="punctuation">]</span>
+<pre><code class="language-typescript">const routes: Routes = [
+	{
+		path: 'home',
+		component: HomeRouteComponent,
+		children: [{ path: 'profile',  component: ProfileRouteComponent }],
+	},
+	{
+    	path: 'contacts',
+	    redirectTo: '/home',
+    	pathMatch: 'full',
+	},
+]
 
-<span class="keyword">@NgModule</span><span class="punctuation">({</span>
-	<span class="key">imports</span>: <span class="punctuation">[</span><span class="class-name">RouterModule</span>.<span class="method">forRoot</span><span class="punctuation">(</span><span class="variable">routes</span><span class="punctuation">)]</span>, <span class="comment">// не забываем импортировать routes</span>
-	<span class="key">exports</span>: <span class="punctuation">[</span><span class="class-name">RouterModule</span><span 	class="punctuation">]</span>,
-<span class="punctuation">})</span>
+@NgModule({
+	imports: [RouterModule.forRoot(routes)], // не забываем импортировать routes
+	exports: [RouterModule],
+})
 
-<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AppRoutingModule</span> <span class="punctuation">{}</span>
-</code></pre>`,
+export class AppRoutingModule {}</code></pre>`,
         selected: false,
+        lastUpdate: '08.02.2024',
     },
     {
-        title: 'Важен ли порядок маршрутов при их определении в модуле?',
+        title: 'Важность последовательности маршрутов при их определении в модуле',
         body: `<p>
             <span class="attention"
-                >Порядок маршрутов важен, т.к. маршрутизатор ищет первый
+                >Последовательность маршрутов важна, т.к. маршрутизатор ищет первый
                 подходящий маршрут в порядке их определения</span
             >.
         </p>
@@ -76,37 +76,36 @@ export const routingQuestions: IQuestion[] = [
             никогда не попадете, т.к. маршрутизатор найдет совпадение маршрута
             уже в "**".
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">routes</span>: <span class="type">Routes</span> <span class="operator">=</span> <span class="punctuation">[</span>
-	<span class="punctuation">{</span>
-		<span class="key">path</span>: <span class="string">'**'</span>,
-		<span class="key">component</span>: <span class="class-name">ErrorComponent</span>,
-	<span class="punctuation">}</span>,
-	<span class="punctuation">{</span>
-		<span class="key">path</span>: <span class="string">'home'</span>, <span class="comment">// сюда маршрутизатор не дойдет</span>
-		<span class="key">component</span>: <span class="class-name">HomeComponent</span>,
-	<span class="punctuation">}</span>,
-<span class="punctuation">]</span>
-</code></pre>
+<pre><code class="language-typescript">const routes: Routes = [
+	{
+		path: '**',
+		component: ErrorComponent,
+	},
+	{
+		path: 'home', // сюда маршрутизатор не дойдет
+		component: HomeComponent,
+	},
+]</code></pre>
         <p>
             Поэтому обработка любого URL ('**') всегда должна определяться в
             самом конце:
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">routes</span>: <span class="type">Routes</span> <span class="operator">=</span> <span class="punctuation">[</span>
-	<span class="punctuation">{</span>
-		<span class="key">path</span>: <span class="string">'home'</span>,
-		<span class="key">component</span>: <span class="class-name">HomeComponent</span>, <span class="comment">// теперь все ок</span>
-	<span class="punctuation">}</span>,
-	<span class="punctuation">{</span>
-		<span class="key">path</span>: <span class="string">'**'</span>,
-		<span class="key">component</span>: <span class="class-name">ErrorComponent</span>,
-	<span class="punctuation">}</span>,
-<span class="punctuation">]</span>
-</code></pre>`,
+<pre><code class="language-typescript">const routes: Routes = [
+	{
+		path: 'home',
+		component: HomeComponent, // теперь все ок
+	},
+	{
+		path: '**',
+		component: ErrorComponent,
+	},
+]</code></pre>`,
         selected: false,
+        lastUpdate: '08.02.2024',
     },
 
     {
-        title: 'Может ли в компоненте быть более одной директивы "router-outlet"?',
+        title: 'Более одной директивы <span class="variable">router-outlet</span> в одном шаблоне компонента',
         body: `<p>
             В Angular есть основные и второстепенные маршруты.
             <span class="attention"
@@ -123,22 +122,22 @@ export const routingQuestions: IQuestion[] = [
             маршрутов при их определении нужно указать значения атрибута
             <code>name</code>:
         </p>
-        <pre><code><span class="tag"><</span><span class="tag">router-outlet</span><span class="tag">></span><span class="tag"><</span><span class="tag">/router-outlet></span> <span class="comment">// основной маршрут</span>
-<span class="tag"><</span><span class="tag">router-outlet</span> <span class="attribute">name</span><span class="operator">=</span><span class="string">"secondary"</span><span class="tag">></span><span class="tag"><</span><span class="tag">/router-outlet></span> <span class="comment">// второстепенный маршрут</span></code></pre>
+<pre><code class="language-html">&lt;router-outlet>&lt;/router-outlet> &lt;!-- основной маршрут -->
+&lt;router-outlet name="secondary">&lt;/router-outlet> &lt;!-- второстепенный маршрут --></code></pre>
         <p>Как этим пользоваться при задании маршрутов для компонентов:</p>
-        <pre><code><span class="keyword">const</span> <span class="variable">routes</span>: <span class="type">Routes</span> <span class="operator">=</span> <span class="punctuation">[</span>
-	<span class="punctuation">{</span>
-		<span class="key">path</span>: <span class="string">'products'</span>,
-		<span class="key">component</span>: <span class="class-name">ProductsComponent</span>,
-	<span class="punctuation">}</span>,
-	<span class="punctuation">{</span>
-		<span class="key">path</span>: <span class="string">'products'</span>,
-		<span class="key">component</span>: <span class="class-name">СosmeticsComponent</span>,
-		<span class="key">outlet</span>: <span class="string">'secondary'</span> <span class="comment">// сообщаем Angular, что это второстепенный маршрут</span>
-	<span class="punctuation">}</span>,
-<span class="punctuation">]</span>
+<pre><code class="language-typescript">const routes: Routes = [
+	{
+		path: 'products',
+		component: ProductsComponent,
+	},
+	{
+		path: 'products',
+		component: СosmeticsComponent,
+		outlet: 'secondary' // сообщаем для Angular, что это второстепенный маршрут
+	},
+]
 
-<span class="comment">// Будут показаны оба компонента, т.к. один основной, а второй - второстепенный.</span></code></pre>
+// Будут показаны оба компонента, т.к. один основной, а второй - второстепенный.</code></pre>
         <p>
             В атрибуте <code>outlet</code> указывается какой именно из
             второстепенных маршрутов использовать. В данном случае, в шаблоне
@@ -147,9 +146,10 @@ export const routingQuestions: IQuestion[] = [
             переменной <code>routes</code>.
         </p>`,
         selected: false,
+        lastUpdate: '08.02.2024',
     },
     {
-        title: 'Какие существуют способы перехода с одного адреса на другой?',
+        title: 'Способы роутинга с одного адреса на другой',
         body: `<p>В Angular существует 2 способа перехода с одного маршрута на другой:</p>
             <ul>
                 <li>
@@ -171,7 +171,8 @@ export const routingQuestions: IQuestion[] = [
                 <span class="attention">принимает название класса, который будет добавлен элементу</span>
                 (у которого указана директива <code>routerLinkActive</code>) при активном URL, на который они ссылаются.
             </p>
-            <pre><code><span class="tag">&lt;a</span> <span class="directive">routerLink</span><span class="operator">=</span><span class="string">"/home"</span> <span class="directive">routerLinkActive</span><span class="operator">=</span><span class="string">"active"</span><span class="tag">></span>Home<span class="tag">&lt;/a></span></code></pre>
+			<pre><code class="language-html">&lt;a routerLink="/home" routerLinkActive="active">Home&lt;/a></code></pre>
+
             <p>
                 В примере выше показан вариант задания маршрута через абсолютный путь. Но для директивы
                 <code>routerLink</code> также возможны еще 2 варианта задания маршрута ссылки через относительные пути.
@@ -195,10 +196,10 @@ export const routingQuestions: IQuestion[] = [
                     >(3).
                 </li>
             </ul>
-            <pre><code><span class="tag">&lt;a</span> <span class="directive">routerLink</span><span class="operator">=</span><span class="string">"/home"</span> <span class="directive">routerLinkActive</span><span class="operator">=</span><span class="string">"active"</span><span class="tag">></span>Home<span class="tag">&lt;/a></span> <span class="comment">// (1)</span>
-<span class="tag">&lt;a</span> <span class="directive">routerLink</span><span class="operator">=</span><span class="string">"./home"</span> <span class="directive">routerLinkActive</span><span class="operator">=</span><span class="string">"active"</span><span class="tag">></span>Home<span class="tag">&lt;/a></span> <span class="comment">// (2)</span>
-<span class="tag">&lt;a</span> <span class="directive">routerLink</span><span class="operator">=</span><span class="string">"home"</span> <span class="directive">routerLinkActive</span><span class="operator">=</span><span class="string">"active"</span><span class="tag">></span>Home<span class="tag">&lt;/a></span> <span class="comment">// (2*) альтернативный вариант</span>
-<span class="tag">&lt;a</span> <span class="directive">routerLink</span><span class="operator">=</span><span class="string">"../home"</span> <span class="directive">routerLinkActive</span><span class="operator">=</span><span class="string">"active"</span><span class="tag">></span>Home<span class="tag">&lt;/a></span> <span class="comment">// (3)</span></code></pre>
+<pre><code class="language-html">&lt;a routerLink="/home" routerLinkActive="active">Home&lt;/a> &lt;!-- (1) -->
+&lt;a routerLink="./home" routerLinkActive="active">Home&lt;/a> &lt;!-- (2) -->
+&lt;a routerLink="home" routerLinkActive="active">Home&lt;/a> &lt;!-- (2*) альтернативный вариант -->
+&lt;a routerLink="../home" routerLinkActive="active">Home&lt;/a> &lt;!-- (3) --></code></pre>
             <i class="subtitle">Сервис Router</i>
             <p>
                 Любое Angular приложение, реализующее внутри себя навигацию, имеет единственный экземпляр сервиса
@@ -210,14 +211,14 @@ export const routingQuestions: IQuestion[] = [
                 страницы. В качестве первого параметра он принимает массив, где задается URL, а в качестве второго —
                 объект с дополнительными параметрами запрашиваемого маршрута:
             </p>
-            <pre><code><span class="object">this</span>.router.<span class="method">navigate</span><span class="punctuation">([</span><span class="string">'profile'</span>, <span class="number">6</span><span class="punctuation">]</span>, <span class="punctuation">{</span>
-	<span class="key">queryParams</span>: <span class="punctuation">{</span> <span class="key">id</span>: <span class="number">6</span> <span class="punctuation">}</span>
-<span class="punctuation">})</span></code></pre>`,
+<pre><code class="language-typescript">this.router.navigate(['profile', 6], {
+	queryParams: { id: 6 }
+})</code></pre>`,
         selected: false,
-        lastUpdate: '31.12.2023',
+        lastUpdate: '08.02.2024',
     },
     {
-        title: 'Как обрабатываются несуществующие маршруты?',
+        title: 'Обработка несуществующих маршрутов',
         body: `<p>
             Для обработки несуществующих маршрутов
             <span class="attention"
@@ -228,21 +229,21 @@ export const routingQuestions: IQuestion[] = [
             приложения, то маршрутизатор отобразит компонент, указанный для
             <code>**</code>.
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">routes</span>: <span class="type">Routes</span> <span class="operator">=</span> <span class="punctuation">[</span>
-	<span class="punctuation">{</span>
-		<span class="key">path</span>: <span class="string">'**'</span>,
-		<span class="key">component</span>: <span class="class-name">ErrorComponent</span>,
-	<span class="punctuation">}</span>,
-<span class="punctuation">]</span>
-</code></pre>`,
+<pre><code class="language-typescript">const routes: Routes = [
+	{
+		path: '**',
+		component: ErrorComponent,
+	}
+]</code></pre>`,
         selected: false,
+        lastUpdate: '08.02.2024',
     },
 
     {
-        title: 'Как передаются параметры в динамических путях?',
+        title: 'Использование динамических параметров при маршрутизации',
         body: `<p>
             Динамические пути строятся на основе каких-то данных. Самый простой
-            пример - это отображение какого-либо товара по заданному "id".
+            пример - это отображение какого-либо товара по заданному <code>id</code>.
         </p>
         <p>
             <span class="attention"
@@ -254,26 +255,26 @@ export const routingQuestions: IQuestion[] = [
                 зависимости от каких-то данных</span
             >.
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">routes</span>: <span class="type">Routes</span> <span class="operator">=</span> <span class="punctuation">[</span>
-	<span class="punctuation">{</span>
-		<span class="key">path</span>: <span class="string">'products'</span>,
-		<span class="key">component</span>: <span class="class-name">ProductsComponent</span>,
-		<span class="key">children</span>: <span class="punctuation">[{</span>
-			<span class="key">path</span>: <span class="string">'product/:id'</span>, <span class="comment">// маршрут зависит от переданного id</span>
-			<span class="key">component</span>: <span class="class-name">ProductComponent</span>
-			<span class="key">data</span>: <span class="punctuation">{</span><span class="key">breadcrumbs</span>: <span class="string">'Product info'</span><span class="punctuation">}</span>
-		<span class="punctuation">}]</span>,
-	<span class="punctuation">}</span>,
-<span class="punctuation">]</span></code></pre>
+<pre><code class="language-typescript">const routes: Routes = [
+	{
+		path: 'products',
+		component: ProductsComponent,
+		children: [{
+			path: 'product/:id', // маршрут зависит от переданного id
+			component: ProductComponent
+			data: {breadcrumbs: 'Product info'}
+		}],
+	},
+]</code></pre>
         <p>
             Получить всю необходимую информацию, включая динамические параметры,
             можно из сервиса <code>ActivatedRoute</code>.
         </p>
-        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">ProductComponent</span> <span class="punctuation">{</span>
-	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">private</span> route: <span class="type">ActivatedRoute</span><span class="punctuation">) {</span>
-		console.<span class="method">log</span><span class="punctuation">(</span><span class="object">this</span>.route<span class="punctuation">)</span> <span class="comment">// объект с различной информацией о текущем маршруте </span>
-	<span class="punctuation">}</span>
-<span class="punctuation">}</span></code></pre>
+<pre><code class="language-typescript">export class ProductComponent {
+	constructor(private route: ActivatedRoute) {
+		console.log(this.route) // объект с различной информацией о текущем маршруте 
+	}
+}</code></pre>
         <i class="subtitle"
             >В каком месте надо передавать динамические параметры?</i
         >
@@ -281,18 +282,19 @@ export const routingQuestions: IQuestion[] = [
             Первый вариант: в методе <code>navigate</code>, который вторым
             параметром принимает объект с дополнительными данными маршрута:
         </p>
-        <pre><code><span class="object">this</span>.router.<span class="method">navigate</span><span class="punctuation">([</span><span class="string">'profile'</span>, <span class="number">6</span><span class="punctuation">]</span>, <span class="punctuation">{</span>
-	<span class="key">queryParams</span>: <span class="punctuation">{</span> <span class="key">id</span>: <span class="number">6</span> <span class="punctuation">}</span>
-<span class="punctuation">})</span></code></pre>
+<pre><code class="language-typescript">this.router.navigate(['profile', 6], {
+	queryParams: { id: 6 }
+})</code></pre>
         <p>
             И второй вариант: непосредственно в шаблоне в директиве
             <code>routerLink</code>.
         </p>
-        <pre><code><span class="tag"><</span><span class="tag">a</span> <span class="punctuation">[</span><span class="directive">routerLink</span><span class="punctuation">]</span><span class="operator">=</span><span class="punctuation">[</span><span class="string">"/product"</span>, <span class="number">"6"</span><span class="punctuation">]</span><span class="tag">></span>Ссылка на какой-то продукт<span class="tag"><</span><span class="tag">/a></span> <span class="comment">// Вместо цифры 6 может быть какая-то переменная</span></code></pre>`,
+		<pre><code class="language-html">&lt;a [routerLink]=["/product", "6"]>Ссылка на какой-то продукт&lt;/a> &lt;!-- Вместо цифры 6 может быть какая-то переменная --></code></pre>`,
         selected: false,
+        lastUpdate: '08.02.2024',
     },
     {
-        title: 'Какие происходят события маршрутизации при переходе с одного маршрута на другой?',
+        title: 'События маршрутизации при переходе с одного маршрута на другой',
         body: `<p>
             В момент перехода с одного адреса на другой, в Angular приложении
             происходят следующие события:
@@ -336,13 +338,13 @@ export const routingQuestions: IQuestion[] = [
             необходимо подписаться на свойство <code>events</code> сервиса
             <code>Router</code>.
         </p>
-        <pre><code><span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">private</span> router: <span class="type">Router</span><span class="punctuation">) {</span>
-	<span class="object">this</span>.router.events.<span class="method">subscribe</span><span class="punctuation">((</span>event<span class="punctuation">)</span> <span class="operator">=></span> <span class="punctuation">{</span>
-		<span class="keyword">if</span> <span class="punctuation">(</span>event <span class="keyword">instanceof</span> <span class="class-name">NavigationStart</span><span class="punctuation">) {</span>
-			console.<span class="method">log</span><span class="punctuation">(</span><span class="string">'Navigation Start'</span><span class="punctuation">)</span>;
-		<span class="punctuation">}</span>
-	<span class="punctuation">})</span>;
-<span class="punctuation">}</span></code></pre>
+<pre><code class="language-typescript">constructor(private router: Router) {
+	this.router.events.subscribe((event) => {
+		if (event instanceof NavigationStart) {
+			console.log('Navigation Start');
+		}
+	});
+}</code></pre>
         <p>
             В примере выше в консоль выведется сообщение в момент начала
             процесса перехода на другой адрес.
@@ -354,9 +356,10 @@ export const routingQuestions: IQuestion[] = [
             >
         </p>`,
         selected: false,
+        lastUpdate: '08.02.2024',
     },
     {
-        title: 'Как разрешается или запрещается переход по указанному маршруту (защищенные пути)?',
+        title: 'Разрешение и запрет перехода по указанному маршруту (защищенные пути)',
         body: `<p>
             Разрешать или ограничивать доступ к тем или иным маршрутам на основе
             определенных условий мы можем с помощью <code>Route Guards</code>,
@@ -379,13 +382,13 @@ export const routingQuestions: IQuestion[] = [
             <code>NavigationCancel</code>, которое не даст перейти по заданному
             маршруту.
         </p>
-        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AuthGuard</span> <span class="keyword">implements</span> <span class="interface-name">CanActivate</span> <span class="punctuation">{</span>
-	<span class="method">canActivate</span><span class="punctuation">(</span>
-		route: <span class="type">ActivatedRouteSnapshot</span>,
-		state: <span class="type">RouterStateSnapshot</span><span class="punctuation">)</span>: <span class="type">Observable<</span><span class="type">boolean | UrlTree> | </span><span class="type">Promise<</span><span class="type">boolean | UrlTree> |</span> <span class="type">boolean | UrlTree</span> <span class="punctuation">{</span>
-    	<span class="keyword">return</span> <span class="boolean">true</span>;
-	<span class="punctuation">}</span>  
-<span class="punctuation">}</span></code></pre>
+<pre><code class="language-typescript">export class AuthGuard implements CanActivate {
+	canActivate(
+		route: ActivatedRouteSnapshot,
+		state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    	return true;
+	}  
+}</code></pre>
         <p>Существуют следующие виды <code>Guards</code>:</p>
         <ul>
             <li>
@@ -428,18 +431,18 @@ export const routingQuestions: IQuestion[] = [
             У одного URL может быть одновременно несколько guard-ов, причем
             одного и того же типа.
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">routes</span>: <span class="type">Routes</span> <span class="operator">=</span> <span class="punctuation">[</span>
-	<span class="punctuation">{</span>
-		<span class="key">path</span>: <span class="string">'products'</span>,
-		<span class="key">component</span>: <span class="class-name">ProductsComponent</span>,
-		<span class="key">canActivate</span>: <span class="punctuation">[</span><span class="class-name">AuthGuard</span><span class="punctuation">]</span>, <span class="comment">// Guard для родительского компонента</span>
-    	<span class="key">canActivateChild</span>: <span class="punctuation">[</span><span class="class-name">AuthGuard</span><span class="punctuation">]</span>, <span class="comment">// Guard для дочерних компонентов</span>
-		<span class="key">children</span>: <span class="punctuation">[{</span>
-			<span class="key">path</span>: <span class="string">'product/:id'</span>,
-			<span class="key">component</span>: <span class="class-name">ProductComponent</span>
-		<span class="punctuation">}]</span>,
-	<span class="punctuation">}</span>,
-<span class="punctuation">]</span></code></pre>
+<pre><code class="language-typescript">const routes: Routes = [
+	{
+		path: 'products',
+		component: ProductsComponent,
+		canActivate: [AuthGuard], // Guard для родительского компонента
+    	canActivateChild: [AuthGuard], // Guard для дочерних компонентов
+		children: [{
+			path: 'product/:id',
+			component: ProductComponent
+		}],
+	},
+]</code></pre>
         <p>
             Вернемся к событию <code>Resolve</code>. Обычно данное событие
             используется, когда переход на указанный маршрут надо осуществить
@@ -456,26 +459,26 @@ export const routingQuestions: IQuestion[] = [
             <code>Resolver</code> разрешает переход на него после выполнения
             <code>Observable</code> в <code>resolve</code>.
         </p>
-        <pre><code><span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AuthResolver</span> <span class="keyword">implements</span> <span class="interface-name">Resolve</span><span class="type"><span><</span><span>boolean></span> <span class="punctuation">{</span>
-    <span class="method">resolve</span><span class="punctuation">(</span>
-        route: <span class="type">ActivatedRouteSnapshot</span>,
-        state: <span class="type">RouterStateSnapshot</span>
-    <span class="punctuation">)</span>: <span class="type">Observable<span><</span><span>boolean></span> <span class="punctuation">{</span>
-		<span class="keyword">if</span><span class="punctuation">(</span><span class="string">'какое-то условие'</span><span class="punctuation">) {</span>
-			<span class="keyword">return</span> <span class="method">of</span><span class="punctuation">(</span><span class="boolean">true</span><span class="punctuation">)</span>;
-		<span class="punctuation">}</span> <span class="keyword">else</span> <span class="punctuation">{</span>
-			<span class="keyword">return</span> EMPTY; <span class="comment">// обратите внимание на возвращаемое значение в случае ложного условия</span>
-		<span class="punctuation">}</span>
-    <span class="punctuation">}</span>
-<span class="punctuation">}</span></code></pre>
+<pre><code class="language-typescript">export class AuthResolver implements Resolve<boolean> {
+    resolve(
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot
+    ): Observable<boolean> {
+		if('какое-то условие') {
+			return of(true);
+		} else {
+			return EMPTY; // обратите внимание на возвращаемое значение в случае ложного условия
+		}
+    }
+}</code></pre>
         <p>Как это выглядит в маршрутизаторе:</p>
-        <pre><code><span class="keyword">const</span> <span class="variable">routes</span>: <span class="type">Routes</span> <span class="operator">=</span> <span class="punctuation">[</span>
-	<span class="punctuation">{</span>
-		<span class="key">path</span>: <span class="string">'products'</span>,
-		<span class="key">component</span>: <span class="class-name">ProductsComponent</span>,
-		<span class="key">resolve</span>: <span class="punctuation">{</span> <span class="key">auth</span>: <span class="type">AuthResolver</span> <span class="punctuation">}</span>, <span class="comment">// сообщаем о наличии resolver'а</span>
-	<span class="punctuation">}</span>,
-<span class="punctuation">]</span></code></pre>
+<pre><code class="language-typescript">const routes: Routes = [
+	{
+		path: 'products',
+		component: ProductsComponent,
+		resolve: { auth: AuthResolver }, // сообщаем о наличии resolver'а
+	}
+]</code></pre>
         <p>
             Выполнение метода <code>resolve</code> (как синхронного, так и
             асинхронного) инициирует событие <code>NavigationEnd</code>, что
@@ -483,9 +486,10 @@ export const routingQuestions: IQuestion[] = [
             страницами.
         </p>`,
         selected: false,
+        lastUpdate: '08.02.2024',
     },
     {
-        title: 'Как сделать асинхронную загрузку модуля?',
+        title: 'Асинхронная маршрутизация',
         body: `<p>
             Асинхронная маршрутизация (lazy load routing)
             <span class="attention"
@@ -502,13 +506,13 @@ export const routingQuestions: IQuestion[] = [
                 прав.
             </span>
         </p>
-        <pre><code><span class="keyword">const</span> <span class="variable">routes</span>: <span class="type">Routes</span> <span class="operator">=</span> <span class="punctuation">[</span>
-	<span class="punctuation">{</span>
-		<span class="key">path</span>: <span class="string">'items'</span>,
-		<span class="key">loadChildren</span>: <span class="punctuation">()</span> <span class="operator">=></span> <span class="import">import</span><span class="punctuation">(</span><span class="string">'./items/items.module'</span><span class="punctuation">)</span>.<span class="keyword">then</span><span class="punctuation">(</span>m <span class="operator">=></span> m.<span class="class-name">ItemsModule</span><span class="punctuation">)</span>,
-		<span class="key">canLoad</span>: <span class="punctuation">[</span><span class="class-name">AuthGuard</span><span class="punctuation">]</span> <span class="comment">// для lazy load используется именно canLoad guard</span>
-	<span class="punctuation">}</span>
-<span class="punctuation">]</span>;</code></pre>
+<pre><code class="language-typescript">const routes: Routes = [
+	{
+		path: 'items',
+		loadChildren: () => import('./items/items.module').then(m => m.ItemsModule),
+		canLoad: [AuthGuard] // для lazy load используется именно canLoad guard
+	}
+];</code></pre>
         <p>
             Также в Angular
             <span class="attention"
@@ -522,7 +526,7 @@ export const routingQuestions: IQuestion[] = [
             <code>preloadStrategy</code> со значением
             <code>PreloadAllModules</code>:
         </p>
-        <pre><code><span class="class-name">RouterModule</span>.<span class="method">forRoot</span><span class="punctuation">( '{}'</span>, <span class="punctuation">{</span> <span class="key">preloadingStrategy</span>: <span class="class-name">PreloadAllModules</span> <span class="punctuation">})</span></code></pre>
+<pre><code class="language-typescript">RouterModule.forRoot( '{}', { preloadingStrategy: PreloadAllModules })</code></pre>
         <p>
             Также
             <span class="attention"
@@ -531,18 +535,18 @@ export const routingQuestions: IQuestion[] = [
             страницы посещаются часто, а какие-то - нет. Логично, что часто
             используемые модули нужно подгружать фоном в первую очередь.
         </p>
-        <pre><code><span class="comment">// custom-preloading-strategy.service.ts</span>
-<span class="keyword">@Injectable</span><span class="punctuation">({</span> <span class="key">providedIn</span>: <span class="string">'root'</span> <span class="punctuation">})</span>
-<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">CustomPreloadingStrategyService</span> <span class="keyword">implements</span> <span class="interface-name">PreloadingStrategy</span> <span class="punctuation">{</span>
-	<span class="method">preload(</span>route: <span class="type">Route</span>, load: <span class="type">() => <span class="type">Observable<span><</span><span>any></span><span class="punctuation">)</span>: <span class="type">Observable<span><</span><span>any></span> <span class="punctuation">{</span>
-		<span class="keyword">const</span> <span class="variable">popularModules</span>: <span class="type">any</span> <span class="operator">=</span>  <span class="punctuation">[</span><span class="string">'contacts'</span>, <span class="string">'products'</span><span class="punctuation">]</span>
-		<span class="keyword">if</span> <span class="punctuation">(</span>popularModules.<span class="method">includes(</span>route.path<span class="punctuation">)) {</span>
-			<span class="return">return</span> <span class="function-name">load()</span>
-		<span class="punctuation">}</span> <span class="keyword">else</span> <span class="punctuation">{</span>
-			<span class="return">return</span> <span class="function-name">of</span><span class="punctuation">(</span><span class="null">null</span><span class="punctuation">)</span>
-		<span class="punctuation">}</span>
- 	<span class="punctuation">}</span>
-<span class="punctuation">}</span></code></pre>
+<pre><code class="language-typescript">// custom-preloading-strategy.service.ts
+@Injectable({ providedIn: 'root' })
+export class CustomPreloadingStrategyService implements PreloadingStrategy {
+	preload(route: Route, load: () => Observable<any>): Observable<any> {
+		const popularModules: any =  ['contacts', 'products']
+		if (popularModules.includes(route.path)) {
+			return load()
+		} else {
+			return of(null)
+		}
+ 	}
+}</code></pre>
         <p>
             В примере выше предварительно загружаются модули, URL которых
             начинается с одного из значений, описанных в массиве переменной
@@ -557,7 +561,8 @@ export const routingQuestions: IQuestion[] = [
             И теперь остается лишь указать данную стратегию в свойстве
             <code>preloadStrategy</code>:
         </p>
-        <pre><code><span class="class-name">RouterModule</span>.<span class="method">forRoot</span><span class="punctuation">( '{}'</span>, <span class="punctuation">{</span> <span class="key">preloadingStrategy</span>: <span class="class-name">CustomPreloadingStrategyService</span> <span class="punctuation">})</span></code></pre>`,
+		<pre><code class="language-typescript">RouterModule.forRoot( '{}', { preloadingStrategy: CustomPreloadingStrategyService })</code></pre>`,
         selected: false,
+        lastUpdate: '08.02.2024',
     },
 ];

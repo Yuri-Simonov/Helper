@@ -55,13 +55,13 @@ export const directiveQuestions: IQuestion[] = [
                 <span class="attention"> будет приведено к булевому типу</span>,
                 и всё.
             </p>
-            <pre><code><span class="comment comment_start">// новый синтаксис</span>
-<span class="keyword">@if</span><span class="punctuation">(</span><span class="boolean">true</span><span class="punctuation">) {</span>
-	<span class="tag">&lt;div></span>Какой-то текст<span class="tag">&lt;/div></span>
-<span class="punctuation">}</span>
+            <pre><code class="language-html">&lt;!-- новый синтаксис -->
+@if(true) {
+	&lt;div>Какой-то текст&lt;/div>
+}
 				
-<span class="comment comment_start">// старый синтаксис</span>
-<span class="tag">&lt;div</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span><span class="boolean">true</span><span class="punctuation">"</span><span class="tag">></span>Какой-то текст<span class="tag">&lt;/div></span></code></pre>
+&lt;!-- старый синтаксис -->
+&lt;div *ngIf="true">Какой-то текст&lt;/div></code></pre>
             <p>
                 Т.к. оба условия выше возвращают <code>true</code>,
                 следовательно, оба параграфа будут показан на странице в
@@ -71,13 +71,13 @@ export const directiveQuestions: IQuestion[] = [
                 Чтобы сделать логическое отрицание в условии, достаточно перед
                 условием добавить восклицательный знак (<code>!</code>):
             </p>
-            <pre><code><span class="comment comment_start">// новый синтаксис</span>
-<span class="keyword">@if</span><span class="punctuation">(</span><span class="operator">!</span><span class="boolean">true</span><span class="punctuation">) {</span>
-	<span class="tag">&lt;div></span>Какой-то текст<span class="tag">&lt;/div></span>
-<span class="punctuation">}</span>
+<pre><code class="language-html">&lt;!-- новый синтаксис -->
+@if(!true) {
+	&lt;div>Какой-то текст&lt;/div>
+}
 				
-<span class="comment comment_start">// старый синтаксис</span>
-<span class="tag">&lt;div</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span><span class="operator">!</span><span class="boolean">true</span><span class="punctuation">"</span><span class="tag">></span>Какой-то текст<span class="tag">&lt;/div></span></code></pre>
+&lt;!-- старый синтаксис -->
+&lt;div *ngIf="!true">Какой-то текст&lt;/div></code></pre>
             <p>
                 Выше в примерах со старым синтаксисом используется сокращенная
                 запись директивы, которая осуществляется за счет указания
@@ -85,9 +85,9 @@ export const directiveQuestions: IQuestion[] = [
                 звездочки самый первый пример со старым синтаксисом выглядел бы
                 следующим образом:
             </p>
-            <pre><code><span class="tag">&lt;ng-template</span> <span class="keyword">[ngIf]</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">"</span><span class="tag">></span>
-	<span class="tag">&lt;div</span><span class="tag">></span>Какой-то текст<span class="tag">&lt;/div></span>
-<span class="tag">&lt;/ng-template></span></code></pre>
+            <pre><code class="language-html">&lt;ng-template [ngIf]="toggler">
+	&lt;div>Какой-то текст&lt;/div>
+&lt;/ng-template></code></pre>
             <p>
                 У данной директивы также присутствует условное ветвление
                 <code>else</code>, в которое при использовании старого
@@ -96,9 +96,9 @@ export const directiveQuestions: IQuestion[] = [
                     >можно передавать только шаблонные переменные из элементов
                     <code>ng-template</code></span
                 >, иначе будет ошибка компиляции TypeScript:
-            </p>
-            <pre><code><span class="tag">&lt;div</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">;</span> <span class="keyword">else</span> constFromNgTemplate<span class="punctuation">"</span><span class="tag">></span>Какой-то текст<span class="tag">&lt;/div></span>
-<span class="tag">&lt;ng-template</span> <span class="keyword">#constFromNgTemplate</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">"</span><span class="tag">></span>Текст из элемента ng-template<span class="tag">&lt;/ng-template></span></code></pre>
+            </p>            
+<pre><code class="language-html">&lt;div *ngIf="toggler; else constFromNgTemplate">Какой-то текст&lt;/div>
+&lt;ng-template #constFromNgTemplate="toggler">Текст из элемента ng-template&lt;/ng-template></code></pre>
             <p>
                 В примере выше, если условие будет истинно, отобразится текст
                 "<i>Какой-то текст</i>", в противном же случае, текст возьмется
@@ -109,12 +109,12 @@ export const directiveQuestions: IQuestion[] = [
             <p>
                 Но в новом синтаксисе теперь в ветвление <code>else</code> можно
                 передавать и просто разметку:
-            </p>
-            <pre><code><span class="keyword">@if</span><span class="punctuation">(</span><span class="boolean">true</span><span class="punctuation">) {</span>
-	<span class="tag">&lt;p></span>Какой-то текст<span class="tag">&lt;/p></span>
-<span class="punctuation">}</span> <span class="keyword">@else</span> <span class="punctuation">{</span>
-	<span class="tag">&lt;p></span>Другой текст<span class="tag">&lt;/p></span>
-<span class="punctuation">}</span></code></pre>
+            </p>            
+<pre><code class="language-html">@if(true) {
+	&lt;p>Какой-то текст&lt;/p>
+} @else {
+	&lt;p>Другой текст&lt;/p>
+}</code></pre>
             <p>
                 Бывают также случаи, когда необходимо отобразить либо один, либо
                 другой элемент <code>ng-template</code> в зависимости от условия
@@ -125,17 +125,16 @@ export const directiveQuestions: IQuestion[] = [
                     >можно передавать только шаблонные переменные</span
                 >:
             </p>
-            <pre><code><span class="comment comment_start">// в шаблоне компонента</span>
-<span class="tag">&lt;div</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">;</span> <span class="keyword">then</span> firstNgTemplate; <span class="keyword">else</span> secondNgTemplate<span class="punctuation">"</span><span class="tag">></span>Этот текст будет удален<span class="tag">&lt;/div></span>
-<span class="tag">&lt;ng-template</span> <span class="keyword">#firstNgTemplate</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">"</span><span class="tag">></span>Текст из firstNgTemplate<span class="tag">&lt;/ng-template></span>
-<span class="tag">&lt;ng-template</span> <span class="keyword">#secondNgTemplate</span><span class="operator">=</span><span class="punctuation">"</span>toggler<span class="punctuation">"</span><span class="tag">></span>Текст из secondNgTemplate<span class="tag">&lt;/ng-template></span></code></pre>
+            <pre><code class="language-html">&lt;div *ngIf="toggler; then firstNgTemplate; else secondNgTemplate">Этот текст будет удален&lt;/div>
+&lt;ng-template #firstNgTemplate="toggler">Текст из firstNgTemplate&lt;/ng-template>
+&lt;ng-template #secondNgTemplate="toggler">Текст из secondNgTemplate&lt;/ng-template></code></pre>
             <p>
                 Соответственно, если условие истинно, отрисуется
                 <code>firstNgTemplate</code>, иначе -
                 <code>secondNgTemplate</code>.
             </p>`,
         selected: false,
-        lastUpdate: '20.11.2023',
+        lastUpdate: '07.02.2024',
         footerLinks: [
             {
                 title: 'новый синтаксис',
@@ -160,13 +159,12 @@ export const directiveQuestions: IQuestion[] = [
                     массива.</span
                 >
             </p>
-            <pre><code><span class="comment comment_start">// в классе компонента</span>
-arr: <span class="type">number[]</span> <span class="operator">=</span> <span class="punctuation">[</span><span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span><span class="punctuation">]</span>;
-
-<span class="comment comment_start">// в шаблоне компонента</span>
-<span class='tag'>&lt;div></span> <span class="keyword">*ngFor</span><span class="operator">=</span><span class="punctuation">"</span><span class="keyword">let</span> <span class="variable">item</span> <span class="keyword">of</span> arr<span class="punctuation">"</span><span class='tag'>></span>
-    <span class='tag'>&lt;span></span><span class="punctuation">&#123;&#123;</span> <span class="variable">item</span> <span class="punctuation">&#125;&#125;</span><span class='tag'>&lt;/span></span>
-<span class='tag'>&lt;/div></span></code></pre>
+<pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;div *ngFor="let item of arr">
+    &lt;span>{{ item }}&lt;/span>
+&lt;/div></code></pre>
+<pre><code class="language-typescript">// класс компонента
+arr: number[] = [1, 2, 3];</code></pre>
             <p>
                 В примере выше на <code>div</code> добавляется структурная
                 директива <code>*ngFor</code>, которая имеет следующий
@@ -222,16 +220,16 @@ arr: <span class="type">number[]</span> <span class="operator">=</span> <span cl
                 Пример использования четности итерации и текущий индекс элемента
                 в итерации:
             </p>
-            <pre><code><span class="comment comment_start">// в классе компонента</span>
-arr: <span class="type">number[]</span> <span class="operator">=</span> <span class="punctuation">[</span><span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span><span class="punctuation">]</span>;
-
-<span class="comment comment_start">// в шаблоне компонента</span>
-<span class='tag'>&lt;div></span> <span class="keyword">*ngFor</span><span class="operator">=</span><span class="punctuation">"</span><span class="keyword">let</span> <span class="variable">item</span> <span class="keyword">of</span> arr<span class="punctuation">;</span> <span class="keyword">let</span> <span class="variable">currentIndex</span> <span class="operator">=</span> index<span class="punctuation">;</span> <span class="keyword">let</span> <span class="variable">evenItem</span> <span class="operator">=</span> even<span class="punctuation">"</span><span class='tag'>></span>
-	<span class='tag'>&lt;span</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span><span class="variable">evenItem</span><span class="punctuation">"</span><span class='tag'>></span> <span class="punctuation">&#123;&#123;</span> <span class="variable">item</span> <span class="punctuation">&#125;&#125;</span><span class='tag'>&lt;/span></span>
-	<span class='tag'>&lt;span></span> <span class="punctuation">&#123;&#123;</span> <span class="variable">currentIndex</span> <span class="punctuation">&#125;&#125;</span><span class='tag'>&lt;/span></span>
-<span class='tag'>&lt;/div></span></code></pre>`,
+<pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;div *ngFor="let item of arr; let currentIndex = index; let evenItem = even">
+	&lt;span *ngIf="evenItem"> {{ item }}&lt;/span>
+	&lt;span> {{ currentIndex }}&lt;/span>
+&lt;/div></code></pre>
+<pre><code class="language-typescript">// класс компонента
+arr: number[] = [1, 2, 3];
+</code></pre>`,
         selected: false,
-        lastUpdate: '15.10.2023',
+        lastUpdate: '07.02.2024',
         footerLinks: [
             {
                 title: 'старый синтаксис',
@@ -278,21 +276,15 @@ arr: <span class="type">number[]</span> <span class="operator">=</span> <span cl
                 Если верить официальной документации, существенная оптимизация
                 возникает при больших списках элементов.
             </p>
-            <pre><code><span class="comment comment_start">// в шаблоне компонента (someItem.component.html)</span>
-<span class="tag">&ltli</span> <span class="keyword">*ngFor</span><span
-	class="operator">=</span><span class="punctuation">"</span><span class="keyword">let</span> item <span class="keyword">of</span> items; <span class="keyword">trackBy</span>: <span
-	class="function-name">trackByFunction</span><span class="punctuation">"</span><span
-	class="tag">></span>&#123;&#123;item&#125;&#125;<span class="tag">&lt/li></span>
+<pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;li *ngFor="let item of items; trackBy: trackByFunction">{{item}}&lt;/li></code></pre>
+<pre><code class="language-typescript">// класс компонента
+arr: number[] = [1, 2, 3];
 
-<span class="comment comment_start">// в классе компонента (someItem.component.ts)</span>
-arr: <span class="type">number[]</span> <span class="operator">=</span> <span
-	class="punctuation">[</span><span class="number">1</span>, <span class="number">2</span>, <span
-	class="number">3</span><span class="punctuation">]</span>;
+trackByFunction(index, item) {
+	return item; //	уникальный параметр
+}</code></pre>
 
-<span class="function-name">trackByFunction</span><span class="punctuation">(</span>index, item<span
-	class="punctuation">)</span> <span class="punctuation">{</span>
-	<span class="keyword">return</span> item<span class="punctuation">;</span> <span class="comment">//	уникальный параметр</span>
-<span class="punctuation">}</span></code></pre>
             <p>
                 Функция, используемая в качестве значения для метода<code
                     >trackBy</code
@@ -311,7 +303,7 @@ arr: <span class="type">number[]</span> <span class="operator">=</span> <span
                 сам элемент массива.
             </p>`,
         selected: false,
-        lastUpdate: '26.10.2023',
+        lastUpdate: '07.02.2024',
         footerLinks: [
             {
                 path: 'https://youtu.be/Ag4bCejYr-U?t=691',
@@ -328,12 +320,13 @@ arr: <span class="type">number[]</span> <span class="operator">=</span> <span
                     будет показываться соответствующий элемент разметки.</span
                 >
             </p>
-            <pre><code><span class='tag'>&lt;div></span> <span class="keyword">[ngSwitch]</span><span class="operator">=</span><span class="string">"Какие-то данные, передаваемые внутрь конструкции"</span><span class="tag">></span>
-   <span class='tag'>&lt;span</span> <span class="keyword">*ngSwitchCase</span><span class="operator">=</span><span class="punctuation">"</span>значение_1<span class="punctuation">"</span><span class="tag">></span><span class="string">Первый элемент</span><span class='tag'>&lt;/span></span>
-   <span class='tag'>&lt;span</span> <span class="keyword">*ngSwitchCase</span><span class="operator">=</span><span class="punctuation">"</span>значение_2<span class="punctuation">"</span><span class="tag">></span><span class="string">Второй элемент</span><span class='tag'>&lt;/span></span>
+<pre><code class="language-html">&lt;div [ngSwitch]="Какие-то данные, передаваемые внутрь конструкции">
+   &lt;span *ngSwitchCase="значение_1">Первый элемент&lt;/span>
+   &lt;span *ngSwitchCase="значение_2">Второй элемент&lt;/span>
 	...
-   <span class='tag'>&lt;span</span> <span class="keyword">*ngSwitchDefault</span><span class="tag">></span><span class="string">Элемент по умолчанию</span><span class='tag'>&lt;/span></span>
-<span class='tag'>&lt;/div></span></code></pre>
+   &lt;span *ngSwitchDefault>Элемент по умолчанию&lt;/span>
+&lt;/div></code></pre>
+
             <p>
                 С помощью атрибутивной директивы <code>ngSwitch</code> внутрь
                 родительского элемента <code>div</code> передаются какие-либо
@@ -354,17 +347,17 @@ arr: <span class="type">number[]</span> <span class="operator">=</span> <span
                 <code>*ngSwitchCase</code> внутри структурной директивы
                 <code>*ngFor</code>:
             </p>
-            <pre><code><span class="comment comment_start">// в классе компонента</span>
-arr: <span class="type">number[]</span> <span class="operator">=</span> <span class="punctuation">[</span><span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span><span class="punctuation">]</span>;
-
-<span class="comment comment_start">// в шаблоне компонента</span>
-<span class='tag'>&lt;div</span> <span class="keyword">*ngFor</span><span class="operator">=</span><span class="punctuation">"</span><span class="keyword">let</span> <span class="variable">item</span> <span class="keyword">of</span> arr<span class="punctuation">"</span> <span class="keyword">[ngSwitch]</span><span class="operator">=</span><span class="variable">item</span><span class="tag">></span>
-   <span class='tag'>&lt;span</span> <span class="keyword">*ngSwitchCase</span><span class="operator">=</span><span class="punctuation">"</span>1<span class="punctuation">"</span><span class="tag">></span><span class="string">Появлюсь, если item будет равен 1</span><span class='tag'>&lt;/span></span>
-   <span class='tag'>&lt;span</span> <span class="keyword">*ngSwitchCase</span><span class="operator">=</span><span class="punctuation">"</span>2<span class="punctuation">"</span><span class="tag">></span><span class="string">Появлюсь, если item будет равен 2</span><span class='tag'>&lt;/span></span>
-   <span class='tag'>&lt;span</span> <span class="keyword">*ngSwitchDefault</span><span class="tag">></span><span class="string">Появлюсь, если не найдутся совпадения в *ngSwitchCase</span><span class='tag'>&lt;/span></span>
-<span class='tag'>&lt;/div></span></code></pre>`,
+            <pre><code class="language-typescript">// класс компонента
+arr: number[] = [1, 2, 3];</code></pre>
+<pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;div *ngFor="let item of arr" [ngSwitch]=item>
+   &lt;span *ngSwitchCase="1">Появлюсь, если item будет равен 1&lt;/span>
+   &lt;span *ngSwitchCase="2">Появлюсь, если item будет равен 2&lt;/span>
+   &lt;span *ngSwitchDefault>Появлюсь, если не найдутся совпадения в *ngSwitchCase&lt;/span>
+&lt;/div></code></pre>
+`,
         selected: false,
-        lastUpdate: '15.10.2023',
+        lastUpdate: '07.02.2024',
         footerLinks: [
             {
                 title: 'старый синтаксис',
@@ -407,19 +400,19 @@ arr: <span class="type">number[]</span> <span class="operator">=</span> <span cl
                 <code>*ngIf</code> до или после после той же
                 <code>*ngFor</code> будут иметь разные итоговые результаты.
             </p>
-            <pre><code><span class="comment comment_start">// первый пример</span>
-<span class='tag'>&lt;ng-container</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span>condition<span class="punctuation">"</span><span class='tag'>></span>
-	<span class='tag'>&lt;div></span> <span class="keyword">*ngFor</span><span class="operator">=</span><span class="punctuation">"</span><span class="keyword">let</span> <span class="variable">item</span> <span class="keyword">of</span> arr<span class="punctuation">"</span><span class='tag'>></span>
-  		<span class='tag'>&lt;span></span><span class="punctuation">&#123;&#123;</span> <span class="variable">item</span> <span class="punctuation">&#125;&#125;</span><span class='tag'>&lt;/span></span>
-	<span class='tag'>&lt;/div></span>
-<span class='tag'>&lt;/ng-container></span>
+            <pre><code class="language-html">&lt;!-- первый пример -->
+&lt;ng-container *ngIf="condition">
+	&lt;div *ngFor="let item of arr">
+  		&lt;span>{{ item }}&lt;/span>
+	&lt;/div>
+&lt;/ng-container>
 
-<span class="comment comment_start">// второй пример</span>
-<span class='tag'>&lt;ng-container></span> <span class="keyword">*ngFor</span><span class="operator">=</span><span class="punctuation">"</span><span class="keyword">let</span> <span class="variable">item</span> <span class="keyword">of</span> arr<span class="punctuation">"</span><span class='tag'>></span>
-	<span class='tag'>&lt;div</span> <span class="keyword">*ngIf</span><span class="operator">=</span><span class="punctuation">"</span>condition<span class="punctuation">"</span><span class='tag'>></span>
-  		<span class='tag'>&lt;span></span><span class="punctuation">&#123;&#123;</span> <span class="variable">item</span> <span class="punctuation">&#125;&#125;</span><span class='tag'>&lt;/span></span>
-	<span class='tag'>&lt;/div></span>
-<span class='tag'>&lt;/ng-container></span></code></pre>
+&lt;!-- второй пример -->
+&lt;ng-container *ngFor="let item of arr">
+	&lt;div *ngIf="condition">
+  		&lt;span>{{ item }}&lt;/span>
+	&lt;/div>
+&lt;/ng-container></code></pre>
             <p>
                 Если сравнить два примера выше, то в зависимости от результата
                 условия структурной директивы <code>*ngIf</code> в первом
@@ -428,7 +421,7 @@ arr: <span class="type">number[]</span> <span class="operator">=</span> <span cl
                 элементы попадут в итоговую разметку, а какие-то нет.
             </p>`,
         selected: false,
-        lastUpdate: '19.11.2023',
+        lastUpdate: '07.02.2024',
     },
     {
         title: 'Атрибутивная директива <span class="variable">ngClass</span>',
@@ -445,14 +438,15 @@ arr: <span class="type">number[]</span> <span class="operator">=</span> <span cl
                 массивы и объекты.
             </p>
             <i class="subtitle">Примеры со строками</i>
-            <pre><code><span class="tag">&lt;some-element</span> <span class="keyword">ngClass</span><span class="operator">=</span><span class="string">"first second"</span><span class="tag">></span>...<span class="tag">&lt;some-element></span> <span class="comment">// статический вариант записи</span>
-<span class="tag">&lt;some-element</span> <span class="keyword">[ngClass]</span><span class="operator">=</span><span class="string">"'first second'"</span><span class="tag">></span>...<span class="tag">&lt;some-element></span> <span class="comment">// динамический вариант записи</span></code></pre>
+<pre><code class="language-html">&lt;some-element ngClass="first second">...&lt;some-element> &lt;!-- статический вариант записи -->
+&lt;some-element [ngClass]="'first second'">...&lt;some-element> &lt;!-- динамический вариант записи --></code></pre>
+
             <p>
                 Как видно из примера выше, просто перечисляем css-классы внутри
                 кавычек, которые нужно добавить на элемент DOM-дерева.
             </p>
             <i class="subtitle">Пример с массивом</i>
-            <pre><code><span class="tag">&lt;some-element</span> <span class="keyword">[ngClass]</span><span class="operator">=</span><span class="string">"['first', 'second']"</span><span class="tag">></span>...<span class="tag">&lt;some-element></span></code></pre>
+			<pre><code class="language-html">&lt;some-element [ngClass]="['first', 'second']">...&lt;some-element></code></pre>
             <p>
                 Здесь уже нужные css-классы перечисляются как элементы массива.
             </p>
@@ -465,21 +459,21 @@ arr: <span class="type">number[]</span> <span class="operator">=</span> <span cl
                 иной css-класс. Объекты же позволяют это делать, поэтому в
                 основном они и используются.
             </p>
-            <pre><code><span class="tag">&lt;some-element</span> <span class="keyword">[ngClass]</span><span class="operator">=</span><span class="string">"{'first': true, 'second': false}"</span><span class="tag">></span>...<span class="tag">&lt;some-element></span></code></pre>
+           	<pre><code class="language-html">&lt;some-element [ngClass]="{'first': true, 'second': false}">...&lt;some-element></code></pre>
             <p>
                 В примере выше для каждого css-класса задается условие его
                 отображения. Если оно правдиво (<code>true</code>), то css-класс
                 добавляется на элемент DOM-дерева. Если условие ложно, тогда
                 css-класс не добавляется.
             </p>
-            <pre><code><span class="tag">&lt;some-element</span> <span class="keyword">[ngClass]</span><span class="operator">=</span><span class="string">"{'class1 class2' : true}"</span><span class="tag">></span>...<span class="tag">&lt;some-element></span></code></pre>
+			<pre><code class="language-html">&lt;some-element [ngClass]="{'class1 class2' : true}">...&lt;some-element></code></pre>
             <p>
                 В примере выше показано, что <code>ngClass</code> также
                 позволяет отображать или скрывать сразу несколько css-классов в
                 зависимости от одного и того же условия.
             </p>`,
         selected: false,
-        lastUpdate: '12.11.2023',
+        lastUpdate: '08.02.2024',
         footerLinks: [
             {
                 path: 'https://youtu.be/qNUp8t5QOxs?t=12',
@@ -501,25 +495,24 @@ arr: <span class="type">number[]</span> <span class="operator">=</span> <span cl
                 соответствующая корректная величина для данного css-свойства.
                 Иначе Ангуляр просто вырежет при компиляции некорректные данные.
             </p>
-            <pre><code><span class="tag">&lt;some-element</span> <span class="keyword">[ngStyle]</span><span class="operator">=</span><span class="string">"{'color': 'red'}"</span><span class="tag">></span>...<span class="tag">&lt;some-element></span></code></pre>
+			<pre><code class="language-html">&lt;some-element [ngStyle]="{'color': 'red'}">...&lt;some-element></code></pre>
             <p>
                 Также необязательно писать все стили в шаблоне компонента. Их
-                можно вынести в отдельную переменную в классе компонента и
+                можно вынести в отдельную переменную класс компонента и
                 передать ее в качестве значения для директивы
                 <code>ngStyle</code>:
             </p>
-            <pre><code><span class="comment comment_start">// в классе компонента</span>
-cssProperties <span class="operator">=</span> <span class="punctuation">{</span><span class="string">'color'</span>: <span class="string">'red'</span>, <span class="string">'display'</span>: <span class="string">'block'</span><span class="punctuation">}</span>
-
-<span class="comment comment_start">// в шаблоне компонента</span>
-<span class="tag">&lt;some-element</span> <span class="keyword">[ngStyle]</span><span class="operator">=</span><span class="string">"</span>cssProperties<span class="string">"</span><span class="tag">></span>...<span class="tag">&lt;some-element></span></code></pre>
+<pre><code class="language-typescript">// класс компонента
+cssProperties = {'color': 'red', 'display': 'block'}</code></pre>
+<pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;some-element [ngStyle]="cssProperties">...&lt;some-element></code></pre>
             <p>
                 К тому же, внутри <code>ngStyle</code> можно сразу задавать
                 css-свойству размерность:
             </p>
-            <pre><code><span class="tag">&lt;some-element</span> <span class="keyword">[ngStyle]</span><span class="operator">=</span><span class="string">"{'font-size.px': 20}"</span><span class="tag">></span>...<span class="tag">&lt;some-element></span></code></pre>`,
+			<pre><code class="language-html">&lt;some-element [ngStyle]="{'font-size.px': 20}">...&lt;some-element></code></pre>`,
         selected: false,
-        lastUpdate: '12.11.2023',
+        lastUpdate: '08.02.2024',
         footerLinks: [
             {
                 path: 'https://youtu.be/qNUp8t5QOxs?t=290',
@@ -536,19 +529,17 @@ cssProperties <span class="operator">=</span> <span class="punctuation">{</span>
 			шрифта у элемента, у которого присутствует эта
 			атрибутивная директива.
 		</p>
-		<pre><code><span class="comment comment_start">// шаблон</span>
-<span class="tag"><</span><span class="tag">p</span> <span class="attribute">someAttr</span><span class="tag">></span>some text<span class="tag"><</span><span class="tag">/p></span>
-
-<span class="comment comment_start">// директива</span>
-<span class="function-name">@Directive</span><span class="punctuation">({</span>
-	<span class="key">selector</span><span class="punctuation">: '</span><span class="attribute">[someAttr]</span><span class="punctuation">'</span>,
-<span class="punctuation">})</span>
-<span class="export">export</span> <span class="key">class</span> <span class="class-name">SomeDirective</span> <span class="punctuation">{</span>
-  <span class="keyword">constructor </span><span class="punctuation">(</span><span class="keyword">private</span> element: <span class="type">ElementRef</span><span class="punctuation">)</span> <span class="punctuation">{</span>
-	element.nativeElement.style.fontSize <span class="operator">=</span> <span class="string">'20px'</span>;
-  <span class="punctuation">}</span>
-<span class="punctuation">}</span>
-</code></pre>
+<pre><code class="language-html">&lt;!-- шаблон компонента --> 
+&lt;p someAttr>some text&lt;/p></code></pre>
+<pre><code class="language-typescript">// класс директивы
+@Directive({
+	selector: '[someAttr]',
+})
+export class SomeDirective {
+  constructor (private element: ElementRef) {
+	element.nativeElement.style.fontSize = '20px';
+  }
+}</code></pre>
 		<p>
 			Для манипуляции элементом используется класс
 			<code>ElementRef</code>. С помощью его свойства
@@ -562,53 +553,49 @@ cssProperties <span class="operator">=</span> <span class="punctuation">{</span>
 			событий, которые задаются с помощью декоратора
 			<code>@HostListener()</code>.
 		</p>
-		<pre><code><span class="comment comment_start">// шаблон</span>
-<span class="tag"><</span><span class="tag">p</span> <span class="attribute">someAttr</span><span class="tag">></span>some text<span class="tag"><</span><span class="tag">/p></span>
-
-<span class="comment comment_start">// директива</span>
-<span class="function-name">@Directive</span><span class="punctuation">({</span>
-	<span class="key">selector</span><span class="punctuation">: '</span><span class="attribute">[someAttr]</span><span class="punctuation">'</span>,
-<span class="punctuation">})</span>
-<span class="export">export</span> <span class="key">class</span> <span class="class-name">SomeDirective</span> <span class="punctuation">{</span>
-	<span class="keyword">constructor </span><span class="punctuation">(</span><span class="keyword">private</span> element: <span class="type">ElementRef</span><span class="punctuation">)</span> <span class="punctuation">{</span>
+<pre><code class="language-html">&lt;!-- шаблон компонента --> 
+&lt;p someAttr>some text&lt;/p></code></pre>
+<pre><code class="language-typescript">// класс директивы
+@Directive({
+	selector: '[someAttr]',
+})
+export class SomeDirective {
+	constructor (private element: ElementRef) {
 	
-	<span class="function-name">@HostListener</span><span class="punctuation">(</span><span class="string">'mouseenter'</span><span class="punctuation">)</span> <span class="function-name">enterMouseEvent</span><span class="punctuation">()</span> <span class="punctuation">{</span>
-		<span class="object">this</span>.<span class="function-name">setNewFontSize</span><span class="punctuation">(</span><span class="number">20</span><span class="punctuation">)</span>; <span class="comment">// при наведении будет устанавливаться размер шрифта равный 20рх</span>
-	<span class="punctuation">}</span>	
-<span class="punctuation">}</span>
+	@HostListener('mouseenter') enterMouseEvent() {
+		this.setNewFontSize(20); // при наведении будет устанавливаться размер шрифта равный 20рх
+	}	
+}
 
-<span class="function-name">setNewFontSize</span><span class="punctuation">(</span>value<span class="punctuation">:</span> <span class="type">number</span> <span class="operator">|</span> <span class="type">string</span><span class="punctuation">):</span> <span class="type">void</span> <span class="punctuation">{</span>
-	<span class="object">this</span>.element.nativeElement.style.fontSize <span class="operator">=</span> value <span class="operator">+</span> <span class="string">'px'</span>
-<span class="punctuation">}</span>
-</code></pre>
+setNewFontSize(value: number | string): void {
+	this.element.nativeElement.style.fontSize = value + 'px'
+}</code></pre>
 		<p>
 			Если необходимо передавать в директуру данные из компонента, где она
 			используется, то делается это с помощью другого декоратора -
 			<code>@Input()</code>.
 		</p>
-		<pre><code><span class="comment comment_start">// шаблон</span>
-<span class="tag"><</span><span class="tag">p</span> <span class="attribute">[someAttr]</span><span class="operator">=</span><span class="string">"20"</span><span class="tag">></span>some text<span class="tag"><</span><span class="tag">/p></span> <span class="comment">// вместо "20" может быть также какая-нибудь переменная из компонента</span>
-
-<span class="comment comment_start">// директива</span>
-<span class="function-name">@Directive</span><span class="punctuation">({</span>
-	<span class="key">selector</span><span class="punctuation">: '</span><span class="attribute">[someAttr]</span><span class="punctuation">'</span>,
-<span class="punctuation">})</span>
-<span class="export">export</span> <span class="key">class</span> <span class="class-name">SomeDirective</span> <span class="punctuation">{</span>
-	<span class="keyword">@Input</span><span class="punctuation">(</span><span class="string">'someAttr'</span><span class="punctuation">)</span> fontSize;
+<pre><code class="language-html">&lt;!-- шаблон компонента --> 
+&lt;p [someAttr]="20">some text&lt;/p> &lt;!-- вместо "20" может быть также какая-нибудь переменная из компонента --></code></pre>
+<pre><code class="language-typescript">// класс директивы
+@Directive({
+	selector: '[someAttr]',
+})
+export class SomeDirective {
+	@Input('someAttr') fontSize;
 	
-	<span class="keyword">constructor </span><span class="punctuation">(</span><span class="keyword">private</span> element: <span class="type">ElementRef</span><span class="punctuation">)</span> <span class="punctuation">{</span>
+	constructor (private element: ElementRef) {
 	
-	<span class="function-name">@HostListener</span><span class="punctuation">(</span><span class="string">'mouseenter'</span><span class="punctuation">)</span> <span class="function-name">enterMouseEvent</span><span class="punctuation">()</span> <span class="punctuation">{</span>
-		<span class="object">this</span>.<span class="function-name">setNewFontSize</span><span class="punctuation">(</span><span class="object">this</span>.fontSize<span class="punctuation">)</span>; <span class="comment">// при наведении будет устанавливаться размер шрифта равный переданному значению из компонента</span>
-	<span class="punctuation">}</span>	
-<span class="punctuation">}</span>
+	@HostListener('mouseenter') enterMouseEvent() {
+		this.setNewFontSize(this.fontSize); // при наведении будет устанавливаться размер шрифта, равный переданному значению из компонента
+	}	
+}
 
-<span class="function-name">setNewFontSize</span><span class="punctuation">(</span>value<span class="punctuation">:</span> <span class="type">number</span> <span class="operator">|</span> <span class="type">string</span><span class="punctuation">):</span> <span class="type">void</span> <span class="punctuation">{</span>
-	<span class="object">this</span>.element.nativeElement.style.fontSize <span class="operator">=</span> value <span class="operator">+</span> <span class="string">'px'</span>
-<span class="punctuation">}</span>
-</code></pre>`,
+setNewFontSize(value: number | string): void {
+	this.element.nativeElement.style.fontSize = value + 'px'
+}</code></pre>`,
         selected: false,
-        lastUpdate: '24.09.2023',
+        lastUpdate: '08.02.2024',
     },
     {
         title: 'Создание пользовательских структурных директив',
@@ -643,8 +630,8 @@ cssProperties <span class="operator">=</span> <span class="punctuation">{</span>
                 > т.к. это разные сущности, причем интерфейс декоратора компонента наследуется от
                 интерфейса декоратора директивы.
             </p>
-            <pre><code><span class="comment comment_start">// из файла "@angular/core"</span>
-<span class="export">export</span> <span class="keyword">declare</span> <span class="keyword">interface</span> <span class="interface-name">Component</span> <span class="keyword">extends</span> <span class="interface-name">Directive</span> <span class="punctuation">{}</span></code></pre>
+            <pre><code class="language-typescript">// из файла "@angular/core"
+export declare interface Component extends Directive {}</code></pre>
             <p>
                 Поэтому можно сказать, что
                 <span class="attention">
@@ -664,7 +651,7 @@ cssProperties <span class="operator">=</span> <span class="punctuation">{</span>
                 тогда директивы.
             </p>`,
         selected: false,
-        lastUpdate: '07.10.2023',
+        lastUpdate: '08.02.2024',
     },
     {
         title: 'Различия между жизненными циклами компонента и директивы',
@@ -672,8 +659,8 @@ cssProperties <span class="operator">=</span> <span class="punctuation">{</span>
 		Если заглянуть "под капот" интерфейса декоратора компонента, то можно
 		увидеть, что он наследуются от интерфейса декоратора директивы:
 	</p>
-	<pre><code><span class="comment comment_start">// из файла "@angular/core"</span>
-<span class="export">export</span> <span class="keyword">declare</span> <span class="keyword">interface</span> <span class="interface-name">Component</span> <span class="keyword">extends</span> <span class="interface-name">Directive</span> <span class="punctuation">{}</span></code></pre>
+<pre><code class="language-typescript">// из файла "@angular/core"
+export declare interface Component extends Directive {}</code></pre>
 	<p>
 		Следовательно, 
 		<span class="attention">

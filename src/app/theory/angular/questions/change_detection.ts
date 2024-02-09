@@ -7,7 +7,7 @@ export const changeDetectionQuestions: IQuestion[] = [
     //     selected: false,
     // },
     {
-        title: 'Объясните принцип работы механизма "ChangeDetection"?',
+        title: 'Принцип работы механизма <span class="variable">ChangeDetection</span>',
         body: `<p>
             Механизм <code>ChangeDetection</code> или как его еще называют
             "отслеживание изменений" - это
@@ -54,13 +54,13 @@ export const changeDetectionQuestions: IQuestion[] = [
             конфигурации декоратора <code>@Component()</code> и указывается для
             каждого компонента отдельно.
         </p>
-        <pre><code><span class="keyword">@Component</span><span class="punctuation">({</span>
-	<span class="key">selector</span>: <span class="string">'app-root'</span>, <span class="comment">// название компонента</span>
-	<span class="key">templateUrl</span>: <span class="string">'./app.component.html'</span>, <span class="comment">// путь к HTML-файлу. Является обязательным свойством</span>
-	<span class="key">changeDetection</span>: <span>ChangeDetectionStrategy.OnPush</span>, <span class="comment">// явное определение стратегии ChangeDetection</span>
-<span class="punctuation">})</span>
+        <pre><code class="language-typescript">@Component({
+	selector: 'app-root', // название компонента
+	templateUrl: './app.component.html', // путь к HTML-файлу. Является обязательным свойством
+	changeDetection: ChangeDetectionStrategy.OnPush, // явное определение стратегии ChangeDetection
+})
 
-<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">AppComponent</span> <span class="punctuation">{}</span> <span class="comment">// класс, к которому привязывается декоратор @Component()</span></code></pre>
+export class AppComponent {} // класс, к которому привязывается декоратор @Component()</code></pre>
         <p>
             Итак, при варианте <code>Default</code> механизм отслеживания будет
             запускаться каждый раз при каком-либо изменении в приложении.
@@ -107,9 +107,10 @@ export const changeDetectionQuestions: IQuestion[] = [
             </li>
         </ul>`,
         selected: false,
+        lastUpdate: '07.02.2024',
     },
     {
-        title: 'Зачем в Angular сервис "ChangeDetectorRef"?',
+        title: 'Управление механизмом <span class="variable">ChangeDetection</span> с помощью сервиса <span class="variable">ChangeDetectorRef</span>',
         body: `<p>
             Сервис <code>ChangeDetectorRef</code> позволяет взять управление
             механизмом отслеживания изменений (<code>ChangeDetection</code>)
@@ -162,22 +163,23 @@ export const changeDetectionQuestions: IQuestion[] = [
             которая представлена в шаблоне, т.к. к ней привязана функция,
             отвечающая за принудительный запуск механизма отслеживания.
         </p>
-        <pre><code><span class="comment">// шаблон</span>
-<span class="tag"><</span><span class="tag">button</span> <span class="keyword">(click)</span><span class="operator">=</span><span class="punctuation">"</span><span class="function-name">applyChanges()</span><span class="punctuation">"</span><span class="tag">></span>Применить изменения<span class="tag"><</span><span class="tag">button/></span>
-
-<span class="comment">// компонент</span>
-<span class="export">export</span> <span class="keyword">class</span> <span class="class-name">ManualDetectionComponent</span> <span class="punctuation">{</span>
-	value: <span class="type">string</span> <span class="operator">=</span> <span class="string">'Начальное значение'</span>; 
+<pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;button (click)="applyChanges()">Применить изменения&lt;button/></code></pre>
+<pre><code class="language-typescript">// класс компонента
+export class ManualDetectionComponent {
+	value: string = 'Начальное значение'; 
 	
-	<span class="keyword">constructor</span><span class="punctuation">(</span><span class="keyword">private</span> <span>changeDetectorRef</span>: <span class="class-name">ChangeDetectorRef</span><span class="punctuation">) {</span>
-		<span class="object">this</span>.changeDetectionRef.<span class="method">detach</span><span class="punctuation">()</span>; <span class="comment">// отключаем механизм ChangeDetection</span>
-		<span class="object">this</span>.value <span class="operator">=</span> <span class="string">'Какие-то изменения'</span>;
-	<span class="punctuation">}</span>
+	constructor(private changeDetectorRef: ChangeDetectorRef) {
+		this.changeDetectionRef.detach(); // отключаем механизм ChangeDetection
+		this.value = 'Какие-то изменения';
+	}
 	
-	<span class="function-name">applyChanges</span><span class="punctuation">():</span> <span class="type">void</span> <span class="punctuation">{</span>
-		<span class="object">this</span>.changeDetectionRef.<span class="method">detectChanges</span><span class="punctuation">()</span>; <span class="comment">// принудительно запускаем механизм ChangeDetection</span>
-	<span class="punctuation">}</span>
-<span class="punctuation">}</span></code></pre>`,
+	applyChanges(): void {
+		this.changeDetectionRef.detectChanges(); // принудительно запускаем механизм ChangeDetection
+	}
+}</code></pre>
+`,
         selected: false,
+        lastUpdate: '07.02.2024',
     },
 ];
