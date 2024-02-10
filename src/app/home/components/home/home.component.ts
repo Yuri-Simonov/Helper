@@ -39,7 +39,7 @@ export class HomeComponent {
             title: 'Тесты',
             links: [
                 { path: '#', name: 'JavaScript', disabled: true },
-                { path: '#', name: 'Angular', disabled: true },
+                { path: 'tests/angular', name: 'Angular' },
                 { path: '#', name: 'Git', disabled: true },
                 { path: '#', name: 'Разное', disabled: true },
             ],
