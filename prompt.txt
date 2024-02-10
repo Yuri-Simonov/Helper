@@ -30,10 +30,11 @@ class="language-typescript"
 
 &lt;!--  -->
 
-			
+&lt;app-child>
+&lt;/app-child> 			
 
 			
-lastUpdate: '09.02.2024',
+lastUpdate: '10.02.2024',
 
 <p>В консоли мы увидим следующее:</p>
 <pre><code class="language-typescript"></code></pre>

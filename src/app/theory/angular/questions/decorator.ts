@@ -95,7 +95,7 @@ export class SomeComponent {}</code></pre>
             <p>Он имеет следующий синтаксис:</p>
             <pre><code class="language-typescript">@ViewChild('selector') propertyName: dataType;</code></pre>
             <p>
-                В примере ниже в классе компонента предоставляется доступ к элементу разметки из шаблона по указанному
+                В примере ниже в классе родительского компонента предоставляется доступ к элементу разметки из шаблона по указанному
                 селектору в декораторе
                 <code>@ViewChild&#40;&#41;</code>. В данном случае это шаблонная переменная <code>paragrath</code>.
                 Важно еще отметить, что декоратор <code>@ViewChild&#40;&#41;</code>
@@ -124,7 +124,7 @@ export class SomeComponent {}</code></pre>
                 </li>
                 <li>
                     <span class="attention">Название класса компонента или директивы</span> - поиск в шаблоне будет
-                    осуществляться по компонентам или директивам.
+                    осуществляться по названию класса компонента или директивы.
                 </li>
             </ul>
             <p>Ниже представлены примеры для каждого из этих случаев:</p>
@@ -150,6 +150,7 @@ export class SomeComponent {}</code></pre>
             </p>
             <p>Можно так же указывать и мультиселекторы, делается это через запятую в формате строки:</p>
 			<pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;app-child>&lt;/app-child>
 &lt;p #paragrath>Простой параграф&lt;/p></code></pre>
 			<pre><code class="language-typescript">// класс компонента
 @ViewChild('paragrath, ChildComponent') paragrath: ElementRef&lt;HTMLParagraphElement | ChildComponent>;</code></pre>
@@ -219,18 +220,6 @@ export class SomeComponent {}</code></pre>
         ],
     },
     {
-        title: 'Метод жизненного цикла, начиная с которого доступна информация в декораторах <span class="variable">@ViewChild()</span> и <span class="variable">@ViewChildren()</span>',
-        body: `<p>
-                Т.к. декораторы свойств <code>@ViewChild&#40;&#41;</code> и <code>@ViewChildren&#40;&#41;</code> следят
-                за шаблоном текущего компонента, а его представление (представление - шаблон текущего компонента +
-                шаблоны дочерних компонентов, которые в нем присутствуют) инициализуруется перед вызовом метода
-                <code>ngAfterViewInit</code>, следовательно, первые данные появятся именно в этом методе. До него будет
-                <code>undefined</code>.
-            </p>`,
-        selected: false,
-        lastUpdate: '14.01.2024',
-    },
-    {
         title: 'Декоратор <span class="variable">@ViewChildren()</span>',
         body: `<p>
                 <span class="attention"
@@ -239,7 +228,7 @@ export class SomeComponent {}</code></pre>
                 >.
             </p>
             <p>Он имеет следующий синтаксис:</p>
-			<pre><code class="language-typescript">@ViewChildren('selector') propertyName: dataType;</code></pre>
+			<pre><code class="language-typescript">@ViewChildren('selector') propertyName: QueryList&lt;dataType>;</code></pre>
             <p>
                 В отличие от декоратора <code>@ViewChild&#40;&#41;</code>, который находит первое совпадение по
                 селектору и прекращает дальнейший поиск, декоратор <code>@ViewChildren&#40;&#41;</code>
@@ -356,8 +345,20 @@ ngAfterViewInit() {
         ],
     },
     {
+        title: 'Метод жизненного цикла, начиная с которого доступна информация в декораторах <span class="variable">@ViewChild()</span> и <span class="variable">@ViewChildren()</span>',
+        body: `<p>
+                Т.к. декораторы свойств <code>@ViewChild&#40;&#41;</code> и <code>@ViewChildren&#40;&#41;</code> следят
+                за шаблоном текущего компонента, а его представление (представление - шаблон текущего компонента +
+                шаблоны дочерних компонентов, которые в нем присутствуют) инициализуруется перед вызовом метода
+                <code>ngAfterViewInit</code>, следовательно, первые данные появятся именно в этом методе. До него будет
+                <code>undefined</code>.
+            </p>`,
+        selected: false,
+        lastUpdate: '14.01.2024',
+    },
+    {
         title: 'Параметр <span class="variable">read</span> декораторов <span class="variable">@ViewChild()</span> и <span class="variable">@ViewChildren()</span>',
-        body: ` <p>
+        body: `<p>
                 У декораторов <code>@ViewChild&#40;&#41;</code> и <code>@ViewChildren&#40;&#41;</code> есть параметр
                 <code>read</code>, который служит, своего рода, фильтром получаемых данных по указанному селектору.
             </p>
@@ -399,6 +400,324 @@ ngAfterViewInit() {
                 path: 'https://youtu.be/R3kexfhgU4Q?t=654',
             },
         ],
+    },
+    {
+        title: 'Декоратор <span class="variable">@ContentChild()</span>',
+        body: `<p>
+                <span class="attention"
+                    >Декоратор <code>&#64;ContentChild()</code> позволяет по указанному в нем селектору получать доступ к содержимому дочернего
+                    компонента, которое заключено между его тегами в месте вызова этого компонента. Это содержимое в
+                    дочернем компоненте подставляется вместо элемента <code>ng-content</code>.</span
+                >
+            </p>
+            <p>Данный декоратор имеет следующий синтаксис:</p>
+            <pre><code class="language-javascript">&#64;ViewChild('selector') propertyName: dataType;</code></pre>
+            <p>
+                Декоратор <code>&#64;ContentChild()</code> указывается в дочернем компоненте, в отличие от того же
+                декоратора <code>&#64;ViewChild()</code>, который указывается в классе родительского компонента.
+            </p>
+            <pre><code class="language-html">&lt;!-- шаблон родительского компонента -->
+&lt;app-child>
+	&lt;p #paragrath>Простой параграф&lt;/p> &lt;!-- cодержимое компонента -->
+&lt;/app-child></code></pre>
+            <pre><code class="language-typescript">// класс дочернего компонента
+&#64;ContentChild('paragrath') paragrath: ElementRef;</code></pre>
+             <p>
+                В качестве селектора в основном используют следующие варианты (есть и другие, но они используются
+                гораздо реже):
+            </p>
+            <ul>
+                <li>
+                    <span class="attention">Шаблонные переменные</span> - поиск в содержимом будет осуществляться по
+                    шаблонным переменным;
+                </li>
+                <li>
+                    <span class="attention">TemplateRef</span> - поиск в содержимом будет осуществляться по элементам
+                    <code>ng-template</code>;
+                </li>
+                <li>
+                    <span class="attention">Название класса компонента или директивы</span> - поиск в содержимом будет
+                    осуществляться по названию класса компонента или директивы.
+                </li>
+            </ul>
+            <p>Ниже представлены примеры для каждого из этих случаев:</p>
+            <pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;app-child>
+	&lt;p #paragrath>Простой параграф&lt;/p> (1)
+&lt;/app-child> 
+
+&lt;app-child>
+	&lt;ng-template #template>Параграф внутри элемента ng-template&lt;/ng-template> (2)
+&lt;/app-child> 
+&lt;app-child>
+	&lt;ng-template>Параграф внутри элемента ng-template&lt;/ng-template> (2*)
+&lt;/app-child> 
+
+&lt;app-child>
+	&lt;app-another-child #component>&lt;/app-another-child> (3)
+&lt;/app-child>
+&lt;app-child>
+	&lt;app-another-child>&lt;/app-another-child> (3*)
+&lt;/app-child>
+</code></pre>
+            <pre><code class="language-typescript">// класс компонента
+&#64;ContentChild('paragrath') paragrath: ElementRef<HTMLParagraphElement>; (1)
+
+&#64;ContentChild('template') template: TemplateRef<HTMLParagraphElement>; (2)
+&#64;ContentChild(TemplateRef) template: TemplateRef<HTMLParagraphElement>; (2*)
+
+&#64;ContentChild('component') component: ChildComponent; (3)
+&#64;ContentChild(AnotherChildComponent) component: AnotherChildComponent; (3*)</code></pre>
+            <p>
+                В примерах выше со звоздочкой показано как использовать декоратор
+                <code>&#64;ContentChild&#40;&#41;</code> без использования шаблонных переменных в разметке.
+            </p>
+            <p>Можно так же указывать и мультиселекторы, делается это через запятую в формате строки:</p>
+			<pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;app-child>
+	&lt;app-another-child>&lt;/app-another-child>
+	&lt;p #paragrath>Простой параграф&lt;/p>
+&lt;/app-child> </code></pre>
+			<pre><code class="language-typescript">// класс компонента
+&#64;ContentChild('paragrath, AnotherChildComponent') paragrath: ElementRef&lt;HTMLParagraphElement | AnotherChildComponent>;</code></pre>
+            <p>
+                В примере выше под условие селектора попадают оба элемента разметки, но т.к. дочерний компонент в
+                разметке стоит раньше параграфа, поэтому именно его данные декоратор
+                <code>&#64;ContentChild&#40;&#41;</code> запишет в свойство <code>paragrath</code>.
+            </p>`,
+        selected: false,
+        lastUpdate: '10.02.2024',
+    },
+    {
+        title: 'Параметр <span class="variable">static</span> декоратора <span class="variable">@ContentChild()</span>',
+        body: `<p>
+                У декоратора <code>@ContentChild&#40;&#41;</code> есть также и дополнительные параметры. Одним из них
+                является булевый параметр <code>static</code>. По умолчанию он имеет значение <code>false</code>. Это
+                означает, что доступ к содержимому компонента декоратор <code>@ContentChild&#40;&#41;</code> получает
+                после того, как оно было проинициализировано. Поэтому данные и появляются начиная с метода
+                <code>ngAfterContentInit</code>.
+            </p>
+            <pre><code class="language-typescript">// Обе записи равносильны
+&#64;ContentChild('paragrath') paragrath: ElementRef&lt;HTMLParagraphElement>;
+&#64;ContentChild('paragrath', { static: false }) paragrath: ElementRef&lt;HTMLParagraphElement>;</code></pre>
+            <p>
+                Это сценарий работы директивы <code>@ContentChild&#40;&#41;</code> по умолчанию. Но его можно изменить,
+                установив значение параметра <code>static</code> в значение <code>true</code>.
+            </p>
+            <pre><code class="language-typescript">&#64;ContentChild('paragrath', { static: true }) paragrath: ElementRef&lt;HTMLParagraphElement>;</code></pre>
+            <p>
+                В этом случае декоратор <code>@ContentChild&#40;&#41;</code> получает доступ к содержимому компонента
+                еще до того, как оно прошло все проверки и было полностью инициализирован. Такой вариант использования
+                декоратора может быть полезно в случаях, когда нужно получить доступ к содержимому до того, как оно будет полностью инициализирован.
+            </p>
+            <p>
+                Тут также важно, чтобы на таком элементе не висела структурная директива
+                <code>@if</code> (<code>*if</code>) и не изменялось в дальнейшем содержимое этого элемента. Декоратор
+                <code>@ContentChild&#40;&#41;</code> не увидит изменения. Тут нужны уже различные дополнительные решения
+                для такого сценария работы приложения.
+            </p>
+            <p>
+                То есть, иначе говоря, когда параметр <code>static</code> имеет значение <code>true</code>, это влияет
+                на то, в какой момент жизненного цикла мы получаем данные в свойство, которое использует декоратор
+                <code>@ContentChild&#40;&#41;</code> с этим параметром. При этом значении данные будут доступны уже в
+                методе <code>ngOnInit</code>.
+            </p>
+            <p>
+                Но это не является хорошей практикой. Все же
+                <span class="attention"
+                    >рекомендуется позволять Angular самому управлять жизненными цикломами всех компонентов</span
+                >
+                и получать доступ к их информации в соответствующие этапы жизненного цикла. Использование параметра
+                <code>static</code> со значением <code>true</code> следует рассматривать как обходное решение для
+                конкретных проблем, а не как общую практику.
+            </p>`,
+        selected: false,
+        lastUpdate: '10.02.2024',
+    },
+    {
+        title: 'Декоратор <span class="variable">@ContentChildren()</span>',
+        body: ` <p>
+                <span class="attention"
+                    >Декоратор <code>&#64;ContentChildren()</code> позволяет по указанному в нем селектору получать
+                    доступ к содержимым дочерних компонентов, которые заключены между их тегами в месте вызова этих
+                    компонента. Эти содержимые в дочерних компонентах подставляются вместо элементов
+                    <code>ng-content</code>.</span
+                >
+            </p>
+            <p>Данный декоратор имеет следующий синтаксис:</p>
+            <pre><code class="language-javascript">&#64;ViewChildren('selector') propertyName: QueryList&lt;dataType>;</code></pre>
+            <p>
+                Декоратор <code>&#64;ContentChildren()</code> указывается в дочернем компоненте, в отличие от того же
+                декоратора <code>&#64;ViewChildren()</code>, который указывается в классе родительского компонента.
+            </p>
+            <pre><code class="language-html">&lt;!-- шаблон родительского компонента -->
+&lt;app-child>
+	&lt;p #paragrath>Простой параграф&lt;/p> &lt;!-- cодержимое компонента -->
+&lt;/app-child></code></pre>
+            <pre><code class="language-typescript">// класс дочернего компонента
+&#64;ContentChildren('paragrath') paragrath: ElementRef;</code></pre>
+            <p>
+                В качестве селектора в основном используют следующие варианты (есть и другие, но они используются
+                гораздо реже):
+            </p>
+            <ul>
+                <li>
+                    <span class="attention">Шаблонные переменные</span> - поиск в содержимом будет осуществляться по
+                    шаблонным переменным;
+                </li>
+                <li>
+                    <span class="attention">TemplateRef</span> - поиск в содержимом будет осуществляться по элементам
+                    <code>ng-template</code>;
+                </li>
+                <li>
+                    <span class="attention">Название класса компонента или директивы</span> - поиск в содержимом будет
+                    осуществляться по названию класса компонента или директивы.
+                </li>
+            </ul>
+            <p>Ниже представлены примеры для каждого из этих случаев:</p>
+            <pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;app-child>
+	&lt;p #paragrath>Простой параграф&lt;/p> (1)
+&lt;/app-child> 
+
+&lt;app-child>
+	&lt;ng-template #template>Параграф внутри элемента ng-template&lt;/ng-template> (2)
+&lt;/app-child> 
+&lt;app-child>
+	&lt;ng-template>Параграф внутри элемента ng-template&lt;/ng-template> (2*)
+&lt;/app-child> 
+
+&lt;app-child>
+	&lt;app-another-child #component>&lt;/app-another-child> (3)
+&lt;/app-child>
+&lt;app-child>
+	&lt;app-another-child>&lt;/app-another-child> (3*)
+&lt;/app-child>
+</code></pre>
+            <pre><code class="language-typescript">// класс компонента
+&#64;ContentChildren('paragrath') paragrath: QueryList&lt;ElementRef<HTMLParagraphElement></HTMLParagraphElement>>; (1)
+
+&#64;ContentChildren('template') template: QueryList&lt;TemplateRef<HTMLParagraphElement></HTMLParagraphElement>>; (2)
+&#64;ContentChildren(TemplateRef) template: QueryList&lt;TemplateRef<HTMLParagraphElement></HTMLParagraphElement>>; (2*)
+
+&#64;ContentChildren('component') component: QueryList&lt;ChildComponent>; (3)
+&#64;ContentChildren(AnotherChildComponent) component: QueryList&lt;AnotherChildComponent>; (3*)</code></pre>
+            <p>
+                В примерах выше со звоздочкой показано как использовать декоратор
+                <code>&#64;ContentChildren&#40;&#41;</code> без использования шаблонных переменных в разметке.
+            </p>
+            <p>Можно так же указывать и мультиселекторы, делается это через запятую в формате строки:</p>
+            <pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;app-child>
+	&lt;app-another-child>&lt;/app-another-child>
+	&lt;p #paragrath>Простой параграф&lt;/p>
+&lt;/app-child> </code></pre>
+            <pre><code class="language-typescript">// класс компонента
+&#64;ContentChildren('paragrath, AnotherChildComponent') paragrath: ElementRef&lt;HTMLParagraphElement | AnotherChildComponent>;</code></pre>
+            <p>
+                В примере выше под условие селектора попадают оба элемента разметки, но т.к. дочерний компонент в
+                разметке стоит раньше параграфа, поэтому именно его данные декоратор
+                <code>&#64;ContentChildren&#40;&#41;</code> запишет в свойство <code>paragrath</code>.
+            </p>`,
+        selected: false,
+        lastUpdate: '10.02.2024',
+    },
+    {
+        title: 'Метод жизненного цикла, начиная с которого доступна информация в декораторах <span class="variable">@ContentChild()</span> и <span class="variable">@ContentChildren()</span>',
+        body: `<p>
+                Т.к. декораторы свойств <code>@ContentChild&#40;&#41;</code> и
+                <code>@ContentChildren&#40;&#41;</code> следят за содержимым текущего компонента, а оно инициализуруется
+                перед вызовом метода <code>ngAfterContentInit</code>, следовательно, первые данные появятся именно в
+                этом методе. До него будет <code>undefined</code>.
+            </p>`,
+        selected: false,
+        lastUpdate: '10.02.2024',
+    },
+    {
+        title: 'Параметр <span class="variable">read</span> декораторов <span class="variable">@ContentChild()</span> и <span class="variable">@ContentChildren()</span>',
+        body: `<p>
+                У декораторов <code>@ContentChild&#40;&#41;</code> и <code>@ContentChildren&#40;&#41;</code> есть
+                параметр <code>read</code>, который служит, своего рода, фильтром получаемых данных по указанному
+                селектору.
+            </p>
+            <p>
+                В качестве значения для параметра <code>read</code> в основном используют следующие варианты (есть и
+                другие, но они используются гораздо реже):
+            </p>
+            <ul>
+                <li>
+                    <span class="attention">ElementRef</span>, если мы ожидаем получение данных только через шаблонную
+                    переменную;
+                </li>
+                <li>
+                    <span class="attention">TemplateRef</span>, если мы ожидаем получение только элементов
+                    <code>ng-template</code>;
+                </li>
+                <li>
+                    <span class="attention">Название класса компонента или директивы</span>, если мы ожидаем получение
+                    только компонентов или директив соответственно.
+                </li>
+            </ul>
+            <p>
+                Допустим, в содержимом компонента имеются параграф и дочерний компонент с одинаковым названием шаблонной
+                переменной, причем дочерний компонент идет после параграфа, что важно, например, для декоратора
+                <code>@ContentChild&#40;&#41;</code>:
+            </p>
+            <pre><code class="language-html">&lt;app-child #element>
+	&lt;p #element>Простой параграф&lt;/p>
+	&lt;app-another-child #element>&lt;/app-another-child>
+&lt;/app-child></code></pre>
+            <p>
+                Однако, с помощью параметра <code>read</code> мы можем не учитывать параграфы и фильтровать их, оставляя
+                лишь найденные дочерние компоненты:
+            </p>
+            <pre><code class="language-typescript">&#64;ContentChild('element', { read: AnotherChildComponent }) element: ElementRef&lt;AnotherChildComponent>;</code></pre>
+            <p>В итоге, в свойстве <code>element</code> будут лишь данные дочернего компонента.</p>`,
+        selected: false,
+        lastUpdate: '10.02.2024',
+    },
+    {
+        title: 'Параметр <span class="variable">descendants</span> декораторов <span class="variable">@ContentChild()</span> и <span class="variable">@ContentChildren()</span>',
+        body: `<p>
+                В отличие от декораторов <code>@ViewChild&#40;&#41;</code> и <code>@ViewChildren&#40;&#41;</code>, у
+                декораторов <code>@ContentChild&#40;&#41;</code> и <code>@ContentChildren&#40;&#41;</code>, есть еще
+                параметр <code>descendants</code>, который
+                <span class="attention">отвечает за то, будут ли включены потомки в поиск по селектору или нет</span>.
+            </p>
+            <pre><code class="language-typescript">&#64;ContentChild(ChildComponent, { descendants: false }) component: ChildComponent;</code></pre>
+            <p>
+                По умолчанию данный параметр имеет значение <code>true</code>. Это означает, что, если мы, например, в
+                шаблоне сделаем пример, когда в содержимом компонента будет находится компонент, а внутри него еще
+                компонент и он имеет шаблонную переменную, то при поиске декораторы
+                <code>@ContentChild&#40;&#41;</code> и <code>@ContentChildren&#40;&#41;</code> его увидят, если указать
+                соответствующий для него селектор.
+            </p>
+            <pre><code class="language-html">&lt;!-- шаблон родительского компонента -->
+&lt;app-child>
+  &lt;app-another-child>
+    &lt;app-deep-child #descendants>
+	  Компонент deep-child
+    &lt;/app-deep-child>
+  &lt;/app-another-child>
+&lt;/app-child></code></pre>
+
+            <pre><code class="language-typescript">&#64;ContentChild('deep', { descendants: true }) component!: DeepComponent;</code></pre>
+            <p>
+                В примере выше компонент <code>DeepComponent</code> будет найден по шаблонной перенной
+                <code>deep</code>. Но если изменить значение параметра <code>descendants</code> на <code>false</code>,
+                то
+                <span class="attention">
+                    поиск по селектору будет происходить среди только прямых потомков, которые находятся первом уровне
+                    вложенности </span
+                >.
+            </p>
+            <pre><code class="language-typescript">&#64;ContentChild('deep', { descendants: false }) component!: DeepComponent;</code></pre>
+            <p>
+                Теперь в свойстве <code>component</code> будет <code>undefined</code>, т.к. нужный нам компонент
+                <span class="attention">не находится на первом уровне вложенности</span>.
+            </p>`,
+        selected: false,
+        lastUpdate: '10.02.2024',
     },
     {
         title: 'Декоратор <span class="variable">@Attribute()</span>',
