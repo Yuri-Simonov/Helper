@@ -1,0 +1,8 @@
+<app-title title="Тесты по Angular"></app-title>
+<section class="tests">
+    <mat-progress-bar mode="determinate" [value]="progressBarPercent"></mat-progress-bar>
+    <app-question-card
+        [testQuestions]="questionsAndAnswers"
+        (changeProgressBar)="changeProgressBar($event)"
+    ></app-question-card>
+</section>

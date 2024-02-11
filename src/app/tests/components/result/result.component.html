@@ -1,0 +1,10 @@
+<article class="result">
+    <h2 class="result__title">Тест закончен</h2>
+    <h3 class="result__subtitle">Ваши результаты:</h3>
+    <ul class="result__answers"></ul>
+    @for (answer of userAnswersProps; track $index) {
+        <li class="result__answer" [ngClass]="{ result__answer_wrong: !answer.right }">
+            {{ answer.text }}
+        </li>
+    }
+</article>

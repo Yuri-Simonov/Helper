@@ -1,0 +1,60 @@
+.question-card {
+    display: none;
+
+    &_active {
+        display: initial;
+    }
+
+    &__radio-group {
+        display: flex;
+        flex-direction: column;
+        margin: 15px 0;
+        align-items: flex-start;
+    }
+
+    &__radio-button {
+        margin: 5px;
+    }
+
+    mat-radio-button ::ng-deep {
+        label {
+            cursor: pointer;
+            color: var(--text-color);
+            transition: 0.3s;
+
+            &:hover {
+                color: var(--primary-color);
+            }
+        }
+
+        .mdc-radio__outer-circle,
+        .mdc-radio__inner-circle {
+            border-color: var(--text-color) !important;
+            transition: 0.3s;
+        }
+
+        &:hover {
+            .mdc-radio__outer-circle,
+            .mdc-radio__inner-circle {
+                border-color: var(--primary-color) !important;
+            }
+
+            label {
+                color: var(--primary-color);
+            }
+        }
+    }
+
+    &__next-button {
+        display: block;
+        max-width: 200px;
+        margin: 0 auto;
+        transition: 0.3s;
+
+        &:disabled {
+            color: inherit;
+            background-color: var(--primary-color);
+            opacity: 0.5;
+        }
+    }
+}
