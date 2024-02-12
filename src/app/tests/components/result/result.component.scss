@@ -1,5 +1,38 @@
 .result {
     &__title {
         text-align: center;
+        font-size: 26px;
+    }
+
+    &__subtitle {
+        font-size: 20px;
+
+        &_20 {
+            color: var(--test-red);
+        }
+        &_40 {
+            color: var(--test-orange);
+        }
+        &_60 {
+            color: var(--test-yellow);
+        }
+        &_80 {
+            color: var(--test-lightgreen);
+        }
+        &_100 {
+            color: var(--test-green);
+        }
+    }
+
+    &__prompt {
+        opacity: 0.5;
+
+        a {
+            color: var(--text-color);
+        }
+    }
+
+    app-button {
+        margin: 1rem auto;
     }
 }

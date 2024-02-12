@@ -7,7 +7,13 @@
             (changeCurrentValue)="changeCurrentValue($event)"
             [questionIndex]="currentQuestionIndex"
         ></app-question-card>
-        <app-button text="Следующий вопрос" [disabled]="!currentValue" (click)="showNextQuestion()"></app-button>
+        <app-button
+            appNextQuestion
+            text="Следующий вопрос"
+            [disabled]="!currentValue"
+            (nextQuestion)="currentValue && showNextQuestion()"
+            (click)="showNextQuestion()"
+        ></app-button>
     } @else {
         <app-result [questionsAndAnswers]="questionsAndAnswers" [userAnswers]="userAnswers"></app-result>
     }
