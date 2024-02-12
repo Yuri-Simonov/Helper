@@ -2,9 +2,10 @@
     <h2 class="result__title">Тест закончен</h2>
     <h3 class="result__subtitle">Ваши результаты:</h3>
     <ul class="result__answers"></ul>
-    @for (answer of userAnswersProps; track $index) {
-        <li class="result__answer" [ngClass]="{ result__answer_wrong: !answer.right }">
-            {{ answer.text }}
-        </li>
-    }
+    <app-question-card
+        [questionsAndAnswers]="questionsAndAnswersProps"
+        [userAnswers]="userAnswersProps"
+        mode="result"
+    ></app-question-card>
 </article>
+<div class="">Если возникли какие-либо вопросы по вопросам теста, задавайте их в чате. Ссылка на чат в телеграме.</div>

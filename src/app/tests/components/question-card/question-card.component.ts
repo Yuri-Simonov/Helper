@@ -15,6 +15,8 @@ export class QuestionCardComponent {
 
     @Input('questionsAndAnswers') questionsAndAnswersProps: IQuestionsAndAnswer[];
     @Input('questionIndex') questionIndexProps: number;
+    @Input('userAnswers') userAnswersProps: ITestAnswerOption[];
+    @Input('mode') modeProps: 'test' | 'result' = 'test';
     @Output() changeCurrentValue = new EventEmitter<ITestAnswerOption | undefined>();
 
     setNewCurrentValue(value?: ITestAnswerOption) {
