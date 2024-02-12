@@ -8,6 +8,6 @@ import { IQuestionsAndAnswer, ITestAnswerOption } from '../../../shared/types';
     styleUrl: './result.component.scss',
 })
 export class ResultComponent {
-    @Input('testQuestion') testQuestionProps: IQuestionsAndAnswer[];
+    @Input('questionsAndAnswers') questionsAndAnswersProps: IQuestionsAndAnswer[];
     @Input('userAnswers') userAnswersProps: ITestAnswerOption[];
 }

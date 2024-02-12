@@ -1,8 +1,14 @@
 <app-title title="Тесты по Angular"></app-title>
 <section class="tests">
     <mat-progress-bar mode="determinate" [value]="progressBarPercent"></mat-progress-bar>
-    <app-question-card
-        [testQuestions]="questionsAndAnswers"
-        (changeProgressBar)="changeProgressBar($event)"
-    ></app-question-card>
+    @if (currentQuestionIndex < questionsAndAnswers.length) {
+        <app-question-card
+            [questionsAndAnswers]="questionsAndAnswers"
+            (changeCurrentValue)="changeCurrentValue($event)"
+            [questionIndex]="currentQuestionIndex"
+        ></app-question-card>
+        <app-button text="Следующий вопрос" [disabled]="!currentValue" (click)="showNextQuestion()"></app-button>
+    } @else {
+        <app-result [questionsAndAnswers]="questionsAndAnswers" [userAnswers]="userAnswers"></app-result>
+    }
 </section>

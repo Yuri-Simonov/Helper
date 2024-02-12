@@ -13,19 +13,12 @@ export class QuestionCardComponent {
     progressBarPercent: number = 0;
     userAnswers: ITestAnswerOption[] = [];
 
-    @Input('testQuestions') testQuestionsProps: IQuestionsAndAnswer[];
-    @Output() changeProgressBar = new EventEmitter<number>();
-
-    showNextQuestion() {
-        this.currentQuestionIndex++;
-        if (this.currentValue) {
-            this.userAnswers.push(this.currentValue);
-        }
-        this.changeProgressBar.emit(this.currentQuestionIndex);
-        this.setNewCurrentValue();
-    }
+    @Input('questionsAndAnswers') questionsAndAnswersProps: IQuestionsAndAnswer[];
+    @Input('questionIndex') questionIndexProps: number;
+    @Output() changeCurrentValue = new EventEmitter<ITestAnswerOption | undefined>();
 
     setNewCurrentValue(value?: ITestAnswerOption) {
         this.currentValue = value;
+        this.changeCurrentValue.emit(value);
     }
 }
