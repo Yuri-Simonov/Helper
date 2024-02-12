@@ -23,4 +23,17 @@ export class AngularComponent {
     changeProgressBar(currentIndex: number) {
         this.progressBarPercent = (currentIndex / this.questionsAndAnswers.length) * 100;
     }
+
+    showNextQuestion() {
+        this.currentQuestionIndex++;
+        if (this.currentValue) {
+            this.userAnswers.push(this.currentValue);
+        }
+        this.changeProgressBar(this.currentQuestionIndex);
+        this.changeCurrentValue();
+    }
+
+    changeCurrentValue(newCurrentValue?: ITestAnswerOption | undefined) {
+        this.currentValue = newCurrentValue;
+    }
 }

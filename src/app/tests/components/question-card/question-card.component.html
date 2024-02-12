@@ -1,31 +1,18 @@
-@if (currentQuestionIndex < testQuestionsProps.length) {
-    @for (question of testQuestionsProps; track $index) {
-        <article class="question-card" [ngClass]="{ 'question-card_active': $index === currentQuestionIndex }">
-            <div class="question-card__description">
-                <h2 class="question-card__title">{{ question.question }}</h2>
-            </div>
-            <mat-radio-group class="question-card__radio-group">
-                @for (answers of question.answers; track $index) {
-                    <mat-radio-button
-                        class="question-card__radio-button"
-                        [value]="answers.text"
-                        (change)="setNewCurrentValue(answers)"
-                    >
-                        {{ answers.text }}
-                    </mat-radio-button>
-                }
-            </mat-radio-group>
-        </article>
-    }
-    <button
-        mat-raised-button
-        color="primary"
-        class="question-card__next-button"
-        (click)="showNextQuestion()"
-        [disabled]="!currentValue"
-    >
-        Следующий вопрос
-    </button>
-} @else {
-    <app-result [testQuestion]="testQuestionsProps" [userAnswers]="userAnswers"></app-result>
+@for (question of questionsAndAnswersProps; track $index) {
+    <article class="question-card" [ngClass]="{ 'question-card_active': $index === questionIndexProps }">
+        <div class="question-card__description">
+            <h2 class="question-card__title">{{ question.question }}</h2>
+        </div>
+        <mat-radio-group class="question-card__radio-group">
+            @for (answers of question.answers; track $index) {
+                <mat-radio-button
+                    class="question-card__radio-button"
+                    [value]="answers.text"
+                    (change)="setNewCurrentValue(answers)"
+                >
+                    {{ answers.text }}
+                </mat-radio-button>
+            }
+        </mat-radio-group>
+    </article>
 }
