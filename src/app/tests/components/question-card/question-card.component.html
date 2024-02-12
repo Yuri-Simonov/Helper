@@ -1,14 +1,32 @@
 @for (question of questionsAndAnswersProps; track $index) {
-    <article class="question-card" [ngClass]="{ 'question-card_active': $index === questionIndexProps }">
+    <article
+        class="question-card"
+        [ngClass]="{
+            'question-card_active': $index === questionIndexProps || modeProps === 'result',
+            'question-card_result': modeProps === 'result',
+            'question-card_right': modeProps === 'result' && userAnswersProps[$index].right,
+            'question-card_wrong': modeProps === 'result' && !userAnswersProps[$index].right
+        }"
+    >
         <div class="question-card__description">
             <h2 class="question-card__title">{{ question.question }}</h2>
         </div>
         <mat-radio-group class="question-card__radio-group">
-            @for (answers of question.answers; track $index) {
+            @for (answers of question.answers; track childIndex; let childIndex = $index) {
                 <mat-radio-button
                     class="question-card__radio-button"
+                    [ngClass]="{
+                        'question-card__radio-button_test': modeProps === 'test',
+                        'question-card__radio-button_right': modeProps === 'result' && answers.right,
+                        'question-card__radio-button_wrong':
+                            modeProps === 'result' &&
+                            userAnswersProps[$index].text === answers.text &&
+                            !userAnswersProps[$index].right
+                    }"
                     [value]="answers.text"
                     (change)="setNewCurrentValue(answers)"
+                    [disabled]="modeProps === 'result'"
+                    [checked]="userAnswersProps?.[$index]?.text === answers.text"
                 >
                     {{ answers.text }}
                 </mat-radio-button>

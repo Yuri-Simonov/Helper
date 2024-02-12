@@ -10,4 +10,22 @@ import { IQuestionsAndAnswer, ITestAnswerOption } from '../../../shared/types';
 export class ResultComponent {
     @Input('questionsAndAnswers') questionsAndAnswersProps: IQuestionsAndAnswer[];
     @Input('userAnswers') userAnswersProps: ITestAnswerOption[];
+
+    ngOnChanges() {
+        // this.userAnswersProps = [
+        //     {
+        //         text: 'Winter',
+        //         right: true,
+        //     },
+        //     {
+        //         text: 'Spring',
+        //         right: false,
+        //     },
+        //     {
+        //         text: 'Winter',
+        //         right: true,
+        //     },
+        // ];
+        console.log('userAnswersProps', this.userAnswersProps);
+    }
 }
