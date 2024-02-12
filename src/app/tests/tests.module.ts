@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { MaterialModule, TitleModule } from '../shared/modules';
 
+import { NextQuestionDirective } from './directives/next-question.directive';
+
 import { AngularComponent } from './pages/angular/angular.component';
 import { QuestionCardComponent } from './components/question-card/question-card.component';
 import { ResultComponent } from './components/result/result.component';
@@ -19,7 +21,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [AngularComponent, QuestionCardComponent, ResultComponent],
+    declarations: [AngularComponent, QuestionCardComponent, ResultComponent, NextQuestionDirective],
     imports: [CommonModule, RouterModule.forChild(routes), MaterialModule, TitleModule, ButtonComponent],
 })
 export class TestsModule {}

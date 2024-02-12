@@ -1,11 +1,26 @@
 <article class="result">
-    <h2 class="result__title">Тест закончен</h2>
-    <h3 class="result__subtitle">Ваши результаты:</h3>
-    <ul class="result__answers"></ul>
+    <h2 class="result__title">Тест закончен!</h2>
+    <h3 class="result__subtitle">
+        Ваш результат:
+        <span
+            [ngClass]="{
+                result__subtitle_20: percentRightAnswers <= 20,
+                result__subtitle_40: percentRightAnswers > 20 && percentRightAnswers <= 40,
+                result__subtitle_60: percentRightAnswers > 40 && percentRightAnswers <= 60,
+                result__subtitle_80: percentRightAnswers > 60 && percentRightAnswers <= 80,
+                result__subtitle_100: percentRightAnswers > 80
+            }"
+            >{{ amountRightAnswers }} из {{ questionsAndAnswersProps.length }} ({{ percentRightAnswers }}%)</span
+        >
+    </h3>
+    <div class="result__prompt">
+        Если возникли какие-либо вопросы во время прохождения теста, задайте их в чате.
+        <a href="https://t.me/yuri_simonov_helper" target="_blank">Ссылка на чат</a>.
+    </div>
+    <app-button text="Пройти тест заново" (click)="passTestAgain()"></app-button>
     <app-question-card
         [questionsAndAnswers]="questionsAndAnswersProps"
         [userAnswers]="userAnswersProps"
         mode="result"
     ></app-question-card>
 </article>
-<div class="">Если возникли какие-либо вопросы по вопросам теста, задавайте их в чате. Ссылка на чат в телеграме.</div>
