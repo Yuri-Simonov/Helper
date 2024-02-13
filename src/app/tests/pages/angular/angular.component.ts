@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { angularTestQuestions } from '../../questions/angular';
 import { IQuestionsAndAnswer, ITestAnswerOption } from '../../../shared/types';
+import { getQuestions } from '../../utils/generate-question-list';
 
 @Component({
     selector: 'app-angular',
@@ -16,7 +17,7 @@ export class AngularComponent {
     userAnswers: ITestAnswerOption[] = [];
 
     constructor() {
-        this.questionsAndAnswers = angularTestQuestions;
+        this.questionsAndAnswers = getQuestions(angularTestQuestions);
         this.changeProgressBar(this.currentQuestionIndex);
     }
 
