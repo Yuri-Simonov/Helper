@@ -13,11 +13,17 @@ export class AngularComponent {
     currentValue: ITestAnswerOption | undefined;
     currentQuestionIndex: number = 0;
     progressBarPercent: number = 0;
-    questionsAndAnswers: IQuestionsAndAnswer[];
+    questionsAndAnswers: IQuestionsAndAnswer[] = [];
     userAnswers: ITestAnswerOption[] = [];
 
     constructor() {
-        this.questionsAndAnswers = getQuestions(angularTestQuestions);
+        if (angularTestQuestions.length < 20) {
+            this.questionsAndAnswers = getQuestions(angularTestQuestions, angularTestQuestions.length);
+        } else {
+            this.questionsAndAnswers = getQuestions(angularTestQuestions);
+        }
+
+        this.questionsAndAnswers = this.shuffle(this.questionsAndAnswers);
         this.changeProgressBar(this.currentQuestionIndex);
     }
 
@@ -36,5 +42,18 @@ export class AngularComponent {
 
     changeCurrentValue(newCurrentValue?: ITestAnswerOption | undefined) {
         this.currentValue = newCurrentValue;
+    }
+
+    shuffle(questionsArr: IQuestionsAndAnswer[]): IQuestionsAndAnswer[] {
+        return questionsArr.map((item) => {
+            let newArr = [...item.answers];
+            for (let i = newArr.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+            }
+            item.answers = [...newArr];
+
+            return item;
+        });
     }
 }
