@@ -38,3 +38,5 @@ lastUpdate: '10.02.2024',
 
 <p>В консоли мы увидим следующее:</p>
 <pre><code class="language-typescript"></code></pre>
+
+<code></code>

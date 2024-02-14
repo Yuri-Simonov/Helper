@@ -2,276 +2,239 @@ import { IQuestionsAndAnswer } from '../../shared/types';
 
 export const angularTestQuestions: IQuestionsAndAnswer[] = [
     {
-        question: `1`,
+        question: `Какое из приведенных ниже различий между директивой и компонентом является верным?`,
         answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
+            { text: 'У компонента есть свой собственный шаблон, у директивы - нет', right: true },
+            { text: 'Нет никакой разницы, т.к. компоненты и директивы - это одно и то же', right: false },
+            { text: 'У директивы есть свой собственный шаблон, у компонента - нет', right: false },
         ],
     },
     {
-        question: `2`,
+        question: `Какое из приведенных ниже различий между директивой и компонентом является верным?`,
         answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
+            {
+                text: 'Директивы имеют декоратор @Directive(), а компоненты - @Component()',
+                right: true,
+            },
+            { text: 'Нет никакой разницы, т.к. компоненты и директивы - это одно и то же', right: false },
+            {
+                text: 'Директивы имеют декоратор @Component(), а компоненты - @Directive()',
+                right: false,
+            },
+            {
+                text: 'Директивы служат хранилищем данных для компонента',
+                right: false,
+            },
         ],
     },
     {
-        question: `3`,
+        question: `Какой оператор RxJs ждет выполнения всех переданных в него потоков и в результате дает объединенный поток с последними их значениями?`,
         answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
+            { text: 'forkJoin', right: true },
+            { text: 'zip', right: false },
+            { text: 'concat', right: false },
+            { text: 'merge', right: false },
+            { text: 'join', right: false },
+            { text: 'fork', right: false },
+            { text: 'Такого оператора в RxJs не существует', right: false },
         ],
     },
     {
-        question: `4`,
+        question: `Какого оператора нет в RxJs?`,
         answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
+            { text: 'fork', right: true },
+            { text: 'forkJoin', right: false },
+            { text: 'zip', right: false },
+            { text: 'concat', right: false },
+            { text: 'merge', right: false },
+            { text: 'в RxJs есть все указанные операторы', right: false },
         ],
     },
     {
-        question: `5`,
+        question: `Какого оператора нет в RxJs?`,
         answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
+            { text: 'join', right: true },
+            { text: 'forkJoin', right: false },
+            { text: 'zip', right: false },
+            { text: 'concat', right: false },
+            { text: 'merge', right: false },
+            { text: 'в RxJs есть все указанные операторы', right: false },
         ],
     },
     {
-        question: `6`,
+        question: `Какого оператора нет в RxJs?`,
         answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
+            { text: 'switch', right: true },
+            { text: 'forkJoin', right: false },
+            { text: 'zip', right: false },
+            { text: 'concat', right: false },
+            { text: 'merge', right: false },
+            { text: 'в RxJs есть все указанные операторы', right: false },
         ],
     },
     {
-        question: `7`,
+        question: `Какого оператора нет в RxJs?`,
         answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
+            { text: 'в RxJs есть все указанные операторы', right: true },
+            { text: 'forkJoin', right: false },
+            { text: 'zip', right: false },
+            { text: 'concat', right: false },
+            { text: 'merge', right: false },
+            { text: 'switchMap', right: false },
         ],
     },
     {
-        question: `8`,
+        question: `Какие есть виды pipe в Angular?`,
         answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
+            { text: 'pure и impure', right: true },
+            { text: 'pure, impure и async', right: false },
+            { text: 'sync и async', right: false },
+            { text: 'pure, impure, sync и async', right: false },
         ],
     },
     {
-        question: `9`,
+        question: `Что такое Guards и зачем они нужны в Angular?`,
         answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
+            {
+                text: 'Guard - это одна из сущностей в Angular, которая используется для контроля доступа к определенным частям приложения',
+                right: true,
+            },
+            {
+                text: 'Guard - это встроенный механизм в Angular, которая защищает приложение от попыток использования вредоносного кода извне',
+                right: false,
+            },
+            {
+                text: 'Guard - это встроенный модуль в Angular, который отвечает за маршрутизацию',
+                right: false,
+            },
+            {
+                text: 'С помощью Guards осуществляется или запрещается запуск приложения c настройкой "production = true"',
+                right: false,
+            },
         ],
     },
     {
-        question: `10`,
+        question: `В какое из полей конфигурационного объекта декоратора @NgModule() нужно подключать компоненты, директивы и пайпы, если они не являются standalone сущностью (т.е. "standalone = false")?`,
         answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
+            { text: 'declarations', right: true },
+            { text: 'imports', right: false },
+            { text: 'providers', right: false },
+            { text: 'exports', right: false },
+            { text: 'bootstrap', right: false },
         ],
     },
     {
-        question: `11`,
+        question: `В какое из полей конфигурационного объекта декоратора @NgModule() нужно подключать компоненты, директивы и пайпы, если они являются standalone сущностью (т.е. "standalone = true")?`,
         answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
+            { text: 'imports', right: true },
+            { text: 'declarations', right: false },
+            { text: 'exports', right: false },
+            { text: 'providers', right: false },
+            { text: 'bootstrap', right: false },
         ],
     },
     {
-        question: `12`,
+        question: `Есть ли разница между AngularJS и Angular?`,
         answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
+            {
+                text: 'Это два разных фреймворка, причем Angular является более современным по отношению к AngularJS, т.к. в нем используются TypeScript и последнии версии стандартов языка JavaScript',
+                right: true,
+            },
+            {
+                text: 'Нет никакой разницы, т.к. приставку "JS" просто убрали со временем и решили оставить просто Angular',
+                right: false,
+            },
+            {
+                text: 'Это два разных фреймворка, причем AngularJS является более современным по отношению к Angular, т.к. в нем используются TypeScript и последнии версии стандартов языка JavaScript',
+                right: false,
+            },
         ],
     },
     {
-        question: `13`,
+        question: `Что такое модуль в Angular?`,
         answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
+            {
+                text: 'Это класс c декоратором @NgModule(), который служит изолирующей логической объединяющей структурой для компонентов, директив, фильтров и сервисов',
+                right: true,
+            },
+            {
+                text: 'Это корневой компонент, без которого невозможна работа приложения',
+                right: false,
+            },
+            {
+                text: 'Это встроенный интерфейс командной строки для создания, разработки и поддержки Angular приложений',
+                right: false,
+            },
         ],
     },
     {
-        question: `14`,
+        question: `Что такое компонент в Angular?`,
         answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
+            {
+                text: 'Это часть интерфейса приложения с собственными шаблоном, логикой и стилями. Все компоненты в совокупности и есть приложение Angular',
+                right: true,
+            },
+            {
+                text: 'Это основа Angular-приложения, т.к. к нему подключаются все имеющиеся в приложении модули',
+                right: false,
+            },
+            {
+                text: 'Это специальные теги, на которые можно вешать директивы',
+                right: false,
+            },
         ],
     },
     {
-        question: `15`,
+        question: `В чем состоит отличие модуля от компонента`,
         answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
+            {
+                text: 'Модуль - это изолирующая логическая структура, объединяющая внутри себя более мелкие составляющие блоки, например компоненты, которые являются частями интерфейса приложения (более мелкие составляющие блоки, чем модули)',
+                right: true,
+            },
+            {
+                text: 'Модуль - это часть интерфейса приложения, а компонент - это изолирующая логическая структура. Компонент объединяет внутри себя более мелкие составляющие блоки, к которым относятся модули',
+                right: false,
+            },
+            {
+                text: 'Нет правильного ответа',
+                right: false,
+            },
+            {
+                text: 'Модулем называется корневой файл приложения, к которому подключаются все остальные логические блоки, называющиеся компонентами',
+                right: false,
+            },
         ],
     },
     {
-        question: `16`,
+        question: `Какой параметр конфигурационного объекта декоратора @Component() является обязательным?`,
         answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `17`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `18`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `19`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `20`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `21`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `22`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `23`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `24`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `25`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `26`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `27`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `28`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `29`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `30`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `31`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `32`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `33`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `34`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `35`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `36`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `37`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `38`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
-        ],
-    },
-    {
-        question: `39check`,
-        answers: [
-            { text: 'Winter', right: true },
-            { text: 'Spring', right: false },
+            {
+                text: 'Для данного декоратора обязательным является наличие шаблона, т.к. компонент - это та же директива, но со своим собственным HTML-шаблоном. И т.к. шаблон можно задать через параметры "template" или "templateUrl", то достаточно будет указать любой из них',
+                right: true,
+            },
+            {
+                text: 'Для данного декоратора обязательным является наличие шаблона, т.к. компонент - это та же директива, но со своим собственным HTML-шаблоном. Поэтому всегда необходимо указывать параметр "template"',
+                right: false,
+            },
+            {
+                text: 'Для данного декоратора обязательным является наличие шаблона, т.к. компонент - это та же директива, но со своим собственным HTML-шаблоном. Поэтому всегда необходимо указывать параметр "templateUrl"',
+                right: false,
+            },
+            {
+                text: 'Для данного декоратора обязательным является указание селектора, т.е. название текущего компонента, с помощью которого можно использовать текущий компонент в шаблонах других компонентов',
+                right: false,
+            },
+            {
+                text: 'У данного декоратора нет обязательных параметров в конфигурационном объекте',
+                right: false,
+            },
         ],
     },
 ];
+// {
+//     question: ``,
+//     answers: [
+//         { text: '', right: true },
+//         { text: '', right: false },
+//     ],
+// },
