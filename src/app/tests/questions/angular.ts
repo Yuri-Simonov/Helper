@@ -230,6 +230,76 @@ export const angularTestQuestions: IQuestionsAndAnswer[] = [
             },
         ],
     },
+    {
+        question: `Что такое сервисы и зачем они нужны в Angular?`,
+        answers: [
+            {
+                text: 'Сервисы - это одна из разновидностей сущностей в Angular, которая служит своего рода хранилищем данных, к которому можно обращаться из различных частей приложения',
+                right: true,
+            },
+            {
+                text: 'Сервисы - это один из встроенных модулей в Angular, с помощью которого осуществляются запросы к серверу для получения данных',
+                right: false,
+            },
+            {
+                text: 'Сервисы - это один из встроенных модулей в Angular, который используется для CRUD-операций',
+                right: false,
+            },
+        ],
+    },
+    {
+        question: `Какой декоратор в Angular используется для передачи данных от дочернего компонента к родительскому?`,
+        answers: [
+            { text: '@Output()', right: true },
+            { text: '@Input()', right: false },
+            { text: 'Input', right: false },
+            { text: 'Output', right: false },
+        ],
+    },
+    {
+        question: `Как называется css-класс, который добавляется на поле формы при изменении его первоначального значения?`,
+        answers: [
+            { text: '.ng-dirty', right: true },
+            { text: '.ng-pending', right: false },
+            { text: '.ng-pristine', right: false },
+            { text: '.ng-invalid', right: false },
+        ],
+    },
+    {
+        question: `Какая директива в Angular используется для отображения соответствующего компонента по активному маршруту?`,
+        answers: [
+            { text: '<router-outlet></router-outlet>', right: true },
+            { text: '<router-active></router-active>', right: false },
+            { text: '<router-current></router-current>', right: false },
+            { text: '<router-output></router-output>', right: false },
+            { text: '<router-input></router-input>', right: false },
+            { text: '<router-routing></router-routing>', right: false },
+        ],
+    },
+    {
+        question: `Какой метод класса RouterModule должен быть вызван для предоставления всех маршрутов в корневом модуле приложения?`,
+        answers: [
+            { text: 'forRoot', right: true },
+            { text: 'forChild', right: false },
+            { text: 'setRoutes', right: false },
+            {
+                text: 'RouterModule не должен вызывать никакие методы, т.к. все имеющиеся маршруты хранятся в отдельной переменной в корневом модуле приложения и в нем же декларируются',
+                right: false,
+            },
+        ],
+    },
+    {
+        question: `Какой метод класса RouterModule должен быть вызван для регистрации маршрутов в любом другом моделу приложения, отличным от корневого?`,
+        answers: [
+            { text: 'forChild', right: true },
+            { text: 'forRoot', right: false },
+            { text: 'setRoutes', right: false },
+            {
+                text: 'RouterModule не должен вызывать никакие методы, т.к. все имеющиеся маршруты хранятся в отдельной переменной в корневом модуле приложения и в нем же декларируются',
+                right: false,
+            },
+        ],
+    },
 ];
 // {
 //     question: ``,
