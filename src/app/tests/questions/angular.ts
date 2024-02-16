@@ -257,6 +257,15 @@ export const angularTestQuestions: IQuestionsAndAnswer[] = [
         ],
     },
     {
+        question: `Какой декоратор в Angular используется для передачи данных от родительского компонента к дочернему?`,
+        answers: [
+            { text: '@Input()', right: true },
+            { text: '@Output()', right: false },
+            { text: 'Input', right: false },
+            { text: 'Output', right: false },
+        ],
+    },
+    {
         question: `Как называется css-класс, который добавляется на поле формы при изменении его первоначального значения?`,
         answers: [
             { text: '.ng-dirty', right: true },
@@ -268,12 +277,12 @@ export const angularTestQuestions: IQuestionsAndAnswer[] = [
     {
         question: `Какая директива в Angular используется для отображения соответствующего компонента по активному маршруту?`,
         answers: [
-            { text: '<router-outlet></router-outlet>', right: true },
-            { text: '<router-active></router-active>', right: false },
-            { text: '<router-current></router-current>', right: false },
-            { text: '<router-output></router-output>', right: false },
-            { text: '<router-input></router-input>', right: false },
-            { text: '<router-routing></router-routing>', right: false },
+            { text: 'router-outlet', right: true },
+            { text: 'router-active', right: false },
+            { text: 'router-current', right: false },
+            { text: 'router-output', right: false },
+            { text: 'router-input', right: false },
+            { text: 'router-routing', right: false },
         ],
     },
     {
@@ -289,13 +298,233 @@ export const angularTestQuestions: IQuestionsAndAnswer[] = [
         ],
     },
     {
-        question: `Какой метод класса RouterModule должен быть вызван для регистрации маршрутов в любом другом моделу приложения, отличным от корневого?`,
+        question: `Какой метод класса RouterModule должен быть вызван для регистрации маршрутов в любом другом модуле приложения, отличным от корневого?`,
         answers: [
             { text: 'forChild', right: true },
             { text: 'forRoot', right: false },
             { text: 'setRoutes', right: false },
             {
                 text: 'RouterModule не должен вызывать никакие методы, т.к. все имеющиеся маршруты хранятся в отдельной переменной в корневом модуле приложения и в нем же декларируются',
+                right: false,
+            },
+        ],
+    },
+    {
+        question: `Сколько экземпляров пользовательского сервиса будет создано, если добавить этот сервис в поле providers конфигурационного объекта декоратора @Component() для двух разных компонентов?`,
+        answers: [
+            { text: '2', right: true },
+            { text: '0', right: false },
+            { text: '1', right: false },
+            { text: 'У декоратора @Component() нет поля providers в конфигурационном объекте', right: false },
+        ],
+    },
+    {
+        question: `Сколько экземпляров пользовательского сервиса будет создано, если добавить этот сервис в поле providers конфигурационного объекта декоратора @Component() для двух разных компонентов?`,
+        answers: [
+            { text: '2', right: true },
+            { text: '0', right: false },
+            { text: '1', right: false },
+            { text: 'У декоратора @Component() нет поля providers в конфигурационном объекте', right: false },
+        ],
+    },
+    {
+        question: `Верно ли утверждение, что async pipe подписывается на наблюдателя (Observable) и обновляет каждый раз выражение, когда от наблюдателя приходят новые данные`,
+        answers: [
+            { text: 'Да', right: true },
+            { text: 'Нет', right: false },
+        ],
+    },
+    {
+        question: `Можно ли использовать вместе с async pipe другие pipes в одном и том же выражении?`,
+        answers: [
+            { text: 'Можно', right: true },
+            { text: 'Нельзя', right: false },
+            { text: 'Async pipe нет в Angular', right: false },
+        ],
+    },
+    {
+        question: `В чем заключается основное преимущество async pipe?`,
+        answers: [
+            {
+                text: 'Async pipe самостоятельно подписывается на наблюдателя и обновляет выражение каждый раз, когда наблюдатель отправляет новые данные. Это позволяет упростить работу с асинхронными операциями и избежать необходимости вручную управлять подписками и отписками от наблюдателей.',
+                right: true,
+            },
+            {
+                text: 'Async pipe срабатывает после инициализации компонента, что позволяет отображать значения после выполнения синхронного кода',
+                right: false,
+            },
+            {
+                text: 'Async pipe нет в Angular',
+                right: false,
+            },
+            {
+                text: 'У async pipe нет каких-либо преимуществ относильно синхронных пайп. Она просто следит за наблюдателем и обновляет выражение каждый раз, когда наблюдатель отправляет новые данные',
+                right: false,
+            },
+        ],
+    },
+    {
+        question: `Какой декоратор позволяет получить доступ к элементу хоста из директивы или компонента?`,
+        answers: [
+            { text: '@Host()', right: true },
+            { text: '@Attribute()', right: false },
+            { text: '@Parent()', right: false },
+            { text: '@Self()', right: false },
+            { text: '@Root()', right: false },
+        ],
+    },
+    {
+        question: `Верно ли утверждение, что во всем Angular-приложении быть только один элемент <router-outlet>?`,
+        answers: [
+            { text: 'Неверно', right: true },
+            { text: 'Верно', right: false },
+        ],
+    },
+    {
+        question: `Может ли в Angular-приложении быть более одного элемента <router-outlet> в одном и том же компоненте?`,
+        answers: [
+            { text: 'Может', right: true },
+            { text: 'Не может', right: false },
+        ],
+    },
+    {
+        question: `Как в Angular реализуется валидация форм?`,
+        answers: [
+            {
+                text: 'Встроенный функционал валидации форм заложен в модуль FormsModule',
+                right: true,
+            },
+            {
+                text: 'С помощью специальный css-классов, которые добавляются на поля формы, если оно валидно',
+                right: false,
+            },
+            {
+                text: 'Валидацию полей формы создается вручную или используются различные сторонние библиотеки',
+                right: false,
+            },
+        ],
+    },
+    {
+        question: `Основное назначение файла environment.ts в Angular?`,
+        answers: [
+            { text: 'Определение и хранение переменных окружения', right: true },
+            { text: 'Настройка маршрутизации', right: false },
+            { text: 'Настройка структуры приложения', right: false },
+            { text: 'Настройка архитектуры приложения', right: false },
+        ],
+    },
+    {
+        question: `Как можно обработать ошибки HTTP-запросов в сервисе Angular?`,
+        answers: [
+            { text: 'Используя оператор catchError из библиотеки RxJS', right: true },
+            { text: 'Используя оператор catch из библиотеки RxJS', right: false },
+            { text: 'Используя оператор tryCatch из библиотеки RxJS', right: false },
+            { text: 'Используя конструкцию try/catch из нативного JavaScript', right: false },
+            { text: 'Используя конструкцию if/else из нативного JavaScript', right: false },
+        ],
+    },
+    {
+        question: `Какой метод жизненного цикла Angular вызывается после полной инициализации представления компонента?`,
+        answers: [
+            { text: 'ngAfterViewInit', right: true },
+            { text: 'ngOnInit', right: false },
+            { text: 'ngOnChanges', right: false },
+            { text: 'ngOnDestroy', right: false },
+            { text: 'ngAfterContentInit', right: false },
+        ],
+    },
+    {
+        question: `Какой метод жизненного цикла Angular ни разу не вызывается в момент инициализации компонента?`,
+        answers: [
+            { text: 'ngOnDestroy', right: true },
+            { text: 'ngOnChanges', right: false },
+            { text: 'ngAfterViewInit', right: false },
+            { text: 'ngOnInit', right: false },
+            { text: 'ngAfterContentInit', right: false },
+        ],
+    },
+    {
+        question: `Какой метод жизненного цикла Angular вызывается в момент удаления компонента из DOM-дерева?`,
+        answers: [
+            { text: 'ngOnDestroy', right: true },
+            { text: 'ngOnChanges', right: false },
+            { text: 'ngAfterViewInit', right: false },
+            { text: 'ngOnInit', right: false },
+            { text: 'ngAfterContentInit', right: false },
+        ],
+    },
+    {
+        question: `Для чего нужен элемент ng-content?`,
+        answers: [
+            {
+                text: 'Для отображения в шаблоне содержимого, заключенного между тегами компонента в месте его вызова',
+                right: true,
+            },
+            { text: 'Для привязки внешнего содержимого', right: false },
+            { text: 'Для создания динамических шаблонов', right: false },
+            { text: 'Для отображения динамического содержимого', right: false },
+            {
+                text: 'Для отображения в шаблоне содержимого, которое находится внутри элемента ng-template',
+                right: false,
+            },
+        ],
+    },
+    {
+        question: `В чем заключается основное преимущество использования реактивных форм Angular по сравнению с управляемыми шаблонными формами?`,
+        answers: [
+            {
+                text: 'Реактивные формы предоставляют более гибкий и мощный способ управления данными формы',
+                right: true,
+            },
+            {
+                text: 'Реактивные формы предоставляют возможность использовать встроенные валидаторы форм',
+                right: false,
+            },
+            { text: 'Нужно меньше писать кода и проще синтаксис', right: false },
+            {
+                text: 'В реактивных формах данные привязываются автоматически к полям формы',
+                right: false,
+            },
+        ],
+    },
+    {
+        question: `В чем заключается основное назначение библиотеки NgRx?`,
+        answers: [
+            { text: 'Управление состоянием', right: true },
+            { text: 'Управление маршрутизацией', right: false },
+            { text: 'Управление архитектурой проекта', right: false },
+            { text: 'Обработка ошибок HTTP-запросов', right: false },
+        ],
+    },
+    {
+        question: `Какой декоратор используется для создания HTTP-интерцептора?`,
+        answers: [
+            { text: '@Injectable()', right: true },
+            { text: '@HttpInterceptor()', right: false },
+            { text: '@Interceptor()', right: false },
+            { text: '@HttpRequest()', right: false },
+        ],
+    },
+    {
+        question: `Какой из вариантов позволяет повысить производительность Angular-приложение?`,
+        answers: [
+            { text: 'Использование ленивой загрузки модулей', right: true },
+            {
+                text: 'Использование настройки "changeDetection: ChangeDetectionStrategy.Default" в компонентах',
+                right: false,
+            },
+            { text: 'Стараться как можно меньше использовать async pipe в шаблонах компонентов', right: false },
+            { text: 'Писать шаблоны компонентов внутри ts-файлов', right: false },
+        ],
+    },
+    {
+        question: `Для чего используется async pipe в шаблонах Angular?`,
+        answers: [
+            { text: 'Для автоматической отмены подписки на Observables', right: true },
+            { text: 'Для обращения к серверу из шаблона', right: false },
+            { text: 'Для обращения к сервису из шаблона', right: false },
+            {
+                text: 'Async pipe позволяет использовать более двух структурных директив на одном и том же элементе разметки',
                 right: false,
             },
         ],
