@@ -35,11 +35,11 @@ export class HomeComponent {
             links: [{ path: '#', name: 'JavaScript', disabled: true }],
         },
         {
-            id: 'tests',
+            id: 'quizzes',
             title: 'Тесты',
             links: [
                 { path: '#', name: 'JavaScript', disabled: true },
-                { path: 'tests/angular', name: 'Angular' },
+                { path: 'quizzes/angular', name: 'Angular' },
                 { path: '#', name: 'Git', disabled: true },
                 { path: '#', name: 'Разное', disabled: true },
             ],

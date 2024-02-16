@@ -1,5 +1,5 @@
 <app-title title="Тесты по Angular"></app-title>
-<section class="tests">
+<section class="quizzes">
     <mat-progress-bar mode="determinate" [value]="progressBarPercent"></mat-progress-bar>
     @if (currentQuestionIndex < questionsAndAnswers.length) {
         <app-question-card
@@ -18,7 +18,7 @@
         <app-result [questionsAndAnswers]="questionsAndAnswers" [userAnswers]="userAnswers"></app-result>
     }
 </section>
-<!-- <section class="tests">
+<!-- <section class="quizzes">
     <mat-progress-bar mode="determinate" [value]="progressBarPercent"></mat-progress-bar>
     <app-result [questionsAndAnswers]="questionsAndAnswers" [userAnswers]="userAnswers"></app-result>
 </section> -->

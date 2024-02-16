@@ -1,20 +1,20 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { componentQuestions } from '../../questions/component';
-import { changeDetectionQuestions } from '../../questions/change_detection';
-import { decoratorQuestions } from '../../questions/decorator';
-import { directiveQuestions } from '../../questions/directive';
-import { formQuestions } from '../../questions/form';
-import { othersQuestions } from '../../questions/others';
-import { pipeQuestions } from '../../questions/pipe';
-import { routingQuestions } from '../../questions/routing';
-import { rxjsOperatorsQuestions } from '../../questions/rxjs_operators';
-import { rxjsQuestions } from '../../questions/rxjs';
-import { serviceQuestions } from '../../questions/service';
-import { testQuestions } from '../../questions/test';
+import { componentQuestions } from '../../questions/angular/component';
+import { changeDetectionQuestions } from '../../questions/angular/change_detection';
+import { decoratorQuestions } from '../../questions/angular/decorator';
+import { directiveQuestions } from '../../questions/angular/directive';
+import { formQuestions } from '../../questions/angular/form';
+import { othersQuestions } from '../../questions/angular/others';
+import { pipeQuestions } from '../../questions/angular/pipe';
+import { routingQuestions } from '../../questions/angular/routing';
+import { rxjsOperatorsQuestions } from '../../questions/angular/rxjs_operators';
+import { rxjsQuestions } from '../../questions/angular/rxjs';
+import { serviceQuestions } from '../../questions/angular/service';
+import { testQuestions } from '../../questions/angular/test';
 
 import { IList } from '@types';
-import { ngrxQuestions } from 'src/app/theory/angular/questions/ngrx';
+import { ngrxQuestions } from 'src/app/theory/questions/angular/ngrx';
 
 @Component({
     selector: 'app-angular',

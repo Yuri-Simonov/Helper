@@ -15,7 +15,7 @@ import { ButtonComponent } from '../shared/ui/button/button.component';
 // a b c d e f g h i j k l m n o p q r s t u v w x y z
 const routes: Routes = [
     {
-        path: 'tests/angular',
+        path: 'quizzes/angular',
         component: AngularComponent,
     },
 ];
@@ -24,4 +24,4 @@ const routes: Routes = [
     declarations: [AngularComponent, QuestionCardComponent, ResultComponent, NextQuestionDirective],
     imports: [CommonModule, RouterModule.forChild(routes), MaterialModule, TitleModule, ButtonComponent],
 })
-export class TestsModule {}
+export class QuizzesModule {}

@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 
-import { functionQuestions } from '../../questions/function';
-import { prototypeQuestions } from '../../questions/prototype';
+import { functionQuestions } from '../../questions/javascript/function';
+import { prototypeQuestions } from '../../questions/javascript/prototype';
 
 import { IList } from '@types';
 
-import { SidenavService } from '../../../../shared/services/sidenav.service';
+import { SidenavService } from '../../../shared/services/sidenav.service';
 import { ReplaySubject, takeUntil } from 'rxjs';
 
 @Component({

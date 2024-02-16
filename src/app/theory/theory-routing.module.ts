@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AngularComponent } from './components/angular/angular.component';
-
-import { SpoilersModule, TitleModule } from '@modules';
+import { AngularComponent } from './pages/angular/angular.component';
+import { GitComponent } from './pages/git/git.component';
+import { JavascriptComponent } from './pages/javascript/javascript.component';
 
 // а б в г д е ё ж з и й к л м н о п р с т у ф х ц ч ш щ ъ ы ь э ю я
 // a b c d e f g h i j k l m n o p q r s t u v w x y z
@@ -28,11 +27,28 @@ const routes: Routes = [
             { path: '**', redirectTo: '' },
         ],
     },
+    {
+        path: 'theory/git/all',
+        component: GitComponent,
+        // children: [{ path: 'all', component: GitComponent }],
+    },
+    {
+        path: 'theory/javascript',
+        component: JavascriptComponent,
+        children: [
+            { path: 'async', component: JavascriptComponent },
+            { path: 'class', component: JavascriptComponent },
+            { path: 'function', component: JavascriptComponent },
+            { path: 'oop', component: JavascriptComponent },
+            { path: 'others', component: JavascriptComponent },
+            { path: 'prototype', component: JavascriptComponent },
+            { path: '**', redirectTo: '' },
+        ],
+    },
 ];
 
 @NgModule({
-    declarations: [AngularComponent],
-    imports: [CommonModule, RouterModule.forChild(routes), SpoilersModule, TitleModule],
-    providers: [],
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
 })
-export class AngularModule {}
+export class TheoryRoutingModule {}
