@@ -5,14 +5,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { HighlightJsModule } from 'ngx-highlight-js';
 
 import { AppComponent } from './app.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HeaderModule } from 'src/app/shared/modules/header/header.module';
-import { FooterModule } from 'src/app/shared/modules/footer/footer.module';
 import { HomeModule } from 'src/app/home/home.module';
 import { QuizzesModule } from './quizzes/quizzes.module';
 import { TheoryModule } from './theory/theory.module';
-import { MaterialModule, SidenavModule } from '@modules';
+import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
 
 const routes: Routes = [{ path: '**', redirectTo: '' }];
 
@@ -22,12 +22,11 @@ const routes: Routes = [{ path: '**', redirectTo: '' }];
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        HeaderModule,
+        HeaderComponent,
         HighlightJsModule,
-        FooterModule,
-        MaterialModule,
+        FooterComponent,
         HomeModule,
-        SidenavModule,
+        SidenavComponent,
         QuizzesModule,
         TheoryModule,
         RouterModule.forRoot(routes),
