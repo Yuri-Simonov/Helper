@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 
 import { IList } from '@types';
 
-import { allGitQuestions } from '../../questions/all';
+import { allGitQuestions } from '../../questions/git/all';
 
-import { SidenavService } from '../../../../shared/services/sidenav.service';
+import { SidenavService } from '../../../shared/services/sidenav.service';
 import { ReplaySubject, takeUntil } from 'rxjs';
 
 @Component({
