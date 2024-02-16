@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './pages/home/home.component';
-
-import { FooterModule, MaterialModule } from '@modules';
+import { FooterComponent } from '../shared/components/footer/footer.component';
+import { MatButtonModule } from '@angular/material/button';
 
 const routes: Routes = [
     {
@@ -14,8 +14,10 @@ const routes: Routes = [
     },
 ];
 
+const materialModules = [MatButtonModule];
+
 @NgModule({
     declarations: [HomeComponent],
-    imports: [CommonModule, RouterModule.forChild(routes), MaterialModule, FooterModule],
+    imports: [CommonModule, RouterModule.forChild(routes), FooterComponent, materialModules],
 })
 export class HomeModule {}

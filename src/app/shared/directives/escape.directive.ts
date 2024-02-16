@@ -3,6 +3,7 @@ import { MatAccordion } from '@angular/material/expansion';
 
 @Directive({
     selector: '[appEscape]',
+    standalone: true,
 })
 export class EscapeDirective {
     @Input('appEscape') questionsProps: MatAccordion[];

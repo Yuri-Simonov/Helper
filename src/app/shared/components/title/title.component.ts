@@ -1,18 +1,17 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    Input,
-    OnDestroy,
-    OnInit,
-} from '@angular/core';
-import { SidenavService } from '../../../../services/sidenav.service';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ReplaySubject, takeUntil } from 'rxjs';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+
+import { SidenavService } from '../../services/sidenav.service';
 
 @Component({
     selector: 'app-title',
     templateUrl: './title.component.html',
     styleUrls: ['./title.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [MatToolbarModule, MatIconModule],
 })
 export class TitleComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);

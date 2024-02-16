@@ -1,16 +1,32 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit, ViewChildren } from '@angular/core';
-import { MatAccordion } from '@angular/material/expansion';
+import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { NavigationEnd, Router } from '@angular/router';
 import { ReplaySubject, takeUntil } from 'rxjs';
+import { HighlightJsDirective } from 'ngx-highlight-js';
 
-import { IList, IQuestion } from '../../../types';
-import { SidenavService } from '../../../services/sidenav.service';
+import { IList, IQuestion } from '../../types';
+
+import { SidenavService } from '../../services/sidenav.service';
+
+import { EscapeDirective } from '../../directives/escape.directive';
+import { EmptyComponent } from '../empty/empty.component';
+import { SidenavComponent } from '../sidenav/sidenav.component';
 
 @Component({
     selector: 'app-spoilers',
     templateUrl: './spoilers.component.html',
     styleUrls: ['./spoilers.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        CommonModule,
+        EscapeDirective,
+        EmptyComponent,
+        SidenavComponent,
+        HighlightJsDirective,
+        MatExpansionModule,
+    ],
 })
 export class SpoilersComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);
