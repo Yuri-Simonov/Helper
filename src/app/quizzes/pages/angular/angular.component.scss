@@ -16,5 +16,25 @@
 
     @media (max-width: 1400px), (max-height: 992px) {
         background-color: var(--sidenav-mobile-background);
+        max-width: 90%;
+    }
+
+    @media (max-width: 992px), (max-height: 992px) {
+        padding: 1.5rem 1.2rem 1rem;
+        gap: 1rem;
+    }
+
+    @media (max-width: 440px), (max-height: 440px) {
+        margin: 0 auto;
+        max-width: 100%;
+        border-radius: 0;
+        padding: 1.5rem 16px 1rem;
+        flex-grow: 1;
+    }
+
+    app-button {
+        @media (max-width: 440px), (max-height: 440px) {
+            margin-top: auto;
+        }
     }
 }

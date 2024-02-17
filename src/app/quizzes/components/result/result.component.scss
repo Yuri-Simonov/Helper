@@ -2,10 +2,20 @@
     &__title {
         text-align: center;
         font-size: 26px;
+
+        @media (max-width: 440px), (max-height: 440px) {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
     }
 
     &__subtitle {
         font-size: 20px;
+
+        @media (max-width: 440px), (max-height: 440px) {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
 
         &_20 {
             color: var(--test-red);
@@ -30,9 +40,19 @@
         a {
             color: var(--text-color);
         }
+
+        @media (max-width: 440px), (max-height: 440px) {
+            font-size: 12px;
+        }
     }
 
     app-button {
         margin: 1rem auto;
+    }
+
+    ::ng-deep .question-card__radio-group {
+        @media (max-width: 440px), (max-height: 440px) {
+            margin-bottom: 0;
+        }
     }
 }

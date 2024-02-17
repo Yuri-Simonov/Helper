@@ -14,6 +14,10 @@
 
     &_result {
         padding: 1.5rem 1.5rem 0;
+
+        @media (max-width: 440px), (max-height: 440px) {
+            padding: 16px;
+        }
     }
 
     &_right {
@@ -24,15 +28,36 @@
         border: 2px solid var(--test-red);
     }
 
+    &__description {
+    }
+    &__title {
+        @media (max-width: 992px), (max-height: 992px) {
+            font-size: 1.2rem;
+            line-height: 130%;
+        }
+        @media (max-width: 992px), (max-height: 992px) {
+            font-size: 1rem;
+            line-height: 130%;
+        }
+    }
+
     &__radio-group {
         display: flex;
         flex-direction: column;
         margin: 15px 0;
         align-items: flex-start;
+
+        @media (max-height: 440px) {
+            margin-bottom: 0;
+        }
     }
 
     &__radio-button {
         margin: 5px;
+
+        @media (max-width: 440px), (max-height: 440px) {
+            margin: 5px 0;
+        }
     }
 
     ::ng-deep mat-radio-button {
@@ -52,14 +77,16 @@
                 cursor: pointer;
             }
 
-            &:hover {
-                .mdc-radio__outer-circle,
-                .mdc-radio__inner-circle {
-                    border-color: var(--primary-color) !important;
-                }
+            @media (hover: hover) {
+                &:hover {
+                    .mdc-radio__outer-circle,
+                    .mdc-radio__inner-circle {
+                        border-color: var(--primary-color) !important;
+                    }
 
-                label {
-                    color: var(--primary-color);
+                    label {
+                        color: var(--primary-color);
+                    }
                 }
             }
         }
@@ -83,6 +110,20 @@
 
             label {
                 color: var(--test-red);
+            }
+        }
+
+        .mdc-form-field {
+            .mdc-radio {
+                @media (max-width: 992px), (max-height: 992px) {
+                    padding-top: 0.6rem;
+                    padding-left: 0;
+                }
+                @media (max-width: 440px), (max-height: 440px) {
+                    padding-left: 0;
+                    padding-top: 0.3rem;
+                    padding-bottom: 0.3rem;
+                }
             }
         }
     }
