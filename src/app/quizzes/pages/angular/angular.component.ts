@@ -33,10 +33,12 @@ export class AngularComponent {
 
     showNextQuestion() {
         this.currentQuestionIndex++;
+        this.changeProgressBar(this.currentQuestionIndex);
+
         if (this.currentValue) {
             this.userAnswers.push(this.currentValue);
         }
-        this.changeProgressBar(this.currentQuestionIndex);
+
         this.changeCurrentValue();
     }
 
