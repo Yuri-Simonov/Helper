@@ -1,4 +1,4 @@
-<div class="spoilers" [ngClass]="{ spoilers_simple: withoutSidebarProps }">
+<div class="spoilers" [ngClass]="{ spoilers_simple: withoutSidebarProps }" matAccordion [appEscape]="accordion">
     @if (!withoutSidebarProps) {
         <app-sidenav [list]="listProps"></app-sidenav>
     }
@@ -7,7 +7,7 @@
             @if (item.path === currentPath) {
                 @for (q of item.questions; track q.title) {
                     <div class="spoilers__item">
-                        <mat-accordion matAccordion [appEscape]="accordion" [ngClass]="{ disabled: q.disabled }">
+                        <mat-accordion [ngClass]="{ disabled: q.disabled }">
                             <mat-expansion-panel
                                 (opened)="q.selected = true; firstMatAccordionOpening = false"
                                 (closed)="q.selected = false"
