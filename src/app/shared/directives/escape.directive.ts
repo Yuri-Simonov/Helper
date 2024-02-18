@@ -8,9 +8,7 @@ import { MatAccordion } from '@angular/material/expansion';
 export class EscapeDirective {
     @Input('appEscape') questionsProps: MatAccordion[];
 
-    constructor() {}
-
-    @HostListener('keyup.escape') enterMouseEvent() {
+    @HostListener('document:keyup.escape') handleKeyUpEscape() {
         this.questionsProps.forEach((acc) => acc.closeAll());
     }
 }
