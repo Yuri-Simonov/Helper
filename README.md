@@ -19,12 +19,20 @@
 
 ## Дополнительная цель проекта
 
-Реализовать возможность проходить тесты по теории (аналогично тому, как люди сдают теорию при сдаче экзамена на получение водительских прав).
+Реализовать возможность проходить тесты по теории, аналогично тому, как люди сдают теорию при сдаче экзамена на получение водительских прав _(цель реализована для раздела Angular)_.
 
 ## Что уже имеется в проекте
 
 Теоретические материалы по:
 
--   JavaScript;
--   Angular;
--   Git.
+-   [JavaScript](https://yuri-simonov.github.io/Helper/theory/javascript);
+-   [Angular](https://yuri-simonov.github.io/Helper/theory/angular);
+-   [Git](https://yuri-simonov.github.io/Helper/git/theory/all).
+
+Видеокурс по:
+
+-   [Angular](https://www.youtube.com/playlist?list=PL2bJ6t_D6_KSSiM2Y8T32-5KgaNzzS4R6).
+
+Прохождение тестов по:
+
+-   [Angular](https://yuri-simonov.github.io/Helper/quizzes/angular).
