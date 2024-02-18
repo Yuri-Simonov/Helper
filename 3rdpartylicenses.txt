@@ -66,6 +66,9 @@ MIT
 @angular/router
 MIT
 
+ngx-highlight-js
+MIT
+
 rxjs
 Apache-2.0
                                Apache License
