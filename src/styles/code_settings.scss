@@ -3,8 +3,11 @@ i + pre {
     margin-top: 0;
 }
 
+p a {
+    color: inherit;
+}
+
 pre {
-    // display: inline-flex;
     align-items: center;
     max-width: calc(100vw - 241px - 48px);
     overflow-x: auto;
