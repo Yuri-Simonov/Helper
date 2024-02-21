@@ -67,6 +67,10 @@ p + pre {
     margin-top: 0;
 }
 
+p a {
+    color: inherit;
+}
+
 pre {
     display: inline-flex;
     align-items: center;
