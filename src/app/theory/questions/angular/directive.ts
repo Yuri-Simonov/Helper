@@ -543,6 +543,7 @@ export class SomeDirective {}</code></pre>
                 Получать доступ к элементу разметки, на котором висит пользовательская директива, можно как минимум
                 двумя способами.
             </p>
+			<i class="subtitle">Первый способ - ElementRef</i>
             <p>
                 Первый способ - с помощью
                 <span class="attention">специального ангуляровского класса <code>ElementRef</code></span
@@ -554,15 +555,16 @@ export class SomeDirective {}</code></pre>
 	selector: '[someAttr]',
 })
 export class SomeDirective {
-  constructor (private element: ElementRef) {
-	element.nativeElement.style.fontSize = '20px';
-  }
+	constructor (private element: ElementRef) {
+		element.nativeElement.style.fontSize = '20px';
+	}
 }</code></pre>
             <p>
                 Данный способ имеет 1 весомый недостаток, о котором также сказано
-                <a href="https://angular.io/api/core/ElementRef">в официальной документации</a>,
+                <a target="_blank" href="https://angular.io/api/core/ElementRef">в официальной документации</a>,
                 <span class="attention"> он делает уязвимым приложение к XSS атакам</span>.
             </p>
+			<i class="subtitle">Второй способ - @HostBinding&#40;&#41;</i>
             <p>
                 Второй способ - с помощью <span class="attention">декоратора <code>@HostBinding&#40;&#41;</code></span
                 >. Этот способ считается более правильным и не несет никаких рисков безопасности для приложения.
@@ -594,7 +596,7 @@ export class SomeDirective {
 &lt;p someAttr style="color:lime" color="lime" class="color">Какой-то текст&lt;/p></code></pre>
             <p>
                 Для того, чтобы убрать инлайновые стили или атрибут, нужно в качестве их значения указать
-                <code>null</code>, или <code>undefined</code>, или не указывать значение вовсе. В последнем случае надо
+                <code>null</code>, или <code>undefined</code>, или <span class="attention">не указывать значение вовсе</span>. В последнем случае надо
                 также указать хотя бы тип <code>any</code>, чтобы не было ошибки типизации. А чтобы убрать CSS-класс,
                 достаточно булевое значение изменить на <code>false</code>:
             </p>
@@ -607,9 +609,9 @@ export class SomeDirective {
 	@HostBinding('attr.color') attr: any; // если не указывать значение вовсе
 	@HostBinding('class.color') class: boolean = false;
 }</code></pre>
+<i class="subtitle">Передача данных внутрь директивы</i>
             <p>
-                Выше рассмотрен вариант создания статической директивы атрибута без передачи каких-либо данных в
-                директиву. Для того, чтобы в директиву передать какие-то данные, нужно поставить знак равно и после него
+                Выше рассмотрены примеры, когда директива создается без получения каких-либо данных внутрь. Для того, чтобы в директиву передать какие-то данные, нужно поставить знак равно и после него
                 указать необходимые данные:
             </p>
             <pre><code class="language-html">&lt;!-- шаблон компонента --> 
@@ -629,6 +631,7 @@ export class SomeDirective {
 export class SomeDirective {
 	@Input('someAttr') someAttrProps: any;
 }</code></pre>
+<i class="subtitle">Декоратор @HostListener&#40;&#41;</i>
             <p>
                 Также внутри директив можно изменять свойства элемента разметки при срабатывании определенных событий.
                 Делается это с помощью декоратора <code>@HostListener&#40;&#41;</code>, т.к. он
@@ -636,7 +639,7 @@ export class SomeDirective {
                 события клика, скролла и т.д. Также
                 <span class="attention">
                     данный декоратор предоставляет метод-обработчик, который запускается при возникновении указанного в
-                    нем события </span
+                    нем события</span
                 >.
             </p>
             <pre><code class="language-html">&lt;!-- шаблон компонента --> 
@@ -660,6 +663,7 @@ export class SomeDirective {
 		this.color = newColor;
 	}
 }</code></pre>
+<i class="subtitle">Дополнительные паратры декоратора @HostListener&#40;&#41;</i>
             <p>
                 Декоратор <code>@HostListener&#40;&#41;</code> вторым параметром может также принимать массив
                 дополнительный аргументов, в котором указывается специальный объект <code>$event</code> или его
@@ -675,6 +679,7 @@ export class SomeDirective {
 		console.log('eventTarget', eventTarget); // а здесь лишь его свойство $event.target
 	}	
 }</code></pre>
+<i class="subtitle">Глобальные объекты</i>
             <p>
                 Декоратор <code>@HostListener&#40;&#41;</code> также позволяет отлавливать события глобальных объектов
                 <code>document:</code>, <code>window:</code> и <code>body:</code>. Знак "<code>:</code>" не просто так
@@ -690,6 +695,7 @@ export class SomeDirective {
 		console.log('document click!');
 	}	
 }</code></pre>
+			<i class="subtitle">Пользовательские события</i>
             <p>Внутри пользовательских директив доступно создание пользовательских событий:</p>
             <pre><code class="language-typescript">// класс директивы
 @Directive({
@@ -723,7 +729,7 @@ export class SomeComponent {
 	}
 }</code></pre>`,
         selected: false,
-        lastUpdate: '21.02.2024',
+        lastUpdate: '22.02.2024',
     },
     {
         title: 'Создание пользовательских структурных директив',
