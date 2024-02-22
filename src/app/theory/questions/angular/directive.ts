@@ -730,6 +730,11 @@ export class SomeComponent {
 }</code></pre>`,
         selected: false,
         lastUpdate: '22.02.2024',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/qHfHV5Ej4pg',
+            },
+        ],
     },
     {
         title: 'Создание пользовательских структурных директив',

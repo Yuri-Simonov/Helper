@@ -487,6 +487,11 @@ ngAfterViewInit() {
             </p>`,
         selected: false,
         lastUpdate: '10.02.2024',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/zKvPvfkbHrw?t=48',
+            },
+        ],
     },
     {
         title: 'Параметр <span class="variable">static</span> декоратора <span class="variable">@ContentChild()</span>',
@@ -533,6 +538,11 @@ ngAfterViewInit() {
             </p>`,
         selected: false,
         lastUpdate: '10.02.2024',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/zKvPvfkbHrw?t=305',
+            },
+        ],
     },
     {
         title: 'Декоратор <span class="variable">@ContentChildren()</span>',
@@ -621,6 +631,11 @@ ngAfterViewInit() {
             </p>`,
         selected: false,
         lastUpdate: '10.02.2024',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/zKvPvfkbHrw?t=453',
+            },
+        ],
     },
     {
         title: 'Метод жизненного цикла, начиная с которого доступна информация в декораторах <span class="variable">@ContentChild()</span> и <span class="variable">@ContentChildren()</span>',
@@ -675,6 +690,11 @@ ngAfterViewInit() {
             <p>В итоге, в свойстве <code>element</code> будут лишь данные дочернего компонента.</p>`,
         selected: false,
         lastUpdate: '10.02.2024',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/zKvPvfkbHrw?t=363',
+            },
+        ],
     },
     {
         title: 'Параметр <span class="variable">descendants</span> декораторов <span class="variable">@ContentChild()</span> и <span class="variable">@ContentChildren()</span>',
@@ -718,6 +738,11 @@ ngAfterViewInit() {
             </p>`,
         selected: false,
         lastUpdate: '10.02.2024',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/zKvPvfkbHrw?t=387',
+            },
+        ],
     },
     {
         title: 'Декоратор <span class="variable">@Attribute()</span>',
