@@ -35,7 +35,67 @@ export const angularTestQuestions: IQuestionsAndAnswer[] = [
             { text: 'concat', right: false },
             { text: 'merge', right: false },
             { text: 'join', right: false },
+            { text: 'combineLatest', right: false },
+            { text: 'Такого оператора в RxJs не существует', right: false },
+        ],
+    },
+    {
+        question: `Какой оператор RxJs ждет выполнения всех переданных в него потоков и в результате объединяет их в порядке передачи внутрь объекта?`,
+        answers: [
+            { text: 'concat', right: true },
+            { text: 'forkJoin', right: false },
+            { text: 'zip', right: false },
+            { text: 'merge', right: false },
+            { text: 'join', right: false },
+            { text: 'combineLatest', right: false },
+            { text: 'Такого оператора в RxJs не существует', right: false },
+        ],
+    },
+    {
+        question: `Какой оператор RxJs добавляет в единый поток события получаемых потоков в момент появления этих самых событий, и при этом ему не важна последовательность передаваемых потоков внутрь?`,
+        answers: [
+            { text: 'merge', right: true },
+            { text: 'concat', right: false },
+            { text: 'forkJoin', right: false },
+            { text: 'zip', right: false },
+            { text: 'combineLatest', right: false },
             { text: 'fork', right: false },
+            { text: 'Такого оператора в RxJs не существует', right: false },
+        ],
+    },
+    {
+        question: `Какой оператор RxJs объединяет потоки, если в каждом из переданных потоков есть доступные для создания пары события?`,
+        answers: [
+            { text: 'zip', right: true },
+            { text: 'merge', right: false },
+            { text: 'concat', right: false },
+            { text: 'forkJoin', right: false },
+            { text: 'join', right: false },
+            { text: 'fork', right: false },
+            { text: 'Такого оператора в RxJs не существует', right: false },
+        ],
+    },
+    {
+        question: `Какой оператор RxJs объединяет потоки, если в каждом из переданных потоков есть доступные для создания пары события?`,
+        answers: [
+            { text: 'zip', right: true },
+            { text: 'merge', right: false },
+            { text: 'concat', right: false },
+            { text: 'forkJoin', right: false },
+            { text: 'join', right: false },
+            { text: 'fork', right: false },
+            { text: 'Такого оператора в RxJs не существует', right: false },
+        ],
+    },
+    {
+        question: `Какой оператор RxJs объединяет потоки таких образом, что в объединенном потоке создается пара из последних событий каждого из переданных потоков и при этом перезатираются старые события?`,
+        answers: [
+            { text: 'combineLatest', right: true },
+            { text: 'zip', right: false },
+            { text: 'merge', right: false },
+            { text: 'concat', right: false },
+            { text: 'forkJoin', right: false },
+            { text: 'join', right: false },
             { text: 'Такого оператора в RxJs не существует', right: false },
         ],
     },
@@ -319,15 +379,6 @@ export const angularTestQuestions: IQuestionsAndAnswer[] = [
         ],
     },
     {
-        question: `Сколько экземпляров пользовательского сервиса будет создано, если добавить этот сервис в поле providers конфигурационного объекта декоратора @Component() для двух разных компонентов?`,
-        answers: [
-            { text: '2', right: true },
-            { text: '0', right: false },
-            { text: '1', right: false },
-            { text: 'У декоратора @Component() нет поля providers в конфигурационном объекте', right: false },
-        ],
-    },
-    {
         question: `Верно ли утверждение, что async pipe подписывается на наблюдателя (Observable) и обновляет каждый раз выражение, когда от наблюдателя приходят новые данные`,
         answers: [
             { text: 'Да', right: true },
@@ -527,6 +578,16 @@ export const angularTestQuestions: IQuestionsAndAnswer[] = [
                 text: 'Async pipe позволяет использовать более двух структурных директив на одном и том же элементе разметки',
                 right: false,
             },
+        ],
+    },
+    {
+        question: `Какой встроенный в Angular сервис позволяет управлять механизмом ChangeDetection?`,
+        answers: [
+            { text: 'ChangeDetectorRef', right: true },
+            { text: 'ChangeDetectionControl', right: false },
+            { text: 'ChangeDetectorControl', right: false },
+            { text: 'ChangeDetector', right: false },
+            { text: 'ChangeDetectionRef', right: false },
         ],
     },
 ];
