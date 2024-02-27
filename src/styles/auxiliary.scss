@@ -21,6 +21,10 @@
     margin: 12px 0;
     display: block;
     font-style: normal;
+
+    &:first-child {
+        margin-top: 0;
+    }
 }
 
 .main-color {
