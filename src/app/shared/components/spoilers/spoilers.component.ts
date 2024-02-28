@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit, ViewChildren } from '@angular/core';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { NavigationEnd, Router } from '@angular/router';
@@ -10,8 +10,11 @@ import { IList, IQuestion } from '../../types';
 import { SidenavService } from '../../services/sidenav.service';
 
 import { EscapeDirective } from '../../directives/escape.directive';
+
 import { EmptyComponent } from '../empty/empty.component';
 import { SidenavComponent } from '../sidenav/sidenav.component';
+
+const materialModules = [MatExpansionModule];
 
 @Component({
     selector: 'app-spoilers',
@@ -19,14 +22,7 @@ import { SidenavComponent } from '../sidenav/sidenav.component';
     styleUrls: ['./spoilers.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [
-        CommonModule,
-        EscapeDirective,
-        EmptyComponent,
-        SidenavComponent,
-        HighlightJsDirective,
-        MatExpansionModule,
-    ],
+    imports: [materialModules, NgClass, EscapeDirective, EmptyComponent, SidenavComponent, HighlightJsDirective],
 })
 export class SpoilersComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);

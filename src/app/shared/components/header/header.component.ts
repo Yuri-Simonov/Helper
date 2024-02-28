@@ -1,16 +1,16 @@
-import { CommonModule } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { ReplaySubject, takeUntil } from 'rxjs';
+import { RouterLink, RouterModule } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { ThemeToggleService } from '../../services/theme-toggle.service';
 import { SidenavService } from '../../services/sidenav.service';
 
 import { ITheme } from '../../types';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { RouterModule } from '@angular/router';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
 
 interface IHeaderChapters {
     path: string;
@@ -18,13 +18,15 @@ interface IHeaderChapters {
     disabled: boolean;
 }
 
+const materialModules = [MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule];
+
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [CommonModule, MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule, RouterModule],
+    imports: [materialModules, NgClass, RouterLink],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);

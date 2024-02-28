@@ -5,13 +5,15 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { SidenavService } from '../../services/sidenav.service';
 
+const materialModules = [MatToolbarModule, MatIconModule];
+
 @Component({
     selector: 'app-title',
     templateUrl: './title.component.html',
     styleUrls: ['./title.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [MatToolbarModule, MatIconModule],
+    imports: [materialModules],
 })
 export class TitleComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);

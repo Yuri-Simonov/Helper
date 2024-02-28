@@ -1,11 +1,14 @@
-import { CommonModule } from '@angular/common';
-import { SidenavService } from '../../services/sidenav.service';
+import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
-
-import { IList } from '@types';
+import { RouterLink } from '@angular/router';
 import { ReplaySubject, takeUntil } from 'rxjs';
 import { MatListModule } from '@angular/material/list';
+
+import { SidenavService } from '../../services/sidenav.service';
+
+import { IList } from '@types';
+
+const materialModules = [MatListModule];
 
 @Component({
     selector: 'app-sidenav',
@@ -13,7 +16,7 @@ import { MatListModule } from '@angular/material/list';
     styleUrls: ['./sidenav.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [CommonModule, RouterModule, MatListModule],
+    imports: [materialModules, NgClass, RouterLink],
 })
 export class SidenavComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);
