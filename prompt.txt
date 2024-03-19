@@ -29,6 +29,7 @@ class="language-typescript"
 <pre><code class="language-scss"></code></pre>
 
 &lt;!--  -->
+&lt;!-- шаблон компонента -->
 
 &lt;app-child>
 &lt;/app-child> 			

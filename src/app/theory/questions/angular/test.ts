@@ -10,7 +10,7 @@ export const testQuestions: IQuestion[] = [
         </p>
         <p>По умолчанию с ним в коробке идет 2 фреймворка для тестирования:</p>
         <ul>
-            <li>Юнит-тесты на Jasmine и Karma</li>
+            <li>Unit-тесты на Jasmine и Karma</li>
             <li>Комплексные тесты на Protractor</li>
         </ul>
         <p>
