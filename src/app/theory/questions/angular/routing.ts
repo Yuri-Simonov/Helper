@@ -132,7 +132,7 @@ export class AppRoutingModule {}</code></pre>`,
 	},
 	{
 		path: 'products',
-		component: СosmeticsComponent,
+		component: CosmeticsComponent,
 		outlet: 'secondary' // сообщаем для Angular, что это второстепенный маршрут
 	},
 ]
@@ -149,7 +149,7 @@ export class AppRoutingModule {}</code></pre>`,
         lastUpdate: '08.02.2024',
     },
     {
-        title: 'Способы роутинга с одного адреса на другой',
+        title: 'Способы перехода с одного адреса на другой',
         body: `<p>В Angular существует 2 способа перехода с одного маршрута на другой:</p>
             <ul>
                 <li>
