@@ -139,17 +139,16 @@ export const othersQuestions: IQuestion[] = [
             фильтров и сервисов.
         </p>
         <pre><code class="language-typescript">@NgModule({
-	declarations: [ParentComponent], // дочерние компоненты, директивы и фильтры
-	entryComponents: [SomeDynamicComponent], // компоненты, которые будут подгружаться динамически
+	declarations: [ParentComponent], // дочерние компоненты, директивы и пайпы
 	imports: [SomeModule], // другие модули, используемые в текущем модуле
 	providers: [SomeService], // импортирование в модуль необходимых сервисов приложения
 	bootstrap: [ParentComponent], // имя главного компонента модуля
-	exports: [SomeComponent], // экспортируемые компоненты, директивы и фильтры, которые могут быть использованы другими модулями
+	exports: [SomeComponent], // экспортируемые компоненты, директивы и пайпы, которые могут быть использованы другими модулями
 })
 	
 export class ParentModule {} // класс, к которому привязывается декоратор @NgModule()</code></pre>`,
         selected: false,
-        lastUpdate: '05.02.2024',
+        lastUpdate: '24.03.2024',
     },
     {
         title: 'Подключение сторонних скриптов и стилей',
