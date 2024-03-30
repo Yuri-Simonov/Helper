@@ -1028,6 +1028,11 @@ export class SomeComponent {}</code></pre>
             <pre><code class="language-html">&lt;p [ngClass]="{'some-css-class': true}">Текст&lt;/p></code></pre>`,
         selected: false,
         lastUpdate: '24.03.2024',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/mDdCB2oR9IE',
+            },
+        ],
     },
     // {
     //     title: '',
