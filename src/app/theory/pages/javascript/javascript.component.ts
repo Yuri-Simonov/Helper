@@ -7,6 +7,7 @@ import { IList } from '@types';
 
 import { SidenavService } from '../../../shared/services/sidenav.service';
 import { ReplaySubject, takeUntil } from 'rxjs';
+import { oppQuestions } from '../../questions/javascript/opp';
 
 @Component({
     selector: 'app-javascript',
@@ -22,6 +23,7 @@ export class JavascriptComponent implements OnInit, OnDestroy {
     sidenavState: boolean;
 
     list: IList[] = [
+        { name: 'ООП', path: 'opp', questions: oppQuestions },
         { name: 'Прототипы', path: 'prototype', questions: prototypeQuestions },
         { name: 'Функции', path: 'function', questions: functionQuestions },
     ];
