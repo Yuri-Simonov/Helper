@@ -49,5 +49,7 @@
         "ререндере",
         "скролла",
         "токеном"
-    ]
+    ],
+    "importCost.bundleSizeColoring": "compressed",
+    "importCost.bundleSizeDecoration": "minified"
 }
