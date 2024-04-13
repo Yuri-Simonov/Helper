@@ -7,12 +7,12 @@ import { HighlightJsDirective } from 'ngx-highlight-js';
 
 import { IList, IQuestion } from '../../types';
 
-import { SidenavService } from '../../services/sidenav.service';
+import { SidebarService } from '../../services/sidebar.service';
 
 import { EscapeDirective } from '../../directives/escape.directive';
 
 import { EmptyComponent } from '../empty/empty.component';
-import { SidenavComponent } from '../sidenav/sidenav.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 const materialModules = [MatExpansionModule];
 
@@ -22,13 +22,13 @@ const materialModules = [MatExpansionModule];
     styleUrls: ['./spoilers.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [materialModules, NgClass, EscapeDirective, EmptyComponent, SidenavComponent, HighlightJsDirective],
+    imports: [materialModules, NgClass, EscapeDirective, EmptyComponent, SidebarComponent, HighlightJsDirective],
 })
 export class SpoilersComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);
     currentPath: string;
     firstMatAccordionOpening: boolean = true;
-    sidenavState: boolean;
+    sidebarState: boolean;
 
     @Input('emptyPath') emptyPathProps: string;
     @Input('list') listProps: IList[];
@@ -38,7 +38,7 @@ export class SpoilersComponent implements OnInit, OnDestroy {
 
     constructor(
         private router: Router,
-        private sidenavService: SidenavService,
+        private sidebarService: SidebarService,
     ) {}
 
     ngOnInit(): void {
@@ -50,9 +50,9 @@ export class SpoilersComponent implements OnInit, OnDestroy {
         });
         this.currentPath = this.slicePath(this.currentPath);
 
-        this.sidenavService.sidebarState
+        this.sidebarService.sidebarState
             .pipe(takeUntil(this.onDestroy$))
-            .subscribe((newState) => (this.sidenavState = newState));
+            .subscribe((newState) => (this.sidebarState = newState));
     }
 
     ngOnDestroy() {
@@ -65,15 +65,7 @@ export class SpoilersComponent implements OnInit, OnDestroy {
         return pathsArray[pathsArray.length - 1];
     }
 
-    changeSidenavState(state: boolean): void {
-        this.sidenavService.setNewSidebarState(state);
-    }
-
-    trackByFn(index: number, item: IList | IQuestion): string {
-        if ('path' in item) {
-            return item.path;
-        } else {
-            return item.title;
-        }
+    changesidebarState(state: boolean): void {
+        this.sidebarService.setNewSidebarState(state);
     }
 }

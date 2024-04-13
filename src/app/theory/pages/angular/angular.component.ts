@@ -8,7 +8,7 @@ import { formQuestions } from '../../questions/angular/form';
 import { othersQuestions } from '../../questions/angular/others';
 import { pipeQuestions } from '../../questions/angular/pipe';
 import { routingQuestions } from '../../questions/angular/routing';
-import { rxjsOperatorsQuestions } from '../../questions/angular/rxjs_operators';
+import { rxjsOperatorsQuestions } from '../../questions/angular/rxjs-operators';
 import { rxjsQuestions } from '../../questions/angular/rxjs';
 import { serviceQuestions } from '../../questions/angular/service';
 import { testQuestions } from '../../questions/angular/test';
@@ -27,6 +27,10 @@ import { ngrxQuestions } from 'src/app/theory/questions/angular/ngrx';
 // a b c d e f g h i j k l m n o p q r s t u v w x y z
 export class AngularComponent {
     list: IList[] = [
+        {
+            name: 'Основы Angular',
+            disabled: true,
+        },
         {
             name: 'Декораторы',
             path: 'decorator',
@@ -49,12 +53,16 @@ export class AngularComponent {
             path: 'changeDetection',
             questions: changeDetectionQuestions,
         },
+        {
+            name: 'Библиотеки Angular',
+            disabled: true,
+        },
         { name: 'RxJs', path: 'rxjs', questions: rxjsQuestions },
-        // {
-        //     name: 'RxJs ==> Операторы',
-        //     path: 'rxjs_operators',
-        //     questions: rxjsOperatorsQuestions,
-        // },
+        {
+            name: 'Операторы RxJs',
+            path: 'rxjs-operators',
+            questions: rxjsOperatorsQuestions,
+        },
         { name: 'NgRx', path: 'ngrx', questions: ngrxQuestions },
     ];
 }

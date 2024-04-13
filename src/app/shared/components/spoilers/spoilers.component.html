@@ -1,6 +1,6 @@
 <div class="spoilers" [ngClass]="{ spoilers_simple: withoutSidebarProps }" matAccordion [appEscape]="accordion">
     @if (!withoutSidebarProps) {
-        <app-sidenav [list]="listProps"></app-sidenav>
+        <app-sidebar [list]="listProps"></app-sidebar>
     }
     <div class="spoilers__items" [ngClass]="{ spoilers__items_full: currentPath === emptyPathProps }">
         @for (item of listProps; track item.path) {

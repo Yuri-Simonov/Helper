@@ -4,7 +4,7 @@ import { IList } from '@types';
 
 import { allGitQuestions } from '../../questions/git/all';
 
-import { SidenavService } from '../../../shared/services/sidenav.service';
+import { SidebarService } from '../../../shared/services/sidebar.service';
 import { ReplaySubject, takeUntil } from 'rxjs';
 
 @Component({
@@ -16,14 +16,14 @@ import { ReplaySubject, takeUntil } from 'rxjs';
 export class GitComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);
     list: IList[] = [{ name: 'Все', path: 'all', questions: allGitQuestions }];
-    sidenavState: boolean;
+    sidebarState: boolean;
 
-    constructor(private sidenavService: SidenavService) {}
+    constructor(private sidebarService: SidebarService) {}
 
     ngOnInit() {
-        this.sidenavService.sidebarState
+        this.sidebarService.sidebarState
             .pipe(takeUntil(this.onDestroy$))
-            .subscribe((newState) => (this.sidenavState = newState));
+            .subscribe((newState) => (this.sidebarState = newState));
     }
 
     ngOnDestroy() {
@@ -31,7 +31,7 @@ export class GitComponent implements OnInit, OnDestroy {
         this.onDestroy$.complete();
     }
 
-    changeSidenavState(state: boolean): void {
-        this.sidenavService.setNewSidebarState(state);
+    changesidebarState(state: boolean): void {
+        this.sidebarService.setNewSidebarState(state);
     }
 }

@@ -3,7 +3,7 @@ import { ReplaySubject, takeUntil } from 'rxjs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 
-import { SidenavService } from '../../services/sidenav.service';
+import { SidebarService } from '../../services/sidebar.service';
 
 const materialModules = [MatToolbarModule, MatIconModule];
 
@@ -17,17 +17,17 @@ const materialModules = [MatToolbarModule, MatIconModule];
 })
 export class TitleComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);
-    sidenavState: boolean;
+    sidebarState: boolean;
 
     @Input('title') titleProps: string;
     @Input('visibleIcon') visibleIconProps: boolean = true;
 
-    constructor(private sidenavService: SidenavService) {}
+    constructor(private sidebarService: SidebarService) {}
 
     ngOnInit() {
-        this.sidenavService.sidebarState
+        this.sidebarService.sidebarState
             .pipe(takeUntil(this.onDestroy$))
-            .subscribe((newState) => (this.sidenavState = newState));
+            .subscribe((newState) => (this.sidebarState = newState));
     }
 
     ngOnDestroy() {
@@ -35,7 +35,7 @@ export class TitleComponent implements OnInit, OnDestroy {
         this.onDestroy$.complete();
     }
 
-    changeSidenavState(state: boolean): void {
-        this.sidenavService.setNewSidebarState(state);
+    changesidebarState(state: boolean): void {
+        this.sidebarService.setNewSidebarState(state);
     }
 }

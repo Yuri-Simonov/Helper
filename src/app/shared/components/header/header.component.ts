@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { ThemeToggleService } from '../../services/theme-toggle.service';
-import { SidenavService } from '../../services/sidenav.service';
+import { SidebarService } from '../../services/sidebar.service';
 
 import { ITheme } from '../../types';
 
@@ -38,10 +38,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     ];
     themes: ITheme[];
     currentTheme: ITheme;
-    sidenavState: boolean;
+    sidebarState: boolean;
 
     constructor(
-        private sidenavService: SidenavService,
+        private sidebarService: SidebarService,
         private themeToggleService: ThemeToggleService,
     ) {}
 
@@ -49,9 +49,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.themes = this.themeToggleService.themes;
         this.setTheme(this.themeToggleService.currentTheme);
 
-        this.sidenavService.sidebarState
+        this.sidebarService.sidebarState
             .pipe(takeUntil(this.onDestroy$))
-            .subscribe((newState) => (this.sidenavState = newState));
+            .subscribe((newState) => (this.sidebarState = newState));
     }
 
     ngOnDestroy() {
@@ -59,8 +59,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.onDestroy$.complete();
     }
 
-    changeSidenavState(state: boolean): void {
-        this.sidenavService.setNewSidebarState(state);
+    changesidebarState(state: boolean): void {
+        this.sidebarService.setNewSidebarState(state);
     }
 
     changeTheme(newTheme: ITheme) {
