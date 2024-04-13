@@ -5,7 +5,7 @@ import { prototypeQuestions } from '../../questions/javascript/prototype';
 
 import { IList } from '@types';
 
-import { SidenavService } from '../../../shared/services/sidenav.service';
+import { SidebarService } from '../../../shared/services/sidebar.service';
 import { ReplaySubject, takeUntil } from 'rxjs';
 import { oppQuestions } from '../../questions/javascript/opp';
 
@@ -20,7 +20,7 @@ import { oppQuestions } from '../../questions/javascript/opp';
 // a b c d e f g h i j k l m n o p q r s t u v w x y z
 export class JavascriptComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);
-    sidenavState: boolean;
+    sidebarState: boolean;
 
     list: IList[] = [
         { name: 'ООП', path: 'opp', questions: oppQuestions },
@@ -28,12 +28,12 @@ export class JavascriptComponent implements OnInit, OnDestroy {
         { name: 'Функции', path: 'function', questions: functionQuestions },
     ];
 
-    constructor(private sidenavService: SidenavService) {}
+    constructor(private sidebarService: SidebarService) {}
 
     ngOnInit() {
-        this.sidenavService.sidebarState
+        this.sidebarService.sidebarState
             .pipe(takeUntil(this.onDestroy$))
-            .subscribe((newState) => (this.sidenavState = newState));
+            .subscribe((newState) => (this.sidebarState = newState));
     }
 
     ngOnDestroy() {
@@ -41,7 +41,7 @@ export class JavascriptComponent implements OnInit, OnDestroy {
         this.onDestroy$.complete();
     }
 
-    changeSidenavState(state: boolean): void {
-        this.sidenavService.setNewSidebarState(state);
+    changesidebarState(state: boolean): void {
+        this.sidebarService.setNewSidebarState(state);
     }
 }

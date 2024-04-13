@@ -81,7 +81,7 @@ $blue-gray-theme: mat.define-light-theme(
     --secondary-color: #{mat.get-color-from-palette($_primary, "A100-contrast")};
     --text-color: #{mat.get-color-from-palette($_primary, "500-contrast")};
     --white-text: white;
-    --sidenav-mobile-background: #{mat.get-color-from-palette($_primary, 900)};
+    --sidebar-mobile-background: #{mat.get-color-from-palette($_primary, 900)};
 
     @include mat.all-component-colors($theme);
 }

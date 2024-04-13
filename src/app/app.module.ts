@@ -7,7 +7,7 @@ import { HighlightJsModule } from 'ngx-highlight-js';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HeaderComponent } from './shared/components/header/header.component';
-import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from 'src/app/home/home.module';
@@ -26,7 +26,7 @@ const routes: Routes = [{ path: '**', redirectTo: '' }];
         HighlightJsModule,
         FooterComponent,
         HomeModule,
-        SidenavComponent,
+        SidebarComponent,
         QuizzesModule,
         TheoryModule,
         RouterModule.forRoot(routes),

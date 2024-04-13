@@ -1,37 +1,37 @@
 import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ReplaySubject, takeUntil } from 'rxjs';
 import { MatListModule } from '@angular/material/list';
 
-import { SidenavService } from '../../services/sidenav.service';
+import { SidebarService } from '../../services/sidebar.service';
 
 import { IList } from '@types';
 
 const materialModules = [MatListModule];
 
 @Component({
-    selector: 'app-sidenav',
-    templateUrl: './sidenav.component.html',
-    styleUrls: ['./sidenav.component.scss'],
+    selector: 'app-sidebar',
+    templateUrl: './sidebar.component.html',
+    styleUrls: ['./sidebar.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [materialModules, NgClass, RouterLink],
+    imports: [materialModules, NgClass, RouterLink, RouterLinkActive],
 })
-export class SidenavComponent implements OnInit, OnDestroy {
+export class SidebarComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);
-    sidenavState: boolean;
+    sidebarState: boolean;
 
     @Input('list') listProps: IList[];
 
     constructor(
-        private sidenavService: SidenavService,
+        private sidebarService: SidebarService,
         private cdr: ChangeDetectorRef,
     ) {}
 
     ngOnInit() {
-        this.sidenavService.sidebarState.pipe(takeUntil(this.onDestroy$)).subscribe((newState) => {
-            this.sidenavState = newState;
+        this.sidebarService.sidebarState.pipe(takeUntil(this.onDestroy$)).subscribe((newState) => {
+            this.sidebarState = newState;
             this.cdr.detectChanges();
         });
     }
@@ -41,7 +41,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
         this.onDestroy$.complete();
     }
 
-    changeSidenavState(state: boolean): void {
-        this.sidenavService.setNewSidebarState(state);
+    changesidebarState(state: boolean): void {
+        this.sidebarService.setNewSidebarState(state);
     }
 }
