@@ -22,6 +22,7 @@ const routes: Routes = [
             { path: 'pipe', component: AngularComponent },
             { path: 'routing', component: AngularComponent },
             { path: 'rxjs', component: AngularComponent },
+            { path: 'rxjs-operators', component: AngularComponent },
             { path: 'service', component: AngularComponent },
             { path: 'test', component: AngularComponent },
             { path: '**', redirectTo: '' },
