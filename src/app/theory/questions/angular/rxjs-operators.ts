@@ -13,6 +13,10 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
                 >. Это означает, что <code>switchMap</code> будет пропускать все старые значения и начинать новый поток
                 <code>Observable</code> при каждом новом значении.
             </p>
+			<img
+                src="assets/img/angular/rxjs/switchMap.png"
+                alt="оператор switchMap"
+            />
             <p>
                 Это
                 <span class="attention">
@@ -31,7 +35,7 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
             .pipe(
                 switchMap((value) => {
                     return of(value).pipe(
-                        delay(1000), // создаем искусственную задержку
+                        delay(1000), // создаем искусственную задержку в 1 секунду
                         map((currentValue) => 'Текущее значение потока: ' + currentValue),
                     );
                 }),
@@ -81,10 +85,41 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
     },
     {
         title: 'concatMap',
-        body: ``,
+        body: `<p>
+                <span class="attention">
+                    Оператор <code>concatMap</code> используется преобразования элементов одного потока
+                    <code>Observable</code> в другой таким образом, чтобы результаты были доставлены последовательно,
+                    один за другим</span
+                >. Это означает, что результаты второго <code>Observable</code> ("<code>B</code>") будут ожидать
+                завершения первого ("<code>A</code>") перед тем, как начать обрабатывать следующий элемент.
+            </p>
+            <img src="assets/img/angular/rxjs/concatMap.png" alt="оператор concatMap" />
+            <p>
+                <span class="attention">Основная цель <code>concatMap</code> заключается в том, чтобы преобразовать поток данных, не теряя при
+                этом их упорядоченность</span>. Это особенно полезно, когда идет работа с асинхронными операциями, такими как
+                HTTP-запросы, где нужно дождаться завершения одной операции, прежде чем начинать другую.
+            </p>
+            <pre><code class="language-typescript">export class ForExamplesComponent {
+    ngOnInit() {
+        of('A', 'B', 'C')
+            .pipe(
+                concatMap((value) => {
+                    return of(value).pipe(
+                        delay(1000), // создаем искусственную задержку в 1 секунду
+                        map((currentValue) => 'Текущее значение потока: ' + currentValue),
+                    );
+                }),
+            )
+            .subscribe(console.log);
+    }
+}</code></pre>
+            <p>В итоге в консоли мы увидим следующий результат:</p>
+            <pre><code class="language-typescript">Текущее значение потока: А
+Текущее значение потока: В // после выполнения потока А
+Текущее значение потока: C // после выполнения потока В
+</code></pre>`,
         selected: false,
-        lastUpdate: '13.04.2024',
-        disabled: true,
+        lastUpdate: '14.04.2024',
     },
     {
         title: 'mergeMap',
