@@ -57,9 +57,9 @@ export class AngularComponent {
             name: 'Библиотеки Angular',
             disabled: true,
         },
-        { name: 'RxJs', path: 'rxjs', questions: rxjsQuestions },
+        { name: 'RxJS', path: 'rxjs', questions: rxjsQuestions },
         {
-            name: 'Операторы RxJs',
+            name: 'Операторы RxJS',
             path: 'rxjs-operators',
             questions: rxjsOperatorsQuestions,
         },
