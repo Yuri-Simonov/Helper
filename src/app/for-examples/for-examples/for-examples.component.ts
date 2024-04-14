@@ -1,5 +1,18 @@
 import { Component } from '@angular/core';
-import { Observable, delay, interval, map, of, switchMap, tap } from 'rxjs';
+import {
+    Observable,
+    concatMap,
+    concatMapTo,
+    delay,
+    exhaustMap,
+    flatMap,
+    interval,
+    map,
+    mergeMap,
+    of,
+    switchMap,
+    tap,
+} from 'rxjs';
 
 @Component({
     selector: 'app-for-examples',
@@ -11,9 +24,9 @@ export class ForExamplesComponent {
     ngOnInit() {
         of('A', 'B', 'C')
             .pipe(
-                switchMap((value) => {
+                exhaustMap((value) => {
                     return of(value).pipe(
-                        delay(500),
+                        delay(1000),
                         map((currentValue) => 'Текущее значение потока: ' + currentValue),
                     );
                 }),
