@@ -9,6 +9,7 @@ import {
     flatMap,
     interval,
     map,
+    merge,
     mergeMap,
     of,
     switchMap,
@@ -48,5 +49,5 @@ export class ForExamplesComponent {
         }, 200);
     });
 
-    result = concat(this.first, this.second).subscribe(console.log);
+    result = merge(this.first, this.second).subscribe(console.log);
 }

@@ -845,44 +845,7 @@ ngOnInit(): void {
             <i class="subtitle">Оператор concat</i>
             <i>Информация перенесена в раздел с операторами...</i>
             <i class="subtitle">Оператор merge</i>
-            <p>
-                <span class="attention">
-                    Данный оператор соединяет события получаемых потоков
-                    параллельно, поэтому тут уже не важна последовательность
-                    передаваемых потоков внутрь оператора.
-                </span>
-            </p>
-            <img
-                src="assets/img/angular/rxjs/merge.png"
-                alt="оператор concat"
-            />
-            <p>Как это будет выглядеть в коде:</p>
-            <pre><code class="language-typescript">export class SomeComponent {
-    first = new Observable((subscriber) => {
-        setTimeout(() => {
-            subscriber.next('500ms');
-            subscriber.complete();
-        }, 500);
-    });
-
-    second = new Observable((subscriber) => {
-        setTimeout(() => {
-            subscriber.next('200ms');
-            subscriber.complete();
-        }, 200);
-    });
-
-    result = merge(this.first, this.second).subscribe((val) => {
-        console.log('next:', val);
-    });
-}</code></pre>
-            <p>Результат выполнения кода в консоли:</p>
-            <pre><code class="language-typescript">// next: 200ms
-// next: 500ms</code></pre>
-            <p>
-                И как видите, теперь учитывается время события, когда оно
-                происходит.
-            </p>
+            <i>Информация перенесена в раздел с операторами...</i>
             <i class="subtitle">Оператор zip</i>
             <p>
                 <span class="attention"
