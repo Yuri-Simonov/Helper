@@ -13,8 +13,8 @@
         border-right: var(--border);
         background-color: var(--mdc-filled-text-field-input-text-placeholder-color);
 
-        @media (max-width: 1400px), (max-height: 992px) {
-            background-color: none;
+        @media (max-width: 992px) {
+            background-color: var(--sidebar-mobile-background);
         }
 
         @media (max-width: 992px) {
@@ -51,10 +51,6 @@
             top: 64px;
             left: 0;
 
-            @media (max-width: 1400px), (max-height: 992px) {
-                background-color: var(--sidebar-mobile-background);
-            }
-
             @media (max-width: 992px) {
                 top: 0;
             }
@@ -66,6 +62,7 @@
 
         .mdc-list {
             padding: 0;
+            height: 100%;
 
             @media (max-width: 992px), (max-height: 440px) {
                 padding: 8px 0;
