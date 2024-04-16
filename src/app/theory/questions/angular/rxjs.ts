@@ -843,50 +843,7 @@ ngOnInit(): void {
                 Давайте разберем их на примерах.
             </p>
             <i class="subtitle">Оператор concat</i>
-            <p>
-                Принцип работы данного оператора схож с его тёской из нативного
-                JavaScript, он просто соединит потоки. Но тут есть тоже свои
-                нюансы:
-            </p>
-            <img
-                src="assets/img/angular/rxjs/concat.png"
-                alt="оператор concat"
-            />
-            <p>
-                Как видно на картинке, события второго потока добавляются после
-                событий первого потока. Причем неважно, что второй поток
-                завершается раньше, оператор <code>concat</code> будет ждать
-                пока завершиться первый поток и только тогда перейдет к
-                следующему. И
-                <span class="attention">
-                    после того, как оператор
-                    <code>concat</code> получает все потоки, он их объединяет в
-                    порядке передачи внутрь оператора и завершается.
-                </span>
-            </p>
-            <p>Теперь как это будет выглядеть в коде:</p>
-            <pre><code class="language-typescript">export class SomeComponent {
-    first = new Observable((subscriber) => {
-        setTimeout(() => {
-            subscriber.next('500ms');
-            subscriber.complete();
-        }, 500);
-    });
-
-    second = new Observable((subscriber) => {
-        setTimeout(() => {
-            subscriber.next('200ms');
-            subscriber.complete();
-        }, 200);
-    });
-
-    result = concat(this.first, this.second).subscribe((val) => {
-        console.log('next:', val);
-    });
-}</code></pre>
-            <p>Результат выполнения кода в консоли:</p>
-            <pre><code class="language-typescript">// next: 500ms
-// next: 200ms</code></pre>
+            <i>Информация перенесена в раздел с операторами...</i>
             <i class="subtitle">Оператор merge</i>
             <p>
                 <span class="attention">

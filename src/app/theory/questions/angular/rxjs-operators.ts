@@ -221,6 +221,45 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
         selected: false,
         lastUpdate: '14.04.2024',
     },
+    {
+        title: 'concat',
+        body: `<p>
+                Принцип работы оператора <code>concat</code> схож с одноименным методом из нативного JavaScript, он
+                <span class="attention">просто соединяет потоки</span>:
+            </p>
+            <img src="assets/img/angular/rxjs/concat.png" alt="оператор concat" />
+            <p>
+                Как видно на картинке, события второго потока добавляются после событий первого потока. Причем неважно,
+                что второй поток завершается раньше, оператор <code>concat</code>
+                <span class="attention">
+                    будет ждать пока завершиться первый поток и только тогда перейдет к следующему</span
+                >. И после того, как оператор <code>concat</code> получает все потоки,
+                <span class="attention">он их объединяет в порядке передачи внутрь оператора и завершается. </span>
+            </p>
+            <p>Пример:</p>
+            <pre><code class="language-typescript">export class SomeComponent {
+    first = new Observable((subscriber) => {
+        setTimeout(() => {
+            subscriber.next('Событие из первого потока');
+            subscriber.complete();
+        }, 500);
+    });
+
+    second = new Observable((subscriber) => {
+        setTimeout(() => {
+            subscriber.next('Событие из второго потока');
+            subscriber.complete();
+        }, 200);
+    });
+
+    result = concat(this.first, this.second).subscribe(console.log);
+}</code></pre>
+            <p>Результат выполнения кода в консоли:</p>
+            <pre><code class="language-typescript">Событие из первого потока
+Событие из второго потока</code></pre>`,
+        selected: false,
+        lastUpdate: '16.04.2024',
+    },
     // {
     //     title: '',
     //     body: ``,
