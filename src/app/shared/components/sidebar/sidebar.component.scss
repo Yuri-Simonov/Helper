@@ -1,48 +1,33 @@
 :host {
+    min-height: 100%;
+    border-right: var(--border);
+    background-color: var(--mdc-filled-text-field-input-text-placeholder-color);
+    padding: 0 12px;
+
     @media (max-width: 992px) {
         position: absolute;
         top: 0;
         left: 0;
         bottom: 0;
         overflow: auto;
+        z-index: 2;
+        background-color: var(--sidebar-mobile-background);
+        transition: 0.3s;
+
+        &.hideOnMobile {
+            top: 0;
+            left: -100%;
+            z-index: 2;
+        }
     }
 
     .sidebar {
-        width: 15rem;
-        height: 100%;
-        border-right: var(--border);
-        background-color: var(--mdc-filled-text-field-input-text-placeholder-color);
-
-        @media (max-width: 992px) {
-            background-color: var(--sidebar-mobile-background);
-        }
-
-        @media (max-width: 992px) {
-            position: relative;
-            top: 0;
-            left: 0;
-            z-index: 2;
-            transition: 0.3s;
-        }
-
         &_hide {
             @media (max-width: 992px), (max-height: 440px) {
                 top: 0;
                 left: -100%;
                 z-index: 0;
                 transition: 0.3s;
-            }
-        }
-
-        &__overlay {
-            @media (max-width: 992px), (max-height: 440px) {
-                position: fixed;
-                z-index: 1;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                background-color: var(--overlay);
             }
         }
 

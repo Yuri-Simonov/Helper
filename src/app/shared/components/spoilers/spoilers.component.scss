@@ -21,16 +21,29 @@
 
     &__items {
         width: 100%;
-        max-width: 1400px;
+        max-width: 1424px;
         margin: 0 auto;
-        padding: 12px 0;
+        padding: 16px 12px 12px;
 
         @media (max-width: 440px), (max-height: 440px) {
-            padding: 6px 0;
+            padding: 10px 0 6px;
         }
 
         &_full {
             max-width: 100%;
+        }
+
+        h2 {
+            font-size: 16px;
+            line-height: 1.1;
+            margin-bottom: 12px;
+            padding-left: 24px;
+
+            @media (max-width: 440px), (max-height: 440px) {
+                font-size: 14px;
+                margin-top: 6px;
+                padding-left: 12px;
+            }
         }
     }
 

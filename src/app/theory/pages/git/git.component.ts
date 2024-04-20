@@ -31,7 +31,7 @@ export class GitComponent implements OnInit, OnDestroy {
         this.onDestroy$.complete();
     }
 
-    changesidebarState(state: boolean): void {
+    changeSidebarState(state: boolean): void {
         this.sidebarService.setNewSidebarState(state);
     }
 }

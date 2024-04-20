@@ -1,11 +1,19 @@
 import { NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit, ViewChildren } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    Input,
+    OnDestroy,
+    OnInit,
+    ViewChildren,
+} from '@angular/core';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { NavigationEnd, Router } from '@angular/router';
 import { ReplaySubject, takeUntil } from 'rxjs';
 import { HighlightJsDirective } from 'ngx-highlight-js';
 
-import { IList, IQuestion } from '../../types';
+import { IList } from '../../types';
 
 import { SidebarService } from '../../services/sidebar.service';
 
@@ -13,6 +21,7 @@ import { EscapeDirective } from '../../directives/escape.directive';
 
 import { EmptyComponent } from '../empty/empty.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+import { OverlayComponent } from '../overlay/overlay.component';
 
 const materialModules = [MatExpansionModule];
 
@@ -22,13 +31,21 @@ const materialModules = [MatExpansionModule];
     styleUrls: ['./spoilers.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [materialModules, NgClass, EscapeDirective, EmptyComponent, SidebarComponent, HighlightJsDirective],
+    imports: [
+        materialModules,
+        NgClass,
+        EscapeDirective,
+        EmptyComponent,
+        SidebarComponent,
+        HighlightJsDirective,
+        OverlayComponent,
+    ],
 })
 export class SpoilersComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);
     currentPath: string;
     firstMatAccordionOpening: boolean = true;
-    sidebarState: boolean;
+    sidebarState: boolean = false;
 
     @Input('emptyPath') emptyPathProps: string;
     @Input('list') listProps: IList[];
@@ -39,6 +56,7 @@ export class SpoilersComponent implements OnInit, OnDestroy {
     constructor(
         private router: Router,
         private sidebarService: SidebarService,
+        private cdr: ChangeDetectorRef,
     ) {}
 
     ngOnInit(): void {
@@ -50,9 +68,10 @@ export class SpoilersComponent implements OnInit, OnDestroy {
         });
         this.currentPath = this.slicePath(this.currentPath);
 
-        this.sidebarService.sidebarState
-            .pipe(takeUntil(this.onDestroy$))
-            .subscribe((newState) => (this.sidebarState = newState));
+        this.sidebarService.sidebarState.pipe(takeUntil(this.onDestroy$)).subscribe((newState) => {
+            this.sidebarState = newState;
+            this.cdr.detectChanges();
+        });
     }
 
     ngOnDestroy() {
@@ -65,7 +84,7 @@ export class SpoilersComponent implements OnInit, OnDestroy {
         return pathsArray[pathsArray.length - 1];
     }
 
-    changesidebarState(state: boolean): void {
+    changeSidebarState(state: boolean): void {
         this.sidebarService.setNewSidebarState(state);
     }
 }

@@ -20,7 +20,7 @@ const materialModules = [MatListModule];
 })
 export class SidebarComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);
-    sidebarState: boolean;
+    sidebarState: boolean = false;
 
     @Input('list') listProps: IList[];
 
@@ -41,7 +41,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
         this.onDestroy$.complete();
     }
 
-    changesidebarState(state: boolean): void {
+    changeSidebarState(state: boolean): void {
         this.sidebarService.setNewSidebarState(state);
     }
 }

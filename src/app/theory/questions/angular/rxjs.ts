@@ -847,54 +847,7 @@ ngOnInit(): void {
             <i class="subtitle">Оператор merge</i>
             <i>Информация перенесена в раздел с операторами...</i>
             <i class="subtitle">Оператор zip</i>
-            <p>
-                <span class="attention"
-                    >Данный оператор объединяет потоки, если в каждом из
-                    переданных потоков есть доступные для создания пары
-                    события.</span
-                >
-            </p>
-            <img src="assets/img/angular/rxjs/zip.png" alt="оператор zip" />
-            <p>
-                На картинке выше есть 2 потока. В первом потоке происходит
-                событие "1", но оно не попадет в объединенный поток, пока в
-                другом потоке не произойдет событие "А", то есть, пока не
-                создаться пара.
-            </p>
-            <p>Как это будет выглядеть в коде:</p>
-            <pre><code class="language-typescript">export class SomeComponent {
-    nextFunction(label: string, count: number, interval: number) {
-        return (subscriber: Subscriber<unknown>) => {
-            let i = 0;
-            setInterval(() => {
-                if (i < count) {
-                    subscriber.next(label + ':' + i);
-                    i++;
-                } else {
-                    subscriber.complete();
-                }
-            }, interval);
-        };
-    }
-
-    first = new Observable(this.nextFunction('A', 3, 500));
-    second = new Observable(this.nextFunction('B', 4, 200));
-
-    result = zip(this.first, this.second).subscribe((val) =>
-        console.log('next:', val)
-    );
-}</code></pre>
-            <p>Результат выполнения кода в консоли:</p>
-            <pre><code class="language-typescript">// next: ['[A]:0', '[B]:0']
-// next: ['[A]:1', '[B]:1']
-// next: ['[A]:2', '[B]:2']</code></pre>
-            <p>
-                В переменной <code>first</code> мы генерируем 3 события, а в
-                <code>second</code> 4, но в объединенный поток попало в итоге
-                лишь 3 пары, т.к. четвертому событию переменной
-                <code>second</code> не нашлось пары из переменной
-                <code>first</code>.
-            </p>
+            <i>Информация перенесена в раздел с операторами...</i>
             <i class="subtitle">Оператор combineLatest</i>
             <p>
                 Оператор <code>combineLatest</code> похож по своему функционалу

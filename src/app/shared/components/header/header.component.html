@@ -1,5 +1,5 @@
 <mat-toolbar class="header">
-    <a routerLink="/" class="header__logo" (click)="changesidebarState(false)"> Helper </a>
+    <a routerLink="/" class="header__logo" (click)="changeSidebarState(false)"> Helper </a>
     <span class="header__spacer"></span>
     <button mat-button [matMenuTriggerFor]="themeMenu">
         <mat-icon>arrow_drop_down</mat-icon>
@@ -31,7 +31,7 @@
                 [routerLink]="chapter.path"
                 routerLinkActive="disabled"
                 mat-menu-item
-                (click)="changesidebarState(false)"
+                (click)="changeSidebarState(false)"
                 [ngClass]="{ disabled: chapter.disabled }"
             >
                 {{ chapter.name }}
