@@ -1,10 +1,11 @@
 export interface IQuestion {
-    title: string;
-    body: string;
-    selected: boolean;
+    title?: string;
+    body?: string;
+    selected?: boolean;
     lastUpdate?: string;
     disabled?: boolean;
     footerLinks?: IFooterLinks[];
+    chapter?: string;
 }
 
 interface IFooterLinks {

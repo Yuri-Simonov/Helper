@@ -2,6 +2,9 @@ import { IQuestion } from '@types';
 
 export const rxjsOperatorsQuestions: IQuestion[] = [
     {
+        chapter: 'Операторы RxJS. Общие понятия',
+    },
+    {
         title: 'switchMap',
         body: `<p>
                 <span class="attention"

@@ -7,7 +7,6 @@ import {
     delay,
     exhaustMap,
     flatMap,
-    from,
     interval,
     map,
     merge,
@@ -25,24 +24,17 @@ import {
     styleUrl: './for-examples.component.scss',
 })
 export class ForExamplesComponent {
-    ngOnInit() {
-        //     of('A', 'B', 'C').pipe(
-        //         exhaustMap((value) => {
-        //             return of(value).pipe(
-        //                 delay(1000),
-        //                 map((currentValue) => 'Текущее значение потока: ' + currentValue),
-        //             );
-        //         }),
-        //     );
-        //     .subscribe(console.log);
-
-        from([1, 2, 3]) // Создаем Observable из массива чисел
-            .pipe(
-                map((number) => number * 2), // Умножаем каждое число на 2
-                // zip(from(['a', 'b', 'c'])), // Комбинируем текущий поток с другим Observable
-            )
-            .subscribe(console.log); // Выводим результат
-    }
+    // ngOnInit() {
+    //     of('A', 'B', 'C').pipe(
+    //         exhaustMap((value) => {
+    //             return of(value).pipe(
+    //                 delay(1000),
+    //                 map((currentValue) => 'Текущее значение потока: ' + currentValue),
+    //             );
+    //         }),
+    //     );
+    //     .subscribe(console.log);
+    // }
 
     // first = new Observable((subscriber) => {
     //     setTimeout(() => {
@@ -58,9 +50,9 @@ export class ForExamplesComponent {
     //     }, 200);
     // });
 
-    // first = of('A', 'B', 'C');
-    // second = of('1', '2', '3', 4);
+    first = of('A', 'B', 'C');
+    second = of('1', '2', '3', 4);
 
-    // result = zip(this.first, this.second).subscribe(console.log);
+    result = zip(this.first, this.second).subscribe(console.log);
     // result2 = zip(this.third, this.forth).subscribe(console.log);
 }
