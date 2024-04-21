@@ -10,10 +10,7 @@ export class LocalStorageService {
         try {
             localStorage.setItem(key, JSON.stringify(data));
         } catch (err) {
-            console.error(
-                'Не удалось сохранить данные в локальное хранилище',
-                err
-            );
+            console.error('Не удалось сохранить данные в локальное хранилище', err);
         }
     }
 
@@ -21,10 +18,7 @@ export class LocalStorageService {
         try {
             return JSON.parse(localStorage.getItem(key)!);
         } catch (err) {
-            console.error(
-                'Не удалось получить данные из локального хранилища',
-                err
-            );
+            console.error('Не удалось получить данные из локального хранилища', err);
             return null;
         }
     }

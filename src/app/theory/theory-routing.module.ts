@@ -5,8 +5,6 @@ import { AngularComponent } from './pages/angular/angular.component';
 import { GitComponent } from './pages/git/git.component';
 import { JavascriptComponent } from './pages/javascript/javascript.component';
 
-// а б в г д е ё ж з и й к л м н о п р с т у ф х ц ч ш щ ъ ы ь э ю я
-// a b c d e f g h i j k l m n o p q r s t u v w x y z
 const routes: Routes = [
     {
         path: 'theory/angular',

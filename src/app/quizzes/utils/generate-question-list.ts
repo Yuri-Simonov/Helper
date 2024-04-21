@@ -1,8 +1,6 @@
 import { IQuestionsAndAnswer } from '../../shared/types';
 
 export const getQuestions = (questions: IQuestionsAndAnswer[], amount: number = 20): IQuestionsAndAnswer[] => {
-    console.log('question length', questions.length);
-
     const finalQuestions: IQuestionsAndAnswer[] = [];
     const indexes: number[] = generateRandomNumbers(questions, amount);
 

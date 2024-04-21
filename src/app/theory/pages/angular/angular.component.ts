@@ -22,13 +22,10 @@ import { ngrxQuestions } from 'src/app/theory/questions/angular/ngrx';
     styleUrls: ['./angular.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
-// а б в г д е ё ж з и й к л м н о п р с т у ф х ц ч ш щ ъ ы ь э ю я
-// a b c d e f g h i j k l m n o p q r s t u v w x y z
 export class AngularComponent {
     list: IList[] = [
         {
-            name: 'Основы Angular',
+            chapter: 'Основы Angular',
             disabled: true,
         },
         {
@@ -54,7 +51,7 @@ export class AngularComponent {
             questions: changeDetectionQuestions,
         },
         {
-            name: 'Библиотеки Angular',
+            chapter: 'Библиотеки Angular',
             disabled: true,
         },
         { name: 'RxJS', path: 'rxjs', questions: rxjsQuestions },
