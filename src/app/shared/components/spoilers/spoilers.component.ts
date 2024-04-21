@@ -35,10 +35,10 @@ const materialModules = [MatExpansionModule];
         materialModules,
         NgClass,
         EscapeDirective,
-        EmptyComponent,
-        SidebarComponent,
         HighlightJsDirective,
+        EmptyComponent,
         OverlayComponent,
+        SidebarComponent,
     ],
 })
 export class SpoilersComponent implements OnInit, OnDestroy {

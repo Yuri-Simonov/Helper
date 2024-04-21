@@ -1,15 +1,19 @@
 <div class="sidebar">
     <mat-nav-list>
         @for (item of listProps; track $index) {
-            <a
-                mat-list-item
-                [routerLink]="[item.path]"
-                routerLinkActive="disabled"
-                (click)="changeSidebarState(!sidebarState)"
-                [ngClass]="{ chapter: item.disabled }"
-            >
-                {{ item.name }}
-            </a>
+            @if (item.chapter) {
+                <h2 class="sidebar__chapter">{{ item.chapter }}</h2>
+            } @else {
+                <a
+                    mat-list-item
+                    [routerLink]="[item.path]"
+                    routerLinkActive="disabled"
+                    (click)="changeSidebarState(!sidebarState)"
+                    [ngClass]="{ chapter: item.disabled }"
+                >
+                    {{ item.name }}
+                </a>
+            }
         }
     </mat-nav-list>
 </div>

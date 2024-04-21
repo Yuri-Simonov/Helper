@@ -3,18 +3,14 @@
     justify-content: center;
     align-items: center;
     height: 30vh;
-    background: linear-gradient(
-        180deg,
-        var(--primary) 0%,
-        var(--secondary) 100%
-    );
+    background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
     padding: 24px;
 
     &__title {
         text-align: center;
+        display: none;
 
-        &_desctop {
-            display: none;
+        &_desktop {
             margin: 0;
 
             @media (min-width: 993px) and (min-height: 441px) {
@@ -23,10 +19,13 @@
         }
 
         &_mobile {
-            display: none;
             @media (max-width: 992px), (max-height: 440px) {
                 display: block;
             }
+        }
+
+        span {
+            white-space: nowrap;
         }
     }
 }

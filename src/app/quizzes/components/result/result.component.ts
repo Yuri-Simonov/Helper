@@ -15,21 +15,6 @@ export class ResultComponent {
     @Input('userAnswers') userAnswersProps: ITestAnswerOption[];
 
     ngOnChanges() {
-        // this.userAnswersProps = [
-        //     {
-        //         text: 'Winter',
-        //         right: true,
-        //     },
-        //     {
-        //         text: 'Spring',
-        //         right: false,
-        //     },
-        //     {
-        //         text: 'Winter',
-        //         right: true,
-        //     },
-        // ];
-
         this.userAnswersProps.forEach((item) => {
             if (item.right) {
                 this.amountRightAnswers++;

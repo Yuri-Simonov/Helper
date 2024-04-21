@@ -2,7 +2,7 @@
     min-height: 100%;
     border-right: var(--border);
     background-color: var(--mdc-filled-text-field-input-text-placeholder-color);
-    padding: 0 12px;
+    padding: 0 16px;
 
     @media (max-width: 992px) {
         position: absolute;
@@ -61,20 +61,22 @@
                 }
             }
 
-            &.chapter {
-                cursor: default;
-
-                .mdc-list-item__primary-text {
-                    color: var(--primary-color);
-                    pointer-events: none;
-                    padding-left: 0;
-                }
-            }
-
             .mdc-list-item__primary-text {
                 transition: 0.3s;
                 color: var(--text-color);
-                padding-left: 1rem;
+            }
+        }
+
+        &__chapter {
+            cursor: default;
+            color: var(--primary-color);
+            pointer-events: none;
+            padding-left: 0;
+            margin: 0;
+            font-size: 1rem;
+
+            &:first-child {
+                margin-top: 10px;
             }
         }
     }

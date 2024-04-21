@@ -84,5 +84,5 @@
 </div>
 
 @if (sidebarState) {
-    <app-overlay></app-overlay>
+    <app-overlay (click)="changeSidebarState(!sidebarState)"></app-overlay>
 }
