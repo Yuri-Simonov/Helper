@@ -2,6 +2,9 @@ import { IQuestion } from '@types';
 
 export const decoratorQuestions: IQuestion[] = [
     {
+        chapter: 'Общие понятия',
+    },
+    {
         title: 'Декораторы в Angular',
         body: `<p>
 		Декораторы - это
@@ -26,20 +29,7 @@ export class SomeComponent {}</code></pre>
         lastUpdate: '14.09.2023',
     },
     {
-        title: 'Свойство <span class="variable">bootstrap</span> декоратора <span class="variable">@NgModule()</span>',
-        body: `<p>
-            В свойстве <code>bootstrap</code> указывается компонент, который
-            <span class="attention">
-                будет использоваться в качестве основного при загрузке модуля.
-            </span>
-        </p>
-        <p>
-            Причем только корневой модуль может определять свойство
-            <code>bootstrap</code> (а также импортировать модуль, отвечающий за работу приложения в браузере - 
-            <code>BrowserModule</code>).
-        </p>`,
-        selected: false,
-        lastUpdate: '14.09.2023',
+        chapter: 'Декораторы <span class="variable">@Input()</span> и <span class="variable">@Output()</span>',
     },
     {
         title: 'Разница между декораторами <span class="variable">@Input()</span> и <span class="variable">@Output()</span>',
@@ -81,7 +71,7 @@ export class SomeComponent {}</code></pre>
                 >В JavaScript объекты передаются по ссылке</span
             >. Поэтому, если сначала передать объект через декоратор
             <code>@Input()</code> в дочерний компонент, а потом поменять в этом
-            объекте какое-то значение и попытаться внось передать тот же объект
+            объекте какое-то значение и попытаться вновь передать тот же объект
             с измененным значением в дочерний компонент, то в дочернем
             компоненте вы не увидите никаких изменений.
         </p>
@@ -207,60 +197,10 @@ export class ChildComponent {
         selected: false,
         lastUpdate: '27.02.2024',
     },
+
     {
-        title: 'Свойство <span class="variable">exportAs</span> декоратора <span class="variable">@Directive()</span>',
-        body: `<p>
-                Свойство <code>exportAs</code> декоратроа <code>@Directive&#40;&#41;</code>
-                <span class="attention">
-                    позволяет задавать имя, которое можно использовать в шаблоне компонента для присвоения заданной
-                    директивы (или компонента) шаблонной переменной.
-                </span>
-            </p>
-            <pre><code class="language-typescript">// класс директивы
-&#64;Directive({
-	selector: '[appCustomDirective]',
-	exportAs: 'custom'
-})
-class CustomDirective {
-	getMessage() {
-        console.log('Меня вызвали!')
-    }
-}
-</code></pre>
-            <pre><code class="language-html">&lt;!-- шаблон компонента -->
-&lt;p appCustomDirective #example="custom">&lt;/p>
-&lt;button (click)="example.getMessage()">&lt;/button>
-</code></pre>
-            <p>
-                В примере выше у кнопки есть слушатель события клика, который при срабатывании будет вызывать метод
-                <code>getMessage</code> из директивы <code>appCustomDirective</code>, даже не смотря на то, что на
-                кнопке она не висит. Связь осуществляется засчет свойства <code>exportAs</code> и шаблонной переменной
-                <code>example</code>.
-            </p>
-            <p>
-                Выше был рассмотрен пример, когда через шаблонную переменную передается директива.
-                <span class="attention">
-                    С декоратором
-                    <code>@Component&#40;&#41;</code> свойство <code>exportAs</code> работает точно так же</span
-                >.
-            </p>
-            <i class="subtitle">Когда может пригодится свойство exportAs?</i>
-            <p>
-                Например, когда в директиве или компоненте заложен какой-то функционал, и в зависимости от него
-                необходимо в шаблоне делать какие-то визуальные изменения или менять структуру DOM-дерева.
-            </p>
-            <p>
-                Также свойство <code>exportAs</code> может быть использовано для получения доступа к директивам или
-                компонентам в шаблоне, где нет большой необходимости использовать декоратор
-                <code>@ViewChild&#40;&#41;</code>.
-            </p>`,
-        selected: false,
-        lastUpdate: '25.02.2024',
-        footerLinks: [
-            {
-                path: 'https://youtu.be/7W-EMTHV8dQ',
-            },
-        ],
+        chapter:
+            'Декораторы <span class="variable">@ViewChild()</span> и <span class="variable">@ViewChildren()</span>',
     },
     {
         title: 'Декоратор <span class="variable">@ViewChild()</span>',
@@ -580,6 +520,10 @@ ngAfterViewInit() {
         ],
     },
     {
+        chapter:
+            'Декораторы <span class="variable">@ContentChild()</span> и <span class="variable">@ContentChildren()</span>',
+    },
+    {
         title: 'Декоратор <span class="variable">@ContentChild()</span>',
         body: `<p>
                 <span class="attention"
@@ -819,7 +763,7 @@ ngAfterViewInit() {
         title: 'Метод жизненного цикла, начиная с которого доступна информация в декораторах <span class="variable">@ContentChild()</span> и <span class="variable">@ContentChildren()</span>',
         body: `<p>
                 Т.к. декораторы свойств <code>@ContentChild&#40;&#41;</code> и
-                <code>@ContentChildren&#40;&#41;</code> следят за содержимым текущего компонента, а оно инициализуруется
+                <code>@ContentChildren&#40;&#41;</code> следят за содержимым текущего компонента, а оно инициализируется
                 перед вызовом метода <code>ngAfterContentInit</code>, следовательно, первые данные появятся именно в
                 этом методе. До него будет <code>undefined</code>.
             </p>`,
@@ -922,42 +866,7 @@ ngAfterViewInit() {
             },
         ],
     },
-    {
-        title: 'Декоратор <span class="variable">@Attribute()</span>',
-        body: `<p>
-		В Angular данные от родителя к дочернему компоненту можно
-		передавать как статически, так и динамически:
-	</p>
-	<pre><code class="language-html">&lt;app-child name="какая-то_строка">&lt;/app-child> &lt;!-- статическая передача данных -->
-&lt;app-child [name]="какая-то_переменная">&lt;/app-child> &lt;!-- динамическая передача данных --></code></pre>
-	<p>
-		Декоратор <code>@Input()</code> может обрабатывать и тот, и другой
-		варианты. И т.к. данные могут изменяться, механизм
-		<code>ChangeDetection</code> будет его тоже проверять на наличие
-		изменений. Даже если вы каждый раз передаете статические данные и они никак
-		не изменяются.
-	</p>
-	<p>
-		Чтобы снизить нагрузку на механизм
-		<code>ChangeDetection</code> и не проверять статические данные,
-		используется декоратор <code>@Attribute()</code>, который
-		<span class="attention"
-			>помечает входящий параметр как неизменяемый на протяжении
-			всего жизненного цикла приложения</span
-		>.
-	</p>
-	<p>Пример использования:</p>
-	<pre><code class="language-typescript">constructor(@Attribute('name') private name: string) {}</code></pre>
-	<p>
-		Как видите, в отличие от декоратора <code>@Input()</code> значение теперь принимается в конструкторе класса, а не в одном из хуков жизненного цикла компонента. А как вы знаете, конструктор вызывается лишь единожды, когда инициируется сам класс, а не компонент, поэтому
-		свойство не может быть динамическим и механизм <code>ChangeDetection</code> его не отслеживает. Соответственно, <span class="attention">если вы
-		захотите передать через декоратор
-		<code>@Attribute()</code> динамический параметр, то Angular выдаст
-		вам ошибку</span>.
-	</p>`,
-        selected: false,
-        lastUpdate: '23.09.2023',
-    },
+    { chapter: 'Декораторы <span class="variable">dependency injection</span> (DI)' },
     {
         title: 'Декоратор <span class="variable">@Injectable()</span>',
         body: `<p>
@@ -1180,6 +1089,114 @@ class ParentComponent {}
 })
 
 class App {}</code></pre>`,
+        selected: false,
+        lastUpdate: '23.09.2023',
+    },
+    { chapter: 'Прочее' },
+    {
+        title: 'Свойство <span class="variable">bootstrap</span> декоратора <span class="variable">@NgModule()</span>',
+        body: `<p>
+            В свойстве <code>bootstrap</code> указывается компонент, который
+            <span class="attention">
+                будет использоваться в качестве основного при загрузке модуля.
+            </span>
+        </p>
+        <p>
+            Причем только корневой модуль может определять свойство
+            <code>bootstrap</code> (а также импортировать модуль, отвечающий за работу приложения в браузере - 
+            <code>BrowserModule</code>).
+        </p>`,
+        selected: false,
+        lastUpdate: '14.09.2023',
+    },
+    {
+        title: 'Свойство <span class="variable">exportAs</span> декоратора <span class="variable">@Directive()</span>',
+        body: `<p>
+                Свойство <code>exportAs</code> декоратора <code>@Directive&#40;&#41;</code>
+                <span class="attention">
+                    позволяет задавать имя, которое можно использовать в шаблоне компонента для присвоения заданной
+                    директивы (или компонента) шаблонной переменной.
+                </span>
+            </p>
+            <pre><code class="language-typescript">// класс директивы
+&#64;Directive({
+	selector: '[appCustomDirective]',
+	exportAs: 'custom'
+})
+class CustomDirective {
+	getMessage() {
+        console.log('Меня вызвали!')
+    }
+}
+</code></pre>
+            <pre><code class="language-html">&lt;!-- шаблон компонента -->
+&lt;p appCustomDirective #example="custom">&lt;/p>
+&lt;button (click)="example.getMessage()">&lt;/button>
+</code></pre>
+            <p>
+                В примере выше у кнопки есть слушатель события клика, который при срабатывании будет вызывать метод
+                <code>getMessage</code> из директивы <code>appCustomDirective</code>, даже не смотря на то, что на
+                кнопке она не висит. Связь осуществляется за счет свойства <code>exportAs</code> и шаблонной переменной
+                <code>example</code>.
+            </p>
+            <p>
+                Выше был рассмотрен пример, когда через шаблонную переменную передается директива.
+                <span class="attention">
+                    С декоратором
+                    <code>@Component&#40;&#41;</code> свойство <code>exportAs</code> работает точно так же</span
+                >.
+            </p>
+            <i class="subtitle">Когда может пригодится свойство exportAs?</i>
+            <p>
+                Например, когда в директиве или компоненте заложен какой-то функционал, и в зависимости от него
+                необходимо в шаблоне делать какие-то визуальные изменения или менять структуру DOM-дерева.
+            </p>
+            <p>
+                Также свойство <code>exportAs</code> может быть использовано для получения доступа к директивам или
+                компонентам в шаблоне, где нет большой необходимости использовать декоратор
+                <code>@ViewChild&#40;&#41;</code>.
+            </p>`,
+        selected: false,
+        lastUpdate: '25.02.2024',
+        footerLinks: [
+            {
+                path: 'https://youtu.be/7W-EMTHV8dQ',
+            },
+        ],
+    },
+    {
+        title: 'Декоратор <span class="variable">@Attribute()</span>',
+        body: `<p>
+		В Angular данные от родителя к дочернему компоненту можно
+		передавать как статически, так и динамически:
+	</p>
+	<pre><code class="language-html">&lt;app-child name="какая-то_строка">&lt;/app-child> &lt;!-- статическая передача данных -->
+&lt;app-child [name]="какая-то_переменная">&lt;/app-child> &lt;!-- динамическая передача данных --></code></pre>
+	<p>
+		Декоратор <code>@Input()</code> может обрабатывать и тот, и другой
+		варианты. И т.к. данные могут изменяться, механизм
+		<code>ChangeDetection</code> будет его тоже проверять на наличие
+		изменений. Даже если вы каждый раз передаете статические данные и они никак
+		не изменяются.
+	</p>
+	<p>
+		Чтобы снизить нагрузку на механизм
+		<code>ChangeDetection</code> и не проверять статические данные,
+		используется декоратор <code>@Attribute()</code>, который
+		<span class="attention"
+			>помечает входящий параметр как неизменяемый на протяжении
+			всего жизненного цикла приложения</span
+		>.
+	</p>
+	<p>Пример использования:</p>
+	<pre><code class="language-typescript">constructor(@Attribute('name') private name: string) {}</code></pre>
+	<p>
+		Как видите, в отличие от декоратора <code>@Input()</code> значение теперь принимается в конструкторе класса, а не в одном из хуков жизненного цикла компонента. А как вы знаете, конструктор вызывается лишь единожды, когда инициируется сам класс, а не компонент, поэтому
+		свойство не может быть динамическим и механизм <code>ChangeDetection</code> его не отслеживает. Соответственно, <span class="attention">если вы
+		захотите передать через декоратор
+		<code>@Attribute()</code> динамический параметр, то Angular выдаст
+		вам ошибку</span>.
+	</p>`,
         selected: false,
         lastUpdate: '23.09.2023',
     },

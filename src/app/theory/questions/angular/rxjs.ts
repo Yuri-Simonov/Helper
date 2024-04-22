@@ -1,11 +1,7 @@
 import { IQuestion } from '@types';
 
 export const rxjsQuestions: IQuestion[] = [
-    // {
-    //     title: '',
-    //     body: ``,
-    //     selected: false,
-    // },
+    { chapter: 'Общие понятия' },
     {
         title: 'Библиотека <span class="variable">RxJs</span>',
         body: `<p>
@@ -97,50 +93,8 @@ newObs$.subscribe(
         selected: false,
         lastUpdate: '09.02.2024',
     },
-    {
-        title: 'Преобразование примитивного типа данных в тип <span class="variable">Observable</span>',
-        body: `<p>
-            Для преобразования данных из примитивов в тип <code>Observable</code>,
-            в RxJs существуют специальные для этого операторы. Например,
-            <code>of</code> и <code>from</code>.
-        </p>
-        <p>
-            Оператор <code>of</code> подходит для случаев, когда необходимо из
-            массива данных создать <code>Observable</code> и при подписке на
-            источник события получать тот же массив целиком. При этом, оператор
-            <code>of</code> создает поток с одним или несколькими элементами,
-            который завершается сразу после их отправки.
-        </p>
-<pre><code class="language-typescript">export class SomeComponent {
-    numbers$: Observable = of([1, 2, 3]); // (*)
+    { chapter: 'Разница между <span class="variable">Observable</span> и другими типами данных' },
 
-    ngOnInit() {
-        this.numbers$.subscribe((data: number[]) => {
-            console.log(data); // [1, 2, 3]
-        });
-    }
-}</code></pre>
-        <p>Строка под "<code>*</code>" равносильна следующей записи:</p>
-<pre><code class="language-typescript">numbers$: Observable = new Observable((observer) => {
-	observer.next([1, 2, 3]);
-});</code></pre>
-        <p>
-            Если необходимо, чтобы обработчик вместо всего массива сразу получал
-            каждый его элемент в отдельности, тогда используется оператор
-            <code>from</code>.
-        </p>
-<pre><code class="language-typescript">export class SomeComponent {
-    numbers$: Observable = from([1, 2, 3]);
-
-    ngOnInit() {
-        this.numbers$.subscribe((data: number) => {
-            console.log(data); // 1, 2, 3
-        });
-    }
-}</code></pre>`,
-        selected: false,
-        lastUpdate: '09.02.2024',
-    },
     {
         title: 'Разница между <span class="variable">Observable</span> и <span class="variable">Promise</span>',
         body: `<p>
@@ -418,6 +372,51 @@ subject$.next(9);</code></pre>
 <pre><code class="language-typescript">Первая подписка: 3
 Первая подписка: 9
 Вторая подписка: 9</code></pre>`,
+        selected: false,
+        lastUpdate: '09.02.2024',
+    },
+    { chapter: 'Прочее' },
+    {
+        title: 'Преобразование примитивного типа данных в тип <span class="variable">Observable</span>',
+        body: `<p>
+            Для преобразования данных из примитивов в тип <code>Observable</code>,
+            в RxJs существуют специальные для этого операторы. Например,
+            <code>of</code> и <code>from</code>.
+        </p>
+        <p>
+            Оператор <code>of</code> подходит для случаев, когда необходимо из
+            массива данных создать <code>Observable</code> и при подписке на
+            источник события получать тот же массив целиком. При этом, оператор
+            <code>of</code> создает поток с одним или несколькими элементами,
+            который завершается сразу после их отправки.
+        </p>
+<pre><code class="language-typescript">export class SomeComponent {
+    numbers$: Observable = of([1, 2, 3]); // (*)
+
+    ngOnInit() {
+        this.numbers$.subscribe((data: number[]) => {
+            console.log(data); // [1, 2, 3]
+        });
+    }
+}</code></pre>
+        <p>Строка под "<code>*</code>" равносильна следующей записи:</p>
+<pre><code class="language-typescript">numbers$: Observable = new Observable((observer) => {
+	observer.next([1, 2, 3]);
+});</code></pre>
+        <p>
+            Если необходимо, чтобы обработчик вместо всего массива сразу получал
+            каждый его элемент в отдельности, тогда используется оператор
+            <code>from</code>.
+        </p>
+<pre><code class="language-typescript">export class SomeComponent {
+    numbers$: Observable = from([1, 2, 3]);
+
+    ngOnInit() {
+        this.numbers$.subscribe((data: number) => {
+            console.log(data); // 1, 2, 3
+        });
+    }
+}</code></pre>`,
         selected: false,
         lastUpdate: '09.02.2024',
     },
