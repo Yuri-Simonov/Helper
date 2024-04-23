@@ -22,6 +22,7 @@ import { EscapeDirective } from '../../directives/escape.directive';
 import { EmptyComponent } from '../empty/empty.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { OverlayComponent } from '../overlay/overlay.component';
+import { PipeSanitizer } from '../../pipes/pipe-sanitizer.pipe';
 
 const materialModules = [MatExpansionModule];
 
@@ -39,6 +40,7 @@ const materialModules = [MatExpansionModule];
         EmptyComponent,
         OverlayComponent,
         SidebarComponent,
+        PipeSanitizer,
     ],
 })
 export class SpoilersComponent implements OnInit, OnDestroy {

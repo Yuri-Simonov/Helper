@@ -6,7 +6,7 @@
         @for (item of listProps; track item.path) {
             @if (item.path === currentPath) {
                 @for (q of item.questions; track q.title || q.chapter) {
-                    @if (q.title) {
+                    @if (q.title && q.body) {
                         <div class="spoilers__item">
                             <mat-accordion [ngClass]="{ disabled: q.disabled }">
                                 <mat-expansion-panel
@@ -19,7 +19,7 @@
                                     <mat-expansion-panel-header>
                                         <mat-panel-title [innerHTML]="q.title"></mat-panel-title>
                                     </mat-expansion-panel-header>
-                                    <div highlight-js mode="default" [innerHTML]="q.body"></div>
+                                    <div highlight-js mode="default" [innerHTML]="q.body | pipeSanitizer"></div>
                                     <!-- @for (item of [1, 2, 3]; track $index) {
                                     <mat-expansion-panel>
                                         <mat-expansion-panel-header>

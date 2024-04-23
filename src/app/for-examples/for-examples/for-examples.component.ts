@@ -6,6 +6,7 @@ import {
     concatMapTo,
     delay,
     exhaustMap,
+    filter,
     flatMap,
     interval,
     map,
@@ -24,35 +25,9 @@ import {
     styleUrl: './for-examples.component.scss',
 })
 export class ForExamplesComponent {
-    // ngOnInit() {
-    //     of('A', 'B', 'C').pipe(
-    //         exhaustMap((value) => {
-    //             return of(value).pipe(
-    //                 delay(1000),
-    //                 map((currentValue) => 'Текущее значение потока: ' + currentValue),
-    //             );
-    //         }),
-    //     );
-    //     .subscribe(console.log);
-    // }
-
-    // first = new Observable((subscriber) => {
-    //     setTimeout(() => {
-    //         subscriber.next('Событие из первого потока');
-    //         subscriber.complete();
-    //     }, 500);
-    // });
-
-    // second = new Observable((subscriber) => {
-    //     setTimeout(() => {
-    //         subscriber.next('Событие из второго потока');
-    //         subscriber.complete();
-    //     }, 200);
-    // });
-
-    first = of('A', 'B', 'C');
-    second = of('1', '2', '3', 4);
-
-    result = zip(this.first, this.second).subscribe(console.log);
-    // result2 = zip(this.third, this.forth).subscribe(console.log);
+    ngOnInit() {
+        of(1, 2, 3)
+            .pipe(map((x) => x * x))
+            .subscribe((v) => console.log(`Текущее значение: ${v}`));
+    }
 }
