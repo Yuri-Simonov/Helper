@@ -16,6 +16,10 @@
 Полезные ссылки:
 - цветовые палитры Angular Material UI
 https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
+- Операторы RxJs, где можно двигать события в потоках
+https://rxmarbles.com/
+- Операторы RxJs с анимацией их принципа работы
+https://rxjstutorial.com/docs/transformation-operators/
 ================================================
 
 class="language-html"
