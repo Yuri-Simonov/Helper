@@ -36,18 +36,22 @@
                                             <div class="spoilers__links">
                                                 @if (q.footerLinks?.length === 1) {
                                                     @if (q.footerLinks?.[0]?.title) {
-                                                        <span>{{ "Видеообъяснение:&nbsp;" }}</span>
+                                                        <span>{{
+                                                            (q?.footerText?.[0] || "Видеообъяснение") + ":&nbsp;"
+                                                        }}</span>
                                                     } @else {
                                                         <a
                                                             class="spoilers__link"
                                                             target="_blank"
                                                             [href]="q.footerLinks?.[0]?.path"
                                                         >
-                                                            {{ "Видеообъяснение" }}
+                                                            {{ (q?.footerText?.[0] || "Видеообъяснение") + ":&nbsp;" }}
                                                         </a>
                                                     }
                                                 } @else {
-                                                    <span>{{ "Видеообъяснения:&nbsp;" }}</span>
+                                                    <span>{{
+                                                        (q?.footerText?.[1] || "Видеообъяснения") + ":&nbsp;"
+                                                    }}</span>
                                                 }
                                                 @for (link of q.footerLinks; track $index) {
                                                     <span style="display: flex">

@@ -6,9 +6,10 @@ export interface IQuestion {
     disabled?: boolean;
     footerLinks?: IFooterLinks[];
     chapter?: string;
+    footerText?: [string, string]; // 1-ая строка - для ед.существа, 2-ая строка - для мн.числа
 }
 
 interface IFooterLinks {
     title?: string;
-    path: string;
+    path?: string;
 }

@@ -602,9 +602,241 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
         selected: false,
         lastUpdate: '26.04.2024',
     },
+    { chapter: 'Операторы создания (<span class="variable">Creation Operators</span>)' },
+    // {
+    //     title: '',
+    //     body: ``,
+    // 	selected: false,
+    // 	lastUpdate: ''
+    // },
+    { chapter: 'Операторы объединения (<span class="variable">Join Creation Operators</span>) для созданных потоков' },
     {
-        chapter: 'Операторы...',
+        title: '<span class="variable">combineLatest</span>',
+        body: `1`,
+        selected: false,
+        lastUpdate: '16.04.2024',
+        disabled: true,
+        footerLinks: [
+            {
+                title: 'Подвигать шарики',
+                path: 'https://rxmarbles.com/#combineLatest',
+            },
+            {
+                title: 'Анимация работы оператора',
+                path: 'https://rxjstutorial.com/docs/join-creation-operators/combineLatest/',
+            },
+        ],
     },
+    {
+        title: '<span class="variable">concat</span>',
+        body: `<p>
+                Оператор <code>concat</code>
+                <span class="attention"
+                    >используется для последовательного объединения двух или более <code>Observable</code> в один</span
+                >.
+            </p>
+            <img src="assets/img/angular/rxjs/concat.png" alt="оператор concat" />
+            <p>
+                Как видно на картинке, события второго потока добавляются после событий первого потока. Причем неважно,
+                что второй поток завершается раньше, оператор <code>concat</code>
+                <span class="attention">
+                    будет ждать когда завершится первый поток и только после этого перейдет к следующему</span
+                >, и т.д. И после того, как оператор <code>concat</code> получает все потоки,
+                <span class="attention">он их объединяет в порядке передачи внутрь оператора и завершается</span>.
+            </p>
+            <p>
+                Оператор <code>concat</code> следует использовать, когда нужно сначала обработать события от одного
+                источника, а затем от другого, и порядок событий важен. Это может быть полезно, например, при выполнении
+                последовательных запросов к серверу или при выполнении асинхронных операций в определенном порядке.
+            </p>
+            <p>Пример:</p>
+            <pre><code class="language-typescript">export class SomeComponent {
+    first = new Observable((subscriber) => {
+        setTimeout(() => {
+            subscriber.next('Событие из первого потока');
+            subscriber.complete();
+        }, 500);
+    });
+
+    second = new Observable((subscriber) => {
+        setTimeout(() => {
+            subscriber.next('Событие из второго потока');
+            subscriber.complete();
+        }, 200);
+    });
+
+    result = concat(this.first, this.second).subscribe(console.log);
+}</code></pre>
+            <p>Результат выполнения кода в консоли:</p>
+            <pre><code class="language-typescript">Событие из первого потока
+Событие из второго потока</code></pre>
+            <p>
+                Как видите, время, когда происходят события не учитывается, т.к. в консоли событие из первого потока
+                появляется раньше, несмотря на то, что во втором потоке задержка в функции <code>setTimeout</code> имеет
+                меньшую величину, чем в первом.
+            </p>`,
+        selected: false,
+        lastUpdate: '16.04.2024',
+        footerText: ['Дополнительный материал', 'Дополнительные материалы'],
+        footerLinks: [
+            {
+                title: 'Подвигать шарики',
+                path: 'https://rxmarbles.com/#concat',
+            },
+            {
+                title: 'Анимация работы оператора',
+                path: 'https://rxjstutorial.com/docs/join-creation-operators/concat/',
+            },
+        ],
+    },
+    {
+        title: '<span class="variable">forkJoin</span>',
+        body: `1`,
+        selected: false,
+        lastUpdate: '16.04.2024',
+        disabled: true,
+        footerText: ['Дополнительный материал', 'Дополнительные материалы'],
+        footerLinks: [
+            {
+                title: 'Подвигать шарики',
+                path: 'https://rxmarbles.com/#forkJoin',
+            },
+            {
+                title: 'Анимация работы оператора',
+                path: 'https://rxjstutorial.com/docs/join-creation-operators/forkJoin/',
+            },
+        ],
+    },
+    {
+        title: '<span class="variable">merge</span>',
+        body: `<p>
+                Оператор <code>merge</code>
+                <span class="attention"
+                    >используется для объединения двух или более <code>Observable</code> в один поток. Он объединяет
+                    элементы всех источников в том порядке, в котором они были созданы</span
+                >.
+            </p>
+            <img src="assets/img/angular/rxjs/merge.png" alt="оператор concat" />
+            <p>
+                Оператор <code>merge</code> следует использовать, когда нужно обрабатывать события от нескольких
+                источников данных одновременно, без ожидания завершения одного источника перед переходом к следующему.
+                Это может быть полезно, например, при обработке нескольких запросов к серверу или при работе с
+                несколькими компонентами, которые могут генерировать события независимо друг от друга.
+            </p>
+            <p>Пример:</p>
+            <pre><code class="language-typescript">export class SomeComponent {
+    first = new Observable((subscriber) => {
+        setTimeout(() => {
+            subscriber.next('Событие из первого потока');
+            subscriber.complete();
+        }, 500);
+    });
+
+    second = new Observable((subscriber) => {
+        setTimeout(() => {
+            subscriber.next('Событие из второго потока');
+            subscriber.complete();
+        }, 200);
+    });
+
+    result = merge(this.first, this.second).subscribe(console.log);
+}</code></pre>
+            <p>Результат выполнения кода в консоли:</p>
+            <pre><code class="language-typescript">Событие из второго потока
+Событие из первого потока</code></pre>
+            <p>
+                Как видите, теперь учитывается время события, когда оно происходит, т.к. в консоли событие из второго
+                потока появляется раньше.
+            </p>`,
+        selected: false,
+        lastUpdate: '16.04.2024',
+        footerText: ['Дополнительный материал', 'Дополнительные материалы'],
+        footerLinks: [
+            {
+                title: 'Подвигать шарики',
+                path: 'https://rxmarbles.com/#merge',
+            },
+            {
+                title: 'Анимация работы оператора',
+                path: 'https://rxjstutorial.com/docs/join-creation-operators/merge/',
+            },
+        ],
+    },
+    {
+        title: '<span class="variable">partition</span>',
+        body: `1`,
+        selected: false,
+        lastUpdate: '16.04.2024',
+        footerText: ['Дополнительный материал', 'Дополнительные материалы'],
+        disabled: true,
+        footerLinks: [
+            {
+                title: 'Анимация работы оператора',
+                path: 'https://rxjstutorial.com/docs/join-creation-operators/partition/',
+            },
+        ],
+    },
+    {
+        title: '<span class="variable">race</span>',
+        body: `1`,
+        selected: false,
+        lastUpdate: '',
+        footerText: ['Дополнительный материал', 'Дополнительные материалы'],
+        footerLinks: [
+            {
+                title: 'Подвигать шарики',
+                path: 'https://rxmarbles.com/#race',
+            },
+            {
+                title: 'Анимация работы оператора',
+                path: 'https://rxjstutorial.com/docs/join-creation-operators/race/',
+            },
+        ],
+    },
+    {
+        title: '<span class="variable">zip</span>',
+        body: `<p>
+                Оператор <code>zip</code>
+                <span class="attention"
+                    >объединяет 2 или более потоков, если в каждом из переданных потоков есть доступные события для
+                    создания пары</span
+                >.
+            </p>
+            <img src="assets/img/angular/rxjs/zip.png" alt="оператор zip" />
+            <p>
+                На картинке выше есть 2 потока. В первом потоке происходит событие "1", но оно не попадет в объединенный
+                поток, пока в другом потоке не произойдет событие "А", то есть, пока не создастся пара.
+            </p>
+            <p>Пример:</p>
+            <pre><code class="language-typescript">export class SomeComponent {
+    first = of('A', 'B', 'C');
+    second = of(1, 2, 3, 4);
+
+    result = zip(this.first, this.second).subscribe(console.log);
+}</code></pre>
+            <p>Результат выполнения кода в консоли:</p>
+            <pre><code class="language-typescript">['A', 1]
+['B', 2]
+['C', 3]</code></pre>
+            <p>
+                В примере выше во втором потоке для элемента "<code>4</code>" не нашлось в итоге пары из первого потока,
+                поэтому его значение и не вывелось в консоли.
+            </p>`,
+        selected: false,
+        lastUpdate: '16.04.2024',
+        footerText: ['Дополнительный материал', 'Дополнительные материалы'],
+        footerLinks: [
+            {
+                title: 'Подвигать шарики',
+                path: 'https://rxmarbles.com/#zip',
+            },
+            {
+                title: 'Анимация работы оператора',
+                path: 'https://rxjstutorial.com/docs/join-creation-operators/zip/',
+            },
+        ],
+    },
+    { chapter: 'Операторы преобразования (<span class="variable">Transformation Operators</span>)' },
     {
         title: '<span class="variable">switchMap</span>',
         body: `<p>
@@ -686,6 +918,17 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
             </p>`,
         selected: false,
         lastUpdate: '13.04.2024',
+        footerText: ['Дополнительный материал', 'Дополнительные материалы'],
+        footerLinks: [
+            {
+                title: 'Подвигать шарики',
+                path: 'https://rxmarbles.com/#switchMap',
+            },
+            {
+                title: 'Анимация работы оператора',
+                path: 'https://rxjstutorial.com/docs/transformation-operators/switchMap/',
+            },
+        ],
     },
     {
         title: '<span class="variable">concatMap</span>',
@@ -725,6 +968,17 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
 </code></pre>`,
         selected: false,
         lastUpdate: '14.04.2024',
+        footerText: ['Дополнительный материал', 'Дополнительные материалы'],
+        footerLinks: [
+            {
+                title: 'Подвигать шарики',
+                path: 'https://rxmarbles.com/#concatMap',
+            },
+            {
+                title: 'Анимация работы оператора',
+                path: 'https://rxjstutorial.com/docs/transformation-operators/concatMap/',
+            },
+        ],
     },
     {
         title: '<span class="variable">mergeMap</span> / <span class="variable">flatMap</span>',
@@ -770,6 +1024,17 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
             </p>`,
         selected: false,
         lastUpdate: '14.04.2024',
+        footerText: ['Дополнительный материал', 'Дополнительные материалы'],
+        footerLinks: [
+            {
+                title: 'Подвигать шарики',
+                path: 'https://rxmarbles.com/#mergeMap',
+            },
+            {
+                title: 'Анимация работы оператора',
+                path: 'https://rxjstutorial.com/docs/transformation-operators/mergeMap/',
+            },
+        ],
     },
     {
         title: '<span class="variable">exhaustMap</span>',
@@ -824,146 +1089,77 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
             </p>`,
         selected: false,
         lastUpdate: '14.04.2024',
+        footerText: ['Дополнительный материал', 'Дополнительные материалы'],
+        footerLinks: [
+            {
+                title: 'Анимация работы оператора',
+                path: 'https://rxjstutorial.com/docs/transformation-operators/exhaustMap/',
+            },
+        ],
+    },
+    { chapter: 'Операторы фильтрации (<span class="variable">Filtering Operators</span>)' },
+    // {
+    //     title: '',
+    //     body: ``,
+    // 	selected: false,
+    // 	lastUpdate: ''
+    // },
+    {
+        chapter:
+            'Операторы объединения (<span class="variable">Join operators</span>) (для потоков более высокого порядка)',
+    },
+    // {
+    //     title: '',
+    //     body: ``,
+    // 	selected: false,
+    // 	lastUpdate: ''
+    // },
+    { chapter: 'Операторы многоадресной рассылки (<span class="variable">Multicasting Operators</span>)' },
+    // {
+    //     title: '',
+    //     body: ``,
+    // 	selected: false,
+    // 	lastUpdate: ''
+    // },
+    { chapter: 'Операторы для обработки ошибок (<span class="variable">Error Handling Operators</span>)' },
+    // {
+    //     title: '',
+    //     body: ``,
+    // 	selected: false,
+    // 	lastUpdate: ''
+    // },
+    { chapter: 'Различные полезные операторы (<span class="variable">Utility Operators</span>)' },
+    // {
+    //     title: '',
+    //     body: ``,
+    // 	selected: false,
+    // 	lastUpdate: ''
+    // },
+    { chapter: 'Условные и логические операторы (<span class="variable">Conditional and Boolean Operators</span>)' },
+    // {
+    //     title: '',
+    //     body: ``,
+    // 	selected: false,
+    // 	lastUpdate: ''
+    // },
+    {
+        chapter:
+            'Математические и агрегатные операторы (<span class="variable">Mathematical and Aggregate Operators</span>)',
+    },
+    // {
+    //     title: '',
+    //     body: ``,
+    // 	selected: false,
+    // 	lastUpdate: ''
+    // },
+    {
+        chapter: 'Прочее',
     },
     {
-        title: '<span class="variable">concat</span>',
-        body: `<p>
-                Оператор <code>concat</code>
-                <span class="attention"
-                    >используется для последовательного объединения двух или более <code>Observable</code> в один</span
-                >.
-            </p>
-            <img src="assets/img/angular/rxjs/concat.png" alt="оператор concat" />
-            <p>
-                Как видно на картинке, события второго потока добавляются после событий первого потока. Причем неважно,
-                что второй поток завершается раньше, оператор <code>concat</code>
-                <span class="attention">
-                    будет ждать когда завершится первый поток и только после этого перейдет к следующему</span
-                >, и т.д. И после того, как оператор <code>concat</code> получает все потоки,
-                <span class="attention">он их объединяет в порядке передачи внутрь оператора и завершается</span>.
-            </p>
-            <p>
-                Оператор <code>concat</code> следует использовать, когда нужно сначала обработать события от одного
-                источника, а затем от другого, и порядок событий важен. Это может быть полезно, например, при выполнении
-                последовательных запросов к серверу или при выполнении асинхронных операций в определенном порядке.
-            </p>
-            <p>Пример:</p>
-            <pre><code class="language-typescript">export class SomeComponent {
-    first = new Observable((subscriber) => {
-        setTimeout(() => {
-            subscriber.next('Событие из первого потока');
-            subscriber.complete();
-        }, 500);
-    });
-
-    second = new Observable((subscriber) => {
-        setTimeout(() => {
-            subscriber.next('Событие из второго потока');
-            subscriber.complete();
-        }, 200);
-    });
-
-    result = concat(this.first, this.second).subscribe(console.log);
-}</code></pre>
-            <p>Результат выполнения кода в консоли:</p>
-            <pre><code class="language-typescript">Событие из первого потока
-Событие из второго потока</code></pre>
-            <p>
-                Как видите, время, когда происходят события не учитывается, т.к. в консоли событие из первого потока
-                появляется раньше, несмотря на то, что во втором потоке задержка в функции <code>setTimeout</code> имеет
-                меньшую величину, чем в первом.
-            </p>`,
+        title: 'Создание кастомных операторов <span class="variable">RxJS</span>',
+        body: `1`,
         selected: false,
-        lastUpdate: '16.04.2024',
-    },
-    {
-        title: '<span class="variable">merge</span>',
-        body: `<p>
-                Оператор <code>merge</code>
-                <span class="attention"
-                    >используется для объединения двух или более <code>Observable</code> в один поток. Он объединяет
-                    элементы всех источников в том порядке, в котором они были созданы</span
-                >.
-            </p>
-            <img src="assets/img/angular/rxjs/merge.png" alt="оператор concat" />
-            <p>
-                Оператор <code>merge</code> следует использовать, когда нужно обрабатывать события от нескольких
-                источников данных одновременно, без ожидания завершения одного источника перед переходом к следующему.
-                Это может быть полезно, например, при обработке нескольких запросов к серверу или при работе с
-                несколькими компонентами, которые могут генерировать события независимо друг от друга.
-            </p>
-            <p>Пример:</p>
-            <pre><code class="language-typescript">export class SomeComponent {
-    first = new Observable((subscriber) => {
-        setTimeout(() => {
-            subscriber.next('Событие из первого потока');
-            subscriber.complete();
-        }, 500);
-    });
-
-    second = new Observable((subscriber) => {
-        setTimeout(() => {
-            subscriber.next('Событие из второго потока');
-            subscriber.complete();
-        }, 200);
-    });
-
-    result = merge(this.first, this.second).subscribe(console.log);
-}</code></pre>
-            <p>Результат выполнения кода в консоли:</p>
-            <pre><code class="language-typescript">Событие из второго потока
-Событие из первого потока</code></pre>
-            <p>
-                Как видите, теперь учитывается время события, когда оно происходит, т.к. в консоли событие из второго
-                потока появляется раньше.
-            </p>`,
-        selected: false,
-        lastUpdate: '16.04.2024',
-    },
-    {
-        title: '<span class="variable">zip</span>',
-        body: `<p>
-                Оператор <code>zip</code>
-                <span class="attention"
-                    >объединяет 2 или более потоков, если в каждом из переданных потоков есть доступные события для
-                    создания пары</span
-                >.
-            </p>
-            <img src="assets/img/angular/rxjs/zip.png" alt="оператор zip" />
-            <p>
-                На картинке выше есть 2 потока. В первом потоке происходит событие "1", но оно не попадет в объединенный
-                поток, пока в другом потоке не произойдет событие "А", то есть, пока не создастся пара.
-            </p>
-            <p>Пример:</p>
-            <pre><code class="language-typescript">export class SomeComponent {
-    first = of('A', 'B', 'C');
-    second = of(1, 2, 3, 4);
-
-    result = zip(this.first, this.second).subscribe(console.log);
-}</code></pre>
-            <p>Результат выполнения кода в консоли:</p>
-            <pre><code class="language-typescript">['A', 1]
-['B', 2]
-['C', 3]</code></pre>
-            <p>
-                В примере выше во втором потоке для элемента "<code>4</code>" не нашлось в итоге пары из первого потока,
-                поэтому его значение и не вывелось в консоли.
-            </p>`,
-        selected: false,
-        lastUpdate: '16.04.2024',
-    },
-    {
-        title: '<span class="variable">combineLatest</span>',
-        body: ``,
-        selected: false,
-        lastUpdate: '16.04.2024',
-        disabled: true,
-    },
-    {
-        title: '<span class="variable">forkJoin</span>',
-        body: ``,
-        selected: false,
-        lastUpdate: '16.04.2024',
+        lastUpdate: '',
         disabled: true,
     },
     // {
