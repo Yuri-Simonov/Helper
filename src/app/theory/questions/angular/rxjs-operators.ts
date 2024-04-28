@@ -603,6 +603,43 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
         lastUpdate: '26.04.2024',
     },
     { chapter: 'Операторы создания (<span class="variable">Creation Operators</span>)' },
+    {
+        title: '<span class="variable">of</span>',
+        body: `<p>
+                <span class="attention"
+                    >Оператор <code>of</code> создает <code>Observables</code> из любого типа данных</span
+                >, будь то строка, массив, объект или промис.
+            </p>
+            <img src="assets/img/angular/rxjs/of.png" alt="оператор of" />
+            <p>Пример:</p>
+            <pre><code class="language-typescript">export class ForExamplesComponent {
+    someObservable: Observable&lt;any> = of(1, 'текст', ['123', 0]);
+
+    ngOnInit() {
+        this.someObservable.subscribe(console.log);
+    }
+}</code></pre>
+            <p>В консоли мы увидим следующее:</p>
+            <pre><code class='language-typescript'>1
+текст
+['123', 0]</code></pre>
+            <p>
+                Из примера выше видно, что оператору <code>of</code> все равно с каким типом данных работать. Он каждый
+                элемент, находящийся внутри его круглых скобок, отправляет в созданный им поток.
+            </p>`,
+        selected: false,
+        lastUpdate: '28.04.2024',
+        footerLinks: [
+            {
+                title: 'Подвигать шарики',
+                path: 'https://rxmarbles.com/#of',
+            },
+            {
+                title: 'Анимация работы оператора',
+                path: 'https://rxjstutorial.com/docs/creation-operators/of/',
+            },
+        ],
+    },
     // {
     //     title: '',
     //     body: ``,
