@@ -25,9 +25,9 @@ import {
     styleUrl: './for-examples.component.scss',
 })
 export class ForExamplesComponent {
+    someObservable: Observable<any> = of(1, 'текст', ['123', 0]);
+
     ngOnInit() {
-        of(1, 2, 3)
-            .pipe(map((x) => x * x))
-            .subscribe((v) => console.log(`Текущее значение: ${v}`));
+        this.someObservable.subscribe(console.log);
     }
 }
