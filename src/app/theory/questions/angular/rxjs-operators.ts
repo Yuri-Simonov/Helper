@@ -680,7 +680,24 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
 }</code></pre>
             <p>В консоли мы увидим следующее:</p>
             <pre><code class="language-typescript">[1, 'Привет']
-[2, 'Пока']</code></pre>`,
+[2, 'Пока']</code></pre>
+            <p><span class="attention">Данный оператор завершает поток, когда заканчиваются элементы</span>:</p>
+            <pre><code class='language-typescript'>export class ForExamplesComponent {
+    ngOnInit() {
+        const numbers = [1, 2, 3];
+        const observableNumbers = from(numbers);
+        observableNumbers.subscribe(
+            (value) => console.log('Текущее значение: ', value),
+            (error) => console.log('Ошибка в потоке: ', error),
+            () => console.log('Поток завершен!'),
+        );
+    }
+}</code></pre>
+            <p>В консоли мы увидим следующее:</p>
+            <pre><code class="language-typescript">Текущее значение: 1
+Текущее значение: 2
+Текущее значение: 3
+Поток завершен!</code></pre>`,
         selected: false,
         lastUpdate: '29.04.2024',
     },
@@ -707,9 +724,26 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
             <p>
                 Из примера выше видно, что оператору <code>of</code> все равно с каким типом данных работать. Он каждый
                 элемент, находящийся внутри его круглых скобок, отправляет в созданный им поток.
-            </p>`,
+            </p>
+            <p><span class="attention">Данный оператор завершает поток, когда заканчиваются элементы</span>:</p>
+            <pre><code class='language-typescript'>export class ForExamplesComponent {
+		someObservable: Observable&lt;any> = of(1, 'текст', ['123', 0]);
+	
+		ngOnInit() {
+			this.someObservable.subscribe(
+				(value) => console.log('Текущее значение: ', value),
+				(error) => console.log('Ошибка в потоке: ', error),
+				() => console.log('Поток завершен!'),
+			);
+		}
+	}</code></pre>
+            <p>В консоли мы увидим следующее:</p>
+            <pre><code class="language-typescript">Текущее значение: 1
+Текущее значение: текст
+Текущее значение: ['123', 0]
+Поток завершен!</code></pre>`,
         selected: false,
-        lastUpdate: '28.04.2024',
+        lastUpdate: '29.04.2024',
         footerText: ['Дополнительный материал', 'Дополнительные материалы'],
         footerLinks: [
             {
