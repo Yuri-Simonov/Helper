@@ -40,8 +40,8 @@ class="language-typescript"
 			
 lastUpdate: '10.02.2024',
 
-<p>В консоли мы увидим следующее:</p>
 <pre><code class="language-typescript"></code></pre>
+<p>В консоли мы увидим следующее:</p>
 
 <img src="assets/img/angular/rxjs/of.png" alt="оператор of"/>
 

@@ -8,12 +8,14 @@ import {
     exhaustMap,
     filter,
     flatMap,
+    from,
     interval,
     map,
     merge,
     mergeMap,
     of,
     switchMap,
+    take,
     tap,
     zip,
 } from 'rxjs';
@@ -25,9 +27,13 @@ import {
     styleUrl: './for-examples.component.scss',
 })
 export class ForExamplesComponent {
-    someObservable: Observable<any> = of(1, 'текст', ['123', 0]);
-
     ngOnInit() {
-        this.someObservable.subscribe(console.log);
+        const map = new Map();
+        map.set(1, 'Hi');
+        map.set(2, 'Bye');
+        console.log('map', map);
+
+        const mapSource = from(map);
+        mapSource.subscribe(console.log);
     }
 }
