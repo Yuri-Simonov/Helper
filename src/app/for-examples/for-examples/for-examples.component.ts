@@ -26,14 +26,25 @@ import {
     templateUrl: './for-examples.component.html',
     styleUrl: './for-examples.component.scss',
 })
+// export class ForExamplesComponent {
+//     ngOnInit() {
+//         const numbers = [1, 2, 3];
+//         const observableNumbers = from(numbers);
+//         observableNumbers.subscribe(
+//             (value) => console.log('Текущее значение: ', value),
+//             (error) => console.log('Ошибка в потоке: ', error),
+//             () => console.log('Поток завершен!'),
+//         );
+//     }
+// }
 export class ForExamplesComponent {
-    ngOnInit() {
-        const map = new Map();
-        map.set(1, 'Hi');
-        map.set(2, 'Bye');
-        console.log('map', map);
+    someObservable: Observable<any> = of(1, 'текст', ['123', 0]);
 
-        const mapSource = from(map);
-        mapSource.subscribe(console.log);
+    ngOnInit() {
+        this.someObservable.subscribe(
+            (value) => console.log('Текущее значение: ', value),
+            (error) => console.log('Ошибка в потоке: ', error),
+            () => console.log('Поток завершен!'),
+        );
     }
 }
