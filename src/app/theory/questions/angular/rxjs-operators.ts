@@ -588,7 +588,7 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
             <ul>
                 <li>
                     <a href="https://rxmarbles.com/" target="_blank"><span class="attention">RxJS Marbles</span></a> -
-                    здесь для каждого оператора можно двигать "шарики" и смотреть как это влияет на итоговый
+                    здесь почти для каждого оператора можно двигать "шарики" и смотреть как это влияет на итоговый
                     <code>Observable</code>;
                 </li>
                 <li>
@@ -603,6 +603,87 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
         lastUpdate: '26.04.2024',
     },
     { chapter: 'Операторы создания (<span class="variable">Creation Operators</span>)' },
+    {
+        title: '<span class="variable">from</span>',
+        body: `<p>
+                <span class="attention"
+                    >Оператор <code>from</code> создает <code>Observables</code> из любого типа данных, который может
+                    быть в конечном итоге проитерирован как массив</span
+                >.
+            </p>
+            <p>
+                В целом он похож на оператор <code>of</code>, только работает с итерируемыми типами данных. Каждый
+                итерируемый элемент друг за другом отправляется в созданный данным оператором поток.
+            </p>
+            <img src="assets/img/angular/rxjs/from.png" alt="оператор from" />
+            <p>Пример с массивом:</p>
+            <pre><code class="language-typescript">export class ForExamplesComponent {
+    ngOnInit() {
+        const numbers = [1, 2, 3];
+        const observableNumbers = from(numbers);
+        observableNumbers.subscribe(console.log);
+    }
+}</code></pre>
+            <p>В консоли мы увидим следующее:</p>
+            <pre><code class="language-typescript">1
+2
+3</code></pre>
+            <p>Пример со строкой:</p>
+            <pre><code class="language-typescript">export class ForExamplesComponent {
+    ngOnInit() {
+        const string = 'Привет';
+        const observableString = from(string);
+        observableString.subscribe(console.log);
+    }
+}</code></pre>
+            <p>В консоли мы увидим следующее:</p>
+            <pre><code class="language-typescript">П
+р
+и
+в
+е
+т</code></pre>
+            <p>Пример создания <code>Observable</code> из метода:</p>
+            <pre><code class="language-typescript">export class ForExamplesComponent {
+    ngOnInit() {
+        const observableFromFunction = from(this.generateNumbers());
+        observableFromFunction.subscribe(console.log);
+    }
+
+    generateNumbers() {
+        return [1, 2, 3];
+    }
+}</code></pre>
+            <p>В консоли мы увидим следующее:</p>
+            <pre><code class="language-typescript">1
+2
+3</code></pre>
+            <p>Пример с промисом:</p>
+            <pre><code class="language-typescript">export class ForExamplesComponent {
+    ngOnInit() {
+        const observablePromise = from(new Promise((resolve) => resolve('Привет')));
+        observablePromise.subscribe((val) => console.log(val));
+    }
+}</code></pre>
+            <p>В консоли мы увидим следующее:</p>
+            <pre><code class="language-typescript">Привет</code></pre>
+            <p>Пример с коллекцией:</p>
+            <pre><code class="language-typescript">export class ForExamplesComponent {
+    ngOnInit() {
+        const map = new Map();
+        map.set(1, 'Привет');
+        map.set(2, 'Пока');
+
+        const mapSource = from(map);
+        mapSource.subscribe(console.log);
+    }
+}</code></pre>
+            <p>В консоли мы увидим следующее:</p>
+            <pre><code class="language-typescript">[1, 'Привет']
+[2, 'Пока']</code></pre>`,
+        selected: false,
+        lastUpdate: '29.04.2024',
+    },
     {
         title: '<span class="variable">of</span>',
         body: `<p>
@@ -629,11 +710,8 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
             </p>`,
         selected: false,
         lastUpdate: '28.04.2024',
+        footerText: ['Дополнительный материал', 'Дополнительные материалы'],
         footerLinks: [
-            {
-                title: 'Подвигать шарики',
-                path: 'https://rxmarbles.com/#of',
-            },
             {
                 title: 'Анимация работы оператора',
                 path: 'https://rxjstutorial.com/docs/creation-operators/of/',
@@ -653,6 +731,7 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
         selected: false,
         lastUpdate: '16.04.2024',
         disabled: true,
+        footerText: ['Дополнительный материал', 'Дополнительные материалы'],
         footerLinks: [
             {
                 title: 'Подвигать шарики',
@@ -734,10 +813,6 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
         disabled: true,
         footerText: ['Дополнительный материал', 'Дополнительные материалы'],
         footerLinks: [
-            {
-                title: 'Подвигать шарики',
-                path: 'https://rxmarbles.com/#forkJoin',
-            },
             {
                 title: 'Анимация работы оператора',
                 path: 'https://rxjstutorial.com/docs/join-creation-operators/forkJoin/',
@@ -960,10 +1035,6 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
             {
                 title: 'Подвигать шарики',
                 path: 'https://rxmarbles.com/#switchMap',
-            },
-            {
-                title: 'Анимация работы оператора',
-                path: 'https://rxjstutorial.com/docs/transformation-operators/switchMap/',
             },
         ],
     },
