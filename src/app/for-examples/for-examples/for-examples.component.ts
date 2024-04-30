@@ -9,6 +9,7 @@ import {
     filter,
     flatMap,
     from,
+    fromEvent,
     interval,
     map,
     merge,
@@ -26,25 +27,13 @@ import {
     templateUrl: './for-examples.component.html',
     styleUrl: './for-examples.component.scss',
 })
-// export class ForExamplesComponent {
-//     ngOnInit() {
-//         const numbers = [1, 2, 3];
-//         const observableNumbers = from(numbers);
-//         observableNumbers.subscribe(
-//             (value) => console.log('Текущее значение: ', value),
-//             (error) => console.log('Ошибка в потоке: ', error),
-//             () => console.log('Поток завершен!'),
-//         );
-//     }
-// }
 export class ForExamplesComponent {
-    someObservable: Observable<any> = of(1, 'текст', ['123', 0]);
-
     ngOnInit() {
-        this.someObservable.subscribe(
-            (value) => console.log('Текущее значение: ', value),
-            (error) => console.log('Ошибка в потоке: ', error),
-            () => console.log('Поток завершен!'),
-        );
+        const body = document.querySelector('body');
+
+        if (body) {
+            const clicks = fromEvent(body, 'click');
+            clicks.subscribe(console.log);
+        }
     }
 }
