@@ -686,11 +686,11 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
     ngOnInit() {
         const numbers = [1, 2, 3];
         const observableNumbers = from(numbers);
-        observableNumbers.subscribe(
-            (value) => console.log('Текущее значение: ', value),
-            (error) => console.log('Ошибка в потоке: ', error),
-            () => console.log('Поток завершен!'),
-        );
+        observableNumbers.subscribe({
+            next: (value) => console.log('Текущее значение: ', value),
+            error: (error) => console.log('Ошибка: ', error),
+            complete: () => console.log('Поток завершен'),
+        });
     }
 }</code></pre>
             <p>В консоли мы увидим следующее:</p>
@@ -699,7 +699,7 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
 Текущее значение: 3
 Поток завершен!</code></pre>`,
         selected: false,
-        lastUpdate: '29.04.2024',
+        lastUpdate: '01.05.2024',
     },
     {
         title: '<span class="variable">fromEvent</span>',
@@ -754,7 +754,8 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
                 В консоли мы также увидим объект с типом <code>PointerEvent</code>, но данные в нем будут уже другие, т.к.
                 координаты клика, с высокой долей вероятности, будут отличаться:
             </p>
-            <pre><code class='language-typescript'>PointerEvent {...}</code></pre>`,
+            <pre><code class='language-typescript'>PointerEvent {...}</code></pre>
+			<p><span class="attention">Данный оператор самостоятельно не завершает поток</span>, поэтому необходимо не забывать завершать поток при уничтожении компонента, в котором он используется, или при выполнении любой другой необходимой логики.</p>`,
         selected: false,
         lastUpdate: '30.04.2024',
         footerText: ['Дополнительный материал', 'Дополнительные материалы'],
@@ -794,11 +795,11 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
 		someObservable: Observable&lt;any> = of(1, 'текст', ['123', 0]);
 	
 		ngOnInit() {
-			this.someObservable.subscribe(
-				(value) => console.log('Текущее значение: ', value),
-				(error) => console.log('Ошибка в потоке: ', error),
-				() => console.log('Поток завершен!'),
-			);
+			this.someObservable.subscribe({
+				next: (value) => console.log('Текущее значение: ', value),
+				error: (error) => console.log('Ошибка: ', error),
+				complete: () => console.log('Поток завершен'),
+			});
 		}
 	}</code></pre>
             <p>В консоли мы увидим следующее:</p>
@@ -957,7 +958,8 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
             <p>
                 Как видите, теперь учитывается время события, когда оно происходит, т.к. в консоли событие из второго
                 потока появляется раньше.
-            </p>`,
+            </p>
+			<p><span class="attention">Данный оператор самостоятельно не завершает поток</span>, поэтому необходимо не забывать завершать поток при уничтожении компонента, в котором он используется, или при выполнении любой другой необходимой логики.</p>`,
         selected: false,
         lastUpdate: '16.04.2024',
         footerText: ['Дополнительный материал', 'Дополнительные материалы'],
@@ -1032,10 +1034,10 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
             <p>
                 В примере выше во втором потоке для элемента "<code>4</code>" не нашлось в итоге пары из первого потока,
                 поэтому его значение и не вывелось в консоли.
-            </p>`,
+            </p>
+			<p><span class="attention">Данный оператор самостоятельно не завершает поток</span>, поэтому необходимо не забывать завершать поток при уничтожении компонента, в котором он используется, или при выполнении любой другой необходимой логики.</p>`,
         selected: false,
         lastUpdate: '16.04.2024',
-        disabled: true,
         footerText: ['Дополнительный материал', 'Дополнительные материалы'],
         footerLinks: [
             {
@@ -1084,7 +1086,8 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
             <pre><code class="language-typescript">Текущее значение потока: А
 Текущее значение потока: В // после выполнения потока А
 Текущее значение потока: C // после выполнения потока В
-</code></pre>`,
+</code></pre>
+<p><span class="attention">Данный оператор самостоятельно не завершает поток</span>, поэтому необходимо не забывать завершать поток при уничтожении компонента, в котором он используется, или при выполнении любой другой необходимой логики.</p>`,
         selected: false,
         lastUpdate: '14.04.2024',
         footerText: ['Дополнительный материал', 'Дополнительные материалы'],
@@ -1149,7 +1152,8 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
                 элемент "<code>B</code>". Он видит, что еще есть незавершенный поток с элементом "<code>A</code>",
                 поэтому поток с элементом "<code>B</code>" игнорируется. Аналогично и с элементом "<code>C</code>".
                 Поэтому в конечном результате мы и видим только элемент "<code>A</code>".
-            </p>`,
+            </p>
+			<p><span class="attention">Данный оператор самостоятельно не завершает поток</span>, поэтому необходимо не забывать завершать поток при уничтожении компонента, в котором он используется, или при выполнении любой другой необходимой логики.</p>`,
         selected: false,
         lastUpdate: '14.04.2024',
         footerText: ['Дополнительный материал', 'Дополнительные материалы'],
@@ -1188,7 +1192,8 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
             <p>
                 Данный оператор <span class="attention">не завершает поток</span>, а просто изменяет заданным образом
                 входящие значения.
-            </p>`,
+            </p>
+			<p><span class="attention">Данный оператор самостоятельно не завершает поток</span>, поэтому необходимо не забывать завершать поток при уничтожении компонента, в котором он используется, или при выполнении любой другой необходимой логики.</p>`,
         selected: false,
         lastUpdate: '29.04.2024',
         footerText: ['Дополнительный материал', 'Дополнительные материалы'],
@@ -1244,7 +1249,8 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
                 <span class="attention">
                     поступают в поток друг за другом и выполняются независимо (параллельно) друг от друга</span
                 >. Поэтому спустя 1 секунду искусственной задержки мы и видим сразу 3 результата.
-            </p>`,
+            </p>
+			<p><span class="attention">Данный оператор самостоятельно не завершает поток</span>, поэтому необходимо не забывать завершать поток при уничтожении компонента, в котором он используется, или при выполнении любой другой необходимой логики.</p>`,
         selected: false,
         lastUpdate: '14.04.2024',
         footerText: ['Дополнительный материал', 'Дополнительные материалы'],
@@ -1337,7 +1343,8 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
                 последовательно и их выполнение никто не задерживает, поэтому сначала элемент "<code>A</code>" полностью
                 проходит через оба потока, а затем аналогично элементы "<code>B</code>" и "<code>C</code>". Поэтому в
                 консоли и отобразилось 3 результата.
-            </p>`,
+            </p>
+			<p><span class="attention">Данный оператор самостоятельно не завершает поток</span>, поэтому необходимо не забывать завершать поток при уничтожении компонента, в котором он используется, или при выполнении любой другой необходимой логики.</p>`,
         selected: false,
         lastUpdate: '13.04.2024',
         footerText: ['Дополнительный материал', 'Дополнительные материалы'],
@@ -1349,6 +1356,54 @@ export const rxjsOperatorsQuestions: IQuestion[] = [
         ],
     },
     { chapter: 'Операторы фильтрации (<span class="variable">Filtering Operators</span>)' },
+    {
+        title: '<span class="variable">take</span>',
+        body: `<p>
+                <span class="attention"
+                    >Оператор <code>take</code> используется для ограничения количества элементов, которые будут
+                    обработаны наблюдаемым потоком</span
+                >
+                (<code>Observable</code>). Этот оператор принимает один аргумент — количество элементов, которое должно
+                быть обработано.
+                <span class="attention">Как только это количество будет достигнуто, поток будет завершён</span>.
+            </p>
+            <img src="assets/img/angular/rxjs/take.png" alt="оператор take" />
+            <p>Пример:</p>
+            <pre><code class='language-typescript'>export class ForExamplesComponent {
+    ngOnInit() {
+        fromEvent(document, 'click')
+            .pipe(take(2))
+            .subscribe({
+                next: () => console.log('Сделан клик'),
+                error: () => console.log('Ошибка'),
+                complete: () => console.log('Поток завершен'),
+            });
+    }
+}</code></pre>
+            <p>Если сделать 2 клика по странице в браузере, то в консоли мы увидим следующее:</p>
+            <pre><code class="language-typescript">Сделан клик
+Сделан клик
+Поток завершен</code></pre>
+            <p>
+                При использовании данного оператора
+                <span class="attention"> нужно быть уверенными, что нужное количество событий будет выполнено</span>. В
+                противном случае просто произойдет подписка на <code>Observable</code> без дальнейшего завершения
+                потока. И если злоупотреблять незавершенными потоками в приложении, то это чревато утечками памяти.
+            </p>`,
+        selected: false,
+        lastUpdate: '01.05.2024',
+        footerText: ['Дополнительный материал', 'Дополнительные материалы'],
+        footerLinks: [
+            {
+                title: 'Подвигать шарики',
+                path: 'https://rxmarbles.com/#take',
+            },
+            {
+                title: 'Анимация работы оператора',
+                path: 'https://rxjstutorial.com/docs/filtering-operators/take/',
+            },
+        ],
+    },
     // {
     //     title: '',
     //     body: ``,

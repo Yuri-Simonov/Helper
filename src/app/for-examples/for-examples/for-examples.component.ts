@@ -15,6 +15,7 @@ import {
     merge,
     mergeMap,
     of,
+    pluck,
     switchMap,
     take,
     tap,
@@ -28,12 +29,33 @@ import {
     styleUrl: './for-examples.component.scss',
 })
 export class ForExamplesComponent {
-    ngOnInit() {
-        const body = document.querySelector('body');
+    // ngOnInit() {
+    //     fromEvent(document, 'click')
+    //         .pipe(take(2))
+    //         .subscribe({
+    //             next: () => console.log('Сделан клик'),
+    //             error: () => console.log('Ошибка'),
+    //             complete: () => console.log('Поток завершен'),
+    //         });
+    // }
 
-        if (body) {
-            const clicks = fromEvent(body, 'click');
-            clicks.subscribe(console.log);
-        }
+    // ngOnInit() {
+    //     const numbers = [1, 2, 3];
+    //     const observableNumbers = from(numbers);
+    //     observableNumbers.subscribe({
+    //         next: (value) => console.log('Текущее значение: ', value),
+    //         error: (error) => console.log('Ошибка: ', error),
+    //         complete: () => console.log('Поток завершен'),
+    //     });
+    // }
+
+    someObservable: Observable<any> = of(1, 'текст', ['123', 0]);
+
+    ngOnInit() {
+        this.someObservable.subscribe({
+            next: (value) => console.log('Текущее значение: ', value),
+            error: (error) => console.log('Ошибка: ', error),
+            complete: () => console.log('Поток завершен'),
+        });
     }
 }
