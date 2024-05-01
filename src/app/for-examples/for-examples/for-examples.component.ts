@@ -10,6 +10,7 @@ import {
     exhaustMap,
     filter,
     flatMap,
+    forkJoin,
     from,
     fromEvent,
     interval,
@@ -50,10 +51,10 @@ export class ForExamplesComponent {
 
         const observables = {
             a: of(1).pipe(delay(1000), startWith(0)),
-            b: of(5).pipe(delay(5000), startWith(0)),
-            c: of(10).pipe(delay(10000), startWith(0)),
+            b: of(5).pipe(delay(3000), startWith(0)),
+            c: of(10).pipe(delay(5000), startWith(0)),
         };
-        const combined = combineLatest(observables);
+        const combined = forkJoin(observables);
         combined.subscribe(console.log);
         // Logs
         // { a: 0, b: 0, c: 0 } immediately
