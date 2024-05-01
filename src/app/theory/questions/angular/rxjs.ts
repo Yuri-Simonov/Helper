@@ -848,55 +848,7 @@ ngOnInit(): void {
             <i class="subtitle">Оператор zip</i>
             <i>Информация перенесена в раздел с операторами...</i>
             <i class="subtitle">Оператор combineLatest</i>
-            <p>
-                Оператор <code>combineLatest</code> похож по своему функционалу
-                на оператор <code>zip</code>, но
-                <span class="attention"
-                    >в объединенном потоке он создает пару из последних (свежих)
-                    событий, переданных в него потоков, перезатирая старые
-                    события.</span
-                >
-            </p>
-            <img
-                src="assets/img/angular/rxjs/combineLatest.png"
-                alt="оператор combineLatest"
-            />
-            <p>
-                На картинке выше в первом потоке появляется событие "1", затем
-                во втором потоке событие "А", в результате образуется пара "1А",
-                но затем в первом потоке вновь происходит событие и старое
-                событие "1" перезатирается новым событием "2". В результате мы
-                получаем пару "2А" и т.д.
-            </p>
-            <p>Как это будет выглядеть в коде:</p>
-            <pre><code class="language-typescript">export class SomeComponent {
-    nextFunction(label: string, count: number, interval: number) {
-        return (subscriber: Subscriber<unknown>) => {
-            let i = 0;
-            setInterval(() => {
-                if (i < count) {
-                    subscriber.next(label + ':' + i);
-                    i++;
-                } else {
-                    subscriber.complete();
-                }
-            }, interval);
-        };
-    }
-
-    first = new Observable(this.nextFunction('A', 3, 500));
-    second = new Observable(this.nextFunction('B', 4, 200));
-
-    result = combineLatest(this.first, this.second).subscribe((val) =>
-        console.log('next:', val)
-    );
-}</code></pre>
-            <p>Результат выполнения кода в консоли:</p>
-            <pre><code class="language-typescript">// next: ['[A]:0', '[B]:1']
-// next: ['[A]:0', '[B]:2']
-// next: ['[A]:0', '[B]:3']
-// next: ['[A]:1', '[B]:3']
-// next: ['[A]:2', '[B]:3']</code></pre>
+            <i>Информация перенесена в раздел с операторами...</i>
             <i class="subtitle">Оператор forkJoin</i>
             <p>
                 Данный оператор объединяет потоки и комбинирует их последние
