@@ -841,12 +841,13 @@ ngOnInit(): void {
                 объединять/комбинировать потоки и получать из них данные.
                 Давайте разберем их на примерах.
             </p>
-            <i class="subtitle">Оператор concat</i>
+            <i class="subtitle" dialog-angular-change_detection-time_const>Оператор concat</i>
             <i>Информация перенесена в раздел с операторами...</i>
             <i class="subtitle">Оператор merge</i>
             <i>Информация перенесена в раздел с операторами...</i>
             <i class="subtitle">Оператор zip</i>
             <i>Информация перенесена в раздел с операторами...</i>
+			<button class="subtitle" app_dialog open_door>11111111</button>
             <i class="subtitle">Оператор combineLatest</i>
             <i>Информация перенесена в раздел с операторами...</i>
             <i class="subtitle">Оператор forkJoin</i>
