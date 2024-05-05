@@ -1,0 +1,21 @@
+:host {
+    color: var(--text-color);
+    background: linear-gradient(var(--secondary-color), var(--primary-color)),
+        var(--mdc-filled-text-field-input-text-placeholder-color);
+    // двойной бг?
+
+    @media (max-width: 992px) {
+        background: var(--sidebar-mobile-background);
+    }
+    mat-dialog-content {
+    }
+
+    * {
+        color: inherit;
+        background-color: inherit;
+    }
+}
+
+:host(.mat-mdc-dialog-component-host) {
+    display: initial;
+}

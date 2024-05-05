@@ -1,5 +1,11 @@
 import { IQuestion } from '@types';
 
+export const time_const: IQuestion = {
+    title: 'time_const',
+    body: `time_const`,
+    selected: false,
+};
+
 export const changeDetectionQuestions: IQuestion[] = [
     // {
     //     title: '',

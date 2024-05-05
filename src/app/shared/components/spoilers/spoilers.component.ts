@@ -3,6 +3,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    HostListener,
     Input,
     OnDestroy,
     OnInit,
@@ -12,17 +13,20 @@ import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { NavigationEnd, Router } from '@angular/router';
 import { ReplaySubject, takeUntil } from 'rxjs';
 import { HighlightJsDirective } from 'ngx-highlight-js';
+import { MatDialog } from '@angular/material/dialog';
 
-import { IList } from '../../types';
+import { IList, IQuestion } from '../../types';
 
 import { SidebarService } from '../../services/sidebar.service';
 
 import { EscapeDirective } from '../../directives/escape.directive';
 
+import { PipeSanitizer } from '../../pipes/pipe-sanitizer.pipe';
+
 import { EmptyComponent } from '../empty/empty.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { OverlayComponent } from '../overlay/overlay.component';
-import { PipeSanitizer } from '../../pipes/pipe-sanitizer.pipe';
+import { DialogComponent } from '../dialog/dialog.component';
 
 const materialModules = [MatExpansionModule];
 
@@ -40,6 +44,7 @@ const materialModules = [MatExpansionModule];
         EmptyComponent,
         OverlayComponent,
         SidebarComponent,
+        DialogComponent,
         PipeSanitizer,
     ],
 })
@@ -55,10 +60,19 @@ export class SpoilersComponent implements OnInit, OnDestroy {
 
     @ViewChildren(MatAccordion) accordion: MatAccordion[];
 
+    @HostListener('click', ['$event.target.attributes']) handleMouseleave(attributes: any) {
+        Object.keys(attributes).forEach((attr: string) => {
+            if (attributes[attr]['name'].startsWith('dialog')) {
+                this.openDialog(attributes[attr]['name']);
+            }
+        });
+    }
+
     constructor(
         private router: Router,
         private sidebarService: SidebarService,
         private cdr: ChangeDetectorRef,
+        private dialog: MatDialog,
     ) {}
 
     ngOnInit(): void {
@@ -89,4 +103,19 @@ export class SpoilersComponent implements OnInit, OnDestroy {
     changeSidebarState(state: boolean): void {
         this.sidebarService.setNewSidebarState(state);
     }
+
+    openDialog(attributes: string) {
+        const splittedAttributes = attributes.split('-');
+        console.log('splittedAttributes', splittedAttributes);
+        import(`../../../theory/questions/${splittedAttributes[1]}/${splittedAttributes[2]}`).then((data) => {
+            console.log('data', data[splittedAttributes[3]], splittedAttributes[3]);
+            const dialogData: IQuestion = data[splittedAttributes[3]];
+            this.dialog.open(DialogComponent, { data: dialogData });
+        });
+    }
+
+    // async asyncShowComponent() {
+    //     const { DynamicComponent } = await import('./components/dynamic/dynamic.component');
+    //     this.viewContainer.createComponent(DynamicComponent);
+    // }
 }
