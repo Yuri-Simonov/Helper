@@ -15,7 +15,7 @@ import { ReplaySubject, takeUntil } from 'rxjs';
 import { HighlightJsDirective } from 'ngx-highlight-js';
 import { MatDialog } from '@angular/material/dialog';
 
-import { IList, IQuestion } from '../../types';
+import { IList, IInfo } from '../../types';
 
 import { SidebarService } from '../../services/sidebar.service';
 
@@ -107,9 +107,9 @@ export class SpoilersComponent implements OnInit, OnDestroy {
     openDialog(attributes: string) {
         const splittedAttributes = attributes.split('-');
         console.log('splittedAttributes', splittedAttributes);
-        import(`../../../theory/questions/${splittedAttributes[1]}/${splittedAttributes[2]}`).then((data) => {
+        import(`../../../theory/information/${splittedAttributes[1]}/${splittedAttributes[2]}`).then((data) => {
             console.log('data', data[splittedAttributes[3]], splittedAttributes[3]);
-            const dialogData: IQuestion = data[splittedAttributes[3]];
+            const dialogData: IInfo = data[splittedAttributes[3]];
             this.dialog.open(DialogComponent, { data: dialogData });
         });
     }

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { IQuestionsAndAnswer, ITestAnswerOption } from '../../../shared/types';
+import { IInfosAndAnswer, ITestAnswerOption } from '../../../shared/types';
 
 @Component({
     selector: 'app-result',
@@ -11,7 +11,7 @@ export class ResultComponent {
     amountRightAnswers: number = 0;
     percentRightAnswers: number = 0;
 
-    @Input('questionsAndAnswers') questionsAndAnswersProps: IQuestionsAndAnswer[];
+    @Input('questionsAndAnswers') questionsAndAnswersProps: IInfosAndAnswer[];
     @Input('userAnswers') userAnswersProps: ITestAnswerOption[];
 
     ngOnChanges() {

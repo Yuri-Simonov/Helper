@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { angularTestQuestions } from '../../questions/angular';
-import { IQuestionsAndAnswer, ITestAnswerOption } from '../../../shared/types';
+import { IInfosAndAnswer, ITestAnswerOption } from '../../../shared/types';
 import { getQuestions } from '../../utils/generate-question-list';
 
 @Component({
@@ -13,7 +13,7 @@ export class AngularComponent {
     currentValue: ITestAnswerOption | undefined;
     currentQuestionIndex: number = 0;
     progressBarPercent: number = 0;
-    questionsAndAnswers: IQuestionsAndAnswer[] = [];
+    questionsAndAnswers: IInfosAndAnswer[] = [];
     userAnswers: ITestAnswerOption[] = [];
 
     constructor() {
@@ -46,7 +46,7 @@ export class AngularComponent {
         this.currentValue = newCurrentValue;
     }
 
-    shuffle(questionsArr: IQuestionsAndAnswer[]): IQuestionsAndAnswer[] {
+    shuffle(questionsArr: IInfosAndAnswer[]): IInfosAndAnswer[] {
         return questionsArr.map((item) => {
             let newArr = [...item.answers];
             for (let i = newArr.length - 1; i > 0; i--) {

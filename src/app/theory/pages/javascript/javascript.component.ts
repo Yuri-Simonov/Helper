@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { functionQuestions } from '../../questions/javascript/function';
-import { prototypeQuestions } from '../../questions/javascript/prototype';
-
 import { IList } from '@types';
 
-import { oppQuestions } from '../../questions/javascript/opp';
+import { functionsInfo } from '../../information/javascript/functions';
+import { prototypesInfo } from '../../information/javascript/prototypes';
+import { oopInfo } from '../../information/javascript/oop';
 
 @Component({
     selector: 'app-javascript',
@@ -15,8 +14,8 @@ import { oppQuestions } from '../../questions/javascript/opp';
 })
 export class JavascriptComponent {
     list: IList[] = [
-        { name: 'ООП', path: 'opp', questions: oppQuestions },
-        { name: 'Прототипы', path: 'prototype', questions: prototypeQuestions },
-        { name: 'Функции', path: 'function', questions: functionQuestions },
+        { name: 'ООП', path: 'opp', info: oopInfo },
+        { name: 'Прототипы', path: 'prototype', info: prototypesInfo },
+        { name: 'Функции', path: 'function', info: functionsInfo },
     ];
 }

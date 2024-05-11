@@ -1,9 +1,9 @@
-import { IQuestion } from './question.interface';
+import { IInfo } from './info.interface';
 
 export interface IList {
     name?: string;
     path?: string;
-    questions?: IQuestion[];
+    info?: IInfo[];
     disabled?: boolean;
     chapter?: string;
 }

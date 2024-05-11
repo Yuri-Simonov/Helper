@@ -1,20 +1,20 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { componentQuestions } from '../../questions/angular/component';
-import { changeDetectionQuestions } from '../../questions/angular/change_detection';
-import { decoratorQuestions } from '../../questions/angular/decorator';
-import { directiveQuestions } from '../../questions/angular/directive';
-import { formQuestions } from '../../questions/angular/form';
-import { othersQuestions } from '../../questions/angular/others';
-import { pipeQuestions } from '../../questions/angular/pipe';
-import { routingQuestions } from '../../questions/angular/routing';
-import { rxjsOperatorsQuestions } from '../../questions/angular/rxjs-operators';
-import { rxjsQuestions } from '../../questions/angular/rxjs';
-import { serviceQuestions } from '../../questions/angular/service';
-import { testQuestions } from '../../questions/angular/test';
-
 import { IList } from '@types';
-import { ngrxQuestions } from 'src/app/theory/questions/angular/ngrx';
+
+import { componentsInfo } from '../../information/angular/components';
+import { changeDetectionInfo } from '../../information/angular/change-detection';
+import { decoratorsInfo } from '../../information/angular/decorators';
+import { directivesInfo } from '../../information/angular/directives';
+import { formsInfo } from '../../information/angular/forms';
+import { ngrxInfo } from '../../information/angular/ngrx';
+import { othersInfo } from '../../information/angular/others';
+import { pipesInfo } from '../../information/angular/pipes';
+import { routingInfo } from '../../information/angular/routing';
+import { rxjsOperatorsInfo } from '../../information/angular/rxjs-operators';
+import { rxjsInfo } from '../../information/angular/rxjs';
+import { servicesInfo } from '../../information/angular/services';
+// import { testingInfo } from "../../information/angular/testing";
 
 @Component({
     selector: 'app-angular',
@@ -31,35 +31,35 @@ export class AngularComponent {
         {
             name: 'Декораторы',
             path: 'decorator',
-            questions: decoratorQuestions,
+            info: decoratorsInfo,
         },
-        { name: 'Директивы', path: 'directive', questions: directiveQuestions },
+        { name: 'Директивы', path: 'directive', info: directivesInfo },
         {
             name: 'Компоненты',
             path: 'component',
-            questions: componentQuestions,
+            info: componentsInfo,
         },
-        { name: 'Маршрутизация', path: 'routing', questions: routingQuestions },
-        { name: 'Пайпы', path: 'pipe', questions: pipeQuestions },
-        { name: 'Разное', path: 'others', questions: othersQuestions },
-        { name: 'Сервисы', path: 'service', questions: serviceQuestions },
-        { name: 'Тестирование', path: 'test', questions: testQuestions },
-        { name: 'Формы', path: 'form', questions: formQuestions },
+        { name: 'Маршрутизация', path: 'routing', info: routingInfo },
+        { name: 'Пайпы', path: 'pipe', info: pipesInfo },
+        { name: 'Разное', path: 'others', info: othersInfo },
+        { name: 'Сервисы', path: 'service', info: servicesInfo },
+        // { name: 'Тестирование', path: 'test', info: testingInfo },
+        { name: 'Формы', path: 'form', info: formsInfo },
         {
             name: 'changeDetection',
             path: 'changeDetection',
-            questions: changeDetectionQuestions,
+            info: changeDetectionInfo,
         },
         {
             chapter: 'Библиотеки Angular',
             disabled: true,
         },
-        { name: 'RxJS', path: 'rxjs', questions: rxjsQuestions },
+        { name: 'RxJS', path: 'rxjs', info: rxjsInfo },
         {
             name: 'Операторы RxJS',
             path: 'rxjs-operators',
-            questions: rxjsOperatorsQuestions,
+            info: rxjsOperatorsInfo,
         },
-        { name: 'NgRx', path: 'ngrx', questions: ngrxQuestions },
+        { name: 'NgRx', path: 'ngrx', info: ngrxInfo },
     ];
 }

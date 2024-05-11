@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { IList } from '@types';
 
-import { allGitQuestions } from '../../questions/git/all';
+import { allGitInfo } from '../../information/git';
 
 @Component({
     selector: 'app-git',
@@ -11,5 +11,5 @@ import { allGitQuestions } from '../../questions/git/all';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GitComponent {
-    list: IList[] = [{ name: 'Все', path: 'all', questions: allGitQuestions }];
+    list: IList[] = [{ name: 'Все', path: 'all', info: allGitInfo }];
 }
