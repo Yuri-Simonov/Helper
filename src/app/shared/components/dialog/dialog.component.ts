@@ -7,7 +7,7 @@ import {
     MatDialogTitle,
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { IQuestion } from '../../types';
+import { IInfo } from '../../types';
 import { HighlightJsDirective } from 'ngx-highlight-js';
 
 const materialModules = [MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle, MatButtonModule];
@@ -21,7 +21,7 @@ const materialModules = [MatDialogActions, MatDialogClose, MatDialogContent, Mat
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DialogComponent {
-    constructor(@Inject(MAT_DIALOG_DATA) public data: IQuestion) {
+    constructor(@Inject(MAT_DIALOG_DATA) public data: IInfo) {
         // console.log('data', window.navigator.userAgent);
         // сделать на мобилке модалку во всю ширину экрана
     }

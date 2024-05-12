@@ -1,6 +1,6 @@
-import { IQuestionsAndAnswer } from '../../shared/types';
+import { IInfosAndAnswer } from '../../shared/types';
 
-export const angularTestQuestions: IQuestionsAndAnswer[] = [
+export const angularTestQuestions: IInfosAndAnswer[] = [
     {
         question: `Какое из приведенных ниже различий между директивой и компонентом является верным?`,
         answers: [

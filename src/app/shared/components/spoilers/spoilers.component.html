@@ -5,7 +5,7 @@
     <div class="spoilers__items" [ngClass]="{ spoilers__items_full: currentPath === emptyPathProps }">
         @for (item of listProps; track item.path) {
             @if (item.path === currentPath) {
-                @for (q of item.questions; track q.title || q.chapter) {
+                @for (q of item.info; track q.title || q.chapter) {
                     @if (q.title && q.body) {
                         <div class="spoilers__item">
                             <mat-accordion [ngClass]="{ disabled: q.disabled }">

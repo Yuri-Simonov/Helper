@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { IQuestionsAndAnswer, ITestAnswerOption } from '../../../shared/types';
+import { IInfosAndAnswer, ITestAnswerOption } from '../../../shared/types';
 
 @Component({
     selector: 'app-question-card',
@@ -13,7 +13,7 @@ export class QuestionCardComponent {
     progressBarPercent: number = 0;
     userAnswers: ITestAnswerOption[] = [];
 
-    @Input('questionsAndAnswers') questionsAndAnswersProps: IQuestionsAndAnswer[];
+    @Input('questionsAndAnswers') questionsAndAnswersProps: IInfosAndAnswer[];
     @Input('questionIndex') questionIndexProps: number;
     @Input('userAnswers') userAnswersProps: ITestAnswerOption[];
     @Input('mode') modeProps: 'test' | 'result' = 'test';

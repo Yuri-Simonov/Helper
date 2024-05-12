@@ -1,7 +1,7 @@
-import { IQuestionsAndAnswer } from '../../shared/types';
+import { IInfosAndAnswer } from '../../shared/types';
 
-export const getQuestions = (questions: IQuestionsAndAnswer[], amount: number = 20): IQuestionsAndAnswer[] => {
-    const finalQuestions: IQuestionsAndAnswer[] = [];
+export const getQuestions = (questions: IInfosAndAnswer[], amount: number = 20): IInfosAndAnswer[] => {
+    const finalQuestions: IInfosAndAnswer[] = [];
     const indexes: number[] = generateRandomNumbers(questions, amount);
 
     indexes.forEach((i) => {
@@ -11,7 +11,7 @@ export const getQuestions = (questions: IQuestionsAndAnswer[], amount: number = 
     return finalQuestions;
 };
 
-const generateRandomNumbers = (questions: IQuestionsAndAnswer[], amount: number): number[] => {
+const generateRandomNumbers = (questions: IInfosAndAnswer[], amount: number): number[] => {
     const indexes: number[] = [];
 
     while (indexes.length < amount) {
