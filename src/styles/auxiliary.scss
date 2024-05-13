@@ -50,3 +50,14 @@
     max-height: 50vh;
     width: 100%;
 }
+
+.dialog {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.cdk-overlay-pane {
+    @media (max-width: 440px), (max-height: 440px) {
+        max-width: 96vw !important;
+    }
+}

@@ -2,17 +2,34 @@
     color: var(--text-color);
     background: linear-gradient(var(--secondary-color), var(--primary-color)),
         var(--mdc-filled-text-field-input-text-placeholder-color);
-    // двойной бг?
 
     @media (max-width: 992px) {
         background: var(--sidebar-mobile-background);
-    }
-    mat-dialog-content {
     }
 
     * {
         color: inherit;
         background-color: inherit;
+    }
+
+    h2 {
+        margin: 0;
+
+        @media (max-width: 440px), (max-height: 440px) {
+            padding: 10px;
+
+            &::before {
+                height: 0;
+            }
+        }
+    }
+
+    mat-dialog-content {
+        overflow-x: hidden;
+
+        @media (max-width: 440px), (max-height: 440px) {
+            padding: 0 10px 0;
+        }
     }
 }
 
