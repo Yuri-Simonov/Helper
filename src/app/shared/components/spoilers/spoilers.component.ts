@@ -105,11 +105,11 @@ export class SpoilersComponent implements OnInit, OnDestroy {
     }
 
     openDialog(attributes: string) {
-        const splittedAttributes = attributes.split('-');
-        console.log('splittedAttributes', splittedAttributes);
-        import(`../../../theory/information/${splittedAttributes[1]}/${splittedAttributes[2]}`).then((data) => {
-            console.log('data', data[splittedAttributes[3]], splittedAttributes[3]);
-            const dialogData: IInfo = data[splittedAttributes[3]];
+        const splittedAttributes = attributes.split('_');
+        import(
+            `../../../theory/information/${splittedAttributes[1]}/${splittedAttributes[2]}/information/${splittedAttributes[3]}`
+        ).then((data) => {
+            const dialogData: IInfo = data[splittedAttributes[3].toUpperCase().replace('-', '_')];
             this.dialog.open(DialogComponent, { data: dialogData });
         });
     }
