@@ -7,36 +7,8 @@ export const ERROR_HANDLING_METHODS: IInfo = {
                 (например, сервер не отвечает на ваш запрос), эти самые ошибки
                 можно и нужно обрабатывать.
             </p>
-            <p>В Angular для обработки ошибок существуют следующие операторы: <code class="dialog" dialog_angular_rxjs-operators_catch-error>catchError</code>, <code class="dialog" dialog_rxjs-operators_catch-error></code> и <code class="dialog" dialog_rxjs-operators_catch-error></code></p>
-            <i class="subtitle">Оператор retry</i>
-            <p>
-                <span class="attention"
-                    >Оператор <code>retry</code> при возникновении ошибки будет
-                    запрашивать данные повторно.</span
-                >
-                Количество повторных запросов передается параметров в метод:
-            </p>
-            <pre><code class="language-typescript">source = new Observable(subscriber => {
-  	console.log('Следующая попытка');
- 	subscriber.error('какая-то ошибка'); // имитируем ошибку
-});
-
-subscription = source.pipe(retry(2)) // в случае ошибки запрашиваем данные повторно 2 раза
-	.subscribe(
-		val => console.log('next:', val),
-		err => console.log('error:', err),
-		() => console.log('completed:', 'поток завершен')
-	);</code></pre>
-            <p>
-                В примере выше мы намеренно у <code>source</code> имитируем
-                ошибку и делаем поочередно еще 2 запроса на получение данных.
-                Если за эти 2 запроса мы не получаем данные, тогда уже у
-                <code>subscription</code> сработает метод <code>error</code>.
-            </p>
-            <pre><code class="language-typescript">// Следующая попытка
-// Следующая попытка
-// Следующая попытка
-// error: какая-то ошибка</code></pre>
+            <p>В Angular для обработки ошибок существуют следующие операторы: <code class="dialog" dialog_angular_rxjs-operators_catch-error>catchError</code>, <code class="dialog" dialog_angular_rxjs-operators_retry>retry</code>, <code class="dialog" dialog_angular_rxjs-operators_retry-when>retryWhen</code> и <code class="dialog" dialog_angular_rxjs-operators_on-error-resume-next-with>onErrorResumeNextWith
+</code></p>
             <i class="subtitle">Оператор retryWhen</i>
             <p>
                 Оператор <code>retryWhen</code> своего рода модификация
@@ -80,7 +52,7 @@ subscription = source.pipe(retryWhen(err$ => obs))
 // подожди секундочку
 // имитация обращения к серверу
 // next: успешный ответ сервера</code></pre>
-            <i class="subtitle">Оператор onErrorResumeNext</i>
+            <i class="subtitle">Оператор onErrorResumeNext / onErrorResumeNextWith</i>
             <p>
                 Суть данного оператора заключается в том, что
                 <span class="attention"

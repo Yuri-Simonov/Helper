@@ -35,9 +35,9 @@ export const CATCH_ERROR: IInfo = {
     }
 }</code></pre>
             <p>В результате выполнения данного кода в консоли мы увидим следующее:</p>
-            <pre><code class="language-typescript">// отловлена ошибка: Error: какая-то ошибка {...}
-// next: данные после оператора catchError
-// completed: поток завершен</code></pre>`,
+            <pre><code class="language-typescript">отловлена ошибка: Error: какая-то ошибка {...}
+next: данные после оператора catchError
+completed: поток завершен</code></pre>`,
     selected: false,
     lastUpdate: '14.05.2024',
 };

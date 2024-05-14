@@ -20,6 +20,7 @@ import {
     mergeMap,
     of,
     pluck,
+    retry,
     startWith,
     switchMap,
     take,
@@ -35,20 +36,17 @@ import {
     styleUrl: './for-examples.component.scss',
 })
 export class ForExamplesComponent {
-    source = throwError(() => new Error('какая-то ошибка')); // имитируем ошибку
-
     ngOnInit() {
-        of(1, 2, 3, 4, 5)
-            .pipe(
-                map((n) => {
-                    if (n === 4) {
-                        throw 'four!';
-                    }
-                    return n;
-                }),
-                catchError((err, caught) => caught),
-                take(30),
-            )
-            .subscribe((x) => console.log(x));
+        const source = interval(1000);
+        const result = source.pipe(
+            mergeMap((value) => (value > 2 ? throwError(() => 'Ошибка') : of(value))),
+            retry(2), // Повторяем попытку при возникновении ошибки 2 раза
+        );
+
+        result.subscribe({
+            next: (value) => console.log(value),
+            error: (error) =>
+                console.log(`${error}: Был произведен повтор 2 раза. На третий раз поток завершился с ошибкой!`),
+        });
     }
 }

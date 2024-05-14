@@ -24,6 +24,7 @@ import { SWITCH_MAP } from './information/switch-map';
 import { TAKE } from './information/take';
 import { CREATING_CUSTOM_RXJS_OPERATORS } from './information/creating-custom-rxjs-operators';
 import { CATCH_ERROR } from './information/catch-error';
+import { RETRY } from './information/retry';
 
 export const rxjsOperatorsInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -60,6 +61,7 @@ export const rxjsOperatorsInfo: IInfo[] = [
     { chapter: 'Операторы многоадресной рассылки (<span class="variable">Multicasting Operators</span>)' },
     { chapter: 'Операторы для обработки ошибок (<span class="variable">Error Handling Operators</span>)' },
     CATCH_ERROR,
+    RETRY,
     { chapter: 'Различные полезные операторы (<span class="variable">Utility Operators</span>)' },
     { chapter: 'Условные и логические операторы (<span class="variable">Conditional and Boolean Operators</span>)' },
     {
