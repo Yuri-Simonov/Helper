@@ -7,35 +7,7 @@ export const ERROR_HANDLING_METHODS: IInfo = {
                 (например, сервер не отвечает на ваш запрос), эти самые ошибки
                 можно и нужно обрабатывать.
             </p>
-            <p>В Angular обрабатывать ошибки можно несколькими способами:</p>
-            <i class="subtitle">Оператор catchError</i>
-            <p>
-                <span class="attention">
-                    Оператор <code>catchError</code> позволяет обработать
-                    возможную ошибку без каких-либо дополнительных побочных
-                    эффектов.
-                </span>
-            </p>
-            <pre><code class="language-typescript">source = throwError('какая-то ошибка'); // имитируем ошибку
-
-subscription = source.pipe(
-		catchError(err => {
-			console.log('отловлена ошибка:', err);
-			return of('данные обработки ошибки'); // обязательно нужно вернуть данные типа Observable
-		})
-  	)
-	.subscribe(
-		val => console.log('next:', val),
-		err => console.log('error:', err),
-		() => console.log('completed:', 'поток завершен')
-	);</code></pre>
-            <p>
-                В результате выполнения данного кода в консоли мы увидим
-                следующее:
-            </p>
-            <pre><code class="language-typescript">// отловлена ошибка: какая-то ошибка
-// next: данные обработки ошибки
-// completed: поток завершен</code></pre>
+            <p>В Angular для обработки ошибок существуют следующие операторы: <code class="dialog" dialog_angular_rxjs-operators_catch-error>catchError</code>, <code class="dialog" dialog_rxjs-operators_catch-error></code> и <code class="dialog" dialog_rxjs-operators_catch-error></code></p>
             <i class="subtitle">Оператор retry</i>
             <p>
                 <span class="attention"
