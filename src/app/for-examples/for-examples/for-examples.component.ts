@@ -8,6 +8,7 @@ import {
     concatMap,
     concatMapTo,
     delay,
+    delayWhen,
     exhaustMap,
     filter,
     flatMap,
@@ -21,11 +22,13 @@ import {
     of,
     pluck,
     retry,
+    retryWhen,
     startWith,
     switchMap,
     take,
     tap,
     throwError,
+    timer,
     zip,
 } from 'rxjs';
 
@@ -37,16 +40,30 @@ import {
 })
 export class ForExamplesComponent {
     ngOnInit() {
+        // создаем поток
         const source = interval(1000);
+        // выполняем в нем различные действия
         const result = source.pipe(
-            mergeMap((value) => (value > 2 ? throwError(() => 'Ошибка') : of(value))),
-            retry(2), // Повторяем попытку при возникновении ошибки 2 раза
+            map((value) => {
+                if (value > 2) {
+                    /**
+                     * если значение больше 5, генерируем исключение,
+                     * которое подхватит оператор retryWhen
+                     */
+                    throw value;
+                }
+                return value;
+            }),
+            retryWhen((errors) =>
+                errors.pipe(
+                    // логируем сообщение об ошибке
+                    tap((value) => console.log('Значение ' + value + ' выше заданного условия!')),
+                    // Создаем искусственную задержку в 5 секунд
+                    delayWhen((value) => timer(value * 1000)),
+                ),
+            ),
         );
 
-        result.subscribe({
-            next: (value) => console.log(value),
-            error: (error) =>
-                console.log(`${error}: Был произведен повтор 2 раза. На третий раз поток завершился с ошибкой!`),
-        });
+        result.subscribe((value) => console.log(value));
     }
 }
