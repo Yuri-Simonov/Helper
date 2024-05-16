@@ -2,7 +2,6 @@
     min-height: 100%;
     border-right: var(--border);
     background-color: var(--mdc-filled-text-field-input-text-placeholder-color);
-    padding: 0 16px;
 
     @media (max-width: 992px) {
         position: absolute;
@@ -22,6 +21,14 @@
     }
 
     .sidebar {
+        padding: 0 16px;
+        height: calc(100% - var(--header-height) - var(--title-height));
+
+        @media (max-width: 992px), (max-height: 440px) {
+            height: calc(100vh - var(--header-height) - var(--title-height));
+            overflow-y: auto;
+        }
+
         &_hide {
             @media (max-width: 992px), (max-height: 440px) {
                 top: 0;
@@ -33,7 +40,7 @@
 
         mat-nav-list {
             position: sticky;
-            top: 64px;
+            top: calc(var(--header-height) + 6px);
             left: 0;
 
             @media (max-width: 992px) {
@@ -47,7 +54,6 @@
 
         .mdc-list {
             padding: 0;
-            height: 100%;
 
             @media (max-width: 992px), (max-height: 440px) {
                 padding: 8px 0;
@@ -65,6 +71,10 @@
                 transition: 0.3s;
                 color: var(--text-color);
             }
+
+            @media (max-width: 440px), (max-height: 440px) {
+                height: 36px;
+            }
         }
 
         &__chapter {
@@ -77,6 +87,10 @@
 
             &:first-child {
                 margin-top: 10px;
+
+                @media (max-width: 440px), (max-height: 440px) {
+                    margin: 0;
+                }
             }
         }
     }

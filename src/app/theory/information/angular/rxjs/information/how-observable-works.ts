@@ -1,7 +1,7 @@
 import { IInfo } from '@types';
 
 export const HOW_OBSERVABLE_WORKS: IInfo = {
-    title: 'Принцип работы <span class="variable">Observable</span> в <span class="variable">RxJs</span>',
+    title: '<span class="variable">Observables</span>',
     body: `<p>
             <code>Observable</code> - это
             <span class="attention">объект-конструктор источника события</span>,

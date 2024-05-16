@@ -41,12 +41,17 @@
 
             @media (max-width: 440px), (max-height: 440px) {
                 font-size: 14px;
-                margin-top: 6px;
                 padding-left: 12px;
             }
 
             &:not(:first-child) {
                 padding-top: 12px;
+            }
+
+            &:first-child {
+                @media (max-width: 440px), (max-height: 440px) {
+                    margin-top: 6px;
+                }
             }
 
             & .variable {
