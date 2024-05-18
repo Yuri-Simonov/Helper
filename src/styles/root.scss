@@ -2,22 +2,22 @@
     box-sizing: border-box;
 }
 
-html,
-body {
-    height: 100%;
-    overflow-x: hidden;
-}
 body {
     color: var(--text-color);
     background: linear-gradient(var(--primary-color), var(--secondary-color));
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 body > app-root {
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    flex-grow: 1;
 }
 
 img,

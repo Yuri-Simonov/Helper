@@ -55,21 +55,21 @@ export const rxjsOperatorsInfo: IInfo[] = [
     SWITCH_MAP,
     { chapter: 'Операторы фильтрации (<span class="variable">Filtering Operators</span>)' },
     TAKE,
-    {
-        chapter:
-            'Операторы объединения (<span class="variable">Join operators</span>) (для потоков более высокого порядка)',
-    },
-    { chapter: 'Операторы многоадресной рассылки (<span class="variable">Multicasting Operators</span>)' },
+    // {
+    //     chapter:
+    //         'Операторы объединения (<span class="variable">Join operators</span>) (для потоков более высокого порядка)',
+    // },
+    // { chapter: 'Операторы многоадресной рассылки (<span class="variable">Multicasting Operators</span>)' },
     { chapter: 'Операторы для обработки ошибок (<span class="variable">Error Handling Operators</span>)' },
     CATCH_ERROR,
     RETRY,
     RETRY_WHEN,
-    { chapter: 'Различные полезные операторы (<span class="variable">Utility Operators</span>)' },
-    { chapter: 'Условные и логические операторы (<span class="variable">Conditional and Boolean Operators</span>)' },
-    {
-        chapter:
-            'Математические и агрегатные операторы (<span class="variable">Mathematical and Aggregate Operators</span>)',
-    },
+    // { chapter: 'Различные полезные операторы (<span class="variable">Utility Operators</span>)' },
+    // { chapter: 'Условные и логические операторы (<span class="variable">Conditional and Boolean Operators</span>)' },
+    // {
+    //     chapter:
+    //         'Математические и агрегатные операторы (<span class="variable">Mathematical and Aggregate Operators</span>)',
+    // },
     { chapter: 'Прочее' },
     CREATING_CUSTOM_RXJS_OPERATORS,
 ];

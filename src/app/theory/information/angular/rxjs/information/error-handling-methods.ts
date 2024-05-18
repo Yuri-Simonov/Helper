@@ -11,7 +11,7 @@ export const ERROR_HANDLING_METHODS: IInfo = {
                 операторы, как:
                 <code class="dialog" dialog_angular_rxjs-operators_catch-error>catchError</code>,
                 <code class="dialog" dialog_angular_rxjs-operators_retry>retry</code> и
-                <code class="dialog" dialog_angular_rxjs-operators_retry-when>retryWhen</code>
+                <code class="dialog" dialog_angular_rxjs-operators_retry-when>retryWhen</code>.
             </p>`,
     selected: false,
     lastUpdate: '16.05.2024',
