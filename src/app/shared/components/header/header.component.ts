@@ -15,6 +15,12 @@ import { ITheme } from '../../types';
 interface IHeaderChapters {
     path: string;
     name: string;
+    links: IHeaderChapterLink[];
+}
+
+interface IHeaderChapterLink {
+    path: string;
+    name: string;
     disabled: boolean;
 }
 
@@ -31,10 +37,26 @@ const materialModules = [MatButtonModule, MatIconModule, MatMenuModule, MatToolb
 export class HeaderComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);
     chapters: IHeaderChapters[] = [
-        { path: 'theory/javascript', name: 'Javascript', disabled: false },
-        { path: 'theory/angular', name: 'Angular', disabled: false },
-        { path: 'theory/git/all', name: 'Git', disabled: false },
-        { path: 'theory/others', name: 'Разное', disabled: true },
+        {
+            path: 'theory',
+            name: 'Теория',
+            links: [
+                { path: 'javascript', name: 'Javascript', disabled: false },
+                { path: 'angular', name: 'Angular', disabled: false },
+                { path: 'git/all', name: 'Git', disabled: false },
+                { path: 'others', name: 'Разное', disabled: true },
+            ],
+        },
+        {
+            path: 'courses',
+            name: 'Курсы',
+            links: [{ path: 'angular', name: 'Angular', disabled: false }],
+        },
+        {
+            path: 'tests',
+            name: 'Тесты',
+            links: [{ path: 'angular', name: 'Angular', disabled: false }],
+        },
     ];
     themes: ITheme[];
     currentTheme: ITheme;

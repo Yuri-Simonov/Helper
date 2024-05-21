@@ -25,18 +25,10 @@
         <mat-icon>arrow_drop_down</mat-icon>
         Разделы
     </button>
-    <mat-menu #chapterMenu="matMenu" xPosition="after">
-        @for (chapter of chapters; track $index) {
-            <a
-                [routerLink]="chapter.path"
-                routerLinkActive="disabled"
-                mat-menu-item
-                (click)="changeSidebarState(false)"
-                [ngClass]="{ disabled: chapter.disabled }"
-            >
-                {{ chapter.name }}
-            </a>
-        }
+    <mat-menu #chapterMenu="matMenu" xPosition="after" class="header__menu">
+        <button mat-menu-item [matMenuTriggerFor]="theory">{{ chapters[0].name }}</button>
+        <button mat-menu-item [matMenuTriggerFor]="course">{{ chapters[1].name }}</button>
+        <button mat-menu-item [matMenuTriggerFor]="tests">{{ chapters[2].name }}</button>
     </mat-menu>
     <a class="header__link" mat-button href="https://github.com/Yuri-Simonov/Helper" target="_blank">
         <mat-icon>
@@ -60,3 +52,46 @@
         <span>Telegram</span>
     </a>
 </mat-toolbar>
+
+<mat-menu #theory="matMenu">
+    @for (chapterLink of chapters[0].links; track chapterLink.path) {
+        <a
+            [routerLink]="chapters[0].path"
+            routerLinkActive="disabled"
+            mat-menu-item
+            (click)="changeSidebarState(false)"
+            [ngClass]="{ disabled: chapters[0].links[$index].disabled }"
+            class="header__menu-link"
+        >
+            {{ chapterLink.name }}
+        </a>
+    }
+</mat-menu>
+
+<mat-menu #course="matMenu">
+    @for (chapterLink of chapters[1].links; track chapterLink.path) {
+        <a
+            [routerLink]="chapters[1].path"
+            routerLinkActive="disabled"
+            mat-menu-item
+            (click)="changeSidebarState(false)"
+            [ngClass]="{ disabled: chapters[1].links[$index].disabled }"
+        >
+            {{ chapterLink.name }}
+        </a>
+    }
+</mat-menu>
+
+<mat-menu #tests="matMenu">
+    @for (chapterLink of chapters[2].links; track chapterLink.path) {
+        <a
+            [routerLink]="chapters[2].path"
+            routerLinkActive="disabled"
+            mat-menu-item
+            (click)="changeSidebarState(false)"
+            [ngClass]="{ disabled: chapters[2].links[$index].disabled }"
+        >
+            {{ chapterLink.name }}
+        </a>
+    }
+</mat-menu>

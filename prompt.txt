@@ -60,3 +60,37 @@ export const ZIP: IInfo = {
 	lastUpdate: '',
 	footerLinks: [{path: '',},],
 },
+
+================================================
+Палитра
+================================================
+    // --01-text: #{mat.get-color-from-palette($_primary, "A50-contrast")};
+    // --02-text: #{mat.get-color-from-palette($_primary, "A100-contrast")};
+    // --03-text: #{mat.get-color-from-palette($_primary, "A200-contrast")};
+    // --04-text: #{mat.get-color-from-palette($_primary, "A300-contrast")};
+    // --05-text: #{mat.get-color-from-palette($_primary, "A400-contrast")};
+    // --06-text: #{mat.get-color-from-palette($_primary, "A500-contrast")};
+    // --07-text: #{mat.get-color-from-palette($_primary, "A600-contrast")};
+    // --08-text: #{mat.get-color-from-palette($_primary, "A700-contrast")};
+    // --09-text: #{mat.get-color-from-palette($_primary, "A800-contrast")};
+    // --10-text: #{mat.get-color-from-palette($_primary, "A900-contrast")};
+    // --11-text: #{mat.get-color-from-palette($_primary, 50)};
+    // --12-text: #{mat.get-color-from-palette($_primary, 100)};
+    // --13-text: #{mat.get-color-from-palette($_primary, 200)};
+    // --14-text: #{mat.get-color-from-palette($_primary, 300)};
+    // --15-text: #{mat.get-color-from-palette($_primary, 400)};
+    // --16-text: #{mat.get-color-from-palette($_primary, 500)};
+    // --17-text: #{mat.get-color-from-palette($_primary, 600)};
+    // --18-text: #{mat.get-color-from-palette($_primary, 700)};
+    // --19-text: #{mat.get-color-from-palette($_primary, 800)};
+    // --20-text: #{mat.get-color-from-palette($_primary, 900)};
+    // --21-text: #{mat.get-color-from-palette($_primary, "50-contrast")};
+    // --22-text: #{mat.get-color-from-palette($_primary, "100-contrast")};
+    // --23-text: #{mat.get-color-from-palette($_primary, "200-contrast")};
+    // --24-text: #{mat.get-color-from-palette($_primary, "300-contrast")};
+    // --25-text: #{mat.get-color-from-palette($_primary, "400-contrast")};
+    // --26-text: #{mat.get-color-from-palette($_primary, "500-contrast")};
+    // --27-text: #{mat.get-color-from-palette($_primary, "600-contrast")};
+    // --28-text: #{mat.get-color-from-palette($_primary, "700-contrast")};
+    // --29-text: #{mat.get-color-from-palette($_primary, "800-contrast")};
+    // --30-text: #{mat.get-color-from-palette($_primary, "900-contrast")};
