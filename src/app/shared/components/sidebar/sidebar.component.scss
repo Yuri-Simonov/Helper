@@ -10,7 +10,7 @@
         bottom: 0;
         overflow: auto;
         z-index: 2;
-        background-color: var(--sidebar-mobile-background);
+        background: var(--secondary-color);
         transition: 0.3s;
 
         &.hideOnMobile {

@@ -3,10 +3,6 @@
     background: linear-gradient(var(--secondary-color), var(--primary-color)),
         var(--mdc-filled-text-field-input-text-placeholder-color);
 
-    @media (max-width: 992px) {
-        background: var(--sidebar-mobile-background);
-    }
-
     * {
         color: inherit;
         background-color: inherit;

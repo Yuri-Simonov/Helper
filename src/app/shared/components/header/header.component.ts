@@ -11,6 +11,8 @@ import { ThemeToggleService } from '../../services/theme-toggle.service';
 import { SidebarService } from '../../services/sidebar.service';
 
 import { ITheme } from '../../types';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogSupportComponent } from '../dialogs/dialog-support/dialog-support.component';
 
 interface IHeaderChapters {
     path: string;
@@ -65,6 +67,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     constructor(
         private sidebarService: SidebarService,
         private themeToggleService: ThemeToggleService,
+        private dialog: MatDialog,
     ) {}
 
     ngOnInit() {
@@ -92,5 +95,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     setTheme(theme: ITheme) {
         this.currentTheme = theme;
+    }
+
+    openDialog() {
+        this.dialog.open(DialogSupportComponent);
     }
 }

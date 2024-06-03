@@ -28,10 +28,6 @@
 
             @media (max-width: 768px) {
                 min-width: auto;
-
-                span {
-                    display: none;
-                }
             }
 
             @media (max-width: 768px) {
@@ -40,7 +36,7 @@
                 }
             }
 
-            @media (max-width: 320px) {
+            @media (max-width: 374px) {
                 font-size: 16px;
             }
         }
@@ -54,8 +50,9 @@
             height: inherit;
         }
 
-        &__link {
-            @media (max-width: 440px), (max-height: 440px) {
+        &__link,
+        button {
+            @media (max-width: 768px), (max-height: 440px) {
                 min-width: auto;
 
                 &:last-child {
@@ -69,6 +66,10 @@
                 .mat-icon {
                     margin: 0;
                 }
+            }
+
+            @media (max-width: 374px) {
+                font-size: 12px;
             }
         }
     }
