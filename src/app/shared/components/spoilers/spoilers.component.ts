@@ -26,7 +26,7 @@ import { PipeSanitizer } from '../../pipes/pipe-sanitizer.pipe';
 import { EmptyComponent } from '../empty/empty.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { OverlayComponent } from '../overlay/overlay.component';
-import { DialogComponent } from '../dialog/dialog.component';
+import { DialogSpoilerComponent } from '../dialogs/dialog-spoiler/dialog-spoiler.component';
 
 const materialModules = [MatExpansionModule];
 
@@ -44,7 +44,7 @@ const materialModules = [MatExpansionModule];
         EmptyComponent,
         OverlayComponent,
         SidebarComponent,
-        DialogComponent,
+        DialogSpoilerComponent,
         PipeSanitizer,
     ],
 })
@@ -110,12 +110,7 @@ export class SpoilersComponent implements OnInit, OnDestroy {
             `../../../theory/information/${splittedAttributes[1]}/${splittedAttributes[2]}/information/${splittedAttributes[3]}`
         ).then((data) => {
             const dialogData: IInfo = data[splittedAttributes[3].toUpperCase().replace('-', '_')];
-            this.dialog.open(DialogComponent, { data: dialogData });
+            this.dialog.open(DialogSpoilerComponent, { data: dialogData });
         });
     }
-
-    // async asyncShowComponent() {
-    //     const { DynamicComponent } = await import('./components/dynamic/dynamic.component');
-    //     this.viewContainer.createComponent(DynamicComponent);
-    // }
 }

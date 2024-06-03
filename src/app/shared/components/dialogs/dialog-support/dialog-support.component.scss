@@ -1,0 +1,48 @@
+:host {
+    color: var(--text-color);
+    background: linear-gradient(var(--secondary-color), var(--primary-color)),
+        var(--mdc-filled-text-field-input-text-placeholder-color);
+
+    * {
+        color: inherit;
+    }
+
+    & > *,
+    button {
+        background-color: inherit;
+    }
+
+    h2 {
+        margin: 0;
+
+        @media (max-width: 440px), (max-height: 440px) {
+            padding: 10px;
+
+            &::before {
+                height: 0;
+            }
+        }
+    }
+
+    mat-dialog-content {
+        overflow-x: hidden;
+
+        @media (max-width: 440px), (max-height: 440px) {
+            padding: 0 10px 0;
+        }
+    }
+
+    a,
+    .card-number {
+        color: var(--primary-color);
+        filter: var(--hue-240-deg);
+    }
+
+    .card-number {
+        cursor: pointer;
+    }
+}
+
+:host(.mat-mdc-dialog-component-host) {
+    display: initial;
+}
