@@ -1,0 +1,121 @@
+@use "@angular/material" as mat;
+@include mat.core();
+
+$m2-red-theme: mat.m2-define-light-theme(
+    (
+        color: (
+            primary: mat.m2-define-palette(mat.$m2-red-palette),
+            accent: mat.m2-define-palette(mat.$m2-blue-palette),
+        ),
+    )
+);
+$m2-pink-theme: mat.m2-define-light-theme(
+    (
+        color: (
+            primary: mat.m2-define-palette(mat.$m2-pink-palette),
+            accent: mat.m2-define-palette(mat.$m2-blue-palette),
+        ),
+    )
+);
+$m2-purple-theme: mat.m2-define-light-theme(
+    (
+        color: (
+            primary: mat.m2-define-palette(mat.$m2-purple-palette),
+            accent: mat.m2-define-palette(mat.$m2-blue-palette),
+        ),
+    )
+);
+$m2-deep-purple-theme: mat.m2-define-light-theme(
+    (
+        color: (
+            primary: mat.m2-define-palette(mat.$m2-deep-purple-palette),
+            accent: mat.m2-define-palette(mat.$m2-blue-palette),
+        ),
+    )
+);
+$m2-indigo-theme: mat.m2-define-light-theme(
+    (
+        color: (
+            primary: mat.m2-define-palette(mat.$m2-indigo-palette),
+            accent: mat.m2-define-palette(mat.$m2-blue-palette),
+        ),
+    )
+);
+$m2-blue-theme: mat.m2-define-light-theme(
+    (
+        color: (
+            primary: mat.m2-define-palette(mat.$m2-blue-palette),
+            accent: mat.m2-define-palette(mat.$m2-blue-palette),
+        ),
+    )
+);
+$m2-teal-theme: mat.m2-define-light-theme(
+    (
+        color: (
+            primary: mat.m2-define-palette(mat.$m2-teal-palette),
+            accent: mat.m2-define-palette(mat.$m2-orange-palette),
+        ),
+    )
+);
+$m2-brown-theme: mat.m2-define-light-theme(
+    (
+        color: (
+            primary: mat.m2-define-palette(mat.$m2-brown-palette),
+            accent: mat.m2-define-palette(mat.$m2-blue-palette),
+        ),
+    )
+);
+$m2-blue-gray-theme: mat.m2-define-light-theme(
+    (
+        color: (
+            primary: mat.m2-define-palette(mat.$m2-blue-gray-palette),
+            accent: mat.m2-define-palette(mat.$m2-blue-palette),
+        ),
+    )
+);
+
+@mixin theme-light-colors($m2-theme) {
+    --primary-color: #{mat.get-theme-color($m2-theme, primary)};
+    --secondary-color: #{mat.get-theme-color($m2-theme, primary, "A100-contrast")};
+    --middle-color-15: #{mat.get-theme-color($m2-theme, primary, 400)};
+    --middle-color-18: #{mat.get-theme-color($m2-theme, primary, 700)};
+    --middle-color-20: #{mat.get-theme-color($m2-theme, primary, 900)};
+    --text-color: #{mat.get-theme-color($m2-theme, primary, "500-contrast")};
+    --white-text: white;
+
+    @include mat.all-component-colors($m2-theme);
+}
+
+.red-theme {
+    @include theme-light-colors($m2-red-theme);
+}
+.pink-theme {
+    @include theme-light-colors($m2-pink-theme);
+}
+.purple-theme {
+    @include theme-light-colors($m2-purple-theme);
+}
+.deep-purple-theme {
+    @include theme-light-colors($m2-deep-purple-theme);
+}
+.indigo-theme {
+    @include theme-light-colors($m2-indigo-theme);
+}
+.blue-theme {
+    @include theme-light-colors($m2-blue-theme);
+}
+.teal-theme {
+    @include theme-light-colors($m2-teal-theme);
+}
+.brown-theme {
+    @include theme-light-colors($m2-brown-theme);
+
+    --hue-240-deg: hue-rotate(240deg) brightness(2.2) saturate(7);
+}
+.blue-gray-theme {
+    @include theme-light-colors($m2-blue-gray-theme);
+
+    --hue-120-deg: hue-rotate(120deg) brightness(1.5) saturate(3.5);
+    --hue-minus-120-deg: hue-rotate(240deg) saturate(2) brightness(0.85);
+    --hue-240-deg: hue-rotate(-120deg) brightness(2.2) saturate(4);
+}

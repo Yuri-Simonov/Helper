@@ -1,6 +1,7 @@
 import { IInfo } from '@types';
 
 export const MERGE: IInfo = {
+    id: 'merge',
     title: '<span class="variable">merge</span>',
     body: `<p>
                 Оператор <code>merge</code>

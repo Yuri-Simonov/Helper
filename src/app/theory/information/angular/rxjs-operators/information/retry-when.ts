@@ -1,6 +1,7 @@
 import { IInfo } from '@types';
 
 export const RETRY_WHEN: IInfo = {
+    id: 'retryWhen',
     title: '<span class="variable">retryWhen</span>',
     body: `<p>
                 <span class="attention"

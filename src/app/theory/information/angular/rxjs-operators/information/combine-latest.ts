@@ -1,6 +1,7 @@
 import { IInfo } from '@types';
 
 export const COMBINE_LATEST: IInfo = {
+    id: 'combineLatest',
     title: '<span class="variable">combineLatest</span>',
     body: `<p>
                 <span class="attention"

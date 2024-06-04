@@ -1,4 +1,5 @@
 export interface IInfo {
+    id?: string;
     title?: string;
     body?: string;
     selected?: boolean;
