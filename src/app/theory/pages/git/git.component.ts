@@ -11,5 +11,5 @@ import { allGitInfo } from '../../information/git';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GitComponent {
-    list: IList[] = [{ name: 'Все', path: 'all', info: allGitInfo }];
+    list: IList[] = [{ name: 'Все', path: 'git', info: allGitInfo }];
 }
