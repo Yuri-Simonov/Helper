@@ -86,7 +86,6 @@
 }
 
 ::ng-deep body .mat-mdc-menu-panel {
-    border-color: var(--primary-color);
     border: 2px solid var(--primary-color);
     max-width: 100%;
     background: linear-gradient(var(--middle-color-15), var(--middle-color-18)),
@@ -102,7 +101,7 @@
 
         transition: 0.3s;
         &:hover {
-            color: var(--primary-color);
+            color: var(--middle-color-20);
         }
     }
 

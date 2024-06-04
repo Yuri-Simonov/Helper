@@ -85,12 +85,12 @@
 <mat-menu #theory="matMenu">
     @for (chapterLink of chapters[0].links; track chapterLink.path) {
         <a
-            [routerLink]="chapters[0].path"
+            [routerLink]="[chapters[0].path, chapters[0].links[$index].path]"
             routerLinkActive="disabled"
             mat-menu-item
             (click)="changeSidebarState(false)"
             [ngClass]="{ disabled: chapters[0].links[$index].disabled }"
-            class="header__menu-link"
+            [target]="chapters[0].links[$index]?.targetBlank ? '_blank' : undefined"
         >
             {{ chapterLink.name }}
         </a>
@@ -99,26 +99,40 @@
 
 <mat-menu #course="matMenu">
     @for (chapterLink of chapters[1].links; track chapterLink.path) {
-        <a
-            [routerLink]="chapters[1].path"
-            routerLinkActive="disabled"
-            mat-menu-item
-            (click)="changeSidebarState(false)"
-            [ngClass]="{ disabled: chapters[1].links[$index].disabled }"
-        >
-            {{ chapterLink.name }}
-        </a>
+        @if (chapters[1].sideLink) {
+            <a
+                [href]="chapters[1].links[$index].path"
+                mat-menu-item
+                (click)="changeSidebarState(false)"
+                [ngClass]="{ disabled: chapters[1].links[$index].disabled }"
+                target="_blank"
+            >
+                {{ chapterLink.name }}
+            </a>
+        } @else {
+            <a
+                [routerLink]="[chapters[1].path, chapters[1].links[$index].path]"
+                routerLinkActive="disabled"
+                mat-menu-item
+                (click)="changeSidebarState(false)"
+                [ngClass]="{ disabled: chapters[1].links[$index].disabled }"
+                [target]="chapters[1].links[$index]?.targetBlank ? '_blank' : undefined"
+            >
+                {{ chapterLink.name }}
+            </a>
+        }
     }
 </mat-menu>
 
 <mat-menu #tests="matMenu">
     @for (chapterLink of chapters[2].links; track chapterLink.path) {
         <a
-            [routerLink]="chapters[2].path"
+            [routerLink]="[chapters[2].path, chapters[2].links[$index].path]"
             routerLinkActive="disabled"
             mat-menu-item
             (click)="changeSidebarState(false)"
             [ngClass]="{ disabled: chapters[2].links[$index].disabled }"
+            [target]="chapters[2].links[$index]?.targetBlank ? '_blank' : undefined"
         >
             {{ chapterLink.name }}
         </a>

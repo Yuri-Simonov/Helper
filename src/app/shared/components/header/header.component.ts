@@ -18,12 +18,14 @@ interface IHeaderChapters {
     path: string;
     name: string;
     links: IHeaderChapterLink[];
+    sideLink?: boolean;
 }
 
 interface IHeaderChapterLink {
     path: string;
     name: string;
     disabled: boolean;
+    targetBlank?: boolean;
 }
 
 const materialModules = [MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule];
@@ -45,17 +47,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
             links: [
                 { path: 'javascript', name: 'Javascript', disabled: false },
                 { path: 'angular', name: 'Angular', disabled: false },
-                { path: 'git/all', name: 'Git', disabled: false },
+                { path: 'git', name: 'Git', disabled: false },
                 { path: 'others', name: 'Разное', disabled: true },
             ],
         },
         {
-            path: 'courses',
+            path: '',
             name: 'Курсы',
-            links: [{ path: 'angular', name: 'Angular', disabled: false }],
+            links: [
+                {
+                    path: 'https://youtube.com/playlist?list=PL2bJ6t_D6_KSSiM2Y8T32-5KgaNzzS4R6&si=KZdPM8DuqbPbtNEH',
+                    name: 'Angular',
+                    disabled: false,
+                    targetBlank: true,
+                },
+            ],
+            sideLink: true,
         },
         {
-            path: 'tests',
+            path: 'quizzes',
             name: 'Тесты',
             links: [{ path: 'angular', name: 'Angular', disabled: false }],
         },

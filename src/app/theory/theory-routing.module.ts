@@ -27,9 +27,8 @@ const routes: Routes = [
         ],
     },
     {
-        path: 'theory/git/all',
+        path: 'theory/git',
         component: GitComponent,
-        // children: [{ path: 'all', component: GitComponent }],
     },
     {
         path: 'theory/javascript',
