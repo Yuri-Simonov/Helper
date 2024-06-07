@@ -1,6 +1,7 @@
 import { IInfo } from '@types';
 
 export const CONCAT: IInfo = {
+    id: 'concat',
     title: '<span class="variable">concat</span>',
     body: `<p>
                 Оператор <code>concat</code>

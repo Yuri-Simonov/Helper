@@ -52,6 +52,8 @@
 
         &__link,
         button {
+            color: inherit;
+
             @media (max-width: 768px), (max-height: 440px) {
                 min-width: auto;
 

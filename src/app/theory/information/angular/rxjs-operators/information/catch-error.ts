@@ -1,6 +1,7 @@
 import { IInfo } from '@types';
 
 export const CATCH_ERROR: IInfo = {
+    id: 'catchError',
     title: '<span class="variable">catchError</span>',
     body: `<p>
                 <span class="attention">

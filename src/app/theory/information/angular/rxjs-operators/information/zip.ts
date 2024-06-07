@@ -1,6 +1,7 @@
 import { IInfo } from '@types';
 
 export const ZIP: IInfo = {
+    id: 'zip',
     title: '<span class="variable">zip</span>',
     body: `<p>
                 Оператор <code>zip</code>

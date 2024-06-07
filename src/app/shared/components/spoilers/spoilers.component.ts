@@ -60,12 +60,12 @@ export class SpoilersComponent implements OnInit, OnDestroy {
 
     @ViewChildren(MatAccordion) accordion: MatAccordion[];
 
-    @HostListener('click', ['$event.target.attributes']) handleMouseleave(attributes: any) {
-        Object.keys(attributes).forEach((attr: string) => {
-            if (attributes[attr]['name'].startsWith('dialog')) {
-                this.openDialog(attributes[attr]['name']);
-            }
-        });
+    @HostListener('click', ['$event.target.attributes']) handleMouseleave(attributes: NamedNodeMap) {
+        const dialogId = attributes.getNamedItem('dialog_id')?.value;
+
+        if (dialogId) {
+            this.openDialog(dialogId);
+        }
     }
 
     constructor(
@@ -104,13 +104,18 @@ export class SpoilersComponent implements OnInit, OnDestroy {
         this.sidebarService.setNewSidebarState(state);
     }
 
-    openDialog(attributes: string) {
-        const splittedAttributes = attributes.split('_');
-        import(
-            `../../../theory/information/${splittedAttributes[1]}/${splittedAttributes[2]}/information/${splittedAttributes[3]}`
-        ).then((data) => {
-            const dialogData: IInfo = data[splittedAttributes[3].toUpperCase().replace('-', '_')];
-            this.dialog.open(DialogSpoilerComponent, { data: dialogData });
+    async openDialog(id: string) {
+        /**
+         * костыльное решение после перехода с вебпака на Vite (переход на 18-ую версию Angular),
+         * т.к. Vite не поддерживает динамические импорты (июнь, 2024)
+         */
+        const rxjsOperatorsInfo = (await import('../../../theory/information/angular/rxjs-operators/index'))
+            .rxjsOperatorsInfo;
+
+        rxjsOperatorsInfo.forEach((item) => {
+            if (item?.id === id) {
+                this.dialog.open(DialogSpoilerComponent, { data: item });
+            }
         });
     }
 }

@@ -1,6 +1,7 @@
 import { IInfo } from '@types';
 
 export const FORK_JOIN: IInfo = {
+    id: 'forkJoin',
     title: '<span class="variable">forkJoin</span>',
     body: `<p>
                 <span class="attention"
