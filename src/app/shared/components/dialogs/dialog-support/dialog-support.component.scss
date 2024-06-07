@@ -40,6 +40,9 @@
 
     .card-number {
         cursor: pointer;
+        background-color: var(--secondary-color);
+        padding: 4px;
+        border-radius: 2px;
     }
 }
 

@@ -18,16 +18,18 @@
                     "builder": "@angular-devkit/build-angular:application",
                     "options": {
                         "outputPath": {
-                          "base": "dist/answers"
+                            "base": "dist/answers"
                         },
                         "index": "src/index.html",
-                        "polyfills": [
-                          "src/polyfills.ts"
-                        ],
+                        "polyfills": ["src/polyfills.ts"],
                         "tsConfig": "tsconfig.app.json",
                         "inlineStyleLanguage": "scss",
                         "assets": ["src/favicon.ico", "src/assets"],
-                        "styles": ["@angular/material/prebuilt-themes/purple-green.css", "src/styles.scss"],
+                        "styles": [
+                            "@angular/material/prebuilt-themes/purple-green.css",
+                            "src/styles.scss",
+                            "node_modules/ngx-toastr/toastr.css"
+                        ],
                         "scripts": [],
                         "browser": "src/main.ts"
                     },
@@ -55,7 +57,7 @@
                             "baseHref": "/"
                         },
                         "development": {
-                          "optimization": false,
+                            "optimization": false,
                             "extractLicenses": false,
                             "sourceMap": true,
                             "namedChunks": true
@@ -101,6 +103,6 @@
         }
     },
     "cli": {
-      "analytics": false
+        "analytics": false
     }
 }
