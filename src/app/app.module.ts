@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { HighlightJsModule } from 'ngx-highlight-js';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
@@ -30,6 +31,7 @@ const routes: Routes = [{ path: '**', redirectTo: '' }];
         QuizzesModule,
         TheoryModule,
         RouterModule.forRoot(routes),
+        ToastrModule.forRoot(),
     ],
     providers: [],
     bootstrap: [AppComponent],
