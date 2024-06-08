@@ -3,6 +3,8 @@
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
     "cSpell.words": [
+        "ngcontent",
+        "nghost",
         "oneline",
         "Pipeable",
         "toastr",

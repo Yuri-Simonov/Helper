@@ -7,6 +7,7 @@ import { DEPENDENCY_INJECTION } from './information/dependency-injection';
 import { CONNECTING_SCRIPTS_AND_STYLES } from './information/connecting-scripts-and-styles';
 import { RENDERER_2 } from './information/renderer-2';
 import { SOME_GLOBAL_STYLE_FILES } from './information/some-global-style-files';
+import { STYLE_ENCAPSULATION } from './information/style-encapsulation';
 
 export const othersInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -14,6 +15,7 @@ export const othersInfo: IInfo[] = [
     MODULES_IN_ANGULAR,
     { chapter: 'Стили' },
     SOME_GLOBAL_STYLE_FILES,
+    STYLE_ENCAPSULATION,
     { chapter: 'Прочее' },
     COMPILATION_MECHANISMS,
     DEPENDENCY_INJECTION,
