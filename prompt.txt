@@ -33,8 +33,8 @@ class="language-typescript"
 <pre><code class="language-typescript"></code></pre>
 <pre><code class="language-scss"></code></pre>
 
-&lt;!--  -->
-&lt;!-- шаблон компонента -->
+&lt;!--  --&gt;
+&lt;!-- шаблон компонента --&gt;
 
 &lt;app-child>
 &lt;/app-child> 			
