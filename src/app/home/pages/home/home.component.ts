@@ -16,7 +16,7 @@ export class HomeComponent {
                 { path: 'theory/javascript', name: 'JavaScript' },
                 { path: 'theory/angular', name: 'Angular' },
                 { path: 'theory/git/all', name: 'Git' },
-                { path: 'theory/others', name: 'Разное', disabled: true },
+                // { path: 'theory/others', name: 'Разное', disabled: true },
             ],
         },
         {
@@ -29,19 +29,19 @@ export class HomeComponent {
                 },
             ],
         },
-        {
-            id: 'tasks',
-            title: 'Задачи',
-            links: [{ path: '#', name: 'JavaScript', disabled: true }],
-        },
+        // {
+        //     id: 'tasks',
+        //     title: 'Задачи',
+        //     links: [{ path: '#', name: 'JavaScript', disabled: true }],
+        // },
         {
             id: 'quizzes',
             title: 'Тесты',
             links: [
-                { path: '#', name: 'JavaScript', disabled: true },
+                // { path: '#', name: 'JavaScript', disabled: true },
                 { path: 'quizzes/angular', name: 'Angular' },
-                { path: '#', name: 'Git', disabled: true },
-                { path: '#', name: 'Разное', disabled: true },
+                // { path: '#', name: 'Git', disabled: true },
+                // { path: '#', name: 'Разное', disabled: true },
             ],
         },
     ];
