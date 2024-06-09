@@ -9,10 +9,7 @@
         height: 40vh;
 
         @media (max-width: 440px), (max-height: 440px) {
-            height: 30vh;
-        }
-
-        @media (max-height: 440px) {
+            height: initial;
             padding: 36px 0;
         }
     }
@@ -81,9 +78,9 @@
         flex-wrap: wrap;
         gap: 15px;
 
-        @media (max-width: 440px) {
-            flex-direction: column;
-        }
+        // @media (max-width: 440px) {
+        //     flex-direction: column;
+        // }
     }
 
     &__chapter + &__chapter {
