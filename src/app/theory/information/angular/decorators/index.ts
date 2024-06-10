@@ -23,6 +23,7 @@ import { HOST } from './information/host';
 import { BOOTSTRAP_IN_NG_MODULE } from './information/bootstrap-in-ng-module';
 import { EXPORT_AS } from './information/export-as';
 import { ATTRIBUTE } from './information/attribute';
+import { HOST_PROPERTY } from './information/host-property';
 
 export const decoratorsInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -60,6 +61,7 @@ export const decoratorsInfo: IInfo[] = [
     HOST,
     { chapter: 'Прочее' },
     BOOTSTRAP_IN_NG_MODULE,
+    HOST_PROPERTY,
     EXPORT_AS,
     ATTRIBUTE,
 ];

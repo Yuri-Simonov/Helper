@@ -3,6 +3,8 @@
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
     "cSpell.words": [
+        "appcustomdirective",
+        "lightgreen",
         "ngcontent",
         "nghost",
         "oneline",
@@ -27,6 +29,7 @@
         "иммутабельным",
         "инлайновые",
         "инлайновыми",
+        "инлайновых",
         "инпут",
         "инпуте",
         "кастомного",
