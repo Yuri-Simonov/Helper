@@ -1,13 +1,11 @@
 import { IInfo } from '@types';
 
 export const ABOUT_RXJS: IInfo = {
-    title: 'Библиотека <span class="variable">RxJs</span>',
+    title: 'Библиотека <span class="variable">RxJS</span>',
     body: `<p>
-            <span class="attention">RxJS</span> — это библиотека, реализующая
-            принципы реактивного программирования для JavaScript. Основанная на
-            объектах типа <code>Observable</code>, она упрощает написание и
-            контроль асинхронного и событийного кода.
-        </p>`,
+            <span class="attention">RxJS</span> (Reactive Extensions for JavaScript) — это библиотека для работы с асинхронным кодом с помощью класса <code>Observable</code>. Данная библиотека реализует
+            принципы реактивного программирования для JavaScript, т.е., ориентированна на потоки данных и распространение появляющихся в них изменений среди наблюдателей (<code>Observer</code>).</p>
+			<p>Наблюдателей еще часто называют "подписчиками", а класс <code>Observable</code> - "потоком" или "стримом".</p>`,
     selected: false,
-    lastUpdate: '09.02.2024',
+    lastUpdate: '07.07.2024',
 };
