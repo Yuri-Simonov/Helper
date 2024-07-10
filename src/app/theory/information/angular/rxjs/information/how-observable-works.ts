@@ -196,4 +196,9 @@ ngOnInit() {
 }</code></pre>`,
     selected: false,
     lastUpdate: '09.07.2024',
+    footerLinks: [
+        {
+            path: 'https://youtu.be/vHDtZp2QltI',
+        },
+    ],
 };

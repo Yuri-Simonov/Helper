@@ -30,8 +30,7 @@ export const FROM_EVENT: IInfo = {
         const clicks = fromEvent(document, 'click');
         clicks.subscribe(console.log);
     }
-}
-</code></pre>
+}</code></pre>
             <p>В консоли мы увидим объект с типом <code>PointerEvent</code>:</p>
             <pre><code class='language-typescript'>PointerEvent {...}</code></pre>
             <p>
@@ -59,6 +58,10 @@ export const FROM_EVENT: IInfo = {
     lastUpdate: '30.04.2024',
     footerText: ['Дополнительный материал', 'Дополнительные материалы'],
     footerLinks: [
+        {
+            title: 'Видеообъяснение',
+            path: 'https://youtu.be/A-3UoqDqkyU?t=196',
+        },
         {
             title: 'Анимация работы оператора',
             path: 'https://rxjstutorial.com/docs/creation-operators/fromEvent/',

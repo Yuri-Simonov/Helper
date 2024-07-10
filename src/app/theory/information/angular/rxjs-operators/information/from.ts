@@ -97,4 +97,9 @@ export const FROM: IInfo = {
 Поток завершен!</code></pre>`,
     selected: false,
     lastUpdate: '01.05.2024',
+    footerLinks: [
+        {
+            path: 'https://youtu.be/A-3UoqDqkyU?t=154',
+        },
+    ],
 };
