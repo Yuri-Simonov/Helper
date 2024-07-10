@@ -26,6 +26,7 @@ import { CREATING_CUSTOM_RXJS_OPERATORS } from './information/creating-custom-rx
 import { CATCH_ERROR } from './information/catch-error';
 import { RETRY } from './information/retry';
 import { RETRY_WHEN } from './information/retry-when';
+import { INTERVAL } from './information/interval';
 
 export const rxjsOperatorsInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -38,6 +39,7 @@ export const rxjsOperatorsInfo: IInfo[] = [
     { chapter: 'Операторы создания (<span class="variable">Creation Operators</span>)' },
     FROM,
     FROM_EVENT,
+    INTERVAL,
     OF,
     { chapter: 'Операторы объединения (<span class="variable">Join Creation Operators</span>) для созданных потоков' },
     COMBINE_LATEST,

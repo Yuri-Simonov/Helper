@@ -46,6 +46,10 @@ export const OF: IInfo = {
     footerText: ['Дополнительный материал', 'Дополнительные материалы'],
     footerLinks: [
         {
+            title: 'Видеообъяснение',
+            path: 'https://youtu.be/A-3UoqDqkyU?t=76',
+        },
+        {
             title: 'Анимация работы оператора',
             path: 'https://rxjstutorial.com/docs/creation-operators/of/',
         },
