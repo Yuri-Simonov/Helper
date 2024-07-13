@@ -36,7 +36,8 @@ code {
 }
 
 p > code,
-li > code {
+li > code,
+i > code {
     display: inline-block;
     padding: 0 2px;
 }
