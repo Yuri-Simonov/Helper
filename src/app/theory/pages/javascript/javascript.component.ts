@@ -5,6 +5,7 @@ import { IList } from '@types';
 import { functionsInfo } from '../../information/javascript/functions';
 import { prototypesInfo } from '../../information/javascript/prototypes';
 import { oopInfo } from '../../information/javascript/oop';
+import { othersInfo } from '../../information/javascript/others';
 
 @Component({
     selector: 'app-javascript',
@@ -17,5 +18,6 @@ export class JavascriptComponent {
         { name: 'ООП', path: 'opp', info: oopInfo },
         { name: 'Прототипы', path: 'prototype', info: prototypesInfo },
         { name: 'Функции', path: 'function', info: functionsInfo },
+        { name: 'Разное', path: 'others', info: othersInfo },
     ];
 }
