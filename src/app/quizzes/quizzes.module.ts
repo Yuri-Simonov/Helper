@@ -12,18 +12,30 @@ import { ResultComponent } from './components/result/result.component';
 import { ButtonComponent } from '../shared/ui/button/button.component';
 import { TitleComponent } from '../shared/components/title/title.component';
 import { QuestionsComponent } from './components/questions/questions.component';
+import { JavascriptComponent } from './pages/javascript/javascript.component';
 
 const routes: Routes = [
     {
         path: 'quizzes/angular',
         component: AngularComponent,
     },
+    {
+        path: 'quizzes/javascript',
+        component: JavascriptComponent,
+    },
 ];
 
 const materialModules = [MatProgressBarModule, MatRadioModule];
 
 @NgModule({
-    declarations: [AngularComponent, QuestionCardComponent, ResultComponent, NextQuestionDirective, QuestionsComponent],
+    declarations: [
+        AngularComponent,
+        QuestionCardComponent,
+        ResultComponent,
+        NextQuestionDirective,
+        QuestionsComponent,
+        JavascriptComponent,
+    ],
     imports: [CommonModule, RouterModule.forChild(routes), TitleComponent, ButtonComponent, materialModules],
 })
 export class QuizzesModule {}
