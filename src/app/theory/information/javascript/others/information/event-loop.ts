@@ -40,21 +40,57 @@ console.log(2);</code></pre>
                 полностью выполнятся все синхронные операции.
             </p>
             <p>Все задачи делятся на 3 категории в порядке их приоритета выполнения:</p>
-            <um>
+            <ul>
                 <li>
-                    <span class="attention">микрозадачи</span> (микротаски): <code>MutationObserver</code> и методы
-                    <code>Promise</code> (<code>then</code>, <code>catch</code> и <code>finally</code>);
+                    <span class="attention">микрозадачи</span> (микротаски). Они включают в себя более мелкие задачи,
+                    которые выполняются после синхронного кода и после текущего стека вызовов, но перед следующей
+                    макрозадачей. Примеры микрозадач:
+                    <a href="https://developer.mozilla.org/ru/docs/Web/API/MutationObserver" target="_blank"
+                        ><code>MutationObserver</code></a
+                    >
+                    и методы <code>Promise</code> (<code>then</code>, <code>catch</code> и <code>finally</code>);
                 </li>
                 <li>
-                    <span class="attention">макрозадачи</span> (макротаски): функции <code>setTimeout</code>,
+                    <span class="attention">макрозадачи</span> (макротаски). Они включают в себя более крупные задачи,
+                    которые выполняются в каждом цикле событий. Примеры макрозадач: функции <code>setTimeout</code>,
                     <code>setInterval</code>, события DOM-дерева и т.д.;
                 </li>
                 <li>
                     <span class="attention">задачи отрисовки</span>: задачи связанные с отрисовкой и обновлением
                     контента страницы.
                 </li>
-            </um>
-            <p>Т.е., <code>event loop</code> работает по следующему сценарию:</p>
+            </ul>
+            <p>Пример:</p>
+            <pre><code class="language-javascript">console.log('Начало выполнения кода'); // Выполняется немедленно
+
+setTimeout(() => {
+  	console.log('setTimeout'); // Макрозадача, выполняется позже
+}, 0);
+
+Promise.resolve()
+	.then(() => {
+		console.log('1-ый Promise'); // Микрозадача, выполняется перед макрозадачей
+	})
+	.then(() => {
+		console.log('2-ой Promise'); // Ещё одна микрозадача
+	});
+
+console.log('Конец выполнения кода'); // Выполняется немедленно
+</code></pre>
+            <p>В консоли браузера мы увидим следующую последовательность:</p>
+            <pre><code class="language-javascript">start
+Начало выполнения кода
+1-ый Promise
+2-ой Promise
+setTimeout
+Конец выполнения кода</code></pre>
+            <p>
+                В примере выше сначала выполнятся синхронные операции, выдающие сообщения "Начало выполнения кода" и
+                "Конец выполнения кода". Затем происходит выполнение микрозадач, поэтому далее выводятся сообщения "1-й
+                Promise" и "2-й Promise". И в самом конце остается одна макрозадача, которая выводит сообщение
+                "setTimeout".
+            </p>
+            <p>Т.е., <code>event loop</code> <span class="attention">работает по следующему сценарию</span>:</p>
             <ol>
                 <li>Сначала <code>event loop</code> проверяет выполнились ли все синхронные операции;</li>
                 <li>Затем поочередно выполняются все микрозадачи;</li>
@@ -160,5 +196,5 @@ setTimeout(() => {
                 микрозадач, которые нужно выполнить. Если нет, тогда он выполняет макрозадачу.
             </p>`,
     selected: false,
-    lastUpdate: '18.07.2024',
+    lastUpdate: '19.07.2024',
 };
