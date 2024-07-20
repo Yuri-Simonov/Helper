@@ -25,6 +25,7 @@
 -   [JavaScript](https://yuri-simonov.github.io/Helper/theory/javascript);
 -   [Angular](https://yuri-simonov.github.io/Helper/theory/angular);
 -   [Git](https://yuri-simonov.github.io/Helper/git/theory/all).
+-   [Разное](https://yuri-simonov.github.io/Helper/git/theory/others).
 
 Видеокурс по:
 
@@ -33,3 +34,4 @@
 Прохождение тестов по:
 
 -   [Angular](https://yuri-simonov.github.io/Helper/quizzes/angular).
+-   [JavaScript](https://yuri-simonov.github.io/Helper/quizzes/javascript).
