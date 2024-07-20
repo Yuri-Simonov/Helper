@@ -95,6 +95,10 @@
     }
 
     .mat-expansion-panel-body {
+        img {
+            margin: 8px 0;
+        }
+
         @media (max-width: 440px), (max-height: 440px) {
             padding: 12px;
 
