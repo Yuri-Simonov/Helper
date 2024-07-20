@@ -16,7 +16,7 @@ export class HomeComponent {
                 { path: 'theory/javascript', name: 'JavaScript' },
                 { path: 'theory/angular', name: 'Angular' },
                 { path: 'theory/git/all', name: 'Git' },
-                // { path: 'theory/others', name: 'Разное', disabled: true },
+                { path: 'theory/others', name: 'Разное' },
             ],
         },
         {

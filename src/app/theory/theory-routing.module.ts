@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AngularComponent } from './pages/angular/angular.component';
 import { GitComponent } from './pages/git/git.component';
 import { JavascriptComponent } from './pages/javascript/javascript.component';
+import { OthersComponent } from './pages/others/others.component';
 
 const routes: Routes = [
     {
@@ -42,6 +43,10 @@ const routes: Routes = [
             { path: 'prototype', component: JavascriptComponent },
             { path: '**', redirectTo: '' },
         ],
+    },
+    {
+        path: 'theory/others',
+        component: OthersComponent,
     },
 ];
 

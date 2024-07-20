@@ -24,7 +24,7 @@ interface IHeaderChapters {
 interface IHeaderChapterLink {
     path: string;
     name: string;
-    disabled: boolean;
+    disabled?: boolean;
     targetBlank?: boolean;
 }
 
@@ -45,10 +45,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
             path: 'theory',
             name: 'Теория',
             links: [
-                { path: 'javascript', name: 'Javascript', disabled: false },
-                { path: 'angular', name: 'Angular', disabled: false },
-                { path: 'git', name: 'Git', disabled: false },
-                { path: 'others', name: 'Разное', disabled: true },
+                { path: 'javascript', name: 'Javascript' },
+                { path: 'angular', name: 'Angular' },
+                { path: 'git', name: 'Git' },
+                { path: 'others', name: 'Разное' },
             ],
         },
         {
@@ -58,7 +58,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
                 {
                     path: 'https://youtube.com/playlist?list=PL2bJ6t_D6_KSSiM2Y8T32-5KgaNzzS4R6&si=KZdPM8DuqbPbtNEH',
                     name: 'Angular',
-                    disabled: false,
                     targetBlank: true,
                 },
             ],
@@ -67,7 +66,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         {
             path: 'quizzes',
             name: 'Тесты',
-            links: [{ path: 'angular', name: 'Angular', disabled: false }],
+            links: [{ path: 'angular', name: 'Angular' }],
         },
     ];
     themes: ITheme[];
