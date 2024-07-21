@@ -14,6 +14,7 @@ export const INHERITANCE: IInfo = {
                     базового класса</span
                 >. Этот процесс называется переопределением.
             </p>
+            <p>Начиная с ES6, наследование реализуется с помощью ключевого слова <code>extends</code>.</p>
             <p>Пример:</p>
             <pre><code class="language-javascript">class Animal {
     constructor(name) {
