@@ -14,7 +14,7 @@ export const CLOSURES: IInfo = {
         <pre><code class="language-javascript">function outside(name) {
 	const age = 26;
 	function inside() {
-		console.log('Меня зовут ' + name + 'и мне ' + age + ' лет'');
+		console.log('Меня зовут ' + name + 'и мне ' + age + ' лет');
 	}
 	inside();
 }

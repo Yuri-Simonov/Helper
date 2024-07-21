@@ -46,7 +46,7 @@ class Cat extends Animal {
 	}
 }
 
-// Создание экземпляров собак и кошек
+// Создание экземпляра собаки и кота
 const dog = new Dog('Рекс');
 const cat = new Cat('Мурка');
 
