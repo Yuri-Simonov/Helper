@@ -1,34 +1,34 @@
-@for (question of questionsAndAnswersProps; track $index) {
+@for (question of questionsAndAnswersProps; track parentIndex; let parentIndex = $index) {
     <article
         class="question-card"
         [ngClass]="{
-            'question-card_active': $index === questionIndexProps || modeProps === 'result',
+            'question-card_active': parentIndex === questionIndexProps || modeProps === 'result',
             'question-card_result': modeProps === 'result',
-            'question-card_right': modeProps === 'result' && userAnswersProps[$index].right,
-            'question-card_wrong': modeProps === 'result' && !userAnswersProps[$index].right
+            'question-card_right': modeProps === 'result' && userAnswersProps[parentIndex].right,
+            'question-card_wrong': modeProps === 'result' && !userAnswersProps[parentIndex].right
         }"
     >
         <div class="question-card__description">
             <h2 class="question-card__title">{{ question.question }}</h2>
         </div>
         <mat-radio-group class="question-card__radio-group">
-            @for (answers of question.answers; track childIndex; let childIndex = $index) {
+            @for (answer of question.answers; track childIndex; let childIndex = $index) {
                 <mat-radio-button
                     class="question-card__radio-button"
                     [ngClass]="{
                         'question-card__radio-button_test': modeProps === 'test',
-                        'question-card__radio-button_right': modeProps === 'result' && answers.right,
+                        'question-card__radio-button_right': modeProps === 'result' && answer.right,
                         'question-card__radio-button_wrong':
                             modeProps === 'result' &&
-                            userAnswersProps[$index].text === answers.text &&
-                            !userAnswersProps[$index].right
+                            userAnswersProps[parentIndex].text === answer.text &&
+                            !userAnswersProps[parentIndex].right
                     }"
-                    [value]="answers.text"
-                    (change)="setNewCurrentValue(answers)"
+                    [value]="answer.text"
+                    (change)="setNewCurrentValue(answer)"
                     [disabled]="modeProps === 'result'"
-                    [checked]="userAnswersProps?.[$index]?.text === answers.text"
+                    [checked]="userAnswersProps?.[parentIndex]?.text === answer.text"
                 >
-                    {{ answers.text }}
+                    {{ answer.text }}
                 </mat-radio-button>
             }
         </mat-radio-group>
