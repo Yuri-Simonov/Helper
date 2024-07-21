@@ -1,14 +1,29 @@
-const button = document.querySelector("body");
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
 
-const user = {
-    name: "Алиса",
-    greet: function (event) {
-        console.log("this", this);
-        console.log("event", event);
-        console.log("Привет, " + this.name);
-    },
-};
+    speak() {
+        return "Неизвестное животное издает звук";
+    }
+}
 
-button.addEventListener("click", (event) => {
-    user.greet(event);
-});
+class Dog extends Animal {
+    speak() {
+        return this.name + " гавкает!";
+    }
+}
+
+class Cat extends Animal {
+    speak() {
+        return this.name + " мяукает!";
+    }
+}
+
+// Создание экземпляра собаки и кота
+const dog = new Dog("Собака");
+const cat = new Cat("Кот");
+
+// Вызов метода speak у каждого экземпляра
+console.log(dog.speak()); // Собака гавкает!
+console.log(cat.speak()); // Кот мяукает!
