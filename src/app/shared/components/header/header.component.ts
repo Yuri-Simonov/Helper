@@ -1,6 +1,6 @@
 import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { ReplaySubject, takeUntil } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, takeUntil } from 'rxjs';
 import { RouterLink, RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -86,6 +86,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.sidebarService.sidebarState
             .pipe(takeUntil(this.onDestroy$))
             .subscribe((newState) => (this.sidebarState = newState));
+
+        const behaviorSubject$ = new BehaviorSubject(1);
+
+        behaviorSubject$.subscribe((value) => console.log('Первая подписка:', value));
+        behaviorSubject$.subscribe((value) => console.log('Вторая подписка:', value));
+        behaviorSubject$.next(2);
+        behaviorSubject$.subscribe((value) => console.log('Третья подписка:', value));
+        behaviorSubject$.next(3);
     }
 
     ngOnDestroy() {
