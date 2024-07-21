@@ -15,7 +15,7 @@ import { othersInfo } from '../../information/javascript/others';
 })
 export class JavascriptComponent {
     list: IList[] = [
-        { name: 'ООП', path: 'opp', info: oopInfo },
+        { name: 'ООП', path: 'oop', info: oopInfo },
         { name: 'Прототипы', path: 'prototype', info: prototypesInfo },
         { name: 'Функции', path: 'function', info: functionsInfo },
         { name: 'Разное', path: 'others', info: othersInfo },

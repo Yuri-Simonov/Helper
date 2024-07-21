@@ -59,5 +59,5 @@ console.log(cat.speak()); // Мурка мяукает!</code></pre>
                 задается при создании экземпляра класса исходя из его вида.
             </p>`,
     selected: false,
-    lastUpdate: '01.04.2024',
+    lastUpdate: '21.07.2024',
 };
