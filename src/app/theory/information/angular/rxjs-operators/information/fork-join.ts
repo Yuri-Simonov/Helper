@@ -13,28 +13,39 @@ export const FORK_JOIN: IInfo = {
             </p>
             <img src="assets/img/angular/rxjs/forkJoin.png" alt="оператор forkJoin" />
             <p>
-                Причем следует еще обратить внимание на то, что после того, как произошло событие "<code>a</code>" в
-                первом потоке, оно не попадет в итоговый <code>Observable</code>, т.к. во втором потоке еще не было ни
-                одного события.
+                Данный оператор полезен в случаях, когда нужно дождаться завершения всех потоков, которые могут
+                содержать, например, асинхронные запросы к серверу, перед выполнением дальнейшей логики.
             </p>
             <p>Пример:</p>
             <pre><code class="language-typescript">export class ForExamplesComponent {
     ngOnInit() {
-        const observables = {
-            a: of(1).pipe(delay(1000), startWith(0)),
-            b: of(5).pipe(delay(3000), startWith(0)),
-            c: of(10).pipe(delay(5000), startWith(0)),
-        };
-        const combined = combineLatest(observables);
-        combined.subscribe(console.log);
+        forkJoin({
+            first: of(1, 2, 3).pipe(delay(3000)),
+            second: of(1, 2, 3).pipe(delay(5000)),
+        }).subscribe(console.log);
     }
-}
-</code></pre>
-            <p>В консоли мы увидим следующее:</p>
-            <pre><code class="language-typescript">{ a: 1, b: 5, c: 10 } // через 5 секунд</code></pre>
+}</code></pre>
+            <p>В консоли спустя 5 секунд мы увидим следующее:</p>
+            <pre><code class="language-typescript">{ first:3, second: 3 }</code></pre>
+            <p>Другой пример:</p>
+            <pre><code class="language-typescript">export class ForExamplesComponent {
+	constructor(private http: HttpClient) {}
+	
+    ngOnInit() {
+        forkJoin({
+            posts: this.http.get('https://jsonplaceholder.typicode.com/posts'),
+            comments: this.http.get('https://jsonplaceholder.typicode.com/comments'),
+        }).subscribe(console.log);
+    }
+}</code></pre>
+            <p>
+                В консоли мы увидим результат, содержащий посты и комменты, когда придут ответ от сервера на оба
+                запроса:
+            </p>
+            <pre><code class="language-typescript">{posts: Array(100), comments: Array(500)}</code></pre>
             <p><span class="attention">Данный оператор при срабатывании завершает поток самостоятельно</span>.</p>`,
     selected: false,
-    lastUpdate: '01.05.2024',
+    lastUpdate: '24.07.2024',
     footerText: ['Дополнительный материал', 'Дополнительные материалы'],
     footerLinks: [
         {
