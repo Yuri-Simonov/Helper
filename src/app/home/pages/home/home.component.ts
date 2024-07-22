@@ -15,7 +15,7 @@ export class HomeComponent {
             links: [
                 { path: 'theory/javascript', name: 'JavaScript' },
                 { path: 'theory/angular', name: 'Angular' },
-                { path: 'theory/git/all', name: 'Git' },
+                { path: 'theory/git', name: 'Git' },
                 { path: 'theory/others', name: 'Разное' },
             ],
         },
@@ -38,7 +38,7 @@ export class HomeComponent {
             id: 'quizzes',
             title: 'Тесты',
             links: [
-                // { path: '#', name: 'JavaScript', disabled: true },
+                { path: 'quizzes/javascript', name: 'JavaScript' },
                 { path: 'quizzes/angular', name: 'Angular' },
                 // { path: '#', name: 'Git', disabled: true },
                 // { path: '#', name: 'Разное', disabled: true },

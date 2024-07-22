@@ -66,7 +66,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
         {
             path: 'quizzes',
             name: 'Тесты',
-            links: [{ path: 'angular', name: 'Angular' }],
+            links: [
+                { path: 'javascript', name: 'JavaScript' },
+                { path: 'angular', name: 'Angular' },
+            ],
         },
     ];
     themes: ITheme[];

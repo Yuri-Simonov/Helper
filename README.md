@@ -7,7 +7,7 @@
 -   [ngx-highlight-js](https://www.npmjs.com/package/ngx-highlight-js) (17.0.0);
 -   [ngx-toastr](https://www.npmjs.com/package/ngx-toastr) (19.0.0).
 
-Также проект задеплоен на GitHub Pages. Посмотреть можно в соответствующем разделе [Environments](https://github.com/Yuri-Simonov/Helper/deployments/activity_log?environment=github-pages) или [по этой ссылке](https://yuri-simonov.github.io/Helper/).
+Также проект задеплоен на GitHub Pages. Посмотреть можно [по этой ссылке](https://yuri-simonov.github.io/Helper/).
 
 ## Цель проекта
 
