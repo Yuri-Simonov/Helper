@@ -80,7 +80,7 @@ export const javascriptTestQuestions: IInfosAndAnswer[] = [
         ],
     },
     {
-        question: `Какой набор методов можно использовать для глубокого клонирования объекта?`,
+        question: `Какой набор методов можно использовать для поверхностного клонирования объекта?`,
         answers: [
             { text: 'spread-оператор, Object.create(), Object.assign()', right: true },
             { text: 'structuredClone(obj), spread-оператор, JSON.parse(JSON.stringify(obj))', right: false },
