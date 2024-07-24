@@ -34,7 +34,7 @@ export const EVENT_LOOP: IInfo = {
 console.log(2);</code></pre>
             <p>Как вы могли уже догадаться, в консоли мы увидим следующее:</p>
             <pre><code class="language-javascript">2 // сначала выполнится синхронная операция
-1 // а затем асинхронная</code></pre>
+1 // затем асинхронная</code></pre>
             <p>
                 Всё, что попадает в <code>event loop</code> является задачей для дальнейшего выполнения после того, как
                 полностью выполнятся все синхронные операции.
@@ -78,8 +78,7 @@ Promise.resolve()
 console.log('Конец выполнения кода'); // Выполняется немедленно
 </code></pre>
             <p>В консоли браузера мы увидим следующую последовательность:</p>
-            <pre><code class="language-javascript">start
-Начало выполнения кода
+            <pre><code class="language-javascript">Начало выполнения кода
 1-ый Promise
 2-ой Promise
 setTimeout
@@ -107,7 +106,7 @@ setTimeout
             <pre><code class="language-javascript">// 1-ый Promise
 Promise.resolve()
 	.then(() => {
-		console.log('1');
+		console.log(1);
 	})
 	.then(() => {
 		console.log(2);
