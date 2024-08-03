@@ -9,7 +9,7 @@
         appNextQuestion
         text="Следующий вопрос"
         [disabled]="!currentValue"
-        (nextQuestion)="currentValue && showNextQuestion()"
+        (nextQuestion)="showNextQuestion()"
         (click)="showNextQuestion()"
     ></app-button>
 } @else {

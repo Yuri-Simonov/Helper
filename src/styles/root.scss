@@ -1,11 +1,19 @@
 * {
     box-sizing: border-box;
 }
+html {
+    background-color: var(--primary-color);
+}
 
 body {
     color: var(--text-color);
-    background: linear-gradient(var(--primary-color), var(--secondary-color)),
-        var(--mdc-filled-text-field-input-text-placeholder-color);
+    background: url("../assets/img/common/background.png"),
+        linear-gradient(var(--primary-color), var(--secondary-color));
+    background-size: cover;
+    background-blend-mode: luminosity;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     display: flex;

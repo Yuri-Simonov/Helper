@@ -10,6 +10,7 @@
         display: none;
 
         &_desktop {
+            font-size: 24px;
             margin: 0;
 
             @media (min-width: 993px) and (min-height: 441px) {

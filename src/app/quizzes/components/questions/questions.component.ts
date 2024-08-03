@@ -34,14 +34,12 @@ export class QuestionsComponent {
     }
 
     showNextQuestion() {
-        this.currentQuestionIndex++;
-        this.changeProgressBar(this.currentQuestionIndex);
-
         if (this.currentValue) {
+            this.currentQuestionIndex++;
+            this.changeProgressBar(this.currentQuestionIndex);
             this.userAnswers.push(this.currentValue);
+            this.changeCurrentValue();
         }
-
-        this.changeCurrentValue();
     }
 
     changeCurrentValue(newCurrentValue?: ITestAnswerOption | undefined) {
