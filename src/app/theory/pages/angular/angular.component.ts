@@ -46,8 +46,8 @@ export class AngularComponent {
         // { name: 'Тестирование', path: 'test', info: testingInfo },
         { name: 'Формы', path: 'form', info: formsInfo },
         {
-            name: 'changeDetection',
-            path: 'changeDetection',
+            name: 'Change Detection',
+            path: 'change-detection',
             info: changeDetectionInfo,
         },
         {
