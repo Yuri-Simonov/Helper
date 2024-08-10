@@ -138,7 +138,6 @@ export class AppComponent {
             <pre><code class="language-html">&lt;!-- app.component.html -->
 
 &lt;h1>Заголовок: {{ title }}&lt;/h1>
-
 &lt;button (click)="handleClick()">Обновить данные&lt;/button></code></pre>
             <p>В примере выше изменения значения заголовка отобразятся при нажатии на кнопку.</p>`,
     selected: false,
