@@ -52,4 +52,9 @@ export class AppComponent {
             </p>`,
     selected: false,
     lastUpdate: '10.08.2024',
+    footerLinks: [
+        {
+            path: 'https://youtu.be/USb74U5AK0E?t=525',
+        },
+    ],
 };
