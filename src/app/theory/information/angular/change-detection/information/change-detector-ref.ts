@@ -142,4 +142,9 @@ export class AppComponent {
             <p>В примере выше изменения значения заголовка отобразятся при нажатии на кнопку.</p>`,
     selected: false,
     lastUpdate: '08.08.2024',
+    footerLinks: [
+        {
+            path: 'https://youtu.be/USb74U5AK0E',
+        },
+    ],
 };

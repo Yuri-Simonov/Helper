@@ -186,4 +186,9 @@ export class AppComponent {
             <p>И спустя 3 секунды значение на странице браузера изменится с нуля на единицу.</p>`,
     selected: false,
     lastUpdate: '03.08.2024',
+    footerLinks: [
+        {
+            path: 'https://youtu.be/TP0PIFVQjJg',
+        },
+    ],
 };
