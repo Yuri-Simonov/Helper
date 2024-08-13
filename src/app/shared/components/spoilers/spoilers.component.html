@@ -1,82 +1,15 @@
-<div class="spoilers" [ngClass]="{ spoilers_simple: withoutSidebarProps }" matAccordion [appEscape]="accordion">
+<div class="spoilers" [ngClass]="{ spoilers_simple: withoutSidebarProps }">
     @if (!withoutSidebarProps) {
         <app-sidebar [list]="listProps" [ngClass]="{ hideOnMobile: !sidebarState }"></app-sidebar>
     }
     <div class="spoilers__items" [ngClass]="{ spoilers__items_full: currentPath === emptyPathProps }">
         @for (item of listProps; track item.path) {
             @if (item.path === currentPath) {
-                @for (q of item.info; track q.title || q.chapter) {
-                    @if (q.title && q.body) {
-                        <div class="spoilers__item">
-                            <mat-accordion [ngClass]="{ disabled: q.disabled }">
-                                <mat-expansion-panel
-                                    (opened)="q.selected = true; firstMatAccordionOpening = false"
-                                    (closed)="q.selected = false"
-                                    [ngClass]="{
-                                        'first-mat-accordion-opening': firstMatAccordionOpening
-                                    }"
-                                >
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title [innerHTML]="q.title"></mat-panel-title>
-                                    </mat-expansion-panel-header>
-                                    <div highlight-js mode="default" [innerHTML]="q.body | pipeSanitizer"></div>
-                                    <!-- @for (item of [1, 2, 3]; track $index) {
-                                    <mat-expansion-panel>
-                                        <mat-expansion-panel-header>
-                                            <mat-panel-title> This is the expansion title </mat-panel-title>
-                                            <mat-panel-description>
-                                                This is a summary of the content
-                                            </mat-panel-description>
-                                        </mat-expansion-panel-header>
-                                        <p>This is the primary content of the panel.</p>
-                                    </mat-expansion-panel>
-                                } -->
-                                    <div class="spoilers__footer">
-                                        @if (q?.footerLinks?.length) {
-                                            <div class="spoilers__links">
-                                                @if (q.footerLinks?.length === 1) {
-                                                    @if (q.footerLinks?.[0]?.title) {
-                                                        <span>{{
-                                                            (q?.footerText?.[0] || "Видеообъяснение") + ":&nbsp;"
-                                                        }}</span>
-                                                    } @else {
-                                                        <a
-                                                            class="spoilers__link"
-                                                            target="_blank"
-                                                            [href]="q.footerLinks?.[0]?.path"
-                                                        >
-                                                            {{ q?.footerText?.[0] || "Видеообъяснение" }}
-                                                        </a>
-                                                    }
-                                                } @else {
-                                                    <span>{{
-                                                        (q?.footerText?.[1] || "Видеообъяснения") + ":&nbsp;"
-                                                    }}</span>
-                                                }
-                                                @for (link of q.footerLinks; track $index) {
-                                                    <span style="display: flex">
-                                                        <a class="spoilers__link" target="_blank" [href]="link.path">
-                                                            {{ link.title }}
-                                                        </a>
-                                                        @if (q.footerLinks?.length !== 1 && !$last) {
-                                                            <span>,&nbsp;</span>
-                                                        }
-                                                    </span>
-                                                }
-                                            </div>
-                                        }
-                                        @if (q?.lastUpdate) {
-                                            <i class="spoilers__last-update">
-                                                <span>последнее обновление: </span>
-                                                <span>{{ q.lastUpdate }}</span>
-                                            </i>
-                                        }
-                                    </div>
-                                </mat-expansion-panel>
-                            </mat-accordion>
-                        </div>
+                @for (info of item.info; track info.title || info.chapter) {
+                    @if (info.title && info.body) {
+                        <app-spoiler [info]="info"></app-spoiler>
                     } @else {
-                        <h2 [innerHTML]="q.chapter"></h2>
+                        <h2 [innerHTML]="info.chapter"></h2>
                     }
                 }
             }
