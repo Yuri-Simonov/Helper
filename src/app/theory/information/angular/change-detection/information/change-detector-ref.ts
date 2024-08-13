@@ -1,7 +1,7 @@
 import { IInfo } from '@types';
 
 export const CHANGE_DETECTOR_REF: IInfo = {
-    title: 'Класс <span class="variable">ChangeDetectorRef</span>. Ручное управление механизмом <span class="variable">Change Detection</span>',
+    title: 'Класс <span class="variable">ChangeDetectorRef</span>. Управление механизмом <span class="variable">Change Detection</span>',
     body: `            <p>
                 <span class="attention"
                     >Класс <code>ChangeDetectorRef</code> используется для ручного управления механизмом

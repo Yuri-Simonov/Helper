@@ -1,0 +1,110 @@
+:host {
+    display: block;
+
+    .spoiler {
+        &__footer {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 6px;
+            opacity: 0.5;
+            font-size: 12px;
+
+            @media (max-width: 440px), (max-height: 440px) {
+                font-size: 10px;
+                flex-wrap: wrap;
+            }
+        }
+
+        &__last-update {
+            flex-shrink: 0;
+            margin-left: auto;
+            align-self: flex-end;
+
+            span:first-child {
+                @media (max-width: 440px), (max-height: 440px) {
+                    display: none;
+                }
+            }
+        }
+
+        & ::ng-deep {
+            .mat-expansion-panel {
+                color: var(--text-color);
+                background-color: var(--mdc-filled-text-field-input-text-placeholder-color);
+
+                &:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled="true"]):hover {
+                    @media (hover: none) {
+                        background: initial;
+                    }
+                }
+            }
+
+            .mat-expansion-panel-header {
+                padding: 12px 24px;
+
+                @media (max-width: 440px), (max-height: 440px) {
+                    grid-template-columns: 1fr;
+                    padding: 12px;
+                }
+
+                &.mat-expanded:focus,
+                &.mat-expanded:hover {
+                    background-color: initial;
+                }
+            }
+
+            .mat-expansion-panel-body {
+                img {
+                    margin: 8px 0;
+                }
+
+                @media (max-width: 440px), (max-height: 440px) {
+                    padding: 12px;
+
+                    ul {
+                        padding-left: 20px;
+                    }
+                }
+
+                *:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            .first-mat-accordion-opening .mat-expansion-panel-content {
+                display: none;
+            }
+
+            .mat-expansion-panel-header-title,
+            .mat-expansion-panel-header-description {
+                color: var(--text-color);
+                gap: 6px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+
+                span {
+                    color: var(--primary-color);
+                }
+            }
+
+            .mat-expansion-indicator::after {
+                color: var(--text-color);
+            }
+
+            pre {
+                .variable {
+                    filter: none;
+                }
+            }
+
+            .variable {
+                filter: var(--hue-120-deg);
+            }
+        }
+    }
+}

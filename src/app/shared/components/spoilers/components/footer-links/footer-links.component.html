@@ -1,0 +1,21 @@
+@if (linksProps?.length === 1) {
+    @if (linksProps?.[0]?.title) {
+        <span>{{ (textProps?.[0] || "Видеообъяснение") + ":&nbsp;" }}</span>
+    } @else {
+        <a target="_blank" [href]="linksProps?.[0]?.path">
+            {{ textProps?.[0] || "Видеообъяснение" }}
+        </a>
+    }
+} @else {
+    <span>{{ (textProps?.[1] || "Видеообъяснения") + ":&nbsp;" }}</span>
+}
+@for (link of linksProps; track $index) {
+    <span style="display: flex">
+        <a target="_blank" [href]="link.path">
+            {{ link.title }}
+        </a>
+        @if (linksProps?.length !== 1 && !$last) {
+            <span>,&nbsp;</span>
+        }
+    </span>
+}

@@ -10,7 +10,7 @@ export interface IInfo {
     footerText?: [string, string]; // 1-ая строка - для ед.существа, 2-ая строка - для мн.числа
 }
 
-interface IFooterLinks {
+export interface IFooterLinks {
     title?: string;
     path?: string;
 }

@@ -1,0 +1,36 @@
+<mat-accordion [ngClass]="{ disabled: infoProps.disabled }" class="spoiler" matAccordion>
+    <mat-expansion-panel
+        (opened)="infoProps.selected = true; firstMatAccordionOpening = false"
+        (closed)="infoProps.selected = false"
+        [ngClass]="{
+            'first-mat-accordion-opening': firstMatAccordionOpening
+        }"
+    >
+        <mat-expansion-panel-header>
+            <mat-panel-title [innerHTML]="infoProps.title"></mat-panel-title>
+        </mat-expansion-panel-header>
+        <div highlight-js mode="default" [innerHTML]="infoProps.body! | pipeSanitizer"></div>
+        <!-- @for (item of [1, 2, 3]; track $index) {
+				<mat-expansion-panel>
+					<mat-expansion-panel-header>
+						<mat-panel-title> This is the expansion title </mat-panel-title>
+						<mat-panel-description>
+							This is a summary of the content
+						</mat-panel-description>
+					</mat-expansion-panel-header>
+					<p>This is the primary content of the panel.</p>
+				</mat-expansion-panel>
+			} -->
+        <div class="spoiler__footer">
+            @if (infoProps?.footerLinks?.length) {
+                <app-footer-links [links]="infoProps.footerLinks" [text]="infoProps.footerText"></app-footer-links>
+            }
+            @if (infoProps?.lastUpdate) {
+                <i class="spoiler__last-update">
+                    <span>последнее обновление: </span>
+                    <span>{{ infoProps.lastUpdate }}</span>
+                </i>
+            }
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

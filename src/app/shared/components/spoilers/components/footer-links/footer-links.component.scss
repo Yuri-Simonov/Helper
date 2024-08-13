@@ -1,0 +1,18 @@
+:host {
+    display: flex;
+    gap: 0.1rem;
+    margin-right: auto;
+
+    @media (max-width: 440px), (max-height: 440px) {
+        flex-direction: column;
+    }
+
+    a {
+        font-style: italic;
+        color: inherit;
+
+        span:first-child {
+            text-decoration: underline;
+        }
+    }
+}
