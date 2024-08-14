@@ -10,24 +10,23 @@
     <div class="home__body">
         @for (chapter of chapters; track $index) {
             <article class="home__chapter">
-                <h2 class="home__subtitle title">{{ chapter.title }}</h2>
+                <h2 class="home__subtitle title">{{ chapter.name }}</h2>
                 @for (link of chapter.links; track $index) {
-                    @if (link?.path) {
+                    @if (link?.sideLink) {
                         <a
                             mat-raised-button
                             color="primary"
-                            [routerLink]="link.path"
+                            [href]="link.path"
+                            target="_blank"
                             [ngClass]="{ disabled: link.disabled }"
                         >
                             {{ link.name }}
                         </a>
-                    }
-                    @if (link?.href) {
+                    } @else {
                         <a
                             mat-raised-button
                             color="primary"
-                            [href]="link.href"
-                            target="_blank"
+                            [routerLink]="[chapter.path, link.path]"
                             [ngClass]="{ disabled: link.disabled }"
                         >
                             {{ link.name }}
