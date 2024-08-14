@@ -4,9 +4,7 @@ export const getQuestions = (questions: IInfosAndAnswer[], amount: number = 20):
     const finalQuestions: IInfosAndAnswer[] = [];
     const indexes: number[] = generateRandomNumbers(questions, amount);
 
-    indexes.forEach((i) => {
-        finalQuestions.push(questions[i]);
-    });
+    indexes.forEach((i) => finalQuestions.push(questions[i]));
 
     return finalQuestions;
 };
@@ -17,6 +15,7 @@ const generateRandomNumbers = (questions: IInfosAndAnswer[], amount: number): nu
     while (indexes.length < amount) {
         const randomNumber: number = Math.floor(Math.random() * questions.length);
         const checkIndexes = indexes.some((item) => item === randomNumber);
+
         if (!checkIndexes) {
             indexes.push(randomNumber);
         }

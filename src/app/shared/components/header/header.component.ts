@@ -1,32 +1,21 @@
-import { NgClass } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, ReplaySubject, takeUntil } from 'rxjs';
-import { RouterLink, RouterModule } from '@angular/router';
+import { ReplaySubject, takeUntil } from 'rxjs';
+import { RouterLink } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialog } from '@angular/material/dialog';
 
 import { ThemeToggleService } from '../../services/theme-toggle.service';
 import { SidebarService } from '../../services/sidebar.service';
 
-import { ITheme } from '../../types';
-import { MatDialog } from '@angular/material/dialog';
+import { INavigation, ITheme } from '../../types';
+
 import { DialogSupportComponent } from '../dialogs/dialog-support/dialog-support.component';
 
-interface IHeaderChapters {
-    path: string;
-    name: string;
-    links: IHeaderChapterLink[];
-    sideLink?: boolean;
-}
-
-interface IHeaderChapterLink {
-    path: string;
-    name: string;
-    disabled?: boolean;
-    targetBlank?: boolean;
-}
+import { NAVIGATION } from '../../data/navigation';
 
 const materialModules = [MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule];
 
@@ -36,42 +25,11 @@ const materialModules = [MatButtonModule, MatIconModule, MatMenuModule, MatToolb
     styleUrls: ['./header.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [materialModules, NgClass, RouterLink],
+    imports: [materialModules, NgClass, RouterLink, NgTemplateOutlet],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);
-    chapters: IHeaderChapters[] = [
-        {
-            path: 'theory',
-            name: 'Теория',
-            links: [
-                { path: 'javascript', name: 'Javascript' },
-                { path: 'angular', name: 'Angular' },
-                { path: 'git', name: 'Git' },
-                { path: 'others', name: 'Разное' },
-            ],
-        },
-        {
-            path: '',
-            name: 'Курсы',
-            links: [
-                {
-                    path: 'https://youtube.com/playlist?list=PL2bJ6t_D6_KSSiM2Y8T32-5KgaNzzS4R6&si=KZdPM8DuqbPbtNEH',
-                    name: 'Angular',
-                    targetBlank: true,
-                },
-            ],
-            sideLink: true,
-        },
-        {
-            path: 'quizzes',
-            name: 'Тесты',
-            links: [
-                { path: 'javascript', name: 'JavaScript' },
-                { path: 'angular', name: 'Angular' },
-            ],
-        },
-    ];
+    chapters: INavigation[] = NAVIGATION;
     themes: ITheme[];
     currentTheme: ITheme;
     sidebarState: boolean;
