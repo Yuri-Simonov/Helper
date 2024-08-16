@@ -1,0 +1,15 @@
+@for (task of tasksProps; track $index) {
+    <mat-accordion [ngClass]="{ disabled: task.disabled }" class="spoiler">
+        <mat-expansion-panel
+            matExpansionPanel
+            (opened)="task.selected = true"
+            (closed)="task.selected = false"
+            [appCloseSpoilers]="{ spoiler: matExpansionPanel, selected: task.selected || false }"
+        >
+            <mat-expansion-panel-header>
+                <mat-panel-title [innerHTML]="task.title"></mat-panel-title>
+            </mat-expansion-panel-header>
+            <div highlight-js mode="default" [innerHTML]="task.body! | pipeSanitizer"></div>
+        </mat-expansion-panel>
+    </mat-accordion>
+}
