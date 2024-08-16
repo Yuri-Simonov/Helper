@@ -9,19 +9,13 @@ p a {
 
 pre {
     align-items: center;
-    max-width: calc(100vw - 241px - 48px);
     overflow-x: auto;
     overflow-y: hidden;
     border-radius: 4px;
     display: flex;
 
-    @media (max-width: 992px) {
-        max-width: calc(100vw - 48px);
-    }
-
     @media (max-width: 440px), (max-height: 440px) {
         display: flex;
-        max-width: calc(100vw);
         margin: 0 -12px 1em;
     }
 }

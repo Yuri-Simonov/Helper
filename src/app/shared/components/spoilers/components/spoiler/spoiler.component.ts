@@ -1,19 +1,33 @@
 import { NgClass } from '@angular/common';
 import { Component, HostListener, Input, ViewChild } from '@angular/core';
-import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
-import { FooterLinksComponent } from '../footer-links/footer-links.component';
-import { IInfo } from '../../../../types';
+import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansion';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogSpoilerComponent } from '../../../dialogs/dialog-spoiler/dialog-spoiler.component';
 import { HighlightJsDirective } from 'ngx-highlight-js';
+
+import { IInfo } from '../../../../types';
+
 import { PipeSanitizer } from '../../../../pipes/pipe-sanitizer.pipe';
+
+import { CloseSpoilersDirective } from '../../directives/close-spoilers.directive';
+
+import { FooterLinksComponent } from '../footer-links/footer-links.component';
+import { DialogSpoilerComponent } from '../../../dialogs/dialog-spoiler/dialog-spoiler.component';
+import { TasksComponent } from '../tasks/tasks.component';
 
 const materialModules = [MatExpansionModule];
 
 @Component({
     selector: 'app-spoiler',
     standalone: true,
-    imports: [materialModules, NgClass, HighlightJsDirective, FooterLinksComponent, PipeSanitizer],
+    imports: [
+        materialModules,
+        NgClass,
+        HighlightJsDirective,
+        FooterLinksComponent,
+        TasksComponent,
+        PipeSanitizer,
+        CloseSpoilersDirective,
+    ],
     templateUrl: './spoiler.component.html',
     styleUrl: './spoiler.component.scss',
 })
@@ -22,7 +36,7 @@ export class SpoilerComponent {
 
     firstMatAccordionOpening: boolean = true;
 
-    @ViewChild(MatAccordion) accordion: MatAccordion;
+    @ViewChild(MatExpansionPanel) matExpansionPanel: MatExpansionPanel;
 
     @HostListener('click', ['$event.target.attributes']) handleClick(attributes: NamedNodeMap) {
         const dialogId = attributes.getNamedItem('dialog_id')?.value;
@@ -30,10 +44,6 @@ export class SpoilerComponent {
         if (dialogId) {
             this.openDialog(dialogId);
         }
-    }
-
-    @HostListener('document:keyup.escape') handleKeyUpEscape() {
-        this.accordion.closeAll();
     }
 
     constructor(private dialog: MatDialog) {}

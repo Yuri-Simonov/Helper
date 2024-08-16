@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
-import { TheoryRoutingModule } from './theory-routing.module';
+import { theoryModuleRoutes } from './routes';
 
 import { AngularComponent } from './pages/angular/angular.component';
 import { GitComponent } from './pages/git/git.component';
@@ -12,6 +13,6 @@ import { OthersComponent } from './pages/others/others.component';
 
 @NgModule({
     declarations: [AngularComponent, GitComponent, JavascriptComponent, OthersComponent],
-    imports: [CommonModule, TheoryRoutingModule, SpoilersComponent, TitleComponent],
+    imports: [CommonModule, RouterModule.forChild(theoryModuleRoutes), SpoilersComponent, TitleComponent],
 })
 export class TheoryModule {}

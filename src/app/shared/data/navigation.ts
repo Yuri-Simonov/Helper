@@ -13,6 +13,12 @@ export const NAVIGATION: INavigation[] = [
         ],
     },
     {
+        id: 'tasks',
+        path: 'tasks',
+        name: 'Задачи',
+        links: [{ path: 'javascript', name: 'JavaScript' }],
+    },
+    {
         id: 'courses',
         path: '',
         name: 'Курсы',
@@ -24,11 +30,6 @@ export const NAVIGATION: INavigation[] = [
             },
         ],
     },
-    // {
-    //     path: 'tasks',
-    //     name: 'Задачи',
-    //     links: [{ path: '#', name: 'JavaScript', disabled: true }],
-    // },
     {
         id: 'quizzes',
         path: 'quizzes',

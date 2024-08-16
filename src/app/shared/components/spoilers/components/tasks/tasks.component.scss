@@ -1,0 +1,15 @@
+:host {
+    display: block;
+    margin-top: 12px;
+
+    @media (max-width: 440px), (max-height: 440px) {
+        margin-top: 6px;
+    }
+
+    & ::ng-deep {
+        .mat-expansion-panel {
+            color: var(--text-color);
+            background-color: var(--middle-color-20) !important;
+        }
+    }
+}

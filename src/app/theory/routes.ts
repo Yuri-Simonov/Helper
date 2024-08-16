@@ -1,12 +1,11 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { AngularComponent } from './pages/angular/angular.component';
 import { GitComponent } from './pages/git/git.component';
 import { JavascriptComponent } from './pages/javascript/javascript.component';
 import { OthersComponent } from './pages/others/others.component';
 
-const routes: Routes = [
+export const theoryModuleRoutes: Routes = [
     {
         path: 'theory/angular',
         component: AngularComponent,
@@ -49,9 +48,3 @@ const routes: Routes = [
         component: OthersComponent,
     },
 ];
-
-@NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule],
-})
-export class TheoryRoutingModule {}
