@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { HighlightJsModule } from 'ngx-highlight-js';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -16,22 +16,22 @@ import { HomeModule } from 'src/app/home/home.module';
 import { QuizzesModule } from './quizzes/quizzes.module';
 import { TheoryModule } from './theory/theory.module';
 import { TasksModule } from './tasks/tasks.module';
+import { OthersModule } from './others/others.module';
+
+const MODULES = [HomeModule, QuizzesModule, TheoryModule, TasksModule, OthersModule];
 
 @NgModule({
     declarations: [AppComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        HeaderComponent,
-        HighlightJsModule,
-        FooterComponent,
-        HomeModule,
-        SidebarComponent,
-        QuizzesModule,
-        TheoryModule,
-        TasksModule,
         RouterModule.forRoot(appModuleRoutes),
         ToastrModule.forRoot(),
+        HighlightJsModule,
+        HeaderComponent,
+        FooterComponent,
+        SidebarComponent,
+        ...MODULES,
     ],
     providers: [],
     bootstrap: [AppComponent],

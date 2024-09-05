@@ -61,3 +61,11 @@
         max-width: 96vw !important;
     }
 }
+
+q {
+    display: inline-block;
+    font-style: italic;
+    padding: 1rem;
+    color: var(--primary-color);
+    filter: var(--hue-240-deg);
+}
