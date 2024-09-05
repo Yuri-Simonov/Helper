@@ -1,6 +1,17 @@
 <mat-toolbar class="header">
     <a routerLink="/" class="header__logo" (click)="changeSidebarState(false)"> Helper </a>
     <span class="header__spacer"></span>
+    <button mat-button [matMenuTriggerFor]="chapterMenu">
+        <mat-icon>arrow_drop_down</mat-icon>
+        Разделы
+    </button>
+    <mat-menu #chapterMenu="matMenu" xPosition="after" class="header__menu">
+        <button mat-menu-item [matMenuTriggerFor]="theory">{{ chapters[0].name }}</button>
+        <button mat-menu-item [matMenuTriggerFor]="tasks">{{ chapters[1].name }}</button>
+        <button mat-menu-item [matMenuTriggerFor]="course">{{ chapters[2].name }}</button>
+        <button mat-menu-item [matMenuTriggerFor]="tests">{{ chapters[3].name }}</button>
+        <button mat-menu-item [matMenuTriggerFor]="others">{{ chapters[4].name }}</button>
+    </mat-menu>
     <button mat-button [matMenuTriggerFor]="themeMenu">
         <mat-icon>arrow_drop_down</mat-icon>
         Тема
@@ -20,16 +31,6 @@
                 <span> {{ theme.name }}</span>
             </button>
         }
-    </mat-menu>
-    <button mat-button [matMenuTriggerFor]="chapterMenu">
-        <mat-icon>arrow_drop_down</mat-icon>
-        Разделы
-    </button>
-    <mat-menu #chapterMenu="matMenu" xPosition="after" class="header__menu">
-        <button mat-menu-item [matMenuTriggerFor]="theory">{{ chapters[0].name }}</button>
-        <button mat-menu-item [matMenuTriggerFor]="tasks">{{ chapters[1].name }}</button>
-        <button mat-menu-item [matMenuTriggerFor]="course">{{ chapters[2].name }}</button>
-        <button mat-menu-item [matMenuTriggerFor]="tests">{{ chapters[3].name }}</button>
     </mat-menu>
     <a class="header__link" mat-button href="https://github.com/Yuri-Simonov/Helper" target="_blank">
         <mat-icon>
@@ -97,6 +98,10 @@
 
 <mat-menu #tests="matMenu">
     <ng-container *ngTemplateOutlet="matMenuContent; context: { items: chapters, index: 3 }"></ng-container>
+</mat-menu>
+
+<mat-menu #others="matMenu">
+    <ng-container *ngTemplateOutlet="matMenuContent; context: { items: chapters, index: 4 }"></ng-container>
 </mat-menu>
 
 <ng-template #matMenuContent let-items="items" let-index="index">

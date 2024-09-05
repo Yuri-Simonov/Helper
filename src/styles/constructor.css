@@ -246,3 +246,9 @@ code {
 .comment_start {
     margin-left: 0;
 }
+
+q {
+    display: inline-block;
+    font-style: italic;
+    padding: 1rem;
+}

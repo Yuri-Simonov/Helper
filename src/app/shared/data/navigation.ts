@@ -37,8 +37,12 @@ export const NAVIGATION: INavigation[] = [
         links: [
             { path: 'javascript', name: 'JavaScript' },
             { path: 'angular', name: 'Angular' },
-            // { path: '#', name: 'Git', disabled: true },
-            // { path: '#', name: 'Разное', disabled: true },
         ],
+    },
+    {
+        id: 'others',
+        path: 'others',
+        name: 'Разное',
+        links: [{ path: 'hr', name: 'HR' }],
     },
 ];
