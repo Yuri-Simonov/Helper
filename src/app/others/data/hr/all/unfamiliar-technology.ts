@@ -1,24 +1,15 @@
-<!doctype html>
-<html lang="ru">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./styles/constructor.css" />
-        <title>Конструктор элемента</title>
-    </head>
+import { IInfo } from '@types';
 
-    <body>
-        <div style="padding: 40px">
-            <p>Данным вопросом хотят узнать, насколько вы способны учиться и адаптироваться.</p>
+export const UNFAMILIAR_TECHNOLOGY: IInfo = {
+    title: 'Как вы решаете проблему, если сталкиваетесь с незнакомой технологией?',
+    body: `<p>Данным вопросом хотят узнать, насколько вы способны учиться и адаптироваться.</p>
             <p>Ответить на данный вопрос можно следующим образом:</p>
             <q>
                 Когда я сталкиваюсь с незнакомой (новой) технологией, я начинаю со сбора информации о ней — смотрю
                 нужные разделы в официальной документации и представленные в них примеры. В большинстве случаев этого
                 бывает достаточно. Если же возникают какие-либо ошибки, связанные с незнакомой технологией, которые не
                 получается сходу решить, то всегда на помощь приходит гугл или нейросеть.
-            </q>
-        </div>
-        <script src="./constructor.js"></script>
-    </body>
-</html>
+            </q>`,
+    selected: false,
+    lastUpdate: '06.09.2024',
+};

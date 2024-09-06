@@ -69,3 +69,7 @@ q {
     color: var(--primary-color);
     filter: var(--hue-240-deg);
 }
+
+p + p {
+    padding-top: 0.5rem;
+}
