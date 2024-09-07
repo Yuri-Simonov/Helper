@@ -256,6 +256,15 @@ q {
     color: var(--yellow);
 }
 
+li q {
+    padding: 0;
+}
+
 p + p {
     padding-top: 0.5rem;
+}
+
+ul,
+ol {
+    margin-top: 1rem;
 }

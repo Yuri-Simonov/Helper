@@ -8,6 +8,8 @@ import { DEADLINES } from './all/deadlines';
 import { TEAM } from './all/team';
 import { SELECT_FRONTEND } from './all/select-frontend';
 import { UNFAMILIAR_TECHNOLOGY } from './all/unfamiliar-technology';
+import { FUTURE_DEVELOPMENT } from './all/future-development';
+import { QUESTIONS_FOR_HR } from './all/questions-for-hr';
 
 export const allOthersData: IInfo[] = [
     { chapter: 'Вопросы от HR' },
@@ -19,6 +21,8 @@ export const allOthersData: IInfo[] = [
     TEAM,
     SELECT_FRONTEND,
     UNFAMILIAR_TECHNOLOGY,
+    FUTURE_DEVELOPMENT,
     { chapter: 'Вопросы для HR' },
+    QUESTIONS_FOR_HR,
     { chapter: 'Вопросы для технического специалиста' },
 ];

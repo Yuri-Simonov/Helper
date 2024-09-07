@@ -70,6 +70,10 @@ q {
     filter: var(--hue-240-deg);
 }
 
+li q {
+    padding: 0;
+}
+
 p + p {
     padding-top: 0.5rem;
 }
