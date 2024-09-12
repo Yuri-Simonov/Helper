@@ -53,9 +53,7 @@
             }
 
             &:first-child {
-                @media (max-width: 440px), (max-height: 440px) {
-                    margin-top: 6px;
-                }
+                margin-top: 0.6rem;
             }
 
             & .variable {
