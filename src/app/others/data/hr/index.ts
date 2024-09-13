@@ -12,6 +12,7 @@ import { FUTURE_DEVELOPMENT } from './all/future-development';
 import { QUESTIONS_FOR_HR } from './all/questions-for-hr';
 import { QUESTIONS_FOR_TECHNICAL_SPECIALIST } from './all/questions-for-technical-specialist';
 import { WHATS_IMPORTANT } from './all/whats-important';
+import { OFFERS } from './all/offers';
 
 export const allOthersData: IInfo[] = [
     { chapter: 'Вопросы от HR' },
@@ -25,6 +26,7 @@ export const allOthersData: IInfo[] = [
     UNFAMILIAR_TECHNOLOGY,
     FUTURE_DEVELOPMENT,
     WHATS_IMPORTANT,
+    OFFERS,
     { chapter: 'Вопросы для HR' },
     QUESTIONS_FOR_HR,
     { chapter: 'Вопросы для технического специалиста' },
