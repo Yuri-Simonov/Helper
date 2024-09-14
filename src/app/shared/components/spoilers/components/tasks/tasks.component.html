@@ -5,6 +5,7 @@
             (opened)="task.selected = true"
             (closed)="task.selected = false"
             [appCloseSpoilers]="{ spoiler: matExpansionPanel, selected: task.selected || false }"
+            class="task"
         >
             <mat-expansion-panel-header>
                 <mat-panel-title [innerHTML]="task.title"></mat-panel-title>
