@@ -1,5 +1,5 @@
 import { IInfo } from '@types';
 
-import { TEST_FILE } from './all/test-file';
+import { CALCULATOR_OBJECT } from './all/calculator-object';
 
-export const allJavaScriptTasks: IInfo[] = [{ chapter: 'Прочее' }, TEST_FILE];
+export const allJavaScriptTasks: IInfo[] = [{ chapter: 'Прочее' }, CALCULATOR_OBJECT];

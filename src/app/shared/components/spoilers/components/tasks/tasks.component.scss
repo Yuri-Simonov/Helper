@@ -10,6 +10,10 @@
         .mat-expansion-panel {
             color: var(--text-color);
             background-color: var(--middle-color-20) !important;
+
+            &.task pre {
+                background: var(--black-inner-spoiler);
+            }
         }
     }
 }
