@@ -55,8 +55,12 @@ export class SpoilerComponent {
          */
         const rxjsOperatorsInfo = (await import('../../../../../theory/information/angular/rxjs-operators/index'))
             .rxjsOperatorsInfo;
+        const decoratorsInfo = (await import('../../../../../theory/information/angular/decorators/index'))
+            .decoratorsInfo;
 
-        rxjsOperatorsInfo.forEach((item) => {
+        const importedInfo = [...rxjsOperatorsInfo, ...decoratorsInfo];
+
+        importedInfo.forEach((item) => {
             if (item?.id === id) {
                 this.dialog.open(DialogSpoilerComponent, { data: item });
             }
