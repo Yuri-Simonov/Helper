@@ -1,38 +1,68 @@
 import { IInfo } from '@types';
 
 export const ATTRIBUTE: IInfo = {
+    id: 'attribute',
     title: 'Декоратор <span class="variable">@Attribute()</span>',
     body: `<p>
-		В Angular данные от родителя к дочернему компоненту можно
-		передавать как статически, так и динамически:
-	</p>
-	<pre><code class="language-html">&lt;app-child name="какая-то_строка">&lt;/app-child> &lt;!-- статическая передача данных -->
-&lt;app-child [name]="какая-то_переменная">&lt;/app-child> &lt;!-- динамическая передача данных --></code></pre>
-	<p>
-		Декоратор <code>@Input()</code> может обрабатывать и тот, и другой
-		варианты. И т.к. данные могут изменяться, механизм
-		<code>ChangeDetection</code> будет его тоже проверять на наличие
-		изменений. Даже если вы каждый раз передаете статические данные и они никак
-		не изменяются.
-	</p>
-	<p>
-		Чтобы снизить нагрузку на механизм
-		<code>ChangeDetection</code> и не проверять статические данные,
-		используется декоратор <code>@Attribute()</code>, который
-		<span class="attention"
-			>помечает входящий параметр как неизменяемый на протяжении
-			всего жизненного цикла приложения</span
-		>.
-	</p>
-	<p>Пример использования:</p>
-	<pre><code class="language-typescript">constructor(@Attribute('name') private name: string) {}</code></pre>
-	<p>
-		Как видите, в отличие от декоратора <code>@Input()</code> значение теперь принимается в конструкторе класса, а не в одном из хуков жизненного цикла компонента. А как вы знаете, конструктор вызывается лишь единожды, когда инициируется сам класс, а не компонент, поэтому
-		свойство не может быть динамическим и механизм <code>ChangeDetection</code> его не отслеживает. Соответственно, <span class="attention">если вы
-		захотите передать через декоратор
-		<code>@Attribute()</code> динамический параметр, то Angular выдаст
-		вам ошибку</span>.
-	</p>`,
+                В Angular данные от родителя к дочернему компоненту можно передавать как статически, так и динамически:
+            </p>
+            <pre><code class="language-html">&lt;!-- статическая передача данных --&gt;
+&lt;app-child name="Вася">&lt;/app-child>
+
+&lt;!-- динамическая передача данных --&gt;
+&lt;app-child [name]="name">&lt;/app-child></code></pre>
+            <p>
+                Оба этих варианта обрабатываются внутри дочернего компонента с помощью декоратора <code>@Input()</code>:
+            </p>
+            <pre><code class="language-typescript">export class ChildComponent {
+    @Input() name: string;
+
+	ngOnChanges() {
+		console.log(this.name);
+	}
+}</code></pre>
+            <p>
+                И всякий раз, когда механизм <code>ChangeDetection</code> будет проверять компонент на наличие
+                изменений, он также будет проверять входящие свойства. Но когда в дочерний компонент передаются
+                статические данные, проверять их каждый раз нет необходимости, т.к. после инициализации компонента они
+                не изменятся на протяжении всего жизненного цикла компонента. Следовательно, появляются ненужные
+                проверки данных на изменения.
+            </p>
+            <p>
+                В случаях статической передачи данных в дочерний компонент, количество ненужных проверок можно уменьшить
+                с помощью декоратора <code>@Attribute()</code>.
+                <span class="attention"
+                    >Данный декоратор позволяет передавать статические значения атрибутов дочерним компонентам напрямую
+                    через их конструктор, а не через декоратор <code>@Input()</code></span
+                >.
+            </p>
+            <pre><code class="language-typescript">export class ChildComponent {
+    constructor(@Attribute('name') public name: string) {}
+}</code></pre>
+            <p>
+                Соответственно, доступ к таким значениям можно уже получить внутри конструктора, а не в методе
+                жизненного цикла <code>ngOnChanges</code>:
+            </p>
+            <pre><code class="language-typescript">export class ChildComponent {
+    constructor(@Attribute('name') public name: string) {
+		console.log(this.name); // Вася
+	}
+}</code></pre>
+            <p>Или альтернативный вариант через функцию <code>inject</code> и класс <code>HostAttributeToken</code>:</p>
+            <pre><code class="language-typescript">export class ChildComponent {
+    name: string | null = inject(new HostAttributeToken('name'), {
+        optional: true,
+    });
+}</code></pre>
+            <p class="attention">
+                Данный декоратор работает только со статическими данными. При попытке передать через декоратор
+                <code>@Attribute()</code> динамический параметр, Angular выдаст ошибку.
+            </p>`,
     selected: false,
-    lastUpdate: '23.09.2023',
+    lastUpdate: '15.09.2024',
+    footerLinks: [
+        {
+            path: 'https://youtu.be/6b_KklZmQ_w',
+        },
+    ],
 };

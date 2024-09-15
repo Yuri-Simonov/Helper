@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { opacityAnimation } from 'src/app/shared/animations/opacity.animation';
@@ -10,9 +10,7 @@ import { opacityAnimation } from 'src/app/shared/animations/opacity.animation';
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [opacityAnimation],
 })
-export class AppComponent implements OnInit {
-    ngOnInit(): void {}
-
+export class AppComponent {
     getRouterOutletState(outlet: RouterOutlet) {
         return outlet.isActivated ? outlet.activatedRoute : '';
     }
