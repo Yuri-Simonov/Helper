@@ -27,6 +27,10 @@
 -   [Git](https://yuri-simonov.github.io/Helper/git/theory/all).
 -   [Разное](https://yuri-simonov.github.io/Helper/git/theory/others).
 
+Задачи по:
+
+-   [JavaScript](https://yuri-simonov.github.io/Helper/tasks/javascript).
+
 Видеокурс по:
 
 -   [Angular](https://www.youtube.com/playlist?list=PL2bJ6t_D6_KSSiM2Y8T32-5KgaNzzS4R6).
@@ -35,3 +39,7 @@
 
 -   [Angular](https://yuri-simonov.github.io/Helper/quizzes/angular).
 -   [JavaScript](https://yuri-simonov.github.io/Helper/quizzes/javascript).
+
+Разное:
+
+-   [HR](https://yuri-simonov.github.io/Helper/others/hr).
