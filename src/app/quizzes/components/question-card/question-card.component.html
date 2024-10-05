@@ -8,9 +8,12 @@
             'question-card_wrong': modeProps === 'result' && !userAnswersProps[parentIndex].right
         }"
     >
-        <div class="question-card__description">
-            <h2 class="question-card__title">{{ question.question }}</h2>
-        </div>
+        <div
+            class="question-card__description"
+            highlight-js
+            mode="default"
+            [innerHTML]="question.question | pipeSanitizer"
+        ></div>
         <mat-radio-group class="question-card__radio-group">
             @for (answer of question.answers; track childIndex; let childIndex = $index) {
                 <mat-radio-button

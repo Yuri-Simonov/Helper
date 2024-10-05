@@ -3,8 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRadioModule } from '@angular/material/radio';
+import { HighlightJsDirective } from 'ngx-highlight-js';
 
 import { quizzesModuleRoutes } from './routes';
+
+import { PipeSanitizer } from '../shared/pipes/pipe-sanitizer.pipe';
 
 import { NextQuestionDirective } from './directives/next-question.directive';
 
@@ -33,6 +36,8 @@ const materialModules = [MatProgressBarModule, MatRadioModule];
         TitleComponent,
         ButtonComponent,
         materialModules,
+        PipeSanitizer,
+        HighlightJsDirective,
     ],
 })
 export class QuizzesModule {}
