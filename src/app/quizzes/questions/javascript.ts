@@ -188,7 +188,7 @@ export const javascriptTestQuestions: IInfosAndAnswer[] = [
     },
     {
         question: `<h2>Что выведет следующий код?</h2>
-		<pre><code class="language-javascript">console.log(1 + "2" + "2");</code></pre>`,
+    	<pre><code class="language-javascript">console.log(1 + "2" + "2");</code></pre>`,
         answers: [
             { text: '122', right: true },
             { text: '5', right: false },
@@ -237,6 +237,159 @@ export const javascriptTestQuestions: IInfosAndAnswer[] = [
             },
             { text: 'Это функция, которая исполняется через определённое время', right: false },
             { text: 'Это метод для обработки ошибок в асинхронном коде', right: false },
+        ],
+    },
+    {
+        question: `Что такое Map?`,
+        answers: [
+            {
+                text: 'Map – это коллекция ключ/значение, как и Object. Но основное отличие в том, что Map позволяет использовать ключи любого типа',
+                right: true,
+            },
+            { text: 'Это объект, в котором можно использовать методы массивов', right: false },
+            {
+                text: 'Map – это коллекция значений, в которых каждое значение может встречаться только один раз, т.е., оно уникально в коллекции',
+                right: false,
+            },
+        ],
+    },
+    {
+        question: `Что такое Set?`,
+        answers: [
+            {
+                text: 'Set – это коллекция значений, в которых каждое значение может встречаться только один раз, т.е., оно уникально в коллекции',
+                right: true,
+            },
+            {
+                text: 'Set – это коллекция ключ/значение, как и Object. Но основное отличие в том, что Set позволяет использовать ключи любого типа',
+                right: false,
+            },
+            { text: 'Это объект, в котором можно использовать методы массивов', right: false },
+        ],
+    },
+    {
+        question: `Какая коллекция позволяет хранить уникальные значения в JavaScript?`,
+        answers: [
+            { text: 'Set', right: true },
+            { text: 'Map', right: false },
+            { text: 'Array', right: false },
+            { text: 'Object', right: false },
+            { text: 'Set и Map', right: false },
+        ],
+    },
+    {
+        question: `Что такое каррирование (currying)?`,
+        answers: [
+            {
+                text: 'Это преобразование функции, которая принимает несколько аргументов, в функцию, которая последовательно принимает по одному аргументу',
+                right: true,
+            },
+            { text: 'Это метод выполнения нескольких функций одновременно', right: false },
+            { text: 'Это процесс, позволяющий игнорировать замыкание функции', right: false },
+            { text: 'Это процесс клонирования функций для последующего использования', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+		<pre><code class="language-javascript">let a = [1, 2, 3];
+let b = a;
+b.push(4);
+console.log(a);</code></pre>`,
+        answers: [
+            { text: '[1, 2, 3, 4]', right: true },
+            { text: '[1, 2, 3]', right: false },
+            { text: 'Будет ошибка', right: false },
+            { text: 'undefined', right: false },
+        ],
+    },
+    {
+        question: `Какая область видимости у переменных, объявленных через var?`,
+        answers: [
+            { text: 'Функциональная область видимости', right: true },
+            { text: 'Блочная область видимости', right: false },
+            { text: 'Глобальная область видимости', right: false },
+            { text: 'У переменных, объявленных через var, нет области видимости', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+		<pre><code class="language-javascript">function test() {
+	console.log(a);
+	var a = 1;
+}
+test();</code></pre>`,
+        answers: [
+            { text: 'undefined', right: true },
+            { text: 'Будет ошибка', right: false },
+            { text: 'null', right: false },
+            { text: '1', right: false },
+        ],
+    },
+    {
+        question: `Как изменить контекст выполнения функции?`,
+        answers: [
+            { text: 'Использовать методы call, apply или bind', right: true },
+            { text: 'В JavaScript нельзя изменить контекст выполнения функции', right: false },
+            { text: 'Использовать оператор this внутри функции', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+		<pre><code class="language-javascript">const obj = {
+	name: 'John',
+	getName: function() {
+		return this.name;
+	}
+};
+
+const getName = obj.getName;
+console.log(getName());
+</code></pre>`,
+        answers: [
+            { text: 'undefined', right: true },
+            { text: 'Будет ошибка', right: false },
+            { text: 'John', right: false },
+            { text: '[object Object]', right: false },
+        ],
+    },
+    {
+        question: `<p>Потеряется ли контекст вызова функции в следующем коде?</p>
+		<pre><code class="language-javascript">const obj = {
+	name: 'John',
+	getName: function() {
+		return this.name;
+	}
+};
+
+const getName = obj.getName;
+console.log(getName());</code></pre>`,
+        answers: [
+            {
+                text: 'Да, т.к. в JavaScript ключевое слово this ссылается на объект, который "владеет" функцией при её вызове. В данном примере this будет ссылаться на глобальный объект window',
+                right: true,
+            },
+            {
+                text: 'Нет, т.к. в переменную getName записан метод из объекта obj, в котором уже указано this на объект obj',
+                right: false,
+            },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+		<pre><code class="language-javascript">let x = 10;
+function outer() {
+  let x = 20;
+  function inner() {
+    console.log(x);
+  }
+  inner();
+}
+outer();</code></pre>`,
+        answers: [
+            { text: '20', right: true },
+            { text: '10', right: false },
+            { text: 'Будет ошибка', right: false },
+            { text: 'undefined', right: false },
         ],
     },
 ];
