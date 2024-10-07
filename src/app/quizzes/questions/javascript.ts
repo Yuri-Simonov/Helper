@@ -188,7 +188,7 @@ export const javascriptTestQuestions: IInfosAndAnswer[] = [
     },
     {
         question: `<h2>Что выведет следующий код?</h2>
-    	<pre><code class="language-javascript">console.log(1 + "2" + "2");</code></pre>`,
+  	<pre><code class="language-javascript">console.log(1 + "2" + "2");</code></pre>`,
         answers: [
             { text: '122', right: true },
             { text: '5', right: false },
@@ -378,11 +378,11 @@ console.log(getName());</code></pre>`,
         question: `<p>Что выведет следующий код?</p>
 		<pre><code class="language-javascript">let x = 10;
 function outer() {
-  let x = 20;
-  function inner() {
-    console.log(x);
-  }
-  inner();
+	let x = 20;
+	function inner() {
+		console.log(x);
+	}
+	inner();
 }
 outer();</code></pre>`,
         answers: [
@@ -392,11 +392,419 @@ outer();</code></pre>`,
             { text: 'undefined', right: false },
         ],
     },
+    {
+        question: `Какие типы данных есть в JavaScript?`,
+        answers: [
+            { text: 'number, string, boolean, undefined, null, symbol, bigInt, object', right: true },
+            { text: 'number, string, boolean, undefined, null, function, bigInt, object', right: false },
+            { text: 'number, string, boolean, undefined, null, function, array, object', right: false },
+            { text: 'Нет правильного ответа', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+		<pre><code class="language-javascript">let person = {
+	name: 'Alice',
+	age: 25,
+	getAge: function() {
+		return this.age;
+	}
+};
+
+let getPersonAge = person.getAge;
+console.log(getPersonAge());</code></pre>`,
+        answers: [
+            { text: 'undefined', right: true },
+            { text: 'Будет ошибка', right: false },
+            { text: '25', right: false },
+            { text: 'null', right: false },
+        ],
+    },
+    {
+        question: `Чем отличается глубокое копирование (deep copy) объекта от поверхностного (shallow copy)?`,
+        answers: [
+            {
+                text: 'Глубокое копирование создает полную независимую копию объекта, включая вложенные объекты, тогда как поверхностное копирование копирует только верхний уровень объекта',
+                right: true,
+            },
+            { text: 'Поверхностное копирование быстрее и копирует только простые объекты', right: false },
+            {
+                text: 'Разницы лишь в скорости выполнения копирования объекта. Глубокое медленнее, чем поверхностное',
+                right: false,
+            },
+        ],
+    },
+    {
+        question: `Как избежать изменения исходного объекта при передаче его в функцию?`,
+        answers: [
+            { text: 'Сделать глубокую копию объекта перед передачей в функцию', right: true },
+            { text: 'Передать объект по ссылке', right: false },
+            { text: 'Использовать замыкание', right: false },
+            { text: 'В функции нельзя передавать объекты в качестве аргументов', right: false },
+        ],
+    },
+    {
+        question: `Что такое "аргументы по умолчанию" (default parameters) у функции?`,
+        answers: [
+            {
+                text: 'Это значения, которые передаются функции, если при её вызове соответствующий аргумент не указан',
+                right: true,
+            },
+            { text: 'Это аргументы, которые обязательно должны быть переданы функции', right: false },
+            { text: 'Это аргументы, которые возвращаются функцией по умолчанию', right: false },
+            { text: 'Нет правильного ответа', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+		<pre><code class="language-javascript">(function() {
+  	var a = b = 5;
+})();
+     console.log(b);</code></pre>`,
+        answers: [
+            { text: '5', right: true },
+            { text: 'undefined', right: false },
+            { text: 'null', right: false },
+            { text: 'Будет ошибка', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+		<pre><code class="language-javascript">const arr = [1, 2, 3];
+const [a, b] = arr;
+console.log(a, b);</code></pre>`,
+        answers: [
+            { text: '1 2', right: true },
+            { text: 'undefined undefined', right: false },
+            { text: 'null null', right: false },
+            { text: 'Будет ошибка', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+		<pre><code class="language-javascript">function foo() {
+	var a = 1;
+	if (true) {
+		var a = 2;
+		console.log(a);
+	}
+	console.log(a);
+}
+
+foo();</code></pre>`,
+        answers: [
+            { text: '2 2', right: true },
+            { text: 'undefined undefined', right: false },
+            { text: '1 2', right: false },
+            { text: '2 1', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+		<pre><code class="language-javascript">console.log(a);
+var a = 10;</code></pre>`,
+        answers: [
+            { text: 'undefined', right: true },
+            { text: '10', right: false },
+            { text: 'Будет ошибка', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+		<pre><code class="language-javascript">console.log('Начало');
+setTimeout(() => console.log('Середина'), 0);
+console.log('Конец');</code></pre>`,
+        answers: [
+            { text: 'Начало Конец Середина', right: true },
+            { text: 'Начало Середина Конец', right: false },
+            { text: 'Конец Начало Середина', right: false },
+            { text: 'Середина Начало Конец', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+		<pre><code class="language-javascript">function add(a) {
+	return function(b) {
+		return a + b;
+	};
+}
+
+const addNumber = add(5);
+console.log(addNumber(10));</code></pre>`,
+        answers: [
+            { text: '15', right: true },
+            { text: 'undefined', right: false },
+            { text: 'Будет ошибка', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+<pre><code class="language-javascript">const arr = [1, 2, 3];
+arr[10] = 99;
+console.log(arr.length);</code></pre>`,
+        answers: [
+            { text: '11', right: true },
+            { text: '10', right: false },
+            { text: '3', right: false },
+            { text: '4', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+<pre><code class="language-javascript">const obj1 = { name: 'Алиса' };
+const obj2 = obj1;
+obj2.name = 'Максим';
+console.log(obj1.name);</code></pre>`,
+        answers: [
+            { text: 'Максим', right: true },
+            { text: 'Алиса', right: false },
+            { text: 'undefined', right: false },
+            { text: 'Будет ошибка', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+<pre><code class="language-javascript">const obj1 = { a: 1 };
+const obj2 = { ...obj1 };
+obj2.a = 2;
+console.log(obj1.a);</code></pre>`,
+        answers: [
+            { text: '1', right: true },
+            { text: '2', right: false },
+            { text: 'undefined', right: false },
+            { text: 'Будет ошибка', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+<pre><code class="language-javascript">function outer() {
+	let x = 10;
+	return function inner() {
+		return x;
+	};
+}
+
+const closure = outer();
+console.log(closure());</code></pre>`,
+        answers: [
+            { text: '10', right: true },
+            { text: 'undefined', right: false },
+            { text: 'Будет ошибка', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+<pre><code class="language-javascript">const obj = { a: 1, b: 2, c: 3 };
+const { a, c } = obj;
+console.log(a, c);</code></pre>`,
+        answers: [
+            { text: '1 3', right: true },
+            { text: '1 2', right: false },
+            { text: 'Будет ошибка', right: false },
+            { text: 'undefined undefined', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+<pre><code class="language-javascript">const promise = new Promise((resolve, reject) => {
+	console.log(1);
+	resolve();
+});
+
+promise.then(() => console.log(2));
+
+console.log(3);</code></pre>`,
+        answers: [
+            { text: '1 3 2', right: true },
+            { text: '1 2 3', right: false },
+            { text: '2 3 1', right: false },
+            { text: '3 2 1', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+<pre><code class="language-javascript">function Animal(name) {
+	this.name = name;
+}
+Animal.prototype.sound = function() {
+  	return 'Животное издает звук';
+};
+
+const dog = new Animal('Собака');
+console.log(dog.sound());</code></pre>`,
+        answers: [
+            { text: 'Животное издает звук', right: true },
+            { text: 'undefined', right: false },
+            { text: 'Будет ошибка', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+<pre><code class="language-javascript">if ([]) {
+  	console.log('Правда');
+} else {
+  	console.log('Ложь');
+}</code></pre>`,
+        answers: [
+            { text: 'Правда', right: true },
+            { text: 'Ложь', right: false },
+            { text: 'undefined', right: false },
+        ],
+    },
+    {
+        question: `Что такое debounce и в каких случаях его используют?`,
+        answers: [
+            {
+                text: 'Debounce — это техника ограничения частоты вызова функции, чтобы функция вызывалась не чаще, чем через определённый интервал времени после последнего вызова. Используется для уменьшения количества вызовов функций, часто используемых в событиях (например, resize, scroll, input)',
+                right: true,
+            },
+            {
+                text: 'Debounce — это функция, которая вызывает другую функцию через определённый интервал времени',
+                right: false,
+            },
+            { text: 'Debounce — это метод оптимизации, который всегда вызывает функцию только один раз', right: false },
+            {
+                text: 'Debounce — это техника, при которой функция вызывается сразу же при первом событии, а затем игнорирует последующие вызовы',
+                right: false,
+            },
+        ],
+    },
+    {
+        question: `Что такое throttle и в каких случаях его используют?`,
+        answers: [
+            {
+                text: 'Throttle — это метод, который ограничивает количество вызовов функции через определённые промежутки времени, позволяя функции вызываться только один раз за указанный интервал. Используется для уменьшения нагрузки на ресурсоёмкие операции (например, при обработке событий scroll или resize)',
+                right: true,
+            },
+            {
+                text: 'Throttle — это функция, которая вызывает другую функцию через фиксированные интервалы времени, независимо от количества событий',
+                right: false,
+            },
+            {
+                text: 'Throttle — это метод, который предотвращает вызов функции до завершения предыдущего вызова',
+                right: false,
+            },
+            {
+                text: 'Throttle — это техника, которая вызывает функцию после определённого количества событий',
+                right: false,
+            },
+        ],
+    },
+    {
+        question: `Чем отличаются debounce и throttle?`,
+        answers: [
+            {
+                text: 'Debounce вызывает функцию только по истечении указанного времени после последнего события, а throttle вызывает функцию не чаще, чем через указанный интервал времени',
+                right: true,
+            },
+            {
+                text: 'Debounce вызывает функцию сразу, а throttle вызывает её через определённое время после события',
+                right: false,
+            },
+            { text: 'Throttle вызывается каждый раз при событии, а debounce — только один раз', right: false },
+            { text: 'Throttle блокирует все вызовы функции, а debounce разрешает только первый', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+<pre><code class="language-javascript">const obj = {
+	value: 42,
+	getValue: () => {
+		return this.value;
+	}
+};
+
+console.log(obj.getValue());</code></pre>`,
+        answers: [
+            { text: 'undefined', right: true },
+            { text: '42', right: false },
+            { text: 'Будет ошибка', right: false },
+            { text: 'null', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+<pre><code class="language-javascript">const original = { a: 1, b: { c: 2 } };
+const copy = Object.assign({}, original);
+
+copy.b.c = 10;
+
+console.log(original.b.c);</code></pre>`,
+        answers: [
+            { text: '10', right: true },
+            { text: '2', right: false },
+            { text: 'undefined', right: false },
+            { text: 'Будет ошибка', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+<pre><code class="language-javascript">function add(a) {
+	return function(b) {
+		return function(c) {
+			return a + b + c;
+		};
+	};
+}
+
+console.log(add(1)(2)(3));</code></pre>`,
+        answers: [
+            { text: '6', right: true },
+            { text: '1', right: false },
+            { text: '3', right: false },
+            { text: 'Будет ошибка', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+<pre><code class="language-javascript">const promise = new Promise((resolve, reject) => {
+	console.log(1);
+	resolve();
+	console.log(2);
+});
+
+promise.then(() => {
+  	console.log(3);
+});
+
+console.log(4);</code></pre>`,
+        answers: [
+            { text: '1 2 4 3', right: true },
+            { text: '1 2 3 4', right: false },
+            { text: '1 3 2 4', right: false },
+            { text: '1 4 2 3', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+<pre><code class="language-javascript">(function() {
+	var x = 10;
+	let y = 20;
+	const z = 30;
+	console.log(window.x, window.y, window.z);
+})();</code></pre>`,
+        answers: [
+            { text: '10 undefined undefined', right: true },
+            { text: 'undefined undefined undefined', right: false },
+            { text: '10 20 30', right: false },
+            { text: 'undefined 20 30', right: false },
+        ],
+    },
+    {
+        question: `<p>Какие из следующих значений будут считаться "ложными" (falsy) в JavaScript?</p>
+<pre><code class="language-javascript">const values = [0, 1, "", "hello", null, undefined, NaN, [], {}, false, true];</code></pre>`,
+        answers: [
+            { text: '0, "", null, undefined, NaN, false', right: true },
+            { text: '1, "hello", [], {}, false', right: false },
+            { text: 'Все значения будут "ложными"', right: false },
+            { text: 'Только false', right: false },
+        ],
+    },
 ];
-// {
-//     question: ``,
-//     answers: [
-//         { text: '', right: true },
-//         { text: '', right: false },
-//     ],
-// },
+//  {
+//      question: ``,
+//      answers: [
+//          { text: '', right: true },
+//          { text: '', right: false },
+//      ],
+//  },
