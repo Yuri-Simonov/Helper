@@ -19,6 +19,8 @@ export class QuestionsComponent {
     userAnswers: ITestAnswerOption[] = [];
 
     ngOnChanges() {
+        // console.log('Количество вопросов:', this.questionsProps.length);
+
         if (this.questionsProps.length < 20) {
             this.questionsAndAnswers = getQuestions(this.questionsProps, this.questionsProps.length);
         } else {
