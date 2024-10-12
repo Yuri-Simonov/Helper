@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { othersModuleRoutes } from './routes';
@@ -10,7 +9,7 @@ import { TitleComponent } from '../shared/components/title/title.component';
 
 @NgModule({
     declarations: [HrComponent],
-    imports: [CommonModule, RouterModule.forChild(othersModuleRoutes), SpoilersComponent, TitleComponent],
+    imports: [RouterModule.forChild(othersModuleRoutes), SpoilersComponent, TitleComponent],
     exports: [HrComponent],
 })
 export class OthersModule {}
