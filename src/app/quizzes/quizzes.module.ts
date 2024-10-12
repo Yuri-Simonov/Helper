@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRadioModule } from '@angular/material/radio';
+import { NgClass } from '@angular/common';
 import { HighlightJsDirective } from 'ngx-highlight-js';
 
 import { quizzesModuleRoutes } from './routes';
@@ -31,13 +31,13 @@ const materialModules = [MatProgressBarModule, MatRadioModule];
         JavascriptComponent,
     ],
     imports: [
-        CommonModule,
         RouterModule.forChild(quizzesModuleRoutes),
         TitleComponent,
         ButtonComponent,
         materialModules,
         PipeSanitizer,
         HighlightJsDirective,
+        NgClass,
     ],
 })
 export class QuizzesModule {}

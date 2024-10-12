@@ -10,7 +10,8 @@
         <button mat-menu-item [matMenuTriggerFor]="tasks">{{ chapters[1].name }}</button>
         <button mat-menu-item [matMenuTriggerFor]="course">{{ chapters[2].name }}</button>
         <button mat-menu-item [matMenuTriggerFor]="tests">{{ chapters[3].name }}</button>
-        <button mat-menu-item [matMenuTriggerFor]="others">{{ chapters[4].name }}</button>
+        <button mat-menu-item [matMenuTriggerFor]="codeReviews">{{ chapters[4].name }}</button>
+        <button mat-menu-item [matMenuTriggerFor]="others">{{ chapters[5].name }}</button>
     </mat-menu>
     <button mat-button [matMenuTriggerFor]="themeMenu">
         <mat-icon>arrow_drop_down</mat-icon>
@@ -100,8 +101,12 @@
     <ng-container *ngTemplateOutlet="matMenuContent; context: { items: chapters, index: 3 }"></ng-container>
 </mat-menu>
 
-<mat-menu #others="matMenu">
+<mat-menu #codeReviews="matMenu">
     <ng-container *ngTemplateOutlet="matMenuContent; context: { items: chapters, index: 4 }"></ng-container>
+</mat-menu>
+
+<mat-menu #others="matMenu">
+    <ng-container *ngTemplateOutlet="matMenuContent; context: { items: chapters, index: 5 }"></ng-container>
 </mat-menu>
 
 <ng-template #matMenuContent let-items="items" let-index="index">

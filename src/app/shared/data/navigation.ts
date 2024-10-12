@@ -40,6 +40,12 @@ export const NAVIGATION: INavigation[] = [
         ],
     },
     {
+        id: 'code-review',
+        path: 'code-review',
+        name: 'Код-ревью',
+        links: [{ path: 'angular', name: 'Angular' }],
+    },
+    {
         id: 'others',
         path: 'others',
         name: 'Разное',

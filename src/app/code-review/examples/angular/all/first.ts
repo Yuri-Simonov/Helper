@@ -1,22 +1,58 @@
-<!doctype html>
-<html lang="ru">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./styles/constructor.css" />
-        <title>Конструктор элемента</title>
-    </head>
+import { IInfo } from '@types';
 
-    <body>
-        <div style="padding: 40px">
-            <p>
+export const FIRST_EXAMPLE: IInfo = {
+    title: '1-ый пример',
+    body: `<p>Посмотрите на код ниже и попробуйте найти участки кода, которые требуют доработки.</p>
+	<pre><code class="language-typescript">import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Observable, interval } from 'rxjs';
+
+@Component({
+    selector: 'app-root',
+    template: '&lt;div id="data-container">{{ getData() }}&lt;/div>',
+    standalone: true,
+})
+export class AppComponent implements OnInit {
+    title = 'Плохой код';
+    data: any;
+    observable$: Observable<number> = interval(1000);
+
+    constructor() {
+        this.getData();
+    }
+
+    ngOnInit() {
+        this.observable$.subscribe((val) => {
+            console.log(val);
+        });
+    }
+
+    getData() {
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then((response) => response.json())
+            .then((data) => {
+                this.data = data;
+                this.updateDOM();
+            })
+            .catch((error) => console.error(error));
+
+        return this.data;
+    }
+
+    updateDOM() {
+        (document.getElementById('data-container') as HTMLElement).innerHTML = this.data;
+    }
+}</code></pre>`,
+    tasks: [
+        {
+            title: 'Код-ревью',
+            body: `<p>
                 В данном коде есть несколько проблем, которые могут привести к неэффективной работе приложения,
                 потенциальным багам и нарушению принципов Angular.
             </p>
             <p>Ниже рассмотрены недочеты кода изолированно друг от друга.</p>
+            <p>Также в самом низу показан пример исправленного кода.</p>
             <i class="subtitle">Не используется стратегия OnPush для механизма Change Detection</i>
-            <p>Нужно добавить стратегию OnPush для текущего компонента:</p>
+            <p>Нужно добавить стратегию <code>OnPush</code> для текущего компонента:</p>
             <pre><code class="language-typescript">@Component({
     selector: 'app-root',
     template: '&lt;div id="data-container">{{ getData() }}&lt;/div>',
@@ -51,7 +87,7 @@
     standalone: true,
 })</code></pre>
             <p>
-                Т.к. метод <code>getData</code> делает запрос на сервер, следовательно, данные мы получаем асинхронно. В
+                Т.к. функция <code>fetch</code> в методе <code>getData</code> делает запрос на сервер, следовательно, данные мы получаем асинхронно. В
                 таком случае целесообразно будет использовать асинхронную пайпу.
             </p>
             <i class="subtitle">Проблемы с асинхронностью в методе getData</i>
@@ -63,8 +99,8 @@
             <p>
                 В итоге это приводит к тому, что вызов метода <code>getData</code> возвращает старое значение свойства
                 <code>this.data</code>, которое на начальном этапе равно <code>undefined</code>. А данные с сервера
-                придут уже после вызова метода <code>getData</code>. И при стратегии <code>OnPush</code> в шаблоне
-                компонента мы бы ничего не увидели. Но т.к. в примере указана дефолтная стратегия, это и вовсе приведет
+                придут уже после вызова метода <code>getData</code>. При стратегии <code>OnPush</code> в шаблоне
+                компонента мы бы ничего не увидели. Но т.к. в примере указана дефолтная стратегия, это вовсе приведет
                 к зацикливанию и отправке бесконечных запросов на сервер.
             </p>
             <p>
@@ -76,7 +112,7 @@
             <p>
                 В конструкторе вызывается метод <code>getData</code>, который делает сетевой запрос. Это плохая
                 практика, так как конструктор предназначен для инициализации зависимостей. Асинхронные операции должны
-                выполняться в жизненных циклах Angular, таких как <code>ngOnInit</code>.
+                выполняться в жизненных циклах Angular, например в <code>ngOnInit</code>.
             </p>
             <i class="subtitle">Прямое манипулирование DOM-деревом</i>
             <p>
@@ -113,7 +149,7 @@
                 <code>any</code>. Это снижает читаемость кода и может привести в дальнейшем к ошибкам.
             </p>
             <p>Для решения данной проблемы необходимо создать интерфейс и типизировать свойство <code>data</code>.</p>
-            <pre><code class="language-typescript">interface ApiResponse {
+            <pre><code class="language-typescript">interface IData {
   id: number;
   name: string;
   // другие различные поля...
@@ -121,7 +157,7 @@
 
 export class AppComponent implements OnInit {
 	// ...
-	data: ApiResponse | null = null;
+	data: IData;
 	// ...
 }</code></pre>
             <i class="subtitle">Обращение к серверу внутри компонента</i>
@@ -162,7 +198,7 @@ export class AppComponent implements OnInit {
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IData } from '../interfaces/data';
+import { IData } from '../interfaces/data.interface';
 
 @Injectable({
     providedIn: 'root',
@@ -186,13 +222,14 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, catchError, of } from 'rxjs';
 import { DataService } from './services/data.service';
 import { AsyncPipe, JsonPipe } from '@angular/common';
-import { IData } from './interfaces/data';
+import { IData } from './interfaces/data.interface';
 
 @Component({
     selector: 'app-root',
     template: '&lt;div>{{ data$ | async | json }}&lt;/div>',
     standalone: true,
     imports: [AsyncPipe, JsonPipe],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
     data$: Observable&lt;IData[]>;
@@ -207,8 +244,10 @@ export class AppComponent implements OnInit {
             })
         );
     }
-}</code></pre>
-        </div>
-        <script src="./constructor.js"></script>
-    </body>
-</html>
+}</code></pre>`,
+            selected: false,
+        },
+    ],
+    selected: false,
+    lastUpdate: '13.10.2024',
+};

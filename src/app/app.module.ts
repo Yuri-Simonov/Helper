@@ -17,8 +17,9 @@ import { QuizzesModule } from './quizzes/quizzes.module';
 import { TheoryModule } from './theory/theory.module';
 import { TasksModule } from './tasks/tasks.module';
 import { OthersModule } from './others/others.module';
+import { CodeReviewModule } from './code-review/code-review.module';
 
-const MODULES = [HomeModule, QuizzesModule, TheoryModule, TasksModule, OthersModule];
+const MODULES = [HomeModule, QuizzesModule, TheoryModule, TasksModule, OthersModule, CodeReviewModule];
 
 @NgModule({
     declarations: [AppComponent],
