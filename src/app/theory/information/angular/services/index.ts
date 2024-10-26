@@ -6,6 +6,7 @@ import { CREATE_SERVICES } from './information/create-services';
 import { SERVICE_IMPLEMENTATION } from './information/service-implementation';
 import { REQUEST_DATA } from './information/request-data';
 import { PLACE_FOR_REQUESTS } from './information/place-for-requests';
+import { INJECTOR } from './information/injector';
 
 export const servicesInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -14,6 +15,7 @@ export const servicesInfo: IInfo[] = [
     REQUEST_DATA,
     { chapter: 'Внедрение зависимостей' },
     SERVICE_IMPLEMENTATION,
+    INJECTOR,
     { chapter: 'Прочее' },
     SERVICE_DEFINITION_LAYERS,
     PLACE_FOR_REQUESTS,
