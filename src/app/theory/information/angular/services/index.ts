@@ -1,12 +1,13 @@
 import { IInfo } from '@types';
 
 import { SERVICES_IN_ANGULAR } from './information/services-in-angular';
-import { SERVICE_DEFINITION_LAYERS } from './information/service-definition-layers';
+import { PROVIDING_SERVICES } from './information/providing-services';
 import { CREATE_SERVICES } from './information/create-services';
 import { SERVICE_IMPLEMENTATION } from './information/service-implementation';
 import { REQUEST_DATA } from './information/request-data';
 import { PLACE_FOR_REQUESTS } from './information/place-for-requests';
 import { INJECTOR } from './information/injector';
+import { HIERARCHICAL_INJECTORS } from './information/hierarchical-injectors';
 
 export const servicesInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -16,7 +17,9 @@ export const servicesInfo: IInfo[] = [
     { chapter: 'Внедрение зависимостей' },
     SERVICE_IMPLEMENTATION,
     INJECTOR,
+    HIERARCHICAL_INJECTORS,
+    { chapter: 'Регистрация зависимостей' },
+    PROVIDING_SERVICES,
     { chapter: 'Прочее' },
-    SERVICE_DEFINITION_LAYERS,
     PLACE_FOR_REQUESTS,
 ];
