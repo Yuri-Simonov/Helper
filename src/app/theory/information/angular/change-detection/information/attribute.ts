@@ -3,7 +3,7 @@ import { IInfo } from '@types';
 export const ATTRIBUTE: IInfo = {
     title: 'Декоратор <span class="variable">@Attribute()</span>',
     body: `<p>
-                Механизм <code>Change Detection</code> можно оптимизировать, использую декоратор
+                Механизм <code>Change Detection</code> можно оптимизировать, используя декоратор
                 <code class="dialog" dialog_id="attribute">@Attribute()</code>.
             </p>`,
     selected: false,
