@@ -1,0 +1,65 @@
+<h2 mat-dialog-title>Последние обновления проекта Helper</h2>
+<mat-dialog-content>
+    @for (update of updates; track $index) {
+        <div class="update">
+            <h3 class="update__title">{{ update.title }}</h3>
+            @for (change of update.changes; track $index) {
+                <div class="update__changes changes">
+                    <h3 class="changes__title">{{ change.chapterTitle }}</h3>
+                    @if (change.added?.length) {
+                        <ng-container
+                            *ngTemplateOutlet="changeTemplate; context: { title: 'Добавлено:', changes: change.added }"
+                        ></ng-container>
+                    }
+                    @if (change.updated?.length) {
+                        <ng-container
+                            *ngTemplateOutlet="
+                                changeTemplate;
+                                context: { title: 'Обновлено:', changes: change.updated }
+                            "
+                        ></ng-container>
+                    }
+                    @if (change.fixed?.length) {
+                        <ng-container
+                            *ngTemplateOutlet="changeTemplate; context: { title: 'Исправлено:', changes: change.fixed }"
+                        ></ng-container>
+                    }
+                    @if (change.removed?.length) {
+                        <ng-container
+                            *ngTemplateOutlet="changeTemplate; context: { title: 'Удалено:', changes: change.removed }"
+                        ></ng-container>
+                    }
+                </div>
+            }
+        </div>
+    }
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Закрыть</button>
+</mat-dialog-actions>
+
+<ng-template #changeTemplate let-title="title" let-changes="changes">
+    <article class="change">
+        <h4 class="change__title">{{ title }}</h4>
+        <ul class="change__list">
+            @for (change of changes; track $index) {
+                <li
+                    class="change__item"
+                    [ngClass]="{
+                        change__item_added: title === 'Добавлено:',
+                        change__item_updated: title === 'Обновлено:',
+                        change__item_fixed: title === 'Исправлено:',
+                        change__item_removed: title === 'Удалено:'
+                    }"
+                >
+                    @if ($index < changes.length - 1) {
+                        {{ change + ";" }}
+                    }
+                    @if ($last) {
+                        {{ change + "." }}
+                    }
+                </li>
+            }
+        </ul>
+    </article>
+</ng-template>

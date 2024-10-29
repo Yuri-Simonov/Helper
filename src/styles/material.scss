@@ -5,3 +5,25 @@ html.cdk-global-scrollblock {
 .mat-typography p {
     margin: 0;
 }
+
+// Настройка размера диалоговых окон
+.dialog-size.cdk-overlay-pane.mat-mdc-dialog-panel {
+    width: 100%;
+    max-width: 60vw;
+
+    @media (max-width: 1200px) {
+        max-width: 70vw;
+    }
+
+    @media (max-width: 992px) {
+        max-width: 80vw;
+    }
+
+    @media (max-width: 768px), (max-height: 567px) {
+        max-width: 90vw;
+    }
+
+    @media (max-width: 440px), (max-height: 440px) {
+        max-width: 100vw;
+    }
+}

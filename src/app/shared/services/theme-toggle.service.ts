@@ -1,4 +1,4 @@
-import { LocalStorageService } from './local_storage.service';
+import { LocalStorageService } from './local-storage.service';
 import { Injectable } from '@angular/core';
 
 import { ITheme } from '../types';
