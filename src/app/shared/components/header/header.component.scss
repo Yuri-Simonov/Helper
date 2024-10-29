@@ -54,7 +54,7 @@
         button {
             color: inherit;
 
-            @media (max-width: 768px), (max-height: 440px) {
+            @media (max-width: 824px), (max-height: 576px) {
                 min-width: auto;
 
                 &:last-child {
@@ -72,6 +72,36 @@
 
             @media (max-width: 374px) {
                 font-size: 12px;
+            }
+        }
+
+        button {
+            @media (max-width: 824px), (max-height: 576px) {
+                .mat-icon {
+                    margin-right: 2px;
+                }
+            }
+        }
+
+        &__updates {
+            min-width: auto;
+
+            mat-icon {
+                &.header__updates_active {
+                    position: relative;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        width: 8px;
+                        height: 8px;
+                        top: 26%;
+                        left: 74%;
+                        transform: translate(-50%, -50%);
+                        background-color: var(--primary-color);
+                        filter: var(--hue-120-deg);
+                        border-radius: 50%;
+                    }
+                }
             }
         }
     }

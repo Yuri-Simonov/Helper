@@ -13,11 +13,11 @@ const materialModules = [MatDialogActions, MatDialogContent, MatButtonModule, Ma
     styleUrl: './dialog-support.component.scss',
 })
 export class DialogSupportComponent {
-    constructor(private toastr: ToastrService) {}
+    constructor(private toastrService: ToastrService) {}
 
     copyCardNumber(text: string) {
         navigator.clipboard.writeText(text);
-        this.toastr.success('', 'Номер скопирован!', {
+        this.toastrService.success('', 'Номер скопирован!', {
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-bottom-right',

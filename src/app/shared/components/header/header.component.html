@@ -1,6 +1,12 @@
 <mat-toolbar class="header">
     <a routerLink="/" class="header__logo" (click)="changeSidebarState(false)"> Helper </a>
     <span class="header__spacer"></span>
+    <button class="header__updates" mat-button (click)="openUpdatesDialog()">
+        <mat-icon [ngClass]="{ header__updates_active: hasUnreadNotifications }">{{
+            hasUnreadNotifications ? "notifications" : "notifications_none"
+        }}</mat-icon>
+        <span>Обновления</span>
+    </button>
     <button mat-button [matMenuTriggerFor]="chapterMenu">
         <mat-icon>arrow_drop_down</mat-icon>
         Разделы
@@ -54,7 +60,7 @@
         </mat-icon>
         <span>Telegram</span>
     </a>
-    <button mat-button (click)="openDialog()">
+    <button mat-button (click)="openSupportDialog()">
         <mat-icon>
             <svg
                 xmlns="http://www.w3.org/2000/svg"

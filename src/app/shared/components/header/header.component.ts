@@ -10,12 +10,14 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { ThemeToggleService } from '../../services/theme-toggle.service';
 import { SidebarService } from '../../services/sidebar.service';
+import { UpdatesService } from '../../services/updates.service';
 
 import { INavigation, ITheme } from '../../types';
 
-import { DialogSupportComponent } from '../dialogs/dialog-support/dialog-support.component';
-
 import { NAVIGATION } from '../../data/navigation';
+
+import { DialogSupportComponent } from '../dialogs/dialog-support/dialog-support.component';
+import { DialogUpdatesComponent } from '../dialogs/dialog-updates/dialog-updates.component';
 
 const materialModules = [MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule];
 
@@ -33,11 +35,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
     themes: ITheme[];
     currentTheme: ITheme;
     sidebarState: boolean;
+    hasUnreadNotifications: boolean = false;
 
     constructor(
         private sidebarService: SidebarService,
         private themeToggleService: ThemeToggleService,
         private dialog: MatDialog,
+        private updatesService: UpdatesService,
     ) {}
 
     ngOnInit() {
@@ -47,6 +51,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.sidebarService.sidebarState
             .pipe(takeUntil(this.onDestroy$))
             .subscribe((newState) => (this.sidebarState = newState));
+
+        this.hasUnreadNotifications = this.updatesService.checkActiveNotifications();
     }
 
     ngOnDestroy() {
@@ -67,7 +73,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.currentTheme = theme;
     }
 
-    openDialog() {
+    openSupportDialog() {
         this.dialog.open(DialogSupportComponent);
+    }
+
+    openUpdatesDialog() {
+        this.dialog.open(DialogUpdatesComponent, {
+            panelClass: 'dialog-size',
+        });
+        this.updatesService.markAsRead();
+        this.hasUnreadNotifications = this.updatesService.checkActiveNotifications();
     }
 }
