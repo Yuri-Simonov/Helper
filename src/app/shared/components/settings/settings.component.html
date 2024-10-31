@@ -1,0 +1,33 @@
+<app-title title="Настройки проекта" [visibleIcon]="false"></app-title>
+<form [formGroup]="settingsForm" class="settings">
+    <section class="settings__section">
+        <h2 class="settings__title">Визуальные настройки</h2>
+        <article class="settings__article">
+            <h3 class="settings__subtitle">Основная тема в проекте:</h3>
+            <div class="settings__choice">
+                <mat-form-field>
+                    <mat-label>Тема</mat-label>
+                    <mat-select formControlName="theme">
+                        @for (theme of themes; track $index) {
+                            <mat-option [value]="theme.code" (click)="changeTheme(theme)">{{ theme.name }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </article>
+    </section>
+    <section class="settings__section">
+        <h2 class="settings__title">Настройки функционала</h2>
+        <article class="settings__article">
+            <h3 class="settings__subtitle">
+                Клавиша для быстрого закрытия всех спойлеров на устройствах с клавиатурой:
+            </h3>
+            <div class="settings__choice">
+                <mat-form-field>
+                    <mat-label>Клавиша</mat-label>
+                    <input matInput formControlName="closeAllSpoilersButton" />
+                </mat-form-field>
+            </div>
+        </article>
+    </section>
+</form>

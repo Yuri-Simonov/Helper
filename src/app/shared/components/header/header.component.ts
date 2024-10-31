@@ -8,11 +8,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
 
-import { ThemeToggleService } from '../../services/theme-toggle.service';
 import { SidebarService } from '../../services/sidebar.service';
 import { UpdatesService } from '../../services/updates.service';
 
-import { INavigation, ITheme } from '../../types';
+import { INavigation } from '../../types';
 
 import { NAVIGATION } from '../../data/navigation';
 
@@ -32,22 +31,16 @@ const materialModules = [MatButtonModule, MatIconModule, MatMenuModule, MatToolb
 export class HeaderComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);
     chapters: INavigation[] = NAVIGATION;
-    themes: ITheme[];
-    currentTheme: ITheme;
     sidebarState: boolean;
     hasUnreadNotifications: boolean = false;
 
     constructor(
         private sidebarService: SidebarService,
-        private themeToggleService: ThemeToggleService,
         private dialog: MatDialog,
         private updatesService: UpdatesService,
     ) {}
 
     ngOnInit() {
-        this.themes = this.themeToggleService.themes;
-        this.setTheme(this.themeToggleService.currentTheme);
-
         this.sidebarService.sidebarState
             .pipe(takeUntil(this.onDestroy$))
             .subscribe((newState) => (this.sidebarState = newState));
@@ -62,15 +55,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     changeSidebarState(state: boolean): void {
         this.sidebarService.setNewSidebarState(state);
-    }
-
-    changeTheme(newTheme: ITheme) {
-        this.themeToggleService.changeCurrentTheme(newTheme);
-        this.setTheme(newTheme);
-    }
-
-    setTheme(theme: ITheme) {
-        this.currentTheme = theme;
     }
 
     openSupportDialog() {
