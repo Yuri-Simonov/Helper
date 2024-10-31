@@ -23,7 +23,9 @@ export class ThemeToggleService {
     ];
     currentTheme: ITheme = this.themes[2];
 
-    constructor(private localStorageService: LocalStorageService) {
+    constructor(private localStorageService: LocalStorageService) {}
+
+    setCurrentTheme() {
         this.html = document.querySelector('html');
         if (this.localStorageService.get(THEME)) {
             const localStorageTheme = this.localStorageService.get(THEME);
