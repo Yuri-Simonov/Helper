@@ -1,5 +1,9 @@
 import { INavigation } from '../types';
 
+/**
+ * Навигация по проекту.
+ * Используется в хедере для быстрого перемещения между разделами, а также на стартовой странице
+ */
 export const NAVIGATION: INavigation[] = [
     {
         id: 'theory',
