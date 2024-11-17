@@ -7,8 +7,12 @@ html {
 
 body {
     color: var(--text-color);
-    background: url("../assets/img/common/background.png"),
-        linear-gradient(var(--primary-color), var(--secondary-color));
+    /**
+	* Задание изображения заднего фона вынесено в сервис BackgroundToggleService (background-toggle.service.ts).
+	* Здесь стили закомментированы с целью избежания сайд-эффектов
+	*/
+    // background-image: url("../assets/img/common/default-background.png"),
+    //     linear-gradient(var(--primary-color), var(--secondary-color));
     background-size: cover;
     background-blend-mode: luminosity;
     background-attachment: fixed;
