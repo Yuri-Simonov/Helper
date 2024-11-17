@@ -15,6 +15,21 @@
                 </mat-form-field>
             </div>
         </article>
+        <article class="settings__article">
+            <h3 class="settings__subtitle">Фоновое изображение в проекте:</h3>
+            <div class="settings__choice">
+                <mat-form-field>
+                    <mat-label>Фон</mat-label>
+                    <mat-select formControlName="background">
+                        @for (background of backgrounds; track $index) {
+                            <mat-option [value]="background.code" (click)="changeBackground(background)">{{
+                                background.name
+                            }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </article>
     </section>
     <section class="settings__section">
         <h2 class="settings__title">Настройки функционала</h2>

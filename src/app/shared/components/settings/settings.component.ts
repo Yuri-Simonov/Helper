@@ -5,9 +5,10 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angul
 
 import { ThemeToggleService } from '../../services/theme-toggle.service';
 
-import { ITheme } from '../../types';
+import { IBackground, ITheme } from '../../types';
 
 import { TitleComponent } from '../title/title.component';
+import { BackgroundToggleService } from '../../services/background-toggle.service';
 
 const materialModules = [MatSelectModule, MatInputModule];
 
@@ -21,17 +22,22 @@ const materialModules = [MatSelectModule, MatInputModule];
 })
 export class SettingsComponent {
     themes: ITheme[];
-    currentTheme: FormControl<ITheme> = new FormControl({ name: 'Красная', code: 'red-theme' }) as FormControl<ITheme>;
-    panelColor = new FormControl('red');
+    currentTheme: FormControl<ITheme> = new FormControl(this.themeToggleService.currentTheme) as FormControl<ITheme>;
+    backgrounds: ITheme[];
+    currentBackground: FormControl<IBackground> = new FormControl(
+        this.backgroundToggleService.currentBackground,
+    ) as FormControl<IBackground>;
     settingsForm: FormGroup;
 
     constructor(
         private themeToggleService: ThemeToggleService,
+        private backgroundToggleService: BackgroundToggleService,
         private formBuilder: FormBuilder,
     ) {
         this.settingsForm = this.formBuilder.group({
             theme: this.themeToggleService.currentTheme.code,
             closeAllSpoilersButton: `Esc`,
+            background: this.backgroundToggleService.currentBackground.code,
         });
         // Дизейбл инпута задания клавиши для быстрого закрытия всех споилеров
         this.settingsForm.get('closeAllSpoilersButton')?.disable();
@@ -40,9 +46,15 @@ export class SettingsComponent {
     ngOnInit() {
         this.themes = this.themeToggleService.themes;
         this.currentTheme.setValue(this.themeToggleService.currentTheme);
+        this.backgrounds = this.backgroundToggleService.backgrounds;
+        this.currentBackground.setValue(this.backgroundToggleService.currentBackground);
     }
 
     changeTheme(newTheme: ITheme) {
         this.themeToggleService.changeCurrentTheme(newTheme);
+    }
+
+    changeBackground(background: IBackground) {
+        this.backgroundToggleService.changeCurrentBackground(background);
     }
 }
