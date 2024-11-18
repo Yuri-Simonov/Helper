@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const TWO_STRUCTURAL_DIRECTIVES: IInfo = {
     title: 'Использование двух или более структурных директив на одном элементе DOM-дерева',

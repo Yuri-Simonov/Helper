@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const FUTURE_DEVELOPMENT: IInfo = {
     title: 'Какие у вас планы на развитие в ближайшие несколько лет?',

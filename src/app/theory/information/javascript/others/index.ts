@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 import { EVENT_LOOP } from './information/event-loop';
 

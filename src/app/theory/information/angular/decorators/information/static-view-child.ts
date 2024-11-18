@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const STATIC_VIEW_CHILD: IInfo = {
     title: 'Параметр <span class="variable">static</span> декоратора <span class="variable">@ViewChild()</span>',

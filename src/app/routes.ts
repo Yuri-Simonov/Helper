@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { ForExamplesComponent } from './for-examples/for-examples/for-examples.component';
-import { SettingsComponent } from './shared/components/settings/settings.component';
+import { SettingsComponent } from './settings/settings.component';
 
 export const appModuleRoutes: Routes = [
     {

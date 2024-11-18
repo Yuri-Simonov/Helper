@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const CHANGE_DETECTOR_REF: IInfo = {
     title: 'Класс <span class="variable">ChangeDetectorRef</span>. Управление механизмом <span class="variable">Change Detection</span>',

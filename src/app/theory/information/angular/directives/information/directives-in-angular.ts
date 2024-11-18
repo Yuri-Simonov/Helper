@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const DIRECTIVES_IN_ANGULAR: IInfo = {
     title: 'Директивы в Angular',

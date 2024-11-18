@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const SOME_GLOBAL_STYLE_FILES: IInfo = {
     title: 'Нескольких файлов с глобальными стилями в проекте',

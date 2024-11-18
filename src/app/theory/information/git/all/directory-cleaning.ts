@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const DIRECTORY_CLEANING: IInfo = {
     title: 'Очистка рабочей директории от ненужных файлов',

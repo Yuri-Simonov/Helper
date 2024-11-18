@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const CREATING_CUSTOM_PIPES: IInfo = {
     title: 'Создание пользовательских пайп',

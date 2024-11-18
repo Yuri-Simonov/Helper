@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const WHERE_FUNCTION_DECLARATION_AVAILABLE: IInfo = {
     title: 'Объяснение, почему функции, объявленные через <span class="variable">Function Declaration</span> можно вызывать перед их определением в коде',

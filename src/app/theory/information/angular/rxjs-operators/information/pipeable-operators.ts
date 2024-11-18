@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const PIPEABLE_OPERATORS: IInfo = {
     title: 'Операторы потока (<span class="variable">Pipeable Operators</span>)',

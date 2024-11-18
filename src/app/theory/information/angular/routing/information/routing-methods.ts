@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const ROUTING_METHODS: IInfo = {
     title: 'Способы перехода с одного адреса на другой',

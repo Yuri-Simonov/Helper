@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 import { DECORATORS_IN_ANGULAR } from './information/decorators-in-angular';
 import { DIFFERENCE_BETWEEN_INPUT_AND_OUTPUT } from './information/difference-between-input-and-output';

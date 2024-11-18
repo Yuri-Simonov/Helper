@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 import { PIPES_IN_ANGULAR } from './information/pipes-in-angular';
 import { DIFFERENCE_BETWEEN_PURE_AND_IMPURE } from './information/difference-between-pure-and-impure';

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const AVAILABILITY_VIEW_CHILD_AND_VIEW_CHILDREN: IInfo = {
     title: 'Метод жизненного цикла, начиная с которого доступна информация в декораторах <span class="variable">@ViewChild()</span> и <span class="variable">@ViewChildren()</span>',

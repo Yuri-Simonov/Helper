@@ -11,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SidebarService } from '../../services/sidebar.service';
 import { UpdatesService } from '../../services/updates.service';
 
-import { INavigation } from '../../types';
+import { INavigation } from '../../interfaces';
 
 import { NAVIGATION } from '../../data/navigation';
 

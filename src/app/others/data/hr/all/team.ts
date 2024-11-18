@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const TEAM: IInfo = {
     title: 'Есть ли у вас опыт работы в команде?',

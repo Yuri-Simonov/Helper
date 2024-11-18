@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const CREATE_SERVICES: IInfo = {
     title: 'Создание сервиса',

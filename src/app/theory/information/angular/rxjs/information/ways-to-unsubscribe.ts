@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const WAYS_TO_UNSUBSCRIBE: IInfo = {
     title: 'Способы отписаться от подписки <span class="variable">subscribe</span>',

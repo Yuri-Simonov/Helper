@@ -3,7 +3,7 @@ import { NgClass } from '@angular/common';
 import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansion';
 import { HighlightJsDirective } from 'ngx-highlight-js';
 
-import { ITasks } from '../../../../types';
+import { ITasks } from '../../../../interfaces';
 
 import { PipeSanitizer } from '../../../../pipes/pipe-sanitizer.pipe';
 

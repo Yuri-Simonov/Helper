@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const GIT_CHECKOUT: IInfo = {
     title: 'Сброс изменений в конкретном файле',

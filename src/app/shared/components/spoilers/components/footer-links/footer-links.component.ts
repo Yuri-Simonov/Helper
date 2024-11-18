@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IFooterLinks } from '../../../../types';
+import { IFooterLinks } from '../../../../interfaces';
 
 @Component({
     selector: 'app-footer-links',

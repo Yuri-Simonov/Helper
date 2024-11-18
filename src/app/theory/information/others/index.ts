@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 import { AUTHORIZATION } from './all/authorization';
 import { CORS } from './all/cors';

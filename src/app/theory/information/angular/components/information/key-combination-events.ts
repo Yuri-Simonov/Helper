@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const KEY_COMBINATION_EVENTS: IInfo = {
     title: 'Обработка событий комбинаций клавиш',

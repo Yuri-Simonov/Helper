@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const DIFFERENCE_BETWEEN_DIRECTIVE_AND_COMPONENT: IInfo = {
     title: 'Разница между директивой и компонентом',

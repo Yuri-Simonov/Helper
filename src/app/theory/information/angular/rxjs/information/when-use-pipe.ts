@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const WHEN_USE_PIPE: IInfo = {
     title: 'Тип данных, у которого можно вызвать метод <span class="variable">pipe</span>',

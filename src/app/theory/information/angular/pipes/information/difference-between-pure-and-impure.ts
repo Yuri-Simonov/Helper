@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const DIFFERENCE_BETWEEN_PURE_AND_IMPURE: IInfo = {
     title: 'Разница между <span class="variable">pure</span> и <span class="variable">impure</span> пайпами',

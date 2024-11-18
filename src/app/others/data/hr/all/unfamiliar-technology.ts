@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const UNFAMILIAR_TECHNOLOGY: IInfo = {
     title: 'Как вы решаете проблему, если сталкиваетесь с незнакомой технологией?',

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const COLD_AND_HOT_OBSERVABLES: IInfo = {
     title: 'Холодные и горячие <span class="variable">Observables</span>. Разница между ними. Подогрев и остужение <span class="variable">Observable</span>',

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const PROTOTYPE_CHAIN: IInfo = {
     title: 'Принцип работы цепочки прототипов',

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const FOR_OPTIMIZATION: IInfo = {
     title: 'Оптимизация структурной директивы <span class="variable">*ngFor</span>',

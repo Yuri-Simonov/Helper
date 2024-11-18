@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 import { COMPONENTS_IN_ANGULAR } from './information/components-in-angular';
 import { COMPONENTS_LIFECYCLE } from './information/components-lifecycle';

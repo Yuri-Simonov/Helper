@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const DIFFERENCE_BETWEEN_OBSERVABLE_AND_ARRAY: IInfo = {
     title: 'Разница между <span class="variable">Observable</span> и <span class="variable">Array</span>',

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const CONCAT_MAP: IInfo = {
     title: '<span class="variable">concatMap</span>',

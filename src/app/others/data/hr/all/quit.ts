@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const QUIT: IInfo = {
     title: 'Почему вы хотите уйти с текущего места работы?',

@@ -1,4 +1,4 @@
-import { INavigation } from '../types';
+import { INavigation } from '../interfaces';
 
 /**
  * Навигация по проекту.

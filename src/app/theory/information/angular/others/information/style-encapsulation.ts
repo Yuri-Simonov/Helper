@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const STYLE_ENCAPSULATION: IInfo = {
     title: 'Инкапсуляция стилей. <span class="variable">ViewEncapsulation</span>',

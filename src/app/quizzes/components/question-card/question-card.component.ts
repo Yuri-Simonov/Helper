@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { IInfosAndAnswer, ITestAnswerOption } from '../../../shared/types';
+import { IInfosAndAnswer, ITestAnswerOption } from '../../../shared/interfaces';
 
 @Component({
     selector: 'app-question-card',

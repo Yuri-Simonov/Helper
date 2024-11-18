@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const ABOUT_YOURSELF: IInfo = {
     title: 'Расскажите о себе',

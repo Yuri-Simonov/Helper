@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 import { DEFINING_OPERATORS } from './information/defining-operators';
 import { PIPEABLE_OPERATORS } from './information/pipeable-operators';

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const INTERACTIONS_BETWEEN_COMPONENTS: IInfo = {
     title: 'Способы взаимодействия между компонентами',

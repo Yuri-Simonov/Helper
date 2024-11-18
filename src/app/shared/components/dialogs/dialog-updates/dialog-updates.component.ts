@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { HighlightJsDirective } from 'ngx-highlight-js';
 
-import { IInfo, IUpdates } from '../../../types';
+import { IInfo, IUpdates } from '../../../interfaces';
 
 import { UPDATES } from '../../../data/updates';
 

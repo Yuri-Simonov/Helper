@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const MERGE_MAP: IInfo = {
     title: '<span class="variable">mergeMap</span> / <span class="variable">flatMap</span>',

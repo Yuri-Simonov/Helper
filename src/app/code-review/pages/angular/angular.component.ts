@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { IList } from '@types';
+import { IList } from 'src/app/shared/interfaces';
 
 import { allAngularExamples } from '../../examples/angular';
 

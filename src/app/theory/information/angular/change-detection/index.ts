@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 import { CHANGE_DETECTOR_REF } from './information/change-detector-ref';
 import { CHANGE_DETECTION } from './information/change-detection';

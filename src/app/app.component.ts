@@ -3,8 +3,8 @@ import { RouterOutlet } from '@angular/router';
 
 import { opacityAnimation } from 'src/app/shared/animations/opacity.animation';
 
-import { ThemeToggleService } from './shared/services/theme-toggle.service';
-import { BackgroundToggleService } from './shared/services/background-toggle.service';
+import { ThemeToggleService } from './settings/services/theme-toggle.service';
+import { BackgroundToggleService } from './settings/services/background-toggle.service';
 
 @Component({
     selector: 'app-root',

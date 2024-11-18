@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const TRACKING_CHANGES_IN_REACTIVE_FORMS: IInfo = {
     title: 'Отслеживание изменений в реактивных формах',

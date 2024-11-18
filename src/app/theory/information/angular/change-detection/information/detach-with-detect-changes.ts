@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const DETACH_WITH_DETECT_CHANGES: IInfo = {
     title: 'Вызов метода <span class="variable">detectChanges</span> после вызова метода <span class="variable">detach</span>',

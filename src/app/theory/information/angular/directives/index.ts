@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 import { DIRECTIVES_IN_ANGULAR } from './information/directives-in-angular';
 import { IF } from './information/if';

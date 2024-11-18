@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const PROTRACTOR: IInfo = {
     title: '<span class="variable">Protractor</span>. Определение',

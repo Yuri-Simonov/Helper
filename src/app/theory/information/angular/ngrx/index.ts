@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 import { ABOUT_NGRX } from './information/about-ngrx';
 import { ACTIONS } from './information/actions';

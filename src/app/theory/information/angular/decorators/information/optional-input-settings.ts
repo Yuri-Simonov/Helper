@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const OPTIONAL_INPUT_SETTINGS: IInfo = {
     title: 'Дополнительные настройки декоратора <span class="variable">@Input()</span>',

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { IList } from '../../../shared/types';
+import { IList } from '../../../shared/interfaces';
 
 import { allOthersData } from '../../data/hr';
 

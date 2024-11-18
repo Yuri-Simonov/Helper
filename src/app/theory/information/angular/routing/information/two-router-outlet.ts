@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const TWO_ROUTER_OUTLET: IInfo = {
     title: 'Более одной директивы <span class="variable">router-outlet</span> в одном шаблоне компонента',

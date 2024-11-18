@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const VISUAL_EXAMPLES: IInfo = {
     title: 'Механизм <span class="variable">Change Detection</span> и дерево компонентов',

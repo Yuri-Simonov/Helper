@@ -1,7 +1,7 @@
-import { LocalStorageService } from './local-storage.service';
+import { LocalStorageService } from '../../shared/services/local-storage.service';
 import { Injectable } from '@angular/core';
 
-import { ITheme } from '../types';
+import { ITheme } from '../interfaces/theme.interface';
 
 const THEME = 'theme';
 

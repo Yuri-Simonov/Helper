@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const QUESTIONS_FOR_TECHNICAL_SPECIALIST: IInfo = {
     title: 'Список вопросов для технического специалиста',

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const CLONING_STRIPPED_DOWN_REPOSITORY: IInfo = {
     title: 'Клонирование репозитория с урезанной историей коммитов',

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const END_OF_PROTOTYPE_CHAIN: IInfo = {
     title: 'Конец цепочки прототипов',

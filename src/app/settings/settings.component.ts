@@ -3,12 +3,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
-import { ThemeToggleService } from '../../services/theme-toggle.service';
+import { ThemeToggleService } from './services/theme-toggle.service';
+import { BackgroundToggleService } from './services/background-toggle.service';
 
-import { IBackground, ITheme } from '../../types';
+import { IBackground } from './interfaces/background.interface';
+import { ITheme } from './interfaces/theme.interface';
 
-import { TitleComponent } from '../title/title.component';
-import { BackgroundToggleService } from '../../services/background-toggle.service';
+import { TitleComponent } from '../shared/components/title/title.component';
 
 const materialModules = [MatSelectModule, MatInputModule];
 

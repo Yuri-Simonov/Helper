@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const CALL_BIND_APPLY: IInfo = {
     title: 'Методы <span class="variable">call</span>, <span class="variable">bind</span> и <span class="variable">apply</span>',

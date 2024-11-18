@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const ACTIONS: IInfo = {
     title: '<span class="variable">Actions</span>',

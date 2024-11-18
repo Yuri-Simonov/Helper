@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 import { LEXICAL_ENVIRONMENT } from './information/lexical-environment';
 import { WHERE_FUNCTION_DECLARATION_AVAILABLE } from './information/where-function-declaration-available';

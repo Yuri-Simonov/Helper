@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const GUARDS: IInfo = {
     title: 'Разрешение и запрет перехода по указанному маршруту (защищенные пути)',

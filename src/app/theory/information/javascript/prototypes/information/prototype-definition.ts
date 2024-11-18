@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const PROTOTYPE_DEFINITION: IInfo = {
     title: 'Определение прототипа',

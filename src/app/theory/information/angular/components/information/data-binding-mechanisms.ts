@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const DATA_BINDING_MECHANISMS: IInfo = {
     title: 'Механизмы привязки данных',

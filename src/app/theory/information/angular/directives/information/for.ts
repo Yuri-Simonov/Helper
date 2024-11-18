@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const FOR: IInfo = {
     title: 'Структурная директива <span class="variable">*ngFor</span>',

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const ADD_ALL_FILES_IN_COMMIT: IInfo = {
     title: 'Добавление в коммит всех измененных файлов',

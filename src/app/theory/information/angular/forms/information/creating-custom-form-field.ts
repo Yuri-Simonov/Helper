@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const CREATING_CUSTOM_FORM_FIELD: IInfo = {
     title: 'Создание кастомного компонента формы',

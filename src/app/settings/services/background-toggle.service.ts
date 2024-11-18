@@ -1,7 +1,7 @@
-import { LocalStorageService } from './local-storage.service';
+import { LocalStorageService } from '../../shared/services/local-storage.service';
 import { Injectable } from '@angular/core';
 
-import { IBackground } from '../types';
+import { IBackground } from '../interfaces/background.interface';
 
 const BACKGROUND = 'background';
 

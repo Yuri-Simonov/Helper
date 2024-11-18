@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const GETTER_AND_SETTER: IInfo = {
     title: 'Использование <span class="variable">Getter</span> и <span class="variable">Setter</span> внутри компонента',
