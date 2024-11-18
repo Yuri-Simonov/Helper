@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const STANDALONE_COMPONENTS_IMPORTS: IInfo = {
     title: 'Важность импортов в <span class="variable">standalone</span> компонентах',

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { IList } from '@types';
+import { IList } from 'src/app/shared/interfaces';
 
 import { allGitInfo } from '../../information/git';
 

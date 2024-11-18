@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const DEADLINES: IInfo = {
     title: 'Как вы справляетесь со сложными задачами или дедлайнами?',

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const OFFERS: IInfo = {
     title: 'Есть ли у вас уже какие-то офферы на руках?',

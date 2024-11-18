@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const ERROR_HANDLING_METHODS: IInfo = {
     title: 'Способы обработки ошибок в <span class="variable">RxJs</span>',

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const TYPES_OF_FORMS: IInfo = {
     title: 'Виды форм в Angular и разница между ними',

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const UNSUBSCRIBE_IN_ONDESTROY: IInfo = {
     title: 'Важность отписывания от подписок в хуке <span class="variable">OnDestroy</span>',

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const SUBSCRIBE_IN_CONSTRUCTOR: IInfo = {
     title: 'Подписка на события в конструкторе класса компонента',

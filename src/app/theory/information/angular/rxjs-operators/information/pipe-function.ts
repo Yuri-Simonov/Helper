@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const PIPE_FUNCTION: IInfo = {
     title: 'Функция <span class="variable">pipe</span>',

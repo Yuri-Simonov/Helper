@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const WHATS_IMPORTANT: IInfo = {
     title: 'На какие критерии вы обращаете внимание при рассмотрении предложения? Что для вас важно на новом месте работы?',

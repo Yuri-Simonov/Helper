@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const NG_STYLE: IInfo = {
     title: 'Атрибутивная директива <span class="variable">ngStyle</span>',

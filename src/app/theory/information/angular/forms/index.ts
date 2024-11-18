@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 import { TYPES_OF_FORMS } from './information/types-of-forms';
 import { FORM_INHERITANCE } from './information/form-inheritance';

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const FIXING_LAST_COMMIT: IInfo = {
     title: 'Исправление последнего коммита',

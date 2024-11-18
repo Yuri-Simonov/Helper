@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const MARBLE_DIAGRAMS: IInfo = {
     title: 'Диаграммы операторов (<span class="variable">Marble diagrams</span>)',

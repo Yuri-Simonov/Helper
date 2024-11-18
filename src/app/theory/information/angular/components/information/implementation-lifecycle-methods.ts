@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const IMPLEMENTATION_LIFECYCLE_METHODS: IInfo = {
     title: 'Имплементация методов жизненного цикла',

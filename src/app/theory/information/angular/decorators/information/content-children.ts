@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const CONTENT_CHILDREN: IInfo = {
     title: 'Декоратор <span class="variable">@ContentChildren()</span>',

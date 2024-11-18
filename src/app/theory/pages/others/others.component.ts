@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { IList } from '../../../shared/types';
+import { IList } from '../../../shared/interfaces';
 
 import { allOthersInfo } from '../../information/others';
 

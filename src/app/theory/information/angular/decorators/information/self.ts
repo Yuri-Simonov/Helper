@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const SELF: IInfo = {
     title: 'Декоратор <span class="variable">@Self()</span>',

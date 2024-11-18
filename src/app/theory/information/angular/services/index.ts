@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 import { SERVICES_IN_ANGULAR } from './information/services-in-angular';
 import { PROVIDING_SERVICES } from './information/providing-services';

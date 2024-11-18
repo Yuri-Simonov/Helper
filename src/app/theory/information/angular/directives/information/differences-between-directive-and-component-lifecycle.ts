@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const DIFFERENCES_BETWEEN_DIRECTIVE_AND_COMPONENT_LIFECYCLE: IInfo = {
     title: 'Различия между жизненными циклами компонента и директивы',

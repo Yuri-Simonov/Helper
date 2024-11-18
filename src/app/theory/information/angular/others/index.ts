@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 import { ANGULAR_CLI } from './information/angular-cli';
 import { MODULES_IN_ANGULAR } from './information/modules-in-angular';

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 import { ABOUT_RXJS } from './information/about-rxjs';
 import { HOW_OBSERVABLE_WORKS } from './information/how-observable-works';

@@ -7,7 +7,7 @@ import {
     MatDialogTitle,
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { IInfo } from '../../../types';
+import { IInfo } from '../../../interfaces';
 import { HighlightJsDirective } from 'ngx-highlight-js';
 
 const materialModules = [MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle, MatButtonModule];

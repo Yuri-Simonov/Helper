@@ -4,7 +4,7 @@ import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansi
 import { MatDialog } from '@angular/material/dialog';
 import { HighlightJsDirective } from 'ngx-highlight-js';
 
-import { IInfo } from '../../../../types';
+import { IInfo } from '../../../../interfaces';
 
 import { PipeSanitizer } from '../../../../pipes/pipe-sanitizer.pipe';
 

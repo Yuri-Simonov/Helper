@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const READ_CONTENT_CHILD_AND_CONTENT_CHILDREN: IInfo = {
     title: 'Параметр <span class="variable">read</span> декораторов <span class="variable">@ContentChild()</span> и <span class="variable">@ContentChildren()</span>',

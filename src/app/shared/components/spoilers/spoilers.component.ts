@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy
 import { NavigationEnd, Router } from '@angular/router';
 import { ReplaySubject, takeUntil } from 'rxjs';
 
-import { IList } from '../../types';
+import { IList } from '../../interfaces';
 
 import { SidebarService } from '../../services/sidebar.service';
 

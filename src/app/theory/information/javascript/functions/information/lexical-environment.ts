@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const LEXICAL_ENVIRONMENT: IInfo = {
     title: 'Доступ к глобальным переменным внутри функций',

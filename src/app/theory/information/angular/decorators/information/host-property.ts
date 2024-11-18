@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const HOST_PROPERTY: IInfo = {
     title: 'Свойство <span class="variable">host</span> декоратора <span class="variable">@Directive()</span>',

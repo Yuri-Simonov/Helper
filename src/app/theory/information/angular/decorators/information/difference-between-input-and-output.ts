@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const DIFFERENCE_BETWEEN_INPUT_AND_OUTPUT: IInfo = {
     title: 'Разница между декораторами <span class="variable">@Input()</span> и <span class="variable">@Output()</span>',

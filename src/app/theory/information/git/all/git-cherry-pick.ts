@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const GIT_CHERRY_PICK: IInfo = {
     title: 'Перенос коммитов в другую ветку',

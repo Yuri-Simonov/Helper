@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const OBJECTS_THROUGH_INPUT: IInfo = {
     title: 'Передача объектов через декоратор <span class="variable">@Input()</span>',

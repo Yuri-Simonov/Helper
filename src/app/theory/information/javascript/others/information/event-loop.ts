@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const EVENT_LOOP: IInfo = {
     title: '<span class="variable">Event loop</span>',

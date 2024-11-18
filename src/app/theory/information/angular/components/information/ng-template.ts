@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const NG_TEMPLATE: IInfo = {
     title: 'Элемент <span class="variable">ng-template</span>',

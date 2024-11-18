@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const STYLE_SELECTORS: IInfo = {
     title: 'Селекторы стилей <span class="variable">:host</span>, <span class="variable">:host-context</span> и <span class="variable">::ng-deep</span>',

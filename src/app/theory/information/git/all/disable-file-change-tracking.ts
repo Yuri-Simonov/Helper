@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const DISABLE_FILE_CHANGE_TRACKING: IInfo = {
     title: 'Отключить отслеживание изменений в файле',

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 import { ROUTING_IN_ANGULAR } from './information/routing-in-angular';
 import { ROUTES_SEQUENCE } from './information/routes-sequence';
 import { TWO_ROUTER_OUTLET } from './information/two-router-outlet';

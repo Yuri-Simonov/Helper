@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const TYPES_OF_SUBJECT: IInfo = {
     title: 'Разновидности типа <span class="variable">Subject</span> и их различия',

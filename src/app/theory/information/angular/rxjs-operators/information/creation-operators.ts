@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const CREATION_OPERATORS: IInfo = {
     title: 'Операторы создания (<span class="variable">Creation Operators</span>)',

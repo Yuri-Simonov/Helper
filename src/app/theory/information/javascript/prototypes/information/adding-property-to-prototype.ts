@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const ADDING_PROPERTY_TO_PROTOTYPE: IInfo = {
     title: 'Добавление собственного метода или свойства в прототип',

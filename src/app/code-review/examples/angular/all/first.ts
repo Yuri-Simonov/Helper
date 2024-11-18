@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const FIRST_EXAMPLE: IInfo = {
     title: '1-ый пример',

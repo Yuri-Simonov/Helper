@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const ROUTING_IN_ANGULAR: IInfo = {
     title: 'Маршрутизация в Angular',

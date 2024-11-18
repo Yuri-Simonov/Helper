@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const SELECT_COMPANY: IInfo = {
     title: 'Почему вы выбрали именно нашу компанию?',

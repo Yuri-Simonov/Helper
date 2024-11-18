@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const ROUTING_EVENTS: IInfo = {
     title: 'События маршрутизации при переходе с одного маршрута на другой',

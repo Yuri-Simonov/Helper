@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const NG_CONTENT_DO_NOT_CREATE_NEW_CONTENT: IInfo = {
     title: `Объяснение, почему элемент <span class="variable">ng-content</span> не создает новый контент внутри дочернего компонента`,

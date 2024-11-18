@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const INJECTOR: IInfo = {
     title: 'Класс <span class="variable">Injector</span>',

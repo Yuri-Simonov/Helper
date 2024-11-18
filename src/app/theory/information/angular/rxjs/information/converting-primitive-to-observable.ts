@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const CONVERTING_PRIMITIVE_TO_OBSERVABLE: IInfo = {
     title: 'Преобразование примитивного типа данных в тип <span class="variable">Observable</span>',

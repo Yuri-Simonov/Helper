@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const EXPORT_AS: IInfo = {
     title: 'Свойство <span class="variable">exportAs</span> декоратора <span class="variable">@Directive()</span>',

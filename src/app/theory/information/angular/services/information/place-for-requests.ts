@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const PLACE_FOR_REQUESTS: IInfo = {
     title: 'Сервисы - место для запросов к серверу',

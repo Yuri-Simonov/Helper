@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const MIXED_TYPES_FOR_ACTIONS: IInfo = {
     title: 'Смешанные типы для <span class="variable">Actions</span>',

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 import { FIXING_LAST_COMMIT } from './all/fixing-last-commit';
 import { DISABLE_FILE_CHANGE_TRACKING } from './all/disable-file-change-tracking';

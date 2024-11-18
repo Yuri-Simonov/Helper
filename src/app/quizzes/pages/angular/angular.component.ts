@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { angularTestQuestions } from '../../questions/angular';
 
-import { IInfosAndAnswer } from '../../../shared/types';
+import { IInfosAndAnswer } from '../../../shared/interfaces';
 
 @Component({
     selector: 'app-angular',

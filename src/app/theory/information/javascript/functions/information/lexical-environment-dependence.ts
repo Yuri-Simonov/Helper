@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const LEXICAL_ENVIRONMENT_DEPENDENCE: IInfo = {
     title: 'Зависимость лексического окружения функции от места ее вызова в коде',

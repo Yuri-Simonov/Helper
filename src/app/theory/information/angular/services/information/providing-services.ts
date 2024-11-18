@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const PROVIDING_SERVICES: IInfo = {
     title: 'Самостоятельная регистрация зависимостей (<span class="variable">providedIn</span>)',

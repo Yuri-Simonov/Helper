@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 import { PROTOTYPE_DEFINITION } from './information/prototype-definition';
 import { ADDING_PROPERTY_TO_PROTOTYPE } from './information/adding-property-to-prototype';

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const NG_MODEL: IInfo = {
     title: 'Двустороннее связывание в полях формы',

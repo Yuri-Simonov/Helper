@@ -6,7 +6,7 @@ import { MatListModule } from '@angular/material/list';
 
 import { SidebarService } from '../../services/sidebar.service';
 
-import { IList } from '@types';
+import { IList } from 'src/app/shared/interfaces';
 
 const materialModules = [MatListModule];
 

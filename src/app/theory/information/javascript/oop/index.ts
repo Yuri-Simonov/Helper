@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 import { ABSTRACTION } from './information/abstraction';
 import { INHERITANCE } from './information/inheritance';

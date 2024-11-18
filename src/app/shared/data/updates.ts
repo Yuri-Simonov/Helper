@@ -1,4 +1,4 @@
-import { IUpdates } from '../types';
+import { IUpdates } from '../interfaces';
 
 /**
  * Возвращает массив id обновлений

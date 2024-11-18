@@ -1,4 +1,4 @@
-import { IInfosAndAnswer } from '../../shared/types';
+import { IInfosAndAnswer } from '../../shared/interfaces';
 
 export const javascriptTestQuestions: IInfosAndAnswer[] = [
     {

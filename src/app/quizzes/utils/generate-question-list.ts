@@ -1,4 +1,4 @@
-import { IInfosAndAnswer } from '../../shared/types';
+import { IInfosAndAnswer } from '../../shared/interfaces';
 
 export const getQuestions = (questions: IInfosAndAnswer[], amount: number = 20): IInfosAndAnswer[] => {
     const finalQuestions: IInfosAndAnswer[] = [];

@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 import { QUIT } from './all/quit';
 import { SELECT_COMPANY } from './all/select-company';

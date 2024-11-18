@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const HIGHER_ORDER_OBSERVABLES: IInfo = {
     title: 'Потоки высшего порядка (<span class="variable">Higher-order Observables</span>)',

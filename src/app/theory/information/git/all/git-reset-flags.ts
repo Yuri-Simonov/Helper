@@ -1,4 +1,4 @@
-import { IInfo } from '@types';
+import { IInfo } from 'src/app/shared/interfaces';
 
 export const GIT_RESET_FLAGS: IInfo = {
     title: 'Отличия флагов <span class="variable">soft</span>, <span class="variable">mixed</span> и <span class="variable">hard</span> в команде <span class="variable">git reset</span>',
