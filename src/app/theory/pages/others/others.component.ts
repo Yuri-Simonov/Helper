@@ -9,6 +9,7 @@ import { allOthersInfo } from '../../information/others';
     templateUrl: './others.component.html',
     styleUrls: ['./others.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class OthersComponent {
     list: IList[] = [{ name: 'Все', path: 'others', info: allOthersInfo }];

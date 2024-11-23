@@ -6,6 +6,7 @@ import { IInfosAndAnswer, ITestAnswerOption } from '../../../shared/interfaces';
     templateUrl: './question-card.component.html',
     styleUrl: './question-card.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class QuestionCardComponent {
     currentValue: ITestAnswerOption | undefined;

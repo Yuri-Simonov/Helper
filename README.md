@@ -1,13 +1,13 @@
 # Помощник во фронтенде
 
-Текущие версии основных зависимостей на проекте: [Angular](https://angular.io) (v.18.0.1) и библиотеки компонентов [Angular Material](https://material.angular.io) (v.18.0.1).
+Текущие версии основных зависимостей на проекте: [Angular](https://angular.io) (v.19.0.0) и библиотеки компонентов [Angular Material](https://material.angular.io) (v.19.0.0).
 
 Из второстепенных библиотек, в проекте используются:
 
 -   [ngx-highlight-js](https://www.npmjs.com/package/ngx-highlight-js) (17.0.0);
 -   [ngx-toastr](https://www.npmjs.com/package/ngx-toastr) (19.0.0).
 
-Также проект задеплоен на GitHub Pages. Посмотреть можно [по этой ссылке](https://yuri-simonov.github.io/Helper/).
+Также проект доступен на GitHub Pages. Посмотреть можно [по этой ссылке](https://yuri-simonov.github.io/Helper/).
 
 ## Цель проекта
 

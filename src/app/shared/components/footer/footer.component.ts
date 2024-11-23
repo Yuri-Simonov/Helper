@@ -8,8 +8,7 @@ const materialModules = [MatToolbarModule];
     templateUrl: './footer.component.html',
     styleUrls: ['./footer.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
-    imports: [materialModules],
+    imports: [materialModules]
 })
 export class FooterComponent {
     currentYear: number;

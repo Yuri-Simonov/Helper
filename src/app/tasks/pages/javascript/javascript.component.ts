@@ -8,6 +8,7 @@ import { allJavaScriptTasks } from '../../tasks/javascript';
     selector: 'app-javascript',
     templateUrl: './javascript.component.html',
     styleUrl: './javascript.component.scss',
+    standalone: false
 })
 export class JavascriptComponent {
     list: IList[] = [{ name: 'Все', path: 'javascript', info: allJavaScriptTasks }];

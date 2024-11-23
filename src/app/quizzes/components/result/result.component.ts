@@ -6,6 +6,7 @@ import { IInfosAndAnswer, ITestAnswerOption } from '../../../shared/interfaces';
     selector: 'app-result',
     templateUrl: './result.component.html',
     styleUrl: './result.component.scss',
+    standalone: false
 })
 export class ResultComponent {
     amountRightAnswers: number = 0;

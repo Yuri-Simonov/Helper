@@ -8,6 +8,7 @@ import { getQuestions } from '../../utils/generate-question-list';
     selector: 'app-questions',
     templateUrl: './questions.component.html',
     styleUrl: './questions.component.scss',
+    standalone: false
 })
 export class QuestionsComponent {
     @Input('questions') questionsProps: IInfosAndAnswer[] = [];

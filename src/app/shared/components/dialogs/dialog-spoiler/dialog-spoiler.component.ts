@@ -14,11 +14,10 @@ const materialModules = [MatDialogActions, MatDialogClose, MatDialogContent, Mat
 
 @Component({
     selector: 'app-dialog-spoiler',
-    standalone: true,
     imports: [materialModules, HighlightJsDirective],
     templateUrl: './dialog-spoiler.component.html',
     styleUrl: './dialog-spoiler.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DialogSpoilerComponent {
     constructor(@Inject(MAT_DIALOG_DATA) public data: IInfo) {}

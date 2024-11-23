@@ -21,6 +21,7 @@ import { servicesInfo } from '../../information/angular/services';
     templateUrl: './angular.component.html',
     styleUrls: ['./angular.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AngularComponent {
     list: IList[] = [

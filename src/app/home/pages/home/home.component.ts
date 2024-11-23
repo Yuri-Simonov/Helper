@@ -9,6 +9,7 @@ import { INavigation } from '../../../shared/interfaces';
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class HomeComponent {
     chapters: INavigation[] = NAVIGATION;

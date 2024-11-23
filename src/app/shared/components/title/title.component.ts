@@ -12,8 +12,7 @@ const materialModules = [MatToolbarModule, MatIconModule];
     templateUrl: './title.component.html',
     styleUrls: ['./title.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
-    imports: [materialModules],
+    imports: [materialModules]
 })
 export class TitleComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);

@@ -12,6 +12,7 @@ import { othersInfo } from '../../information/javascript/others';
     templateUrl: './javascript.component.html',
     styleUrls: ['./javascript.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class JavascriptComponent {
     list: IList[] = [

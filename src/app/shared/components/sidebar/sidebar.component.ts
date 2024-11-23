@@ -15,8 +15,7 @@ const materialModules = [MatListModule];
     templateUrl: './sidebar.component.html',
     styleUrls: ['./sidebar.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
-    imports: [materialModules, NgClass, RouterLink, RouterLinkActive],
+    imports: [materialModules, NgClass, RouterLink, RouterLinkActive]
 })
 export class SidebarComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);

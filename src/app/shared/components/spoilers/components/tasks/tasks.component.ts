@@ -13,10 +13,9 @@ const materialModules = [MatExpansionModule];
 
 @Component({
     selector: 'app-tasks',
-    standalone: true,
     imports: [materialModules, PipeSanitizer, HighlightJsDirective, NgClass, CloseSpoilersDirective],
     templateUrl: './tasks.component.html',
-    styleUrl: './tasks.component.scss',
+    styleUrl: './tasks.component.scss'
 })
 export class TasksComponent {
     @Input('tasks') tasksProps: ITasks[] = [];

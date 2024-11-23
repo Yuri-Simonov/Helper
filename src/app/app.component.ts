@@ -12,6 +12,7 @@ import { BackgroundToggleService } from './settings/services/background-toggle.s
     styleUrls: ['./app.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [opacityAnimation],
+    standalone: false
 })
 export class AppComponent {
     constructor(

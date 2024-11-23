@@ -9,6 +9,7 @@ import { allGitInfo } from '../../information/git';
     templateUrl: './git.component.html',
     styleUrls: ['./git.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class GitComponent {
     list: IList[] = [{ name: 'Все', path: 'git', info: allGitInfo }];

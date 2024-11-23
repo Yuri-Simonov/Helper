@@ -25,8 +25,7 @@ const materialModules = [MatButtonModule, MatIconModule, MatMenuModule, MatToolb
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
-    imports: [materialModules, NgClass, RouterLink, NgTemplateOutlet],
+    imports: [materialModules, NgClass, RouterLink, NgTemplateOutlet]
 })
 export class HeaderComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);

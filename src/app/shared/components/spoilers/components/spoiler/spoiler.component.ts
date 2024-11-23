@@ -18,7 +18,6 @@ const materialModules = [MatExpansionModule];
 
 @Component({
     selector: 'app-spoiler',
-    standalone: true,
     imports: [
         materialModules,
         NgClass,
@@ -29,7 +28,7 @@ const materialModules = [MatExpansionModule];
         CloseSpoilersDirective,
     ],
     templateUrl: './spoiler.component.html',
-    styleUrl: './spoiler.component.scss',
+    styleUrl: './spoiler.component.scss'
 })
 export class SpoilerComponent {
     @Input('info') infoProps: IInfo;
