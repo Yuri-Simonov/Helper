@@ -15,11 +15,10 @@ const materialModules = [MatSelectModule, MatInputModule];
 
 @Component({
     selector: 'app-settings',
-    standalone: true,
     imports: [materialModules, ReactiveFormsModule, TitleComponent],
     templateUrl: './settings.component.html',
     styleUrl: './settings.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingsComponent {
     themes: ITheme[];

@@ -8,7 +8,6 @@ import {
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { HighlightJsDirective } from 'ngx-highlight-js';
 
 import { IInfo, IUpdates } from '../../../interfaces';
 
@@ -18,8 +17,7 @@ const materialModules = [MatDialogActions, MatDialogClose, MatDialogContent, Mat
 
 @Component({
     selector: 'app-dialog-updates',
-    standalone: true,
-    imports: [materialModules, HighlightJsDirective, NgTemplateOutlet, NgClass],
+    imports: [materialModules, NgTemplateOutlet, NgClass],
     templateUrl: './dialog-updates.component.html',
     styleUrl: './dialog-updates.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,

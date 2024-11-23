@@ -17,8 +17,7 @@ import { SpoilerComponent } from './components/spoiler/spoiler.component';
     templateUrl: './spoilers.component.html',
     styleUrls: ['./spoilers.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
-    imports: [NgClass, EmptyComponent, OverlayComponent, SidebarComponent, SpoilerComponent],
+    imports: [NgClass, EmptyComponent, OverlayComponent, SidebarComponent, SpoilerComponent]
 })
 export class SpoilersComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);

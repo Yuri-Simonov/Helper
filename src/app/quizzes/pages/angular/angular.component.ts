@@ -9,6 +9,7 @@ import { IInfosAndAnswer } from '../../../shared/interfaces';
     templateUrl: './angular.component.html',
     styleUrl: './angular.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AngularComponent {
     angularTestQuestions: IInfosAndAnswer[] = angularTestQuestions || [];

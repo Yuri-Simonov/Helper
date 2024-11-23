@@ -9,6 +9,7 @@ import { IInfosAndAnswer } from '../../../shared/interfaces';
     templateUrl: './javascript.component.html',
     styleUrl: './javascript.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class JavascriptComponent {
     javascriptTestQuestions: IInfosAndAnswer[] = javascriptTestQuestions || [];

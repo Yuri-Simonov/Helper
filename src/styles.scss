@@ -1,9 +1,8 @@
-@import "./styles/variables";
-@import "./styles/root";
-@import "./styles/themes";
-@import "./styles/auxiliary";
-@import "./styles/code_settings";
-@import "./styles/code_colors";
-@import "./styles/material";
-@import "ngx-toastr/toastr";
-@import "./styles/toastr";
+@use "./styles/variables";
+@use "./styles/root";
+@use "./styles/themes";
+@use "./styles/auxiliary";
+@use "./styles/code_settings";
+@use "./styles/code_colors";
+@use "./styles/material";
+@use "./styles/toastr";

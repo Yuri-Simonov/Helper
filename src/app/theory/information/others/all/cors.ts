@@ -114,5 +114,5 @@ app.listen(3000, () => {
                 корректный обмен данными.
             </p>`,
     selected: false,
-    lastUpdate: '14.08.2023',
+    lastUpdate: '14.08.2024',
 };

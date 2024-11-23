@@ -7,10 +7,9 @@ const materialModules = [MatDialogActions, MatDialogContent, MatButtonModule, Ma
 
 @Component({
     selector: 'app-dialog-support',
-    standalone: true,
     imports: [materialModules],
     templateUrl: './dialog-support.component.html',
-    styleUrl: './dialog-support.component.scss',
+    styleUrl: './dialog-support.component.scss'
 })
 export class DialogSupportComponent {
     constructor(private toastrService: ToastrService) {}
