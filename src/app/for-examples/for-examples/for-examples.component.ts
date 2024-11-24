@@ -34,7 +34,6 @@ import {
 
 @Component({
     selector: 'app-for-examples',
-    standalone: true,
     templateUrl: './for-examples.component.html',
     styleUrl: './for-examples.component.scss',
 })

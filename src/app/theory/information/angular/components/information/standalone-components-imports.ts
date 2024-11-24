@@ -29,7 +29,6 @@ export const STANDALONE_COMPONENTS_IMPORTS: IInfo = {
     selector: 'app-green',
     templateUrl: './green.component.html',
     styleUrl: './green.component.scss',
-    standalone: true,
 })
 export class GreenComponent {}</code></pre>
             <p>И модуль, в который он импортирован:</p>
@@ -53,7 +52,6 @@ export class AppModule {}</code></pre>
     selector: 'app-green',
     templateUrl: './green.component.html',
     styleUrl: './green.component.scss',
-    standalone: true,
 	imports: [RedComponent],
 })
 export class GreenComponent {}</code></pre>
@@ -62,7 +60,6 @@ export class GreenComponent {}</code></pre>
     selector: 'app-red',
     templateUrl: './red.component.html',
     styleUrl: './red.component.scss',
-    standalone: true,
 })
 export class RedComponent {}</code></pre>
             <p>
@@ -82,7 +79,6 @@ export class RedComponent {}</code></pre>
     selector: 'app-green',
     templateUrl: './green.component.html',
     styleUrl: './green.component.scss',
-    standalone: true,
 	imports: [CommonModule],
 })
 export class GreenComponent {}</code></pre>
@@ -110,7 +106,6 @@ export class GreenComponent {}</code></pre>
     selector: 'app-green',
     templateUrl: './green.component.html',
     styleUrl: './green.component.scss',
-    standalone: true,
 	imports: [RedComponent],
 })
 export class GreenComponent {}</code></pre>
@@ -119,7 +114,6 @@ export class GreenComponent {}</code></pre>
     selector: 'app-red',
     templateUrl: './red.component.html',
     styleUrl: './red.component.scss',
-    standalone: true,
 	imports: [CommonModule],
 })
 export class RedComponent {}</code></pre>
@@ -154,7 +148,6 @@ export class AppModule {}</code></pre>
     selector: 'app-green',
     templateUrl: './green.component.html',
     styleUrl: './green.component.scss',
-    standalone: true,
 	imports: [NgClass], // импорт только необходимого функционала
 })
 export class GreenComponent {}</code></pre>

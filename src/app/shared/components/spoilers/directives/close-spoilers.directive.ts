@@ -3,7 +3,6 @@ import { MatExpansionPanel } from '@angular/material/expansion';
 
 @Directive({
     selector: '[appCloseSpoilers]',
-    standalone: true,
 })
 export class CloseSpoilersDirective {
     @Input('appCloseSpoilers') spoilerProps: { spoiler: MatExpansionPanel; selected: boolean };
