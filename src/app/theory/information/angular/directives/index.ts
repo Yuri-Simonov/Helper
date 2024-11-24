@@ -12,6 +12,7 @@ import { NG_STYLE } from './information/ng-style';
 import { CREATING_CUSTOM_ATTRIBUTE_DIRECTIVES } from './information/creating-custom-attribute-directives';
 import { DIFFERENCE_BETWEEN_DIRECTIVE_AND_COMPONENT } from './information/difference-between-directive-and-component';
 import { DIFFERENCES_BETWEEN_DIRECTIVE_AND_COMPONENT_LIFECYCLE } from './information/differences-between-directive-and-component-lifecycle';
+import { LET } from './information/let';
 
 export const directivesInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -28,6 +29,7 @@ export const directivesInfo: IInfo[] = [
     NG_STYLE,
     CREATING_CUSTOM_ATTRIBUTE_DIRECTIVES,
     { chapter: 'Прочее' },
+    LET,
     DIFFERENCE_BETWEEN_DIRECTIVE_AND_COMPONENT,
     DIFFERENCES_BETWEEN_DIRECTIVE_AND_COMPONENT_LIFECYCLE,
 ];
