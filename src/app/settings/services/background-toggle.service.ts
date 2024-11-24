@@ -13,6 +13,7 @@ export class BackgroundToggleService {
     backgrounds: IBackground[] = [
         { name: 'По умолчанию', code: 'default' },
         { name: 'Новогодний', code: 'new-year' },
+        { name: 'Волновой', code: 'wave' },
     ];
     currentBackground: IBackground = this.backgrounds[0];
 
