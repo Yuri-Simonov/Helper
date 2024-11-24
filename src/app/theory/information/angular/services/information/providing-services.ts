@@ -46,7 +46,6 @@ export class DataService {}</code></pre>
             </p>
             <pre><code class="language-typescript">@Component({
     selector: 'app-root',
-    standalone: true,
     templateUrl: './app.component.html',
 	providers: [DataService],
 })

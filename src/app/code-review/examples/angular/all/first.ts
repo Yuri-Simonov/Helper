@@ -9,7 +9,6 @@ import { Observable, interval } from 'rxjs';
 @Component({
     selector: 'app-root',
     template: '&lt;div id="data-container">{{ getData() }}&lt;/div>',
-    standalone: true,
 })
 export class AppComponent implements OnInit {
     title = 'Плохой код';
@@ -56,7 +55,6 @@ export class AppComponent implements OnInit {
             <pre><code class="language-typescript">@Component({
     selector: 'app-root',
     template: '&lt;div id="data-container">{{ getData() }}&lt;/div>',
-    standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })</code></pre>
             <p>
@@ -84,7 +82,6 @@ export class AppComponent implements OnInit {
             <pre><code class="language-typescript">@Component({
     selector: 'app-root',
     template: '&lt;div id="data-container">{{ data$ | async }}&lt;/div>',
-    standalone: true,
 })</code></pre>
             <p>
                 Т.к. функция <code>fetch</code> в методе <code>getData</code> делает запрос на сервер, следовательно, данные мы получаем асинхронно. В
@@ -227,7 +224,6 @@ import { IData } from './interfaces/data.interface';
 @Component({
     selector: 'app-root',
     template: '&lt;div>{{ data$ | async | json }}&lt;/div>',
-    standalone: true,
     imports: [AsyncPipe, JsonPipe],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
