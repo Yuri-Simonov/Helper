@@ -8,6 +8,7 @@ import { REQUEST_DATA } from './information/request-data';
 import { PLACE_FOR_REQUESTS } from './information/place-for-requests';
 import { INJECTOR } from './information/injector';
 import { HIERARCHICAL_INJECTORS } from './information/hierarchical-injectors';
+import { PROVIDERS_METHODS } from './information/providers-methods';
 
 export const servicesInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -20,6 +21,7 @@ export const servicesInfo: IInfo[] = [
     HIERARCHICAL_INJECTORS,
     { chapter: 'Регистрация зависимостей' },
     PROVIDING_SERVICES,
+    PROVIDERS_METHODS,
     { chapter: 'Прочее' },
     PLACE_FOR_REQUESTS,
 ];
