@@ -6,7 +6,7 @@
         @for (item of listProps; track item.path) {
             @if (item.path === currentPath) {
                 @for (info of item.info; track info.title || info.chapter) {
-                    @if (info.title && info.body) {
+                    @if (info.title) {
                         <app-spoiler [info]="info"></app-spoiler>
                     } @else {
                         <h2 [innerHTML]="info.chapter"></h2>

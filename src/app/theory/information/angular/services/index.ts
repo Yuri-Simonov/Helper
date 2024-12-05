@@ -9,6 +9,12 @@ import { PLACE_FOR_REQUESTS } from './information/place-for-requests';
 import { INJECTOR } from './information/injector';
 import { HIERARCHICAL_INJECTORS } from './information/hierarchical-injectors';
 import { PROVIDERS_METHODS } from './information/providers-methods';
+import { USE_CLASS } from './information/use-class';
+import { USE_VALUE } from './information/use-value';
+import { USE_FACTORY } from './information/use-factory';
+import { USE_EXISTING } from './information/use-existing';
+import { INJECTION_TOKEN } from './information/injection-token';
+import { DECORATOR_INJECT } from './information/decorator-inject';
 
 export const servicesInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -22,6 +28,12 @@ export const servicesInfo: IInfo[] = [
     { chapter: 'Регистрация зависимостей' },
     PROVIDING_SERVICES,
     PROVIDERS_METHODS,
+    USE_CLASS,
+    USE_VALUE,
+    USE_FACTORY,
+    USE_EXISTING,
+    INJECTION_TOKEN,
+    DECORATOR_INJECT,
     { chapter: 'Прочее' },
     PLACE_FOR_REQUESTS,
 ];
