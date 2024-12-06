@@ -9,9 +9,10 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 
-import { IInfo, IUpdates } from '../../../interfaces';
+import { IInfo } from '../../../interfaces';
 
-import { UPDATES } from '../../../data/updates';
+import { UPDATES } from './data/updates';
+import { IUpdates } from './interfaces/updates.interface';
 
 const materialModules = [MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle, MatButtonModule];
 

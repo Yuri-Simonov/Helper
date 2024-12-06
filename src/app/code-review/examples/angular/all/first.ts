@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const FIRST_EXAMPLE: IInfo = {
-    title: '1-ый пример',
+    title: 'Компонент',
     body: `<p>Посмотрите на код ниже и попробуйте найти участки кода, которые требуют доработки.</p>
 	<pre><code class="language-typescript">import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable, interval } from 'rxjs';

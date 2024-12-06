@@ -4,7 +4,7 @@ export interface IUpdates {
     changes: IChanges[];
 }
 
-export interface IChanges {
+interface IChanges {
     chapterTitle?: string;
     added?: string[];
     updated?: string[];

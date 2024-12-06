@@ -14,6 +14,7 @@ export class BackgroundToggleService {
         { name: 'По умолчанию', code: 'default' },
         { name: 'Новогодний', code: 'new-year' },
         { name: 'Волновой', code: 'wave' },
+        { name: 'Без изображения', code: 'none' },
     ];
     currentBackground: IBackground = this.backgrounds[0];
 
@@ -40,6 +41,9 @@ export class BackgroundToggleService {
     }
 
     setBackgroundStyle(code: string) {
+        if (code === 'none') {
+            return (this.body!.style.backgroundImage = 'linear-gradient(var(--primary-color), var(--secondary-color))');
+        }
         return (this.body!.style.backgroundImage = `url("../assets/img/common/${code}-background.png"), linear-gradient(var(--primary-color), var(--secondary-color))`);
     }
 }

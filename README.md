@@ -22,24 +22,28 @@
 
 Теоретические материалы по:
 
--   [JavaScript](https://yuri-simonov.github.io/Helper/theory/javascript);
--   [Angular](https://yuri-simonov.github.io/Helper/theory/angular);
--   [Git](https://yuri-simonov.github.io/Helper/git/theory/all).
--   [Разное](https://yuri-simonov.github.io/Helper/git/theory/others).
+-   [JavaScript](https://yuri-simonov.github.io/Helper/theory/javascript)
+-   [Angular](https://yuri-simonov.github.io/Helper/theory/angular)
+-   [Git](https://yuri-simonov.github.io/Helper/git/theory/all)
+-   [Разное](https://yuri-simonov.github.io/Helper/git/theory/others)
 
 Задачи по:
 
--   [JavaScript](https://yuri-simonov.github.io/Helper/tasks/javascript).
+-   [JavaScript](https://yuri-simonov.github.io/Helper/tasks/javascript)
 
 Видеокурс по:
 
--   [Angular](https://www.youtube.com/playlist?list=PL2bJ6t_D6_KSSiM2Y8T32-5KgaNzzS4R6).
+-   [Angular](https://www.youtube.com/playlist?list=PL2bJ6t_D6_KSSiM2Y8T32-5KgaNzzS4R6)
 
 Прохождение тестов по:
 
--   [Angular](https://yuri-simonov.github.io/Helper/quizzes/angular).
--   [JavaScript](https://yuri-simonov.github.io/Helper/quizzes/javascript).
+-   [Angular](https://yuri-simonov.github.io/Helper/quizzes/angular)
+-   [JavaScript](https://yuri-simonov.github.io/Helper/quizzes/javascript)
+
+Код-ревью:
+
+-   [Angular](https://yuri-simonov.github.io/Helper/code-review/angular)
 
 Разное:
 
--   [HR](https://yuri-simonov.github.io/Helper/others/hr).
+-   [HR](https://yuri-simonov.github.io/Helper/others/hr)
