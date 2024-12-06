@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { LocalStorageService } from './local-storage.service';
+import { LocalStorageService } from '../../../../services/local-storage.service';
 
 import { getUpdatesIds } from '../data/updates';
 

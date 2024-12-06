@@ -9,7 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
 
 import { SidebarService } from '../../services/sidebar.service';
-import { UpdatesService } from '../../services/updates.service';
+import { UpdatesService } from '../dialogs/dialog-updates/services/updates.service';
 
 import { INavigation } from '../../interfaces';
 
@@ -25,7 +25,7 @@ const materialModules = [MatButtonModule, MatIconModule, MatMenuModule, MatToolb
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [materialModules, NgClass, RouterLink, NgTemplateOutlet]
+    imports: [materialModules, NgClass, RouterLink, NgTemplateOutlet],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
     onDestroy$ = new ReplaySubject<number>(1);
