@@ -15,6 +15,7 @@ import { USE_FACTORY } from './information/use-factory';
 import { USE_EXISTING } from './information/use-existing';
 import { INJECTION_TOKEN } from './information/injection-token';
 import { DECORATOR_INJECT } from './information/decorator-inject';
+import { FUNCTION_INJECT } from './information/function-inject';
 
 export const servicesInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -34,6 +35,7 @@ export const servicesInfo: IInfo[] = [
     USE_EXISTING,
     INJECTION_TOKEN,
     DECORATOR_INJECT,
+    FUNCTION_INJECT,
     { chapter: 'Прочее' },
     PLACE_FOR_REQUESTS,
 ];

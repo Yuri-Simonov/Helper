@@ -1,14 +1,14 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
-export const USE_EXISTING: IInfo = {
-    title: '<span class="variable">useExisting</span>',
+export const FUNCTION_INJECT: IInfo = {
+    title: 'Функция <span class="variable">inject</span>',
     body: ``,
     selected: false,
     lastUpdate: '06.12.2024',
     disabled: true,
     footerLinks: [
         {
-            path: 'https://youtu.be/imUcdrYFTxs?t=561',
+            path: '',
         },
     ],
 };

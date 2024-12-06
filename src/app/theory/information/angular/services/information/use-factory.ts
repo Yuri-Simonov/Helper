@@ -5,6 +5,7 @@ export const USE_FACTORY: IInfo = {
     body: ``,
     selected: false,
     lastUpdate: '05.12.2024',
+    disabled: true,
     footerLinks: [
         {
             path: 'https://youtu.be/imUcdrYFTxs?t=713',
