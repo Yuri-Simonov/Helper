@@ -44,6 +44,6 @@ export class BackgroundToggleService {
         if (code === 'none') {
             return (this.body!.style.backgroundImage = 'linear-gradient(var(--primary-color), var(--secondary-color))');
         }
-        return (this.body!.style.backgroundImage = `url("../assets/img/common/${code}-background.png"), linear-gradient(var(--primary-color), var(--secondary-color))`);
+        return (this.body!.style.backgroundImage = `url("assets/img/common/${code}-background.png"), linear-gradient(var(--primary-color), var(--secondary-color))`);
     }
 }
