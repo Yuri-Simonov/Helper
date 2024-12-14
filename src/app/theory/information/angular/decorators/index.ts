@@ -15,7 +15,6 @@ import { CONTENT_CHILDREN } from './information/content-children';
 import { AVAILABILITY_CONTENT_CHILD_AND_CONTENT_CHILDREN } from './information/availability-content-child-and-content-children';
 import { READ_CONTENT_CHILD_AND_CONTENT_CHILDREN } from './information/read-content-child-and-content-children';
 import { DESCENDANTS_CONTENT_CHILD_AND_CONTENT_CHILDREN } from './information/descendants-content-child-and-content-children';
-import { INJECTABLE } from './information/injectable';
 import { SELF } from './information/self';
 import { SKIP_SELF } from './information/skip-self';
 import { OPTIONAL } from './information/optional';
@@ -54,14 +53,14 @@ export const decoratorsInfo: IInfo[] = [
     READ_CONTENT_CHILD_AND_CONTENT_CHILDREN,
     DESCENDANTS_CONTENT_CHILD_AND_CONTENT_CHILDREN,
     { chapter: 'Декораторы <span class="variable">dependency injection</span> (DI)' },
-    INJECTABLE,
     SELF,
     SKIP_SELF,
     OPTIONAL,
     HOST,
-    { chapter: 'Прочее' },
-    BOOTSTRAP_IN_NG_MODULE,
+    { chapter: 'Свойства декоратора <span class="variable">@Directive()</span>' },
     HOST_PROPERTY,
     EXPORT_AS,
+    { chapter: 'Прочее' },
     ATTRIBUTE,
+    BOOTSTRAP_IN_NG_MODULE,
 ];
