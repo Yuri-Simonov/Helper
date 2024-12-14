@@ -3,49 +3,54 @@ import { IInfo } from 'src/app/shared/interfaces';
 export const SKIP_SELF: IInfo = {
     title: 'Декоратор <span class="variable">@SkipSelf()</span>',
     body: `<p>
-            Сервисы могут быть определены на трех уровнях и, когда компонент
-            запрашивает сервис, то
-            <span class="attention">
-                поиск начинается с нижних уровней и затем вверх по
-                иерархии</span
-            >:
-        </p>
-        <ul>
-            <li>
-                <span class="attention">Уровень компонента</span> - сначала
-                Angular будет искать вызываемый сервис здесь;
-            </li>
-            <li>
-                <span class="attention">Уровень модуля</span> - потом в
-                родительском модуле, если не найдет в компоненте;
-            </li>
-            <li>
-                <span class="attention">Уровень приложения</span> - и если все
-                еще не нашел, то будет осуществляться поиск в корневом модуле.
-                Если и здесь не найдется определение сервиса, то будет
-                сгенерирована ошибка.
-            </li>
-        </ul>
-        <p>
-            Допустим, вы определили сервис на уровне компонента и на уровне всего приложения. И вам нужен
-            последний. В этом случае
-            вам и поможет декоратор <code>@SkipSelf()</code>, который <span class="attention">исключает поиск сервиса на том уровне, где он указан</span>, то есть, в нашем случае на уровне компонента.
-        </p>
-        <pre><code class="language-typescript">@Component({
+                <span class="attention"
+                    >Декоратор <code>@SkipSelf()</code> сообщает Angular, что зависимость нужно искать начиная с
+                    родителя и выше, а текущий инжектор игнорировать.</span
+                >
+            </p>
+            <p>
+                Допустим у нас есть сервис <code>SomeService</code>, который самостоятельно нигде не регистрируется,
+                т.е., его декоратор <code>@Injectable()</code> пуст:
+            </p>
+            <pre><code class="language-typescript">@Injectable()
+export class SomeService {}</code></pre>
+            <p>И есть компонент, в котором есть регистрация запрашиваемой зависимости:</p>
+            <pre><code class="language-typescript">@Component({
 	selector: 'app-some-component',
 	templateUrl: './some.component.html',
-	providers: [SomeService], // добавление сервиса на уровне компонента
+	// есть регистрация запрашиваемой зависимости
+	providers: [SomeService],
 })
 
 export class SomeComponent {
 	constructor(@SkipSelf() private someService: SomeService) {}
 }</code></pre>
-        <p>
-            Исходя из вышесказанного, можно сделать следующий трюк: если указать
-            два одинаковых сервиса в одном компоненте, но перед одним из них
-            поставить <code>@SkipSelf()</code>, то удастся получить доступ к
-            локальному и глобальному экземплярам одновременно.
-        </p>`,
+            <p>
+                Т.к. декоратор <code>@SkipSelf()</code> сообщает Angular, что зависимость не нужно искать в текущем
+                инжекторе, следовательно, ее регистрация в поле <code>providers</code> будет проигнорирована. И т.к.
+                выше больше нигде нет регистрации запрашиваемой зависимости, то будет сгенерирована ошибка в
+                <code>NullInjector</code>.
+            </p>
+            <p>
+                Обработать эту ошибку можно при помощи декоратора <code>@Optional()</code>, т.к.
+                <span class="attention">Angular позволяет комбинировать декораторы</span> <code>DI</code>:
+            </p>
+
+            <pre><code class="language-typescript">@Component({
+	selector: 'app-some-component',
+	templateUrl: './some.component.html',
+})
+
+export class SomeComponent {
+	// ошибки не будет благодаря декоратору @Optional()
+	constructor(@SkipSelf() @Optional() private someService: SomeService) {}
+}</code></pre>
+            <p><span class="attention">Порядок расположения декораторов не имеет значения</span>.</p>`,
     selected: false,
-    lastUpdate: '23.09.2023',
+    lastUpdate: '14.12.2024',
+    footerLinks: [
+        {
+            path: 'https://youtu.be/y9kMzhq2ERM?t=170',
+        },
+    ],
 };
