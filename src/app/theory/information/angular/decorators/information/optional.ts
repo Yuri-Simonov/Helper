@@ -3,35 +3,32 @@ import { IInfo } from 'src/app/shared/interfaces';
 export const OPTIONAL: IInfo = {
     title: 'Декоратор <span class="variable">@Optional()</span>',
     body: `<p>
-            Сервисы могут быть определены на трех уровнях и, когда компонент
-            запрашивает сервис, то
-            <span class="attention">
-                поиск начинается с нижних уровней и затем вверх по
-                иерархии</span
-            >:
-        </p>
-        <ul>
-            <li>
-                <span class="attention">Уровень компонента</span> - сначала
-                Angular будет искать вызываемый сервис здесь;
-            </li>
-            <li>
-                <span class="attention">Уровень модуля</span> - потом в
-                родительском модуле, если не найдет в компоненте;
-            </li>
-            <li>
-                <span class="attention">Уровень приложения</span> - и если все
-                еще не нашел, то будет осуществляться поиск в корневом модуле.
-                Если и здесь не найдется определение сервиса, то
-                <span class="attention"> будет сгенерирована ошибка </span>.
-            </li>
-        </ul>
-        <p>
-            С помощью декоратора <span class="attention"><code>@Optional()</code> мы можем обработать
-            эту ошибку. В переменную, которая должна была стать экземпляром
-            сервиса, просто запишется <code>null</code></span>.
-        </p>
-		<pre><code class="language-typescript">@Component({
+                <span class="attention"
+                    >Декоратор <code>@Optional()</code> позволяет сделать внедряемую зависимость опциональной</span
+                >.
+            </p>
+            <p>
+                При классическом внедрении зависимости, если сервис не будет найден, <code>NullInjector</code> выдаст
+                ошибку, сообщающую, что нет провайдера для запрашиваемой зависимости.
+            </p>
+            <p>
+                <span class="attention">
+                    Если указать у внедряемой зависимости декоратор <code>@Optional()</code>, то в таком случае вместо
+                    ошибки мы получим <code>null</code> в свойстве, через которое хотим получить доступ к внедряемой
+                    зависимости</span
+                >.
+            </p>
+            <p>
+                Допустим у нас есть сервис <code>SomeService</code>, который самостоятельно нигде не регистрируется,
+                т.е., его декоратор <code>@Injectable()</code> пуст:
+            </p>
+            <pre><code class="language-typescript">@Injectable()
+export class SomeService {}</code></pre>
+            <p>
+                В таком случае, когда в компоненте будет запрашиваться зависимость на данный сервис и при этом он все
+                также нигде не зарегистрирован, в свойство <code>someService</code> будет записан <code>null</code>.
+            </p>
+            <pre><code class="language-typescript">@Component({
 	selector: 'app-some-component',
 	templateUrl: './some.component.html',
 	providers: [SomeService], // добавление сервиса на уровне компонента
@@ -41,5 +38,10 @@ export class SomeComponent {
 	constructor(@Optional() private someService: SomeService) {}
 }</code></pre>`,
     selected: false,
-    lastUpdate: '03.02.2024',
+    lastUpdate: '14.12.2024',
+    footerLinks: [
+        {
+            path: 'https://youtu.be/y9kMzhq2ERM?t=14',
+        },
+    ],
 };

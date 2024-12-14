@@ -3,46 +3,54 @@ import { IInfo } from 'src/app/shared/interfaces';
 export const SELF: IInfo = {
     title: 'Декоратор <span class="variable">@Self()</span>',
     body: `<p>
-		Сервисы могут быть определены на трех уровнях и, когда компонент
-		запрашивает сервис, то
-		<span class="attention">
-			поиск начинается с нижних уровней и затем вверх по
-			иерархии</span
-		>:
-	</p>
-	<ul>
-		<li>
-			<span class="attention">Уровень компонента</span> - сначала
-			Angular будет искать вызываемый сервис здесь;
-		</li>
-		<li>
-			<span class="attention">Уровень модуля</span> - потом в
-			родительском модуле, если не найдет в компоненте;
-		</li>
-		<li>
-			<span class="attention">Уровень приложения</span> - и если
-			все еще не нашел, то будет осуществляться поиск в корневом
-			модуле. Если и здесь не найдется определение сервиса, то
-			будет сгенерирована ошибка.
-		</li>
-	</ul>
-	<p>
-		<span class="attention">
-			Декоратор <code>@Self()</code> сообщит <code>DI</code>, что поиск
-			нужно осуществлять только лишь в провайдере текущего компонента</span>.
-		Но также стоит учитывать тот факт, что <span class="attention">
-			если <code>DI</code> не
-			найдет сервис в текущем компоненте, будет сгенерирована ошибка</span>.
-	</p>
-	<pre><code class="language-typescript">@Component({
+                <span class="attention"
+                    >Декоратор <code>@Self()</code> сообщает Angular, что зависимость нужно искать только в том
+                    инжекторе, где она запрашивается. Все родительские инжекторы будут игнорироваться</span
+                >. Если регистрация запрашиваемой зависимости не будет найдена в текущем инжекторе, то будет
+                сгенерирована ошибка в <code>NullInjector</code>.
+            </p>
+            <p>
+                Допустим у нас есть сервис <code>SomeService</code>, который самостоятельно нигде не регистрируется,
+                т.е., его декоратор <code>@Injectable()</code> пуст:
+            </p>
+            <pre><code class="language-typescript">@Injectable()
+export class SomeService {}</code></pre>
+            <p>И есть компонент, в котором есть регистрация запрашиваемой зависимости:</p>
+            <pre><code class="language-typescript">@Component({
 	selector: 'app-some-component',
 	templateUrl: './some.component.html',
-	providers: [SomeService], // добавление сервиса на уровне компонента
+	// регистрация запрашиваемой зависимости
+	providers: [SomeService],
 })
 
 export class SomeComponent {
 	constructor(@Self() private someService: SomeService) {}
-}</code></pre>`,
+}</code></pre>
+            <p>
+                В таком случае все будет работать корректно, т.к. запрошенная зависимость будет найдена в текущем
+                инжекторе.
+            </p>
+            <p>
+                В примере выше, если убрать регистрацию сервиса <code>SomeService</code> в поле <code>providers</code>,
+                то будет сгенерирована ошибка. Ее можно обработать при помощи декоратора <code>@Optional()</code>, т.к.
+                <span class="attention">Angular позволяет комбинировать декораторы</span> <code>DI</code>:
+            </p>
+            <pre><code class="language-typescript">@Component({
+	selector: 'app-some-component',
+	templateUrl: './some.component.html',
+	// нет регистрации запрашиваемой зависимости
+})
+
+export class SomeComponent {
+	// ошибки не будет благодаря декоратору @Optional()
+	constructor(@Self() @Optional() private someService: SomeService) {}
+}</code></pre>
+            <p>Также учтите, что <span class="attention">порядок расположения данных декораторов не имеет значения</span>.</p>`,
     selected: false,
-    lastUpdate: '23.09.2023',
+    lastUpdate: '14.12.2024',
+    footerLinks: [
+        {
+            path: 'https://youtu.be/y9kMzhq2ERM?t=108',
+        },
+    ],
 };
