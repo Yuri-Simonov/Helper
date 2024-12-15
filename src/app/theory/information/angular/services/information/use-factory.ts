@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const USE_FACTORY: IInfo = {
-    title: '<span class="variable">useFactory</span>',
+    title: 'Способ <span class="variable">useFactory</span>',
     body: `<p>
                 <span class="attention"
                     >Способ <code>useFactory</code> используется, когда в качестве зависимости регистрируется

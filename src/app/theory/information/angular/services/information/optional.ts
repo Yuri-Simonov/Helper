@@ -2,6 +2,7 @@ import { IInfo } from 'src/app/shared/interfaces';
 
 export const OPTIONAL: IInfo = {
     title: 'Декоратор <span class="variable">@Optional()</span>',
+    // id: 'optional',
     body: `<p>
                 <span class="attention"
                     >Декоратор <code>@Optional()</code> позволяет сделать внедряемую зависимость опциональной</span

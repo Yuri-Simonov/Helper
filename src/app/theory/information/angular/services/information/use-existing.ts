@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const USE_EXISTING: IInfo = {
-    title: '<span class="variable">useExisting</span>',
+    title: 'Способ <span class="variable">useExisting</span>',
     body: `<p>
                 Способ <code>useExisting</code> в основном используется, когда
                 <span class="attention"
