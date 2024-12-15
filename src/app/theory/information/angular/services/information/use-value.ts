@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const USE_VALUE: IInfo = {
-    title: '<span class="variable">useValue</span>',
+    title: 'Способ <span class="variable">useValue</span>',
     body: `<p>
                 <span class="attention"
                     >Способ <code>useValue</code> позволяет указать фиксированное значение для регистрируемой

@@ -17,6 +17,10 @@ import { INJECTION_TOKEN } from './information/injection-token';
 import { DECORATOR_INJECT } from './information/decorator-inject';
 import { FUNCTION_INJECT } from './information/function-inject';
 import { MULTI } from './information/multi';
+import { HOST } from './information/host';
+import { OPTIONAL } from './information/optional';
+import { SELF } from './information/self';
+import { SKIP_SELF } from './information/skip-self';
 
 export const servicesInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -27,6 +31,10 @@ export const servicesInfo: IInfo[] = [
     SERVICE_IMPLEMENTATION,
     INJECTOR,
     HIERARCHICAL_INJECTORS,
+    OPTIONAL,
+    SELF,
+    SKIP_SELF,
+    HOST,
     { chapter: 'Регистрация зависимостей' },
     PROVIDING_SERVICES,
     PROVIDERS_METHODS,

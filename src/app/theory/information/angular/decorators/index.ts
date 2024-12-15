@@ -15,14 +15,11 @@ import { CONTENT_CHILDREN } from './information/content-children';
 import { AVAILABILITY_CONTENT_CHILD_AND_CONTENT_CHILDREN } from './information/availability-content-child-and-content-children';
 import { READ_CONTENT_CHILD_AND_CONTENT_CHILDREN } from './information/read-content-child-and-content-children';
 import { DESCENDANTS_CONTENT_CHILD_AND_CONTENT_CHILDREN } from './information/descendants-content-child-and-content-children';
-import { SELF } from './information/self';
-import { SKIP_SELF } from './information/skip-self';
-import { OPTIONAL } from './information/optional';
-import { HOST } from './information/host';
 import { BOOTSTRAP_IN_NG_MODULE } from './information/bootstrap-in-ng-module';
 import { EXPORT_AS } from './information/export-as';
 import { ATTRIBUTE } from './information/attribute';
 import { HOST_PROPERTY } from './information/host-property';
+import { DI_DECORATORS } from './information/di-decorators';
 
 export const decoratorsInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -53,10 +50,7 @@ export const decoratorsInfo: IInfo[] = [
     READ_CONTENT_CHILD_AND_CONTENT_CHILDREN,
     DESCENDANTS_CONTENT_CHILD_AND_CONTENT_CHILDREN,
     { chapter: 'Декораторы <span class="variable">Dependency Injection</span>' },
-    OPTIONAL,
-    SELF,
-    SKIP_SELF,
-    HOST,
+    DI_DECORATORS,
     { chapter: 'Свойства декоратора <span class="variable">@Directive()</span>' },
     HOST_PROPERTY,
     EXPORT_AS,

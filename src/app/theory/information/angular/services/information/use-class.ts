@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const USE_CLASS: IInfo = {
-    title: '<span class="variable">useClass</span>',
+    title: 'Способ <span class="variable">useClass</span>',
     body: `<p>
                 <span class="attention"
                     >Способ <code>useClass</code> позволяет регистрировать экземпляры классов в качестве
