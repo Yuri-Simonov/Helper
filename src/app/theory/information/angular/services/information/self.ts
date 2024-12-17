@@ -1,6 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const SELF: IInfo = {
+    id: 'self',
     title: 'Декоратор <span class="variable">@Self()</span>',
     body: `<p>
                 <span class="attention"

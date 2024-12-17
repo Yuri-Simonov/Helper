@@ -1,6 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const HOST: IInfo = {
+    id: 'host',
     title: 'Декоратор <span class="variable">@Host()</span>',
     body: `<p>
                 <span class="attention"

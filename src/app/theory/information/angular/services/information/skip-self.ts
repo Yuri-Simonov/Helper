@@ -1,6 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const SKIP_SELF: IInfo = {
+    id: 'skipSelf',
     title: 'Декоратор <span class="variable">@SkipSelf()</span>',
     body: `<p>
                 <span class="attention"
