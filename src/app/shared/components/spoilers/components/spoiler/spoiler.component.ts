@@ -56,8 +56,11 @@ export class SpoilerComponent {
             .rxjsOperatorsInfo;
         const decoratorsInfo = (await import('../../../../../theory/information/angular/decorators/index'))
             .decoratorsInfo;
+        const servicesInfo = (await import('../../../../../theory/information/angular/services/index')).servicesInfo;
+        const changeDetectionInfo = (await import('../../../../../theory/information/angular/change-detection/index'))
+            .changeDetectionInfo;
 
-        const importedInfo = [...rxjsOperatorsInfo, ...decoratorsInfo];
+        const importedInfo = [...rxjsOperatorsInfo, ...decoratorsInfo, ...servicesInfo, ...changeDetectionInfo];
 
         importedInfo.forEach((item) => {
             if (item?.id === id) {
