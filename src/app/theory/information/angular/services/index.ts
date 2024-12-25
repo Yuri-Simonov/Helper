@@ -21,6 +21,7 @@ import { HOST } from './information/host';
 import { OPTIONAL } from './information/optional';
 import { SELF } from './information/self';
 import { SKIP_SELF } from './information/skip-self';
+import { VIEW_PROVIDERS } from './information/view-providers';
 
 export const servicesInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -46,6 +47,7 @@ export const servicesInfo: IInfo[] = [
     DECORATOR_INJECT,
     MULTI,
     FUNCTION_INJECT,
+    VIEW_PROVIDERS,
     { chapter: 'Прочее' },
     PLACE_FOR_REQUESTS,
 ];
