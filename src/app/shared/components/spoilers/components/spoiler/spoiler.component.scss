@@ -29,6 +29,14 @@
             }
         }
 
+        &__task-explanation {
+            margin-top: 1rem;
+
+            @media (max-width: 440px), (max-height: 440px) {
+                margin-top: 0.6rem;
+            }
+        }
+
         & ::ng-deep {
             .mat-expansion-panel {
                 color: var(--text-color);

@@ -15,5 +15,17 @@
                 background: var(--black-inner-spoiler);
             }
         }
+
+        .mat-accordion {
+            display: block;
+        }
+
+        .mat-accordion + .mat-accordion {
+            margin-top: 0.6rem;
+
+            @media (max-width: 440px), (max-height: 440px) {
+                margin-top: 0.4rem;
+            }
+        }
     }
 }
