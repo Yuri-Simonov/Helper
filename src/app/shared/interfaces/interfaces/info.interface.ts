@@ -12,7 +12,8 @@ export interface IInfo {
      */
     footerText?: [string, string];
     chapter?: string; // Названия подразделов
-    tasks?: ITasks[];
+    tasks?: ITask[];
+    taskExplanation?: string;
 }
 
 export interface IFooterLinks {
@@ -20,7 +21,7 @@ export interface IFooterLinks {
     path?: string;
 }
 
-export interface ITasks {
+export interface ITask {
     id?: string;
     title?: string;
     body?: string;

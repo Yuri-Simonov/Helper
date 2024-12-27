@@ -3,7 +3,7 @@ import { NgClass } from '@angular/common';
 import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansion';
 import { HighlightJsDirective } from 'ngx-highlight-js';
 
-import { ITasks } from '../../../../interfaces';
+import { ITask } from '../../../../interfaces';
 
 import { PipeSanitizer } from '../../../../pipes/pipe-sanitizer.pipe';
 
@@ -15,10 +15,10 @@ const materialModules = [MatExpansionModule];
     selector: 'app-tasks',
     imports: [materialModules, PipeSanitizer, HighlightJsDirective, NgClass, CloseSpoilersDirective],
     templateUrl: './tasks.component.html',
-    styleUrl: './tasks.component.scss'
+    styleUrl: './tasks.component.scss',
 })
 export class TasksComponent {
-    @Input('tasks') tasksProps: ITasks[] = [];
+    @Input('tasks') tasksProps: ITask[] = [];
 
     @ViewChild(MatExpansionPanel) matExpansionPanel: MatExpansionPanel;
 }
