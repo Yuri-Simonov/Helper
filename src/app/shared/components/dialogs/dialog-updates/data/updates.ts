@@ -18,6 +18,10 @@ export const UPDATES: IUpdates[] = [
                 chapterTitle: 'Теория',
                 added: ['В раздел "Сервисы" добавлена информация по свойству viewProviders (Angular)'],
             },
+            {
+                chapterTitle: 'Задачи',
+                added: ['3 новые задачи из собеседований (JavaScript)'],
+            },
         ],
     },
     {
