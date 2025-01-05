@@ -15,6 +15,10 @@ export const UPDATES: IUpdates[] = [
         title: 'Обновление от 25.12.2024',
         changes: [
             {
+                chapterTitle: 'Общее',
+                updated: ['Кнопка "Курсы" теперь дает выбор платформы, куда будет выполнен переход'],
+            },
+            {
                 chapterTitle: 'Теория',
                 added: ['В раздел "Сервисы" добавлена информация по свойству viewProviders (Angular)'],
             },

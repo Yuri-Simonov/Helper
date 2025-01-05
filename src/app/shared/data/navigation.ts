@@ -1,4 +1,4 @@
-import { INavigation } from '../interfaces';
+import { INavigation, LinkType } from '../interfaces';
 
 /**
  * Навигация по проекту.
@@ -26,10 +26,17 @@ export const NAVIGATION: INavigation[] = [
         id: 'courses',
         path: '',
         name: 'Курсы',
+        linkType: LinkType.MENU,
+        menuName: 'Angular',
         links: [
             {
                 path: 'https://www.youtube.com/playlist?list=PL2bJ6t_D6_KSSiM2Y8T32-5KgaNzzS4R6',
-                name: 'Angular',
+                name: 'Youtube',
+                sideLink: true,
+            },
+            {
+                path: 'https://rutube.ru/plst/308623/',
+                name: 'Rutube',
                 sideLink: true,
             },
         ],

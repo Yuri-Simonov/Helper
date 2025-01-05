@@ -4,7 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
-import { NgClass } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { MatMenuModule } from '@angular/material/menu';
 
 const routes: Routes = [
     {
@@ -14,10 +15,10 @@ const routes: Routes = [
     },
 ];
 
-const materialModules = [MatButtonModule];
+const materialModules = [MatButtonModule, MatMenuModule];
 
 @NgModule({
     declarations: [HomeComponent],
-    imports: [RouterModule.forChild(routes), FooterComponent, materialModules, NgClass],
+    imports: [RouterModule.forChild(routes), FooterComponent, materialModules, NgClass, NgTemplateOutlet],
 })
 export class HomeModule {}

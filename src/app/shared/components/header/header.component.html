@@ -85,7 +85,7 @@
 </mat-menu>
 
 <mat-menu #course="matMenu">
-    <ng-container *ngTemplateOutlet="matMenuContent; context: { items: chapters, index: 2 }"></ng-container>
+    <ng-container *ngTemplateOutlet="matMenuContent; context: { items: chapters, index: 2, menu: true }"></ng-container>
 </mat-menu>
 
 <mat-menu #tests="matMenu">
@@ -100,7 +100,7 @@
     <ng-container *ngTemplateOutlet="matMenuContent; context: { items: chapters, index: 5 }"></ng-container>
 </mat-menu>
 
-<ng-template #matMenuContent let-items="items" let-index="index">
+<ng-template #matMenuContent let-items="items" let-index="index" let-menu="menu">
     @for (item of items[index].links; track item.path) {
         @if (item.sideLink) {
             <a
@@ -110,7 +110,7 @@
                 [ngClass]="{ disabled: items[index].links[$index].disabled }"
                 target="_blank"
             >
-                {{ item.name }}
+                {{ menu ? items[index].menuName + " (" + item.name + ")" : item.name }}
             </a>
         } @else {
             <a
@@ -121,7 +121,7 @@
                 [ngClass]="{ disabled: items[index].links[$index].disabled }"
                 [target]="items[index].links[$index]?.targetBlank ? '_blank' : undefined"
             >
-                {{ item.name }}
+                {{ menu ? items[index].menuName + " (" + item.name + ")" : item.name }}
             </a>
         }
     }
