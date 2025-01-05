@@ -5,6 +5,8 @@ export interface INavigation {
     links: INavigationLink[];
     sideLink?: boolean;
     targetBlank?: boolean;
+    linkType?: LinkType;
+    menuName?: string;
 }
 
 interface INavigationLink {
@@ -13,4 +15,9 @@ interface INavigationLink {
     disabled?: boolean;
     sideLink?: boolean;
     targetBlank?: boolean;
+}
+
+export const enum LinkType {
+    DEFAULT = 'default',
+    MENU = 'menu',
 }
