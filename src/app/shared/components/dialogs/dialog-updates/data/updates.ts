@@ -24,7 +24,7 @@ export const UPDATES: IUpdates[] = [
             },
             {
                 chapterTitle: 'Задачи',
-                added: ['3 новые задачи из собеседований (JavaScript)'],
+                added: ['4 новые задачи из собеседований (JavaScript)'],
             },
         ],
     },
