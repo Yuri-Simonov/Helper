@@ -1,10 +1,17 @@
 import { Routes } from '@angular/router';
 
 import { JavascriptComponent } from './pages/javascript/javascript.component';
+import { TasksComponent } from './tasks.component';
 
-export const tasksModuleRoutes: Routes = [
+export const tasksRoutes: Routes = [
     {
-        path: 'tasks/javascript',
-        component: JavascriptComponent,
+        path: 'tasks',
+        component: TasksComponent,
+        children: [
+            {
+                path: 'javascript',
+                component: JavascriptComponent,
+            },
+        ],
     },
 ];

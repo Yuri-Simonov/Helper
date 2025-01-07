@@ -1,8 +1,26 @@
 * {
     box-sizing: border-box;
+
+    // стилизация скролла для Firefox
+    scrollbar-color: var(--primary-color) var(--mdc-filled-text-field-input-text-placeholder-color); /* «цвет ползунка» и «цвет полосы скроллбара» */
+    scrollbar-width: thin;
+    // стилизация скролла для Chrome
+    &::-webkit-scrollbar {
+        // это фон самого скроллбара
+        background-color: var(--mdc-filled-text-field-input-text-placeholder-color);
+        width: 6px;
+        height: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+        // индикатор прокрутки, перетаскиваемый элемент.
+        background-color: var(--primary-color);
+        border-radius: 6px;
+    }
 }
+
 html {
     background-color: var(--primary-color);
+    height: 100%;
 }
 
 body {
@@ -21,9 +39,7 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     display: flex;
-    flex-direction: column;
     min-height: 100vh;
-    overflow-x: hidden;
 }
 
 body > app-root {
@@ -41,22 +57,4 @@ svg.svg {
     object-fit: contain;
     object-position: center;
     margin-bottom: 8px;
-}
-
-* {
-    // стилизация скролла для Firefox
-    scrollbar-color: var(--primary-color) var(--mdc-filled-text-field-input-text-placeholder-color); /* «цвет ползунка» и «цвет полосы скроллбара» */
-    scrollbar-width: thin;
-    // стилизация скролла для Chrome
-    &::-webkit-scrollbar {
-        // это фон самого скроллбара
-        background-color: var(--mdc-filled-text-field-input-text-placeholder-color);
-        width: 6px;
-        height: 6px;
-    }
-    &::-webkit-scrollbar-thumb {
-        // индикатор прокрутки, перетаскиваемый элемент.
-        background-color: var(--primary-color);
-        border-radius: 6px;
-    }
 }

@@ -1,14 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { IInfosAndAnswer, ITestAnswerOption } from '../../../shared/interfaces';
 
 import { getQuestions } from '../../utils/generate-question-list';
+import { ButtonComponent } from '../../../shared/ui/button/button.component';
+import { QuestionCardComponent } from '../question-card/question-card.component';
+import { ResultComponent } from '../result/result.component';
+import { NextQuestionDirective } from '../../directives/next-question.directive';
+
+const materialModules = [MatProgressBarModule];
 
 @Component({
     selector: 'app-questions',
     templateUrl: './questions.component.html',
     styleUrl: './questions.component.scss',
-    standalone: false,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [...materialModules, ButtonComponent, QuestionCardComponent, ResultComponent, NextQuestionDirective],
 })
 export class QuestionsComponent {
     @Input('questions') questionsProps: IInfosAndAnswer[] = [];

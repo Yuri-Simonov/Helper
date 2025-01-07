@@ -1,12 +1,16 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { IInfosAndAnswer, ITestAnswerOption } from '../../../shared/interfaces';
+import { NgClass } from '@angular/common';
+import { ButtonComponent } from '../../../shared/ui/button/button.component';
+import { QuestionCardComponent } from '../question-card/question-card.component';
 
 @Component({
     selector: 'app-result',
     templateUrl: './result.component.html',
     styleUrl: './result.component.scss',
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [NgClass, ButtonComponent, QuestionCardComponent],
 })
 export class ResultComponent {
     amountRightAnswers: number = 0;
