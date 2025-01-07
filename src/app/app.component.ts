@@ -5,14 +5,15 @@ import { opacityAnimation } from 'src/app/shared/animations/opacity.animation';
 
 import { ThemeToggleService } from './settings/services/theme-toggle.service';
 import { BackgroundToggleService } from './settings/services/background-toggle.service';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [opacityAnimation],
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [HeaderComponent, RouterOutlet],
 })
 export class AppComponent {
     constructor(

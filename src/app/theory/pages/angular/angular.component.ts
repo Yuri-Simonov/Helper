@@ -2,6 +2,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { IList } from 'src/app/shared/interfaces';
 
+import { SpoilersComponent } from '../../../shared/components/spoilers/spoilers.component';
+import { TitleComponent } from '../../../shared/components/title/title.component';
+
 import { componentsInfo } from '../../information/angular/components';
 import { changeDetectionInfo } from '../../information/angular/change-detection';
 import { decoratorsInfo } from '../../information/angular/decorators';
@@ -19,9 +22,8 @@ import { servicesInfo } from '../../information/angular/services';
 @Component({
     selector: 'app-angular',
     templateUrl: './angular.component.html',
-    styleUrls: ['./angular.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    imports: [TitleComponent, SpoilersComponent],
 })
 export class AngularComponent {
     list: IList[] = [

@@ -1,6 +1,7 @@
 :host {
     flex-grow: 1;
     display: flex;
+    max-height: 100%;
 }
 
 ::ng-deep .spoilers {
@@ -24,6 +25,10 @@
         max-width: 1424px;
         margin: 0 auto;
         padding: 16px 12px 12px;
+
+        @media (max-width: 1424px) {
+            max-width: 100vw;
+        }
 
         @media (max-width: 440px), (max-height: 440px) {
             padding: 10px 0 6px;

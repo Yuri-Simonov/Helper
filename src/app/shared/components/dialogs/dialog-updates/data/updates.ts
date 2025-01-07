@@ -11,8 +11,8 @@ export const getUpdatesIds = (): number[] => UPDATES.map((update) => update.id);
  */
 export const UPDATES: IUpdates[] = [
     {
-        id: 25122024,
-        title: 'Обновление от 25.12.2024',
+        id: 7012025,
+        title: 'Обновление от 07.01.2025',
         changes: [
             {
                 chapterTitle: 'Общее',

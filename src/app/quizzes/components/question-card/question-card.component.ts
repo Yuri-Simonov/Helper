@@ -1,12 +1,18 @@
+import { MatRadioModule } from '@angular/material/radio';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { IInfosAndAnswer, ITestAnswerOption } from '../../../shared/interfaces';
+import { NgClass } from '@angular/common';
+import { PipeSanitizer } from '../../../shared/pipes/pipe-sanitizer.pipe';
+import { HighlightJsDirective } from 'ngx-highlight-js';
+
+const materialModules = [MatRadioModule];
 
 @Component({
     selector: 'app-question-card',
     templateUrl: './question-card.component.html',
     styleUrl: './question-card.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    imports: [...materialModules, NgClass, PipeSanitizer, HighlightJsDirective],
 })
 export class QuestionCardComponent {
     currentValue: ITestAnswerOption | undefined;
