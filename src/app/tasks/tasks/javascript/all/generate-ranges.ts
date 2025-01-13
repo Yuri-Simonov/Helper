@@ -10,30 +10,31 @@ console.log(range([1, 4, 3, 2]));	// '1-4'</code></pre>`,
         {
             title: 'Решение задачи',
             body: `<pre><code class="language-javascript">function range(arr) {
-  // Сортируем массив и удаляем дубликаты
-  arr = Array.from(new Set(arr.sort((a, b) => a - b)));
-  
-  let result = [];
-  let start = arr[0];
-  let end = arr[0];
+	// Сортируем массив и удаляем дубликаты
+	arr = Array.from(new Set(arr.sort((a, b) => a - b)));
+	
+	let result = [];
+	let start = arr[0];
+	let end = arr[0];
 
-  for (let i = 1; i <= arr.length; i++) {
-    if (arr[i] === end + 1) {
-      end = arr[i];  // Увеличиваем конец диапазона
-    } else {
-      // Если диапазон состоит из одного числа
-      if (start === end) {
-        result.push(&#96;&#36;{start}&#96;);
-      } else {
-        result.push(&#96;&#36;{start}-&#36;{end}&#96;);
-      }
-      // Начинаем новый диапазон
-      start = arr[i];
-      end = arr[i];
-    }
-  }
+	for (let i = 1; i <= arr.length; i++) {
+		if (arr[i] === end + 1) {
+			end = arr[i];  // Увеличиваем конец диапазона
+		} else {
+			if (start === end) {
+				// Если диапазон состоит из одного числа
+				result.push(&#96;&#36;{start}&#96;);
+			} else {
+				// Если диапазон состоит из нескольких чисел
+				result.push(&#96;&#36;{start}-&#36;{end}&#96;);
+			}
+			// Начинаем новый диапазон
+			start = arr[i];
+			end = arr[i];
+		}
+	}
 
-  return result.join(',');
+	return result.join(',');
 }
 
 console.log(range([1, 4, 5, 2, 3, 9, 8, 11, 0]));	// '0-5,8-9,11'
