@@ -16,7 +16,11 @@ export const UPDATES: IUpdates[] = [
         changes: [
             {
                 chapterTitle: 'Теория',
-                added: ['Информация про функцию inject (Angular)', 'Информация про класс HostAttributeToken (Angular)'],
+                added: [
+                    'Информация про функцию inject (Angular)',
+                    'Информация про класс HostAttributeToken (Angular)',
+                    'Информация про inject vs constructor (Angular)',
+                ],
             },
         ],
     },
