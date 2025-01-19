@@ -2,7 +2,7 @@ import { IInfo } from 'src/app/shared/interfaces';
 
 export const ATTRIBUTE: IInfo = {
     id: 'attribute',
-    title: 'Декоратор <span class="variable">@Attribute()</span>',
+    title: 'Декоратор <span class="variable">@Attribute</span>',
     body: `<p>
                 В Angular данные от родителя к дочернему компоненту можно передавать как статически, так и динамически:
             </p>
