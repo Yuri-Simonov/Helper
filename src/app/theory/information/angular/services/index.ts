@@ -23,6 +23,7 @@ import { SELF } from './information/self';
 import { SKIP_SELF } from './information/skip-self';
 import { VIEW_PROVIDERS } from './information/view-providers';
 import { INJECT_VS_CONSTRUCTOR } from './information/inject-vs-constructor';
+import { INTERCEPTORS } from './information/interceptors';
 
 export const servicesInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -52,4 +53,5 @@ export const servicesInfo: IInfo[] = [
     { chapter: 'Прочее' },
     INJECT_VS_CONSTRUCTOR,
     PLACE_FOR_REQUESTS,
+    INTERCEPTORS,
 ];
