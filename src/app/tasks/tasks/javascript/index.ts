@@ -5,12 +5,16 @@ import { FLATTEN_NESTED_ARRAY } from './all/flatten-nested-array';
 import { IMPLEMENT_DELAY_FUNCTION } from './all/implement-delay-function';
 import { PALINDROME_CHECK } from './all/palindrome-check';
 import { GENERATE_RANGES } from './all/generate-ranges';
+import { EVENT_BUS } from './all/event-bus';
 
 export const allJavaScriptTasks: IInfo[] = [
-    { chapter: 'Задачи с собеседований' },
+    { chapter: 'Простые задачи' },
     CALCULATOR_OBJECT,
-    FLATTEN_NESTED_ARRAY,
     IMPLEMENT_DELAY_FUNCTION,
+    { chapter: 'Средние задачи' },
+    FLATTEN_NESTED_ARRAY,
     PALINDROME_CHECK,
     GENERATE_RANGES,
+    { chapter: 'Сложные задачи' },
+    EVENT_BUS,
 ];

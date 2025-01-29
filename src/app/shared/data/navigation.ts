@@ -19,7 +19,7 @@ export const NAVIGATION: INavigation[] = [
     {
         id: 'tasks',
         path: 'tasks',
-        name: 'Задачи',
+        name: 'Задачи с собеседований',
         links: [{ path: 'javascript', name: 'JavaScript' }],
     },
     {
