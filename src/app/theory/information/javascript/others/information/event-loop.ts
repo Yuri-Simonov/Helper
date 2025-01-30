@@ -26,7 +26,7 @@ export const EVENT_LOOP: IInfo = {
                 все синхронные операции выполнились, <code>event loop</code> даст добро на выполнение функции
                 <code>setTimeout</code>.
             </p>
-            <p>На собеседованиях часто любят спрашивать "что из кода в консоли появится раньше?":</p>
+            <p>На собеседованиях часто любят спрашивать "<i>что в консоли появится раньше?</i>":</p>
             <pre><code class="language-javascript">setTimeout(() => {
 	console.log(1);
 }, 0);
@@ -119,7 +119,7 @@ Promise.resolve()
 	})
 	.then(() => {
 		console.log(4);
-});</code></pre>
+	});</code></pre>
             <p>В консоли мы увидим следующее:</p>
             <pre><code class="language-javascript">1
 3
@@ -158,7 +158,7 @@ Promise.resolve()
             <p>
                 Здесь сначала выполнится микрозадача <code>then</code>. Внутри метода <code>then</code> интерпретатор
                 также увидит еще одну макрозадачу <code>setTimeout</code> и отправит ее к уже имеющейся макрозадаче,
-                которая была отправлена в <code>event loop</code> перед <code>Promise</code>, а также увидит еще одну
+                которая была отправлена в <code>event loop</code> перед <code>Promise</code>. А также увидит еще одну
                 микрозадачу, связанную с методом <code>finally</code>. Поэтому сначала появляются сообщения
                 <code>2</code> и <code>4</code>, а затем <code>1</code>, т.к. первый <code>setTimeout</code> раньше
                 попал в <code>event loop</code>. И в самом конце появится <code>3</code> от
@@ -187,13 +187,12 @@ setTimeout(() => {
             <pre><code class="language-javascript">1
 2
 4
-3
-			</code></pre>
+3</code></pre>
             <p>
                 В данном примере следует помнить о том, что перед тем, как выполнять каждую следующую макрозадачу,
                 <code>event loop</code> проверяет по цепочке приоритетов нет ли в данный момент синхронного кода и
                 микрозадач, которые нужно выполнить. Если нет, тогда он выполняет макрозадачу.
             </p>`,
     selected: false,
-    lastUpdate: '19.07.2024',
+    lastUpdate: '30.01.2025',
 };

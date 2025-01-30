@@ -13,12 +13,12 @@ export const angularTestQuestions: IInfosAndAnswer[] = [
         question: `Какое из приведенных ниже различий между директивой и компонентом является верным?`,
         answers: [
             {
-                text: 'Директивы имеют декоратор @Directive(), а компоненты - @Component()',
+                text: 'Директивы имеют декоратор @Directive, а компоненты - @Component',
                 right: true,
             },
             { text: 'Нет никакой разницы, т.к. компоненты и директивы - это одно и то же', right: false },
             {
-                text: 'Директивы имеют декоратор @Component(), а компоненты - @Directive()',
+                text: 'Директивы имеют декоратор @Component, а компоненты - @Directive',
                 right: false,
             },
             {
@@ -36,7 +36,7 @@ export const angularTestQuestions: IInfosAndAnswer[] = [
             { text: 'merge', right: false },
             { text: 'join', right: false },
             { text: 'combineLatest', right: false },
-            { text: 'Такого оператора в RxJs не существует', right: false },
+            { text: 'Такого оператора нет в RxJs', right: false },
         ],
     },
     {
@@ -48,7 +48,7 @@ export const angularTestQuestions: IInfosAndAnswer[] = [
             { text: 'merge', right: false },
             { text: 'join', right: false },
             { text: 'combineLatest', right: false },
-            { text: 'Такого оператора в RxJs не существует', right: false },
+            { text: 'Такого оператора нет в RxJs', right: false },
         ],
     },
     {
@@ -60,7 +60,7 @@ export const angularTestQuestions: IInfosAndAnswer[] = [
             { text: 'zip', right: false },
             { text: 'combineLatest', right: false },
             { text: 'fork', right: false },
-            { text: 'Такого оператора в RxJs не существует', right: false },
+            { text: 'Такого оператора нет в RxJs', right: false },
         ],
     },
     {
@@ -72,7 +72,7 @@ export const angularTestQuestions: IInfosAndAnswer[] = [
             { text: 'forkJoin', right: false },
             { text: 'join', right: false },
             { text: 'fork', right: false },
-            { text: 'Такого оператора в RxJs не существует', right: false },
+            { text: 'Такого оператора нет в RxJs', right: false },
         ],
     },
     {
@@ -84,7 +84,7 @@ export const angularTestQuestions: IInfosAndAnswer[] = [
             { text: 'forkJoin', right: false },
             { text: 'join', right: false },
             { text: 'fork', right: false },
-            { text: 'Такого оператора в RxJs не существует', right: false },
+            { text: 'Такого оператора нет в RxJs', right: false },
         ],
     },
     {
@@ -96,7 +96,7 @@ export const angularTestQuestions: IInfosAndAnswer[] = [
             { text: 'concat', right: false },
             { text: 'forkJoin', right: false },
             { text: 'join', right: false },
-            { text: 'Такого оператора в RxJs не существует', right: false },
+            { text: 'Такого оператора нет в RxJs', right: false },
         ],
     },
     {
@@ -174,7 +174,7 @@ export const angularTestQuestions: IInfosAndAnswer[] = [
         ],
     },
     {
-        question: `В какое из полей конфигурационного объекта декоратора @NgModule() нужно подключать компоненты, директивы и пайпы, если они не являются standalone сущностью (т.е. "standalone = false")?`,
+        question: `В какое из полей конфигурационного объекта декоратора @NgModule нужно подключать компоненты, директивы и пайпы, если они не являются standalone сущностью (т.е. "standalone = false")?`,
         answers: [
             { text: 'declarations', right: true },
             { text: 'imports', right: false },
@@ -184,7 +184,7 @@ export const angularTestQuestions: IInfosAndAnswer[] = [
         ],
     },
     {
-        question: `В какое из полей конфигурационного объекта декоратора @NgModule() нужно подключать компоненты, директивы и пайпы, если они являются standalone сущностью (т.е. "standalone = true")?`,
+        question: `В какое из полей конфигурационного объекта декоратора @NgModule нужно подключать компоненты, директивы и пайпы, если они являются standalone сущностью (т.е. "standalone = true")?`,
         answers: [
             { text: 'imports', right: true },
             { text: 'declarations', right: false },
@@ -214,7 +214,7 @@ export const angularTestQuestions: IInfosAndAnswer[] = [
         question: `Что такое модуль в Angular?`,
         answers: [
             {
-                text: 'Это класс c декоратором @NgModule(), который служит изолирующей логической объединяющей структурой для компонентов, директив, фильтров и сервисов',
+                text: 'Это класс c декоратором @NgModule, который служит изолирующей логической объединяющей структурой для компонентов, директив, фильтров и сервисов',
                 right: true,
             },
             {
@@ -266,7 +266,7 @@ export const angularTestQuestions: IInfosAndAnswer[] = [
         ],
     },
     {
-        question: `Какой параметр конфигурационного объекта декоратора @Component() является обязательным?`,
+        question: `Какой параметр конфигурационного объекта декоратора @Component является обязательным?`,
         answers: [
             {
                 text: 'Для данного декоратора обязательным является наличие шаблона, т.к. компонент - это та же директива, но со своим собственным HTML-шаблоном. И т.к. шаблон можно задать через параметры "template" или "templateUrl", то достаточно будет указать любой из них',
@@ -310,19 +310,19 @@ export const angularTestQuestions: IInfosAndAnswer[] = [
     {
         question: `Какой декоратор в Angular используется для передачи данных от дочернего компонента к родительскому?`,
         answers: [
-            { text: '@Output()', right: true },
-            { text: '@Input()', right: false },
-            { text: 'Input', right: false },
-            { text: 'Output', right: false },
+            { text: '@Output', right: true },
+            { text: '@Input', right: false },
+            { text: '@ViewChild', right: false },
+            { text: '@ContentChild', right: false },
         ],
     },
     {
         question: `Какой декоратор в Angular используется для передачи данных от родительского компонента к дочернему?`,
         answers: [
-            { text: '@Input()', right: true },
-            { text: '@Output()', right: false },
-            { text: 'Input', right: false },
-            { text: 'Output', right: false },
+            { text: '@Input', right: true },
+            { text: '@Output', right: false },
+            { text: '@ViewChild', right: false },
+            { text: '@ContentChild', right: false },
         ],
     },
     {
@@ -394,7 +394,7 @@ export const angularTestQuestions: IInfosAndAnswer[] = [
         ],
     },
     {
-        question: `В чем заключается основное преимущество async pipe?`,
+        question: `В чем заключается основное преимущество асинхронной пайпы (async pipe)?`,
         answers: [
             {
                 text: 'Async pipe самостоятельно подписывается на наблюдателя и обновляет выражение каждый раз, когда наблюдатель отправляет новые данные. Это позволяет упростить работу с асинхронными операциями и избежать необходимости вручную управлять подписками и отписками от наблюдателей.',
@@ -417,11 +417,11 @@ export const angularTestQuestions: IInfosAndAnswer[] = [
     {
         question: `Какой декоратор позволяет получить доступ к элементу хоста из директивы или компонента?`,
         answers: [
-            { text: '@Host()', right: true },
-            { text: '@Attribute()', right: false },
-            { text: '@Parent()', right: false },
-            { text: '@Self()', right: false },
-            { text: '@Root()', right: false },
+            { text: '@Host', right: true },
+            { text: '@Attribute', right: false },
+            { text: '@Parent', right: false },
+            { text: '@Self', right: false },
+            { text: '@Root', right: false },
         ],
     },
     {
@@ -492,10 +492,11 @@ export const angularTestQuestions: IInfosAndAnswer[] = [
             { text: 'ngAfterViewInit', right: false },
             { text: 'ngOnInit', right: false },
             { text: 'ngAfterContentInit', right: false },
+            { text: 'Нет такого метода', right: false },
         ],
     },
     {
-        question: `Какой метод жизненного цикла Angular вызывается в момент удаления компонента из DOM-дерева?`,
+        question: `Какой метод жизненного цикла Angular вызывается перед удалением компонента из DOM-дерева?`,
         answers: [
             { text: 'ngOnDestroy', right: true },
             { text: 'ngOnChanges', right: false },
@@ -550,10 +551,10 @@ export const angularTestQuestions: IInfosAndAnswer[] = [
     {
         question: `Какой декоратор используется для создания HTTP-интерцептора?`,
         answers: [
-            { text: '@Injectable()', right: true },
-            { text: '@HttpInterceptor()', right: false },
-            { text: '@Interceptor()', right: false },
-            { text: '@HttpRequest()', right: false },
+            { text: '@Injectable', right: true },
+            { text: '@HttpInterceptor', right: false },
+            { text: '@Interceptor', right: false },
+            { text: '@HttpRequest', right: false },
         ],
     },
     {
@@ -581,7 +582,7 @@ export const angularTestQuestions: IInfosAndAnswer[] = [
         ],
     },
     {
-        question: `Какой встроенный в Angular сервис позволяет управлять механизмом ChangeDetection?`,
+        question: `Какой встроенный в Angular класс позволяет управлять механизмом ChangeDetection?`,
         answers: [
             { text: 'ChangeDetectorRef', right: true },
             { text: 'ChangeDetectionControl', right: false },
