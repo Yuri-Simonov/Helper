@@ -62,7 +62,7 @@ export class ParentDirective {
 export class SomeComponent {}</code></pre>
             <p>
                 При данном коде директива <code>appParent</code> не будет иметь доступа к сервису
-                <code>SomeService</code>, т.к. на ней висит декоратор <code>@Host()</code>, который сообщает Angular,
+                <code>SomeService</code>, т.к. на ней висит декоратор <code>@Host</code>, который сообщает Angular,
                 что не нужно искать регистрацию зависимости выше представления родительского компонента.
             </p>
             <p>Но ситуация изменится, если свойство <code>providers</code> заменить на <code>viewProviders</code>:</p>

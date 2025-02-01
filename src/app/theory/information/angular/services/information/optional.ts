@@ -2,10 +2,10 @@ import { IInfo } from 'src/app/shared/interfaces';
 
 export const OPTIONAL: IInfo = {
     id: 'optional',
-    title: 'Декоратор <span class="variable">@Optional()</span>',
+    title: 'Декоратор <span class="variable">@Optional</span>',
     body: `<p>
                 <span class="attention"
-                    >Декоратор <code>@Optional()</code> позволяет сделать внедряемую зависимость опциональной</span
+                    >Декоратор <code>@Optional</code> позволяет сделать внедряемую зависимость опциональной</span
                 >.
             </p>
             <p>
@@ -14,7 +14,7 @@ export const OPTIONAL: IInfo = {
             </p>
             <p>
                 <span class="attention">
-                    Если указать у внедряемой зависимости декоратор <code>@Optional()</code>, то в таком случае вместо
+                    Если указать у внедряемой зависимости декоратор <code>@Optional</code>, то в таком случае вместо
                     ошибки мы получим <code>null</code> в свойстве, через которое хотим получить доступ к внедряемой
                     зависимости</span
                 >.

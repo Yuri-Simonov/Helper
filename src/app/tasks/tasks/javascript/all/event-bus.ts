@@ -18,7 +18,7 @@ export const EVENT_BUS: IInfo = {
 	// Вызов события
 	push(eventName, ...args) {}
 }</code></pre>
-	<p>Примеры использования:</p>
+	<p>Пример использования:</p>
 	<pre><code class="language-javascript">const eventBus = new EventBus();
 
 eventBus.subscribe('Событие А', (...greeting) => {
@@ -65,7 +65,7 @@ eventBus.push('Событие B');
 			// Фильтруем обработчики, оставляя только те, которые не равны переданной функции
 			const handlers = this.events.get(eventName).filter(handler => handler !== fn);
 			// Обновляем список обработчиков
-			this.events.set(eventName, handlers); // Обновляем список обработчиков
+			this.events.set(eventName, handlers);
 		}
 	}
 
@@ -76,7 +76,7 @@ eventBus.push('Событие B');
 			// Получаем массив обработчиков
 			const handlers = this.events.get(eventName);
 			// Вызываем каждый обработчик, передавая ему аргументы
-			handlers.forEach(handler => handler(...args)); // Вызываем каждый обработчик
+			handlers.forEach(handler => handler(...args));
 		}
 	}
 }

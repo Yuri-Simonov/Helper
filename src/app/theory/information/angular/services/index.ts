@@ -24,6 +24,7 @@ import { SKIP_SELF } from './information/skip-self';
 import { VIEW_PROVIDERS } from './information/view-providers';
 import { INJECT_VS_CONSTRUCTOR } from './information/inject-vs-constructor';
 import { INTERCEPTORS } from './information/interceptors';
+import { SERVICES_TREE_SHAKING } from './information/services-tree-shaking';
 
 export const servicesInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -54,4 +55,5 @@ export const servicesInfo: IInfo[] = [
     INJECT_VS_CONSTRUCTOR,
     PLACE_FOR_REQUESTS,
     INTERCEPTORS,
+    SERVICES_TREE_SHAKING,
 ];

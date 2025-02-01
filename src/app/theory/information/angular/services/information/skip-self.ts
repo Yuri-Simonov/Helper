@@ -2,10 +2,10 @@ import { IInfo } from 'src/app/shared/interfaces';
 
 export const SKIP_SELF: IInfo = {
     id: 'skipSelf',
-    title: 'Декоратор <span class="variable">@SkipSelf()</span>',
+    title: 'Декоратор <span class="variable">@SkipSelf</span>',
     body: `<p>
                 <span class="attention"
-                    >Декоратор <code>@SkipSelf()</code> сообщает Angular, что зависимость нужно искать начиная с
+                    >Декоратор <code>@SkipSelf</code> сообщает Angular, что зависимость нужно искать начиная с
                     родителя и выше, а текущий инжектор игнорировать.</span
                 >
             </p>
@@ -27,13 +27,13 @@ export class SomeComponent {
 	constructor(@SkipSelf() private someService: SomeService) {}
 }</code></pre>
             <p>
-                Т.к. декоратор <code>@SkipSelf()</code> сообщает Angular, что зависимость не нужно искать в текущем
+                Т.к. декоратор <code>@SkipSelf</code> сообщает Angular, что зависимость не нужно искать в текущем
                 инжекторе, следовательно, ее регистрация в поле <code>providers</code> будет проигнорирована. И т.к.
                 выше больше нигде нет регистрации запрашиваемой зависимости, то будет сгенерирована ошибка в
                 <code>NullInjector</code>.
             </p>
             <p>
-                Обработать эту ошибку можно при помощи декоратора <code>@Optional()</code>, т.к.
+                Обработать эту ошибку можно при помощи декоратора <code>@Optional</code>, т.к.
                 <span class="attention">Angular позволяет комбинировать декораторы</span> <code>DI</code>:
             </p>
 
@@ -43,7 +43,7 @@ export class SomeComponent {
 })
 
 export class SomeComponent {
-	// ошибки не будет благодаря декоратору @Optional()
+	// ошибки не будет благодаря декоратору @Optional
 	constructor(@SkipSelf() @Optional() private someService: SomeService) {}
 }</code></pre>
             <p><span class="attention">Порядок расположения декораторов не имеет значения</span>.</p>`,

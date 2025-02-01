@@ -4,7 +4,7 @@ export const INJECT_VS_CONSTRUCTOR: IInfo = {
     title: 'Функция <span class="variable">inject</span> vs <span class="variable">constructor</span>',
     body: `<p>
                 Внедрять зависимости можно как через <span class="variable">constructor</span> класса, так и через
-                функцию <span class="variable">inject</span>
+                функцию <span class="variable">inject</span>.
             </p>
             <p>Ниже показаны примеры внедрения произвольного сервиса <code>DataService</code> через оба способа.</p>
             <pre><code class="language-typescript">// пример через constructor

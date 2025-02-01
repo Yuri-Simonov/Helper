@@ -2,10 +2,10 @@ import { IInfo } from 'src/app/shared/interfaces';
 
 export const SELF: IInfo = {
     id: 'self',
-    title: 'Декоратор <span class="variable">@Self()</span>',
+    title: 'Декоратор <span class="variable">@Self</span>',
     body: `<p>
                 <span class="attention"
-                    >Декоратор <code>@Self()</code> сообщает Angular, что зависимость нужно искать только в том
+                    >Декоратор <code>@Self</code> сообщает Angular, что зависимость нужно искать только в том
                     инжекторе, где она запрашивается. Все родительские инжекторы будут игнорироваться</span
                 >. Если регистрация запрашиваемой зависимости не будет найдена в текущем инжекторе, то будет
                 сгенерирована ошибка в <code>NullInjector</code>.
@@ -33,7 +33,7 @@ export class SomeComponent {
             </p>
             <p>
                 В примере выше, если убрать регистрацию сервиса <code>SomeService</code> в поле <code>providers</code>,
-                то будет сгенерирована ошибка. Ее можно обработать при помощи декоратора <code>@Optional()</code>, т.к.
+                то будет сгенерирована ошибка. Ее можно обработать при помощи декоратора <code>@Optional</code>, т.к.
                 <span class="attention">Angular позволяет комбинировать декораторы</span> <code>DI</code>:
             </p>
             <pre><code class="language-typescript">@Component({
@@ -43,7 +43,7 @@ export class SomeComponent {
 })
 
 export class SomeComponent {
-	// ошибки не будет благодаря декоратору @Optional()
+	// ошибки не будет благодаря декоратору @Optional
 	constructor(@Self() @Optional() private someService: SomeService) {}
 }</code></pre>
             <p>Также учтите, что <span class="attention">порядок расположения данных декораторов не имеет значения</span>.</p>`,

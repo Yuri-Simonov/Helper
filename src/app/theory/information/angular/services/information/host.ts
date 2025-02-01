@@ -2,10 +2,10 @@ import { IInfo } from 'src/app/shared/interfaces';
 
 export const HOST: IInfo = {
     id: 'host',
-    title: 'Декоратор <span class="variable">@Host()</span>',
+    title: 'Декоратор <span class="variable"</span>',
     body: `<p>
                 <span class="attention"
-                    >Декоратор <code>@Host()</code> сообщает Angular, что не нужно искать регистрацию зависимости выше
+                    >Декоратор <code>@Host</code> сообщает Angular, что не нужно искать регистрацию зависимости выше
                     представления родительского компонента.</span
                 >
             </p>
@@ -57,7 +57,7 @@ export class ChildDirective {
             <p>
                 Еще раз напомню, что
                 <span class="attention"
-                    >указание декоратора <code>@Host()</code> у внедряемой зависимости сообщает Angular, что не нужно
+                    >указание декоратора <code>@Host</code> у внедряемой зависимости сообщает Angular, что не нужно
                     искать ее регистрацию выше представления родительского компонента</span
                 >. Также напомню, что представление компонента - это его шаблон, с учетом всех шаблоном дочерних
                 компонентов, если таковые имеются.
