@@ -2,7 +2,7 @@
 <mat-dialog-content>
     @for (update of updates; track $index) {
         <div class="update">
-            <h3 class="update__title">{{ update.title }}</h3>
+            <h3 class="update__title">Обновление от {{ update.date }}</h3>
             @for (change of update.changes; track $index) {
                 <div class="update__changes changes">
                     <h3 class="changes__title">{{ change.chapterTitle }}</h3>

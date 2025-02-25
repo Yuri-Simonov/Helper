@@ -29,6 +29,10 @@ export class QuestionsComponent {
 
     ngOnChanges() {
         // console.log('Количество вопросов:', this.questionsProps.length);
+        // this.questionsProps = [
+        //     this.questionsProps[this.questionsProps.length - 2],
+        //     this.questionsProps[this.questionsProps.length - 1],
+        // ];
 
         if (this.questionsProps.length < 20) {
             this.questionsAndAnswers = getQuestions(this.questionsProps, this.questionsProps.length);

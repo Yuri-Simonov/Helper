@@ -800,6 +800,74 @@ console.log(4);</code></pre>`,
             { text: 'Только false', right: false },
         ],
     },
+    {
+        question: `Почему результатом сравнения двух похожих объектов является false?`,
+        answers: [
+            {
+                text: 'В JavaScript объекты сравниваются по ссылке, а не по значению. Даже если два объекта выглядят одинаково, они хранятся в разных участках памяти',
+                right: true,
+            },
+            { text: 'Движок JavaScript не умеет сравнивать сложные структуры данных', right: false },
+            { text: 'В ES6 добавили правило, что объекты всегда неравны, даже если они одинаковые', right: false },
+            {
+                text: 'Движок JavaScript всегда возвращает false, если внутри любого из сравниваемых объектов есть вложенный объект или массив',
+                right: false,
+            },
+        ],
+    },
+    {
+        question: `В чем разница между spread-оператором и rest-оператором?`,
+        answers: [
+            {
+                text: 'Spread-оператор используется для разворачивания массива или объекта в отдельные элементы. Rest-оператор используется для сбора оставшихся аргументов функции или элементов в массив',
+                right: true,
+            },
+            {
+                text: 'Rest-оператор используется только в деструктуризации объектов, а spread — только в массивах',
+                right: false,
+            },
+            { text: 'Spread-оператор работает только в функциях, а rest — только в объектах', right: false },
+            { text: 'Rest-оператор расширяет массивы, а spread — объединяет строки', right: false },
+            { text: 'Разницы нет, это два названия одной и той же функции в JavaScript', right: false },
+        ],
+    },
+    {
+        question: `Как в TypeScript реализовать свойство, которое является константой?`,
+        answers: [
+            {
+                text: 'Использовать модификатор readonly',
+                right: true,
+            },
+            { text: 'Использовать ключевое слово const', right: false },
+            { text: 'Использовать модификатор static', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+		<pre><code class="language-javascript">console.log(null ?? "default");
+console.log(undefined ?? "value");
+console.log(0 ?? "fallback");
+console.log(false ?? "yes");</code></pre>`,
+        answers: [
+            { text: '"default", "value", 0, false', right: true },
+            { text: 'null, undefined, 0, false', right: false },
+            { text: '"default", "value", "fallback", "yes"', right: false },
+            { text: 'null, undefined, "fallback", "yes"', right: false },
+        ],
+    },
+    {
+        question: `<p>Что выведет следующий код?</p>
+		<pre><code class="language-javascript">console.log(0 || "fallback");
+console.log(false || "yes");
+console.log(null || "default");
+console.log(undefined || "value");</code></pre>`,
+        answers: [
+            { text: '"fallback", "yes", "default", "value"', right: true },
+            { text: '"fallback", "yes", null, undefined', right: false },
+            { text: '0, false, "default", "value"', right: false },
+            { text: '0, false, null, undefined', right: false },
+        ],
+    },
 ];
 //  {
 //      question: ``,

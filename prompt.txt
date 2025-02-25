@@ -12,6 +12,7 @@
   - &nbsp; (символ пробела)
 ` - &#96;
 $ - &#36;
+«»
 
 <span class="variable"></span>
 <span class="tag">&lt;></span>

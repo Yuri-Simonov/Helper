@@ -1,6 +1,6 @@
 export interface IUpdates {
     id: number;
-    title: string;
+    date: string;
     changes: IChanges[];
 }
 

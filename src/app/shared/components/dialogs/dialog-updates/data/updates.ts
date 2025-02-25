@@ -1,5 +1,15 @@
 import { IUpdates } from '../interfaces/updates.interface';
 
+// Общие изменения в проекте
+const COMMON = 'Общее';
+// Разделы
+const THEORY = 'Теория';
+const TASKS = 'Задачи';
+const COURSES = 'Курсы';
+const TESTS = 'Тесты';
+const CODE_REVIEW = 'Код-ревью';
+const OTHER = 'Разное';
+
 /**
  * Возвращает массив id обновлений
  */
@@ -12,20 +22,27 @@ export const getUpdatesIds = (): number[] => UPDATES.map((update) => update.id);
 export const UPDATES: IUpdates[] = [
     {
         id: 1,
-        title: 'Обновление от ***',
+        date: `***`,
         changes: [
             {
-                chapterTitle: 'Теория',
-                added: ['Информация разницу и схожесть между null и undefined (JavaScript)'],
+                chapterTitle: THEORY,
+                added: [
+                    'Информация разницу и схожесть между null и undefined (JavaScript)',
+                    'Информация про разницу между операторами «??» и «||»',
+                ],
+            },
+            {
+                chapterTitle: TESTS,
+                added: ['5 новых вопросов для тестов (JavaScript)'],
             },
         ],
     },
     {
         id: 1022025,
-        title: 'Обновление от 01.02.2025',
+        date: '01.02.2025',
         changes: [
             {
-                chapterTitle: 'Теория',
+                chapterTitle: THEORY,
                 added: ['Информация про tree-shaking сервисов (Angular)'],
                 updated: ['Правки по текстам (Angular)'],
             },
@@ -33,39 +50,39 @@ export const UPDATES: IUpdates[] = [
     },
     {
         id: 30012025,
-        title: 'Обновление от 30.01.2025',
+        date: '30.01.2025',
         changes: [
             {
-                chapterTitle: 'Теория',
+                chapterTitle: THEORY,
                 updated: ['Правки по текстам (JavaScript, Разное)'],
             },
             {
-                chapterTitle: 'Задачи',
+                chapterTitle: TASKS,
                 added: ['1 новая задача (JavaScript)'],
                 updated: ['Задачи разделены по уровням сложности (JavaScript)'],
             },
             {
-                chapterTitle: 'Тесты',
+                chapterTitle: TESTS,
                 updated: ['Вопросы и ответы в тестах (Angular)'],
             },
         ],
     },
     {
         id: 23012025,
-        title: 'Обновление от 23.01.2025',
+        date: '23.01.2025',
         changes: [
             {
-                chapterTitle: 'Теория',
+                chapterTitle: THEORY,
                 added: ['Информация по интерцепторам (Angular)'],
             },
         ],
     },
     {
         id: 19012025,
-        title: 'Обновление от 19.01.2025',
+        date: '19.01.2025',
         changes: [
             {
-                chapterTitle: 'Теория',
+                chapterTitle: THEORY,
                 added: [
                     'Информация про функцию inject (Angular)',
                     'Информация про класс HostAttributeToken (Angular)',
@@ -76,28 +93,28 @@ export const UPDATES: IUpdates[] = [
     },
     {
         id: 13012025,
-        title: 'Обновление от 13.01.2025',
+        date: '13.01.2025',
         changes: [
             {
-                chapterTitle: 'Общее',
+                chapterTitle: COMMON,
                 updated: ['Кнопка "Курсы" теперь дает выбор платформы, куда будет выполнен переход'],
             },
             {
-                chapterTitle: 'Теория',
+                chapterTitle: THEORY,
                 added: ['В раздел "Сервисы" добавлена информация по свойству viewProviders (Angular)'],
             },
             {
-                chapterTitle: 'Задачи',
+                chapterTitle: TASKS,
                 added: ['4 новые задачи из собеседований (JavaScript)'],
             },
         ],
     },
     {
         id: 18122024,
-        title: 'Обновление от 18.12.2024',
+        date: '18.12.2024',
         changes: [
             {
-                chapterTitle: 'Теория',
+                chapterTitle: THEORY,
                 added: ['В раздел "Сервисы" добавлена информация по декораторам DI (Angular)'],
                 updated: [
                     'Информация по общим понятиям декораторов в разделе "Декораторы" (Angular)',
@@ -110,10 +127,10 @@ export const UPDATES: IUpdates[] = [
     },
     {
         id: 7122024,
-        title: 'Обновление от 07.12.2024',
+        date: '07.12.2024',
         changes: [
             {
-                chapterTitle: 'Общее',
+                chapterTitle: COMMON,
                 added: [
                     'Новая страница "Настройки", доступная в шапке проекта. В ней можно настраивать под себя проект',
                     'Модальное окно, в котором можно просматривать обновления проекта Helper',
@@ -122,7 +139,7 @@ export const UPDATES: IUpdates[] = [
                 updated: ['Выбор темы проекта перенесено на страницу "Настройки"'],
             },
             {
-                chapterTitle: 'Теория',
+                chapterTitle: THEORY,
                 added: ['Новая информация в раздел "Сервисы" (Angular)', 'Информация по директиве @let (Angular)'],
                 updated: [
                     'Старая информация в разделе "Сервисы" (Angular)',
@@ -131,21 +148,21 @@ export const UPDATES: IUpdates[] = [
                 ],
             },
             {
-                chapterTitle: 'Тесты',
+                chapterTitle: TESTS,
                 added: ['52 новых вопроса по JavaScript (теперь суммарно 59 вопросов)'],
             },
             {
-                chapterTitle: 'Код-ревью',
+                chapterTitle: CODE_REVIEW,
                 added: ['Новый раздел "Код-ревью"'],
             },
         ],
     },
     {
         id: 23092024,
-        title: 'Обновление от 23.09.2024',
+        date: '23.09.2024',
         changes: [
             {
-                chapterTitle: 'Общее',
+                chapterTitle: COMMON,
                 added: [
                     'Новый общий раздел с задачами на главной странице',
                     'Новый общий раздел "Разное" на главной странице',
@@ -154,7 +171,7 @@ export const UPDATES: IUpdates[] = [
                 fixed: ['Поведение стилей анимации при переходах между маршрутами'],
             },
             {
-                chapterTitle: 'Теория',
+                chapterTitle: THEORY,
                 added: ['Информация про CORS в разделе "Разное"'],
                 updated: ['Информация по механизму Change Detection в разделе Angular'],
             },
