@@ -28,12 +28,13 @@ export const UPDATES: IUpdates[] = [
                 chapterTitle: THEORY,
                 added: [
                     'Информация разницу и схожесть между null и undefined (JavaScript)',
-                    'Информация про разницу между операторами «??» и «||»',
+                    'Информация про разницу между операторами «??» и «||» (JavaScript)',
+                    'Информация про передачу параметров в функцию (JavaScript)',
                 ],
             },
             {
                 chapterTitle: TESTS,
-                added: ['5 новых вопросов для тестов (JavaScript)'],
+                added: ['7 новых вопросов для тестов (JavaScript)'],
             },
         ],
     },

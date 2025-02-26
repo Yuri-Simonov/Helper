@@ -868,7 +868,38 @@ console.log(undefined || "value");</code></pre>`,
             { text: '0, false, null, undefined', right: false },
         ],
     },
+    {
+        question: `В чем разница между forEach и map?`,
+        answers: [
+            {
+                text: 'forEach выполняет переданную функцию для каждого элемента массива, но ничего не возвращает. А map выполняет переданную функцию для каждого элемента и возвращает новый массив с измененными элементами.',
+                right: true,
+            },
+            { text: 'map выполняется быстрее, чем forEach', right: false },
+            { text: 'forEach, в отличие от map, можно использовать для создания нового массива', right: false },
+            { text: 'forEach работает только с числами, а map — со всеми типами данных', right: false },
+        ],
+    },
+    {
+        question: `Как в JavaScript передаются параметры в функцию: по ссылке или по значению?`,
+        answers: [
+            { text: 'Примитивы передаются по значению, объекты по ссылке', right: true },
+            { text: 'Объекты передаются по значению, примитивы по ссылке', right: false },
+            { text: 'Параметры передаются по значению независимо от их типа', right: false },
+            { text: 'Параметры передаются по ссылке независимо от их типа', right: false },
+        ],
+    },
+    // {
+    //     question: ``,
+    //     answers: [
+    //         { text: '', right: true },
+    //         { text: '', right: false },
+    //         { text: '', right: false },
+    //         { text: '', right: false },
+    //     ],
+    // },
 ];
+
 //  {
 //      question: ``,
 //      answers: [
