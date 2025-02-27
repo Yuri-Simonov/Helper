@@ -6,6 +6,7 @@ import { DETACH_WITH_DETECT_CHANGES } from './information/detach-with-detect-cha
 import { ATTRIBUTE } from './information/attribute';
 import { VISUAL_EXAMPLES } from './information/visual-examples';
 import { HOST_ATTRIBUTE_TOKEN } from './information/host-attribute-token';
+import { UPDATE_VIEW_WITHOUT_ZONE } from './information/update-view-without-zone';
 
 export const changeDetectionInfo: IInfo[] = [
     { chapter: 'Механизм <span class="variable">Change Detection</span>' },
@@ -18,4 +19,6 @@ export const changeDetectionInfo: IInfo[] = [
     HOST_ATTRIBUTE_TOKEN,
     { chapter: 'Наглядные примеры' },
     VISUAL_EXAMPLES,
+    { chapter: 'Прочее' },
+    UPDATE_VIEW_WITHOUT_ZONE,
 ];

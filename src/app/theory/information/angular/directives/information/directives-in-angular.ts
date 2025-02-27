@@ -24,7 +24,7 @@ export const DIRECTIVES_IN_ANGULAR: IInfo = {
             </li>
             <li>
                 <span class="attention">Структурные</span> - изменяют структуру
-                DOM-дерева (<code>*ngIf</code>, <code>*ngFor</code> и <code>*ngSwitch</code>);
+                DOM-дерева (<code>*ngIf</code> / <code>@if</code>, <code>*ngFor</code> / <code>@for</code> и <code>*ngSwitch</code> / <code>@switch</code>);
             </li>
             <li>
                 <span class="attention">Атрибуты</span> - изменяют внешний вид
@@ -32,5 +32,5 @@ export const DIRECTIVES_IN_ANGULAR: IInfo = {
             </li>
         </ul>`,
     selected: false,
-    lastUpdate: '24.09.2023',
+    lastUpdate: '27.02.2025',
 };
