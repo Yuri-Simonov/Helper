@@ -8,6 +8,7 @@ import { DYNAMIC_ROUTING_PARAMETERS } from './information/dynamic-routing-parame
 import { ROUTING_EVENTS } from './information/routing-events';
 import { ASYNC_ROUTING } from './information/async-routing';
 import { GUARDS } from './information/guards';
+import { RESOLVE } from './information/resolve';
 
 export const routingInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -20,6 +21,7 @@ export const routingInfo: IInfo[] = [
     DYNAMIC_ROUTING_PARAMETERS,
     ROUTING_EVENTS,
     ASYNC_ROUTING,
+    RESOLVE,
     { chapter: 'Права доступа на страницу' },
     GUARDS,
 ];
