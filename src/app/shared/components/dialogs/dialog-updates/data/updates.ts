@@ -30,6 +30,7 @@ export const UPDATES: IUpdates[] = [
                     'Информация разницу и схожесть между null и undefined (JavaScript)',
                     'Информация про разницу между операторами «??» и «||» (JavaScript)',
                     'Информация про передачу параметров в функцию (JavaScript)',
+                    'Информация про обработку событий браузером (JavaScript)',
                     'Информация про обновление view при изменении данных за пределами зоны (NgZone) (Angular)',
                     'Информация про резолверы маршрутов (Angular)',
                 ],
@@ -37,7 +38,7 @@ export const UPDATES: IUpdates[] = [
             },
             {
                 chapterTitle: TESTS,
-                added: ['7 новых вопросов для тестов (JavaScript)'],
+                added: ['7 новых вопросов для тестов (JavaScript)', '1 новый вопрос для тестов (Angular)'],
             },
         ],
     },

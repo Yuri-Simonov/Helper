@@ -591,6 +591,16 @@ export const angularTestQuestions: IInfosAndAnswer[] = [
             { text: 'ChangeDetectionRef', right: false },
         ],
     },
+    {
+        question: `Какие типы данных возвращают Route Guards?`,
+        answers: [
+            { text: 'boolean, Observable<boolean>, Promise<boolean> и UrlTree (кроме CanDeactivate)', right: true },
+            { text: 'Observable<boolean> или Promise<boolean>', right: false },
+            { text: 'Только boolean', right: false },
+            { text: 'Только Observable<boolean>', right: false },
+            { text: 'Только Promise<boolean>', right: false },
+        ],
+    },
 ];
 // {
 //     question: ``,
