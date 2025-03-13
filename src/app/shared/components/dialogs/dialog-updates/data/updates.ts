@@ -33,6 +33,7 @@ export const UPDATES: IUpdates[] = [
                     'Информация про обработку событий браузером (JavaScript)',
                     'Информация про обновление view при изменении данных за пределами зоны (NgZone) (Angular)',
                     'Информация про резолверы маршрутов (Angular)',
+                    'Информация про RouteReuseStrategy (Angular)',
                 ],
                 updated: ['Информация про типы директив (Angular)'],
             },

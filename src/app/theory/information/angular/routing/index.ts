@@ -9,6 +9,7 @@ import { ROUTING_EVENTS } from './information/routing-events';
 import { ASYNC_ROUTING } from './information/async-routing';
 import { GUARDS } from './information/guards';
 import { RESOLVE } from './information/resolve';
+import { ROUTE_REUSE_STRATEGY } from './information/route-reuse-strategy';
 
 export const routingInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -22,6 +23,7 @@ export const routingInfo: IInfo[] = [
     ROUTING_EVENTS,
     ASYNC_ROUTING,
     RESOLVE,
+    ROUTE_REUSE_STRATEGY,
     { chapter: 'Права доступа на страницу' },
     GUARDS,
 ];

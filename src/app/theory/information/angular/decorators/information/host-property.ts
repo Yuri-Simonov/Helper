@@ -278,6 +278,7 @@ export class CustomDirectiveDirective {
             </p>
             <pre><code class="language-typescript">@Component({
 	selector: 'app-root',
+	template: '',
 	host: {
 		class: 'some-css-class',
 	},
