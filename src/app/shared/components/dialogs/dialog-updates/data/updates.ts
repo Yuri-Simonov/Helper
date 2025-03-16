@@ -25,6 +25,10 @@ export const UPDATES: IUpdates[] = [
         date: `***`,
         changes: [
             {
+                chapterTitle: COMMON,
+                added: ['Раздел с записями собеседований'],
+            },
+            {
                 chapterTitle: THEORY,
                 added: [
                     'Информация разницу и схожесть между null и undefined (JavaScript)',

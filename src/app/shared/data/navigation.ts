@@ -51,6 +51,18 @@ export const NAVIGATION: INavigation[] = [
         ],
     },
     {
+        id: 'interviews',
+        path: '',
+        name: 'Записи собеседований',
+        links: [
+            {
+                path: 'https://boosty.to/yuri_simonov',
+                name: 'Angular',
+                sideLink: true,
+            },
+        ],
+    },
+    {
         id: 'code-review',
         path: 'code-review',
         name: 'Код-ревью',
