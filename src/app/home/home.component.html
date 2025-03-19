@@ -31,7 +31,17 @@
             <a mat-menu-item color="primary" [href]="link.path" target="_blank" [ngClass]="{ disabled: link.disabled }">
                 {{ link.name }}
             </a>
-        } @else {
+        } @else if (link.sideLink) {
+            <a
+                mat-raised-button
+                color="primary"
+                [href]="link.path"
+                target="_blank"
+                [ngClass]="{ disabled: link.disabled }"
+            >
+                {{ link.name }}
+            </a>
+        } @else if (type === "link") {
             <a
                 mat-raised-button
                 color="primary"
