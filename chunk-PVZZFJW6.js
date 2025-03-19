@@ -1065,6 +1065,7 @@ export class CustomDirectiveDirective {
             </p>
             <pre><code class="language-typescript">@Component({
 	selector: 'app-root',
+	template: '',
 	host: {
 		class: 'some-css-class',
 	},
@@ -1081,9 +1082,9 @@ export class AppComponent {}</code></pre>
             <i class="subtitle">\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0438\u0435 \u0430\u043D\u0438\u043C\u0430\u0446\u0438\u0439 \u0441 \u043F\u043E\u043C\u043E\u0449\u044C\u044E \u0441\u0432\u043E\u0439\u0441\u0442\u0432\u0430 host</i>
             <i>\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044E \u043F\u043E \u0434\u0430\u043D\u043D\u043E\u043C\u0443 \u0440\u0430\u0437\u0434\u0435\u043B\u0443 \u043F\u043E\u044F\u0432\u0438\u0442\u0441\u044F \u043F\u043E\u0437\u0436\u0435...</i>`,selected:!1,lastUpdate:"10.06.2024",footerLinks:[{path:"https://youtu.be/Do99IohSCSw"}]};var E={title:'\u0414\u0435\u043A\u043E\u0440\u0430\u0442\u043E\u0440\u044B <span class="variable">Dependency Injection</span>',body:`<p>
                 \u0412 Angular \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u044E\u0442 4 \u0434\u0435\u043A\u043E\u0440\u0430\u0442\u043E\u0440\u0430, \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0435\u043C\u044B\u0435 \u043F\u0440\u0438 \u0432\u043D\u0435\u0434\u0440\u0435\u043D\u0438\u0438 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0435\u0439:
-                <code class="dialog" dialog_id="optional">@Optional()</code>,
-                <code class="dialog" dialog_id="self">@Self()</code>,
-                <code class="dialog" dialog_id="skipSelf">@SkipSelf()</code> \u0438
-                <code class="dialog" dialog_id="host">@Host()</code>.
+                <code class="dialog" dialog_id="optional">@Optional</code>,
+                <code class="dialog" dialog_id="self">@Self</code>,
+                <code class="dialog" dialog_id="skipSelf">@SkipSelf</code> \u0438
+                <code class="dialog" dialog_id="host">@Host</code>.
             </p>
             <p>\u0414\u043B\u044F \u0431\u043E\u043B\u0435\u0435 \u043F\u043E\u0434\u0440\u043E\u0431\u043D\u043E\u0433\u043E \u043E\u0437\u043D\u0430\u043A\u043E\u043C\u043B\u0435\u043D\u0438\u044F, \u043A\u043B\u0438\u043A\u043D\u0438\u0442\u0435 \u043F\u043E \u043D\u0443\u0436\u043D\u043E\u043C\u0443 \u0432\u0430\u043C \u0434\u0435\u043A\u043E\u0440\u0430\u0442\u043E\u0440\u0443.</p>`,selected:!1,lastUpdate:"15.12.2024",footerLinks:[{path:"https://youtu.be/y9kMzhq2ERM"}]};var ce=[{chapter:"\u041E\u0431\u0449\u0438\u0435 \u043F\u043E\u043D\u044F\u0442\u0438\u044F"},e,{chapter:'\u0414\u0435\u043A\u043E\u0440\u0430\u0442\u043E\u0440\u044B <span class="variable">@Input()</span> \u0438 <span class="variable">@Output()</span>'},t,p,a,{chapter:'\u0414\u0435\u043A\u043E\u0440\u0430\u0442\u043E\u0440\u044B <span class="variable">@ViewChild()</span> \u0438 <span class="variable">@ViewChildren()</span>'},l,o,c,n,s,{chapter:'\u0414\u0435\u043A\u043E\u0440\u0430\u0442\u043E\u0440\u044B <span class="variable">@ContentChild()</span> \u0438 <span class="variable">@ContentChildren()</span>'},d,r,i,h,g,m,{chapter:'\u0414\u0435\u043A\u043E\u0440\u0430\u0442\u043E\u0440\u044B <span class="variable">Dependency Injection</span>'},E,{chapter:'\u0421\u0432\u043E\u0439\u0441\u0442\u0432\u0430 \u0434\u0435\u043A\u043E\u0440\u0430\u0442\u043E\u0440\u0430 <span class="variable">@Directive()</span>'},y,u,{chapter:"\u041F\u0440\u043E\u0447\u0435\u0435"},T,C];export{ce as a};
