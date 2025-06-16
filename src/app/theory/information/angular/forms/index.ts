@@ -7,6 +7,8 @@ import { NG_FORM_DIRECTIVE } from './information/ng-form-directive';
 import { TRANSFER_OF_CONTROL } from './information/transfer-of-control';
 import { FORM_FIELD_STATES } from './information/form-field-states';
 import { FORM_CONTROL } from './information/form-control';
+import { CUSTOM_SYNCHRONOUS_VALIDATORS } from './information/custom-synchronous-validators';
+import { CUSTOM_ASYNCHRONOUS_VALIDATORS } from './information/custom-asynchronous-validators';
 
 export const formsInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -14,10 +16,12 @@ export const formsInfo: IInfo[] = [
     { chapter: 'Шаблонные формы' },
     NG_MODEL_DIRECTIVE,
     NG_FORM_DIRECTIVE,
+    TRANSFER_OF_CONTROL,
     { chapter: 'Реактивные формы' },
     FORM_CONTROL,
+    CUSTOM_SYNCHRONOUS_VALIDATORS,
+    CUSTOM_ASYNCHRONOUS_VALIDATORS,
     { chapter: 'Прочее' },
-    TRANSFER_OF_CONTROL,
     FORM_FIELD_STATES,
     CREATING_CUSTOM_FORM_FIELD,
 ];

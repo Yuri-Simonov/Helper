@@ -33,12 +33,7 @@ export const TRANSFER_OF_CONTROL: IInfo = {
                     достаточно ее просто указать без создания одностороннего или двустороннего связывания.
                 </li>
                 <li>
-                    Когда мы передаем доступ к директиве <code>ngForm</code>, на теге <code>form</code>
-                    <span class="attention"> не нужно указывать данную директиву</span>. Тут дело в том, что когда
-                    происходит импорт модуля <code>FormsModules</code> (для шаблонных форм) или <code>ReactiveFormsModule</code> (для реактивных форм) в компонент с формой, Angular автоматически
-                    создает и прикрепляет директиву <code>ngForm</code> к тегу <code>form</code> в шаблоне компонента.
-                    Это происходит из-за того, что директивы <code>ngForm</code> в качестве селектора указан тег
-                    <code>form</code>.
+                    Когда мы используем шаблонные формы и импортируем <code>FormsModule</code>, Angular автоматически применяет директиву <code>ngForm</code> ко всем элементам <code>&lt;form></code>, если у них нет атрибутов <code>formGroup</code> или <code>ngNoForm</code>. Это происходит благодаря селектору директивы <code>ngForm</code>, который нацелен на <code>&lt;form></code>-элементы без <code>formGroup</code>. Поэтому при использовании шаблонных форм не нужно явно указывать <code>ngForm</code>, оно подставляется автоматически.
                 </li>
             </ul>`,
     selected: false,
