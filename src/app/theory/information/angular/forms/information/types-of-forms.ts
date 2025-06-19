@@ -19,5 +19,5 @@ export const TYPES_OF_FORMS: IInfo = {
                 где требуется кастомная валидация, динамическое добавление или удаление полей и т.д. Для работы с ними в компонент необходимо импортировать <span class="attention">ReactiveFormsModule</span>.
             </p>`,
     selected: false,
-    lastUpdate: '22.03.2025',
+    lastUpdate: '16.06.2025',
 };

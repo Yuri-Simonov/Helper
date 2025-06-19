@@ -9,6 +9,10 @@ import { FORM_FIELD_STATES } from './information/form-field-states';
 import { FORM_CONTROL } from './information/form-control';
 import { CUSTOM_SYNCHRONOUS_VALIDATORS } from './information/custom-synchronous-validators';
 import { CUSTOM_ASYNCHRONOUS_VALIDATORS } from './information/custom-asynchronous-validators';
+import { FORM_GROUP } from './information/form-group';
+import { NESTED_FORM_GROUPS } from './information/nested-form-groups';
+import { FORM_ARRAY } from './information/form-array';
+import { FORM_BUILDER } from './information/form-builder';
 
 export const formsInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -21,6 +25,10 @@ export const formsInfo: IInfo[] = [
     FORM_CONTROL,
     CUSTOM_SYNCHRONOUS_VALIDATORS,
     CUSTOM_ASYNCHRONOUS_VALIDATORS,
+    FORM_GROUP,
+    NESTED_FORM_GROUPS,
+    FORM_ARRAY,
+    FORM_BUILDER,
     { chapter: 'Прочее' },
     FORM_FIELD_STATES,
     CREATING_CUSTOM_FORM_FIELD,
