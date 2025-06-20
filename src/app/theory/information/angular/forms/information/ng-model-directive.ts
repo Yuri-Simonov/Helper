@@ -30,4 +30,9 @@ export const NG_MODEL_DIRECTIVE: IInfo = {
             </p>`,
     selected: false,
     lastUpdate: '22.03.2025',
+    footerLinks: [
+        {
+            path: 'https://youtu.be/WpftjPrERHA?t=59',
+        },
+    ],
 };

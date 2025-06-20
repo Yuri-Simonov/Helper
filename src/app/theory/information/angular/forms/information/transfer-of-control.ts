@@ -23,7 +23,7 @@ export const TRANSFER_OF_CONTROL: IInfo = {
             <p>
                 В примере выше с помощью шаблонной переменной <code>nameRef</code> получаем доступ к полю формы и, если
                 оно невалидно, выводим подсказку. А при помощи <code>userForm</code> получаем доступ ко всей форме и,
-                если она отправлена, выводим соответствующее сообщение.
+                если она отправлена, выводим соответствующее сообщение. Для отправки формы используется событие <code>ngSubmit</code>.
             </p>
             <p>Также обратите внимание еще на один маленький нюанс:</p>
             <ul>
@@ -37,5 +37,10 @@ export const TRANSFER_OF_CONTROL: IInfo = {
                 </li>
             </ul>`,
     selected: false,
-    lastUpdate: '23.03.2025',
+    lastUpdate: '20.06.2025',
+    footerLinks: [
+        {
+            path: 'https://youtu.be/WpftjPrERHA?t=583',
+        },
+    ],
 };
