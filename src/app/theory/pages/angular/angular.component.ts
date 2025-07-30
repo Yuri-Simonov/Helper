@@ -17,6 +17,7 @@ import { routingInfo } from '../../information/angular/routing';
 import { rxjsOperatorsInfo } from '../../information/angular/rxjs-operators';
 import { rxjsInfo } from '../../information/angular/rxjs';
 import { servicesInfo } from '../../information/angular/services';
+import { signalsInfo } from '../../information/angular/signals';
 // import { testingInfo } from "../../information/angular/testing";
 
 @Component({
@@ -46,6 +47,7 @@ export class AngularComponent {
         { name: 'Пайпы', path: 'pipe', info: pipesInfo },
         { name: 'Разное', path: 'others', info: othersInfo },
         { name: 'Сервисы', path: 'service', info: servicesInfo },
+        { name: 'Сигналы', path: 'signals', info: signalsInfo },
         // { name: 'Тестирование', path: 'test', info: testingInfo },
         { name: 'Формы', path: 'form', info: formsInfo },
         {

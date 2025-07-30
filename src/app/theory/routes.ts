@@ -27,6 +27,7 @@ export const theoryRoutes: Routes = [
                     { path: 'rxjs', component: AngularComponent },
                     { path: 'rxjs-operators', component: AngularComponent },
                     { path: 'service', component: AngularComponent },
+                    { path: 'signals', component: AngularComponent },
                     { path: 'test', component: AngularComponent },
                     { path: '**', redirectTo: '' },
                 ],

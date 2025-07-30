@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 
 import { ForExamplesComponent } from './for-examples/for-examples/for-examples.component';
-import { SettingsComponent } from './settings/settings.component';
 
 import { homeRoutes } from './home/routes';
 import { codeReviewRoutes } from './code-review/routes';
