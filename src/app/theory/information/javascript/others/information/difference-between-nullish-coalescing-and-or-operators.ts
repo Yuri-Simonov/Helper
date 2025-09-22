@@ -6,10 +6,10 @@ export const DIFFERENCE_BETWEEN_NULLISH_COALESCING_AND_OR_OPERATORS: IInfo = {
                 Тут стоит понимать, что <code>||</code>
                 <span class="attention">возвращает первое правдивое значение или последнее ложное</span>
                 (<code>false</code>, <code>0</code>, <code>''</code>, <code>NaN</code>, <code>null</code>,
-                <code>undefined</code>), если в цепочке все значения ложные. А <code>??</code>
+                <code>undefined</code>)<span class="attention">, если в цепочке все значения ложные</span>. А <code>??</code>
                 <span class="attention">
-                    проверяет только, что выражение слева не <code>null</code> и не <code>undefined</code></span
-                >. Остальные "ложные" значения (<code>false</code>, <code>0</code> и <code>''</code>) он сохраняет, что
+                    проверяет только, что выражение слева не <code>null</code> и не <code>undefined</code></span>.
+					Остальные "ложные" значения (<code>false</code>, <code>0</code> и <code>''</code>) он сохраняет, что
                 делает его более полезным инструментом для выбора значений в определенных ситуациях.
             </p>
             <i class="subtitle">Примеры использования «||»</i>

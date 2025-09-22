@@ -14,12 +14,9 @@ export const BROWSER_EVENT_HANDLING: IInfo = {
             </ol>
             <i class="subtitle">1. Генерация события</i>
             <p>
-                Любое действие пользователя (клик, нажатие клавиши, перемещение мыши) или системное событие (загрузка
+                На любое действие пользователя (клик, нажатие клавиши, перемещение мыши) или системное событие (загрузка
                 страницы, завершение запроса) инициирует событие (например, <code>click</code>, <code>keydown</code>,
-                <code>scroll</code> или что-то ещё).
-            </p>
-            <p>
-                Браузер создаёт объект события <code>Event</code>, содержащий информацию о типе события, целевом
+                <code>scroll</code> или что-то ещё) браузер создаёт объект события <code>Event</code>, содержащий информацию о типе события, целевом
                 элементе, координатах (если мышь), клавише (если клавиатура) и других данных.
             </p>
             <i class="subtitle">2. Определение цели события (Event Target)</i>
@@ -30,8 +27,9 @@ export const BROWSER_EVENT_HANDLING: IInfo = {
             <p>Пример:</p>
             <pre><code class="language-html">&lt;!-- html --&gt;
 &lt;button id="myButton">Нажми меня&lt;/button></code></pre>
-            <pre><code class="language-javascript">document.getElementById("myButton").addEventListener("click", function (event) {
-  console.log("Цель события:", event.target); // &lt;button id="myButton">Нажми меня&lt;/button>
+            <pre><code class="language-javascript">// js
+document.getElementById("myButton").addEventListener("click", function (event) {
+	console.log("Цель события:", event.target); // &lt;button id="myButton">Нажми меня&lt;/button>
 });</code></pre>
             <i class="subtitle">3. Фазы распространения события (Event Propagation)</i>
             <p>Когда событие происходит, оно распространяется по DOM-дереву в три фазы:</p>
@@ -49,7 +47,7 @@ export const BROWSER_EVENT_HANDLING: IInfo = {
                 <li>
                     <span class="attention">Фаза всплытия</span> (Bubbling Phase). Событие начинает "подниматься" снизу
                     вверх к <code>document</code> и <code>window</code>. Обработчики событий на родительских элементах
-                    могут "поймать" событие после того, как оно отработало в цели.
+                    могут "поймать" событие после того, как оно отработало в целевой фазе.
                 </li>
             </ol>`,
     selected: false,
