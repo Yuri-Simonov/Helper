@@ -27,6 +27,7 @@ export const UPDATES: IUpdates[] = [
             {
                 chapterTitle: TASKS,
                 added: ['Новые задачи (JavaScript)'],
+                updated: ['Обновлена задача по проверке строки на полиндром (JavaScript)'],
             },
         ],
     },

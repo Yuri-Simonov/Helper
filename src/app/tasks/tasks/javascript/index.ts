@@ -11,11 +11,11 @@ import { ANAGRAM_CHECK } from './all/anagram-check';
 export const allJavaScriptTasks: IInfo[] = [
     { chapter: 'Простые задачи' },
     ANAGRAM_CHECK,
+    PALINDROME_CHECK,
     CALCULATOR_OBJECT,
     IMPLEMENT_DELAY_FUNCTION,
     { chapter: 'Средние задачи' },
     FLATTEN_NESTED_ARRAY,
-    PALINDROME_CHECK,
     GENERATE_RANGES,
     { chapter: 'Сложные задачи' },
     EVENT_BUS,
