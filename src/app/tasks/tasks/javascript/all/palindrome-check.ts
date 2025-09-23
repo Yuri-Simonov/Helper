@@ -25,12 +25,7 @@ console.log(isPalindrome("сатурн")); // false</code></pre>`,
             title: 'Простое решение задачи',
             body: `<pre><code class="language-javascript">function isPalindrome(s) {
 	return s === s.split("").reverse().join("");
-}
-
-// Примеры для проверки
-console.log(isPalindrome("топот")); // true
-console.log(isPalindrome("101")); // true
-console.log(isPalindrome("сатурн")); // false</code></pre>
+}</code></pre>
 			<p>Это самое простое решение данной задачи, которое может подойти для маленьких строк. Если строка большая, то лучше использовать решение, которое показано в следующем спойлере.</p>`,
             selected: false,
         },
@@ -50,12 +45,7 @@ console.log(isPalindrome("сатурн")); // false</code></pre>
 	}
 
 	return true; // дошли до середины без расхождений
-}
-
-// Примеры для проверки
-console.log(isPalindrome("топот")); // true
-console.log(isPalindrome("101")); // true
-console.log(isPalindrome("сатурн")); // false</code></pre>
+}</code></pre>
 			<p>Данное решение хоть и выглядит менее легким для восприятия, но зато здесь мы работаем прямо с исходной строкой, не создавая лишние её развернутые копии.</p>
 			<p>Здесь суть решения заключается в том, что мы идем одновременно с двух концов навстречу друг другу и сразу сравниваем символы. Если где-то находится несовпадение, то завершаем проверку. В противном случае строка является палиндромом.</p>`,
             selected: false,

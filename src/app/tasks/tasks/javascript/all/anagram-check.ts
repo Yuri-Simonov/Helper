@@ -23,7 +23,8 @@ console.log(isAnagram("ab", "a b")); // false</code></pre>`,
     tasks: [
         {
             title: 'Решение задачи',
-            body: `<pre><code class="language-javascript">function isAnagram(s, t) {
+            body: `<pre><code class="language-javascript">// Решение задачи
+function isAnagram(s, t) {
 	// Быстрый выход — если длины разные, дальше проверять смысла нет
 	if (s.length !== t.length) return false;
 	// идентичные строки — тривиальная анаграмма
@@ -33,16 +34,7 @@ console.log(isAnagram("ab", "a b")); // false</code></pre>`,
 	const sortedT = t.split("").sort().join("");
 
 	return sortedS === sortedT;
-}
-
-// Примеры для проверки
-console.log(isAnagram("listen", "silent")); // true
-console.log(isAnagram("triangle", "integral")); // true
-console.log(isAnagram("apple", "papel")); // true
-console.log(isAnagram("rat", "car")); // false
-console.log(isAnagram("aabbcc", "abccba")); // true
-console.log(isAnagram("Aa", "aa")); // false
-console.log(isAnagram("ab", "a b")); // false</code></pre>
+}</code></pre>
 			<p>Нейронка предлагает вместо оператора split использовать spread-operator:</p>
 			<pre><code class="language-javascript">function isAnagram_vChatGPT(s, t) {
   // Быстрые выходы
