@@ -8,6 +8,7 @@ import { GENERATE_RANGES } from './all/generate-ranges';
 import { EVENT_BUS } from './all/event-bus';
 import { ANAGRAM_CHECK } from './all/anagram-check';
 import { REMOVING_DUPLICATES_FROM_ARRAY } from './all/removing-duplicates-from-array';
+import { IMPLEMENT_DEBOUNCE } from './all/implement-debounce';
 
 export const allJavaScriptTasks: IInfo[] = [
     { chapter: 'Простые задачи' },
@@ -15,6 +16,7 @@ export const allJavaScriptTasks: IInfo[] = [
     PALINDROME_CHECK,
     CALCULATOR_OBJECT,
     IMPLEMENT_DELAY_FUNCTION,
+    IMPLEMENT_DEBOUNCE,
     REMOVING_DUPLICATES_FROM_ARRAY,
     { chapter: 'Средние задачи' },
     FLATTEN_NESTED_ARRAY,
