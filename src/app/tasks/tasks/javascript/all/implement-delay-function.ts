@@ -2,20 +2,26 @@ import { IInfo } from 'src/app/shared/interfaces';
 
 export const IMPLEMENT_DELAY_FUNCTION: IInfo = {
     title: 'Реализация функции задержки',
-    body: `<p>
-                Создайте функцию <code>foo</code>, которая реализует задержку и в соответствии с примером использования
-                выведет сообщение в консоль через 3 секунды.
-            </p>
-            <p>Примеры использования:</p>
-            <pre><code class="language-javascript">foo(3).then(() => {
-	console.log('done')
-})</code></pre>`,
+    body: `<pre><code class="language-javascript">// Условие:
+// Создайте функцию foo, которая реализует задержку и в соответствии с примером
+// использования выведет сообщение в консоль через указанное количество секунд.
+
+function foo(seconds) {
+	// Твоё решение здесь
+}
+
+// Мини-тест
+foo(3).then(() => {
+	console.log("done");
+});</code></pre>`,
     tasks: [
         {
             title: 'Решение задачи',
             body: `<pre><code class="language-javascript">function foo(seconds) {
-	return new Promise(resolve => {
-		setTimeout(resolve, seconds * 1000);  // Умножаем секунды на 1000 для перевода в миллисекунды
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			resolve();
+		}, seconds * 1000);
 	});
 }
 
