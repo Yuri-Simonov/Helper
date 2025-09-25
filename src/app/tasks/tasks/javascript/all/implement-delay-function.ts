@@ -7,12 +7,12 @@ export const IMPLEMENT_DELAY_FUNCTION: IInfo = {
 // использования выведет сообщение в консоль через указанное количество секунд.
 
 function foo(seconds) {
-	// Твоё решение здесь
+	// Ваше решение здесь
 }
 
-// Мини-тест
+// Пример использования:
 foo(3).then(() => {
-	console.log("done");
+	console.log("done"); // Выведет "done" через 3 секунды
 });</code></pre>`,
     tasks: [
         {

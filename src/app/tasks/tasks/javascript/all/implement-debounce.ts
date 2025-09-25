@@ -6,18 +6,18 @@ export const IMPLEMENT_DEBOUNCE: IInfo = {
 // Напиши функцию debounce(fn, delay), которая возвращает обёртку для fn.
 // Эта обёртка откладывает вызов fn на указанное количество миллисекунд (delay).
 // Если в течение этого времени обёртка вызывается снова, таймер сбрасывается.
-//
+
+function debounce(fn, delay) {
+	// Ваше решение здесь
+}
+	
 // Примеры использования:
 const log = () => console.log('Функция вызвана');
 const debouncedLog = debounce(log, 1000);
 
 debouncedLog(); // вызов откладывается на 1с
 debouncedLog(); // предыдущий сбрасывается, снова 1с
-debouncedLog(); // и так далее
-
-function debounce(fn, delay) {
-	// Твоё решение здесь
-}</code></pre>`,
+debouncedLog(); // и так далее</code></pre>`,
     tasks: [
         {
             title: 'Решение задачи',

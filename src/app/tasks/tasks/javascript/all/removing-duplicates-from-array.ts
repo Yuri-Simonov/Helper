@@ -6,7 +6,7 @@ export const REMOVING_DUPLICATES_FROM_ARRAY: IInfo = {
 // Реализуйте функцию uniqueBy(arr, key), которая удаляет дубликаты из массива объектов
 // на основании значения указанного ключа.
 
-// Примеры использования:
+// Данные для тестирования:
 const users = [
 	{ id: 1, name: "Alice" },
 	{ id: 2, name: "Bob" },
@@ -15,14 +15,15 @@ const users = [
 ];
 
 function uniqueBy(arr, key) {
-	// Твоё решение здесь
+	// Ваше решение здесь
 }
 
+// Примеры использования:
 console.log(uniqueBy(users, 'id'));
-// Ожидаемый результат: [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 3, name: 'Alice' }]
+// [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 3, name: 'Alice' }]
 
 console.log(uniqueBy(users, 'name'));
-// Ожидаемый результат: [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 1, name: 'Charlie' }]</code></pre>`,
+// [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 1, name: 'Charlie' }]</code></pre>`,
     tasks: [
         {
             title: 'Решение задачи',

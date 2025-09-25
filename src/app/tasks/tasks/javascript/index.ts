@@ -9,6 +9,7 @@ import { EVENT_BUS } from './all/event-bus';
 import { ANAGRAM_CHECK } from './all/anagram-check';
 import { REMOVING_DUPLICATES_FROM_ARRAY } from './all/removing-duplicates-from-array';
 import { IMPLEMENT_DEBOUNCE } from './all/implement-debounce';
+import { PARSING_QUERY_PARAMETERS } from './all/parsing-query-parameters';
 
 export const allJavaScriptTasks: IInfo[] = [
     { chapter: 'Простые задачи' },
@@ -18,6 +19,7 @@ export const allJavaScriptTasks: IInfo[] = [
     IMPLEMENT_DELAY_FUNCTION,
     IMPLEMENT_DEBOUNCE,
     REMOVING_DUPLICATES_FROM_ARRAY,
+    PARSING_QUERY_PARAMETERS,
     { chapter: 'Средние задачи' },
     FLATTEN_NESTED_ARRAY,
     GENERATE_RANGES,

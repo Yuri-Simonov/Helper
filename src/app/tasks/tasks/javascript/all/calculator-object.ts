@@ -9,10 +9,10 @@ export const CALCULATOR_OBJECT: IInfo = {
 // - метод div должен выбрасывать ошибку "На ноль делить нельзя" при делении на 0.
 
 function createCalculator() {
-	// Твоё решение здесь
+	// Ваше решение здесь
 }
 
-// Мини-тесты
+// Пример использования:
 const calculator = createCalculator();
 console.log(calculator.value); // 0
 
