@@ -10,6 +10,7 @@ import { ANAGRAM_CHECK } from './all/anagram-check';
 import { REMOVING_DUPLICATES_FROM_ARRAY } from './all/removing-duplicates-from-array';
 import { IMPLEMENT_DEBOUNCE } from './all/implement-debounce';
 import { PARSING_QUERY_PARAMETERS } from './all/parsing-query-parameters';
+import { IMPLEMENT_THROTTLE } from './all/implement-throttle';
 
 export const allJavaScriptTasks: IInfo[] = [
     { chapter: 'Простые задачи' },
@@ -18,6 +19,7 @@ export const allJavaScriptTasks: IInfo[] = [
     CALCULATOR_OBJECT,
     IMPLEMENT_DELAY_FUNCTION,
     IMPLEMENT_DEBOUNCE,
+    IMPLEMENT_THROTTLE,
     REMOVING_DUPLICATES_FROM_ARRAY,
     PARSING_QUERY_PARAMETERS,
     { chapter: 'Средние задачи' },
