@@ -67,6 +67,10 @@ q {
     padding: 1rem;
     color: var(--primary-color);
     filter: var(--hue-240-deg);
+
+    & + q {
+        padding-top: 0;
+    }
 }
 
 li q {

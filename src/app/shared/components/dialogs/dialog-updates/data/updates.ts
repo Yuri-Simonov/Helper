@@ -25,11 +25,15 @@ export const UPDATES: IUpdates[] = [
         date: '',
         changes: [
             {
+                chapterTitle: THEORY,
+                updated: ['Информация про этапы, происходящие в браузере (Разное)'],
+            },
+            {
                 chapterTitle: TASKS,
-                added: ['Новые задачи (JavaScript)'],
+                added: ['5 новых задач (JavaScript)'],
                 updated: [
-                    'Обновлена задача по проверке строки на палиндром (JavaScript)',
-                    'Обновлена задача по созданию объекта-калькулятора (JavaScript)',
+                    'Задача по проверке строки на палиндром (JavaScript)',
+                    'Задача по созданию объекта-калькулятора (JavaScript)',
                 ],
             },
         ],
