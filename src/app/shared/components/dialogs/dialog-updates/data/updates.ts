@@ -30,7 +30,7 @@ export const UPDATES: IUpdates[] = [
             },
             {
                 chapterTitle: TASKS,
-                added: ['5 новых задач (JavaScript)'],
+                added: ['6 новых задач (JavaScript)'],
                 updated: [
                     'Задача по проверке строки на палиндром (JavaScript)',
                     'Задача по созданию объекта-калькулятора (JavaScript)',
