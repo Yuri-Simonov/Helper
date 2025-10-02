@@ -12,6 +12,7 @@ import { IMPLEMENT_DEBOUNCE } from './all/implement-debounce';
 import { PARSING_QUERY_PARAMETERS } from './all/parsing-query-parameters';
 import { IMPLEMENT_THROTTLE } from './all/implement-throttle';
 import { IS_EQUAL } from './all/is-equal';
+import { GROUP_BY } from './all/group-by';
 
 export const allJavaScriptTasks: IInfo[] = [
     { chapter: 'Простые задачи' },
@@ -25,6 +26,7 @@ export const allJavaScriptTasks: IInfo[] = [
     PARSING_QUERY_PARAMETERS,
     { chapter: 'Средние задачи' },
     IS_EQUAL,
+    GROUP_BY,
     FLATTEN_NESTED_ARRAY,
     GENERATE_RANGES,
     { chapter: 'Сложные задачи' },
