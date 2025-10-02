@@ -13,6 +13,7 @@ import { PARSING_QUERY_PARAMETERS } from './all/parsing-query-parameters';
 import { IMPLEMENT_THROTTLE } from './all/implement-throttle';
 import { IS_EQUAL } from './all/is-equal';
 import { GROUP_BY } from './all/group-by';
+import { FIND_VOWELS_LENGTH } from './all/find-vowels-length';
 
 export const allJavaScriptTasks: IInfo[] = [
     { chapter: 'Простые задачи' },
@@ -24,6 +25,7 @@ export const allJavaScriptTasks: IInfo[] = [
     IMPLEMENT_THROTTLE,
     REMOVING_DUPLICATES_FROM_ARRAY,
     PARSING_QUERY_PARAMETERS,
+    FIND_VOWELS_LENGTH,
     { chapter: 'Средние задачи' },
     IS_EQUAL,
     GROUP_BY,
