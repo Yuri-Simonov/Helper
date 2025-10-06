@@ -14,6 +14,7 @@ import { IMPLEMENT_THROTTLE } from './all/implement-throttle';
 import { IS_EQUAL } from './all/is-equal';
 import { GROUP_BY } from './all/group-by';
 import { FIND_VOWELS_LENGTH } from './all/find-vowels-length';
+import { CHUNKS } from './all/chunks';
 
 export const allJavaScriptTasks: IInfo[] = [
     { chapter: 'Простые задачи' },
@@ -29,6 +30,7 @@ export const allJavaScriptTasks: IInfo[] = [
     { chapter: 'Средние задачи' },
     IS_EQUAL,
     GROUP_BY,
+    CHUNKS,
     FLATTEN_NESTED_ARRAY,
     GENERATE_RANGES,
     { chapter: 'Сложные задачи' },

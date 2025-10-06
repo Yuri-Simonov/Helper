@@ -26,11 +26,12 @@ export const UPDATES: IUpdates[] = [
         changes: [
             {
                 chapterTitle: THEORY,
+                added: ['Добавлен раздел с сигналами (Angular)'],
                 updated: ['Информация про этапы, происходящие в браузере (Разное)'],
             },
             {
                 chapterTitle: TASKS,
-                added: ['8 новых задач (JavaScript)'],
+                added: ['9 новых задач (JavaScript)'],
                 updated: [
                     'Задача по проверке строки на палиндром (JavaScript)',
                     'Задача по созданию объекта-калькулятора (JavaScript)',
