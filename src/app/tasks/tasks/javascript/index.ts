@@ -15,6 +15,7 @@ import { IS_EQUAL } from './all/is-equal';
 import { GROUP_BY } from './all/group-by';
 import { FIND_VOWELS_LENGTH } from './all/find-vowels-length';
 import { CHUNKS } from './all/chunks';
+import { GET_VALUE_BY_PATH } from './all/get-value-by-path';
 
 export const allJavaScriptTasks: IInfo[] = [
     { chapter: 'Простые задачи' },
@@ -27,6 +28,7 @@ export const allJavaScriptTasks: IInfo[] = [
     REMOVING_DUPLICATES_FROM_ARRAY,
     PARSING_QUERY_PARAMETERS,
     FIND_VOWELS_LENGTH,
+    GET_VALUE_BY_PATH,
     { chapter: 'Средние задачи' },
     IS_EQUAL,
     GROUP_BY,
