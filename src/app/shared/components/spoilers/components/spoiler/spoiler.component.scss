@@ -40,7 +40,7 @@
         & ::ng-deep {
             .mat-expansion-panel {
                 color: var(--text-color);
-                background-color: var(--mdc-filled-text-field-input-text-placeholder-color);
+                background-color: var(--mat-form-field-filled-input-text-placeholder-color);
 
                 &:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled="true"]):hover {
                     @media (hover: none) {

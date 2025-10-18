@@ -1,7 +1,7 @@
 :host {
     min-height: 100%;
     border-right: var(--border);
-    background-color: var(--mdc-filled-text-field-input-text-placeholder-color);
+    background-color: var(--mat-form-field-filled-input-text-placeholder-color);
 
     @media (max-width: 992px) {
         position: absolute;

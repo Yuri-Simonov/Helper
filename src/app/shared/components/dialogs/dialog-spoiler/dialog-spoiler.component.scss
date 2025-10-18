@@ -1,7 +1,7 @@
 :host {
     color: var(--text-color);
     background: linear-gradient(var(--secondary-color), var(--primary-color)),
-        var(--mdc-filled-text-field-input-text-placeholder-color);
+        var(--mat-form-field-filled-input-text-placeholder-color);
     border: 2px solid var(--primary-color);
 
     * {

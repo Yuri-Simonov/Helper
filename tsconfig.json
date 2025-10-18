@@ -1,29 +1,36 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
-        "baseUrl": "./",
-        "outDir": "./dist/out-tsc",
-        "forceConsistentCasingInFileNames": true,
-        "esModuleInterop": true,
-        "strict": true,
-        "noImplicitOverride": true,
-        "noPropertyAccessFromIndexSignature": false,
-        "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true,
-        "sourceMap": true,
-        "declaration": false,
-        "experimentalDecorators": true,
-        "moduleResolution": "node",
-        "importHelpers": true,
-        "target": "ES2022",
-        "module": "es2020",
-        "lib": ["es2020", "dom"],
-        "useDefineForClassFields": false,
-        "strictPropertyInitialization": false,
-        "paths": {
-            "@modules": ["./src/app/shared/modules"],
-            "@types": ["./src/app/shared/types"]
-        }
+      "baseUrl": "./",
+      "outDir": "./dist/out-tsc",
+      "forceConsistentCasingInFileNames": true,
+      "esModuleInterop": true,
+      "strict": true,
+      "noImplicitOverride": true,
+      "noPropertyAccessFromIndexSignature": false,
+      "noImplicitReturns": true,
+      "noFallthroughCasesInSwitch": true,
+      "sourceMap": true,
+      "declaration": false,
+      "experimentalDecorators": true,
+      "moduleResolution": "bundler",
+      "importHelpers": true,
+      "target": "ES2022",
+      "module": "es2020",
+      "lib": [
+        "es2020",
+        "dom"
+      ],
+      "useDefineForClassFields": false,
+      "strictPropertyInitialization": false,
+      "paths": {
+        "@modules": [
+          "./src/app/shared/modules"
+        ],
+        "@types": [
+          "./src/app/shared/types"
+        ]
+      }
     },
     "angularCompilerOptions": {
         "enableI18nLegacyMessageIdFormat": false,
