@@ -1,5 +1,5 @@
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, Input } from '@angular/core';
 
 import { IInfosAndAnswer, ITestAnswerOption } from '../../../shared/interfaces';
 
@@ -19,7 +19,8 @@ const materialModules = [MatProgressBarModule];
     imports: [...materialModules, ButtonComponent, QuestionCardComponent, ResultComponent, NextQuestionDirective],
 })
 export class QuestionsComponent {
-    @Input('questions') questionsProps: IInfosAndAnswer[] = [];
+    // @Input('questions') questionsProps: IInfosAndAnswer[] = [];
+    questionsProps = input<IInfosAndAnswer[]>([], { alias: 'questions' });
 
     currentValue: ITestAnswerOption | undefined;
     currentQuestionIndex: number = 0;
@@ -28,6 +29,7 @@ export class QuestionsComponent {
     userAnswers: ITestAnswerOption[] = [];
 
     ngOnChanges() {
+        console.log('questionsProps', this.questionsProps());
         // console.log('Количество вопросов:', this.questionsProps.length);
         // this.questionsProps = [
         //     this.questionsProps[this.questionsProps.length - 2],
@@ -35,9 +37,9 @@ export class QuestionsComponent {
         // ];
 
         if (this.questionsProps.length < 20) {
-            this.questionsAndAnswers = getQuestions(this.questionsProps, this.questionsProps.length);
+            this.questionsAndAnswers = getQuestions(this.questionsProps(), this.questionsProps().length);
         } else {
-            this.questionsAndAnswers = getQuestions(this.questionsProps);
+            this.questionsAndAnswers = getQuestions(this.questionsProps());
         }
 
         this.questionsAndAnswers = this.shuffle(this.questionsAndAnswers);
