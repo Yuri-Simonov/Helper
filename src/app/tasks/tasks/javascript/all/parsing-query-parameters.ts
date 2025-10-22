@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const PARSING_QUERY_PARAMETERS: IInfo = {
-    title: 'Парсинг <span class="variable">query</span>-параметров',
+    title: 'Парсинг query-параметров (parseQuery)',
     body: `<pre><code class="language-javascript">// Условие:
 // Реализуй две функции:
 // 1) parseQuery(queryString) — преобразует строку вида "?a=1&b=2&c=hello"

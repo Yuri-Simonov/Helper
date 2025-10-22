@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const PALINDROME_CHECK: IInfo = {
-    title: 'Проверка на палиндром',
+    title: 'Проверка на палиндром (isPalindrome)',
     body: `<p>
 				Палиндром — это <span class="attention">
 					слово, цифра, фраза или другая последовательность символов, 

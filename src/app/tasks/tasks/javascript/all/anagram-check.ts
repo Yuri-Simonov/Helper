@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const ANAGRAM_CHECK: IInfo = {
-    title: 'Проверка на анаграмму',
+    title: 'Проверка на анаграмму (isAnagram)',
     body: `<p>Анаграмма — это <span class="attention">слово или строка, составленная из тех же букв, что и другая, только в другом порядке</span>.</p>
 			<p>Реализуйте функцию <code>isAnagram</code>, которая проверяет, что переданные в нее 2 значения являются анаграммами.</p>
 			<pre><code class="language-javascript">// Условие:

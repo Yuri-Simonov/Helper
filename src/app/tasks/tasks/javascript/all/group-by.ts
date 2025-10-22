@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const GROUP_BY: IInfo = {
-    title: 'Группировка элементов массива',
+    title: 'Группировка элементов массива (groupBy)',
     body: `<pre><code class="language-javascript">// Условие:
 // Реализуй функцию groupBy(array, keyOrFn), которая группирует элементы массива по ключу или функции.
 // Требования:

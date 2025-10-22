@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const IMPLEMENT_THROTTLE: IInfo = {
-    title: 'Реализация <span class="variable">throttle</span>',
+    title: 'Реализация throttle',
     body: `<pre><code class="language-javascript">// Условие:
 // Напиши функцию throttle(fn, delay), которая возвращает обёртку для fn.
 // Эта обёртка вызывает fn не чаще одного раза в указанный промежуток времени (delay).

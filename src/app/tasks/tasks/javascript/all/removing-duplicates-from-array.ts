@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const REMOVING_DUPLICATES_FROM_ARRAY: IInfo = {
-    title: 'Удаление дубликатов из массива объектов по ключу',
+    title: 'Удаление дубликатов из массива объектов по ключу (uniqueBy)',
     body: `<pre><code class="language-javascript">// Условие:
 // Реализуйте функцию uniqueBy(arr, key), которая удаляет дубликаты из массива объектов
 // на основании значения указанного ключа.

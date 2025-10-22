@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const CALCULATOR_OBJECT: IInfo = {
-    title: 'Создание объекта-калькулятора',
+    title: 'Создание объекта-калькулятора (createCalculator)',
     body: `<pre><code class="language-javascript">// Условие:
 // Реализовать функцию createCalculator, которая возвращает объект с:
 // - свойством value (изначально 0);

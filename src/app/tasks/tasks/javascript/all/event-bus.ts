@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const EVENT_BUS: IInfo = {
-    title: 'Шина событий',
+    title: 'Шина событий (EventBus)',
     body: `<p>Необходимо реализовать шину событий.</p>
 			<p>Стартовый код:</p>
 			

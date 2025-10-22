@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const IS_EQUAL: IInfo = {
-    title: 'Глубокое сравнение объектов и массивов',
+    title: 'Глубокое сравнение объектов и массивов (isEqual)',
     body: `<pre><code class="language-javascript">// Условие:
 // Реализуйте функцию isEqual(a, b), которая проверяет объекты и массивы на глубокое равенство.
 // Требования:

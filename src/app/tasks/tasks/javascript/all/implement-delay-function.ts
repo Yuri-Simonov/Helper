@@ -1,23 +1,23 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const IMPLEMENT_DELAY_FUNCTION: IInfo = {
-    title: 'Реализация функции задержки',
+    title: 'Реализация функции задержки (delay)',
     body: `<pre><code class="language-javascript">// Условие:
-// Создайте функцию foo, которая реализует задержку и в соответствии с примером
+// Создайте функцию delay, которая реализует задержку и в соответствии с примером
 // использования выведет сообщение в консоль через указанное количество секунд.
 
-function foo(seconds) {
+function delay(seconds) {
 	// Ваше решение здесь
 }
 
 // Пример использования:
-foo(3).then(() => {
+delay(3).then(() => {
 	console.log("done"); // Выведет "done" через 3 секунды
 });</code></pre>`,
     tasks: [
         {
             title: 'Решение задачи',
-            body: `<pre><code class="language-javascript">function foo(seconds) {
+            body: `<pre><code class="language-javascript">function delay(seconds) {
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve();
@@ -25,12 +25,12 @@ foo(3).then(() => {
 	});
 }
 
-foo(3).then(() => {
+delay(3).then(() => {
   	console.log('done');
 });</code></pre>
 			<p>Как это работает:</p>
             <ul>
-                <li>Функция <code>foo</code> возвращает новый <code>Promise</code>;</li>
+                <li>Функция <code>delay</code> возвращает новый <code>Promise</code>;</li>
                 <li>
                     Внутри <code>Promise</code> вызывается <code>setTimeout</code>, который через указанное количество
                     секунд вызывает <code>resolve</code>;

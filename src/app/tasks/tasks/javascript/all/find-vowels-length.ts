@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const FIND_VOWELS_LENGTH: IInfo = {
-    title: 'Подсчёт количества гласных в строке',
+    title: 'Подсчёт количества гласных в строке (findVowelsLength)',
     body: `<pre><code class="language-javascript">// Условие:
 // Реализуй функцию findVowelsLength(str), которая возвращает количество гласных в строке.
 // Гласные: a, e, i, o, u, y (в нижнем и верхнем регистре).

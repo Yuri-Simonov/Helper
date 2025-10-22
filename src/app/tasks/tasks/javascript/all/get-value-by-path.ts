@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const GET_VALUE_BY_PATH: IInfo = {
-    title: 'Получение значения по пути в объекте',
+    title: 'Получение значения по пути в объекте (get)',
     body: `<pre><code class="language-javascript">// Условие:
 // Реализуй функцию get(obj, path), которая принимает объект и строку-путь до значения.
 // Возвращает само значение или undefined, если значение по пути не найдено.

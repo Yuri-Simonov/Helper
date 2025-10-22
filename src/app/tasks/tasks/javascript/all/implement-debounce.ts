@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const IMPLEMENT_DEBOUNCE: IInfo = {
-    title: 'Реализация <span class="variable">debounce</span>',
+    title: 'Реализация debounce',
     body: `<pre><code class="language-javascript">// Условие:
 // Напиши функцию debounce(fn, delay), которая возвращает обёртку для fn.
 // Эта обёртка откладывает вызов fn на указанное количество миллисекунд (delay).
