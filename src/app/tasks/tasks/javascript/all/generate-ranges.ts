@@ -1,14 +1,26 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const GENERATE_RANGES: IInfo = {
-    title: 'Формирование диапазонов из массива чисел',
-    body: `<p>Реализуйте функцию <code>range</code>, которая преобразовывает полученный на вход массив в строку, сворачивая соседние по числовому ряду числа в диапазоны.</p>
-			<p>Примеры использования:</p>
-			<pre><code class="language-javascript">console.log(range([1, 4, 5, 2, 3, 9, 8, 11, 0]));	// '0-5,8-9,11'
-console.log(range([1, 4, 3, 2]));	// '1-4'</code></pre>`,
+    title: 'Формирование диапазонов из массива чисел (range)',
+    body: `<pre><code class="language-javascript">// Условие:
+// Реализуйте функцию range, которая преобразует массив чисел в строку, объединяя соседние числа в диапазоны.
+// Примеры использования:
+// console.log(range([1, 4, 5, 2, 3, 9, 8, 11, 0])); // '0-5,8-9,11'
+// console.log(range([1, 4, 3, 2])); // '1-4'
+
+function range(array) {
+	// Ваше решение здесь
+}
+
+// Мини-тесты
+console.log(range([1, 4, 5, 2, 3, 9, 8, 11, 0])); // '0-5,8-9,11'
+console.log(range([1, 4, 3, 2])); // '1-4'
+console.log(range([])); // ''
+console.log(range([5])); // '5'
+console.log(range([1, 3, 5, 7])); // '1,3,5,7'</code></pre>`,
     tasks: [
         {
-            title: 'Решение задачи',
+            title: 'Первый вариант решения',
             body: `<pre><code class="language-javascript">function range(arr) {
 	// Сортируем массив и удаляем дубликаты
 	arr = Array.from(new Set(arr.sort((a, b) => a - b)));
@@ -49,7 +61,50 @@ console.log(range([1, 4, 3, 2]));	// '1-4'</code></pre>
             </ul>`,
             selected: false,
         },
+        {
+            title: 'Второй вариант решения',
+            body: `<pre><code class="language-javascript">function range(array) {
+	let start = null;
+	let end = null;
+
+	if (!array.length) return "";
+
+	// Убираем дубликаты и сортируем копию входящего массива
+	const sortedArray = [...new Set(array)].sort((a, b) => a - b);
+	const newArray = [];
+
+	for (let i = 0; i < sortedArray.length; i++) {
+		if (sortedArray[i] !== undefined && start === null) {
+			newArray.push([sortedArray[i]]);
+			start = sortedArray[i];
+
+			continue;
+		}
+
+		if (sortedArray[i] - sortedArray[i - 1] === 1) {
+			end = sortedArray[i];
+
+			if (i === sortedArray.length - 1) {
+				newArray[newArray.length - 1].push(end);
+				end = null;
+			}
+		}
+
+		if (sortedArray[i] - sortedArray[i - 1] > 1) {
+			if (end !== null) {
+				newArray[newArray.length - 1].push(end);
+				end = null;
+			}
+			newArray.push([sortedArray[i]]);
+			start = sortedArray[i];
+		}
+	}
+
+	return newArray.map((item) => item.join("-")).join(",");
+}</code></pre>`,
+            selected: false,
+        },
     ],
     selected: false,
-    lastUpdate: '06.01.2025',
+    lastUpdate: '22.10.2025',
 };
