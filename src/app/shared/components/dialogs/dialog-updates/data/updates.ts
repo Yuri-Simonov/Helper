@@ -26,7 +26,7 @@ export const UPDATES: IUpdates[] = [
         changes: [
             {
                 chapterTitle: THEORY,
-                added: ['Добавлен раздел с сигналами (Angular)'],
+                added: ['Раздел с сигналами (Angular)', 'Информация про HTTP-статусы (Разное)'],
                 updated: ['Информация про этапы, происходящие в браузере (Разное)'],
             },
             {

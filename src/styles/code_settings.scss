@@ -66,6 +66,15 @@ li + li {
     }
 }
 
+li > ul {
+    padding: 0.4rem 0 0.4rem 1rem;
+
+    li + li {
+        padding-top: 4px;
+        margin: 0;
+    }
+}
+
 .comment {
     margin-left: 12px;
 
