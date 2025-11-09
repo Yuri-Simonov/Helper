@@ -12,11 +12,18 @@ export const SIGNAL: IInfo = {
 	// создаем сигнал и записываем в него значение 0
     counter = signal(0);
 }</code></pre>
-            <p>Чтобы получить текущее значение сигнала в шаблоне, его просто вызывают как функцию:</p>
+            <p>Чтобы получить текущее значение сигнала в шаблоне или в классе компонента, его просто вызывают как функцию:</p>
+            <pre><code class="language-html">&lt;!-- В шаблоне компонента --&gt;
+&lt;p>Счетчик: {{ counter() }}&lt;/p></code></pre>
+			<pre><code class="language-typescript">export class AppComponent {
+    counter = signal(0);
 
-		// доработать пример. Вызывать можно и в классе компонента
-
-            <pre><code class="language-html">&lt;p>Счетчик: {{ counter() }}&lt;/p></code></pre>
+    ngOnInit() {
+		// В классе компонента
+		const currentValue = this.counter();
+		console.log('currentValue', currentValue); // 0
+    }
+}</code></pre>
             <p>Чтобы изменить значение <code>signal</code>, нужно воспользоваться методом <code>set</code>:</p>
             <pre><code class="language-typescript">export class AppComponent {
     counter = signal(0);
