@@ -2,6 +2,7 @@ import { IInfo } from '../../../../shared/interfaces';
 import { ABOUT_SIGNALS } from './information/about-signals';
 import { COMPUTED } from './information/computed';
 import { EFFECT } from './information/effect';
+import { INPUT } from './information/input';
 import { LINKED_SIGNAL } from './information/linked-signal';
 import { PRODUCERS_AND_CONSUMERS } from './information/producers-and-consumers';
 import { RESOURCE } from './information/resource';
@@ -19,5 +20,6 @@ export const signalsInfo: IInfo[] = [
     RESOURCE,
     UNTRACKED,
     LINKED_SIGNAL,
+    INPUT,
     // { chapter: 'Прочее' },
 ];
