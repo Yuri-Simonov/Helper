@@ -4,6 +4,8 @@ import { COMPUTED } from './information/computed';
 import { EFFECT } from './information/effect';
 import { INPUT } from './information/input';
 import { LINKED_SIGNAL } from './information/linked-signal';
+import { MODEL } from './information/model';
+import { OUTPUT } from './information/output';
 import { PRODUCERS_AND_CONSUMERS } from './information/producers-and-consumers';
 import { RESOURCE } from './information/resource';
 import { SIGNAL } from './information/signal';
@@ -21,5 +23,7 @@ export const signalsInfo: IInfo[] = [
     UNTRACKED,
     LINKED_SIGNAL,
     INPUT,
+    OUTPUT,
+    MODEL,
     // { chapter: 'Прочее' },
 ];
