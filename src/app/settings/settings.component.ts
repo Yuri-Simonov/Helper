@@ -18,7 +18,7 @@ const materialModules = [MatSelectModule, MatInputModule];
     imports: [materialModules, ReactiveFormsModule, TitleComponent],
     templateUrl: './settings.component.html',
     styleUrl: './settings.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SettingsComponent {
     themes: ITheme[];
@@ -33,7 +33,9 @@ export class SettingsComponent {
         private themeToggleService: ThemeToggleService,
         private backgroundToggleService: BackgroundToggleService,
         private formBuilder: FormBuilder,
-    ) {
+    ) {}
+
+    ngOnInit() {
         this.settingsForm = this.formBuilder.group({
             theme: this.themeToggleService.currentTheme.code,
             closeAllSpoilersButton: `Esc`,
@@ -41,9 +43,7 @@ export class SettingsComponent {
         });
         // Дизейбл инпута задания клавиши для быстрого закрытия всех споилеров
         this.settingsForm.get('closeAllSpoilersButton')?.disable();
-    }
 
-    ngOnInit() {
         this.themes = this.themeToggleService.themes;
         this.currentTheme.setValue(this.themeToggleService.currentTheme);
         this.backgrounds = this.backgroundToggleService.backgrounds;
