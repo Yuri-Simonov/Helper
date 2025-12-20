@@ -21,8 +21,8 @@ export const getUpdatesIds = (): number[] => UPDATES.map((update) => update.id);
  */
 export const UPDATES: IUpdates[] = [
     {
-        id: 1,
-        date: '',
+        id: 20122025,
+        date: '20.12.2025',
         changes: [
             {
                 chapterTitle: THEORY,
@@ -36,6 +36,10 @@ export const UPDATES: IUpdates[] = [
                     'Задача по проверке строки на палиндром (JavaScript)',
                     'Задача по созданию объекта-калькулятора (JavaScript)',
                 ],
+            },
+            {
+                chapterTitle: COMMON,
+                fixed: ['Исправлен сброс фона при нажатии на клавишу Esc'],
             },
         ],
     },

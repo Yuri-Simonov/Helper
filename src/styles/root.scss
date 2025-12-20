@@ -25,17 +25,6 @@ html {
 
 body {
     color: var(--text-color);
-    /**
-	* Задание изображения заднего фона вынесено в сервис BackgroundToggleService (background-toggle.service.ts).
-	* Здесь стили закомментированы с целью избежания сайд-эффектов
-	*/
-    // background-image: url("../assets/img/common/default-background.png"),
-    //     linear-gradient(var(--primary-color), var(--secondary-color));
-    background-size: cover;
-    background-blend-mode: luminosity;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     display: flex;
@@ -47,6 +36,18 @@ body > app-root {
     flex-direction: column;
     min-height: 100%;
     flex-grow: 1;
+
+    /**
+	* Задание изображения заднего фона вынесено в сервис BackgroundToggleService (background-toggle.service.ts).
+	* Здесь стили закомментированы с целью избежания сайд-эффектов
+	*/
+    // background-image: url("../assets/img/common/default-background.png"),
+    //     linear-gradient(var(--primary-color), var(--secondary-color));
+    background-size: cover;
+    background-blend-mode: luminosity;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 img,
