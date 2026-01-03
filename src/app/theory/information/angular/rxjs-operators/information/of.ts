@@ -24,6 +24,11 @@ export const OF: IInfo = {
                 Из примера выше видно, что оператору <code>of</code> все равно с каким типом данных работать. Он каждый
                 элемент, находящийся внутри его круглых скобок, отправляет в созданный им поток.
             </p>
+			<p>Так как этот оператор часто сравнивают с оператором <code>from</code>, важно уточнить их различие при работе с <code>Promise</code>. <code>from</code> ожидает выполнения <code>Promise</code> и эмитит его результат, тогда как <code>of</code> <span class="attention">не ждёт выполнения и эмитит сам <code>Promise</code> как значение</span>:</p>
+			<pre><code class="language-javascript">const promise = Promise.resolve(42);
+of(promise).subscribe(x => console.log(x));</code></pre>
+			<p>В консоли мы увидим следующее:</p>
+			<pre><code class="language-javascript">Promise {&lt;fulfilled>: 42}</code></pre>
             <p><span class="attention">Данный оператор завершает поток, когда заканчиваются элементы</span>:</p>
             <pre><code class='language-typescript'>export class ForExamplesComponent {
 		someObservable: Observable&lt;any> = of(1, 'текст', ['123', 0]);

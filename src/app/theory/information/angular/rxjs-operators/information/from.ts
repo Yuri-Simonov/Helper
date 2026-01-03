@@ -64,6 +64,7 @@ export const FROM: IInfo = {
 }</code></pre>
             <p>В консоли мы увидим следующее:</p>
             <pre><code class="language-typescript">Привет</code></pre>
+			<p>Здесь стоит отметить, что когда мы передаём <code>Promise</code> в оператор <code>from</code>, RxJS не просто берёт значение — <span class="attention">он подписывается на <code>Promise</code> как на future-значение и ждёт его завершения</span>, т.е., ждёт пока <code>Promise</code> будет <code>resolve</code> или <code>reject</code>. И только потом отправляет значение в поток.</p>
             <p>Пример с коллекцией:</p>
             <pre><code class="language-typescript">export class ForExamplesComponent {
     ngOnInit() {
@@ -96,7 +97,7 @@ export const FROM: IInfo = {
 Текущее значение: 3
 Поток завершен!</code></pre>`,
     selected: false,
-    lastUpdate: '01.05.2024',
+    lastUpdate: '03.01.2026',
     footerLinks: [
         {
             path: 'https://youtu.be/A-3UoqDqkyU?t=154',
