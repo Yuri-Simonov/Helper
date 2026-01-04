@@ -26,7 +26,7 @@ export const UPDATES: IUpdates[] = [
         changes: [
             {
                 chapterTitle: THEORY,
-                // added: [''],
+                added: ['Расширен список операторов RxJS (Angular)'],
                 updated: ['Информация про операторы from и of (Angular)'],
             },
             // {

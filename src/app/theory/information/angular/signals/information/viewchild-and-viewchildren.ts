@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const VIEW_CHILD_AND_VIEW_CHILDREN: IInfo = {
-    title: '<span class="variable">viewChild</span> and <span class="variable">viewChildren</span>',
+    title: '<span class="variable">viewChild</span> и <span class="variable">viewChildren</span>',
     body: `<p>
                 В старом API, чтобы получить доступ к элементу шаблона или дочернему компоненту, мы использовали
                 декораторы <code>ViewChild</code> или <code>ViewChildren</code>. Главной проблемой этого подхода было

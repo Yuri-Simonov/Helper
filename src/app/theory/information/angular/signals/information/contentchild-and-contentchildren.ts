@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const CONTENT_CHILD_AND_CONTENT_CHILDREN: IInfo = {
-    title: '<span class="variable">contentChild</span> and <span class="variable">contentChildren</span>',
+    title: '<span class="variable">contentChild</span> и <span class="variable">contentChildren</span>',
     body: `<p>
                 В старом API, чтобы получить доступ к проекции шаблона, мы использовали декораторы
                 <code>ContentChild</code> или <code>ContentChildren</code>. Главной проблемой этого подхода было то, что

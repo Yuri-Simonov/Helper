@@ -27,6 +27,12 @@ import { CATCH_ERROR } from './information/catch-error';
 import { RETRY } from './information/retry';
 import { RETRY_WHEN } from './information/retry-when';
 import { INTERVAL } from './information/interval';
+import { WITH_LATEST_FROM } from './information/with-latest-from';
+import { FILTER } from './information/filter';
+import { TAKE_UNTIL } from './information/take-until';
+import { TAP } from './information/tap';
+import { DEBOUNCE_TIME } from './information/debounce-time';
+import { DISTINCT_UNTIL_CHANGED } from './information/distinct-until-changed';
 
 export const rxjsOperatorsInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -46,8 +52,8 @@ export const rxjsOperatorsInfo: IInfo[] = [
     CONCAT,
     FORK_JOIN,
     MERGE,
-    PARTITION,
-    RACE,
+    // PARTITION,
+    // RACE,
     ZIP,
     { chapter: 'Операторы преобразования (<span class="variable">Transformation Operators</span>)' },
     CONCAT_MAP,
@@ -56,17 +62,23 @@ export const rxjsOperatorsInfo: IInfo[] = [
     MERGE_MAP,
     SWITCH_MAP,
     { chapter: 'Операторы фильтрации (<span class="variable">Filtering Operators</span>)' },
+    DEBOUNCE_TIME,
+    DISTINCT_UNTIL_CHANGED,
+    FILTER,
     TAKE,
-    // {
-    //     chapter:
-    //         'Операторы объединения (<span class="variable">Join operators</span>) (для потоков более высокого порядка)',
-    // },
+    TAKE_UNTIL,
+    {
+        chapter:
+            'Операторы объединения (<span class="variable">Join operators</span>) (для потоков более высокого порядка)',
+    },
+    WITH_LATEST_FROM,
     // { chapter: 'Операторы многоадресной рассылки (<span class="variable">Multicasting Operators</span>)' },
     { chapter: 'Операторы для обработки ошибок (<span class="variable">Error Handling Operators</span>)' },
     CATCH_ERROR,
     RETRY,
     RETRY_WHEN,
-    // { chapter: 'Различные полезные операторы (<span class="variable">Utility Operators</span>)' },
+    { chapter: 'Различные полезные операторы (<span class="variable">Utility Operators</span>)' },
+    TAP,
     // { chapter: 'Условные и логические операторы (<span class="variable">Conditional and Boolean Operators</span>)' },
     // {
     //     chapter:
