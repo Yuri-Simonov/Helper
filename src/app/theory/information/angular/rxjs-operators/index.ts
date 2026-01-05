@@ -33,6 +33,15 @@ import { TAKE_UNTIL } from './information/take-until';
 import { TAP } from './information/tap';
 import { DEBOUNCE_TIME } from './information/debounce-time';
 import { DISTINCT_UNTIL_CHANGED } from './information/distinct-until-changed';
+import { DISTINCT_UNTIL_KEY_CHANGED } from './information/distinct-until-key-changed';
+import { START_WITH } from './information/start-with';
+import { THROTTLE_TIME } from './information/throttle-time';
+import { FINALIZE } from './information/finalize';
+import { SHARE_REPLAY } from './information/share-replay';
+import { PAIRWISE } from './information/pairwise';
+import { DELAY } from './information/delay';
+import { FIRST } from './information/first';
+import { OBSERVE_ON } from './information/observe-on';
 
 export const rxjsOperatorsInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -60,24 +69,33 @@ export const rxjsOperatorsInfo: IInfo[] = [
     EXHAUST_MAP,
     MAP,
     MERGE_MAP,
+    PAIRWISE,
     SWITCH_MAP,
     { chapter: 'Операторы фильтрации (<span class="variable">Filtering Operators</span>)' },
     DEBOUNCE_TIME,
     DISTINCT_UNTIL_CHANGED,
+    DISTINCT_UNTIL_KEY_CHANGED,
     FILTER,
+    FIRST,
     TAKE,
     TAKE_UNTIL,
+    THROTTLE_TIME,
     {
         chapter:
             'Операторы объединения (<span class="variable">Join operators</span>) (для потоков более высокого порядка)',
     },
+    START_WITH,
     WITH_LATEST_FROM,
-    // { chapter: 'Операторы многоадресной рассылки (<span class="variable">Multicasting Operators</span>)' },
+    { chapter: 'Операторы многоадресной рассылки (<span class="variable">Multicasting Operators</span>)' },
+    SHARE_REPLAY,
     { chapter: 'Операторы для обработки ошибок (<span class="variable">Error Handling Operators</span>)' },
     CATCH_ERROR,
     RETRY,
     RETRY_WHEN,
     { chapter: 'Различные полезные операторы (<span class="variable">Utility Operators</span>)' },
+    DELAY,
+    FINALIZE,
+    OBSERVE_ON,
     TAP,
     // { chapter: 'Условные и логические операторы (<span class="variable">Conditional and Boolean Operators</span>)' },
     // {
