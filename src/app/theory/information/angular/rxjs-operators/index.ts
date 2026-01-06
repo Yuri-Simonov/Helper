@@ -42,6 +42,8 @@ import { PAIRWISE } from './information/pairwise';
 import { DELAY } from './information/delay';
 import { FIRST } from './information/first';
 import { OBSERVE_ON } from './information/observe-on';
+import { SCAN } from './information/scan';
+import { SAMPLE } from './information/sample';
 
 export const rxjsOperatorsInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -70,6 +72,7 @@ export const rxjsOperatorsInfo: IInfo[] = [
     MAP,
     MERGE_MAP,
     PAIRWISE,
+    SCAN,
     SWITCH_MAP,
     { chapter: 'Операторы фильтрации (<span class="variable">Filtering Operators</span>)' },
     DEBOUNCE_TIME,
@@ -77,6 +80,7 @@ export const rxjsOperatorsInfo: IInfo[] = [
     DISTINCT_UNTIL_KEY_CHANGED,
     FILTER,
     FIRST,
+    SAMPLE,
     TAKE,
     TAKE_UNTIL,
     THROTTLE_TIME,
