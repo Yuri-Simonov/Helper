@@ -44,6 +44,11 @@ import { FIRST } from './information/first';
 import { OBSERVE_ON } from './information/observe-on';
 import { SCAN } from './information/scan';
 import { SAMPLE } from './information/sample';
+import { AUDIT_TIME } from './information/audit-time';
+import { SKIP } from './information/skip';
+import { TAKE_WHILE } from './information/take-while';
+import { SHARE } from './information/share';
+import { SKIP_UNTIL } from './information/skip-until';
 
 export const rxjsOperatorsInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -75,14 +80,18 @@ export const rxjsOperatorsInfo: IInfo[] = [
     SCAN,
     SWITCH_MAP,
     { chapter: 'Операторы фильтрации (<span class="variable">Filtering Operators</span>)' },
+    AUDIT_TIME,
     DEBOUNCE_TIME,
     DISTINCT_UNTIL_CHANGED,
     DISTINCT_UNTIL_KEY_CHANGED,
     FILTER,
     FIRST,
     SAMPLE,
+    SKIP,
+    SKIP_UNTIL,
     TAKE,
     TAKE_UNTIL,
+    TAKE_WHILE,
     THROTTLE_TIME,
     {
         chapter:
@@ -91,6 +100,7 @@ export const rxjsOperatorsInfo: IInfo[] = [
     START_WITH,
     WITH_LATEST_FROM,
     { chapter: 'Операторы многоадресной рассылки (<span class="variable">Multicasting Operators</span>)' },
+    SHARE,
     SHARE_REPLAY,
     { chapter: 'Операторы для обработки ошибок (<span class="variable">Error Handling Operators</span>)' },
     CATCH_ERROR,

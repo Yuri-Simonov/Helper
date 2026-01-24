@@ -4,7 +4,7 @@ export const TAKE_UNTIL: IInfo = {
     title: '<span class="variable">takeUntil</span>',
     body: `<p>
                 <span class="attention"
-                    >Оператор <code>takeUntil</code> пропускает значения из основного <code>observable</code> до первого
+                    >Оператор <code>takeUntil</code> принимает значения из основного <code>observable</code> до первого
                     эмита указанного <code>notifier</code>-observable, после чего немедленно завершает поток</span
                 >.
             </p>
