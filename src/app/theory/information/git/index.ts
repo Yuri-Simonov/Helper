@@ -11,6 +11,7 @@ import { GIT_REVERT } from './all/git-revert';
 import { ADD_ALL_FILES_IN_COMMIT } from './all/add-all-files-in-commit';
 import { GIT_CHERRY_PICK } from './all/git-cherry-pick';
 import { INTERACTIVE_REBASE } from './all/interactive-rebase';
+import { REBASE_AND_MERGE_DIFFERENCE } from './all/rebase-and-merge-difference';
 
 export const allGitInfo: IInfo[] = [
     { chapter: 'Сохранение изменений' },
@@ -22,6 +23,7 @@ export const allGitInfo: IInfo[] = [
     GIT_CHECKOUT,
     GIT_REVERT,
     { chapter: 'Прочее' },
+    REBASE_AND_MERGE_DIFFERENCE,
     FIXING_LAST_COMMIT,
     DISABLE_FILE_CHANGE_TRACKING,
     CLONING_STRIPPED_DOWN_REPOSITORY,
