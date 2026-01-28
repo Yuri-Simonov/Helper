@@ -1,7 +1,7 @@
 import { IInfo } from 'src/app/shared/interfaces';
 
 export const IS_OBSERVABLE: IInfo = {
-    title: 'Проверка на Observable (<span class="variable">isObservable</span>)',
+    title: 'Проверка на <span class="variable">Observable</span> (<span class="variable">isObservable</span>)',
     body: `<p>
                 <code>isObservable</code> — это утилитарная функция RxJS, которая
                 <span class="attention">позволяет проверить, является ли значение</span> <code>Observable</code>. Если
