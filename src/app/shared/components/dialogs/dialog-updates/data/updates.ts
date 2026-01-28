@@ -26,7 +26,7 @@ export const UPDATES: IUpdates[] = [
         changes: [
             {
                 chapterTitle: THEORY,
-                added: ['Разница между merge и rebase (Git)'],
+                added: ['Разница между merge и rebase (Git)', 'Проверка на Observable (Angular)'],
                 // updated: ['Информация про операторы from и of (Angular)'],
             },
         ],

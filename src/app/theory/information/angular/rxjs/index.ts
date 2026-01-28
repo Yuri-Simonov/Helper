@@ -13,6 +13,7 @@ import { WAYS_TO_UNSUBSCRIBE } from './information/ways-to-unsubscribe';
 import { ERROR_HANDLING_METHODS } from './information/error-handling-methods';
 import { COLD_AND_HOT_OBSERVABLES } from './information/cold-and-hot-observables';
 import { MERGING_OBSERVABLES } from './information/merging-observables';
+import { IS_OBSERVABLE } from './information/is-observable';
 
 export const rxjsInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -23,6 +24,7 @@ export const rxjsInfo: IInfo[] = [
     DIFFERENCE_BETWEEN_OBSERVABLE_AND_ARRAY,
     DIFFERENCE_BETWEEN_OBSERVABLE_AND_SUBJECT,
     { chapter: 'Прочее' },
+    IS_OBSERVABLE,
     CONVERTING_PRIMITIVE_TO_OBSERVABLE,
     TYPES_OF_SUBJECT,
     WHEN_USE_PIPE,
