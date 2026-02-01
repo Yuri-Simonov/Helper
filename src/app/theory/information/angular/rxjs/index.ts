@@ -15,6 +15,7 @@ import { COLD_AND_HOT_OBSERVABLES } from './information/cold-and-hot-observables
 import { MERGING_OBSERVABLES } from './information/merging-observables';
 import { IS_OBSERVABLE } from './information/is-observable';
 import { FIRST_VALUE_FROM } from './information/first-value-from';
+import { LAST_VALUE_FROM } from './information/last-value-from';
 
 export const rxjsInfo: IInfo[] = [
     { chapter: 'Общие понятия' },
@@ -30,6 +31,7 @@ export const rxjsInfo: IInfo[] = [
     IS_OBSERVABLE,
     CONVERTING_PRIMITIVE_TO_OBSERVABLE,
     FIRST_VALUE_FROM,
+    LAST_VALUE_FROM,
     WHEN_USE_PIPE,
     SUBSCRIBE_IN_CONSTRUCTOR,
     WAYS_TO_UNSUBSCRIBE,
