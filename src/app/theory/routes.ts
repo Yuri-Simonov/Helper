@@ -5,6 +5,7 @@ import { GitComponent } from './pages/git/git.component';
 import { JavascriptComponent } from './pages/javascript/javascript.component';
 import { OthersComponent } from './pages/others/others.component';
 import { TheoryComponent } from './theory.component';
+import { TypescriptComponent } from './pages/typescript/typescript.component';
 
 export const theoryRoutes: Routes = [
     {
@@ -31,6 +32,10 @@ export const theoryRoutes: Routes = [
                     { path: 'test', component: AngularComponent },
                     { path: '**', redirectTo: '' },
                 ],
+            },
+            {
+                path: 'typescript',
+                component: TypescriptComponent,
             },
             {
                 path: 'git',

@@ -9,7 +9,20 @@
     </head>
 
     <body>
-        <div style="padding: 40px"></div>
+        <div style="padding: 40px">
+            <p>
+                Утилита <code>NonNullable</code>
+                <span class="attention"
+                    >удаляет <code>null</code> и <code>undefined</code> из <code>union</code>-типа</span
+                >.
+            </p>
+            <p>Пример:</p>
+            <pre><code class="language-typescript">type MaybeString = string | null | undefined;
+
+type SafeString = NonNullable&lt;MaybeString>;</code></pre>
+            <p>Результат:</p>
+            <pre><code class="language-typescript">string</code></pre>
+        </div>
         <script src="./constructor.js"></script>
     </body>
 </html>

@@ -12,6 +12,7 @@ export const NAVIGATION: INavigation[] = [
         links: [
             { path: 'javascript', name: 'JavaScript' },
             { path: 'angular', name: 'Angular' },
+            { path: 'typescript', name: 'TypeScript' },
             { path: 'git', name: 'Git' },
             { path: 'others', name: 'Разное' },
         ],

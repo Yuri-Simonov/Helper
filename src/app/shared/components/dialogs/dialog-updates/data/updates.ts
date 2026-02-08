@@ -21,8 +21,8 @@ export const getUpdatesIds = (): number[] => UPDATES.map((update) => update.id);
  */
 export const UPDATES: IUpdates[] = [
     {
-        id: 27012026,
-        date: '27.01.2026',
+        id: 8022026,
+        date: '08.02.2026',
         changes: [
             {
                 chapterTitle: THEORY,
@@ -30,8 +30,9 @@ export const UPDATES: IUpdates[] = [
                     'Разница между merge и rebase (Git)',
                     'Проверка на Observable (Angular)',
                     'firstValueFrom и lastValueFrom из RxJS (Angular)',
+                    'Раздел TypeScript (TypeScript)',
+                    'Информация по некоторым TypeScript-утилитам (TypeScript)',
                 ],
-                // updated: ['Информация про операторы from и of (Angular)'],
             },
         ],
     },
