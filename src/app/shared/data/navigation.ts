@@ -75,4 +75,10 @@ export const NAVIGATION: INavigation[] = [
         name: 'Разное',
         links: [{ path: 'hr', name: 'HR' }],
     },
+    {
+        id: 'useful-links',
+        path: 'useful-links',
+        name: 'Полезные ссылки',
+        links: [{ path: 'others', name: 'Разное' }],
+    },
 ];

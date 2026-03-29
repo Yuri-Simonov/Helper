@@ -9,6 +9,7 @@ import { quizzesRoutes } from './quizzes/routes';
 import { settingsRoutes } from './settings/routes';
 import { tasksRoutes } from './tasks/routes';
 import { theoryRoutes } from './theory/routes';
+import { usefulLinksRoutes } from './useful-links/routes';
 
 export const routes: Routes = [
     {
@@ -29,5 +30,7 @@ export const routes: Routes = [
     ...tasksRoutes,
     // /theory/...
     ...theoryRoutes,
+    // /useful-links/...
+    ...usefulLinksRoutes,
     { path: '**', redirectTo: '' },
 ];

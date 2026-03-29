@@ -1,16 +1,8 @@
-<!doctype html>
-<html lang="ru">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./styles/constructor.css" />
-        <title>Конструктор элемента</title>
-    </head>
+import { IInfo } from 'src/app/shared/interfaces';
 
-    <body>
-        <div style="padding: 40px">
-            <p>
+export const RX_JS: IInfo = {
+    title: 'Библиотека RxJS',
+    body: `<p>
                 <a href="https://rxjs-course-avy.web.app/" target="_blank"><b>Тренажер по RxJS</b></a
                 >. Познакомит вас с основами библиотеки RxJS на ранних уроках. И с более продвинутыми вещами на более
                 поздних. Также по мере прохождения уроков, будет открываться новые карточки с теоретическими вопросами.
@@ -19,17 +11,7 @@
             <p>
                 <a href="https://rxjs-course-avy.web.app/" target="_blank"><b>RxJS Marbles</b></a
                 >. В данном проекте наглядно можно посмотреть как работают операторы RxJS, двигая шарики (marbles).
-            </p>
-        </div>
-        <script src="./constructor.js"></script>
-    </body>
-</html>
-
-<div style="display: none">
-    <pre><code class="language-typescript"></code></pre>
-    <pre><code class="language-javascript"></code></pre>
-    <pre><code class="language-html"></code></pre>
-</div>
-<!-- &lt; -->
-<!-- &lt;!-- html --&gt; -->
-<!-- <p>В консоли увидим следующее:</p> -->
+            </p>`,
+    selected: false,
+    lastUpdate: '29.03.2026',
+};

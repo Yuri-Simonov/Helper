@@ -9,6 +9,7 @@ const COURSES = 'Курсы';
 const TESTS = 'Тесты';
 const CODE_REVIEW = 'Код-ревью';
 const OTHER = 'Разное';
+const USEFUL_LINKS = 'Полезные ссылки';
 
 /**
  * Возвращает массив id обновлений
@@ -20,6 +21,16 @@ export const getUpdatesIds = (): number[] => UPDATES.map((update) => update.id);
  * Элементы массива заполняются в обратном порядке
  */
 export const UPDATES: IUpdates[] = [
+    {
+        id: 1,
+        date: '08.02.2026',
+        changes: [
+            {
+                chapterTitle: USEFUL_LINKS,
+                added: ['Добавлен раздел с полезными ссылками'],
+            },
+        ],
+    },
     {
         id: 8022026,
         date: '08.02.2026',
